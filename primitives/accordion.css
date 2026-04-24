@@ -1,0 +1,108 @@
+/**
+ * ACCORDION — Estratto da elements-ui/css/components/_layout-patterns.css
+ * Data estrazione: 2026-04-23
+ * Fonte canonica: elements-ui
+ */
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+}
+
+.accordion__section {
+    display: flex;
+    flex-direction: column;
+    background: var(--section-bg);
+    border: 1px solid var(--section-border);
+    border-radius: var(--section-radius);
+    transition: background var(--transition-fast);
+    scroll-margin-top: 0;
+}
+
+.accordion__section:hover {
+    background: var(--color-bg-gray-50);
+}
+
+.accordion__section.expanded {
+    background: var(--section-bg-expanded);
+}
+
+.accordion__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.accordion__header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-width: 0;
+}
+
+.accordion__badge {
+    width: var(--section-number-size);
+    height: var(--section-number-size);
+    background: var(--section-number-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--section-number-color);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    flex-shrink: 0;
+}
+
+.accordion__title {
+    font-weight: var(--font-weight-semibold);
+    font-size: 0.9375rem;
+    color: var(--color-text);
+}
+
+.accordion__icon {
+    color: var(--color-text-muted);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.accordion__content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+        max-height var(--transition-section),
+        opacity var(--transition-slow);
+}
+
+.accordion__section.expanded > .accordion__content {
+    max-height: 3000px;
+    opacity: 1;
+    overflow: visible;
+    overflow-x: hidden;
+    transition:
+        max-height var(--transition-section),
+        opacity var(--transition-slow) 0.1s;
+}
+
+.accordion__inner {
+    padding: var(--spacing-md);
+    border-top: 1px solid var(--color-bg-gray-200);
+    background-color: var(--color-bg-gray-50);
+    border-radius: 0 0 var(--section-radius) var(--section-radius);
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+.accordion__inner > * + * {
+    margin-top: 0.875rem;
+}

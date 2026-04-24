@@ -1,0 +1,5 @@
+/* Bundle minimo — Accordion Section */
+@import '../tokens/tokens.css';
+@import '../base/reset.css';
+@import '../utilities/utilities.css';
+@import '../primitives/accordion.css';
