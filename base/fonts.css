@@ -1,0 +1,14 @@
+/**
+ * FONTS — Asset tipografici Skillpress UI
+ *
+ * Manrope e il font obbligatorio del design system e viene servito dal package.
+ * Non importare Google Fonts nel runtime consumer.
+ */
+
+@font-face {
+    font-family: "Manrope";
+    src: url("../fonts/manrope/Manrope-Variable.woff2") format("woff2-variations");
+    font-weight: 200 800;
+    font-style: normal;
+    font-display: swap;
+}

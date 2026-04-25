@@ -11,7 +11,7 @@
  *
  * SCOPO:
  *   Reset CSS completo (equivalente Tailwind Preflight) + stili base
- *   per body, icone Material Symbols, scrollbar e visibilita.
+ *   per body, scrollbar e visibilita.
  *
  * DIPENDENZE:
  *   - tokens.css (font-family, colori sfondo e testo)
@@ -24,12 +24,10 @@
  * CONTENUTO:
  *   - CSS Reset (Tailwind Preflight equivalent)
  *   - Body configuration
- *   - Material Symbols settings
  *   - Scrollbar utilities
  *   - Scroll behavior
  *
- * Elementi HTML: *, html, body, .material-symbols-outlined,
- *   .scrollbar-hide, .scroll-smooth
+ * Elementi HTML: *, html, body, .scrollbar-hide, .scroll-smooth
  * ==========================================================================
  */
 
@@ -235,18 +233,6 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-}
-
-
-/* ====================================================================
-   MATERIAL SYMBOLS CONFIGURATION
-   ==================================================================== */
-.material-symbols-outlined {
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24;
 }
 
 

@@ -2,7 +2,6 @@
     var ACCORDION_SELECTOR = '[data-accordion]';
     var SECTION_SELECTOR = '[data-accordion-section]';
     var TRIGGER_SELECTOR = '[data-accordion-trigger]';
-    var ICON_SELECTOR = '[data-accordion-icon]';
 
     function getSections(container) {
         return Array.prototype.slice.call(container.querySelectorAll(SECTION_SELECTOR));
@@ -12,31 +11,14 @@
         return section.querySelector(TRIGGER_SELECTOR);
     }
 
-    function getIcon(section) {
-        return section.querySelector(ICON_SELECTOR);
-    }
-
-    function setIconState(icon, isExpanded) {
-        if (!icon) {
-            return;
-        }
-
-        var openIcon = icon.getAttribute('data-icon-open') || 'remove';
-        var closedIcon = icon.getAttribute('data-icon-closed') || 'add';
-        icon.textContent = isExpanded ? openIcon : closedIcon;
-    }
-
     function syncSection(section, isExpanded) {
         var trigger = getTrigger(section);
-        var icon = getIcon(section);
 
         section.classList.toggle('expanded', isExpanded);
 
         if (trigger) {
             trigger.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
         }
-
-        setIconState(icon, isExpanded);
     }
 
     function emit(section, isExpanded) {

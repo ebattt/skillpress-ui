@@ -575,10 +575,6 @@
         font-size: var(--font-size-xs);
     }
 
-    .section-content .flex.gap-2 > button[title="Anteprima carta"] .material-symbols-outlined {
-        font-size: var(--font-size-sm);
-    }
-
     /* Section inner reduced padding on small mobile */
     .section-inner {
         padding: 0.75rem;

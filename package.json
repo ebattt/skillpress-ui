@@ -9,12 +9,23 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "pack:check": "npm pack --dry-run --cache /tmp/skillpress-npm-cache"
+  },
   "files": [
+    "fonts/",
     "tokens/",
     "base/",
     "utilities/",
     "primitives/",
     "js/",
     "bundles/"
-  ]
+  ],
+  "devDependencies": {
+    "@storybook/html-vite": "^10.3.5",
+    "storybook": "^10.3.5",
+    "vite": "^8.0.10"
+  }
 }

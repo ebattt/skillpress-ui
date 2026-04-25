@@ -6,6 +6,8 @@ Molecola
 ## Responsabilita
 Contenitore espandibile per sezioni di configurazione o contenuto strutturato. La libreria controlla markup interno, stati visuali, aria e toggle locale del pannello.
 
+L'icona funzionale `+/-` e disegnata dal CSS della libreria e non richiede Material Symbols.
+
 ## Cosa controlla il backend
 - decide quali sezioni rendere visibili
 - decide il contenuto dello slot `header`
@@ -51,13 +53,7 @@ Contenitore espandibile per sezioni di configurazione o contenuto strutturato. L
         <span class="accordion__badge">1</span>
         <span class="accordion__title">Formato e supporto</span>
       </span>
-      <span
-        class="material-symbols-outlined accordion__icon"
-        data-accordion-icon
-        data-icon-open="remove"
-        data-icon-closed="add"
-        aria-hidden="true"
-      >add</span>
+      <span class="accordion__icon" aria-hidden="true"></span>
     </button>
     <div class="accordion__content">
       <div class="accordion__inner">
@@ -83,7 +79,6 @@ Contenitore espandibile per sezioni di configurazione o contenuto strutturato. L
   - `[data-accordion]` obbligatorio sul container auto-inizializzato
   - `[data-accordion-section]` obbligatorio su ogni sezione
   - `[data-accordion-trigger]` obbligatorio sul trigger cliccabile
-  - `[data-accordion-icon]` opzionale se si vuole il cambio `add/remove`
 - aria:
   - `aria-expanded` obbligatorio sul trigger
 
@@ -92,7 +87,7 @@ Contenitore espandibile per sezioni di configurazione o contenuto strutturato. L
 - init esplicita via `window.SkillpressUI.Accordion.init(container)`
 - click su `[data-accordion-trigger]` apre o chiude la sezione associata
 - quando una sezione si apre, le altre sezioni dello stesso container vengono chiuse
-- il JS aggiorna `aria-expanded` e, se presente, il contenuto dell'icona `data-accordion-icon`
+- il JS aggiorna `aria-expanded`; l'icona decorativa `+/-` e gestita dal CSS in base alla classe `expanded`
 - namespace: `window.SkillpressUI.Accordion`
 
 ## Eventi emessi
