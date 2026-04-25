@@ -1,0 +1,57 @@
+/**
+ * BADGE — Dot status badge primitive
+ * Fonte: Skillpress-frontend/dashboard/css/components/_badges.css
+ * Data estrazione: 2026-04-25
+ */
+
+.badge {
+    --badge-color: var(--color-text-secondary);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--badge-color);
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.badge::before {
+    content: "";
+    width: 0.4375rem;
+    height: 0.4375rem;
+    border-radius: var(--radius-full);
+    background: currentColor;
+    flex: 0 0 auto;
+}
+
+.badge--success {
+    --badge-color: var(--color-success-badge-text, var(--color-success));
+}
+
+.badge--warning {
+    --badge-color: var(--color-warning-badge-text, var(--color-warning));
+}
+
+.badge--error {
+    --badge-color: var(--color-error-badge-text, var(--color-error));
+}
+
+.badge--info {
+    --badge-color: var(--color-info-badge-text, var(--color-info));
+}
+
+.badge--cancelled {
+    --badge-color: var(--color-cancelled-badge-text, var(--color-text-muted));
+}
+
+.badge--neutral {
+    --badge-color: var(--color-text-secondary);
+}

@@ -15,6 +15,7 @@ Perimetro attuale:
 - reset/base
 - utility
 - Button CSS
+- Badge CSS
 - Accordion Section CSS
 - Accordion Section behavior JS
 - demo HTML minimale
@@ -74,6 +75,12 @@ Button:
 <button class="button button--primary" type="button">
   Aggiungi al carrello
 </button>
+```
+
+Badge:
+
+```html
+<span class="badge badge--success">Consegnato</span>
 ```
 
 Accordion:
