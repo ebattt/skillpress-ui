@@ -14,6 +14,7 @@ Perimetro attuale:
 - token
 - reset/base
 - utility
+- Button CSS
 - Accordion Section CSS
 - Accordion Section behavior JS
 - demo HTML minimale
@@ -21,7 +22,6 @@ Perimetro attuale:
 
 Fuori dal perimetro attuale:
 - product-card
-- button
 - card-base
 - componenti composti
 - demo ricche con contenuti applicativi
@@ -67,6 +67,16 @@ npm install @ebattt/skillpress-ui
 ```
 
 ## Markup minimo
+
+Button:
+
+```html
+<button class="button button--primary" type="button">
+  Aggiungi al carrello
+</button>
+```
+
+Accordion:
 
 ```html
 <div class="accordion" data-accordion>

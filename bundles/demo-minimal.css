@@ -1,6 +1,7 @@
-/* Bundle minimo — Accordion Section */
+/* Bundle minimo — primitives validated for alpha */
 @import '../base/fonts.css';
 @import '../tokens/tokens.css';
 @import '../base/reset.css';
 @import '../utilities/utilities.css';
+@import '../primitives/button.css';
 @import '../primitives/accordion.css';
