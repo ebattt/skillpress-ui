@@ -20,6 +20,7 @@
     "base/",
     "utilities/",
     "primitives/",
+    "components/",
     "js/",
     "bundles/"
   ],

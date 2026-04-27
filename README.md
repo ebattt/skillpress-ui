@@ -19,7 +19,10 @@ Perimetro attuale:
 - Card CSS
 - Accordion Section CSS
 - Accordion Section behavior JS
+- Breadcrumb CSS
+- Feature Box CSS (componente composto)
 - demo HTML minimale
+- demo `cms-composition` che ricostruisce parzialmente la header di product-page-integration
 - Storybook nel repository per visualizzazione e documentazione tecnica
 
 Fuori dal perimetro attuale:
@@ -92,6 +95,37 @@ Card:
     <p class="card__description">Contenuto sintetico popolato dal consumer.</p>
   </div>
 </article>
+```
+
+Breadcrumb:
+
+```html
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol class="breadcrumb__list">
+    <li class="breadcrumb__item">
+      <a class="breadcrumb__link" href="/">Homepage</a>
+    </li>
+    <li class="breadcrumb__item breadcrumb__item--current">Pagina corrente</li>
+  </ol>
+</nav>
+```
+
+Feature Box:
+
+```html
+<div class="feature-grid">
+  <div class="feature-box">
+    <div class="feature-box__content">
+      <div class="feature-box__icon" style="background:#E8F5F3;">
+        <img src="/assets/icons/fast.svg" alt="" />
+      </div>
+      <div class="feature-box__text">
+        <h3 class="feature-box__title">Veloce</h3>
+        <p class="feature-box__description">Stampa rapida</p>
+      </div>
+    </div>
+  </div>
+</div>
 ```
 
 Accordion:

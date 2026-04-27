@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--
+================================================================================
+SKILLPRESS UI - DEMO CONSUMER cms-composition
+================================================================================
+
+Sorgente reale ricostruita parzialmente:
+  Skillpress-frontend/product-page-integration/index.html
+  Sezione: header product page (breadcrumb + titolo prodotto + rating + descrizione + griglia feature).
+
+Componenti usati (solo runtime libreria):
+  - Breadcrumb       (primitives/breadcrumb.css)
+  - FeatureBox       (components/feature-box.css)
+  - Badge            (primitives/badge.css)
+  - Button           (primitives/button.css)
+  - Manrope          (base/fonts.css)
+  - reset, tokens    (base/reset.css, tokens/tokens.css)
+
+Parti volutamente NON ricostruite (fuori scope batch 20%):
+  - header globale del sito
+  - galleria immagini prodotto
+  - rating con stelle (richiede componente non ancora estratto)
+  - configuratore (sezioni accordion 1..6 con form, paper catalog, pricing)
+  - sidebar totale + mobile bottom bar
+  - related products / catalog cards
+  - footer globale
+  - download links
+  - info section dropdown
+  - modali
+
+CSS demo locale: solo layout di pagina (max-width, padding, gap di sezione).
+Niente CSS che corregge stili interni dei componenti.
+================================================================================
+-->
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skillpress UI -- CMS Composition (header product page)</title>
+    <link rel="stylesheet" href="../../bundles/demo-minimal.css">
+    <style>
+        /* CSS demo locale: solo layout di pagina, nessun override componenti. */
+        body {
+            background: var(--color-bg-white);
+            color: var(--color-text);
+            font-family: var(--font-family);
+        }
+
+        .demo-page {
+            max-width: var(--page-max-width);
+            margin: 0 auto;
+            padding: var(--spacing-md) var(--page-padding-x) var(--spacing-xl);
+            display: grid;
+            gap: var(--spacing-lg);
+        }
+
+        .demo-product-header {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+
+        .demo-product-header__meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .demo-product-header__title {
+            margin: 0;
+            color: var(--color-text);
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            line-height: var(--line-height-tight);
+        }
+
+        .demo-product-header__lead {
+            margin: 0;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-relaxed);
+            max-width: 60ch;
+        }
+
+        .demo-product-header__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .demo-section-title {
+            margin: 0 0 var(--spacing-sm);
+            color: var(--color-text);
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            line-height: var(--line-height-snug);
+        }
+
+        @media (min-width: 768px) {
+            .demo-page {
+                padding-top: var(--spacing-lg);
+                gap: var(--spacing-xl);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<main class="demo-page">
+
+    <!-- Breadcrumb (primitives/breadcrumb.css) -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a class="breadcrumb__link" itemprop="item" href="/homepage">
+                    <span itemprop="name">Homepage</span>
+                </a>
+                <meta itemprop="position" content="1"/>
+            </li>
+            <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a class="breadcrumb__link" itemprop="item" href="/libri-cataloghi-riviste">
+                    <span itemprop="name">Libri Cataloghi Riviste</span>
+                </a>
+                <meta itemprop="position" content="2"/>
+            </li>
+            <li class="breadcrumb__item breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span itemprop="name">Brossura fresata</span>
+                <meta itemprop="position" content="3"/>
+            </li>
+        </ol>
+    </nav>
+
+    <!-- Header product (Badge + titolo + descrizione + Button) -->
+    <header class="demo-product-header">
+        <div class="demo-product-header__meta">
+            <span class="badge badge--success">Disponibile</span>
+            <span class="badge badge--info">Spedizione 24/48h</span>
+        </div>
+
+        <h1 class="demo-product-header__title">Brossura fresata</h1>
+
+        <p class="demo-product-header__lead">
+            La brossura fresata e una tecnica di rilegatura economica e resistente, ideale per libri voluminosi
+            come romanzi e manuali. Configura formato, carta e finitura per ottenere il preventivo immediato.
+        </p>
+
+        <div class="demo-product-header__actions">
+            <button type="button" class="button button--primary">
+                Configura ora
+            </button>
+            <button type="button" class="button button--outline">
+                Scarica template
+            </button>
+        </div>
+    </header>
+
+    <!-- Feature grid (components/feature-box.css). Icone editoriali via SVG inline. -->
+    <section aria-labelledby="demo-features-title">
+        <h2 id="demo-features-title" class="demo-section-title">Perche scegliere la brossura fresata</h2>
+
+        <div class="feature-grid">
+            <div class="feature-box">
+                <div class="feature-box__content">
+                    <div class="feature-box__icon" style="background-color: #E8F5F3;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#1C7264" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="feature-box__text">
+                        <h3 class="feature-box__title">Veloce</h3>
+                        <p class="feature-box__description">Stampa brossura fresata con ciclo rapido</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature-box__content">
+                    <div class="feature-box__icon" style="background-color: #FEF3E6;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#F08A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <div class="feature-box__text">
+                        <h3 class="feature-box__title">Economica</h3>
+                        <p class="feature-box__description">Miglior rapporto qualita/prezzo</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature-box__content">
+                    <div class="feature-box__icon" style="background-color: #E6ECEE;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#003E51" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="8" r="6"/>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                        </svg>
+                    </div>
+                    <div class="feature-box__text">
+                        <h3 class="feature-box__title">Professionale</h3>
+                        <p class="feature-box__description">Finiture curate e nobilitazioni</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <div class="feature-box__content">
+                    <div class="feature-box__icon" style="background-color: #E9F5F2;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 20h9"/>
+                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-box__text">
+                        <h3 class="feature-box__title">Personalizzabile</h3>
+                        <p class="feature-box__description">Scegli formato e carta</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+        Sezioni successive non ricostruite in questo batch (vedi commento iniziale):
+        - galleria immagini con prev/next
+        - rating
+        - configuratore step 1..6 (form inputs, accordion, price table)
+        - sidebar totale / mobile bottom bar
+        - related products
+    -->
+
+</main>
+
+</body>
+</html>

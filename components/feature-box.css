@@ -1,0 +1,72 @@
+/**
+ * FEATURE BOX — Composed component (feature highlights grid)
+ * Fonte: Skillpress-frontend/elements-ui/css/components/_cards.css (sezione .feature-grid / .feature-box)
+ * Fonte markup: Skillpress-frontend/elements-ui/js/cards/card-feature.js
+ * Target demo: product-page-integration, landing-page
+ * Data estrazione: 2026-04-27
+ *
+ * L'icona e uno slot: la libreria fornisce solo contenitore, dimensione e radius.
+ * Il colore di sfondo dell'icona e il contenuto (SVG/URL) sono forniti dal consumer/CMS.
+ * La libreria non dipende da Material Symbols.
+ */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.feature-box {
+    background: var(--color-bg-gray-50);
+    border-radius: var(--radius-lg);
+    padding: 0.875rem;
+    transition: background-color var(--transition-fast);
+}
+
+.feature-box:hover {
+    background: var(--color-bg-gray-100);
+}
+
+.feature-box__content {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.feature-box__icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    background: var(--color-bg-gray-100);
+}
+
+.feature-box__icon img,
+.feature-box__icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: block;
+}
+
+.feature-box__text {
+    min-width: 0;
+}
+
+.feature-box__title {
+    margin: 0 0 0.125rem;
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-snug);
+}
+
+.feature-box__description {
+    margin: 0;
+    color: var(--color-text-light);
+    font-size: var(--font-size-xs);
+    line-height: 1.375;
+}
