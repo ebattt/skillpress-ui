@@ -1,0 +1,155 @@
+/**
+ * STEP INDICATOR — Composed component (numbered horizontal step indicator)
+ * Fonte: Skillpress-frontend/elements-ui/css/components/_cards.css righe 1037-1178
+ * Fonte markup: Skillpress-frontend/product-page-integration/index.html righe 512-564
+ * Target demo: product-page-integration (section-steps)
+ * Data estrazione: 2026-04-27
+ *
+ * CSS-only. Nessun behavior libreria: il CMS sposta i modifier
+ * `--active`, `--inactive`, `--completed` su badge, titolo e status.
+ *
+ * I valori `#374151` (step-title--inactive) e `#D1D5DB` (steps-line) sono
+ * letterali nel catalogo elements-ui e vengono mantenuti per fedelta visiva.
+ *
+ * Il gradient di `.step-badge--active` e' letterale come da catalogo.
+ *
+ * Mobile-first: 2 colonne sotto 1024px, 4 colonne >= 1024px.
+ * `.steps-line` e' nascosta sotto 1024px e visibile solo da desktop.
+ *
+ * Fuori scope (non implementato qui):
+ * - icona check dentro `.step-badge--completed`;
+ * - wrapper `.step-card` con hover translateY;
+ * - step verticali, cliccabili, scroll spy, sticky, animazioni sequenziali.
+ */
+
+.steps-section {
+    max-width: var(--page-max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+    margin-top: 0.75rem;
+}
+
+.steps-wrapper {
+    margin-bottom: 1rem;
+}
+
+.steps-container {
+    position: relative;
+    max-width: 64rem;
+    margin: 0 auto;
+}
+
+.steps-line {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: -2%;
+    right: -2%;
+    height: 1px;
+    background-color: #D1D5DB;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+@media (min-width: 1024px) {
+    .steps-line {
+        display: block;
+    }
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    position: relative;
+    z-index: 10;
+}
+
+@media (min-width: 1024px) {
+    .steps-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+.step-card-item {
+    background-color: var(--color-bg-white);
+    border: 1px solid var(--color-bg-gray-200);
+    border-radius: var(--radius-lg);
+    padding: 0.5rem 0.75rem;
+    transition: all var(--transition-slow);
+}
+
+.step-card-item:hover {
+    transform: translateY(-2px);
+}
+
+.step-card-item--active {
+    border-color: var(--color-primary);
+}
+
+.step-card-content {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.step-badge {
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-xs);
+}
+
+.step-badge--active {
+    background: linear-gradient(135deg, #F08A00 0%, #FFB149 100%);
+    color: var(--color-bg-white);
+}
+
+.step-badge--inactive {
+    background: var(--color-bg-gray-200);
+    color: var(--color-text-secondary);
+}
+
+.step-badge--completed {
+    background: var(--color-success);
+    color: var(--color-bg-white);
+}
+
+.step-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.step-title {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.step-title--active {
+    color: var(--color-text);
+}
+
+.step-title--inactive {
+    color: #374151;
+}
+
+.step-status {
+    font-size: 10px;
+    font-weight: var(--font-weight-medium);
+}
+
+.step-status--active {
+    color: var(--color-primary);
+}
+
+.step-status--inactive {
+    color: var(--color-text-light);
+}
