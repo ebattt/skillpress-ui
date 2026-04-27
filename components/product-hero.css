@@ -1,0 +1,86 @@
+/**
+ * PRODUCT HERO - Section layout: 2-column grid that composes ImageGallery (left)
+ * with title + Rating + description + FeatureGrid (right).
+ *
+ * Fonte: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css (hero block)
+ * Target demo: product-page-integration
+ *
+ * Dipende da:
+ *   - components/image-gallery.css (.hero-image-gallery, .hero-image-container, .hero-nav-btn*)
+ *   - primitives/rating.css         (.stars-outer, .stars-empty, .stars-filled, .star-icon)
+ *   - components/feature-box.css    (.feature-grid, .feature-box*)
+ *
+ * Contratto markup statico (Strategia A):
+ *   <div id="product-hero" class="product-hero">
+ *     <div class="hero-grid">
+ *       <!-- left slot: ImageGallery markup -->
+ *       <div class="hero-info">
+ *         <h1 class="hero-title">...</h1>
+ *         <div class="hero-rating">
+ *           <span class="hero-rating-value">...</span>
+ *           <!-- Rating markup -->
+ *           <span class="hero-review-count">...</span>
+ *         </div>
+ *         <p class="hero-description">...</p>
+ *         <!-- FeatureGrid markup -->
+ *       </div>
+ *     </div>
+ *   </div>
+ */
+
+.product-hero {
+    max-width: var(--page-max-width);
+    margin: 0 auto;
+    padding: 2rem var(--page-padding-x) 1rem;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+    .hero-grid {
+        grid-template-columns: 35fr 65fr;
+    }
+}
+
+.hero-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-title {
+    margin: 0 0 0.75rem;
+    color: var(--color-text);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    letter-spacing: 0;
+}
+
+.hero-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: 0.75rem;
+}
+
+.hero-rating-value {
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+}
+
+.hero-review-count {
+    color: var(--color-text-light);
+    font-size: var(--font-size-sm);
+}
+
+.hero-description {
+    margin: 0 0 1rem;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.625;
+}
