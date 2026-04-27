@@ -226,3 +226,14 @@ export const ComposedForCMS = {
         starsPercent: 97
     })
 };
+
+export const Anatomy = {
+    render: () => renderAnatomy(),
+    parameters: {
+        docs: {
+            description: {
+                story: 'Decomposizione visiva: prima la galleria sola, poi Rating, poi FeatureBox grid, infine la composizione finale della Section.'
+            }
+        }
+    }
+};

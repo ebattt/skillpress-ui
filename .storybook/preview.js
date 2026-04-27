@@ -5,7 +5,7 @@ export const parameters = {
     layout: 'padded',
     options: {
         storySort: {
-            order: ['Foundation', 'Primitives', 'Components']
+            order: ['Foundation', 'Primitives', 'Components', 'Sections']
         }
     }
 };

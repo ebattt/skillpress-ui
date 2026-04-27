@@ -8,6 +8,8 @@
 @import '../primitives/card.css';
 @import '../primitives/accordion.css';
 @import '../primitives/breadcrumb.css';
+@import '../primitives/rating.css';
 @import '../primitives/toggle-switch.css';
 @import '../components/feature-box.css';
+@import '../components/image-gallery.css';
 @import '../components/product-hero.css';
