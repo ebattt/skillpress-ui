@@ -5,4 +5,5 @@
 @import '../utilities/utilities.css';
 @import '../primitives/button.css';
 @import '../primitives/badge.css';
+@import '../primitives/card.css';
 @import '../primitives/accordion.css';

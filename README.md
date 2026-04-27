@@ -16,6 +16,7 @@ Perimetro attuale:
 - utility
 - Button CSS
 - Badge CSS
+- Card CSS
 - Accordion Section CSS
 - Accordion Section behavior JS
 - demo HTML minimale
@@ -23,7 +24,6 @@ Perimetro attuale:
 
 Fuori dal perimetro attuale:
 - product-card
-- card-base
 - componenti composti
 - demo ricche con contenuti applicativi
 
@@ -81,6 +81,17 @@ Badge:
 
 ```html
 <span class="badge badge--success">Consegnato</span>
+```
+
+Card:
+
+```html
+<article class="card">
+  <div class="card__body">
+    <h3 class="card__title">Card base</h3>
+    <p class="card__description">Contenuto sintetico popolato dal consumer.</p>
+  </div>
+</article>
 ```
 
 Accordion:

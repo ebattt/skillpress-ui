@@ -1,0 +1,127 @@
+/**
+ * CARD — Generic card surface primitive
+ * Fonte: Skillpress-frontend/elements-ui/css/components/_cards.css
+ * Data estrazione: 2026-04-25
+ */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-bg-gray-200);
+    border-radius: var(--radius-lg);
+    color: var(--color-text);
+    font-family: inherit;
+    overflow: hidden;
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.card__media {
+    display: block;
+    width: 100%;
+    background: var(--color-bg-gray-100);
+    overflow: hidden;
+}
+
+.card__media img,
+.card__media picture {
+    display: block;
+    width: 100%;
+}
+
+.card__media img {
+    height: auto;
+    object-fit: cover;
+}
+
+.card__header,
+.card__body,
+.card__footer {
+    padding: var(--spacing-md);
+}
+
+.card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+}
+
+.card__body {
+    flex: 1 1 auto;
+}
+
+.card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    border-top: 1px solid var(--color-bg-gray-200);
+}
+
+.card__title {
+    margin: 0;
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-snug);
+}
+
+.card__description {
+    margin: var(--spacing-xs) 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+}
+
+.card__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.card__eyebrow {
+    color: var(--color-text-light);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-normal);
+}
+
+.card--interactive {
+    cursor: pointer;
+}
+
+.card--interactive:hover {
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.card--interactive:focus-within {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.card--selected {
+    background: var(--selection-highlight-bg);
+    border-color: var(--selection-highlight-border);
+    box-shadow: 0 0 0 1px var(--selection-highlight-border);
+}
+
+.card.is-disabled,
+.card[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.card--interactive.is-disabled:hover,
+.card--interactive[aria-disabled="true"]:hover {
+    transform: none;
+    box-shadow: none;
+}
