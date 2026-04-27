@@ -1,0 +1,121 @@
+/**
+ * TOGGLE SWITCH -- Binary on/off switch primitive
+ * Fonte CSS:
+ *   - Skillpress-frontend/elements-ui/css/components/_form-inputs.css
+ *     (sezione "TOGGLE SWITCH (multicopertina on/off)" -- .multicop-switch / .multicop-switch-knob)
+ * Fonte markup:
+ *   - Skillpress-frontend/elements-ui/js/buttons/toggle-switch.js
+ *     (variante multicop -- div + classi --active)
+ *   - Skillpress-frontend/elements-ui/js/checkout/checkout-toggle-switch.js
+ *     (variante checkout -- button[role=switch][aria-checked] + .toggle-switch.active)
+ * Target demo:
+ *   - product-page-integration (multicopertina nella sidebar config)
+ *   - checkout (multispedizione)
+ * Data estrazione: 2026-04-27
+ *
+ * Convergenza:
+ *   I due sorgenti hanno geometrie equivalenti (track ~44x24, thumb ~20x20).
+ *   La libreria adotta il pattern button[role=switch] (checkout) come piu
+ *   accessibile, e ne deriva un'API BEM unica: .toggle-switch (track) +
+ *   .toggle-switch__thumb (knob) + opzionale .toggle-switch__label (testo).
+ */
+
+/* Wrapper opzionale: label + switch su una riga */
+.toggle-switch-field {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+/* Track (e' il <button> stesso) */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 2.75rem;          /* 44px */
+    height: 1.5rem;          /* 24px */
+    flex-shrink: 0;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-gray-200);
+    cursor: pointer;
+    transition: background-color var(--transition-normal);
+    font-family: inherit;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.toggle-switch:hover {
+    background-color: var(--color-border);
+}
+
+.toggle-switch:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+/* Stato ON: classe + aria-checked, entrambi supportati per coerenza */
+.toggle-switch.is-checked,
+.toggle-switch[aria-checked="true"] {
+    background-color: var(--color-primary);
+}
+
+.toggle-switch.is-checked:hover,
+.toggle-switch[aria-checked="true"]:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* Thumb (knob) */
+.toggle-switch__thumb {
+    position: absolute;
+    top: 0.125rem;           /* 2px */
+    left: 0.125rem;          /* 2px */
+    width: 1.25rem;          /* 20px */
+    height: 1.25rem;         /* 20px */
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-white);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal);
+    pointer-events: none;
+}
+
+.toggle-switch.is-checked .toggle-switch__thumb,
+.toggle-switch[aria-checked="true"] .toggle-switch__thumb {
+    transform: translateX(1.25rem);  /* 20px = 44 - 4 - 20 */
+}
+
+/* Label esterna (slot consumer): non controlla testo, solo tipografia base */
+.toggle-switch__label {
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Stato disabled */
+.toggle-switch:disabled,
+.toggle-switch[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.toggle-switch:disabled:hover,
+.toggle-switch[aria-disabled="true"]:hover {
+    /* annulla hover quando disabled */
+    background-color: var(--color-bg-gray-200);
+}
+
+.toggle-switch.is-checked:disabled:hover,
+.toggle-switch.is-checked[aria-disabled="true"]:hover,
+.toggle-switch[aria-checked="true"]:disabled:hover,
+.toggle-switch[aria-checked="true"][aria-disabled="true"]:hover {
+    background-color: var(--color-primary);
+}
+
+.toggle-switch-field:has(.toggle-switch:disabled) .toggle-switch__label,
+.toggle-switch-field:has(.toggle-switch[aria-disabled="true"]) .toggle-switch__label {
+    cursor: not-allowed;
+    opacity: 0.7;
+}

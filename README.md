@@ -20,6 +20,8 @@ Perimetro attuale:
 - Accordion Section CSS
 - Accordion Section behavior JS
 - Breadcrumb CSS
+- Toggle Switch CSS
+- Toggle Switch behavior JS (`role="switch"`, `aria-checked`, evento `toggle-switch:change`)
 - Feature Box CSS (componente composto)
 - demo HTML minimale
 - demo `cms-composition` che ricostruisce parzialmente la header di product-page-integration

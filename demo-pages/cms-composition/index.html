@@ -6,17 +6,18 @@ SKILLPRESS UI - DEMO CONSUMER cms-composition
 
 Sorgente reale ricostruita parzialmente:
   Skillpress-frontend/product-page-integration/index.html
-  Sezione: header product page (breadcrumb + titolo prodotto + rating + descrizione + griglia feature).
+  Sezione: header product page (breadcrumb + titolo prodotto + badge + descrizione + griglia feature). [batch 01]
 
 Componenti usati (solo runtime libreria):
   - Breadcrumb       (primitives/breadcrumb.css)
   - FeatureBox       (components/feature-box.css)
   - Badge            (primitives/badge.css)
   - Button           (primitives/button.css)
+  - ToggleSwitch     (primitives/toggle-switch.css + js/toggle-switch.js)  [batch 02A]
   - Manrope          (base/fonts.css)
   - reset, tokens    (base/reset.css, tokens/tokens.css)
 
-Parti volutamente NON ricostruite (fuori scope batch 20%):
+Parti volutamente NON ricostruite (fuori scope):
   - header globale del sito
   - galleria immagini prodotto
   - rating con stelle (richiede componente non ancora estratto)
@@ -24,8 +25,8 @@ Parti volutamente NON ricostruite (fuori scope batch 20%):
   - sidebar totale + mobile bottom bar
   - related products / catalog cards
   - footer globale
-  - download links
-  - info section dropdown
+  - download links (rimandato: implementazione precedente non corretta, eliminata)
+  - info section dropdown (rimandato: implementazione precedente non corretta, eliminata)
   - modali
 
 CSS demo locale: solo layout di pagina (max-width, padding, gap di sezione).
@@ -94,6 +95,12 @@ Niente CSS che corregge stili interni dei componenti.
             font-size: var(--font-size-xl);
             font-weight: var(--font-weight-semibold);
             line-height: var(--line-height-snug);
+        }
+
+        /* Layout-only wrapper per il blocco ToggleSwitch standalone. */
+        .demo-toggle-block {
+            display: grid;
+            gap: var(--spacing-sm);
         }
 
         @media (min-width: 768px) {
@@ -220,13 +227,47 @@ Niente CSS che corregge stili interni dei componenti.
     </section>
 
     <!--
-        Sezioni successive non ricostruite in questo batch (vedi commento iniziale):
-        - galleria immagini con prev/next
-        - rating
-        - configuratore step 1..6 (form inputs, accordion, price table)
-        - sidebar totale / mobile bottom bar
-        - related products
+        Sezioni del configuratore (step 1..6, sidebar totale, mobile bottom bar, related products,
+        modali, gallery e rating) non sono in scope per questo batch: richiedono pricing,
+        selection card families e logica business.
+
+        Nota: InfoSection e DownloadLinks erano stati estratti in batch 02A ma sono stati
+        eliminati perche' la logica usata per crearli era sbagliata (non si verificava
+        che il pattern fosse davvero usato nella pagina demo target con le stesse classi
+        e lo stesso look). Verranno riprogettati in un sub-batch dedicato dopo verifica
+        diretta sulla pagina di riferimento.
     -->
+
+    <!-- ToggleSwitch standalone (primitives/toggle-switch.css + js/toggle-switch.js).
+         Mostra solo il controllo: niente ricalcolo prezzo, niente logica IVA. -->
+    <section aria-labelledby="demo-toggle-title" class="demo-toggle-block">
+        <h2 id="demo-toggle-title" class="demo-section-title">Toggle dimostrativo</h2>
+        <span class="toggle-switch-field">
+            <button
+                type="button"
+                id="demo-iva-toggle"
+                class="toggle-switch"
+                role="switch"
+                aria-checked="false"
+                aria-labelledby="demo-iva-label"
+                data-skillpress-toggle-switch>
+                <span class="toggle-switch__thumb"></span>
+            </button>
+            <label id="demo-iva-label" for="demo-iva-toggle" class="toggle-switch__label">
+                Mostra prezzi IVA inclusa
+            </label>
+        </span>
+    </section>
+
+    <!-- JS opt-in: solo ToggleSwitch ha behavior in questo batch. -->
+    <script src="../../js/toggle-switch.js"></script>
+    <script>
+        (function () {
+            if (window.SkillpressUI && window.SkillpressUI.ToggleSwitch) {
+                window.SkillpressUI.ToggleSwitch.init();
+            }
+        })();
+    </script>
 
 </main>
 
