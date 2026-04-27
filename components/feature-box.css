@@ -2,7 +2,7 @@
  * FEATURE BOX — Composed component (feature highlights grid)
  * Fonte: Skillpress-frontend/elements-ui/css/components/_cards.css (sezione .feature-grid / .feature-box)
  * Fonte markup: Skillpress-frontend/elements-ui/js/cards/card-feature.js
- * Target demo: product-page-integration, landing-page
+ * Target demo: product-page-integration
  * Data estrazione: 2026-04-27
  *
  * L'icona e uno slot: la libreria fornisce solo contenitore, dimensione e radius.
@@ -14,6 +14,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.75rem;
+    margin-bottom: 1rem;
 }
 
 .feature-box {
@@ -27,36 +28,32 @@
     background: var(--color-bg-gray-100);
 }
 
-.feature-box__content {
+.feature-box-content {
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
 }
 
-.feature-box__icon {
+.feature-box-icon {
     width: 2.25rem;
     height: 2.25rem;
-    flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     border-radius: var(--radius-md);
     color: var(--color-text);
     background: var(--color-bg-gray-100);
 }
 
-.feature-box__icon img,
-.feature-box__icon svg {
+.feature-box-icon img,
+.feature-box-icon svg {
     width: 1.25rem;
     height: 1.25rem;
     display: block;
 }
 
-.feature-box__text {
-    min-width: 0;
-}
-
-.feature-box__title {
+.feature-box-title {
     margin: 0 0 0.125rem;
     color: var(--color-text);
     font-size: var(--font-size-sm);
@@ -64,7 +61,7 @@
     line-height: var(--line-height-snug);
 }
 
-.feature-box__description {
+.feature-box-description {
     margin: 0;
     color: var(--color-text-light);
     font-size: var(--font-size-xs);

@@ -1,30 +1,57 @@
 const renderFeatureBox = ({
     title = 'Veloce',
     description = 'Stampa con ciclo rapido.',
-    iconBg = 'var(--price-iva-badge)',
+    iconBg = '#E8F5F3',
+    iconColor = '#1C7264',
     iconSvg = ''
 } = {}) => {
     return `
         <div class="feature-box">
-            <div class="feature-box__content">
-                <div class="feature-box__icon" style="background-color: ${iconBg};">
+            <div class="feature-box-content">
+                <div class="feature-box-icon" style="background-color: ${iconBg}; color: ${iconColor};">
                     ${iconSvg}
                 </div>
-                <div class="feature-box__text">
-                    <h3 class="feature-box__title">${title}</h3>
-                    <p class="feature-box__description">${description}</p>
+                <div>
+                    <h3 class="feature-box-title">${title}</h3>
+                    <p class="feature-box-description">${description}</p>
                 </div>
             </div>
         </div>
     `;
 };
 
-const placeholderSvg = (color) => `
-    <svg viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="9"/>
-        <path d="M9 12l2 2 4-4"/>
+const icons = {
+    bolt: `
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M13 2 4 14h7l-1 8 10-13h-7l1-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
     </svg>
-`;
+    `,
+    savings: `
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M5 11c0-3 2.7-5.5 7-5.5s7 2.5 7 5.5-2.7 5.5-7 5.5S5 14 5 11Z" stroke="currentColor" stroke-width="2" />
+        <path d="M8 16.5V20h3M16 16.5V20h-3M9 10h.01M15 10h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </svg>
+    `,
+    premium: `
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1-4.4-4.3 6.1-.9L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+    </svg>
+    `,
+    tune: `
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 7h8M16 7h4M4 17h4M12 17h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        <circle cx="14" cy="7" r="2" stroke="currentColor" stroke-width="2" />
+        <circle cx="10" cy="17" r="2" stroke="currentColor" stroke-width="2" />
+    </svg>
+    `
+};
+
+const productBoxes = [
+    { title: 'Veloce', description: 'Stampa brossura fresata con ciclo rapido', iconBg: '#E8F5F3', iconColor: '#1C7264', iconSvg: icons.bolt },
+    { title: 'Economica', description: 'Miglior rapporto qualita/prezzo', iconBg: '#FEF3E6', iconColor: '#F08A00', iconSvg: icons.savings },
+    { title: 'Professionale', description: 'Finiture curate e nobilitazioni', iconBg: '#E6ECEE', iconColor: '#003E51', iconSvg: icons.premium },
+    { title: 'Personalizzabile', description: 'Scegli formato e carta', iconBg: '#E9F5F2', iconColor: '#298979', iconSvg: icons.tune }
+];
 
 const renderGrid = (boxes) => {
     const root = document.createElement('div');
@@ -50,19 +77,7 @@ export default {
 };
 
 export const Default = {
-    render: () => renderGrid([
-        { title: 'Veloce', description: 'Stampa brossura fresata con ciclo rapido', iconBg: '#E8F5F3', iconSvg: placeholderSvg('#1C7264') },
-        { title: 'Economica', description: 'Miglior rapporto qualita/prezzo', iconBg: '#FEF3E6', iconSvg: placeholderSvg('#EA580C') },
-        { title: 'Professionale', description: 'Finiture curate e nobilitazioni', iconBg: '#E6ECEE', iconSvg: placeholderSvg('#003E51') },
-        { title: 'Personalizzabile', description: 'Scegli formato e carta', iconBg: '#E9F5F2', iconSvg: placeholderSvg('#16A34A') }
-    ])
-};
-
-export const TextOnlySlot = {
-    render: () => renderGrid([
-        { title: 'Veloce', description: 'Stampa brossura fresata con ciclo rapido', iconBg: 'var(--color-bg-gray-100)' },
-        { title: 'Economica', description: 'Miglior rapporto qualita/prezzo', iconBg: 'var(--color-bg-gray-100)' }
-    ])
+    render: () => renderGrid(productBoxes)
 };
 
 export const ReferenceFromElementsUI = {
@@ -70,17 +85,14 @@ export const ReferenceFromElementsUI = {
         const root = document.createElement('div');
         root.style.maxWidth = '760px';
         root.innerHTML = `
-            <p style="margin: 0 0 16px; color: var(--color-text-secondary); font-size: var(--font-size-sm);">
-                Riferimento <code>elements-ui/js/cards/card-feature.js</code> e <code>product-page-integration/index.html</code>.
-                L\'icona di Material Symbols originale e sostituita da SVG inline o &lt;img&gt; controllato dal consumer/CMS.
-            </p>
             <div class="feature-grid">
-                ${renderFeatureBox({ title: 'Veloce', description: 'Stampa brossura fresata con ciclo rapido', iconBg: '#E8F5F3', iconSvg: placeholderSvg('#1C7264') })}
-                ${renderFeatureBox({ title: 'Economica', description: 'Miglior rapporto qualita/prezzo', iconBg: '#FEF3E6', iconSvg: placeholderSvg('#EA580C') })}
-                ${renderFeatureBox({ title: 'Professionale', description: 'Finiture curate e nobilitazioni', iconBg: '#E6ECEE', iconSvg: placeholderSvg('#003E51') })}
-                ${renderFeatureBox({ title: 'Personalizzabile', description: 'Scegli formato e carta', iconBg: '#E9F5F2', iconSvg: placeholderSvg('#16A34A') })}
+                ${productBoxes.map(renderFeatureBox).join('')}
             </div>
         `;
         return root;
     }
+};
+
+export const ComposedForCMS = {
+    render: () => renderGrid(productBoxes)
 };

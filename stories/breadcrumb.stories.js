@@ -39,15 +39,15 @@ export default {
 
 export const Default = {
     render: () => renderBreadcrumb([
-        { label: 'Homepage', href: '/' },
+        { label: 'Homepage', href: '/homepage' },
         { label: 'Libri Cataloghi Riviste', href: '/libri-cataloghi-riviste' },
         { label: 'Brossura fresata', current: true }
     ])
 };
 
-export const Compact = {
+export const TwoLevels = {
     render: () => renderBreadcrumb([
-        { label: 'Homepage', href: '/' },
+        { label: 'Homepage', href: '/homepage' },
         { label: 'Biglietti da visita', current: true }
     ])
 };
@@ -60,20 +60,20 @@ export const ReferenceFromElementsUI = {
             <div style="display: grid; gap: 16px;">
                 <div>
                     <p style="margin: 0 0 8px; color: var(--color-text-secondary); font-size: var(--font-size-sm);">
-                        Riferimento <code>elements-ui/js/layout-patterns/breadcrumb.js</code> -- variante 3 livelli.
+                        Riferimento <code>elements-ui/js/layout-patterns/breadcrumb.js</code>: 3 livelli.
                     </p>
                     ${renderBreadcrumb([
-                        { label: 'Homepage', href: '/' },
+                        { label: 'Homepage', href: '/homepage' },
                         { label: 'Libri Cataloghi Riviste', href: '/libri-cataloghi-riviste' },
                         { label: 'Brossura fresata', current: true }
                     ]).innerHTML}
                 </div>
                 <div>
                     <p style="margin: 0 0 8px; color: var(--color-text-secondary); font-size: var(--font-size-sm);">
-                        Riferimento <code>elements-ui/js/layout-patterns/breadcrumb.js</code> -- variante 2 livelli.
+                        Riferimento <code>elements-ui/js/layout-patterns/breadcrumb.js</code>: 2 livelli.
                     </p>
                     ${renderBreadcrumb([
-                        { label: 'Homepage', href: '/' },
+                        { label: 'Homepage', href: '/homepage' },
                         { label: 'Biglietti da visita', current: true }
                     ]).innerHTML}
                 </div>

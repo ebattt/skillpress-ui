@@ -3,13 +3,24 @@
 ## Tipo
 Componente composto
 
-## Fonte
-- `Skillpress-frontend/elements-ui/css/components/_cards.css` (sezione `.feature-grid` / `.feature-box`).
-- `Skillpress-frontend/elements-ui/js/cards/card-feature.js` (markup di riferimento).
+## Fonte elements-ui
+Categoria:
+Cards
+
+Componente:
+Card Feature
+
+File JS catalogo:
+`Skillpress-frontend/elements-ui/js/cards/card-feature.js`
+
+CSS sorgente:
+`Skillpress-frontend/elements-ui/css/components/_cards.css` righe 982-1030.
+
+Classi originali principali:
+`.feature-grid`, `.feature-box`, `.feature-box-content`, `.feature-box-icon`, `.feature-box-title`, `.feature-box-description`
 
 ## Pagine demo target
-- `product-page-integration`: griglia vantaggi del prodotto.
-- `landing-page`: griglia benefici.
+- `product-page-integration`: `section-feature-grid`, quattro feature box nel product hero.
 
 ## Responsabilita
 La libreria controlla griglia 2 colonne, sfondo del box, padding, layout interno (icona + testo), tipografia di titolo e descrizione.
@@ -21,7 +32,7 @@ Il componente non dipende da Material Symbols.
 ## Cosa controlla il backend
 - testo del titolo
 - testo della descrizione
-- numero di feature box (1..n)
+- quattro feature box nella demo prodotto
 - contenuto dell'icona (inline SVG o `<img src>` via URL CMS)
 - colore di sfondo dell'icona via attributo `style` editoriale
 
@@ -30,22 +41,24 @@ Il componente non dipende da Material Symbols.
 - padding del box
 - dimensione del contenitore icona
 - font-size e gerarchia tipografica
+- dipendenza da Material Symbols o Google Fonts
 
 ## Markup minimo
 ```html
 <div class="feature-grid">
   <div class="feature-box">
-    <div class="feature-box__content">
-      <div class="feature-box__icon" style="background-color: #E8F5F3;">
-        <img src="/assets/icons/fast.svg" alt="" />
+    <div class="feature-box-content">
+      <div class="feature-box-icon" style="background-color: #E8F5F3;">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+          <path d="M13 2 4 14h7l-1 8 10-13h-7l1-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+        </svg>
       </div>
-      <div class="feature-box__text">
-        <h3 class="feature-box__title">Veloce</h3>
-        <p class="feature-box__description">Stampa con ciclo rapido</p>
+      <div>
+        <h3 class="feature-box-title">Veloce</h3>
+        <p class="feature-box-description">Stampa brossura fresata con ciclo rapido</p>
       </div>
     </div>
   </div>
-  <!-- altri feature-box -->
 </div>
 ```
 
@@ -55,10 +68,10 @@ Obbligatori:
 - testo descrizione.
 
 Opzionali:
-- icona dentro `.feature-box__icon` (SVG inline o `<img>` da URL CMS).
+- icona dentro `.feature-box-icon` (SVG inline o `<img>` da URL CMS).
 
 Ripetibili:
-- `.feature-box` (1..n) dentro `.feature-grid`.
+- `.feature-box` dentro `.feature-grid`.
 
 ## Stati
 - default
@@ -72,11 +85,10 @@ Ripetibili:
 Classi:
 - `.feature-grid`
 - `.feature-box`
-- `.feature-box__content`
-- `.feature-box__icon`
-- `.feature-box__text`
-- `.feature-box__title`
-- `.feature-box__description`
+- `.feature-box-content`
+- `.feature-box-icon`
+- `.feature-box-title`
+- `.feature-box-description`
 
 Attributi:
 - nessuno obbligatorio.
@@ -93,8 +105,8 @@ Nessun behavior JS. Componente statico.
 ## Storybook
 Stories minime:
 - Default
-- Slot vuoto (solo testo)
 - ReferenceFromElementsUI
+- ComposedForCMS
 
 ## Import
 CSS:
