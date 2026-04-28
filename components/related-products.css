@@ -1,0 +1,177 @@
+/* ============================================================================
+   RELATED PRODUCTS — Griglia prodotti correlati (stile landing page)
+   ============================================================================
+   Fonti:
+   - elements-ui/css/components/_layout-patterns.css#L1804-L1825
+     (.related-section + qualificazione catalog-section-label / catalog-grid--products)
+   - elements-ui/css/components/_cards.css#L1181-L1328
+     (PRODUCT CARD: catalog-section-label / catalog-grid--products /
+      catalog-card--product-equal + arrow notch / catalog-card__title /
+      catalog-card__image-wrap / catalog-card__image--product + responsive)
+   ========================================================================== */
+
+/* --- Wrapper section --- */
+.related-section {
+    font-family: var(--font-family);
+    background-color: #ffffff;
+    padding: 0 20px 5px;
+    overflow: visible;
+}
+
+.related-section .catalog-section-label {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+}
+
+.related-section .catalog-grid--products {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* --- Section label --- */
+.catalog-section-label {
+    display: block;
+    font-family: 'Manrope', var(--font-family, sans-serif);
+    font-size: clamp(1.15rem, 2vw, 1.7rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.98;
+    text-transform: none;
+    color: var(--color-text, #111418);
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    margin-bottom: 1.2rem;
+}
+
+/* --- Griglia prodotti: 5 per riga, minimal --- */
+.catalog-grid--products {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+/* --- Product card --- */
+.catalog-card--product-equal {
+    position: relative;
+    grid-column: span 1;
+    min-height: 0;
+    aspect-ratio: 5 / 5.5;
+    padding: 1rem 1rem 0;
+    border-radius: 1rem;
+    text-align: left;
+    align-items: flex-start;
+    background: var(--color-bg-gray-75, #F7F7F8);
+    gap: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-normal);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* --- Arrow notch — bottom-right corner --- */
+.catalog-card--product-equal::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-top-left-radius: 0.85rem;
+    background-color: var(--color-bg-white, #fff);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 12L12 4' stroke='%23F08A00' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M5 4L12 4L12 11' stroke='%23F08A00' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 0.95rem;
+    transform-origin: bottom right;
+    transition: transform 0.2s ease, background-image 0.2s ease;
+    z-index: 2;
+}
+
+.catalog-card--product-equal:hover::after,
+.catalog-card--product-equal:focus-within::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 12L12 4' stroke='%23D67800' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M5 4L12 4L12 11' stroke='%23D67800' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    transform: scale(1.12);
+}
+
+.catalog-card--product-equal:hover,
+.catalog-card--product-equal:focus-within {
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- Card title --- */
+.catalog-grid--products .catalog-card__title {
+    max-width: none;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+    font-weight: var(--font-weight-bold);
+    text-align: left;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.5rem;
+    color: var(--color-text, #111418);
+    line-height: 1.25;
+}
+
+/* --- Card image --- */
+.catalog-card--product-equal .catalog-card__image-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    width: 100%;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    overflow: visible;
+}
+
+.catalog-grid--products .catalog-card__image {
+    margin-top: 0;
+    max-height: none;
+    flex: none;
+}
+
+.catalog-card__image--product {
+    width: 80%;
+    max-height: none;
+    height: auto;
+    object-fit: contain;
+    transform-origin: center center;
+    transition: transform var(--transition-normal);
+}
+
+.catalog-card--product-equal:hover .catalog-card__image--product,
+.catalog-card--product-equal:focus-within .catalog-card__image--product {
+    transform: scale(1.05);
+}
+
+/* --- Responsive: Tablet 3 colonne --- */
+@media (max-width: 1024px) {
+    .catalog-grid--products {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* --- Responsive: Mobile 2 colonne --- */
+@media (max-width: 640px) {
+    .catalog-grid--products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+
+    .catalog-card--product-equal {
+        grid-column: span 1;
+    }
+
+    .catalog-card__image--product {
+        width: min(100%, 150px);
+        max-height: none;
+    }
+}
