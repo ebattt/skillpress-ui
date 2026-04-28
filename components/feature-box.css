@@ -59,6 +59,8 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
     line-height: var(--line-height-snug);
+    overflow-wrap: anywhere;
+    hyphens: auto;
 }
 
 .feature-box-description {
@@ -66,4 +68,21 @@
     color: var(--color-text-light);
     font-size: var(--font-size-xs);
     line-height: 1.375;
+    overflow-wrap: anywhere;
+}
+
+/* Mobile stretti: parole lunghe come "Personalizzabile" stanno
+   nel box anche con grid 2-col su 360px. */
+@media (max-width: 480px) {
+    .feature-box {
+        padding: 0.625rem;
+    }
+
+    .feature-box-content {
+        gap: 0.5rem;
+    }
+
+    .feature-box-title {
+        font-size: 0.8125rem;
+    }
 }

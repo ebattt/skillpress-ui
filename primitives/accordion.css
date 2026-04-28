@@ -134,3 +134,15 @@
 .accordion__inner > * + * {
     margin-top: 0.875rem;
 }
+
+/* Mobile: header piu' alto per touch target standard e-commerce. */
+@media (max-width: 767px) {
+    .accordion__header {
+        padding: 1rem 0.875rem;
+        min-height: 56px;
+    }
+
+    .accordion__title {
+        font-size: 1rem;
+    }
+}

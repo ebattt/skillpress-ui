@@ -194,3 +194,13 @@
     --shell-code-color: #E2E8F0;
     --shell-code-success: #4ADE80;             /* Verde successo su sfondo scuro (copy btn) */
 }
+
+/* === MOBILE TOKEN OVERRIDES ===
+   Allineato a Skillpress-frontend/elements-ui/css/components/_layout.css
+   (`@media (max-width: 639px)` riduce padding pagina/sezioni). */
+@media (max-width: 639px) {
+    :root {
+        --page-padding-x: 0.75rem;
+        --section-padding: 0.75rem;
+    }
+}

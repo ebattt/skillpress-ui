@@ -42,12 +42,3 @@
 .orientation-btn svg {
     stroke: currentColor;
 }
-
-/* Mobile: touch target standard e-commerce (>= 44px Apple HIG / >= 48px Material). */
-@media (max-width: 767px) {
-    .orientation-btn {
-        min-height: 40px;
-        padding: 0.5rem 0.75rem;
-        font-size: var(--font-size-sm);
-    }
-}

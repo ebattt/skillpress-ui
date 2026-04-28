@@ -104,10 +104,24 @@ Riepilogo toggle:
 
 Riepilogo utility classes (per il content iniettato dal CMS):
 
-- `.riepilogo-row` — `padding-left: 0.75rem`.
-- `.riepilogo-indent` — `padding-left: 1.5rem`, color `text-secondary`.
-- `.riepilogo-section-header` — bold, color `#1f2937`.
-- `.riepilogo-empty` — text-align center, color `text-light`, padding 1rem.
+Il backend chiama `generateRiepilogo()` (vedi `product-page-integration/js/riepilogo.js` v3.0.0) e inietta l'HTML risultante dentro `.riepilogo-content` (sidebar desktop) o `.mobile-config-content` (mobile bar). Le classi prodotte sono:
+
+- `.riepilogo-container` — wrapper flex column, gap 0.75rem.
+- `.riepilogo-section` — gruppo (Dettagli, Generali, Copertina, ...): flex column gap 0.25rem.
+- `.riepilogo-header` — titolo gruppo bold, color `#1f2937` (es. `Dettagli`, `1. Generali`, `2. Copertina`).
+- `.riepilogo-row` — riga "label: value" con `padding-left: 0.75rem`.
+- `.riepilogo-row--indent` — riga indentata `padding-left: 1.5rem`, color `text-secondary`.
+- `.riepilogo-error` — valore in rosso (`#ef4444`) per errori (es. "Non valido"), font-weight medium.
+- `.riepilogo-empty` — stato "Non selezionato": text-align center, color text-light, padding 1rem.
+- `.riepilogo-placeholder` — placeholder generico ("Configura il prodotto..."): stessa formattazione di `.riepilogo-empty`.
+- `.riepilogo-muted` — color text-light per testo secondario inline.
+
+Alias legacy mantenuti per backward-compat (consumer pre-stepwise 14 li usano):
+
+- `.riepilogo-section-header` -> alias di `.riepilogo-header`.
+- `.riepilogo-indent` -> alias di `.riepilogo-row--indent`.
+
+I generatori canonici v3.0.0+ usano le forme nuove (doppio dash / nome senza suffisso `-header`).
 
 CTA carrello:
 

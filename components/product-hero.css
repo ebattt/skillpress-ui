@@ -34,10 +34,24 @@
     padding: 2rem var(--page-padding-x) 1rem;
 }
 
+/* Mobile: meno bianco sopra/sotto. Niente padding-x perche' eredita
+   dal wrapper di pagina (`.product-page` su demo, `.consumer-page` su consumer). */
+@media (max-width: 767px) {
+    .product-hero {
+        padding: 0.75rem 0 0.5rem;
+    }
+}
+
 .hero-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
+}
+
+@media (max-width: 767px) {
+    .hero-grid {
+        gap: 0.75rem;
+    }
 }
 
 @media (min-width: 1024px) {

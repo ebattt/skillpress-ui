@@ -46,3 +46,11 @@
     background-color: var(--color-bg-gray-50);
     border-color: transparent;
 }
+
+/* Mobile: touch target standard e-commerce. */
+@media (max-width: 767px) {
+    .option-btn {
+        min-height: 40px;
+        padding: 0.5rem 0.875rem;
+    }
+}

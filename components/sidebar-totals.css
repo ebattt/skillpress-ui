@@ -224,11 +224,62 @@
 
 /* ================================================================
    RIEPILOGO UTILITY CLASSES (CMS injection helpers)
+   ----------------------------------------------------------------
+   Queste classi sono prodotte dal generatore reale del riepilogo
+   (`product-page-integration/js/riepilogo.js` -> `window.generateRiepilogo`).
+   Il backend/CMS inietta l'HTML risultante dentro `.riepilogo-content`
+   (sidebar desktop) o `.mobile-config-content` (mobile bar).
    ================================================================ */
+.riepilogo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* `.riepilogo-section` standalone (senza `label` figlia, prodotto da
+   `generateRiepilogo`): wrapper di gruppo (Dettagli, Generali, Copertina, ...). */
+
+.riepilogo-header {
+    font-weight: var(--font-weight-bold);
+    font-size: 1rem;
+    color: var(--color-text, #111418);
+}
+
 .riepilogo-row {
     padding-left: 0.75rem;
 }
 
+.riepilogo-row--indent {
+    padding-left: 1.5rem;
+    color: var(--color-text-secondary);
+}
+
+.riepilogo-error {
+    color: #ef4444;
+    font-weight: var(--font-weight-bold);
+}
+
+.riepilogo-muted {
+    color: var(--color-text-light);
+}
+
+.riepilogo-placeholder {
+    text-align: center;
+    color: var(--color-text-light);
+    padding: 1rem;
+}
+
+.riepilogo-empty {
+    text-align: center;
+    color: var(--color-text-light);
+    padding: 1rem;
+}
+
+/* Alias legacy mantenuti per consumer che gia' usano i nomi vecchi.
+   - `.riepilogo-indent` -> `.riepilogo-row--indent`
+   - `.riepilogo-section-header` -> `.riepilogo-header`
+   I generatori canonici (`generateRiepilogo` 3.0.0+) usano le forme
+   nuove con doppio dash / nome senza suffisso. */
 .riepilogo-indent {
     padding-left: 1.5rem;
     color: var(--color-text-secondary);
@@ -236,13 +287,8 @@
 
 .riepilogo-section-header {
     font-weight: var(--font-weight-bold);
-    color: #1f2937;
-}
-
-.riepilogo-empty {
-    text-align: center;
-    color: var(--color-text-light);
-    padding: 1rem;
+    font-size: 1rem;
+    color: var(--color-text, #111418);
 }
 
 /* ================================================================
