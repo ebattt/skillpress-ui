@@ -1,88 +1,78 @@
+---
+title: Badge
+description: Badge di stato minimale con dot colorato e testo, sei varianti semantiche.
+layer: primitives
+strategy: css-only
+sources:
+  catalog_css: elements-ui/css/components/_badges.css
+  demo: dashboard/index.html
+status: published-alpha-3
+package_path: primitives/badge.css
+---
+
 # Badge
 
-## Tipo
-Primitiva
+Badge inline che rappresenta uno stato breve con dot colorato e label testuale. La libreria controlla allineamento, dimensione, colore della variante e dot decorativo (`::before`). Non interpreta il significato business dello stato.
 
-## Responsabilita
-Badge rappresenta uno stato breve con testo e dot colorato. La libreria controlla allineamento, dimensione, colore della variante e dot decorativo.
+## Anatomy
 
-Non interpreta il significato business dello stato.
+```text
+Badge
+└── .badge   [--success | --warning | --error | --info | --cancelled | --neutral]
+    ├── ::before   (dot 0.4375rem, currentColor)
+    └── <text>     (label visibile)
+```
 
-## Cosa controlla il backend
-- testo del badge
-- variante visuale
-- visibilita del badge
-- mapping tra stato applicativo e markup
+## Markup contract
 
-## Cosa non controlla il backend
-- classi interne non documentate
-- colore custom fuori dalle varianti supportate
-- icone Material Symbols
-- logica business o transizioni di stato
-
-## Markup minimo
 ```html
 <span class="badge badge--success">Consegnato</span>
 ```
 
-## Slot
-Obbligatori:
-- testo del badge
+## API Reference
 
-Opzionali:
-- nessuno
+| Class | Role | Required | Modifiers |
+|---|---|---|---|
+| `.badge` | shell inline-flex, dot decorativo via `::before` | yes | `--success`, `--warning`, `--error`, `--info`, `--cancelled`, `--neutral` |
 
-Ripetibili:
-- nessuno
+Nessun attributo obbligatorio.
 
-## Stati
-- default
+## Installation
 
-## Varianti
-- `.badge--success`
-- `.badge--warning`
-- `.badge--error`
-- `.badge--info`
-- `.badge--cancelled`
-- `.badge--neutral`
-
-## Classi e attributi
-Classi:
-- `.badge`
-- `.badge--success`
-- `.badge--warning`
-- `.badge--error`
-- `.badge--info`
-- `.badge--cancelled`
-- `.badge--neutral`
-
-Attributi:
-- nessun attributo obbligatorio
-
-## Behavior JS
-Non esiste behavior JS nel componente Badge.
-
-## Storybook
-Stories minime:
-- Default
-- Variants
-- ReferenceFromOriginal
-
-## Import
-CSS:
-
-```css
-@import '@ebattt/skillpress-ui/primitives/badge.css';
+```html
+<link rel="stylesheet"
+      href="../node_modules/@ebattt/skillpress-ui/primitives/badge.css" />
 ```
 
-Bundle demo:
+Oppure via bundle (gia' include `badge.css`):
 
-```css
-@import '@ebattt/skillpress-ui/bundles/demo-minimal.css';
+```html
+<link rel="stylesheet"
+      href="../node_modules/@ebattt/skillpress-ui/bundles/demo-minimal.css" />
 ```
 
-## Limiti
-- non include badge solidi con background
-- non include action badge con icona
-- non include topic pill, chip selezionabili o tag checkout
-- non include stati animati come pulse/bounce
+Nessun script JS richiesto.
+
+## Examples
+
+- `Default` → `primitives-badge--default`
+- `Variants` → `primitives-badge--variants`
+- `ReferenceFromOriginal` → `primitives-badge--reference-from-original`
+
+## Token usati
+
+`--badge-color` (custom property locale), `--color-text-secondary`, `--color-text-muted`, `--color-success`, `--color-warning`, `--color-error`, `--color-info`, `--color-success-badge-text`, `--color-warning-badge-text`, `--color-error-badge-text`, `--color-info-badge-text`, `--color-cancelled-badge-text`, `--font-weight-semibold`, `--radius-full`.
+
+## Note CMS
+
+- testo del badge e mapping fra stato applicativo e variante visuale.
+- visibilita' del badge.
+- nessuna classe interna fuori contratto.
+
+## Out of scope
+
+- badge solidi con background pieno.
+- action badge con icona.
+- topic pill, chip selezionabili o tag checkout.
+- stati animati (pulse, bounce).
+- icone Material Symbols.

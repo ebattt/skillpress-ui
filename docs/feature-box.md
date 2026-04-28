@@ -1,129 +1,117 @@
-# Feature Box
+---
+title: FeatureBox
+description: Griglia 2 colonne di feature highlight con icona slot, titolo e descrizione.
+layer: components
+strategy: css-only
+sources:
+  catalog_css: elements-ui/css/components/_cards.css#L982-L1030
+  catalog_js: elements-ui/js/cards/card-feature.js
+  demo: product-page-integration/index.html
+status: verified-local-link-dev
+package_path: components/feature-box.css
+---
 
-## Tipo
-Componente composto
+# FeatureBox
 
-## Fonte elements-ui
-Categoria:
-Cards
+Griglia di feature box a 2 colonne, ciascuna con contenitore icona, titolo e descrizione. La libreria controlla layout, padding e tipografia; l'icona e' uno slot editoriale (SVG inline o `<img>` da URL CMS) e il colore di sfondo dell'icona si imposta inline dal consumer.
 
-Componente:
-Card Feature
+## Anatomy
 
-File JS catalogo:
-`Skillpress-frontend/elements-ui/js/cards/card-feature.js`
+```text
+FeatureBox
+├── feature-grid                       (grid 2 col, gap 0.75rem)
+│   └── feature-box × N                (background, radius, padding 0.875rem)
+│       └── feature-box-content        (flex row, align-items: flex-start, gap 0.75rem)
+│           ├── feature-box-icon       (2.25rem quadrato, slot SVG/img 1.25rem)
+│           └── <div>                  (wrapper testo)
+│               ├── feature-box-title          (h3, font-size sm, semibold)
+│               └── feature-box-description    (p, font-size xs, text-light)
+```
 
-CSS sorgente:
-`Skillpress-frontend/elements-ui/css/components/_cards.css` righe 982-1030.
+Cardinalita' tipica nella demo: 4 feature box (2 righe × 2 col).
 
-Classi originali principali:
-`.feature-grid`, `.feature-box`, `.feature-box-content`, `.feature-box-icon`, `.feature-box-title`, `.feature-box-description`
+## Markup contract
 
-## Pagine demo target
-- `product-page-integration`: `section-feature-grid`, quattro feature box nel product hero.
+Markup verbatim dalla pagina demo `product-page-integration` (dentro `.hero-info` del ProductHero). Una feature box; ripetere `.feature-box` × N dentro `.feature-grid`.
 
-## Responsabilita
-La libreria controlla griglia 2 colonne, sfondo del box, padding, layout interno (icona + testo), tipografia di titolo e descrizione.
-
-L'icona e uno slot: la libreria fornisce solo contenitore, dimensione 2.25rem e radius. Sfondo dell'icona e contenuto (SVG inline o `<img>`) sono editoriali e arrivano dal consumer/CMS.
-
-Il componente non dipende da Material Symbols.
-
-## Cosa controlla il backend
-- testo del titolo
-- testo della descrizione
-- quattro feature box nella demo prodotto
-- contenuto dell'icona (inline SVG o `<img src>` via URL CMS)
-- colore di sfondo dell'icona via attributo `style` editoriale
-
-## Cosa non controlla il backend
-- struttura della griglia
-- padding del box
-- dimensione del contenitore icona
-- font-size e gerarchia tipografica
-- dipendenza da Material Symbols o Google Fonts
-
-## Markup minimo
 ```html
 <div class="feature-grid">
-  <div class="feature-box">
-    <div class="feature-box-content">
-      <div class="feature-box-icon" style="background-color: #E8F5F3;">
-        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
-          <path d="M13 2 4 14h7l-1 8 10-13h-7l1-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-        </svg>
-      </div>
-      <div>
-        <h3 class="feature-box-title">Veloce</h3>
-        <p class="feature-box-description">Stampa brossura fresata con ciclo rapido</p>
-      </div>
+    <div class="feature-box">
+        <div class="feature-box-content">
+            <div class="feature-box-icon" style="background-color: #E8F5F3;">
+                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+                    <path d="M13 2 4 14h7l-1 8 10-13h-7l1-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div>
+                <h3 class="feature-box-title">Veloce</h3>
+                <p class="feature-box-description">Stampa brossura fresata con ciclo rapido</p>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 ```
 
-## Slot
-Obbligatori:
-- testo titolo.
-- testo descrizione.
+Inline style data-driven: `style="background-color: #...;"` su `.feature-box-icon` e' editoriale (CMS sceglie un colore brand per ogni feature). La libreria fornisce solo contenitore stabile.
 
-Opzionali:
-- icona dentro `.feature-box-icon` (SVG inline o `<img>` da URL CMS).
+## API Reference
 
-Ripetibili:
-- `.feature-box` dentro `.feature-grid`.
-
-## Stati
-- default
-- hover (cambio sfondo del box)
-
-## Varianti
-- nessuna variante visuale: la griglia resta 2 colonne come nella fonte.
-- il colore di sfondo dell'icona e editoriale e va impostato inline dal consumer.
-
-## Classi e attributi
-Classi:
-- `.feature-grid`
-- `.feature-box`
-- `.feature-box-content`
-- `.feature-box-icon`
-- `.feature-box-title`
-- `.feature-box-description`
+| Class | Role | Required | Modifiers |
+|---|---|---|---|
+| `.feature-grid` | grid 2 colonne, gap 0.75rem | yes | — |
+| `.feature-box` | card singola, background gray-50, radius lg, padding 0.875rem; hover cambia background | yes | — |
+| `.feature-box-content` | flex row interno (icona + testo), gap 0.75rem | yes | — |
+| `.feature-box-icon` | contenitore icona quadrato 2.25rem, radius md; SVG/img figli ridimensionati a 1.25rem | yes | — |
+| `.feature-box-title` | h3, font-size sm, semibold | yes | — |
+| `.feature-box-description` | p, font-size xs, color text-light | yes | — |
 
 Attributi:
-- nessuno obbligatorio.
-- l'`<img>` dell'icona deve avere `alt` vuoto se l'icona e decorativa.
 
-## Behavior JS
-Nessun behavior JS. Componente statico.
+| Attribute | Element | Required | Note |
+|---|---|---|---|
+| `style="background-color: #...;"` | `.feature-box-icon` | no | Colore di sfondo icona, editoriale CMS. |
+| `aria-hidden="true"` | `<svg>` icona | no | Da impostare se l'icona e' decorativa. |
+| `alt=""` | `<img>` icona | no | Alt vuoto se l'icona e' decorativa. |
 
-## Strategia icone
-- icona funzionale UI: gestita dalla libreria con SVG/CSS solo se intrinseca al componente. Qui non lo e.
-- icona editoriale (questo caso): contenuto inline SVG o `<img src>` fornito dal CMS. La libreria fornisce solo contenitore stabile.
-- niente Material Symbols globale.
+## Installation
 
-## Storybook
-Stories minime:
-- Default
-- ReferenceFromElementsUI
-- ComposedForCMS
-
-## Import
-CSS:
-
-```css
-@import '@ebattt/skillpress-ui/components/feature-box.css';
+```html
+<link rel="stylesheet"
+      href="../node_modules/@ebattt/skillpress-ui/components/feature-box.css" />
 ```
 
-Bundle demo:
+Oppure via bundle (gia' include `feature-box.css`):
 
-```css
-@import '@ebattt/skillpress-ui/bundles/demo-minimal.css';
+```html
+<link rel="stylesheet"
+      href="../node_modules/@ebattt/skillpress-ui/bundles/demo-minimal.css" />
 ```
 
-## Limiti
-- niente variante a 3 colonne.
-- niente layout colonna su mobile diverso da 2 colonne (la fonte mantiene 2 colonne).
-- niente badge dentro la card.
-- niente CTA dentro la card (non presente nella fonte).
+Nessun script JS richiesto.
+
+## Examples
+
+- `Default` → `components-featurebox--default`
+- `ReferenceFromElementsUI` → `components-featurebox--reference-from-elements-ui`
+- `ComposedForCMS` → `components-featurebox--composed-for-cms`
+
+## Token usati
+
+`--color-bg-gray-50`, `--color-bg-gray-100`, `--color-text`, `--color-text-light`, `--radius-lg`, `--radius-md`, `--font-size-sm`, `--font-size-xs`, `--font-weight-semibold`, `--line-height-snug`, `--transition-fast`.
+
+## Note CMS
+
+- testo titolo: contenuto di `.feature-box-title`.
+- testo descrizione: contenuto di `.feature-box-description`.
+- icona: SVG inline o `<img src="...">` dentro `.feature-box-icon`. La libreria ridimensiona figli a 1.25rem.
+- colore di sfondo icona: `style="background-color: #...;"` inline su `.feature-box-icon`.
+- numero di feature: ripetere `.feature-box` × N dentro `.feature-grid` (tipicamente 4 nella demo prodotto).
+
+## Out of scope
+
+- variante a 3 colonne.
+- layout colonna su mobile diverso da 2 colonne (la fonte mantiene 2 colonne).
+- badge dentro la card.
+- CTA dentro la card (non presente nella fonte).
+- dipendenza da Material Symbols o Google Fonts.
 - non sostituisce `step-card-item`, `paper-card`, `format-card` o `catalog-card`.

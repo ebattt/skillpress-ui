@@ -1,27 +1,34 @@
+---
+title: Button
+description: Primitiva clic Skillpress con varianti, dimensioni e slot icona opzionale.
+layer: primitives
+strategy: css-only
+sources:
+  catalog_css: elements-ui/css/components/_buttons.css
+  demo: product-page-integration/index.html
+status: published-alpha-3
+package_path: primitives/button.css
+---
+
 # Button
 
-## Tipo
-Primitiva
+Primitiva di comandi cliccabili: dimensioni, colori, stati hover/focus/disabled, varianti visive e allineamento testo + icona opzionale. Nessun behavior JS della libreria; il consumer gestisce click, submit, navigazione e loading state.
 
-## Responsabilita
-Button fornisce lo stile base dei comandi cliccabili Skillpress. La libreria controlla dimensioni interne, colori, stati hover/focus/disabled, varianti visive e allineamento di testo e icona opzionale.
+## Anatomy
 
-Non contiene logica JS e non decide cosa succede al click.
+```text
+Button
+├── .button   [--primary | --secondary | --outline | --ghost | --sm | --full]
+│   ├── .button__icon   (opzionale, slot SVG inline)
+│   └── <text>          (label visibile o aria-label equivalente)
+```
 
-## Cosa controlla il backend
-- testo del bottone
-- elemento HTML usato (`button` o `a`)
-- attributi nativi come `type`, `href`, `disabled`
-- stato iniziale disabled quando necessario
-- eventuale icona inline SVG nello slot documentato
+Tag accettati: `<button type="button">` o `<a href="...">`. Per link disabilitati usare classe `.is-disabled` + `aria-disabled="true"`.
 
-## Cosa non controlla il backend
-- classi interne non documentate
-- colori o padding custom per correggere il componente
-- dipendenze da Material Symbols
-- logica business dentro la libreria
+## Markup contract
 
-## Markup minimo
+Markup base con variante primary:
+
 ```html
 <button class="button button--primary" type="button">
   Aggiungi al carrello
@@ -36,7 +43,7 @@ Link con stesso stile:
 </a>
 ```
 
-Con icona inline:
+Con icona inline (SVG, no Material Symbols):
 
 ```html
 <button class="button button--secondary" type="button">
@@ -49,77 +56,66 @@ Con icona inline:
 </button>
 ```
 
-## Slot
-Obbligatori:
-- contenuto testuale o equivalente accessibile
+## API Reference
 
-Opzionali:
-- `.button__icon`
-
-Ripetibili:
-- nessuno
-
-## Stati
-- default
-- hover
-- focus-visible
-- disabled: `disabled`, `aria-disabled="true"` o `.is-disabled`
-
-## Varianti
-- `.button--primary`
-- `.button--secondary`
-- `.button--outline`
-- `.button--ghost`
-- `.button--sm`
-- `.button--full`
-
-## Classi e attributi
-Classi:
-- `.button`
-- `.button__icon`
-- `.button--primary`
-- `.button--secondary`
-- `.button--outline`
-- `.button--ghost`
-- `.button--sm`
-- `.button--full`
-- `.is-disabled`
+| Class | Role | Required | Modifiers |
+|---|---|---|---|
+| `.button` | shell del bottone, applica padding/radius/font/transition | yes | `--primary`, `--secondary`, `--outline`, `--ghost`, `--sm`, `--full` |
+| `.button__icon` | wrapper inline 1.125rem per SVG icon | no | — |
+| `.is-disabled` | stato disabilitato per `<a>` o controlli non disabilitabili nativamente | no | — |
 
 Attributi:
-- `type="button"` raccomandato quando non e submit
-- `disabled` per `<button>`
-- `aria-disabled="true"` per link o controlli non disabilitabili nativamente
 
-## Behavior JS
-Non esiste behavior JS nel componente Button.
+| Attribute | Element | Required | Note |
+|---|---|---|---|
+| `type="button"` | `<button>` | no | Raccomandato quando il button non e' un submit. |
+| `disabled` | `<button>` | no | Stato disabilitato nativo. |
+| `aria-disabled="true"` | `<a>` o `.is-disabled` | no | Necessario per link disabilitati (no `disabled` su `<a>`). |
+| `href` | `<a>` | yes (se tag `<a>`) | Target di navigazione. |
 
-La libreria non intercetta click, submit, navigazione o loading state. Il consumer gestisce il comportamento applicativo.
+## Installation
 
-## Storybook
-Stories minime:
-- Default
-- Variants
-- WithIcon
-- FullWidth
-- Disabled
-- ReferenceFromOriginal
-
-## Import
-CSS:
-
-```css
-@import '@ebattt/skillpress-ui/primitives/button.css';
+```html
+<link rel="stylesheet"
+      href="../node_modules/@ebattt/skillpress-ui/primitives/button.css" />
 ```
 
-Bundle demo:
+Oppure via bundle (gia' include `button.css`):
 
-```css
-@import '@ebattt/skillpress-ui/bundles/demo-minimal.css';
+```html
+<link rel="stylesheet"
+      href="../node_modules/@ebattt/skillpress-ui/bundles/demo-minimal.css" />
 ```
 
-## Limiti
-- non include icon-only button
-- non include bottoni specifici dashboard, checkout o landing
-- non include loading spinner
-- non include gestione submit o routing
-- non supporta Material Symbols come dipendenza runtime globale
+Nessun script JS richiesto.
+
+## Examples
+
+- `Default` → `primitives-button--default`
+- `Variants` → `primitives-button--variants`
+- `WithIcon` → `primitives-button--with-icon`
+- `FullWidth` → `primitives-button--full-width`
+- `Disabled` → `primitives-button--disabled`
+- `ReferenceFromOriginal` → `primitives-button--reference-from-original`
+
+## Token usati
+
+`--radius-full`, `--radius-sm`, `--font-size-sm`, `--font-weight-semibold`, `--font-weight-medium`, `--line-height-normal`, `--transition-fast`, `--color-border-focus`, `--color-primary`, `--color-primary-dark`, `--color-secondary`, `--color-secondary-dark`, `--color-secondary-light`, `--color-bg-white`, `--color-bg-gray-50`, `--color-bg-gray-200`, `--color-text`, `--color-border`, `--shadow-lg`, `--shadow-xl`.
+
+Valori letterali mantenuti dal catalogo:
+- `rgba(28, 114, 100, 0.08)` su hover di `.button--ghost`.
+
+## Note CMS
+
+- testo del bottone e attributi nativi (`type`, `href`, `disabled`).
+- elemento HTML usato (`<button>` vs `<a>`).
+- stato iniziale disabled quando necessario.
+- eventuale icona inline SVG nello slot `.button__icon`.
+
+## Out of scope
+
+- icon-only button.
+- bottoni specifici dashboard, checkout o landing.
+- loading spinner.
+- gestione submit, routing o tracking.
+- Material Symbols come dipendenza runtime globale.

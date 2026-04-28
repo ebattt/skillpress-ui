@@ -1,38 +1,37 @@
-# Toggle Switch
+---
+title: ToggleSwitch
+description: Switch binario on/off con track 44x24 e thumb animato, accessibile via role="switch".
+layer: primitives
+strategy: css+js
+sources:
+  catalog_css: elements-ui/css/components/_form-inputs.css
+  catalog_js: elements-ui/js/buttons/toggle-switch.js
+  demo: product-page-integration/index.html
+status: implemented-local
+package_path: primitives/toggle-switch.css
+js_path: js/toggle-switch.js
+---
 
-## Tipo
-Primitiva (form input atomico)
+# ToggleSwitch
 
-## Fonte
-- `Skillpress-frontend/elements-ui/css/components/_form-inputs.css` (sezione `TOGGLE SWITCH (multicopertina on/off)`).
-- `Skillpress-frontend/elements-ui/js/buttons/toggle-switch.js` (variante multicop, `.multicop-switch`).
-- `Skillpress-frontend/elements-ui/js/checkout/checkout-toggle-switch.js` (variante checkout, `.toggle-switch` + `role="switch"`).
+Primitiva form per switch binario on/off. Track + thumb CSS-only, behavior JS minimo che flippa la classe `is-checked` e l'attributo `aria-checked` ed emette `toggle-switch:change`. Lo stato iniziale (on/off, disabled) e' impostato dal CMS nel markup; la libreria non gestisce persistenza ne' logica di business.
 
-## Pagine demo target
-- `product-page-integration`: toggle multicopertina nella sidebar configuratore.
-- `checkout`: toggle multispedizione nella card opzione.
+## Anatomy
 
-## Convergenza fonti
-I due sorgenti hanno geometrie equivalenti (track 44x24, knob 20x20 con `translateX(20px)` quando attivo) ma usano markup diversi (`<div>` vs `<button role="switch">`). La libreria converge sul pattern del checkout (`<button role="switch" aria-checked>`) perche e' piu accessibile e nativamente focusabile, e ne deriva un'unica API BEM.
+```text
+ToggleSwitch
+├── toggle-switch-field            (wrapper opzionale label + switch, inline-flex)
+│   ├── toggle-switch              (button[role=switch], track 44x24)   [is-checked]
+│   │   └── toggle-switch__thumb   (knob 20x20, translateX(20px) quando checked)
+│   └── toggle-switch__label       (label esterna, slot consumer)
+```
 
-## Responsabilita
-La libreria controlla geometria del track, geometria e posizione del thumb, colori on/off, transizioni, hover, focus-visible, disabled e il behavior JS minimo (toggle + emissione evento).
+Lo switch standalone (senza wrapper field) e' valido: `.toggle-switch-field` e' opt-in solo quando serve la label inline.
 
-Il consumer controlla testo della label, stato iniziale (`aria-checked` / classe `is-checked`), e qualsiasi logica di business (es. ricalcolo prezzo, abilitazione altri campi) ascoltando l'evento.
+## Markup contract
 
-## Cosa controlla il backend
-- testo della label
-- stato iniziale (on/off)
-- stato disabled
-- reazione all'evento `toggle-switch:change`
+Markup verbatim dalla pagina demo `product-page-integration` (sidebar configuratore, toggle multicopertina). Il consumer monta `aria-checked` iniziale; `init()` sincronizza la classe `.is-checked` di conseguenza.
 
-## Cosa non controlla il backend
-- dimensioni del track o del thumb
-- colori on/off (sono token)
-- transizioni
-- markup interno dello switch
-
-## Markup minimo (solo switch)
 ```html
 <button
     type="button"
@@ -44,7 +43,8 @@ Il consumer controlla testo della label, stato iniziale (`aria-checked` / classe
 </button>
 ```
 
-## Markup con label
+Variante con label inline:
+
 ```html
 <span class="toggle-switch-field">
     <button
@@ -61,7 +61,8 @@ Il consumer controlla testo della label, stato iniziale (`aria-checked` / classe
 </span>
 ```
 
-## Markup con stato iniziale ON
+Variante stato iniziale ON:
+
 ```html
 <button
     type="button"
@@ -73,7 +74,8 @@ Il consumer controlla testo della label, stato iniziale (`aria-checked` / classe
 </button>
 ```
 
-## Markup disabled
+Variante disabled:
+
 ```html
 <button
     type="button"
@@ -87,94 +89,84 @@ Il consumer controlla testo della label, stato iniziale (`aria-checked` / classe
 </button>
 ```
 
-## Slot e parti modificabili
-- slot obbligatori: nessuno (lo switch e' decorativo).
-- slot opzionali: `.toggle-switch__label` accanto allo switch, dentro `.toggle-switch-field`.
-- parti ripetibili: nessuna.
+## API Reference
 
-## Default state
-`off` (`aria-checked="false"`, nessuna classe `is-checked`).
+| Class | Role | Required | Modifiers |
+|---|---|---|---|
+| `.toggle-switch-field` | wrapper opzionale label + switch (inline-flex) | no | — |
+| `.toggle-switch` | track, e' il `<button>` stesso (44x24) | yes | `is-checked` |
+| `.toggle-switch__thumb` | knob 20x20, animato via `translateX` quando checked | yes | — |
+| `.toggle-switch__label` | label esterna, tipografia base | no | — |
 
-## Stati supportati
-- default (off)
-- checked (on) -- classe `is-checked` e/o `aria-checked="true"`
-- disabled -- attributo `disabled` o `aria-disabled="true"`
-- focus-visible (gestito da CSS via `outline`)
+Attributi:
 
-## Varianti supportate
-Nessuna variante visiva o dimensionale. Lo switch ha un'unica geometria (44x24).
-
-## Hook tecnici
-- classi:
-  - `.toggle-switch` (track, e' il button stesso)
-  - `.toggle-switch__thumb`
-  - `.toggle-switch__label`
-  - `.toggle-switch-field` (wrapper opzionale label + switch)
-  - `.is-checked` (modifier di stato)
-- data-attributes:
-  - `[data-skillpress-toggle-switch]` -- selector di default per `init()`.
-- aria:
-  - `role="switch"` obbligatorio (auto-applicato da `init()` se mancante).
-  - `aria-checked` obbligatorio.
-  - `aria-disabled` opzionale (alternativa a `disabled`).
-  - `aria-labelledby` o `aria-label` consigliati quando il label non e' associato via `for`.
+| Attribute | Element | Required | Note |
+|---|---|---|---|
+| `role="switch"` | `.toggle-switch` | yes | Auto-applicato da `init()` se mancante. |
+| `aria-checked` | `.toggle-switch` | yes | `"true"` / `"false"`. Sincronizzato da `init()` con la classe `.is-checked`. |
+| `aria-disabled` | `.toggle-switch` | no | Alternativa a `disabled`; entrambi disabilitano il behavior. |
+| `disabled` | `.toggle-switch` | no | Disabilita il bottone nativo. |
+| `aria-labelledby` / `aria-label` | `.toggle-switch` | no | Consigliato quando il label non e' associato via `for`. |
+| `data-skillpress-toggle-switch` | `.toggle-switch` | yes | Selettore di default di `init()`. |
 
 ## Behavior JS
-- nessun auto-init implicito: il consumer chiama `window.SkillpressUI.ToggleSwitch.init()` (coerente con breadcrumb).
-- `init()` senza argomenti seleziona tutti gli `[data-skillpress-toggle-switch]` del documento.
-- `init(selector)` accetta una stringa CSS selector.
-- `init(element)` accetta un singolo elemento o un container che contiene switch.
-- click, Space, Enter flippano lo stato.
-- l'init e' idempotente: ogni nodo viene legato una volta sola.
-- la libreria NON gestisce logica di business (es. ricalcolo IVA, abilitazione altri campi): il consumer reagisce all'evento.
-- namespace: `window.SkillpressUI.ToggleSwitch`.
 
-## Eventi emessi
-- `toggle-switch:change`
-  - emesso dopo ogni cambio di stato (click o tastiera).
-  - `bubbles: true`.
-  - `detail: { checked: boolean }`.
+```text
+Init: window.SkillpressUI.ToggleSwitch.init() — opt-in, idempotente
+Event: toggle-switch:change con detail.checked
+Cosa NON fa: persistenza stato, sync con form, animazione custom oltre transition
+```
 
-## Esempio di consumo
+`init()` accetta:
+- nessun argomento: seleziona tutti gli `[data-skillpress-toggle-switch]` del documento.
+- una stringa CSS selector.
+- un singolo elemento o un container che contiene switch.
+
+Bind: click, Space ed Enter flippano lo stato. Ogni nodo viene legato una volta sola (flag `__skillpressToggleSwitchInit`). Stato disabled (`disabled` o `aria-disabled="true"`) blocca il toggle. Namespace globale `window.SkillpressUI.ToggleSwitch`.
+
+## Installation
+
 ```html
-<button type="button" id="iva-toggle" class="toggle-switch" role="switch" aria-checked="false" data-skillpress-toggle-switch>
-    <span class="toggle-switch__thumb"></span>
-</button>
-
-<script src="node_modules/@ebattt/skillpress-ui/js/toggle-switch.js"></script>
+<link rel="stylesheet"
+      href="../node_modules/@ebattt/skillpress-ui/primitives/toggle-switch.css" />
+<script src="../node_modules/@ebattt/skillpress-ui/js/toggle-switch.js"></script>
 <script>
     window.SkillpressUI.ToggleSwitch.init();
-
-    document.getElementById('iva-toggle').addEventListener('toggle-switch:change', function(e) {
-        // logica consumer (es. ricalcolo prezzo IVA)
-        console.log('checked:', e.detail.checked);
-    });
 </script>
 ```
 
-## Import
-CSS:
-
-```css
-@import '@ebattt/skillpress-ui/primitives/toggle-switch.css';
-```
-
-Bundle demo:
-
-```css
-@import '@ebattt/skillpress-ui/bundles/demo-minimal.css';
-```
-
-JS:
+Oppure via bundle (gia' include `toggle-switch.css`):
 
 ```html
-<script src="node_modules/@ebattt/skillpress-ui/js/toggle-switch.js"></script>
+<link rel="stylesheet"
+      href="../node_modules/@ebattt/skillpress-ui/bundles/demo-minimal.css" />
 ```
 
-## Limiti espliciti
-- copre solo lo switch binario on/off. La variante "segmented two-label" (es. `Lordo / Netto` di `.iva-toggle` + `.iva-btn` in `_form-inputs.css`) e' un pattern distinto e NON e' coperta da questa primitiva.
-- nessuna variante dimensionale (small/large) -- la fonte ha un'unica taglia.
-- nessuna variante colore -- on e' sempre `--color-primary`, off e' sempre `--color-bg-gray-200`.
-- nessuna icona dentro il thumb (track + thumb sono CSS puro, niente Material Symbols).
-- nessuna persistenza dello stato tra refresh: il consumer e' responsabile dell'idratazione iniziale via `aria-checked` o `is-checked` nel markup.
-- nessuna gestione di gruppi (radio-like): per scelte mutuamente esclusive usare un altro pattern.
+## Examples
+
+- `Default` → `primitives-toggleswitch--default`
+- `Checked` → `primitives-toggleswitch--checked`
+- `Disabled` → `primitives-toggleswitch--disabled`
+- `WithLabel` → `primitives-toggleswitch--with-label`
+- `ReferenceFromElementsUI` → `primitives-toggleswitch--reference-from-elements-ui`
+
+## Token usati
+
+`--color-bg-gray-200`, `--color-bg-white`, `--color-border`, `--color-border-focus`, `--color-primary`, `--color-primary-dark`, `--color-text`, `--radius-full`, `--shadow-sm`, `--spacing-sm`, `--font-size-sm`, `--line-height-normal`, `--transition-normal`.
+
+## Note CMS
+
+- stato iniziale: settare `aria-checked="true"` (e/o classe `.is-checked`) nel markup. `init()` sincronizza la classe con l'attributo.
+- stato disabled: `disabled` o `aria-disabled="true"`. Entrambi bloccano il toggle e applicano lo stile `opacity: 0.5`.
+- testo della label: contenuto di `.toggle-switch__label`, libero (la libreria controlla solo tipografia base).
+- logica di business: ascoltare `toggle-switch:change` sul nodo `.toggle-switch` e leggere `event.detail.checked`.
+
+## Out of scope
+
+- variante "segmented two-label" (es. `Lordo / Netto` di `.iva-toggle` + `.iva-btn`): pattern distinto, non coperto.
+- variante dimensionale (small/large): la fonte ha un'unica taglia.
+- variante colore: on sempre `--color-primary`, off sempre `--color-bg-gray-200`.
+- icona dentro il thumb (track + thumb sono CSS puro, niente Material Symbols).
+- persistenza dello stato tra refresh: il consumer e' responsabile dell'idratazione iniziale.
+- gestione di gruppi (radio-like): per scelte mutuamente esclusive usare un altro pattern.
+- ricalcolo prezzi / abilitazione altri campi: sono logica consumer, non libreria.

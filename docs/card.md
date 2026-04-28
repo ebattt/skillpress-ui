@@ -1,64 +1,40 @@
+---
+title: Card
+description: Superficie contenitore generica con slot media/header/body/footer, niente card CMS specifiche.
+layer: primitives
+strategy: css-only
+sources:
+  catalog_css: elements-ui/css/components/_cards.css
+  demo: product-page-integration/index.html
+status: verified-local-link-dev
+package_path: primitives/card.css
+---
+
 # Card
 
-## Tipo
-Primitiva
+Superficie contenitore generica per blocchi informativi o selezionabili: bordo, radius, background, padding interno, gerarchia base titolo/testo e stati visuali semplici. Non sostituisce `feature-box`, `visual-card`, `paper-card`, `format-card`, `step-card-item`: quelle restano da estrarre come componenti dedicati.
 
-## Fonte elements-ui
-Categoria:
+## Anatomy
 
 ```text
-Cards
+Card
+└── .card   [--interactive | --selected | .is-disabled]
+    ├── .card__media     (opzionale, immagine/picture full-width)
+    ├── .card__header    (opzionale, eyebrow + titolo)
+    │   ├── .card__eyebrow
+    │   └── .card__title
+    ├── .card__body      (slot principale, flex 1)
+    │   ├── .card__title
+    │   └── .card__description
+    └── .card__footer    (opzionale, eyebrow + actions)
+        ├── .card__eyebrow
+        └── .card__actions   (slot ripetibile per Button/link)
 ```
 
-Componente/fonte:
+## Markup contract
 
-```text
-Skillpress-frontend/elements-ui/css/components/_cards.css
-Skillpress-frontend/elements-ui/js/cards/card-feature.js
-Skillpress-frontend/elements-ui/js/cards/card-selection.js
-Skillpress-frontend/elements-ui/js/cards/card-step.js
-Skillpress-frontend/elements-ui/js/cards/card-image-text-below.js
-```
+Markup minimo:
 
-Classi originali osservate:
-
-```text
-.feature-box
-.visual-card
-.paper-card
-.format-card
-.step-card-item
-```
-
-Card base non sostituisce questi componenti specifici: fornisce solo una superficie neutra su cui costruire o normalizzare componenti composti successivi.
-
-Non e una fonte autonoma per nuove card CMS. Le card specifiche restano da estrarre come componenti dedicati o varianti documentate solo quando vengono collegate alla matrice `elements-ui -> skillpress-ui -> pagine demo`.
-
-## Pagine demo target
-- product-page-integration
-- dashboard
-- landing-page, solo come fondazione per future card catalogo/prodotto
-
-## Responsabilita
-Card fornisce una superficie contenitore generica per blocchi informativi o selezionabili. La libreria controlla bordo, radius, background, padding interno, gerarchia base di titolo/testo e stati visuali semplici.
-
-Non contiene logica JS e non definisce card prodotto, dashboard o checkout specifiche.
-
-## Cosa controlla il backend
-- elemento HTML usato (`article`, `section`, `div`, `a` quando semanticamente corretto)
-- contenuto degli slot
-- stato iniziale selected o disabled
-- composizione con primitive esistenti come Button e Badge
-- eventuali immagini o URL editoriali dentro lo slot media
-
-## Cosa non controlla il backend
-- classi interne non documentate
-- padding, bordo o colori custom per correggere la card
-- payload CMS obbligatorio
-- logica business o navigazione
-- icone Material Symbols
-
-## Markup minimo
 ```html
 <article class="card">
   <div class="card__body">
@@ -68,7 +44,7 @@ Non contiene logica JS e non definisce card prodotto, dashboard o checkout speci
 </article>
 ```
 
-Con slot opzionali:
+Con slot opzionali (header, body, footer):
 
 ```html
 <article class="card">
@@ -90,79 +66,69 @@ Con slot opzionali:
 </article>
 ```
 
-## Slot
-Obbligatori:
-- almeno uno tra `.card__body`, `.card__header` o contenuto equivalente documentato
+## API Reference
 
-Opzionali:
-- `.card__media`
-- `.card__header`
-- `.card__body`
-- `.card__footer`
-- `.card__title`
-- `.card__description`
-- `.card__eyebrow`
-- `.card__actions`
+| Class | Role | Required | Modifiers |
+|---|---|---|---|
+| `.card` | shell della superficie, applica bordo/radius/background | yes | `--interactive`, `--selected` |
+| `.card__media` | wrapper immagine full-width | no | — |
+| `.card__header` | header flex con eyebrow + titolo | no | — |
+| `.card__body` | slot principale, flex 1 | no | — |
+| `.card__footer` | footer flex con border-top | no | — |
+| `.card__title` | titolo (h3) | no | — |
+| `.card__description` | descrizione testuale, color secondary | no | — |
+| `.card__eyebrow` | label sopra-testo, font-size xs | no | — |
+| `.card__actions` | slot ripetibile per Button o link | no | — |
+| `.is-disabled` | stato disabilitato (opacity 0.55, no hover) | no | — |
 
-Ripetibili:
-- `.card__actions` puo contenere piu Button o link
-
-## Stati
-- default
-- selected: `.card--selected`
-- disabled: `.is-disabled` o `aria-disabled="true"`
-
-## Varianti
-- `.card--interactive`
-- `.card--selected`
-
-## Classi e attributi
-Classi:
-- `.card`
-- `.card__media`
-- `.card__header`
-- `.card__body`
-- `.card__footer`
-- `.card__title`
-- `.card__description`
-- `.card__eyebrow`
-- `.card__actions`
-- `.card--interactive`
-- `.card--selected`
-- `.is-disabled`
+Almeno uno tra `.card__body`, `.card__header` o contenuto equivalente deve essere presente.
 
 Attributi:
-- `aria-disabled="true"` quando una card interattiva non e disponibile
 
-## Behavior JS
-Non esiste behavior JS nel componente Card.
+| Attribute | Element | Required | Note |
+|---|---|---|---|
+| `aria-disabled="true"` | `.card` | no | Da usare quando una card interattiva non e' disponibile. |
 
-La libreria non intercetta click, routing, selezione applicativa o tracking. Il consumer gestisce questi comportamenti.
+## Installation
 
-## Storybook
-Stories minime:
-- Default
-- InteractiveStates
-- ReferenceFromElementsUI
-
-## Import
-CSS:
-
-```css
-@import '@ebattt/skillpress-ui/primitives/card.css';
+```html
+<link rel="stylesheet"
+      href="../node_modules/@ebattt/skillpress-ui/primitives/card.css" />
 ```
 
-Bundle demo:
+Oppure via bundle (gia' include `card.css`):
 
-```css
-@import '@ebattt/skillpress-ui/bundles/demo-minimal.css';
+```html
+<link rel="stylesheet"
+      href="../node_modules/@ebattt/skillpress-ui/bundles/demo-minimal.css" />
 ```
 
-## Limiti
-- non include product-card o catalog-card
-- non include feature-box, step-card, paper-card o format-card
-- non include layout griglia
-- non include varianti decorative senza fonte `elements-ui`
-- non include hover image swap
-- non include behavior JS
-- non include icone Material Symbols
+Nessun script JS richiesto.
+
+## Examples
+
+- `Default` → `primitives-card--default`
+- `InteractiveStates` → `primitives-card--interactive-states`
+- `ReferenceFromElementsUI` → `primitives-card--reference-from-elements-ui`
+
+## Token usati
+
+`--color-bg-white`, `--color-bg-gray-100`, `--color-bg-gray-200`, `--color-text`, `--color-text-secondary`, `--color-text-light`, `--color-border`, `--color-border-focus`, `--radius-lg`, `--font-size-base`, `--font-size-sm`, `--font-size-xs`, `--font-weight-bold`, `--font-weight-semibold`, `--line-height-snug`, `--line-height-normal`, `--spacing-md`, `--spacing-sm`, `--spacing-xs`, `--shadow-md`, `--transition-fast`, `--selection-highlight-bg`, `--selection-highlight-border`.
+
+## Note CMS
+
+- elemento HTML usato (`article`, `section`, `div`, `a` quando semanticamente corretto).
+- contenuto degli slot.
+- stato iniziale `selected` o `disabled`.
+- composizione con primitive esistenti come Button e Badge.
+- eventuali immagini o URL editoriali dentro lo slot media.
+
+## Out of scope
+
+- product-card o catalog-card.
+- feature-box, step-card, paper-card o format-card.
+- layout griglia.
+- varianti decorative senza fonte `elements-ui`.
+- hover image swap.
+- behavior JS (selezione, routing, tracking).
+- icone Material Symbols.

@@ -1,50 +1,39 @@
+---
+title: Accordion
+description: Contenitore espandibile con badge numerato opzionale e toggle locale single-open.
+layer: primitives
+strategy: css+js
+sources:
+  catalog_css: elements-ui/css/components/_layout-patterns.css
+  demo: product-page-integration/index.html
+status: published-alpha-3
+package_path: primitives/accordion.css
+js_path: js/accordion.js
+---
+
 # Accordion
 
-## Tipo
-Molecola
+Contenitore espandibile per sezioni di configurazione o contenuto strutturato. La libreria controlla markup interno, stati visuali, aria e toggle locale del pannello (single-open per container). L'icona `+/-` e' disegnata dal CSS via `::before/::after` e non richiede Material Symbols.
 
-## Responsabilita
-Contenitore espandibile per sezioni di configurazione o contenuto strutturato. La libreria controlla markup interno, stati visuali, aria e toggle locale del pannello.
+## Anatomy
 
-L'icona funzionale `+/-` e disegnata dal CSS della libreria e non richiede Material Symbols.
+```text
+Accordion
+└── .accordion   [data-accordion]
+    └── .accordion__section   [data-accordion-section] [.expanded]
+        ├── .accordion__header   [data-accordion-trigger] [aria-expanded]
+        │   ├── .accordion__header-left
+        │   │   ├── .accordion__badge   (opzionale, numero step)
+        │   │   └── .accordion__title
+        │   └── .accordion__icon         (icona +/- decorativa, aria-hidden)
+        └── .accordion__content
+            └── .accordion__inner        (slot consumer)
+```
 
-## Cosa controlla il backend
-- decide quali sezioni rendere visibili
-- decide il contenuto dello slot `header`
-- decide il contenuto dello slot `content`
-- decide se una sezione parte `collapsed` o `expanded`
-- decide se mostrare o omettere il badge numerato
+Default state: `collapsed`. Stato `expanded` aggiunge la classe `expanded` su `.accordion__section` e flippa `aria-expanded="true"` sul trigger.
 
-## Cosa non deve fare il backend
-- non deve cambiare il markup interno della sezione
-- non deve aggiungere classi custom fuori contratto
-- non deve duplicare il behavior JS di toggle
-- non deve usare l'accordion come contenitore arbitrario con gerarchie diverse
-- non deve forzare stati non documentati
+## Markup contract
 
-## Slot e parti modificabili
-- slot obbligatori:
-  - `header`
-  - `content`
-- slot opzionali:
-  - `accordion__badge`
-- parti ripetibili:
-  - `accordion__section`
-- fallback:
-  - se il badge manca, l'header resta valido con solo titolo e icona
-
-## Default state
-`collapsed`
-
-## Stati supportati
-- `collapsed` (default): nessuna classe `expanded` su `[data-accordion-section]`, trigger con `aria-expanded="false"`
-- `expanded`: classe `expanded` su `[data-accordion-section]`, trigger con `aria-expanded="true"`
-
-## Varianti supportate
-- con badge numerato
-- senza badge numerato
-
-## Markup minimo
 ```html
 <div class="accordion" data-accordion>
   <section class="accordion__section" data-accordion-section>
@@ -64,52 +53,89 @@ L'icona funzionale `+/-` e disegnata dal CSS della libreria e non richiede Mater
 </div>
 ```
 
-## Hook tecnici
-- classi:
-  - `.accordion`
-  - `.accordion__section`
-  - `.accordion__header`
-  - `.accordion__header-left`
-  - `.accordion__badge`
-  - `.accordion__title`
-  - `.accordion__icon`
-  - `.accordion__content`
-  - `.accordion__inner`
-- data-attributes:
-  - `[data-accordion]` obbligatorio sul container auto-inizializzato
-  - `[data-accordion-section]` obbligatorio su ogni sezione
-  - `[data-accordion-trigger]` obbligatorio sul trigger cliccabile
-- aria:
-  - `aria-expanded` obbligatorio sul trigger
+## API Reference
 
-## Behavior JS
-- auto-init su `DOMContentLoaded` per ogni `[data-accordion]`
-- init esplicita via `window.SkillpressUI.Accordion.init(container)`
-- click su `[data-accordion-trigger]` apre o chiude la sezione associata
-- quando una sezione si apre, le altre sezioni dello stesso container vengono chiuse
-- il JS aggiorna `aria-expanded`; l'icona decorativa `+/-` e gestita dal CSS in base alla classe `expanded`
-- namespace: `window.SkillpressUI.Accordion`
+| Class | Role | Required | Modifiers |
+|---|---|---|---|
+| `.accordion` | container, `data-accordion` per auto-init | yes | — |
+| `.accordion__section` | sezione singola, ripetibile | yes | `expanded` |
+| `.accordion__header` | trigger cliccabile (`<button>`) | yes | — |
+| `.accordion__header-left` | wrapper flex per badge + title | yes | — |
+| `.accordion__badge` | badge numerato opzionale | no | — |
+| `.accordion__title` | titolo della sezione | yes | — |
+| `.accordion__icon` | icona +/- decorativa (CSS pseudo-elements) | yes | — |
+| `.accordion__content` | wrapper collassato (max-height/opacity) | yes | — |
+| `.accordion__inner` | slot consumer con padding e border-top | yes | — |
 
-## Eventi emessi
-- `sp:accordion:open`
-  - emesso quando una sezione viene aperta
-  - `bubbles: true`
-- `sp:accordion:close`
-  - emesso quando una sezione viene chiusa
-  - `bubbles: true`
+Attributi:
 
-## Import
-```css
-@import '@ebattt/skillpress-ui/primitives/accordion.css';
-```
+| Attribute | Element | Required | Note |
+|---|---|---|---|
+| `data-accordion` | `.accordion` | yes | Marker per auto-init su `DOMContentLoaded`. |
+| `data-accordion-section` | `.accordion__section` | yes | Marker della sezione. |
+| `data-accordion-trigger` | `.accordion__header` | yes | Marker del trigger cliccabile. |
+| `aria-expanded` | `.accordion__header` | yes | Sincronizzato dal JS (`true` / `false`). |
+| `type="button"` | `.accordion__header` | yes | Necessario perche' il trigger e' un `<button>`. |
+| `aria-hidden="true"` | `.accordion__icon` | yes | L'icona e' decorativa. |
+
+## Installation
 
 ```html
-<link rel="stylesheet" href="node_modules/@ebattt/skillpress-ui/bundles/demo-minimal.css">
-<script src="node_modules/@ebattt/skillpress-ui/js/accordion.js"></script>
+<link rel="stylesheet"
+      href="../node_modules/@ebattt/skillpress-ui/primitives/accordion.css" />
+<script src="../node_modules/@ebattt/skillpress-ui/js/accordion.js"></script>
 ```
 
-## Limiti espliciti
-- non gestisce logica business o dipendenze tra sezioni
-- non definisce payload JSON o nomi campo CMS
-- non crea markup delle card interne: il backend deve popolare solo gli slot documentati
-- non include persistenza dello stato aperto tra refresh o navigazioni
+Oppure via bundle (gia' include `accordion.css`):
+
+```html
+<link rel="stylesheet"
+      href="../node_modules/@ebattt/skillpress-ui/bundles/demo-minimal.css" />
+<script src="../node_modules/@ebattt/skillpress-ui/js/accordion.js"></script>
+```
+
+## Behavior JS
+
+```text
+Init: auto-init su DOMContentLoaded per ogni [data-accordion]
+      esplicita: window.SkillpressUI.Accordion.init(container) — idempotente (flag __skillpressAccordionInit)
+Event: sp:accordion:open  (bubbles: true)  emesso quando una sezione viene aperta
+       sp:accordion:close (bubbles: true)  emesso quando una sezione viene chiusa
+Cosa NON fa:
+  - non gestisce logica business o dipendenze fra sezioni
+  - non definisce payload JSON o nomi campo CMS
+  - non crea markup delle card interne (popola solo gli slot documentati)
+  - non persiste lo stato aperto fra refresh o navigazioni
+```
+
+Comportamento: click su `[data-accordion-trigger]` apre o chiude la sezione associata. Quando una sezione si apre, le altre sezioni dello stesso container vengono chiuse (single-open). Il JS aggiorna `aria-expanded` e la classe `expanded`; l'icona `+/-` reagisce via CSS.
+
+Namespace globale: `window.SkillpressUI.Accordion`.
+
+## Examples
+
+- `Collapsed` → `primitives-accordion--collapsed`
+- `Expanded` → `primitives-accordion--expanded`
+- `MultipleSections` → `primitives-accordion--multiple-sections`
+- `WithoutBadge` → `primitives-accordion--without-badge`
+- `PopulatedContentSlot` → `primitives-accordion--populated-content-slot`
+
+## Token usati
+
+`--section-gap`, `--section-bg`, `--section-bg-expanded`, `--section-border`, `--section-radius`, `--section-number-size`, `--section-number-bg`, `--section-number-color`, `--color-bg-gray-50`, `--color-bg-gray-200`, `--color-text`, `--color-text-muted`, `--font-weight-semibold`, `--font-weight-bold`, `--font-size-base`, `--radius-full`, `--spacing-md`, `--transition-fast`, `--transition-slow`, `--transition-section`.
+
+## Note CMS
+
+- decide quali sezioni rendere visibili.
+- decide il contenuto degli slot `header` e `content`.
+- decide se una sezione parte `collapsed` o `expanded` (classe `expanded` + `aria-expanded` coerenti).
+- decide se mostrare o omettere il badge numerato.
+- non deve cambiare il markup interno della sezione, ne' aggiungere classi custom fuori contratto, ne' duplicare il behavior JS.
+
+## Out of scope
+
+- accordion come contenitore arbitrario con gerarchie diverse.
+- stati non documentati.
+- persistenza stato aperto fra refresh o navigazioni.
+- dipendenze fra sezioni.
+- payload JSON / nomi campo CMS.

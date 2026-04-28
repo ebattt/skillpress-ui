@@ -1,14 +1,44 @@
+---
+title: ImageGallery
+description: Container immagine prodotto 1:1 con bottoni nav prev/next assoluti (snapshot statico).
+layer: components
+strategy: css-only
+sources:
+  catalog_css: elements-ui/css/components/_layout-patterns.css
+  catalog_js: elements-ui/js/page-init.js
+  demo: product-page-integration/index.html
+status: implemented-local
+package_path: components/image-gallery.css
+---
+
 # ImageGallery
 
-Componente CSS-only per la galleria immagine prodotto: un container quadrato con immagine principale + due bottoni nav `prev/next` posizionati assoluti.
+Galleria immagine prodotto: container quadrato 1:1 con immagine principale `object-fit: cover` e due bottoni nav `prev`/`next` posizionati assoluti su `top: 50%`. Il behavior prev/next non e' implementato in libreria (Strategia A): la pagina demo legge `data-images` e ruota le immagini lato consumer.
 
 ## Strategia JS demo
 
-Strategia A — static snapshot. La libreria fornisce solo CSS. La pagina demo (`product-page-integration/js/page-init.js`) implementa il behavior prev/next leggendo `data-images`. Il consumer monta lo stato iniziale statico con i bottoni visibili ma non funzionanti.
+Strategia A — static snapshot. La libreria fornisce solo CSS. La pagina demo (`product-page-integration/js/page-init.js#L54-L86`) implementa il behavior prev/next leggendo l'attributo `data-images`. Il consumer monta lo stato iniziale statico con i bottoni visibili ma senza listener.
 
 Una eventuale versione `js/image-gallery.js` (Strategia C) potra' arrivare in futuro con lo stesso pattern di `accordion.js` / `toggle-switch.js`.
 
-## Contratto markup verbatim
+## Anatomy
+
+```text
+ImageGallery
+├── hero-image-gallery                          (column wrapper, center mobile, left-align >=1024px)
+│   └── hero-image-container                    (relative, aspect-ratio 1:1, max-width 400px, radius xl)   [product-shadow]
+│       ├── <img>                               (object-fit: cover, width/height 100%)
+│       ├── hero-nav-btn--prev                  (button assoluto top 50%, left 0.75rem)
+│       │   └── <svg>                           (chevron prev, aria-hidden)
+│       └── hero-nav-btn--next                  (button assoluto top 50%, right 0.75rem)
+│           └── <svg>                           (chevron next, aria-hidden)
+```
+
+Nota sul prefisso `hero-`: e' verbatim dalla pagina demo. Una futura generalizzazione (alias `.image-gallery`) e' possibile se un'altra section riusera' lo stesso pattern.
+
+## Markup contract
+
+Markup verbatim dalla pagina demo `product-page-integration` (sezione hero).
 
 ```html
 <div class="hero-image-gallery">
@@ -18,44 +48,85 @@ Una eventuale versione `js/image-gallery.js` (Strategia C) potra' arrivare in fu
         <button id="prevImageBtn"
                 class="hero-nav-btn hero-nav-btn--prev"
                 aria-label="Immagine precedente">
-            <svg viewBox="0 0 24 24" aria-hidden="true">...</svg>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
         </button>
         <button id="nextImageBtn"
                 class="hero-nav-btn hero-nav-btn--next"
                 aria-label="Immagine successiva">
-            <svg viewBox="0 0 24 24" aria-hidden="true">...</svg>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
         </button>
     </div>
 </div>
 ```
 
-## Classi BEM
+Inline data-driven: `data-images` su `.hero-image-container` e' un array JSON con `src`/`alt` per ogni immagine. La libreria non lo legge: lo consuma il behavior demo.
 
-- `.hero-image-gallery` — colonna esterna (centra l'immagine sotto 1024px, allinea sinistra sopra).
-- `.hero-image-container` — wrapper relativo, aspect-ratio 1:1, max-width 400px, border-radius `--radius-xl`. Porta `data-images` (array JSON CMS).
-- `.product-shadow` — modifier opzionale (box-shadow `--shadow-product`).
-- `.hero-nav-btn` — bottone tondo 40x40, posizionato assoluto su top 50%.
-- `.hero-nav-btn--prev` / `.hero-nav-btn--next` — modifier laterali (left / right `0.75rem`).
+## API Reference
 
-Nota: il prefisso `hero-` e' verbatim dalla pagina demo. Una futura generalizzazione (es. alias `.image-gallery`) e' possibile se un'altra section usera' lo stesso pattern.
+| Class | Role | Required | Modifiers |
+|---|---|---|---|
+| `.hero-image-gallery` | colonna esterna; centra l'immagine sotto 1024px, allinea sinistra sopra | yes | — |
+| `.hero-image-container` | wrapper relativo, aspect-ratio 1:1, max-width 400px, radius xl, overflow hidden | yes | `product-shadow` |
+| `.product-shadow` | modifier opzionale, applica `box-shadow: var(--shadow-product)` | no | — |
+| `.hero-nav-btn` | bottone tondo 2.5rem, posizionato assoluto top 50%, background semitrasparente | yes | `--prev`, `--next` |
+| `.hero-nav-btn--prev` | posiziona il bottone a sinistra (`left: 0.75rem`) | yes (per prev) | — |
+| `.hero-nav-btn--next` | posiziona il bottone a destra (`right: 0.75rem`) | yes (per next) | — |
 
-## Asset
+Attributi:
 
-- Le frecce vanno fornite come SVG inline `aria-hidden="true"`. Nessuna dipendenza Material Symbols.
-- L'immagine principale ha `object-fit: cover`.
-- `data-images` e' un attributo per il behavior CMS-side. La libreria non lo legge.
+| Attribute | Element | Required | Note |
+|---|---|---|---|
+| `data-images` | `.hero-image-container` | no | Array JSON `[{src, alt}]`. La libreria non lo legge; usato dal behavior demo. |
+| `id="mainProductImage"` | `<img>` | no | Compatibilita' con behavior demo. |
+| `id="prevImageBtn"` / `id="nextImageBtn"` | bottoni | no | Compatibilita' con behavior demo. |
+| `aria-label` | `.hero-nav-btn` | yes | Stringa descrittiva ("Immagine precedente" / "Immagine successiva"). |
+| `aria-hidden="true"` | `<svg>` | yes | Chevron decorativo. |
 
-## Out of scope
+## Installation
 
-- Behavior prev/next (vedi Strategia A sopra).
-- Thumbnail gallery, zoom, lazy loading, carousel.
-- Indicatori (dot pagination).
-- Varianti carousel landing / blog.
+```html
+<link rel="stylesheet"
+      href="../node_modules/@ebattt/skillpress-ui/components/image-gallery.css" />
+```
+
+Oppure via bundle (gia' include `image-gallery.css`):
+
+```html
+<link rel="stylesheet"
+      href="../node_modules/@ebattt/skillpress-ui/bundles/demo-minimal.css" />
+```
+
+Nessun script JS richiesto dalla libreria. Il behavior prev/next va implementato dal consumer (vedi Strategia JS demo).
+
+## Examples
+
+- `Default` → `components-imagegallery--default`
+- `ReferenceFromElementsUI` → `components-imagegallery--reference-from-elements-ui`
+- `WithoutShadow` → `components-imagegallery--without-shadow`
+- `WithoutNav` → `components-imagegallery--without-nav`
 
 ## Token usati
 
-- `--radius-xl`, `--radius-full`
-- `--color-bg-gray-100`, `--color-bg-white`
-- `--color-text-strong`, `--color-border-focus`
-- `--shadow-product`, `--shadow-md`
-- `--transition-fast`
+`--radius-xl`, `--radius-full`, `--color-bg-gray-100`, `--color-bg-white`, `--color-text-strong`, `--color-border-focus`, `--shadow-product`, `--shadow-md`, `--transition-fast`.
+
+Valori letterali: max-width 400px del container, dimensione bottone 2.5rem, offset laterale 0.75rem, background bottone `rgba(255, 255, 255, 0.8)`.
+
+## Note CMS
+
+- `data-images`: array JSON con `src`/`alt` di ogni immagine. La libreria non lo legge; il consumer (pagina demo) lo usa per il cambio.
+- `<img>` principale: `src`/`alt` per l'immagine inizialmente visibile.
+- frecce: SVG inline `aria-hidden="true"`. Nessuna dipendenza Material Symbols.
+- variante senza shadow: rimuovere il modifier `.product-shadow`.
+- variante senza nav: omettere i due bottoni `.hero-nav-btn`.
+
+## Out of scope
+
+- behavior prev/next (vedi Strategia A).
+- thumbnail bar, zoom, lazy loading, carousel.
+- indicatori (dot pagination).
+- varianti carousel landing / blog.
+- emissione di eventi galleria.
