@@ -1,0 +1,267 @@
+/**
+ * PRICE TABLE — Composed component (tabella prezzi stile Google Flights)
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css righe 918-1236
+ * Fonte markup: Skillpress-frontend/product-page-integration/js/sections/section-6.js righe 355-442
+ * Catalogo dichiarazione: Skillpress-frontend/elements-ui/js/layout-patterns/price-table.js
+ * Target demo: product-page-integration (configuratore step 6, "Quantita / consegna")
+ * Data estrazione: 2026-04-28
+ *
+ * CSS-only. Nessun behavior libreria: il consumer/CMS applica i modifier
+ * `--selected` (header colonna), `--active` (riga qty), `--selected` /
+ * `--row-active` (cella prezzo) in base a stato applicativo (qty selezionata,
+ * data spedizione selezionata, prezzo cliccato, conversione IVA Lordo/Netto).
+ *
+ * Material Symbols (`keyboard_arrow_up`, `keyboard_arrow_down`, `chevron_left`,
+ * `chevron_right`) NON inclusi: il consumer/CMS usa SVG inline. Le regole CSS
+ * sulle icone sono tradotte da `.material-symbols-outlined` a `svg`, mantenendo
+ * dimensioni equivalenti (28px verticale, 18px orizzontale).
+ *
+ * Geometria tabella: `min-width: 500px` forza lo scroll orizzontale su viewport
+ * stretti. Il consumer wrappa la tabella in `.price-table-section` (overflow-x: auto)
+ * o equivalente (la demo usa `id="priceTableContainer"`; in libreria la regola e'
+ * sulla classe).
+ *
+ * Fuori scope (non implementato qui):
+ * - behavior selezione cella / nav verticale / scroll orizzontale mobile
+ *   (vive in `product-page-integration/js/sections/section-6.js`);
+ * - calcolo prezzo IVA, paginazione qty, ricerca `closestDisplayedQty`;
+ * - animazione `@keyframes cellSelect` (usata solo in feedback JS);
+ * - variante `.price-table` doppio-underscore (`__row`, `__cell`, `__discount`)
+ *   citata in `_layout-patterns.css#L1071-L1098` ma non referenziata da nessuna
+ *   pagina demo;
+ * - regola `#priceTableContainer table tbody tr` legata all'id;
+ * - js/price-table.js (Strategia A static snapshot).
+ */
+
+/* ===== Wrapper outer ===== */
+.price-table-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Contenitore tabella con scroll orizzontale */
+.price-table-section {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ===== Tabella ===== */
+.price-table-full {
+    width: 100%;
+    font-size: var(--font-size-xs);
+    border-collapse: collapse;
+    min-width: 500px;
+}
+
+/* ===== Header cells ===== */
+.price-th {
+    padding: 0.5rem;
+    font-weight: var(--font-weight-semibold);
+    border-bottom: 1px solid var(--color-bg-gray-200);
+}
+
+.price-th--left {
+    text-align: left;
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text);
+    border-top-left-radius: var(--radius-lg);
+}
+
+.price-th--center {
+    text-align: center;
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text);
+}
+
+.price-th--selected {
+    background-color: var(--color-secondary);
+    color: #ffffff;
+}
+
+.price-th--corner {
+    border-top-right-radius: var(--radius-lg);
+}
+
+.price-th-day {
+    font-size: var(--font-size-xs);
+    line-height: 1.2;
+}
+
+.price-th-date {
+    font-size: 10px;
+    color: var(--color-text-light);
+}
+
+.price-th-date--light {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== Body rows ===== */
+.price-tr {
+    transition: background-color var(--transition-fast);
+}
+
+.price-tr:hover {
+    background-color: var(--color-bg-gray-50);
+}
+
+.price-tr--active {
+    background-color: #e8f5f3;
+}
+
+/* ===== Body cells ===== */
+.price-td {
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--color-bg-gray-200);
+}
+
+.price-td--left {
+    text-align: left;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+.price-td--center {
+    padding: 0.375rem;
+    text-align: center;
+}
+
+/* ===== Quantity button (left column) ===== */
+.price-qty-btn {
+    width: 100%;
+    padding: 0.25rem 0;
+    text-align: left;
+    transition: all var(--transition-fast);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text);
+}
+
+.price-qty-btn--active {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-secondary);
+}
+
+/* ===== Price cell button (intersection cells) ===== */
+.price-cell-btn {
+    width: 100%;
+    padding: 0.375rem 0.25rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    transition: all var(--transition-fast);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+}
+
+.price-cell-btn--default {
+    background-color: #ffffff;
+    color: var(--color-text);
+    border: 1px solid var(--color-bg-gray-200);
+}
+
+.price-cell-btn--default:hover {
+    border-color: var(--color-secondary);
+    background-color: var(--color-bg-gray-50);
+}
+
+.price-cell-btn--row-active {
+    background-color: #e8f5f3;
+    color: var(--color-text);
+    border: 1px solid rgba(28, 114, 100, 0.3);
+}
+
+.price-cell-btn--row-active:hover {
+    border-color: var(--color-secondary);
+}
+
+.price-cell-btn--selected {
+    background-color: var(--color-secondary);
+    color: #ffffff;
+    border: 1px solid var(--color-secondary);
+    box-shadow: var(--shadow-md);
+}
+
+/* ===== Navigation arrows (vertical) ===== */
+.price-nav-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 4px 16px;
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+}
+
+.price-nav-arrow svg {
+    width: 28px;
+    height: 28px;
+    color: var(--color-text);
+}
+
+.price-nav-arrow:hover:not(.disabled) svg {
+    color: var(--color-primary);
+}
+
+.price-nav-arrow.disabled {
+    opacity: 0.25;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* ===== Navigation arrows (horizontal / mobile overlay) ===== */
+.price-nav-arrow-horizontal {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-bg-gray-200);
+    border-radius: 50%;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.price-nav-arrow-horizontal.left {
+    left: -6px;
+}
+
+.price-nav-arrow-horizontal.right {
+    right: -6px;
+}
+
+.price-nav-arrow-horizontal svg {
+    width: 18px;
+    height: 18px;
+}
+
+.price-nav-arrow-horizontal:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* ===== Mobile responsive ===== */
+@media (max-width: 767px) {
+    .price-nav-arrow-horizontal {
+        display: flex !important;
+    }
+
+    .price-nav-arrow-horizontal[style*="display: none"] {
+        display: none !important;
+    }
+
+    .price-nav-arrow svg {
+        width: 24px;
+        height: 24px;
+    }
+}
