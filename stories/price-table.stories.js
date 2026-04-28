@@ -230,7 +230,28 @@ export const WithMobileArrows = {
     parameters: {
         docs: {
             description: {
-                story: 'Variante con frecce orizzontali per scroll mobile. `.price-nav-arrow-horizontal.left` / `.right` sono overlay assoluti su un wrapper `position: relative`. Sotto 767px diventano sempre `display: flex` (vedi media query); il consumer JS le nasconde via `style="display: none"` quando lo scroll non e\' necessario.'
+                story: 'Variante con frecce orizzontali (legacy). `.price-nav-arrow-horizontal.left` / `.right` sono overlay assoluti su un wrapper `position: relative`. **Sotto 640px le frecce orizzontali sono `display: none !important`**: il design mobile non scrolla piu\' (`min-width: 0` su `.price-table-full` + padding/font ridotti), quindi le frecce non servono.'
+            }
+        }
+    }
+};
+
+export const MobileCompact = {
+    render: () => {
+        const root = document.createElement('div');
+        root.style.padding = '0';
+        root.style.maxWidth = '360px';
+        root.style.margin = '0 auto';
+        root.style.background = 'var(--color-bg-white)';
+        root.style.outline = '1px dashed var(--color-bg-gray-200)';
+        root.innerHTML = renderTable({ activeQty: 50, selectedCol: 0 });
+        return root;
+    },
+    parameters: {
+        layout: 'centered',
+        docs: {
+            description: {
+                story: 'Viewport mobile ~360px. La tabella sta tutta nello schermo: `min-width: 500px` rimosso sotto 640px, padding/font ridotti progressivamente, frecce orizzontali nascoste. Mostra ancora 4 colonne (Copie + 3 date) e 7 righe qty senza overflow.'
             }
         }
     }

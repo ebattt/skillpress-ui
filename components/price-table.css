@@ -16,10 +16,11 @@
  * sulle icone sono tradotte da `.material-symbols-outlined` a `svg`, mantenendo
  * dimensioni equivalenti (28px verticale, 18px orizzontale).
  *
- * Geometria tabella: `min-width: 500px` forza lo scroll orizzontale su viewport
- * stretti. Il consumer wrappa la tabella in `.price-table-section` (overflow-x: auto)
- * o equivalente (la demo usa `id="priceTableContainer"`; in libreria la regola e'
- * sulla classe).
+ * Geometria tabella: `min-width: 500px` su viewport >=641px (mantiene leggibilita'
+ * desktop). Sotto 640px `min-width: 0` + `.price-table-section { overflow-x: visible }`
+ * + padding/font ridotti: la tabella entra nel viewport mobile senza scroll orizzontale.
+ * Sotto 480px ulteriore compressione (smartphone stretti). Frecce orizzontali
+ * (`.price-nav-arrow-horizontal`) nascoste sotto 640px (lo scroll non serve piu').
  *
  * Fuori scope (non implementato qui):
  * - behavior selezione cella / nav verticale / scroll orizzontale mobile
@@ -250,18 +251,96 @@
     border-color: var(--color-primary);
 }
 
-/* ===== Mobile responsive ===== */
-@media (max-width: 767px) {
-    .price-nav-arrow-horizontal {
-        display: flex !important;
+/* ===== Mobile responsive (no horizontal scroll) =====
+   La tabella mantiene 4 colonne (Copie + N date) ma riduce padding,
+   font e icone per stare nel viewport mobile. min-width: 500px e
+   overflow-x rimossi sotto 640px, frecce orizzontali nascoste. */
+
+@media (max-width: 640px) {
+    .price-table-full {
+        min-width: 0;
+        font-size: 0.75rem;
     }
 
-    .price-nav-arrow-horizontal[style*="display: none"] {
-        display: none !important;
+    .price-table-section {
+        overflow-x: visible;
+    }
+
+    .price-th {
+        padding: 0.375rem 0.25rem;
+    }
+
+    .price-td {
+        padding: 0.375rem 0.25rem;
+    }
+
+    .price-td--center {
+        padding: 0.25rem 0.125rem;
+    }
+
+    .price-th-day {
+        font-size: 0.6875rem;
+    }
+
+    .price-th-date {
+        font-size: 0.625rem;
+    }
+
+    .price-cell-btn {
+        padding: 0.375rem 0.125rem;
+        font-size: 0.6875rem;
+    }
+
+    .price-qty-btn {
+        font-size: 0.75rem;
+    }
+
+    .price-nav-arrow {
+        padding: 4px 12px;
     }
 
     .price-nav-arrow svg {
         width: 24px;
         height: 24px;
+    }
+
+    .price-nav-arrow-horizontal {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .price-table-full {
+        font-size: 0.6875rem;
+    }
+
+    .price-th {
+        padding: 0.3125rem 0.125rem;
+    }
+
+    .price-td {
+        padding: 0.3125rem 0.125rem;
+    }
+
+    .price-td--center {
+        padding: 0.1875rem 0.0625rem;
+    }
+
+    .price-th-day {
+        font-size: 0.625rem;
+    }
+
+    .price-th-date {
+        font-size: 0.5625rem;
+    }
+
+    .price-cell-btn {
+        padding: 0.25rem 0.0625rem;
+        font-size: 0.625rem;
+        border-radius: 0.1875rem;
+    }
+
+    .price-qty-btn {
+        font-size: 0.6875rem;
     }
 }
