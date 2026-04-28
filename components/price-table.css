@@ -50,34 +50,23 @@
 }
 
 /* Contenitore tabella con scroll orizzontale.
-   `scroll-behavior: smooth` per swipe e click su `.price-nav-arrow-horizontal`. */
+   `scroll-behavior: smooth` per swipe e click su `.price-nav-arrow-horizontal`.
+   Scrollbar nascosta su mobile (l'unica affordance di scroll resta la freccia
+   `.price-nav-arrow-horizontal.right` overlay). */
 .price-table-section {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
 }
 
-/* Mobile: scrollbar SEMPRE visibile (sottile) quando ci sono colonne nascoste.
-   iOS Safari di default nasconde la scrollbar; la forziamo visibile via
-   webkit pseudo-element + scrollbar-width thin per Firefox. */
 @media (max-width: 767px) {
     .price-table-section {
-        scrollbar-width: thin;
-        scrollbar-color: var(--color-bg-gray-200) transparent;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
     .price-table-section::-webkit-scrollbar {
-        height: 4px;
-        -webkit-appearance: none;
-    }
-
-    .price-table-section::-webkit-scrollbar-track {
-        background: transparent;
-    }
-
-    .price-table-section::-webkit-scrollbar-thumb {
-        background-color: var(--color-bg-gray-200);
-        border-radius: var(--radius-full);
+        display: none;
     }
 }
 
