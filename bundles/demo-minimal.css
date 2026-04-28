@@ -15,4 +15,6 @@
 @import '../components/product-hero.css';
 @import '../primitives/download-buttons.css';
 @import '../primitives/mode-switcher.css';
+@import '../primitives/option-buttons.css';
+@import '../primitives/orientation-toggle.css';
 @import '../components/step-indicator.css';

@@ -1,0 +1,48 @@
+/* ================================================================
+   OPTION BUTTONS (selezione singola nel configuratore)
+   Source: elements-ui/css/components/_buttons.css#L129-L177
+   ================================================================ */
+.option-btns-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+}
+
+.option-btn {
+    padding: 0.375rem 0.625rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.option-btn--default {
+    background-color: #ffffff;
+    color: var(--color-text);
+    border-color: var(--color-bg-gray-200);
+}
+
+.option-btn--default:hover {
+    border-color: #d1d5db;
+    background-color: var(--color-bg-gray-50);
+}
+
+.option-btn--selected {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
+}
+
+.option-btn--borderless {
+    background-color: #ffffff;
+    color: var(--color-text);
+    border-color: transparent;
+}
+
+.option-btn--borderless:hover {
+    background-color: var(--color-bg-gray-50);
+    border-color: transparent;
+}
