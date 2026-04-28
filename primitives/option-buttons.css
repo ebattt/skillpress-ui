@@ -20,24 +20,24 @@
 }
 
 .option-btn--default {
-    background-color: #ffffff;
+    background-color: var(--color-bg-white);
     color: var(--color-text);
     border-color: var(--color-bg-gray-200);
 }
 
 .option-btn--default:hover {
-    border-color: #d1d5db;
+    border-color: var(--color-border);
     background-color: var(--color-bg-gray-50);
 }
 
 .option-btn--selected {
     background-color: var(--color-primary);
-    color: #ffffff;
+    color: var(--color-bg-white);
     border-color: var(--color-primary);
 }
 
 .option-btn--borderless {
-    background-color: #ffffff;
+    background-color: var(--color-bg-white);
     color: var(--color-text);
     border-color: transparent;
 }

@@ -8,10 +8,10 @@
  * CSS-only. Nessun behavior libreria: il CMS sposta i modifier
  * `--active`, `--inactive`, `--completed` su badge, titolo e status.
  *
- * I valori `#374151` (step-title--inactive) e `#D1D5DB` (steps-line) sono
- * letterali nel catalogo elements-ui e vengono mantenuti per fedelta visiva.
- *
- * Il gradient di `.step-badge--active` e' letterale come da catalogo.
+ * Token usati: `--color-text-strong` (= `#374151`, step-title--inactive),
+ * `--color-border` (= `#D1D5DB`, steps-line), gradient `--color-primary` ->
+ * `--color-primary-light` (= `#F08A00 -> #FFB149`, step-badge--active).
+ * Tutti coincidenti con i valori letterali del catalogo elements-ui.
  *
  * Mobile-first: 2 colonne sotto 1024px, 4 colonne >= 1024px.
  * `.steps-line` e' nascosta sotto 1024px e visibile solo da desktop.
@@ -46,7 +46,7 @@
     left: -2%;
     right: -2%;
     height: 1px;
-    background-color: #D1D5DB;
+    background-color: var(--color-border);
     transform: translateY(-50%);
     z-index: 0;
 }
@@ -106,7 +106,7 @@
 }
 
 .step-badge--active {
-    background: linear-gradient(135deg, #F08A00 0%, #FFB149 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
     color: var(--color-bg-white);
 }
 
@@ -138,7 +138,7 @@
 }
 
 .step-title--inactive {
-    color: #374151;
+    color: var(--color-text-strong);
 }
 
 .step-status {

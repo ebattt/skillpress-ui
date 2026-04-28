@@ -34,11 +34,11 @@
     padding: 2rem var(--page-padding-x) 1rem;
 }
 
-/* Mobile: meno bianco sopra/sotto. Niente padding-x perche' eredita
-   dal wrapper di pagina (`.product-page` su demo, `.consumer-page` su consumer). */
+/* Mobile: meno bianco sopra/sotto, padding-x = --page-padding-x per i bordi
+   laterali (allineato alla demo che usa .product-hero standalone in <main>). */
 @media (max-width: 767px) {
     .product-hero {
-        padding: 0.75rem 0 0.5rem;
+        padding: 0.75rem var(--page-padding-x) 0.5rem;
     }
 }
 

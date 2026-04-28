@@ -41,19 +41,44 @@
     gap: 0;
 }
 
+/* Wrapper position: relative attorno a .price-table-section. Necessario perche'
+   le frecce orizzontali (`.price-nav-arrow-horizontal`) sono `position: absolute`
+   FRATELLO di `.price-table-section`, NON figlio: cosi' restano fisse mentre il
+   container scrolla. (Pattern verbatim demo: `<div class="relative">`.) */
+.price-table-scroll-wrap {
+    position: relative;
+}
+
 /* Contenitore tabella con scroll orizzontale.
-   Allineato alla demo: scrollbar nascosta (`scrollbar-hide`) e
    `scroll-behavior: smooth` per swipe e click su `.price-nav-arrow-horizontal`. */
 .price-table-section {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
 }
 
-.price-table-section::-webkit-scrollbar {
-    display: none;
+/* Mobile: scrollbar SEMPRE visibile (sottile) quando ci sono colonne nascoste.
+   iOS Safari di default nasconde la scrollbar; la forziamo visibile via
+   webkit pseudo-element + scrollbar-width thin per Firefox. */
+@media (max-width: 767px) {
+    .price-table-section {
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-bg-gray-200) transparent;
+    }
+
+    .price-table-section::-webkit-scrollbar {
+        height: 4px;
+        -webkit-appearance: none;
+    }
+
+    .price-table-section::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .price-table-section::-webkit-scrollbar-thumb {
+        background-color: var(--color-bg-gray-200);
+        border-radius: var(--radius-full);
+    }
 }
 
 /* ===== Tabella ===== */
@@ -86,7 +111,7 @@
 
 .price-th--selected {
     background-color: var(--color-secondary);
-    color: #ffffff;
+    color: var(--color-bg-white);
 }
 
 .price-th--corner {
@@ -117,6 +142,8 @@
 }
 
 .price-tr--active {
+    /* Teal soft locale (no token: usato solo da PriceTable. Promuovere a
+       --color-secondary-soft se emerge un secondo consumer). */
     background-color: #e8f5f3;
 }
 
@@ -167,7 +194,7 @@
 }
 
 .price-cell-btn--default {
-    background-color: #ffffff;
+    background-color: var(--color-bg-white);
     color: var(--color-text);
     border: 1px solid var(--color-bg-gray-200);
 }
@@ -178,6 +205,8 @@
 }
 
 .price-cell-btn--row-active {
+    /* Teal soft locale (no token: usato solo da PriceTable. Promuovere a
+       --color-secondary-soft se emerge un secondo consumer). */
     background-color: #e8f5f3;
     color: var(--color-text);
     border: 1px solid rgba(28, 114, 100, 0.3);
@@ -189,7 +218,7 @@
 
 .price-cell-btn--selected {
     background-color: var(--color-secondary);
-    color: #ffffff;
+    color: var(--color-bg-white);
     border: 1px solid var(--color-secondary);
     box-shadow: var(--shadow-md);
 }

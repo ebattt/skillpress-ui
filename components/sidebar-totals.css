@@ -97,21 +97,21 @@
 }
 
 .sidebar-row--green {
-    color: #16A34A;
+    color: var(--color-success);
 }
 
 .sidebar-row--green .sidebar-row-label {
     font-weight: var(--font-weight-medium);
-    color: #16A34A;
+    color: var(--color-success);
 }
 
 .sidebar-row--green .sidebar-row-value {
-    color: #16A34A;
+    color: var(--color-success);
 }
 
 .sidebar-divider {
     margin: 0.75rem 0;
-    border-top: 1px solid #D1D5DB;
+    border-top: 1px solid var(--color-border);
 }
 
 /* ================================================================
@@ -148,11 +148,11 @@
 
 .promo-input {
     width: 100%;
-    border: 1px solid #D1D5DB;
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: 0.5rem 0.75rem;
     font-size: var(--font-size-sm);
-    background-color: #ffffff;
+    background-color: var(--color-bg-white);
 }
 
 .promo-input:focus {
@@ -211,7 +211,7 @@
     max-height: 300px;
     overflow-y: auto;
     font-size: var(--font-size-xs);
-    color: #374151;
+    color: var(--color-text-strong);
     background-color: var(--color-bg-gray-75);
     border-radius: var(--radius-lg);
     padding: 0.75rem;
@@ -255,7 +255,7 @@
 }
 
 .riepilogo-error {
-    color: #ef4444;
+    color: var(--color-error-light);
     font-weight: var(--font-weight-bold);
 }
 
@@ -297,7 +297,7 @@
 .add-to-cart-btn {
     width: 100%;
     background-color: var(--color-secondary-dark);
-    color: #ffffff;
+    color: var(--color-bg-white);
     font-weight: var(--font-weight-semibold);
     font-size: var(--font-size-sm);
     padding: 0.75rem 1rem;

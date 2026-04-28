@@ -24,12 +24,12 @@
 
 .mode-btn--active {
     background-color: var(--color-primary);
-    color: #ffffff;
+    color: var(--color-bg-white);
 }
 
 .mode-btn--inactive {
     background-color: var(--color-bg-gray-75);
-    color: #374151;
+    color: var(--color-text-strong);
 }
 
 .mode-btn--inactive:hover {

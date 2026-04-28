@@ -148,6 +148,27 @@
     --transition-slow: 300ms ease;          /* animazioni piu ampie */
     --transition-section: 0.4s cubic-bezier(0.4, 0, 0.2, 1);  /* accordion */
 
+    /* === BREAKPOINT CANONICI ===
+       CSS non permette `var()` dentro `@media` queries, quindi i breakpoint
+       sono numeri letterali nei singoli componenti. Per garantire coerenza,
+       usare ESCLUSIVAMENTE questi 4 valori:
+
+         374px   small phones (iPhone SE 1st gen, fix mobile-bar)
+         640px   phones / tablet portrait stretti (mobile cutoff)
+         1024px  tablet landscape / small desktop (desktop cutoff)
+         1280px  wide desktop (= --page-max-width)
+
+       Convenzione `max-width` / `min-width`:
+         (max-width: 639px)   -> mobile (sotto 640)
+         (min-width: 640px)   -> tablet+
+         (max-width: 1023px)  -> mobile + tablet (sotto desktop)
+         (min-width: 1024px)  -> desktop
+         (min-width: 1280px)  -> wide desktop
+
+       Eccezioni storiche: `767px` (accordion touch target, deprecato — da
+       migrare a 640px), `480px` (price-table small refinement, da rivedere).
+       Tutti i nuovi componenti devono usare uno dei 4 canonici. */
+
     /* === Z-INDEX === */
     /* Gerarchia ordinata per evitare conflitti di sovrapposizione */
     --z-base: 1;
