@@ -32,27 +32,36 @@ const renderRoot = (innerHTML) => {
     return root;
 };
 
+// Backend dichiara N date (1..4 raccomandato per leggibilita'). Default snapshot = 4 colonne
+// (caso massimo della pagina demo: deliveryBaseDays = [2, 4, 6, 10] con sconti progressivi
+// 5%/30%/55%/79%). La libreria si adatta automaticamente al numero di colonne via CSS table.
+
 const headers = [
-    { day: 'lunedi', date: '09/03' },
-    { day: 'mercoledi', date: '11/03' },
-    { day: 'lunedi', date: '16/03' }
+    { day: 'lunedi',    date: '09/03' },   // sconto  5%
+    { day: 'mercoledi', date: '11/03' },   // sconto 30%
+    { day: 'venerdi',   date: '13/03' },   // sconto 55%
+    { day: 'martedi',   date: '17/03' }    // sconto 79%
 ];
 
 const rows = [
-    { qty: 25,  prices: ['162,77', '119,94',  '77,10'] },
-    { qty: 30,  prices: ['195,32', '143,92',  '92,52'] },
-    { qty: 40,  prices: ['260,43', '191,89', '123,37'] },
-    { qty: 50,  prices: ['325,53', '239,86', '154,20'] },
-    { qty: 60,  prices: ['390,64', '287,85', '185,04'] },
-    { qty: 75,  prices: ['488,31', '359,80', '231,30'] },
-    { qty: 100, prices: ['651,07', '479,74', '308,40'] }
+    { qty: 25,  prices: ['162,77', '119,94',  '77,10',  '35,98'] },
+    { qty: 30,  prices: ['195,32', '143,92',  '92,52',  '43,18'] },
+    { qty: 40,  prices: ['260,43', '191,89', '123,37',  '57,57'] },
+    { qty: 50,  prices: ['325,53', '239,86', '154,20',  '71,96'] },
+    { qty: 60,  prices: ['390,64', '287,85', '185,04',  '86,35'] },
+    { qty: 75,  prices: ['488,31', '359,80', '231,30', '107,94'] },
+    { qty: 100, prices: ['651,07', '479,74', '308,40', '143,92'] }
 ];
 
-const renderHeader = (selectedCol) => {
+const sliceHeaders = (n) => headers.slice(0, n);
+const sliceRows = (n) => rows.map(r => ({ qty: r.qty, prices: r.prices.slice(0, n) }));
+
+const renderHeader = (selectedCol, cols = 4) => {
+    const heads = sliceHeaders(cols);
     const left = '<th class="price-th price-th--left">Copie</th>';
-    const dataCells = headers.map((h, idx) => {
+    const dataCells = heads.map((h, idx) => {
         const isSelected = idx === selectedCol;
-        const isCorner = idx === headers.length - 1;
+        const isCorner = idx === heads.length - 1;
         const cls = [
             'price-th',
             'price-th--center',
@@ -70,8 +79,9 @@ const renderHeader = (selectedCol) => {
     return `<tr>${left}${dataCells}</tr>`;
 };
 
-const renderBody = (activeQty, selectedCol) => {
-    return rows.map((row) => {
+const renderBody = (activeQty, selectedCol, cols = 4) => {
+    const data = sliceRows(cols);
+    return data.map((row) => {
         const isActive = row.qty === activeQty;
         const trCls = isActive ? 'price-tr price-tr--active' : 'price-tr';
         const qtyBtnCls = isActive ? 'price-qty-btn price-qty-btn--active' : 'price-qty-btn';
@@ -97,15 +107,15 @@ const renderBody = (activeQty, selectedCol) => {
     }).join('');
 };
 
-const renderTable = ({ activeQty = 50, selectedCol = 0, navUpDisabled = false, navDownDisabled = false } = {}) => `
+const renderTable = ({ activeQty = 50, selectedCol = 0, cols = 4, navUpDisabled = false, navDownDisabled = false } = {}) => `
     <div class="price-table-wrapper">
         <div style="display: flex; justify-content: center; margin-bottom: 0.25rem;">
             <button type="button" class="price-nav-arrow${navUpDisabled ? ' disabled' : ''}" aria-label="Quantita precedenti">${arrowUp}</button>
         </div>
         <div class="price-table-section">
             <table class="price-table-full">
-                <thead>${renderHeader(selectedCol)}</thead>
-                <tbody>${renderBody(activeQty, selectedCol)}</tbody>
+                <thead>${renderHeader(selectedCol, cols)}</thead>
+                <tbody>${renderBody(activeQty, selectedCol, cols)}</tbody>
             </table>
         </div>
         <div style="display: flex; justify-content: center; margin-top: 0.25rem;">
@@ -121,29 +131,73 @@ export default {
         layout: 'padded',
         docs: {
             description: {
-                component: 'Tabella prezzi stile Google Flights: header data spedizione, righe quantita, intersezione = prezzo. CSS-only. Il consumer applica i modifier `.price-th--selected` (colonna), `.price-tr--active` (riga qty), `.price-cell-btn--selected` / `--row-active` (cella) in base allo stato applicativo.'
+                component: 'Tabella prezzi stile Google Flights: header data spedizione, righe quantita, intersezione = prezzo. **Data-driven**: il backend dichiara N colonne (1..4 raccomandato per leggibilita\'); la libreria si adatta automaticamente via CSS table. CSS-only. Il consumer applica i modifier `.price-th--selected` (colonna), `.price-tr--active` (riga qty), `.price-cell-btn--selected` / `--row-active` (cella) in base allo stato applicativo.'
             }
         }
     }
 };
 
 export const Default = {
-    render: () => renderRoot(renderTable({ activeQty: 50, selectedCol: 0 })),
+    render: () => renderRoot(renderTable({ activeQty: 50, selectedCol: 0, cols: 4 })),
     parameters: {
         docs: {
             description: {
-                story: 'Snapshot base: 7 righe qty (25-100), 3 colonne data. Riga 50 attiva, prima colonna data selezionata. La cella intersezione (50 + 09/03) mostra `.price-cell-btn--selected`.'
+                story: 'Snapshot base: 7 righe qty (25-100), **4 colonne data** (caso massimo della pagina demo: `deliveryBaseDays = [2, 4, 6, 10]` con sconti 5%/30%/55%/79%). Riga 50 attiva, prima colonna data selezionata. La cella intersezione (50 + 09/03) mostra `.price-cell-btn--selected`.'
             }
         }
     }
 };
 
 export const ReferenceFromElementsUI = {
-    render: () => renderRoot(renderTable({ activeQty: 50, selectedCol: 0 })),
+    render: () => renderRoot(renderTable({ activeQty: 50, selectedCol: 0, cols: 4 })),
     parameters: {
         docs: {
             description: {
-                story: 'Markup verbatim derivato da `product-page-integration/js/sections/section-6.js#L355-L442` (template literal `Tabella prezzi (Google Flights style)`). Stato realistico: `closestDisplayedQty === 50`, `selectedDeliveryIndex === 0`. IVA non applicata (consumer responsibility).'
+                story: 'Markup verbatim derivato da `product-page-integration/js/sections/section-6.js#L389-L394` (`deliveryDates.map`). Stato realistico: 4 date generate da `deliveryBaseDays = [2, 4, 6, 10]`, `closestDisplayedQty === 50`, `selectedDeliveryIndex === 0`. IVA non applicata (consumer responsibility).'
+            }
+        }
+    }
+};
+
+export const OneColumn = {
+    render: () => renderRoot(renderTable({ activeQty: 50, selectedCol: 0, cols: 1 })),
+    parameters: {
+        docs: {
+            description: {
+                story: 'Caso minimo: 1 sola data. Il backend dichiara una sola opzione consegna; la libreria renderizza la cella header con `.price-th--corner` (essendo prima e ultima).'
+            }
+        }
+    }
+};
+
+export const TwoColumns = {
+    render: () => renderRoot(renderTable({ activeQty: 50, selectedCol: 0, cols: 2 })),
+    parameters: {
+        docs: {
+            description: {
+                story: '2 date: scelta veloce vs scontata. La seconda colonna riceve `.price-th--corner` (ultima).'
+            }
+        }
+    }
+};
+
+export const ThreeColumns = {
+    render: () => renderRoot(renderTable({ activeQty: 50, selectedCol: 0, cols: 3 })),
+    parameters: {
+        docs: {
+            description: {
+                story: '3 date: configurazione intermedia. La terza colonna riceve `.price-th--corner`.'
+            }
+        }
+    }
+};
+
+export const FourColumns = {
+    render: () => renderRoot(renderTable({ activeQty: 50, selectedCol: 0, cols: 4 })),
+    parameters: {
+        docs: {
+            description: {
+                story: '4 date (default pagina demo): caso massimo raccomandato per leggibilita\'. Oltre 4 colonne il min-width tabella desktop e il viewport mobile diventano stretti.'
             }
         }
     }
@@ -230,28 +284,7 @@ export const WithMobileArrows = {
     parameters: {
         docs: {
             description: {
-                story: 'Variante con frecce orizzontali (legacy). `.price-nav-arrow-horizontal.left` / `.right` sono overlay assoluti su un wrapper `position: relative`. **Sotto 640px le frecce orizzontali sono `display: none !important`**: il design mobile non scrolla piu\' (`min-width: 0` su `.price-table-full` + padding/font ridotti), quindi le frecce non servono.'
-            }
-        }
-    }
-};
-
-export const MobileCompact = {
-    render: () => {
-        const root = document.createElement('div');
-        root.style.padding = '0';
-        root.style.maxWidth = '360px';
-        root.style.margin = '0 auto';
-        root.style.background = 'var(--color-bg-white)';
-        root.style.outline = '1px dashed var(--color-bg-gray-200)';
-        root.innerHTML = renderTable({ activeQty: 50, selectedCol: 0 });
-        return root;
-    },
-    parameters: {
-        layout: 'centered',
-        docs: {
-            description: {
-                story: 'Viewport mobile ~360px. La tabella sta tutta nello schermo: `min-width: 500px` rimosso sotto 640px, padding/font ridotti progressivamente, frecce orizzontali nascoste. Mostra ancora 4 colonne (Copie + 3 date) e 7 righe qty senza overflow.'
+                story: 'Variante con frecce orizzontali per scroll mobile. `.price-nav-arrow-horizontal.left` / `.right` sono overlay assoluti su un wrapper `position: relative`. Sotto 767px la regola CSS le rende sempre `display: flex !important`; il consumer JS le nasconde via `style="display: none"` quando lo scroll non e\' necessario (es. tabella che entra interamente).'
             }
         }
     }

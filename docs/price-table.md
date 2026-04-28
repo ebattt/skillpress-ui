@@ -6,6 +6,29 @@ Tabella prezzi stile Google Flights: header data spedizione, righe quantita, int
 - Cartella: `components/` (composto: wrapper > nav arrows + table > thead/tbody con sub-element specializzati).
 - Strategia JS demo: A — static snapshot. La libreria non aggiunge listener.
 
+## Contratto data-driven
+
+Il backend dichiara `N` colonne data (date di consegna). **Range raccomandato: 1..4 colonne** (`deliveryBaseDays = [2, 4, 6, 10]` nella pagina demo = 4 colonne, sconti progressivi 5%/30%/55%/79%). La libreria si adatta automaticamente: la tabella usa `display: table` e distribuisce le colonne via CSS senza modifier specifici per il numero.
+
+| N colonne | Quando | Note |
+|---|---|---|
+| 1 | una sola opzione consegna | l'unica `<th>` riceve sia (implicitamente) la prima posizione che `.price-th--corner` (ultima). |
+| 2 | scelta veloce vs scontata | la seconda `<th>` riceve `.price-th--corner`. |
+| 3 | configurazione intermedia | la terza `<th>` riceve `.price-th--corner`. |
+| 4 (max racc.) | caso massimo demo | la quarta `<th>` riceve `.price-th--corner`. Caso peggiore per il viewport mobile: la libreria gestisce con 3 breakpoint progressivi (640/480/380px) per mantenere tutto visibile senza scroll. |
+| 5+ | sconsigliato | la libreria non lo blocca, ma su mobile <=640px il testo dei prezzi diventa illeggibile. |
+
+Ogni riga `<tr>` contiene `1 + N` celle: una `<td class="price-td--left">` (qty button) + `N` celle `<td class="price-td--center">` (price button). Il backend genera esattamente `N` celle prezzo per riga; la libreria non valida la coerenza.
+
+Il consumer/CMS posiziona i modifier `.price-th--selected` (colonna selezionata, max 1), `.price-tr--active` (riga qty selezionata, max 1), `.price-cell-btn--selected` (intersezione, max 1), `.price-cell-btn--row-active` (celle nella riga attiva ma non l'intersezione) coerentemente con lo stato applicativo.
+
+## Responsive
+
+| Breakpoint | Comportamento |
+|---|---|
+| `>= 768px` (desktop / tablet) | `min-width: 500px` sulla `<table>`, scroll orizzontale via `.price-table-section { overflow-x: auto }` se la viewport e' piu' stretta del contenuto. Frecce orizzontali (`.price-nav-arrow-horizontal`) gestite dal JS consumer (mostrate via `style="display: flex"` solo se serve scrollare). |
+| `<= 767px` (mobile) | Le frecce orizzontali diventano sempre `display: flex !important` (regola CSS). Il consumer JS le nasconde via inline `style="display: none"` quando la tabella entra senza scroll. Frecce verticali ridotte a 24x24. |
+
 ## Quando usarlo
 
 - Configuratore prodotto con scelta combinata `quantita` x `data spedizione` (caso d'uso primario: Skillpress configuratore step 6).
@@ -92,7 +115,7 @@ Tabella prezzi stile Google Flights: header data spedizione, righe quantita, int
 
 | Classe | Ruolo |
 |---|---|
-| `.price-table-full` | `<table>` base. `width: 100%`, `min-width: 500px` (forza scroll su viewport stretti), `font-size: var(--font-size-xs)`, `border-collapse`. |
+| `.price-table-full` | `<table>` base. `width: 100%`, `min-width: 500px` (forza scroll orizzontale su viewport stretti), `font-size: var(--font-size-xs)`, `border-collapse`. |
 
 ### Header cells
 
