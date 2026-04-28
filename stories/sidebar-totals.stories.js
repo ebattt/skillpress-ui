@@ -1,4 +1,5 @@
 import '../components/sidebar-totals.css';
+import { expect } from 'storybook/test';
 
 const iconList = `
     <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -112,6 +113,14 @@ export default {
 
 export const Default = {
     render: () => renderRoot(renderSidebar({ quantita: '50' })),
+    play: async ({ canvas }) => {
+        await expect(canvas.getByRole('heading', { name: 'Totale' })).toBeInTheDocument();
+        await expect(canvas.getByText('50')).toBeInTheDocument();
+        const cart = canvas.getByRole('button', { name: /Aggiungi al carrello/ });
+        await expect(cart).toHaveClass('add-to-cart-btn');
+        const riepilogoBtn = canvas.getByRole('button', { name: /Mostra riepilogo/ });
+        await expect(riepilogoBtn).toHaveAttribute('aria-expanded', 'false');
+    },
     parameters: {
         docs: {
             description: {

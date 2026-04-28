@@ -1,3 +1,5 @@
+import { expect } from 'storybook/test';
+
 const renderFeatureBox = ({
     title = 'Veloce',
     description = 'Stampa con ciclo rapido.',
@@ -77,7 +79,13 @@ export default {
 };
 
 export const Default = {
-    render: () => renderGrid(productBoxes)
+    render: () => renderGrid(productBoxes),
+    play: async ({ canvas }) => {
+        await expect(canvas.getByRole('heading', { name: 'Veloce' })).toBeInTheDocument();
+        await expect(canvas.getByRole('heading', { name: 'Personalizzabile' })).toBeInTheDocument();
+        const titles = canvas.getAllByRole('heading');
+        await expect(titles.length).toBeGreaterThanOrEqual(4);
+    }
 };
 
 export const ReferenceFromElementsUI = {

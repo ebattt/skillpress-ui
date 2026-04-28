@@ -1,4 +1,5 @@
 import '../components/related-products.css';
+import { expect } from 'storybook/test';
 
 const PLACEHOLDER = 'https://placehold.co/200x200/f7f7f8/9ca3af?text=Prodotto';
 
@@ -52,6 +53,10 @@ export default {
 
 export const Default = {
     render: () => renderRoot(renderSection({ items: FIVE_PRODUCTS })),
+    play: async ({ canvasElement }) => {
+        const cards = canvasElement.querySelectorAll('.catalog-card');
+        await expect(cards.length).toBe(5);
+    },
     parameters: {
         docs: {
             description: {

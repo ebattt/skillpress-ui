@@ -1,3 +1,5 @@
+import { expect } from 'storybook/test';
+
 const plusIcon = `
     <span class="button__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none">
@@ -60,7 +62,13 @@ export default {
 };
 
 export const Default = {
-    render: () => renderButton()
+    render: () => renderButton(),
+    play: async ({ canvas, userEvent }) => {
+        const btn = canvas.getByRole('button', { name: /Aggiungi al carrello/ });
+        await expect(btn).toHaveClass('button', 'button--primary');
+        await expect(btn).not.toBeDisabled();
+        await userEvent.click(btn);
+    }
 };
 
 export const Variants = {
@@ -97,7 +105,11 @@ export const Disabled = {
     render: () => renderGroup([
         { label: 'Button disabled', variant: 'primary', disabled: true },
         { label: 'Link disabled', variant: 'outline', disabled: true, tag: 'a' }
-    ])
+    ]),
+    play: async ({ canvas }) => {
+        await expect(canvas.getByRole('button', { name: /Button disabled/ })).toBeDisabled();
+        await expect(canvas.getByRole('link', { name: /Link disabled/ })).toHaveAttribute('aria-disabled', 'true');
+    }
 };
 
 export const ReferenceFromOriginal = {

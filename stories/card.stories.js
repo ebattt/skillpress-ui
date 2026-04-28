@@ -1,3 +1,5 @@
+import { expect } from 'storybook/test';
+
 const renderCard = ({
     variantClasses = '',
     title = 'Card base',
@@ -53,6 +55,10 @@ export const Default = {
             description: 'Solo superficie tecnica per componenti futuri tracciati nella matrice.'
         }).innerHTML;
         return root;
+    },
+    play: async ({ canvas }) => {
+        await expect(canvas.getByRole('heading', { name: 'Card base' })).toBeInTheDocument();
+        await expect(canvas.getByText(/superficie tecnica/i)).toBeInTheDocument();
     }
 };
 

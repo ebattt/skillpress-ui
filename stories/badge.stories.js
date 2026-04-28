@@ -1,3 +1,5 @@
+import { expect } from 'storybook/test';
+
 const renderBadge = ({
     label = 'Consegnato',
     variant = 'success'
@@ -34,7 +36,11 @@ export default {
 };
 
 export const Default = {
-    render: () => renderBadge()
+    render: () => renderBadge(),
+    play: async ({ canvas }) => {
+        const badge = canvas.getByText('Consegnato');
+        await expect(badge).toHaveClass('badge', 'badge--success');
+    }
 };
 
 export const Variants = {

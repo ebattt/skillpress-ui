@@ -1,4 +1,5 @@
 import '../components/step-indicator.css';
+import { expect } from 'storybook/test';
 
 const renderStepCardItem = ({
     index,
@@ -65,7 +66,13 @@ export default {
 };
 
 export const Default = {
-    render: () => renderSection(defaultSteps)
+    render: () => renderSection(defaultSteps),
+    play: async ({ canvasElement }) => {
+        const items = canvasElement.querySelectorAll('.step-card-item');
+        await expect(items.length).toBe(4);
+        const active = canvasElement.querySelector('.step-badge--active');
+        await expect(active).toBeTruthy();
+    }
 };
 
 export const ReferenceFromElementsUI = {

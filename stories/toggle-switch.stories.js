@@ -1,3 +1,5 @@
+import { expect } from 'storybook/test';
+
 const initToggleSwitch = (root) => {
     window.requestAnimationFrame(() => {
         if (window.SkillpressUI && window.SkillpressUI.ToggleSwitch) {
@@ -68,7 +70,15 @@ export default {
 };
 
 export const Default = {
-    render: () => mount(renderSwitch({ checked: false, ariaLabel: 'Toggle option' }))
+    render: () => mount(renderSwitch({ checked: false, ariaLabel: 'Toggle option' })),
+    play: async ({ canvas, userEvent }) => {
+        const sw = canvas.getByRole('switch', { name: 'Toggle option' });
+        await expect(sw).toHaveAttribute('aria-checked', 'false');
+        await userEvent.click(sw);
+        await expect(sw).toHaveAttribute('aria-checked', 'true');
+        await userEvent.click(sw);
+        await expect(sw).toHaveAttribute('aria-checked', 'false');
+    }
 };
 
 export const Checked = {

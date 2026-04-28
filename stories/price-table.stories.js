@@ -1,4 +1,5 @@
 import '../components/price-table.css';
+import { expect } from 'storybook/test';
 
 const arrowUp = `
     <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -139,6 +140,15 @@ export default {
 
 export const Default = {
     render: () => renderRoot(renderTable({ activeQty: 50, selectedCol: 0, cols: 4 })),
+    play: async ({ canvas }) => {
+        const qty50 = canvas.getByRole('button', { name: '50' });
+        await expect(qty50).toHaveClass('price-qty-btn--active');
+        const cells = canvas.getAllByRole('button', { name: /euro/ });
+        const selected = cells.filter(c => c.classList.contains('price-cell-btn--selected'));
+        const rowActive = cells.filter(c => c.classList.contains('price-cell-btn--row-active'));
+        await expect(selected.length).toBe(1);
+        await expect(rowActive.length).toBe(3);
+    },
     parameters: {
         docs: {
             description: {

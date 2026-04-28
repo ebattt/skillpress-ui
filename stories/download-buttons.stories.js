@@ -1,11 +1,12 @@
 import '../tokens/tokens.css';
 import '../primitives/download-buttons.css';
+import { expect } from 'storybook/test';
 
 export default {
     title: 'Primitives/DownloadButtons',
 };
 
-export const Default = () => {
+const renderDefault = () => {
     const container = document.createElement('div');
     container.innerHTML = `
         <div class="sidebar-download-divider"></div>
@@ -19,6 +20,14 @@ export const Default = () => {
         </div>
     `;
     return container;
+};
+
+export const Default = {
+    render: renderDefault,
+    play: async ({ canvas }) => {
+        await expect(canvas.getByRole('link', { name: /Istruzioni/ })).toHaveClass('config-download-btn');
+        await expect(canvas.getByRole('link', { name: /Template/ })).toHaveClass('config-download-btn');
+    }
 };
 
 export const SingleButton = () => {

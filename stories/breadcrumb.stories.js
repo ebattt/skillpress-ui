@@ -1,3 +1,5 @@
+import { expect } from 'storybook/test';
+
 const renderBreadcrumb = (items = []) => {
     const root = document.createElement('div');
     const list = items.map((item, index) => {
@@ -42,7 +44,14 @@ export const Default = {
         { label: 'Homepage', href: '/homepage' },
         { label: 'Libri Cataloghi Riviste', href: '/libri-cataloghi-riviste' },
         { label: 'Brossura fresata', current: true }
-    ])
+    ]),
+    play: async ({ canvas }) => {
+        const nav = canvas.getByRole('navigation', { name: /Breadcrumb/ });
+        await expect(nav).toBeInTheDocument();
+        await expect(canvas.getByRole('link', { name: 'Homepage' })).toHaveAttribute('href', '/homepage');
+        const current = canvas.getByText('Brossura fresata');
+        await expect(current.closest('li')).toHaveClass('breadcrumb__item--current');
+    }
 };
 
 export const TwoLevels = {

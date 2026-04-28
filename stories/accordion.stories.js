@@ -1,3 +1,5 @@
+import { expect } from 'storybook/test';
+
 const initAccordion = (root) => {
     window.requestAnimationFrame(() => {
         const accordions = root.querySelectorAll('[data-accordion]');
@@ -69,7 +71,15 @@ export const Collapsed = {
             title: 'Accordion Section',
             content: createContent('Slot content popolato dal consumer.')
         })
-    ])
+    ]),
+    play: async ({ canvas, userEvent }) => {
+        const trigger = canvas.getByRole('button', { name: /Accordion Section/ });
+        await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+        await userEvent.click(trigger);
+        await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+        await userEvent.click(trigger);
+        await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    }
 };
 
 export const Expanded = {
@@ -100,7 +110,20 @@ export const MultipleSections = {
             title: 'Riepilogo',
             content: createContent('Terza sezione chiusa.')
         })
-    ])
+    ]),
+    play: async ({ canvas, userEvent, step }) => {
+        const t1 = canvas.getByRole('button', { name: /Formato/ });
+        const t2 = canvas.getByRole('button', { name: /Carta/ });
+        await step('initial: section 1 open, sections 2-3 closed', async () => {
+            await expect(t1).toHaveAttribute('aria-expanded', 'true');
+            await expect(t2).toHaveAttribute('aria-expanded', 'false');
+        });
+        await step('single-open: opening 2 closes 1', async () => {
+            await userEvent.click(t2);
+            await expect(t2).toHaveAttribute('aria-expanded', 'true');
+            await expect(t1).toHaveAttribute('aria-expanded', 'false');
+        });
+    }
 };
 
 export const WithoutBadge = {

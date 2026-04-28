@@ -1,5 +1,6 @@
 import '../components/sidebar-totals.css';
 import '../components/mobile-bar.css';
+import { expect } from 'storybook/test';
 
 const iconChevronUp = `
     <svg class="handle-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -127,6 +128,11 @@ export default {
 
 export const Default = {
     render: () => renderRoot(renderMobileBar({ totale: '-' })),
+    play: async ({ canvas }) => {
+        const cart = canvas.getByRole('button', { name: /Aggiungi al carrello/ });
+        await expect(cart).toBeInTheDocument();
+        await expect(canvas.getByText('Totale')).toBeInTheDocument();
+    },
     parameters: {
         docs: {
             description: {

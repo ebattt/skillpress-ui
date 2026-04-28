@@ -1,4 +1,5 @@
 import '../components/format-card.css';
+import { expect } from 'storybook/test';
 
 const aspectRatioIcon = `
     <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"
@@ -144,6 +145,16 @@ export default {
 
 export const Default = {
     render: () => renderRoot(verticalGrid('a4')),
+    play: async ({ canvas }) => {
+        const cards = canvas.getAllByRole('button');
+        await expect(cards.length).toBeGreaterThanOrEqual(4);
+        const a4 = cards.find(c => c.getAttribute('data-format') === 'a4');
+        await expect(a4).toHaveClass('format-card--selected');
+        const others = cards.filter(c => c.getAttribute('data-format') && c.getAttribute('data-format') !== 'a4');
+        for (const o of others) {
+            await expect(o).not.toHaveClass('format-card--selected');
+        }
+    },
     parameters: {
         docs: {
             description: {

@@ -2,6 +2,7 @@ import '../primitives/rating.css';
 import '../components/image-gallery.css';
 import '../components/feature-box.css';
 import '../components/product-hero.css';
+import { expect } from 'storybook/test';
 
 const imageFront = new URL('../../Skillpress-frontend/product-page-integration/assets/brossura_fresata/brossurafresata2.png', import.meta.url).href;
 const imageSide = new URL('../../Skillpress-frontend/product-page-integration/assets/brossura_fresata/brossurafresata3.png', import.meta.url).href;
@@ -204,7 +205,10 @@ export default {
 };
 
 export const Default = {
-    render: () => renderProductHero()
+    render: () => renderProductHero(),
+    play: async ({ canvas }) => {
+        await expect(canvas.getByRole('heading', { level: 1 })).toBeInTheDocument();
+    }
 };
 
 export const ReferenceFromElementsUI = {

@@ -1,0 +1,179 @@
+{
+  "date": "2026-04-28T14:50:59.053Z",
+  "viewports": [
+    {
+      "viewport": "mobile-iphone14",
+      "wxh": "390x844",
+      "demoOverflow": false,
+      "consumerOverflow": false,
+      "demoErrors": [],
+      "consumerErrors": [],
+      "diffs": [
+        {
+          "key": "body",
+          "status": "size-diff",
+          "demo": "390x3063 f=16px",
+          "consumer": "390x2999 f=16px"
+        },
+        {
+          "key": "formatCards",
+          "status": "size-diff",
+          "demo": "340x302 f=16px",
+          "consumer": "332x302 f=16px"
+        },
+        {
+          "key": "formatCard",
+          "status": "size-diff",
+          "demo": "166x147 f=16px",
+          "consumer": "162x147 f=16px"
+        },
+        {
+          "key": "featureGrid",
+          "status": "size-diff",
+          "demo": "366x178 f=16px",
+          "consumer": "366x174 f=16px"
+        },
+        {
+          "key": "heroTitle",
+          "status": "size-diff",
+          "demo": "366x36 f=24px",
+          "consumer": "366x29 f=24px"
+        },
+        {
+          "key": "stepCard",
+          "status": "size-diff",
+          "demo": "173x60 f=16px",
+          "consumer": "161x60 f=16px"
+        }
+      ]
+    },
+    {
+      "viewport": "mobile-galaxys-360",
+      "wxh": "360x800",
+      "demoOverflow": false,
+      "consumerOverflow": false,
+      "demoErrors": [],
+      "consumerErrors": [],
+      "diffs": [
+        {
+          "key": "body",
+          "status": "size-diff",
+          "demo": "360x3051 f=16px",
+          "consumer": "360x3010 f=16px"
+        },
+        {
+          "key": "formatCards",
+          "status": "size-diff",
+          "demo": "310x302 f=16px",
+          "consumer": "302x302 f=16px"
+        },
+        {
+          "key": "formatCard",
+          "status": "size-diff",
+          "demo": "151x147 f=16px",
+          "consumer": "147x147 f=16px"
+        },
+        {
+          "key": "featureGrid",
+          "status": "size-diff",
+          "demo": "336x197 f=16px",
+          "consumer": "336x192 f=16px"
+        },
+        {
+          "key": "heroTitle",
+          "status": "size-diff",
+          "demo": "336x36 f=24px",
+          "consumer": "336x29 f=24px"
+        },
+        {
+          "key": "stepCard",
+          "status": "size-diff",
+          "demo": "158x60 f=16px",
+          "consumer": "146x60 f=16px"
+        }
+      ]
+    },
+    {
+      "viewport": "tablet",
+      "wxh": "768x1024",
+      "demoOverflow": false,
+      "consumerOverflow": false,
+      "demoErrors": [],
+      "consumerErrors": [],
+      "diffs": [
+        {
+          "key": "body",
+          "status": "size-diff",
+          "demo": "768x2825 f=16px",
+          "consumer": "768x2812 f=16px"
+        },
+        {
+          "key": "modeSwitcher",
+          "status": "size-diff",
+          "demo": "736x35 f=16px",
+          "consumer": "720x35 f=16px"
+        },
+        {
+          "key": "formatCards",
+          "status": "size-diff",
+          "demo": "702x147 f=16px",
+          "consumer": "686x147 f=16px"
+        },
+        {
+          "key": "formatCard",
+          "status": "size-diff",
+          "demo": "170x147 f=16px",
+          "consumer": "166x147 f=16px"
+        },
+        {
+          "key": "featureGrid",
+          "status": "size-diff",
+          "demo": "736x147 f=16px",
+          "consumer": "688x144 f=16px"
+        },
+        {
+          "key": "featureBox",
+          "status": "size-diff",
+          "demo": "362x68 f=16px",
+          "consumer": "338x66 f=16px"
+        },
+        {
+          "key": "heroTitle",
+          "status": "size-diff",
+          "demo": "736x42 f=27.9808px",
+          "consumer": "688x34 f=27.9808px"
+        },
+        {
+          "key": "priceTableSection",
+          "status": "size-diff",
+          "demo": "702x361 f=16px",
+          "consumer": "686x361 f=16px"
+        },
+        {
+          "key": "priceTableFull",
+          "status": "size-diff",
+          "demo": "702x361 f=12px",
+          "consumer": "686x361 f=12px"
+        },
+        {
+          "key": "priceCellBtn",
+          "status": "size-diff",
+          "demo": "144x32 f=12px",
+          "consumer": "140x32 f=12px"
+        },
+        {
+          "key": "accordionFirst",
+          "status": "size-diff",
+          "demo": "736x58 f=16px",
+          "consumer": "720x58 f=16px"
+        },
+        {
+          "key": "stepCard",
+          "status": "size-diff",
+          "demo": "362x60 f=16px",
+          "consumer": "338x60 f=16px"
+        }
+      ]
+    }
+  ]
+}

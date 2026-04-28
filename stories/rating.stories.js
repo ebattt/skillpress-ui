@@ -1,4 +1,5 @@
 import '../primitives/rating.css';
+import { expect } from 'storybook/test';
 
 const renderRating = (percent = 100) => {
     const root = document.createElement('div');
@@ -76,7 +77,12 @@ export default {
 };
 
 export const Default = {
-    render: () => renderRating(97)
+    render: () => renderRating(97),
+    play: async ({ canvasElement }) => {
+        const filled = canvasElement.querySelector('.stars-filled');
+        await expect(filled).toBeTruthy();
+        await expect(filled.style.width).toBe('97%');
+    }
 };
 
 export const Scale = {

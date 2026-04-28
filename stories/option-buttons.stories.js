@@ -1,11 +1,12 @@
 import '../tokens/tokens.css';
 import '../primitives/option-buttons.css';
+import { expect } from 'storybook/test';
 
 export default {
     title: 'Primitives/OptionButtons',
 };
 
-export const Default = () => {
+const renderDefault = () => {
     const container = document.createElement('div');
     container.innerHTML = `
         <div class="option-btns-wrap">
@@ -16,6 +17,16 @@ export const Default = () => {
         </div>
     `;
     return container;
+};
+
+export const Default = {
+    render: renderDefault,
+    play: async ({ canvas }) => {
+        const a4 = canvas.getByRole('button', { name: 'A4' });
+        const a5 = canvas.getByRole('button', { name: 'A5' });
+        await expect(a4).toHaveClass('option-btn--selected');
+        await expect(a5).toHaveClass('option-btn--default');
+    }
 };
 
 export const NoneSelected = () => {

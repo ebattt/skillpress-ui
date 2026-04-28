@@ -1,4 +1,5 @@
 import '../components/image-gallery.css';
+import { expect } from 'storybook/test';
 
 const imageFront = new URL('../../Skillpress-frontend/product-page-integration/assets/brossura_fresata/brossurafresata2.png', import.meta.url).href;
 const imageSide = new URL('../../Skillpress-frontend/product-page-integration/assets/brossura_fresata/brossurafresata3.png', import.meta.url).href;
@@ -50,7 +51,13 @@ export default {
 };
 
 export const Default = {
-    render: () => renderGallery()
+    render: () => renderGallery(),
+    play: async ({ canvas }) => {
+        const prev = canvas.getByRole('button', { name: /precedente/i });
+        const next = canvas.getByRole('button', { name: /success/i });
+        await expect(prev).toHaveClass('hero-nav-btn--prev');
+        await expect(next).toHaveClass('hero-nav-btn--next');
+    }
 };
 
 export const ReferenceFromElementsUI = {
