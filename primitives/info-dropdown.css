@@ -1,0 +1,197 @@
+/**
+ * INFO DROPDOWN -- Disclosure inline collapsible per pannelli di aiuto contestuale
+ * Fonte CSS:
+ *   - Skillpress-frontend/elements-ui/css/components/_form-inputs.css righe 75-94
+ *     (.info-btn -- bottone info teal accanto al label)
+ *   - Skillpress-frontend/elements-ui/css/components/_layout-patterns.css righe 1278-1399
+ *     (.info-dropdown* + .info-note*)
+ * Fonte markup: product-page-integration/js/sections/section-1.js righe 148-196
+ * Catalogo elemento: elements-ui/js/buttons/button-info.js (Button Info)
+ *
+ * API consumer (semplificata):
+ *   - Il CMS scrive solo body content dentro .info-dropdown.
+ *   - .info-dropdown-header (titolo + close) viene auto-iniettato da js/info-dropdown.js
+ *     al primo init: il titolo si auto-deriva dalla .label-text adiacente nel
+ *     .label-row del trigger.
+ *   - Override esplicito: se il consumer scrive gia' .info-dropdown-header come
+ *     primo figlio, l'auto-injection viene saltata.
+ *
+ * Material Symbols ('info' nel trigger, 'close' nel close button) sostituiti con
+ * SVG inline: 'info' lato consumer dentro .info-btn, 'close' iniettato dalla JS.
+ */
+
+
+/* ================================================================
+   LABEL ROW -- contenitore inline per label + info-btn
+   ================================================================ */
+.label-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: 0.375rem;
+}
+
+.label-text {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+    line-height: 1.25;
+}
+
+
+/* ================================================================
+   INFO BTN -- trigger minimale con icona info teal
+   ================================================================ */
+.info-btn {
+    color: var(--color-secondary);
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    transition: color var(--transition-fast);
+}
+
+.info-btn:hover {
+    color: var(--color-secondary-dark);
+}
+
+.info-btn:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+.info-btn svg {
+    display: block;
+}
+
+
+/* ================================================================
+   INFO DROPDOWN -- pannello collapsible inline
+   ================================================================ */
+.info-dropdown {
+    max-height: 500px;
+    overflow: visible;
+    opacity: 1;
+    background: var(--color-bg-white);
+    border: 1px solid var(--section-border);
+    border-radius: var(--radius-lg);
+    transition:
+        max-height var(--transition-slow),
+        opacity var(--transition-normal),
+        margin-top var(--transition-slow),
+        margin-bottom var(--transition-slow),
+        border-color var(--transition-normal);
+}
+
+.info-dropdown:not(.hidden) {
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.info-dropdown.hidden {
+    max-height: 0 !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-color: transparent;
+    pointer-events: none;
+}
+
+
+/* ================================================================
+   INFO DROPDOWN HEADER -- titolo + close (auto-iniettato)
+   ================================================================ */
+.info-dropdown-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background-color: rgba(28, 114, 100, 0.1); /* teal 10% */
+    border-top-left-radius: var(--radius-lg);
+    border-top-right-radius: var(--radius-lg);
+}
+
+.info-dropdown-title {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.25;
+}
+
+.info-dropdown-close {
+    color: var(--color-text-muted);
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-top: -0.125rem;
+    display: inline-flex;
+    align-items: center;
+    transition: color var(--transition-fast);
+}
+
+.info-dropdown-close:hover {
+    color: var(--color-text-secondary);
+}
+
+.info-dropdown-close:focus-visible {
+    outline: 2px solid var(--color-text-secondary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+.info-dropdown-close svg {
+    display: block;
+}
+
+
+/* ================================================================
+   INFO DROPDOWN BODY -- corpo (auto-wrappato)
+   ================================================================ */
+.info-dropdown-body {
+    padding: 1rem;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-strong);
+    line-height: 1.625;
+}
+
+.info-dropdown-body > * + * {
+    margin-top: var(--spacing-sm);
+}
+
+.info-dropdown-body ul {
+    margin-left: 1rem;
+    list-style-type: disc;
+}
+
+.info-dropdown-body ul > li + li {
+    margin-top: 0.375rem;
+}
+
+
+/* ================================================================
+   INFO NOTE -- callout giallo opzionale dentro il body
+   ================================================================ */
+.info-note {
+    margin-top: 0.75rem;
+    padding: 0.625rem;
+    background-color: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: var(--radius-sm);
+    color: #92400E;
+}
+
+.info-note-title {
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: 0.25rem;
+}
+
+.info-note-muted {
+    color: var(--color-text-light);
+    margin-top: var(--spacing-sm);
+}
