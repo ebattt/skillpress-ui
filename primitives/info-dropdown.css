@@ -18,25 +18,11 @@
  *
  * Material Symbols ('info' nel trigger, 'close' nel close button) sostituiti con
  * SVG inline: 'info' lato consumer dentro .info-btn, 'close' iniettato dalla JS.
+ *
+ * Dipendenze: .label-row e .label-text sono definite in primitives/form-primitives.css
+ * (consolidamento 2026-04-28). In bundles/demo-minimal.css form-primitives.css deve
+ * precedere info-dropdown.css.
  */
-
-
-/* ================================================================
-   LABEL ROW -- contenitore inline per label + info-btn
-   ================================================================ */
-.label-row {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    margin-bottom: 0.375rem;
-}
-
-.label-text {
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-medium);
-    color: var(--color-text);
-    line-height: 1.25;
-}
 
 
 /* ================================================================

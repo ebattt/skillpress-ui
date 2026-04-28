@@ -1,0 +1,238 @@
+/**
+ * FORM PRIMITIVES -- contenitore form, label, input testo/numero, select, messaggi
+ *
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
+ *   - .form-field                                  L33-35
+ *   - .label-row + .label-text + .label-hint       L41-69
+ *   - .form-input + textarea.form-input            L99-133
+ *   - .form-select                                 L190-223
+ *   - .error-msg + .error-inline + .success-inline L292-329
+ *   - .custom-dims*                                L776-805
+ *   - .nome-ref-row                                L174-184
+ *
+ * Fonte markup verbatim (template literal):
+ *   - product-page-integration/js/sections/section-1.js L76-103, L280-320, L421-466
+ *   - product-page-integration/js/sections/section-6.js L329-343
+ *
+ * Strategia A (CSS-only). I modifier (--error) sono gestiti consumer-side
+ * dal codice di validazione applicativa.
+ *
+ * Material Symbols (icone error/info/check) sostituiti da SVG inline lato consumer.
+ * La freccia del select e' embedded come data:image/svg+xml nel background-image.
+ */
+
+
+/* ================================================================
+   FORM FIELD -- contenitore generico form-field
+   ================================================================ */
+.form-field {
+    position: relative;
+}
+
+
+/* ================================================================
+   LABEL ROW -- contenitore inline per label + info-btn + hint
+   ================================================================ */
+.label-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: 0.375rem;
+}
+
+.label-text {
+    font-size: 0.9375rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+.label-text__required {
+    color: var(--color-error);
+}
+
+.label-text__optional {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-normal);
+}
+
+.label-hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+}
+
+
+/* ================================================================
+   FORM INPUT -- text, number, textarea
+   ================================================================ */
+.form-input {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.375rem 0.625rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-white);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    transition: border-color var(--transition-fast);
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+}
+
+.form-input--error {
+    border-color: var(--color-error-light);
+}
+
+.form-input:disabled {
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+}
+
+textarea.form-input {
+    resize: none;
+}
+
+
+/* ================================================================
+   FORM SELECT -- dropdown nativo con freccia SVG personalizzata
+   ================================================================ */
+.form-select {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.375rem 2.25rem 0.375rem 0.625rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-white);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    overflow: hidden;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 12px 8px;
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+    font-family: inherit;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+}
+
+.form-select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--color-bg-gray-100);
+}
+
+
+/* ================================================================
+   MESSAGGI INLINE -- error / error-inline / success-inline
+   ================================================================ */
+.error-msg {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--color-error);
+    margin-top: var(--spacing-xs);
+}
+
+.error-msg svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.error-inline {
+    font-size: var(--font-size-xs);
+    color: var(--color-error);
+    margin-top: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.error-inline svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.success-inline {
+    font-size: var(--font-size-xs);
+    color: var(--color-success);
+    font-weight: var(--font-weight-medium);
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+}
+
+.success-inline svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+
+/* ================================================================
+   GRIGLIA CUSTOM DIMENSIONS -- larghezza x altezza
+   ================================================================ */
+.custom-dims {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.custom-dims-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.625rem;
+}
+
+.custom-dims-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.custom-dims-label {
+    font-size: 0.9375rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+@media (max-width: 640px) {
+    .custom-dims-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ================================================================
+   GRIGLIA NOME + REFERENTE -- 2 input testo affiancati
+   ================================================================ */
+.nome-ref-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.625rem;
+}
+
+@media (max-width: 640px) {
+    .nome-ref-row {
+        grid-template-columns: 1fr;
+    }
+}
