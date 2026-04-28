@@ -1,0 +1,213 @@
+import '../components/format-card.css';
+
+const aspectRatioIcon = `
+    <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"
+         fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        <path d="M3 9h18 M3 15h18 M9 3v18 M15 3v18"></path>
+    </svg>
+`;
+
+const renderRoot = (innerHTML) => {
+    const root = document.createElement('div');
+    root.style.padding = '1rem 0';
+    root.style.maxWidth = '420px';
+    root.innerHTML = innerHTML;
+    return root;
+};
+
+const verticalGrid = (selected = 'a4') => `
+    <div class="format-cards">
+        <button type="button" class="format-card${selected === 'a4' ? ' format-card--selected' : ''}" data-format="a4">
+            <div class="format-card-preview" style="width: 56px; height: 79px;">
+                <span class="format-card-preview-label">A4</span>
+                <div class="format-card-preview-box">
+                    <span>A4</span>
+                </div>
+            </div>
+            <div class="format-card-text">
+                <div class="format-card-name">A4</div>
+                <div class="format-card-dims">210 × 297 mm</div>
+            </div>
+        </button>
+        <button type="button" class="format-card${selected === 'libro' ? ' format-card--selected' : ''}" data-format="libro">
+            <div class="format-card-preview" style="width: 56px; height: 79px;">
+                <div class="format-card-preview-dashed"></div>
+                <span class="format-card-preview-label format-card-preview-label--faded">A4</span>
+                <div class="format-card-preview-box-inner" style="width: 44px; height: 62px;">
+                    <span style="font-size: 10px;">Libro</span>
+                </div>
+            </div>
+            <div class="format-card-text">
+                <div class="format-card-name">Libro</div>
+                <div class="format-card-dims">165 × 235 mm</div>
+            </div>
+        </button>
+        <button type="button" class="format-card${selected === 'a5' ? ' format-card--selected' : ''}" data-format="a5">
+            <div class="format-card-preview" style="width: 56px; height: 79px;">
+                <div class="format-card-preview-dashed"></div>
+                <span class="format-card-preview-label format-card-preview-label--faded">A4</span>
+                <div class="format-card-preview-box-inner" style="width: 39px; height: 56px;">
+                    <span style="font-size: 10px;">A5</span>
+                </div>
+            </div>
+            <div class="format-card-text">
+                <div class="format-card-name">A5</div>
+                <div class="format-card-dims">148 × 210 mm</div>
+            </div>
+        </button>
+        <button type="button" class="format-card${selected === 'libero' ? ' format-card--selected' : ''}" data-format="libero">
+            <div class="format-card-preview" style="width: 56px; height: 79px;">
+                <div class="format-card-preview-dashed"></div>
+                <span class="format-card-preview-label format-card-preview-label--faded">A4</span>
+                <div class="format-card-preview-custom" style="width: 40px; height: 52px;">
+                    ${aspectRatioIcon}
+                </div>
+            </div>
+            <div class="format-card-text">
+                <div class="format-card-name">Libero</div>
+                <div class="format-card-dims">Custom</div>
+            </div>
+        </button>
+    </div>
+`;
+
+const horizontalGrid = (selected = 'a4') => `
+    <div class="format-cards">
+        <button type="button" class="format-card${selected === 'a4' ? ' format-card--selected' : ''}" data-format="a4">
+            <div class="format-card-preview" style="width: 79px; height: 56px;">
+                <span class="format-card-preview-label">A4</span>
+                <div class="format-card-preview-box">
+                    <span>A4</span>
+                </div>
+            </div>
+            <div class="format-card-text">
+                <div class="format-card-name">A4</div>
+                <div class="format-card-dims">297 × 210 mm</div>
+            </div>
+        </button>
+        <button type="button" class="format-card${selected === 'libro' ? ' format-card--selected' : ''}" data-format="libro">
+            <div class="format-card-preview" style="width: 79px; height: 56px;">
+                <div class="format-card-preview-dashed"></div>
+                <span class="format-card-preview-label format-card-preview-label--faded">A4</span>
+                <div class="format-card-preview-box-inner" style="width: 62px; height: 44px;">
+                    <span style="font-size: 10px;">Libro</span>
+                </div>
+            </div>
+            <div class="format-card-text">
+                <div class="format-card-name">Libro</div>
+                <div class="format-card-dims">235 × 165 mm</div>
+            </div>
+        </button>
+        <button type="button" class="format-card${selected === 'a5' ? ' format-card--selected' : ''}" data-format="a5">
+            <div class="format-card-preview" style="width: 79px; height: 56px;">
+                <div class="format-card-preview-dashed"></div>
+                <span class="format-card-preview-label format-card-preview-label--faded">A4</span>
+                <div class="format-card-preview-box-inner" style="width: 56px; height: 39px;">
+                    <span style="font-size: 10px;">A5</span>
+                </div>
+            </div>
+            <div class="format-card-text">
+                <div class="format-card-name">A5</div>
+                <div class="format-card-dims">210 × 148 mm</div>
+            </div>
+        </button>
+        <button type="button" class="format-card${selected === 'libero' ? ' format-card--selected' : ''}" data-format="libero">
+            <div class="format-card-preview" style="width: 79px; height: 56px;">
+                <div class="format-card-preview-dashed"></div>
+                <span class="format-card-preview-label format-card-preview-label--faded">A4</span>
+                <div class="format-card-preview-custom" style="width: 52px; height: 40px;">
+                    ${aspectRatioIcon}
+                </div>
+            </div>
+            <div class="format-card-text">
+                <div class="format-card-name">Libero</div>
+                <div class="format-card-dims">Custom</div>
+            </div>
+        </button>
+    </div>
+`;
+
+export default {
+    title: 'Components/FormatCard',
+    tags: ['autodocs'],
+    parameters: {
+        layout: 'padded',
+        docs: {
+            description: {
+                component: 'Selection card per scegliere il formato del prodotto. Container `.format-cards` con grid 4 col >=480px e 2 col <480px. Card singola `.format-card` con preview proporzionata (full / box-inner / custom) e testo nome/dimensioni. CSS-only: lo stato selezionato e applicato dal CMS aggiungendo `.format-card--selected`. Geometria preview (width/height) impostata dal CMS via inline style per riflettere orientamento e proporzioni.'
+            }
+        }
+    }
+};
+
+export const Default = {
+    render: () => renderRoot(verticalGrid('a4')),
+    parameters: {
+        docs: {
+            description: {
+                story: '4 card in orientamento verticale (preview 56×79). Card A4 selezionata (preview-box arancio + name arancio + bg highlight).'
+            }
+        }
+    }
+};
+
+export const ReferenceFromElementsUI = {
+    render: () => renderRoot(verticalGrid('a4')),
+    parameters: {
+        docs: {
+            description: {
+                story: 'Markup verbatim derivato da `product-page-integration/js/sections/section-1.js#L199-L266` con `state.orientation === "vertical"` e `formatoChiuso === "a4"`. Le 3 varianti di preview (full box, box-inner dentro dashed, custom con icona) sono tutte visibili.'
+            }
+        }
+    }
+};
+
+export const Horizontal = {
+    render: () => renderRoot(horizontalGrid('a4')),
+    parameters: {
+        docs: {
+            description: {
+                story: 'Stessa griglia ma con `state.orientation === "horizontal"`: preview 79×56, dimensioni testuali invertite. Mostra come la libreria sia indipendente dall\'orientamento (geometria via inline style del CMS).'
+            }
+        }
+    }
+};
+
+export const LiberoSelected = {
+    render: () => renderRoot(verticalGrid('libero')),
+    parameters: {
+        docs: {
+            description: {
+                story: 'Variante "Libero" selezionata: la preview-custom si tinge di `rgba(240,138,0,0.2)` con bordo `--color-primary`. Mostra il behavior di `--selected` sulla preview di tipo custom.'
+            }
+        }
+    }
+};
+
+export const SinglePreviewBox = {
+    render: () => renderRoot(`
+        <div class="format-cards">
+            <button type="button" class="format-card format-card--selected" data-format="a4">
+                <div class="format-card-preview" style="width: 56px; height: 79px;">
+                    <span class="format-card-preview-label">A4</span>
+                    <div class="format-card-preview-box">
+                        <span>A4</span>
+                    </div>
+                </div>
+                <div class="format-card-text">
+                    <div class="format-card-name">A4</div>
+                    <div class="format-card-dims">210 × 297 mm</div>
+                </div>
+            </button>
+        </div>
+    `),
+    parameters: {
+        docs: {
+            description: {
+                story: 'Singola card con preview-box (no dashed, no inner): il caso piu semplice, formato che coincide con il riferimento (A4). Utile per validare la regola di base senza overlay.'
+            }
+        }
+    }
+};

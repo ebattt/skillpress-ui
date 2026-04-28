@@ -1,4 +1,4 @@
-import{t as e}from"./chunk-BvrOYcoh.js";import{t}from"./image-gallery-VrfwpG4P.js";import{t as n}from"./rating-fI1HA7un.js";var r=e((()=>{})),i=e((()=>{})),a,o,s,c,l,u,d,f,p,m,h,g,_,v,y,b,x;e((()=>{n(),t(),r(),i(),a=new URL(``+new URL(`brossurafresata2-BCptX5R_.png`,import.meta.url).href,``+import.meta.url).href,o=new URL(``+new URL(`brossurafresata3-lrTlBnfQ.png`,import.meta.url).href,``+import.meta.url).href,s=`
+import{t as e}from"./chunk-BvrOYcoh.js";import{t}from"./image-gallery-Degwgedr.js";import{t as n}from"./rating-DbGjwd-C.js";var r=e((()=>{})),i=e((()=>{})),a,o,s,c,l,u,d,f,p,m,h,g,_,v,y,b,x;e((()=>{n(),t(),r(),i(),a=new URL(``+new URL(`brossurafresata2-BCptX5R_.png`,import.meta.url).href,``+import.meta.url).href,o=new URL(``+new URL(`brossurafresata3-lrTlBnfQ.png`,import.meta.url).href,``+import.meta.url).href,s=`
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
     </svg>

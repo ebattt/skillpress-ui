@@ -1,0 +1,193 @@
+/**
+ * FORMAT CARD — Composed component (selection card minima per formato prodotto)
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_cards.css righe 30-191
+ * Fonte markup: Skillpress-frontend/product-page-integration/js/sections/section-1.js righe 199-266
+ * Target demo: product-page-integration (sezione configuratore step 1, formato chiuso)
+ * Data estrazione: 2026-04-28
+ *
+ * CSS-only. Nessun behavior libreria: il CMS sposta il modifier `--selected`
+ * sull'elemento `.format-card`, come per le altre primitive del configuratore
+ * (mode-switcher, option-buttons, orientation-toggle).
+ *
+ * Geometria preview: la pagina demo passa width/height inline su
+ * `.format-card-preview` (e sui sub-element box-inner / custom) per riflettere
+ * orientamento e proporzioni. La libreria espone solo CSS.
+ *
+ * Material Symbols (icona `aspect_ratio` nella variante Libero) NON inclusi:
+ * il consumer/CMS sostituisce con SVG inline come per ModeSwitcher.
+ *
+ * Il valore letterale `#374151` (hover su preview-box / box-inner) coincide
+ * con `--color-text-strong` del token set ma viene mantenuto letterale per
+ * fedelta al catalogo elements-ui.
+ *
+ * Fuori scope (non implementato qui):
+ * - varianti scrollable orizzontali (`.format-cards-scroll`, `.format-cards-arrow`);
+ * - espansione (`.format-card--show-more`, `.format-cards-hidden`);
+ * - stato disabilitato condiviso (`.format-card.option-disabled`);
+ * - famiglia SelectionCard estesa (.paper-card, .visual-card, .effect-card, .angolo-card);
+ * - js/format-card.js (toggle stato consumer-side).
+ */
+
+/* Container griglia formati */
+.format-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+}
+
+@media (max-width: 479px) {
+    .format-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Card singola formato */
+.format-card {
+    min-width: 0;
+    padding: 0.625rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-bg-gray-200);
+    background-color: var(--color-bg-white);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: inherit;
+}
+
+.format-card:hover {
+    border-color: var(--color-border);
+}
+
+.format-card--selected {
+    background-color: var(--selection-highlight-bg);
+    border-color: var(--color-primary);
+}
+
+/* Preview formato (anteprima visiva) */
+.format-card-preview {
+    position: relative;
+    margin: 0 auto var(--spacing-sm);
+    transition: all var(--transition-fast);
+}
+
+.format-card-preview-label {
+    position: absolute;
+    top: 0.125rem;
+    left: var(--spacing-xs);
+    font-size: 7px;
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-bold);
+}
+
+.format-card-preview-label--faded {
+    color: var(--color-border);
+}
+
+/* Box interno preview (sfondo scuro con testo bianco) */
+.format-card-preview-box {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-text);
+}
+
+.format-card--selected .format-card-preview-box {
+    background-color: var(--color-primary);
+}
+
+.format-card:hover .format-card-preview-box {
+    background-color: #374151;
+}
+
+.format-card--selected:hover .format-card-preview-box {
+    background-color: var(--color-primary);
+}
+
+/* Box interno per formati aperti (preview proporzionato dentro dashed) */
+.format-card-preview-box-inner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 0.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-text);
+}
+
+.format-card--selected .format-card-preview-box-inner {
+    background-color: var(--color-primary);
+}
+
+.format-card:hover .format-card-preview-box-inner {
+    background-color: #374151;
+}
+
+.format-card--selected:hover .format-card-preview-box-inner {
+    background-color: var(--color-primary);
+}
+
+/* Testo dimensioni in preview */
+.format-card-preview-box span,
+.format-card-preview-box-inner span {
+    color: var(--color-bg-white);
+    font-weight: var(--font-weight-bold);
+    font-size: 11px;
+}
+
+/* Bordo tratteggiato per formato comparativo / libero */
+.format-card-preview-dashed {
+    position: absolute;
+    inset: 0;
+    border: 1px dashed var(--color-border);
+    border-radius: 0.125rem;
+}
+
+/* Preview formato custom */
+.format-card-preview-custom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 0.125rem;
+    border: 1px dashed var(--color-text-muted);
+    background-color: var(--color-bg-gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.format-card--selected .format-card-preview-custom {
+    border-color: var(--color-primary);
+    background-color: rgba(240, 138, 0, 0.2);
+}
+
+.format-card:hover .format-card-preview-custom {
+    background-color: var(--color-bg-gray-200);
+}
+
+.format-card--selected:hover .format-card-preview-custom {
+    background-color: rgba(240, 138, 0, 0.2);
+}
+
+/* Testo card formato */
+.format-card-text {
+    text-align: center;
+}
+
+.format-card-name {
+    color: var(--color-text);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+}
+
+.format-card--selected .format-card-name {
+    color: var(--color-primary);
+}
+
+.format-card-dims {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+    margin-top: 0.125rem;
+}

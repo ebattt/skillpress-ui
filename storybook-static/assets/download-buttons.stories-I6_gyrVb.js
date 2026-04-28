@@ -1,4 +1,4 @@
-import{t as e}from"./chunk-BvrOYcoh.js";var t=e((()=>{})),n=e((()=>{})),r,i,a,o,s,c;e((()=>{t(),n(),r={title:`Primitives/DownloadButtons`},i=()=>{let e=document.createElement(`div`);return e.innerHTML=`
+import{t as e}from"./chunk-BvrOYcoh.js";import{t}from"./tokens-Ddq7tPyK.js";var n=e((()=>{})),r,i,a,o,s,c;e((()=>{t(),n(),r={title:`Primitives/DownloadButtons`},i=()=>{let e=document.createElement(`div`);return e.innerHTML=`
         <div class="sidebar-download-divider"></div>
         <div class="config-download-btns">
             <a class="config-download-btn" href="#istruzioni-placeholder" target="_blank" rel="noopener">

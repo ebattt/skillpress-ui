@@ -1,4 +1,4 @@
-import{t as e}from"./chunk-BvrOYcoh.js";import{t}from"./rating-fI1HA7un.js";var n,r,i,a,o,s,c,l;e((()=>{t(),n=(e=100)=>{let t=document.createElement(`div`);return t.style.display=`inline-flex`,t.style.alignItems=`center`,t.style.gap=`0.625rem`,t.innerHTML=`
+import{t as e}from"./chunk-BvrOYcoh.js";import{t}from"./rating-DbGjwd-C.js";var n,r,i,a,o,s,c,l;e((()=>{t(),n=(e=100)=>{let t=document.createElement(`div`);return t.style.display=`inline-flex`,t.style.alignItems=`center`,t.style.gap=`0.625rem`,t.innerHTML=`
         <div class="stars-outer">
             <div class="stars-empty">
                 <span class="star-icon">&#9733;</span>
