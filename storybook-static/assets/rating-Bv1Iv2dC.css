@@ -1,0 +1,1 @@
+.stars-outer{line-height:1;display:inline-block;position:relative}.stars-empty{gap:2px;line-height:1;display:flex}.stars-filled{white-space:nowrap;gap:2px;line-height:1;display:flex;position:absolute;top:0;left:0;overflow:hidden}.star-icon{color:var(--color-bg-gray-200);font-size:16px;line-height:1;display:inline-block}.stars-filled .star-icon{color:var(--color-primary)}
