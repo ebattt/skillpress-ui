@@ -1,0 +1,278 @@
+/**
+ * SIDEBAR TOTALS — Composed component (sidebar configuratore: totale + promo + riepilogo + carrello)
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css righe 189-246, 249-272, 324-341, 344-365, 367-418
+ *           + Skillpress-frontend/elements-ui/css/components/_buttons.css righe 29-55 (.add-to-cart-btn), 261-285 (.riepilogo-btn)
+ * Fonte markup: Skillpress-frontend/product-page-integration/index.html righe 202-249
+ * Catalogo dichiarazione: Skillpress-frontend/elements-ui/js/layout-patterns/sidebar-summary.js
+ * Target demo: product-page-integration (sidebar configuratore desktop)
+ * Data estrazione: 2026-04-28
+ *
+ * CSS-only. Nessun behavior libreria.
+ *
+ * Il toggle riepilogo (`.riepilogo-btn[aria-expanded]` -> `.riepilogo-content` show/hide) e'
+ * consumer-side wire-up: la libreria espone `display: none` di default e lascia al consumer/CMS
+ * lo swap su click. Stessa convenzione di ModeSwitcher / OptionButtons / FormatCard / PriceTable.
+ *
+ * Material Symbols (`list`, `expand_more`, `shopping_cart`) NON inclusi: il consumer/CMS usa
+ * SVG inline 18x18 currentColor. Le regole CSS sulle icone sono tradotte da
+ * `.material-symbols-outlined` a `svg`, mantenendo dimensione 1.125rem.
+ *
+ * Fuori scope (non implementato qui):
+ * - aggiornamento valori `Quantita` / `Miglior prezzo` / `Imposta` / `Totale` (business logic configuratore);
+ * - generazione HTML riepilogo dentro `.riepilogo-content`;
+ * - validazione promo / errori `#validationErrors`;
+ * - click bottone carrello;
+ * - variante BEM `.sidebar-box*`, alias `.sidebar-total-price`, `.sidebar-total-iva`,
+ *   `.product-sidebar` (non referenziati dalla pagina demo);
+ * - `.sidebar-download-divider` + `.config-download-btns` + `.config-download-btn`
+ *   (gia' coperti da `primitives/download-buttons.css`).
+ */
+
+/* ================================================================
+   SIDEBAR CONTAINER (sticky desktop / hidden mobile sotto 1024px)
+   ================================================================ */
+.configurator-sidebar {
+    height: fit-content;
+    align-self: flex-start;
+}
+
+@media (min-width: 1024px) {
+    .configurator-sidebar {
+        position: sticky;
+        top: 250px;
+        margin-top: 100px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .configurator-sidebar {
+        display: none !important;
+    }
+}
+
+/* ================================================================
+   BOX TOTALE
+   ================================================================ */
+.sidebar-total-box {
+    background-color: var(--color-bg-gray-50);
+    border-radius: var(--radius-xl);
+    padding: 1rem;
+}
+
+.sidebar-total-box > * + * {
+    margin-top: 0.75rem;
+}
+
+.sidebar-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.025em;
+}
+
+/* ================================================================
+   RIGHE TOTALE
+   ================================================================ */
+.sidebar-rows {
+    font-size: 0.9375rem;
+}
+
+.sidebar-rows > * + * {
+    margin-top: 0.375rem;
+}
+
+.sidebar-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar-row-label {
+    color: var(--color-text-secondary);
+}
+
+.sidebar-row-value {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+}
+
+.sidebar-row--green {
+    color: #16A34A;
+}
+
+.sidebar-row--green .sidebar-row-label {
+    font-weight: var(--font-weight-medium);
+    color: #16A34A;
+}
+
+.sidebar-row--green .sidebar-row-value {
+    color: #16A34A;
+}
+
+.sidebar-divider {
+    margin: 0.75rem 0;
+    border-top: 1px solid #D1D5DB;
+}
+
+/* ================================================================
+   TOTALE EVIDENZIATO
+   ================================================================ */
+.sidebar-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.sidebar-total-label {
+    font-size: 1.0625rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+}
+
+.sidebar-total-value {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+}
+
+/* ================================================================
+   PROMO INPUT
+   ================================================================ */
+.promo-section label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+    margin-bottom: 0.375rem;
+}
+
+.promo-input {
+    width: 100%;
+    border: 1px solid #D1D5DB;
+    border-radius: var(--radius-lg);
+    padding: 0.5rem 0.75rem;
+    font-size: var(--font-size-sm);
+    background-color: #ffffff;
+}
+
+.promo-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-primary);
+    border-color: transparent;
+}
+
+/* ================================================================
+   RIEPILOGO TOGGLE + CONTENT
+   ================================================================ */
+.riepilogo-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.riepilogo-section label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+    margin-bottom: 0.375rem;
+}
+
+.riepilogo-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.625rem 1rem;
+    background-color: rgba(28, 114, 100, 0.08);
+    color: var(--color-secondary);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+    border-radius: var(--radius-lg);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.riepilogo-btn:hover {
+    background-color: rgba(28, 114, 100, 0.15);
+}
+
+.riepilogo-btn svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+}
+
+.riepilogo-content {
+    margin-top: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: var(--font-size-xs);
+    color: #374151;
+    background-color: var(--color-bg-gray-75);
+    border-radius: var(--radius-lg);
+    padding: 0.75rem;
+    display: none;
+}
+
+.riepilogo-content > * + * {
+    margin-top: 0.5rem;
+}
+
+/* ================================================================
+   RIEPILOGO UTILITY CLASSES (CMS injection helpers)
+   ================================================================ */
+.riepilogo-row {
+    padding-left: 0.75rem;
+}
+
+.riepilogo-indent {
+    padding-left: 1.5rem;
+    color: var(--color-text-secondary);
+}
+
+.riepilogo-section-header {
+    font-weight: var(--font-weight-bold);
+    color: #1f2937;
+}
+
+.riepilogo-empty {
+    text-align: center;
+    color: var(--color-text-light);
+    padding: 1rem;
+}
+
+/* ================================================================
+   ADD TO CART BUTTON (sidebar desktop)
+   ================================================================ */
+.add-to-cart-btn {
+    width: 100%;
+    background-color: var(--color-secondary-dark);
+    color: #ffffff;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-lg);
+    border: none;
+    cursor: pointer;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--color-secondary-light);
+    box-shadow: var(--shadow-xl);
+}
+
+.add-to-cart-btn svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+}
