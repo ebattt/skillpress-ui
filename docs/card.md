@@ -18,7 +18,7 @@ Superficie contenitore generica per blocchi informativi o selezionabili: bordo, 
 
 ```text
 Card
-└── .card   [--interactive | --selected | .is-disabled]
+└── .card   [--interactive | --selected | --disabled]
     ├── .card__media     (opzionale, immagine/picture full-width)
     ├── .card__header    (opzionale, eyebrow + titolo)
     │   ├── .card__eyebrow
@@ -70,7 +70,7 @@ Con slot opzionali (header, body, footer):
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.card` | shell della superficie, applica bordo/radius/background | yes | `--interactive`, `--selected` |
+| `.card` | shell della superficie, applica bordo/radius/background | yes | `--interactive`, `--selected`, `--disabled` |
 | `.card__media` | wrapper immagine full-width | no | — |
 | `.card__header` | header flex con eyebrow + titolo | no | — |
 | `.card__body` | slot principale, flex 1 | no | — |
@@ -79,7 +79,6 @@ Con slot opzionali (header, body, footer):
 | `.card__description` | descrizione testuale, color secondary | no | — |
 | `.card__eyebrow` | label sopra-testo, font-size xs | no | — |
 | `.card__actions` | slot ripetibile per Button o link | no | — |
-| `.is-disabled` | stato disabilitato (opacity 0.55, no hover) | no | — |
 
 Almeno uno tra `.card__body`, `.card__header` o contenuto equivalente deve essere presente.
 

@@ -114,13 +114,13 @@
     box-shadow: 0 0 0 1px var(--selection-highlight-border);
 }
 
-.card.is-disabled,
+.card--disabled,
 .card[aria-disabled="true"] {
     opacity: 0.55;
     cursor: not-allowed;
 }
 
-.card--interactive.is-disabled:hover,
+.card--interactive.card--disabled:hover,
 .card--interactive[aria-disabled="true"]:hover {
     transform: none;
     box-shadow: none;

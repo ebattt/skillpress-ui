@@ -59,20 +59,20 @@ const productBoxes = [
 ];
 
 const renderStars = (percent = 97) => `
-    <div class="stars-outer">
-        <div class="stars-empty">
-            <span class="star-icon">&#9733;</span>
-            <span class="star-icon">&#9733;</span>
-            <span class="star-icon">&#9733;</span>
-            <span class="star-icon">&#9733;</span>
-            <span class="star-icon">&#9733;</span>
+    <div class="rating">
+        <div class="rating__empty">
+            <span class="rating__star">&#9733;</span>
+            <span class="rating__star">&#9733;</span>
+            <span class="rating__star">&#9733;</span>
+            <span class="rating__star">&#9733;</span>
+            <span class="rating__star">&#9733;</span>
         </div>
-        <div class="stars-filled" style="width: ${percent}%;">
-            <span class="star-icon">&#9733;</span>
-            <span class="star-icon">&#9733;</span>
-            <span class="star-icon">&#9733;</span>
-            <span class="star-icon">&#9733;</span>
-            <span class="star-icon">&#9733;</span>
+        <div class="rating__filled" style="width: ${percent}%;">
+            <span class="rating__star">&#9733;</span>
+            <span class="rating__star">&#9733;</span>
+            <span class="rating__star">&#9733;</span>
+            <span class="rating__star">&#9733;</span>
+            <span class="rating__star">&#9733;</span>
         </div>
     </div>
 `;

@@ -7,7 +7,7 @@ const renderCard = ({
     disabled = false
 } = {}) => {
     const root = document.createElement('div');
-    const classes = ['card', variantClasses, disabled ? 'is-disabled' : ''].filter(Boolean).join(' ');
+    const classes = ['card', variantClasses, disabled ? 'card--disabled' : ''].filter(Boolean).join(' ');
     const disabledAttr = disabled ? ' aria-disabled="true"' : '';
 
     root.innerHTML = `

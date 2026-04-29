@@ -33,7 +33,7 @@ ProductHero
 │           ├── hero-title               (h1, font-size 3xl, bold)
 │           ├── hero-rating              (flex row, gap 0.625rem)
 │           │   ├── hero-rating-value    (numero, semibold)
-│           │   ├── stars-outer          (Rating — vedi doc dedicato)
+│           │   ├── rating               (Rating — vedi doc dedicato)
 │           │   └── hero-review-count    (testo recensioni, text-light)
 │           ├── hero-description         (p, font-size sm, text-secondary)
 │           └── feature-grid             (FeatureBox — vedi doc dedicato)
@@ -61,9 +61,9 @@ Markup verbatim dalla pagina demo `product-page-integration/index.html#L400-L499
             <h1 class="hero-title">Brossura fresata</h1>
             <div class="hero-rating">
                 <span class="hero-rating-value">4.85</span>
-                <div class="stars-outer">
-                    <div class="stars-empty"><span class="star-icon">&#9733;</span><span class="star-icon">&#9733;</span><span class="star-icon">&#9733;</span><span class="star-icon">&#9733;</span><span class="star-icon">&#9733;</span></div>
-                    <div class="stars-filled" style="width: 97%;"><span class="star-icon">&#9733;</span><span class="star-icon">&#9733;</span><span class="star-icon">&#9733;</span><span class="star-icon">&#9733;</span><span class="star-icon">&#9733;</span></div>
+                <div class="rating">
+                    <div class="rating__empty"><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span></div>
+                    <div class="rating__filled" style="width: 97%;"><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span></div>
                 </div>
                 <span class="hero-review-count">52 recensioni</span>
             </div>
@@ -77,7 +77,7 @@ Markup verbatim dalla pagina demo `product-page-integration/index.html#L400-L499
 ```
 
 Inline style data-driven:
-- `style="width: 97%;"` su `.stars-filled` calcolato come `(rating / 5) * 100`.
+- `style="width: 97%;"` su `.rating__filled` calcolato come `(rating / 5) * 100`.
 - `data-images` su `.hero-image-container`: array JSON, consumato dal behavior demo, non dalla libreria.
 
 ## API Reference
@@ -96,7 +96,7 @@ ProductHero espone le sole classi di sezione. Le classi di galleria, rating e fe
 | `.hero-description` | paragrafo descrizione, font-size sm, color text-secondary | yes | — |
 
 Per `.hero-image-gallery`, `.hero-image-container`, `.product-shadow`, `.hero-nav-btn*` vedi `image-gallery.md`.
-Per `.stars-outer`, `.stars-empty`, `.stars-filled`, `.star-icon` vedi `rating.md`.
+Per `.rating`, `.rating__empty`, `.rating__filled`, `.rating__star` vedi `rating.md`.
 Per `.feature-grid`, `.feature-box*` vedi `feature-box.md`.
 
 Attributi:
@@ -107,7 +107,7 @@ Attributi:
 | `id="mainProductImage"` | `<img>` | no | Compatibilita' con behavior demo. |
 | `id="prevImageBtn"` / `id="nextImageBtn"` | bottoni nav | no | Compatibilita' con behavior demo. |
 | `data-images` | `.hero-image-container` | no | Array JSON CMS, non letto dalla libreria. |
-| `style="width: NN%;"` | `.stars-filled` | yes | Percentuale calcolata `(rating / 5) * 100`. |
+| `style="width: NN%;"` | `.rating__filled` | yes | Percentuale calcolata `(rating / 5) * 100`. |
 
 ## Installation
 
@@ -150,7 +150,7 @@ Nessun script JS richiesto dalla libreria.
 ## Note CMS
 
 - titolo prodotto: contenuto di `.hero-title`.
-- rating: settare `.hero-rating-value` (numero), `style="width: NN%;"` su `.stars-filled` e `.hero-review-count` (testo).
+- rating: settare `.hero-rating-value` (numero), `style="width: NN%;"` su `.rating__filled` e `.hero-review-count` (testo).
 - descrizione: contenuto di `.hero-description`.
 - feature grid: ripetere `.feature-box` × N dentro `.feature-grid` secondo contratto FeatureBox.
 - immagini: settare `src`/`alt` dell'`<img>` principale e popolare `data-images` con l'array JSON delle immagini disponibili.

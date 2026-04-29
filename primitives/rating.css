@@ -4,31 +4,31 @@
  * Estratta da components/product-hero.css per riuso (product-page, related products, blog reviews, dashboard).
  *
  * Contratto markup verbatim dalla pagina demo:
- *   <div class="stars-outer">
- *     <div class="stars-empty">     -> 5 stelle vuote (color gray-200)
- *       <span class="star-icon">★</span> ...
+ *   <div class="rating">
+ *     <div class="rating__empty">     -> 5 stelle vuote (color gray-200)
+ *       <span class="rating__star">★</span> ...
  *     </div>
- *     <div class="stars-filled" style="width: NN%;">  -> overlay clip via width
- *       <span class="star-icon">★</span> ...
+ *     <div class="rating__filled" style="width: NN%;">  -> overlay clip via width
+ *       <span class="rating__star">★</span> ...
  *     </div>
  *   </div>
  *
  * La percentuale = (rating / 5) * 100. Inline style sulla larghezza per data-driven CMS.
  */
 
-.stars-outer {
+.rating {
     position: relative;
     display: inline-block;
     line-height: 1;
 }
 
-.stars-empty {
+.rating__empty {
     display: flex;
     gap: 2px;
     line-height: 1;
 }
 
-.stars-filled {
+.rating__filled {
     position: absolute;
     top: 0;
     left: 0;
@@ -39,13 +39,13 @@
     white-space: nowrap;
 }
 
-.star-icon {
+.rating__star {
     display: inline-block;
     color: var(--color-bg-gray-200);
     font-size: 16px;
     line-height: 1;
 }
 
-.stars-filled .star-icon {
+.rating__filled .rating__star {
     color: var(--color-primary);
 }

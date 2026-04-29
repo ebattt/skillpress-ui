@@ -7,20 +7,20 @@ const renderRating = (percent = 100) => {
     root.style.alignItems = 'center';
     root.style.gap = '0.625rem';
     root.innerHTML = `
-        <div class="stars-outer">
-            <div class="stars-empty">
-                <span class="star-icon">&#9733;</span>
-                <span class="star-icon">&#9733;</span>
-                <span class="star-icon">&#9733;</span>
-                <span class="star-icon">&#9733;</span>
-                <span class="star-icon">&#9733;</span>
+        <div class="rating">
+            <div class="rating__empty">
+                <span class="rating__star">&#9733;</span>
+                <span class="rating__star">&#9733;</span>
+                <span class="rating__star">&#9733;</span>
+                <span class="rating__star">&#9733;</span>
+                <span class="rating__star">&#9733;</span>
             </div>
-            <div class="stars-filled" style="width: ${percent}%;">
-                <span class="star-icon">&#9733;</span>
-                <span class="star-icon">&#9733;</span>
-                <span class="star-icon">&#9733;</span>
-                <span class="star-icon">&#9733;</span>
-                <span class="star-icon">&#9733;</span>
+            <div class="rating__filled" style="width: ${percent}%;">
+                <span class="rating__star">&#9733;</span>
+                <span class="rating__star">&#9733;</span>
+                <span class="rating__star">&#9733;</span>
+                <span class="rating__star">&#9733;</span>
+                <span class="rating__star">&#9733;</span>
             </div>
         </div>
     `;
@@ -41,20 +41,20 @@ const renderScale = () => {
         const percent = (rating / 5) * 100;
         row.innerHTML = `
             <span style="min-width: 3rem; font-weight: 600;">${rating.toFixed(2)}</span>
-            <div class="stars-outer">
-                <div class="stars-empty">
-                    <span class="star-icon">&#9733;</span>
-                    <span class="star-icon">&#9733;</span>
-                    <span class="star-icon">&#9733;</span>
-                    <span class="star-icon">&#9733;</span>
-                    <span class="star-icon">&#9733;</span>
+            <div class="rating">
+                <div class="rating__empty">
+                    <span class="rating__star">&#9733;</span>
+                    <span class="rating__star">&#9733;</span>
+                    <span class="rating__star">&#9733;</span>
+                    <span class="rating__star">&#9733;</span>
+                    <span class="rating__star">&#9733;</span>
                 </div>
-                <div class="stars-filled" style="width: ${percent}%;">
-                    <span class="star-icon">&#9733;</span>
-                    <span class="star-icon">&#9733;</span>
-                    <span class="star-icon">&#9733;</span>
-                    <span class="star-icon">&#9733;</span>
-                    <span class="star-icon">&#9733;</span>
+                <div class="rating__filled" style="width: ${percent}%;">
+                    <span class="rating__star">&#9733;</span>
+                    <span class="rating__star">&#9733;</span>
+                    <span class="rating__star">&#9733;</span>
+                    <span class="rating__star">&#9733;</span>
+                    <span class="rating__star">&#9733;</span>
                 </div>
             </div>
             <span style="color: var(--color-text-light); font-size: var(--font-size-sm);">${Math.round(percent)}%</span>
@@ -70,7 +70,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: 'Rating CSS-only a stelle sovrapposte. La percentuale di riempimento viene controllata via inline style sulla larghezza di .stars-filled. Calcolo: (rating / 5) * 100.'
+                component: 'Rating CSS-only a stelle sovrapposte. La percentuale di riempimento viene controllata via inline style sulla larghezza di .rating__filled. Calcolo: (rating / 5) * 100.'
             }
         }
     }
@@ -79,7 +79,7 @@ export default {
 export const Default = {
     render: () => renderRating(97),
     play: async ({ canvasElement }) => {
-        const filled = canvasElement.querySelector('.stars-filled');
+        const filled = canvasElement.querySelector('.rating__filled');
         await expect(filled).toBeTruthy();
         await expect(filled.style.width).toBe('97%');
     }

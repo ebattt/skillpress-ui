@@ -7,7 +7,7 @@
  *
  * Dipende da:
  *   - components/image-gallery.css (.hero-image-gallery, .hero-image-container, .hero-nav-btn*)
- *   - primitives/rating.css         (.stars-outer, .stars-empty, .stars-filled, .star-icon)
+ *   - primitives/rating.css         (.rating, .rating__empty, .rating__filled, .rating__star)
  *   - components/feature-box.css    (.feature-grid, .feature-box*)
  *
  * Contratto markup statico (Strategia A):
