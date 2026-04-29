@@ -16,6 +16,23 @@ Gruppo di bottoni inline per selezione esclusiva di un'opzione tra N (formati, g
 
 > Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Root rinominato da `.option-btns-wrap` -> `.option-buttons`; sub-element `option-btn` -> `option-buttons__btn`. Nessun hook `data-*` (componente CSS-only, toggle consumer-side).
 
+## ChoiceGroup
+
+`ChoiceGroup` e' il nome concettuale CMS per questo pattern: scelta testuale
+mutuamente esclusiva. In codice runtime oggi si usa `OptionButtons` senza
+nuovo CSS.
+
+Esempi CMS:
+
+| Dato CMS | Presentation type | Runtime |
+|---|---|---|
+| Grammatura | Choice group | `.option-buttons` |
+| Controllo file | Choice group | `.option-buttons` |
+| Copia Green Si/No | Choice group | `.option-buttons` |
+
+Non creare componenti dedicati come `GrammaturaButton` se cambia solo il nome
+della variante CMS.
+
 ## Anatomy
 
 ```text

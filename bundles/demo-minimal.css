@@ -27,3 +27,6 @@
 @import '../primitives/form-controls.css';
 @import '../primitives/iva-banner.css';
 @import '../primitives/info-dropdown.css';
+@import '../components/paper-preview.css';
+@import '../components/media-choice-card.css';
+@import '../components/content-tabs.css';
