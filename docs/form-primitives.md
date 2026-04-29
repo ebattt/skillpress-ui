@@ -16,7 +16,7 @@ Set di primitive form fondamentali: contenitore `.form-field`, label (con varian
 `required` / `optional` / `hint` / `info-btn`), input testo/numero (`.form-input` +
 `--error`/`:disabled`), select nativo con freccia SVG embedded (`.form-select`),
 messaggi inline (`.error-msg`, `.error-inline`, `.success-inline`) e due griglie
-helper specifiche del configuratore (`.custom-dims*`, `.nome-ref-row`).
+helper specifiche del configuratore (`.custom-dims` + `.custom-dims__grid/field/label`, `.nome-ref-row`).
 
 Strategia A (CSS-only). Validazione, swap modifier `--error`, render messaggi
 sono responsabilita' del consumer / backend.
@@ -70,9 +70,9 @@ sono responsabilita' del consumer / backend.
 | Classe | Note |
 |---|---|
 | `.custom-dims` | wrapper flex column gap sm |
-| `.custom-dims-grid` | grid 2 col, single col `<= 640px` |
-| `.custom-dims-field` | colonna grid (label + input) |
-| `.custom-dims-label` | label 15px medium (alias di `.label-text` per nome semantico) |
+| `.custom-dims__grid` | grid 2 col, single col `<= 640px` |
+| `.custom-dims__field` | colonna grid (label + input) |
+| `.custom-dims__label` | label 15px medium (alias di `.label-text` per nome semantico) |
 | `.nome-ref-row` | grid 2 col per nome + referente, single col `<= 640px` |
 | `.qty-iva-row` | grid wrapper Step 6 (qty + IVA), gap 0.625rem |
 | `.qty-iva-row--single` | 1 colonna |
@@ -132,12 +132,12 @@ Custom dims grid:
 ```html
 <div class="custom-dims">
     <label class="label-text">Dimensioni personalizzate (mm)</label>
-    <div class="custom-dims-grid">
-        <div class="custom-dims-field">
+    <div class="custom-dims__grid">
+        <div class="custom-dims__field">
             <label class="label-text">Larghezza</label>
             <input type="number" class="form-input" min="100" max="330"/>
         </div>
-        <div class="custom-dims-field">
+        <div class="custom-dims__field">
             <label class="label-text">Altezza</label>
             <input type="number" class="form-input" min="100" max="480"/>
         </div>
@@ -226,5 +226,5 @@ Nome-ref-row con required + optional:
 - `.nome-lavoro-section`, `.nome-lavoro-input*`: alias step-6-specifici di
   `.form-input`.
 - `.plastificazione-*`: layout finitura-specifico.
-- `.option-disabled`: appartiene al pattern radio/checkbox.
+- `.radio-option--disabled`: appartiene al pattern radio/checkbox.
 - `.validation-errors`: block-level error summary, edge case bassa priorita'.

@@ -18,9 +18,9 @@ Bottoni outline arancioni per scaricare documenti associati al prodotto (istruzi
 
 ```text
 DownloadButtons
-├── sidebar-download-divider   (border-top separator)
-└── config-download-btns       (flex row, gap 0.5rem)
-    └── config-download-btn × N  (<a>, outline arancione)
+├── download-buttons__divider   (border-top separator)
+└── download-buttons            (flex row, gap 0.5rem)
+    └── download-buttons__btn × N  (<a>, outline arancione)
 ```
 
 ## Markup contract
@@ -30,12 +30,12 @@ Markup verbatim da `product-page-integration/index.html#L250-L260`.
 ```html
 <!-- NOTA CMS: Link download per istruzioni e template del prodotto.
      Se il prodotto non ha istruzioni/template, il CMS omette questa sezione. -->
-<div class="sidebar-download-divider"></div>
-<div class="config-download-btns">
-    <a class="config-download-btn" href="#istruzioni-placeholder" target="_blank" rel="noopener">
+<div class="download-buttons__divider"></div>
+<div class="download-buttons">
+    <a class="download-buttons__btn" href="#istruzioni-placeholder" target="_blank" rel="noopener">
         Istruzioni
     </a>
-    <a class="config-download-btn" href="#template-placeholder" target="_blank" rel="noopener">
+    <a class="download-buttons__btn" href="#template-placeholder" target="_blank" rel="noopener">
         Template
     </a>
 </div>
@@ -45,9 +45,9 @@ Markup verbatim da `product-page-integration/index.html#L250-L260`.
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.sidebar-download-divider` | divider orizzontale sopra i bottoni | no | — |
-| `.config-download-btns` | flex container per i bottoni | yes | — |
-| `.config-download-btn` | singolo bottone download (elemento `<a>`) | yes | — |
+| `.download-buttons__divider` | divider orizzontale sopra i bottoni | no | — |
+| `.download-buttons` | flex container per i bottoni | yes | — |
+| `.download-buttons__btn` | singolo bottone download (elemento `<a>`) | yes | — |
 
 ## Installation
 
@@ -77,13 +77,13 @@ Nessun script JS richiesto.
 `--color-primary`, `--color-bg-gray-200`, `--radius-lg`, `--font-size-sm`, `--font-weight-semibold`, `--transition-fast`.
 
 Valore letterale mantenuto dal catalogo:
-- `rgba(240, 138, 0, 0.1)` su `.config-download-btn` background e hover.
+- `rgba(240, 138, 0, 0.1)` su `.download-buttons__btn` background e hover.
 
 ## Note CMS
 
-- il CMS decide quanti `<a class="config-download-btn">` rendere (0, 1, 2, 3...); se zero, omettere l'intero blocco incluso il divider.
+- il CMS decide quanti `<a class="download-buttons__btn">` rendere (0, 1, 2, 3...); se zero, omettere l'intero blocco incluso il divider.
 - `href`, `target`, testo del bottone sono iniettati dal backend.
-- il divider `.sidebar-download-divider` e' opzionale: se i bottoni non sono sotto la sidebar total box, puo' essere omesso.
+- il divider `.download-buttons__divider` e' opzionale: se i bottoni non sono sotto la sidebar total box, puo' essere omesso.
 
 ## Out of scope
 

@@ -21,54 +21,54 @@ const renderRoot = (innerHTML) => {
 const verticalGrid = (selected = 'a4') => `
     <div class="format-cards">
         <button type="button" class="format-card${selected === 'a4' ? ' format-card--selected' : ''}" data-format="a4">
-            <div class="format-card-preview" style="width: 56px; height: 79px;">
-                <span class="format-card-preview-label">A4</span>
-                <div class="format-card-preview-box">
+            <div class="format-card__preview" style="width: 56px; height: 79px;">
+                <span class="format-card__preview-label">A4</span>
+                <div class="format-card__preview-box">
                     <span>A4</span>
                 </div>
             </div>
-            <div class="format-card-text">
-                <div class="format-card-name">A4</div>
-                <div class="format-card-dims">210 × 297 mm</div>
+            <div class="format-card__text">
+                <div class="format-card__name">A4</div>
+                <div class="format-card__dims">210 × 297 mm</div>
             </div>
         </button>
         <button type="button" class="format-card${selected === 'libro' ? ' format-card--selected' : ''}" data-format="libro">
-            <div class="format-card-preview" style="width: 56px; height: 79px;">
-                <div class="format-card-preview-dashed"></div>
-                <span class="format-card-preview-label format-card-preview-label--faded">A4</span>
-                <div class="format-card-preview-box-inner" style="width: 44px; height: 62px;">
+            <div class="format-card__preview" style="width: 56px; height: 79px;">
+                <div class="format-card__preview-dashed"></div>
+                <span class="format-card__preview-label format-card__preview-label--faded">A4</span>
+                <div class="format-card__preview-inner" style="width: 44px; height: 62px;">
                     <span style="font-size: 10px;">Libro</span>
                 </div>
             </div>
-            <div class="format-card-text">
-                <div class="format-card-name">Libro</div>
-                <div class="format-card-dims">165 × 235 mm</div>
+            <div class="format-card__text">
+                <div class="format-card__name">Libro</div>
+                <div class="format-card__dims">165 × 235 mm</div>
             </div>
         </button>
         <button type="button" class="format-card${selected === 'a5' ? ' format-card--selected' : ''}" data-format="a5">
-            <div class="format-card-preview" style="width: 56px; height: 79px;">
-                <div class="format-card-preview-dashed"></div>
-                <span class="format-card-preview-label format-card-preview-label--faded">A4</span>
-                <div class="format-card-preview-box-inner" style="width: 39px; height: 56px;">
+            <div class="format-card__preview" style="width: 56px; height: 79px;">
+                <div class="format-card__preview-dashed"></div>
+                <span class="format-card__preview-label format-card__preview-label--faded">A4</span>
+                <div class="format-card__preview-inner" style="width: 39px; height: 56px;">
                     <span style="font-size: 10px;">A5</span>
                 </div>
             </div>
-            <div class="format-card-text">
-                <div class="format-card-name">A5</div>
-                <div class="format-card-dims">148 × 210 mm</div>
+            <div class="format-card__text">
+                <div class="format-card__name">A5</div>
+                <div class="format-card__dims">148 × 210 mm</div>
             </div>
         </button>
         <button type="button" class="format-card${selected === 'libero' ? ' format-card--selected' : ''}" data-format="libero">
-            <div class="format-card-preview" style="width: 56px; height: 79px;">
-                <div class="format-card-preview-dashed"></div>
-                <span class="format-card-preview-label format-card-preview-label--faded">A4</span>
-                <div class="format-card-preview-custom" style="width: 40px; height: 52px;">
+            <div class="format-card__preview" style="width: 56px; height: 79px;">
+                <div class="format-card__preview-dashed"></div>
+                <span class="format-card__preview-label format-card__preview-label--faded">A4</span>
+                <div class="format-card__preview-custom" style="width: 40px; height: 52px;">
                     ${aspectRatioIcon}
                 </div>
             </div>
-            <div class="format-card-text">
-                <div class="format-card-name">Libero</div>
-                <div class="format-card-dims">Custom</div>
+            <div class="format-card__text">
+                <div class="format-card__name">Libero</div>
+                <div class="format-card__dims">Custom</div>
             </div>
         </button>
     </div>
@@ -77,54 +77,54 @@ const verticalGrid = (selected = 'a4') => `
 const horizontalGrid = (selected = 'a4') => `
     <div class="format-cards">
         <button type="button" class="format-card${selected === 'a4' ? ' format-card--selected' : ''}" data-format="a4">
-            <div class="format-card-preview" style="width: 79px; height: 56px;">
-                <span class="format-card-preview-label">A4</span>
-                <div class="format-card-preview-box">
+            <div class="format-card__preview" style="width: 79px; height: 56px;">
+                <span class="format-card__preview-label">A4</span>
+                <div class="format-card__preview-box">
                     <span>A4</span>
                 </div>
             </div>
-            <div class="format-card-text">
-                <div class="format-card-name">A4</div>
-                <div class="format-card-dims">297 × 210 mm</div>
+            <div class="format-card__text">
+                <div class="format-card__name">A4</div>
+                <div class="format-card__dims">297 × 210 mm</div>
             </div>
         </button>
         <button type="button" class="format-card${selected === 'libro' ? ' format-card--selected' : ''}" data-format="libro">
-            <div class="format-card-preview" style="width: 79px; height: 56px;">
-                <div class="format-card-preview-dashed"></div>
-                <span class="format-card-preview-label format-card-preview-label--faded">A4</span>
-                <div class="format-card-preview-box-inner" style="width: 62px; height: 44px;">
+            <div class="format-card__preview" style="width: 79px; height: 56px;">
+                <div class="format-card__preview-dashed"></div>
+                <span class="format-card__preview-label format-card__preview-label--faded">A4</span>
+                <div class="format-card__preview-inner" style="width: 62px; height: 44px;">
                     <span style="font-size: 10px;">Libro</span>
                 </div>
             </div>
-            <div class="format-card-text">
-                <div class="format-card-name">Libro</div>
-                <div class="format-card-dims">235 × 165 mm</div>
+            <div class="format-card__text">
+                <div class="format-card__name">Libro</div>
+                <div class="format-card__dims">235 × 165 mm</div>
             </div>
         </button>
         <button type="button" class="format-card${selected === 'a5' ? ' format-card--selected' : ''}" data-format="a5">
-            <div class="format-card-preview" style="width: 79px; height: 56px;">
-                <div class="format-card-preview-dashed"></div>
-                <span class="format-card-preview-label format-card-preview-label--faded">A4</span>
-                <div class="format-card-preview-box-inner" style="width: 56px; height: 39px;">
+            <div class="format-card__preview" style="width: 79px; height: 56px;">
+                <div class="format-card__preview-dashed"></div>
+                <span class="format-card__preview-label format-card__preview-label--faded">A4</span>
+                <div class="format-card__preview-inner" style="width: 56px; height: 39px;">
                     <span style="font-size: 10px;">A5</span>
                 </div>
             </div>
-            <div class="format-card-text">
-                <div class="format-card-name">A5</div>
-                <div class="format-card-dims">210 × 148 mm</div>
+            <div class="format-card__text">
+                <div class="format-card__name">A5</div>
+                <div class="format-card__dims">210 × 148 mm</div>
             </div>
         </button>
         <button type="button" class="format-card${selected === 'libero' ? ' format-card--selected' : ''}" data-format="libero">
-            <div class="format-card-preview" style="width: 79px; height: 56px;">
-                <div class="format-card-preview-dashed"></div>
-                <span class="format-card-preview-label format-card-preview-label--faded">A4</span>
-                <div class="format-card-preview-custom" style="width: 52px; height: 40px;">
+            <div class="format-card__preview" style="width: 79px; height: 56px;">
+                <div class="format-card__preview-dashed"></div>
+                <span class="format-card__preview-label format-card__preview-label--faded">A4</span>
+                <div class="format-card__preview-custom" style="width: 52px; height: 40px;">
                     ${aspectRatioIcon}
                 </div>
             </div>
-            <div class="format-card-text">
-                <div class="format-card-name">Libero</div>
-                <div class="format-card-dims">Custom</div>
+            <div class="format-card__text">
+                <div class="format-card__name">Libero</div>
+                <div class="format-card__dims">Custom</div>
             </div>
         </button>
     </div>
@@ -201,15 +201,15 @@ export const SinglePreviewBox = {
     render: () => renderRoot(`
         <div class="format-cards">
             <button type="button" class="format-card format-card--selected" data-format="a4">
-                <div class="format-card-preview" style="width: 56px; height: 79px;">
-                    <span class="format-card-preview-label">A4</span>
-                    <div class="format-card-preview-box">
+                <div class="format-card__preview" style="width: 56px; height: 79px;">
+                    <span class="format-card__preview-label">A4</span>
+                    <div class="format-card__preview-box">
                         <span>A4</span>
                     </div>
                 </div>
-                <div class="format-card-text">
-                    <div class="format-card-name">A4</div>
-                    <div class="format-card-dims">210 × 297 mm</div>
+                <div class="format-card__text">
+                    <div class="format-card__name">A4</div>
+                    <div class="format-card__dims">210 × 297 mm</div>
                 </div>
             </button>
         </div>

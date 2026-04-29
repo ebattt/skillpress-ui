@@ -13,7 +13,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: 'Radio group + checkbox option + option-disabled. La famiglia condivide .radio-group + .radio-option: cambia solo il tipo di <input>. :checked e :disabled sono nativi.'
+                component: 'Radio group + checkbox option + radio-option--disabled. La famiglia condivide .radio-group + .radio-option: cambia solo il tipo di <input>. :checked e :disabled sono nativi.'
             }
         }
     }
@@ -82,7 +82,7 @@ export const RadioWithDisabled = {
                     <input type="radio" name="rileg-dis" value="brossura" checked>
                     <span class="radio-option-label">Brossura fresata PUR</span>
                 </label>
-                <label class="radio-option option-disabled">
+                <label class="radio-option radio-option--disabled">
                     <input type="radio" name="rileg-dis" value="spirale" disabled>
                     <span class="radio-option-label">Spirale metallica (non disponibile)</span>
                 </label>
@@ -93,7 +93,7 @@ export const RadioWithDisabled = {
         const radios = canvas.getAllByRole('radio');
         await expect(radios[1]).toBeDisabled();
         const labels = canvas.getAllByText(/Spirale metallica/);
-        await expect(labels[0].closest('label')).toHaveClass('option-disabled');
+        await expect(labels[0].closest('label')).toHaveClass('radio-option--disabled');
     }
 };
 
@@ -160,11 +160,11 @@ export const CheckboxGroup = {
 export const CheckboxWithDisabled = {
     render: () => mount(`
         <div class="radio-group">
-            <label class="radio-option option-disabled">
+            <label class="radio-option radio-option--disabled">
                 <input type="checkbox" disabled>
                 <span class="radio-option-label">Certificazione FSC (non disponibile per questo formato)</span>
             </label>
-            <label class="radio-option option-disabled">
+            <label class="radio-option radio-option--disabled">
                 <input type="checkbox" checked disabled>
                 <span class="radio-option-label">Prova colore (inclusa obbligatoriamente)</span>
             </label>
@@ -213,7 +213,7 @@ export const ReferenceFromElementsUI = {
                         <input type="checkbox">
                         <span class="radio-option-label">Cellophane singolo</span>
                     </label>
-                    <label class="radio-option option-disabled">
+                    <label class="radio-option radio-option--disabled">
                         <input type="checkbox" disabled>
                         <span class="radio-option-label">Segnalibro in raso (non disponibile per questo formato)</span>
                     </label>

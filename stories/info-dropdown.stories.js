@@ -29,13 +29,15 @@ const renderField = ({
             <label class="label-text">${label}</label>
             <button type="button"
                     class="info-btn"
+                    data-info-trigger
                     aria-controls="${id}"
                     aria-expanded="${open ? 'true' : 'false'}"
                     aria-label="Mostra informazioni">
                 ${INFO_ICON_SVG}
             </button>
         </div>
-        <div id="${id}" class="info-dropdown${open ? '' : ' hidden'}"
+        <div id="${id}" class="info-dropdown${open ? '' : ' info-dropdown--hidden'}"
+             data-info-dropdown
              role="region" aria-hidden="${open ? 'false' : 'true'}">
             ${body}
         </div>
@@ -105,7 +107,7 @@ export const WithListAndNote = {
                 <li><strong>Libro</strong> (165x235mm) -- Editoriale classico</li>
             </ul>
             <div class="info-note">
-                <p class="info-note-title">Nota sulle tolleranze (Art. 9.7)</p>
+                <p class="info-note__title">Nota sulle tolleranze (Art. 9.7)</p>
                 <p>Per motivi di stampa, rilegatura e rifiniture, ci riserviamo di ridurre il formato del lavoro fino al 99% se necessario. Questo fattore e' da accettare e non soggetto a reclamo.</p>
             </div>
         `

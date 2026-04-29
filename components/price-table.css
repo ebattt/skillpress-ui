@@ -17,9 +17,9 @@
  * dimensioni equivalenti (28px verticale, 18px orizzontale).
  *
  * Geometria tabella: `min-width: 500px` forza lo scroll orizzontale sotto questa
- * larghezza. Il consumer wrappa la tabella in `.price-table-section` (overflow-x: auto)
+ * larghezza. Il consumer wrappa la tabella in `.price-table__section` (overflow-x: auto)
  * o equivalente (la demo usa `id="priceTableContainer"`; in libreria la regola e'
- * sulla classe). Su mobile (<= 767px) le frecce orizzontali `.price-nav-arrow-horizontal`
+ * sulla classe). Su mobile (<= 767px) le frecce orizzontali `.price-table__nav-arrow-horizontal`
  * diventano visibili come overlay per agevolare lo scroll.
  *
  * Fuori scope (non implementato qui):
@@ -35,43 +35,43 @@
  */
 
 /* ===== Wrapper outer ===== */
-.price-table-wrapper {
+.price-table__wrapper {
     display: flex;
     flex-direction: column;
     gap: 0;
 }
 
-/* Wrapper position: relative attorno a .price-table-section. Necessario perche'
-   le frecce orizzontali (`.price-nav-arrow-horizontal`) sono `position: absolute`
-   FRATELLO di `.price-table-section`, NON figlio: cosi' restano fisse mentre il
+/* Wrapper position: relative attorno a .price-table__section. Necessario perche'
+   le frecce orizzontali (`.price-table__nav-arrow-horizontal`) sono `position: absolute`
+   FRATELLO di `.price-table__section`, NON figlio: cosi' restano fisse mentre il
    container scrolla. (Pattern verbatim demo: `<div class="relative">`.) */
-.price-table-scroll-wrap {
+.price-table__scroll-wrap {
     position: relative;
 }
 
 /* Contenitore tabella con scroll orizzontale.
-   `scroll-behavior: smooth` per swipe e click su `.price-nav-arrow-horizontal`.
+   `scroll-behavior: smooth` per swipe e click su `.price-table__nav-arrow-horizontal`.
    Scrollbar nascosta su mobile (l'unica affordance di scroll resta la freccia
-   `.price-nav-arrow-horizontal.right` overlay). */
-.price-table-section {
+   `.price-table__nav-arrow-horizontal--right` overlay). */
+.price-table__section {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
 }
 
 @media (max-width: 767px) {
-    .price-table-section {
+    .price-table__section {
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
 
-    .price-table-section::-webkit-scrollbar {
+    .price-table__section::-webkit-scrollbar {
         display: none;
     }
 }
 
 /* ===== Tabella ===== */
-.price-table-full {
+.price-table {
     width: 100%;
     font-size: var(--font-size-xs);
     border-collapse: collapse;
@@ -79,82 +79,82 @@
 }
 
 /* ===== Header cells ===== */
-.price-th {
+.price-table__header-cell {
     padding: 0.5rem;
     font-weight: var(--font-weight-semibold);
     border-bottom: 1px solid var(--color-bg-gray-200);
 }
 
-.price-th--left {
+.price-table__header-cell--left {
     text-align: left;
     background-color: var(--color-bg-gray-100);
     color: var(--color-text);
     border-top-left-radius: var(--radius-lg);
 }
 
-.price-th--center {
+.price-table__header-cell--center {
     text-align: center;
     background-color: var(--color-bg-gray-100);
     color: var(--color-text);
 }
 
-.price-th--selected {
+.price-table__header-cell--selected {
     background-color: var(--color-secondary);
     color: var(--color-bg-white);
 }
 
-.price-th--corner {
+.price-table__header-cell--corner {
     border-top-right-radius: var(--radius-lg);
 }
 
-.price-th-day {
+.price-table__header-day {
     font-size: var(--font-size-xs);
     line-height: 1.2;
 }
 
-.price-th-date {
+.price-table__header-date {
     font-size: 10px;
     color: var(--color-text-light);
 }
 
-.price-th-date--light {
+.price-table__header-date--light {
     color: rgba(255, 255, 255, 0.8);
 }
 
 /* ===== Body rows ===== */
-.price-tr {
+.price-table__row {
     transition: background-color var(--transition-fast);
 }
 
-.price-tr:hover {
+.price-table__row:hover {
     background-color: var(--color-bg-gray-50);
 }
 
-.price-tr--active {
+.price-table__row--active {
     /* Teal soft locale (no token: usato solo da PriceTable. Promuovere a
        --color-secondary-soft se emerge un secondo consumer). */
     background-color: #e8f5f3;
 }
 
 /* ===== Body cells ===== */
-.price-td {
+.price-table__cell {
     padding: 0.5rem;
     border-bottom: 1px solid var(--color-bg-gray-200);
 }
 
-.price-td--left {
+.price-table__cell--left {
     text-align: left;
     font-weight: var(--font-weight-medium);
     color: var(--color-text);
 }
 
-.price-td--center {
+.price-table__cell--center {
     padding: 0.375rem;
     text-align: center;
 }
 
 /* ===== Quantity button (left column) ===== */
-.price-qty-btn {
+.price-table__qty-btn {
     width: 100%;
     padding: 0.25rem 0;
     text-align: left;
@@ -165,13 +165,13 @@
     color: var(--color-text);
 }
 
-.price-qty-btn--active {
+.price-table__qty-btn--active {
     font-weight: var(--font-weight-bold);
     color: var(--color-secondary);
 }
 
 /* ===== Price cell button (intersection cells) ===== */
-.price-cell-btn {
+.price-table__cell-btn {
     width: 100%;
     padding: 0.375rem 0.25rem;
     border-radius: var(--radius-sm);
@@ -182,18 +182,18 @@
     cursor: pointer;
 }
 
-.price-cell-btn--default {
+.price-table__cell-btn--default {
     background-color: var(--color-bg-white);
     color: var(--color-text);
     border: 1px solid var(--color-bg-gray-200);
 }
 
-.price-cell-btn--default:hover {
+.price-table__cell-btn--default:hover {
     border-color: var(--color-secondary);
     background-color: var(--color-bg-gray-50);
 }
 
-.price-cell-btn--row-active {
+.price-table__cell-btn--row-active {
     /* Teal soft locale (no token: usato solo da PriceTable. Promuovere a
        --color-secondary-soft se emerge un secondo consumer). */
     background-color: #e8f5f3;
@@ -201,11 +201,11 @@
     border: 1px solid rgba(28, 114, 100, 0.3);
 }
 
-.price-cell-btn--row-active:hover {
+.price-table__cell-btn--row-active:hover {
     border-color: var(--color-secondary);
 }
 
-.price-cell-btn--selected {
+.price-table__cell-btn--selected {
     background-color: var(--color-secondary);
     color: var(--color-bg-white);
     border: 1px solid var(--color-secondary);
@@ -213,7 +213,7 @@
 }
 
 /* ===== Navigation arrows (vertical) ===== */
-.price-nav-arrow {
+.price-table__nav-arrow {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -224,24 +224,24 @@
     transition: opacity var(--transition-fast);
 }
 
-.price-nav-arrow svg {
+.price-table__nav-arrow svg {
     width: 28px;
     height: 28px;
     color: var(--color-text);
 }
 
-.price-nav-arrow:hover:not(.disabled) svg {
+.price-table__nav-arrow:hover:not(.price-table__nav-arrow--disabled) svg {
     color: var(--color-primary);
 }
 
-.price-nav-arrow.disabled {
+.price-table__nav-arrow--disabled {
     opacity: 0.25;
     cursor: default;
     pointer-events: none;
 }
 
 /* ===== Navigation arrows (horizontal / mobile overlay) ===== */
-.price-nav-arrow-horizontal {
+.price-table__nav-arrow-horizontal {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -263,49 +263,49 @@
 /* Posizionamento DENTRO il container (le frecce restano fisse rispetto al
    viewport del container scrollabile, non vengono clippate da parent
    con overflow-x: hidden come `.accordion__inner`). */
-.price-nav-arrow-horizontal.left {
+.price-table__nav-arrow-horizontal--left {
     left: 4px;
 }
 
-.price-nav-arrow-horizontal.right {
+.price-table__nav-arrow-horizontal--right {
     right: 4px;
 }
 
-.price-nav-arrow-horizontal svg {
+.price-table__nav-arrow-horizontal svg {
     width: 18px;
     height: 18px;
 }
 
-.price-nav-arrow-horizontal:hover {
+.price-table__nav-arrow-horizontal:hover {
     color: var(--color-primary);
     border-color: var(--color-primary);
 }
 
 /* ===== Mobile responsive =====
    Sotto 767px il consumer/CMS attiva le frecce orizzontali overlay
-   (`.price-nav-arrow-horizontal`) per agevolare lo scroll orizzontale
+   (`.price-table__nav-arrow-horizontal`) per agevolare lo scroll orizzontale
    imposto dal `min-width: 500px` della tabella. Touch targets celle
    prezzo / qty button portati a 40px+ per standard e-commerce mobile. */
 @media (max-width: 767px) {
-    .price-nav-arrow-horizontal {
+    .price-table__nav-arrow-horizontal {
         display: flex !important;
     }
 
-    .price-nav-arrow-horizontal[style*="display: none"] {
+    .price-table__nav-arrow-horizontal[style*="display: none"] {
         display: none !important;
     }
 
-    .price-nav-arrow svg {
+    .price-table__nav-arrow svg {
         width: 24px;
         height: 24px;
     }
 
-    .price-cell-btn {
+    .price-table__cell-btn {
         min-height: 40px;
         padding: 0.5rem 0.375rem;
     }
 
-    .price-qty-btn {
+    .price-table__qty-btn {
         min-height: 40px;
         padding: 0.5rem 0;
     }

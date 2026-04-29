@@ -21,7 +21,7 @@ const createSection = ({
     withBadge = true,
     content = createContent()
 }) => `
-    <section class="accordion__section${expanded ? ' expanded' : ''}" data-accordion-section>
+    <section class="accordion__section${expanded ? ' accordion__section--expanded' : ''}" data-accordion-section>
         <button class="accordion__header" type="button" data-accordion-trigger aria-expanded="${expanded ? 'true' : 'false'}">
             <span class="accordion__header-left">
                 ${withBadge ? `<span class="accordion__badge">${number}</span>` : ''}
@@ -87,7 +87,7 @@ export const Expanded = {
         createSection({
             title: 'Accordion Section',
             expanded: true,
-            content: createContent('Questa sezione parte aperta tramite classe expanded e aria-expanded true.')
+            content: createContent('Questa sezione parte aperta tramite classe accordion__section--expanded e aria-expanded true.')
         })
     ])
 };

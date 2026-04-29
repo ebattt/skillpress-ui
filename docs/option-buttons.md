@@ -18,8 +18,8 @@ Gruppo di bottoni inline per selezione esclusiva di un'opzione tra N (formati, g
 
 ```text
 OptionButtons
-└── option-btns-wrap   (flex wrap, gap 0.375rem)
-    └── option-btn × N   [--default | --selected | --borderless]
+└── option-buttons   (flex wrap, gap 0.375rem)
+    └── option-buttons__btn × N   [--default | --selected | --borderless]
 ```
 
 ## Markup contract
@@ -27,12 +27,12 @@ OptionButtons
 Markup ricostruito da `product-page-integration/js/configurator.js#L687-L693`.
 
 ```html
-<div class="option-btns-wrap">
-    <button class="option-btn option-btn--selected">A4</button>
-    <button class="option-btn option-btn--default">A5</button>
-    <button class="option-btn option-btn--default">A3</button>
-    <button class="option-btn option-btn--default">Libro</button>
-    <button class="option-btn option-btn--default">Personalizzato</button>
+<div class="option-buttons">
+    <button class="option-buttons__btn option-buttons__btn--selected">A4</button>
+    <button class="option-buttons__btn option-buttons__btn--default">A5</button>
+    <button class="option-buttons__btn option-buttons__btn--default">A3</button>
+    <button class="option-buttons__btn option-buttons__btn--default">Libro</button>
+    <button class="option-buttons__btn option-buttons__btn--default">Personalizzato</button>
 </div>
 ```
 
@@ -40,8 +40,8 @@ Markup ricostruito da `product-page-integration/js/configurator.js#L687-L693`.
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.option-btns-wrap` | flex container del gruppo | yes | — |
-| `.option-btn` | singolo bottone opzione | yes | `--default`, `--selected`, `--borderless` |
+| `.option-buttons` | flex container del gruppo | yes | — |
+| `.option-buttons__btn` | singolo bottone opzione | yes | `--default`, `--selected`, `--borderless` |
 
 ## Installation
 
@@ -65,8 +65,8 @@ Nessun script JS richiesto.
 `--color-primary`, `--color-text`, `--color-bg-gray-200`, `--color-bg-gray-50`, `--radius-sm`, `--font-size-sm`, `--font-weight-medium`, `--transition-fast`.
 
 Valori letterali mantenuti dal catalogo:
-- `#ffffff` su `.option-btn--default` e `--borderless` (sfondo bianco).
-- `#d1d5db` su `.option-btn--default:hover` (border hover).
+- `#ffffff` su `.option-buttons__btn--default` e `--borderless` (sfondo bianco).
+- `#d1d5db` su `.option-buttons__btn--default:hover` (border hover).
 
 ## Note CMS
 

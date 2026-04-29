@@ -20,8 +20,8 @@ const chevronRight = `
 const renderGallery = ({ src = imageFront, alt = 'Brossura fresata vista frontale', withNav = true, withShadow = true } = {}) => {
     const root = document.createElement('div');
     root.innerHTML = `
-        <div class="hero-image-gallery">
-            <div class="hero-image-container ${withShadow ? 'product-shadow' : ''}"
+        <div class="image-gallery">
+            <div class="image-gallery__container ${withShadow ? 'product-shadow' : ''}"
                  data-images='${JSON.stringify([
                      { src: imageFront, alt: 'Brossura fresata vista frontale' },
                      { src: imageSide, alt: 'Brossura fresata vista laterale' },
@@ -29,8 +29,8 @@ const renderGallery = ({ src = imageFront, alt = 'Brossura fresata vista frontal
                  ])}'>
                 <img src="${src}" alt="${alt}" />
                 ${withNav ? `
-                <button class="hero-nav-btn hero-nav-btn--prev" aria-label="Immagine precedente">${chevronLeft}</button>
-                <button class="hero-nav-btn hero-nav-btn--next" aria-label="Immagine successiva">${chevronRight}</button>
+                <button class="image-gallery__nav-btn image-gallery__nav-btn--prev" aria-label="Immagine precedente">${chevronLeft}</button>
+                <button class="image-gallery__nav-btn image-gallery__nav-btn--next" aria-label="Immagine successiva">${chevronRight}</button>
                 ` : ''}
             </div>
         </div>
@@ -55,8 +55,8 @@ export const Default = {
     play: async ({ canvas }) => {
         const prev = canvas.getByRole('button', { name: /precedente/i });
         const next = canvas.getByRole('button', { name: /success/i });
-        await expect(prev).toHaveClass('hero-nav-btn--prev');
-        await expect(next).toHaveClass('hero-nav-btn--next');
+        await expect(prev).toHaveClass('image-gallery__nav-btn--prev');
+        await expect(next).toHaveClass('image-gallery__nav-btn--next');
     }
 };
 

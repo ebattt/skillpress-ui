@@ -41,7 +41,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: 'Primitive form fondamentali: form-field, label-row, label-text (+ varianti required/optional/hint), form-input (+ --error/:disabled), form-select (+ :disabled), error-msg / success-inline, custom-dims-grid, nome-ref-row.'
+                component: 'Primitive form fondamentali: form-field, label-row, label-text (+ varianti required/optional/hint), form-input (+ --error/:disabled), form-select (+ :disabled), error-msg / success-inline, custom-dims__grid, nome-ref-row.'
             }
         }
     }
@@ -174,12 +174,12 @@ export const CustomDimsGrid = {
     render: () => mount(`
         <div class="custom-dims">
             <label class="label-text">Dimensioni personalizzate (mm)</label>
-            <div class="custom-dims-grid">
-                <div class="custom-dims-field">
+            <div class="custom-dims__grid">
+                <div class="custom-dims__field">
                     <label class="label-text">Larghezza</label>
                     <input type="number" class="form-input" value="148" min="100" max="330"/>
                 </div>
-                <div class="custom-dims-field">
+                <div class="custom-dims__field">
                     <label class="label-text">Altezza</label>
                     <input type="number" class="form-input" value="210" min="100" max="480"/>
                 </div>
@@ -267,12 +267,12 @@ export const ReferenceFromElementsUI = {
             </div>
             <div class="custom-dims">
                 <label class="label-text">Dimensioni personalizzate (mm)</label>
-                <div class="custom-dims-grid">
-                    <div class="custom-dims-field">
+                <div class="custom-dims__grid">
+                    <div class="custom-dims__field">
                         <label class="label-text">Larghezza</label>
                         <input type="number" class="form-input" value="148" min="100" max="330"/>
                     </div>
-                    <div class="custom-dims-field">
+                    <div class="custom-dims__field">
                         <label class="label-text">Altezza</label>
                         <input type="number" class="form-input" value="210" min="100" max="480"/>
                     </div>

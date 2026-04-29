@@ -3,9 +3,9 @@
  *
  * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
  *   - .iva-banner            L679-684
- *   - .iva-banner-content    L686-690
- *   - .iva-banner-icon       L692-696
- *   - .iva-banner-text       L698-702
+ *   - .iva-banner__content   L686-690
+ *   - .iva-banner__icon      L692-696
+ *   - .iva-banner__text      L698-702
  *
  * Fonte markup: product-page-integration/js/sections/section-6.js#L274-L285
  * (renderizzato condizionalmente quando state.selections.ivaMode === '4').
@@ -14,7 +14,7 @@
  * il banner in base alla scelta IVA) e' business logic consumer-side.
  *
  * Material Symbols 'info' sostituito con SVG inline lato consumer dentro
- * .iva-banner-icon (icona info 18x18, color primary tramite currentColor).
+ * .iva-banner__icon (icona info 18x18, color primary tramite currentColor).
  *
  * Pattern callout warning specifico per IVA: se in futuro emergeranno altri
  * callout simili, valutare promozione a primitiva generica .callout--warning.
@@ -35,7 +35,7 @@
 /* ================================================================
    IVA BANNER CONTENT -- flex inline icon + text
    ================================================================ */
-.iva-banner-content {
+.iva-banner__content {
     display: flex;
     align-items: flex-start;
     gap: var(--spacing-sm);
@@ -45,13 +45,13 @@
 /* ================================================================
    IVA BANNER ICON -- icona warning, color primary
    ================================================================ */
-.iva-banner-icon {
+.iva-banner__icon {
     color: var(--color-primary);
     font-size: 1.125rem;
     flex-shrink: 0;
 }
 
-.iva-banner-icon svg {
+.iva-banner__icon svg {
     display: block;
 }
 
@@ -59,12 +59,12 @@
 /* ================================================================
    IVA BANNER TEXT -- testo xs, color text-strong
    ================================================================ */
-.iva-banner-text {
+.iva-banner__text {
     font-size: var(--font-size-xs);
     color: var(--color-text-strong);
     line-height: 1.5;
 }
 
-.iva-banner-text > * + * {
+.iva-banner__text > * + * {
     margin-top: var(--spacing-xs);
 }

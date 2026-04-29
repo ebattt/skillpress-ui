@@ -12,7 +12,7 @@ package_path: primitives/card.css
 
 # Card
 
-Superficie contenitore generica per blocchi informativi o selezionabili: bordo, radius, background, padding interno, gerarchia base titolo/testo e stati visuali semplici. Non sostituisce `feature-box`, `visual-card`, `paper-card`, `format-card`, `step-card-item`: quelle restano da estrarre come componenti dedicati.
+Superficie contenitore generica per blocchi informativi o selezionabili: bordo, radius, background, padding interno, gerarchia base titolo/testo e stati visuali semplici. Non sostituisce `feature-box`, `visual-card`, `paper-card`, `format-card`, `step-indicator__item`: quelle restano da estrarre come componenti dedicati.
 
 ## Anatomy
 

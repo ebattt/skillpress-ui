@@ -20,7 +20,7 @@ const renderCard = ({ href = '#', title = 'Prodotto', src = PLACEHOLDER, alt = '
 `;
 
 const renderSection = ({ label = 'Potrebbe piacerti anche', items = [] } = {}) => `
-    <section class="related-section" aria-label="Prodotti correlati">
+    <section class="related-products" aria-label="Prodotti correlati">
         <h2 class="catalog-section-label">${label}</h2>
         <div class="catalog-grid catalog-grid--products">
             ${items.map(renderCard).join('')}
@@ -71,7 +71,7 @@ export const ReferenceFromElementsUI = {
     parameters: {
         docs: {
             description: {
-                story: 'Markup verbatim da `product-page-integration/index.html#L590-L624` + qualificazioni `.related-section` da `_layout-patterns.css#L1804-L1825`. Asset placeholder al posto delle immagini demo locali.'
+                story: 'Markup verbatim da `product-page-integration/index.html#L590-L624` + qualificazioni `.related-products` da `_layout-patterns.css#L1804-L1825`. Asset placeholder al posto delle immagini demo locali.'
             }
         }
     }

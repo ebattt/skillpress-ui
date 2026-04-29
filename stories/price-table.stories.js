@@ -59,20 +59,20 @@ const sliceRows = (n) => rows.map(r => ({ qty: r.qty, prices: r.prices.slice(0, 
 
 const renderHeader = (selectedCol, cols = 4) => {
     const heads = sliceHeaders(cols);
-    const left = '<th class="price-th price-th--left">Copie</th>';
+    const left = '<th class="price-table__header-cell price-table__header-cell--left">Copie</th>';
     const dataCells = heads.map((h, idx) => {
         const isSelected = idx === selectedCol;
         const isCorner = idx === heads.length - 1;
         const cls = [
-            'price-th',
-            'price-th--center',
-            isSelected ? 'price-th--selected' : '',
-            isCorner ? 'price-th--corner' : ''
+            'price-table__header-cell',
+            'price-table__header-cell--center',
+            isSelected ? 'price-table__header-cell--selected' : '',
+            isCorner ? 'price-table__header-cell--corner' : ''
         ].filter(Boolean).join(' ');
-        const dateCls = isSelected ? 'price-th-date price-th-date--light' : 'price-th-date';
+        const dateCls = isSelected ? 'price-table__header-date price-table__header-date--light' : 'price-table__header-date';
         return `
             <th class="${cls}">
-                <div class="price-th-day">${h.day}</div>
+                <div class="price-table__header-day">${h.day}</div>
                 <div class="${dateCls}">${h.date}</div>
             </th>
         `;
@@ -84,22 +84,22 @@ const renderBody = (activeQty, selectedCol, cols = 4) => {
     const data = sliceRows(cols);
     return data.map((row) => {
         const isActive = row.qty === activeQty;
-        const trCls = isActive ? 'price-tr price-tr--active' : 'price-tr';
-        const qtyBtnCls = isActive ? 'price-qty-btn price-qty-btn--active' : 'price-qty-btn';
+        const trCls = isActive ? 'price-table__row price-table__row--active' : 'price-table__row';
+        const qtyBtnCls = isActive ? 'price-table__qty-btn price-table__qty-btn--active' : 'price-table__qty-btn';
         const cells = row.prices.map((p, idx) => {
             let btnCls;
-            if (isActive && idx === selectedCol) btnCls = 'price-cell-btn price-cell-btn--selected';
-            else if (isActive) btnCls = 'price-cell-btn price-cell-btn--row-active';
-            else btnCls = 'price-cell-btn price-cell-btn--default';
+            if (isActive && idx === selectedCol) btnCls = 'price-table__cell-btn price-table__cell-btn--selected';
+            else if (isActive) btnCls = 'price-table__cell-btn price-table__cell-btn--row-active';
+            else btnCls = 'price-table__cell-btn price-table__cell-btn--default';
             return `
-                <td class="price-td price-td--center">
+                <td class="price-table__cell price-table__cell--center">
                     <button type="button" class="${btnCls}">${p} euro</button>
                 </td>
             `;
         }).join('');
         return `
             <tr class="${trCls}">
-                <td class="price-td price-td--left">
+                <td class="price-table__cell price-table__cell--left">
                     <button type="button" class="${qtyBtnCls}">${row.qty}</button>
                 </td>
                 ${cells}
@@ -109,18 +109,18 @@ const renderBody = (activeQty, selectedCol, cols = 4) => {
 };
 
 const renderTable = ({ activeQty = 50, selectedCol = 0, cols = 4, navUpDisabled = false, navDownDisabled = false } = {}) => `
-    <div class="price-table-wrapper">
+    <div class="price-table__wrapper">
         <div style="display: flex; justify-content: center; margin-bottom: 0.25rem;">
-            <button type="button" class="price-nav-arrow${navUpDisabled ? ' disabled' : ''}" aria-label="Quantita precedenti">${arrowUp}</button>
+            <button type="button" class="price-table__nav-arrow${navUpDisabled ? ' price-table__nav-arrow--disabled' : ''}" aria-label="Quantita precedenti">${arrowUp}</button>
         </div>
-        <div class="price-table-section">
-            <table class="price-table-full">
+        <div class="price-table__section">
+            <table class="price-table">
                 <thead>${renderHeader(selectedCol, cols)}</thead>
                 <tbody>${renderBody(activeQty, selectedCol, cols)}</tbody>
             </table>
         </div>
         <div style="display: flex; justify-content: center; margin-top: 0.25rem;">
-            <button type="button" class="price-nav-arrow${navDownDisabled ? ' disabled' : ''}" aria-label="Quantita successive">${arrowDown}</button>
+            <button type="button" class="price-table__nav-arrow${navDownDisabled ? ' price-table__nav-arrow--disabled' : ''}" aria-label="Quantita successive">${arrowDown}</button>
         </div>
     </div>
 `;
@@ -132,7 +132,7 @@ export default {
         layout: 'padded',
         docs: {
             description: {
-                component: 'Tabella prezzi stile Google Flights: header data spedizione, righe quantita, intersezione = prezzo. **Data-driven**: il backend dichiara N colonne (1..4 raccomandato per leggibilita\'); la libreria si adatta automaticamente via CSS table. CSS-only. Il consumer applica i modifier `.price-th--selected` (colonna), `.price-tr--active` (riga qty), `.price-cell-btn--selected` / `--row-active` (cella) in base allo stato applicativo.'
+                component: 'Tabella prezzi stile Google Flights: header data spedizione, righe quantita, intersezione = prezzo. **Data-driven**: il backend dichiara N colonne (1..4 raccomandato per leggibilita\'); la libreria si adatta automaticamente via CSS table. CSS-only. Il consumer applica i modifier `.price-table__header-cell--selected` (colonna), `.price-table__row--active` (riga qty), `.price-table__cell-btn--selected` / `--row-active` (cella) in base allo stato applicativo.'
             }
         }
     }
@@ -142,17 +142,17 @@ export const Default = {
     render: () => renderRoot(renderTable({ activeQty: 50, selectedCol: 0, cols: 4 })),
     play: async ({ canvas }) => {
         const qty50 = canvas.getByRole('button', { name: '50' });
-        await expect(qty50).toHaveClass('price-qty-btn--active');
+        await expect(qty50).toHaveClass('price-table__qty-btn--active');
         const cells = canvas.getAllByRole('button', { name: /euro/ });
-        const selected = cells.filter(c => c.classList.contains('price-cell-btn--selected'));
-        const rowActive = cells.filter(c => c.classList.contains('price-cell-btn--row-active'));
+        const selected = cells.filter(c => c.classList.contains('price-table__cell-btn--selected'));
+        const rowActive = cells.filter(c => c.classList.contains('price-table__cell-btn--row-active'));
         await expect(selected.length).toBe(1);
         await expect(rowActive.length).toBe(3);
     },
     parameters: {
         docs: {
             description: {
-                story: 'Snapshot base: 7 righe qty (25-100), **4 colonne data** (caso massimo della pagina demo: `deliveryBaseDays = [2, 4, 6, 10]` con sconti 5%/30%/55%/79%). Riga 50 attiva, prima colonna data selezionata. La cella intersezione (50 + 09/03) mostra `.price-cell-btn--selected`.'
+                story: 'Snapshot base: 7 righe qty (25-100), **4 colonne data** (caso massimo della pagina demo: `deliveryBaseDays = [2, 4, 6, 10]` con sconti 5%/30%/55%/79%). Riga 50 attiva, prima colonna data selezionata. La cella intersezione (50 + 09/03) mostra `.price-table__cell-btn--selected`.'
             }
         }
     }
@@ -174,7 +174,7 @@ export const OneColumn = {
     parameters: {
         docs: {
             description: {
-                story: 'Caso minimo: 1 sola data. Il backend dichiara una sola opzione consegna; la libreria renderizza la cella header con `.price-th--corner` (essendo prima e ultima).'
+                story: 'Caso minimo: 1 sola data. Il backend dichiara una sola opzione consegna; la libreria renderizza la cella header con `.price-table__header-cell--corner` (essendo prima e ultima).'
             }
         }
     }
@@ -185,7 +185,7 @@ export const TwoColumns = {
     parameters: {
         docs: {
             description: {
-                story: '2 date: scelta veloce vs scontata. La seconda colonna riceve `.price-th--corner` (ultima).'
+                story: '2 date: scelta veloce vs scontata. La seconda colonna riceve `.price-table__header-cell--corner` (ultima).'
             }
         }
     }
@@ -196,7 +196,7 @@ export const ThreeColumns = {
     parameters: {
         docs: {
             description: {
-                story: '3 date: configurazione intermedia. La terza colonna riceve `.price-th--corner`.'
+                story: '3 date: configurazione intermedia. La terza colonna riceve `.price-table__header-cell--corner`.'
             }
         }
     }
@@ -229,7 +229,7 @@ export const FirstRowActive = {
     parameters: {
         docs: {
             description: {
-                story: 'Riga qty 25 (prima della pagina) attiva: la freccia su e\' `disabled` (opacity 0.25, pointer-events none). Tutti i `.price-cell-btn` della riga sono `--row-active`, intersezione `--selected`.'
+                story: 'Riga qty 25 (prima della pagina) attiva: la freccia su e\' `--disabled` (opacity 0.25, pointer-events none). Tutti i `.price-table__cell-btn` della riga sono `--row-active`, intersezione `--selected`.'
             }
         }
     }
@@ -238,23 +238,23 @@ export const FirstRowActive = {
 export const NoSelection = {
     render: () => {
         const noActiveTable = `
-            <div class="price-table-wrapper">
+            <div class="price-table__wrapper">
                 <div style="display: flex; justify-content: center; margin-bottom: 0.25rem;">
-                    <button type="button" class="price-nav-arrow disabled" aria-label="Quantita precedenti">${arrowUp}</button>
+                    <button type="button" class="price-table__nav-arrow price-table__nav-arrow--disabled" aria-label="Quantita precedenti">${arrowUp}</button>
                 </div>
-                <div class="price-table-section">
-                    <table class="price-table-full">
+                <div class="price-table__section">
+                    <table class="price-table">
                         <thead>${renderHeader(-1)}</thead>
                         <tbody>${rows.map((row) => `
-                            <tr class="price-tr">
-                                <td class="price-td price-td--left"><button type="button" class="price-qty-btn">${row.qty}</button></td>
-                                ${row.prices.map((p) => `<td class="price-td price-td--center"><button type="button" class="price-cell-btn price-cell-btn--default">${p} euro</button></td>`).join('')}
+                            <tr class="price-table__row">
+                                <td class="price-table__cell price-table__cell--left"><button type="button" class="price-table__qty-btn">${row.qty}</button></td>
+                                ${row.prices.map((p) => `<td class="price-table__cell price-table__cell--center"><button type="button" class="price-table__cell-btn price-table__cell-btn--default">${p} euro</button></td>`).join('')}
                             </tr>
                         `).join('')}</tbody>
                     </table>
                 </div>
                 <div style="display: flex; justify-content: center; margin-top: 0.25rem;">
-                    <button type="button" class="price-nav-arrow disabled" aria-label="Quantita successive">${arrowDown}</button>
+                    <button type="button" class="price-table__nav-arrow price-table__nav-arrow--disabled" aria-label="Quantita successive">${arrowDown}</button>
                 </div>
             </div>
         `;
@@ -263,7 +263,7 @@ export const NoSelection = {
     parameters: {
         docs: {
             description: {
-                story: 'Stato "vuoto": nessuna riga `--active`, nessuna colonna `--selected`. Tutti i `.price-cell-btn` sono `--default` (bg bianco, bordo gray-200). Utile come baseline puramente CSS.'
+                story: 'Stato "vuoto": nessuna riga `--active`, nessuna colonna `--selected`. Tutti i `.price-table__cell-btn` sono `--default` (bg bianco, bordo gray-200). Utile come baseline puramente CSS.'
             }
         }
     }
@@ -272,20 +272,20 @@ export const NoSelection = {
 export const WithMobileArrows = {
     render: () => {
         const html = `
-            <div class="price-table-wrapper">
+            <div class="price-table__wrapper">
                 <div style="display: flex; justify-content: center; margin-bottom: 0.25rem;">
-                    <button type="button" class="price-nav-arrow" aria-label="Quantita precedenti">${arrowUp}</button>
+                    <button type="button" class="price-table__nav-arrow" aria-label="Quantita precedenti">${arrowUp}</button>
                 </div>
-                <div class="price-table-section" style="position: relative;">
-                    <button type="button" class="price-nav-arrow-horizontal left" aria-label="Scorri a sinistra">${chevronLeft}</button>
-                    <button type="button" class="price-nav-arrow-horizontal right" aria-label="Scorri a destra">${chevronRight}</button>
-                    <table class="price-table-full">
+                <div class="price-table__section" style="position: relative;">
+                    <button type="button" class="price-table__nav-arrow-horizontal price-table__nav-arrow-horizontal--left" aria-label="Scorri a sinistra">${chevronLeft}</button>
+                    <button type="button" class="price-table__nav-arrow-horizontal price-table__nav-arrow-horizontal--right" aria-label="Scorri a destra">${chevronRight}</button>
+                    <table class="price-table">
                         <thead>${renderHeader(0)}</thead>
                         <tbody>${renderBody(50, 0)}</tbody>
                     </table>
                 </div>
                 <div style="display: flex; justify-content: center; margin-top: 0.25rem;">
-                    <button type="button" class="price-nav-arrow" aria-label="Quantita successive">${arrowDown}</button>
+                    <button type="button" class="price-table__nav-arrow" aria-label="Quantita successive">${arrowDown}</button>
                 </div>
             </div>
         `;
@@ -294,7 +294,7 @@ export const WithMobileArrows = {
     parameters: {
         docs: {
             description: {
-                story: 'Variante con frecce orizzontali per scroll mobile. `.price-nav-arrow-horizontal.left` / `.right` sono overlay assoluti su un wrapper `position: relative`. Sotto 767px la regola CSS le rende sempre `display: flex !important`; il consumer JS le nasconde via `style="display: none"` quando lo scroll non e\' necessario (es. tabella che entra interamente).'
+                story: 'Variante con frecce orizzontali per scroll mobile. `.price-table__nav-arrow-horizontal--left` / `--right` sono overlay assoluti su un wrapper `position: relative`. Sotto 767px la regola CSS le rende sempre `display: flex !important`; il consumer JS le nasconde via `style="display: none"` quando lo scroll non e\' necessario (es. tabella che entra interamente).'
             }
         }
     }

@@ -14,14 +14,14 @@ js_path: js/toggle-switch.js
 
 # ToggleSwitch
 
-Primitiva form per switch binario on/off. Track + thumb CSS-only, behavior JS minimo che flippa la classe `is-checked` e l'attributo `aria-checked` ed emette `toggle-switch:change`. Lo stato iniziale (on/off, disabled) e' impostato dal CMS nel markup; la libreria non gestisce persistenza ne' logica di business.
+Primitiva form per switch binario on/off. Track + thumb CSS-only, behavior JS minimo che flippa la classe `toggle-switch--checked` e l'attributo `aria-checked` ed emette `toggle-switch:change`. Lo stato iniziale (on/off, disabled) e' impostato dal CMS nel markup; la libreria non gestisce persistenza ne' logica di business.
 
 ## Anatomy
 
 ```text
 ToggleSwitch
 ├── toggle-switch-field            (wrapper opzionale label + switch, inline-flex)
-│   ├── toggle-switch              (button[role=switch], track 44x24)   [is-checked]
+│   ├── toggle-switch              (button[role=switch], track 44x24)   [--checked]
 │   │   └── toggle-switch__thumb   (knob 20x20, translateX(20px) quando checked)
 │   └── toggle-switch__label       (label esterna, slot consumer)
 ```
@@ -30,7 +30,7 @@ Lo switch standalone (senza wrapper field) e' valido: `.toggle-switch-field` e' 
 
 ## Markup contract
 
-Markup verbatim dalla pagina demo `product-page-integration` (sidebar configuratore, toggle multicopertina). Il consumer monta `aria-checked` iniziale; `init()` sincronizza la classe `.is-checked` di conseguenza.
+Markup verbatim dalla pagina demo `product-page-integration` (sidebar configuratore, toggle multicopertina). Il consumer monta `aria-checked` iniziale; `init()` sincronizza la classe `.toggle-switch--checked` di conseguenza.
 
 ```html
 <button
@@ -38,7 +38,7 @@ Markup verbatim dalla pagina demo `product-page-integration` (sidebar configurat
     class="toggle-switch"
     role="switch"
     aria-checked="false"
-    data-skillpress-toggle-switch>
+    data-toggle-switch>
     <span class="toggle-switch__thumb"></span>
 </button>
 ```
@@ -54,7 +54,7 @@ Variante con label inline:
         role="switch"
         aria-checked="false"
         aria-labelledby="multicop-label"
-        data-skillpress-toggle-switch>
+        data-toggle-switch>
         <span class="toggle-switch__thumb"></span>
     </button>
     <label id="multicop-label" for="multicop-switch" class="toggle-switch__label">Multicopertina</label>
@@ -66,10 +66,10 @@ Variante stato iniziale ON:
 ```html
 <button
     type="button"
-    class="toggle-switch is-checked"
+    class="toggle-switch toggle-switch--checked"
     role="switch"
     aria-checked="true"
-    data-skillpress-toggle-switch>
+    data-toggle-switch>
     <span class="toggle-switch__thumb"></span>
 </button>
 ```
@@ -84,7 +84,7 @@ Variante disabled:
     aria-checked="false"
     aria-disabled="true"
     disabled
-    data-skillpress-toggle-switch>
+    data-toggle-switch>
     <span class="toggle-switch__thumb"></span>
 </button>
 ```
@@ -94,7 +94,7 @@ Variante disabled:
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
 | `.toggle-switch-field` | wrapper opzionale label + switch (inline-flex) | no | — |
-| `.toggle-switch` | track, e' il `<button>` stesso (44x24) | yes | `is-checked` |
+| `.toggle-switch` | track, e' il `<button>` stesso (44x24) | yes | `--checked` |
 | `.toggle-switch__thumb` | knob 20x20, animato via `translateX` quando checked | yes | — |
 | `.toggle-switch__label` | label esterna, tipografia base | no | — |
 
@@ -103,11 +103,11 @@ Attributi:
 | Attribute | Element | Required | Note |
 |---|---|---|---|
 | `role="switch"` | `.toggle-switch` | yes | Auto-applicato da `init()` se mancante. |
-| `aria-checked` | `.toggle-switch` | yes | `"true"` / `"false"`. Sincronizzato da `init()` con la classe `.is-checked`. |
+| `aria-checked` | `.toggle-switch` | yes | `"true"` / `"false"`. Sincronizzato da `init()` con la classe `.toggle-switch--checked`. |
 | `aria-disabled` | `.toggle-switch` | no | Alternativa a `disabled`; entrambi disabilitano il behavior. |
 | `disabled` | `.toggle-switch` | no | Disabilita il bottone nativo. |
 | `aria-labelledby` / `aria-label` | `.toggle-switch` | no | Consigliato quando il label non e' associato via `for`. |
-| `data-skillpress-toggle-switch` | `.toggle-switch` | yes | Selettore di default di `init()`. |
+| `data-toggle-switch` | `.toggle-switch` | yes | Selettore di default di `init()`. |
 
 ## Behavior JS
 
@@ -118,7 +118,7 @@ Cosa NON fa: persistenza stato, sync con form, animazione custom oltre transitio
 ```
 
 `init()` accetta:
-- nessun argomento: seleziona tutti gli `[data-skillpress-toggle-switch]` del documento.
+- nessun argomento: seleziona tutti gli `[data-toggle-switch]` del documento.
 - una stringa CSS selector.
 - un singolo elemento o un container che contiene switch.
 
@@ -156,7 +156,7 @@ Oppure via bundle (gia' include `toggle-switch.css`):
 
 ## Note CMS
 
-- stato iniziale: settare `aria-checked="true"` (e/o classe `.is-checked`) nel markup. `init()` sincronizza la classe con l'attributo.
+- stato iniziale: settare `aria-checked="true"` (e/o classe `.toggle-switch--checked`) nel markup. `init()` sincronizza la classe con l'attributo.
 - stato disabled: `disabled` o `aria-disabled="true"`. Entrambi bloccano il toggle e applicano lo stile `opacity: 0.5`.
 - testo della label: contenuto di `.toggle-switch__label`, libero (la libreria controlla solo tipografia base).
 - logica di business: ascoltare `toggle-switch:change` sul nodo `.toggle-switch` e leggere `event.detail.checked`.

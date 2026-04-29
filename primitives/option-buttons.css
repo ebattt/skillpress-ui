@@ -2,13 +2,13 @@
    OPTION BUTTONS (selezione singola nel configuratore)
    Source: elements-ui/css/components/_buttons.css#L129-L177
    ================================================================ */
-.option-btns-wrap {
+.option-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 0.375rem;
 }
 
-.option-btn {
+.option-buttons__btn {
     padding: 0.375rem 0.625rem;
     border-radius: var(--radius-sm);
     border: 1px solid;
@@ -19,37 +19,37 @@
     transition: all var(--transition-fast);
 }
 
-.option-btn--default {
+.option-buttons__btn--default {
     background-color: var(--color-bg-white);
     color: var(--color-text);
     border-color: var(--color-bg-gray-200);
 }
 
-.option-btn--default:hover {
+.option-buttons__btn--default:hover {
     border-color: var(--color-border);
     background-color: var(--color-bg-gray-50);
 }
 
-.option-btn--selected {
+.option-buttons__btn--selected {
     background-color: var(--color-primary);
     color: var(--color-bg-white);
     border-color: var(--color-primary);
 }
 
-.option-btn--borderless {
+.option-buttons__btn--borderless {
     background-color: var(--color-bg-white);
     color: var(--color-text);
     border-color: transparent;
 }
 
-.option-btn--borderless:hover {
+.option-buttons__btn--borderless:hover {
     background-color: var(--color-bg-gray-50);
     border-color: transparent;
 }
 
 /* Mobile: touch target standard e-commerce. */
 @media (max-width: 767px) {
-    .option-btn {
+    .option-buttons__btn {
         min-height: 40px;
         padding: 0.5rem 0.875rem;
     }

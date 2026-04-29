@@ -15,14 +15,14 @@ const renderSwitch = ({
     ariaLabel
 } = {}) => {
     const classes = ['toggle-switch'];
-    if (checked) classes.push('is-checked');
+    if (checked) classes.push('toggle-switch--checked');
 
     const attrs = [
         'type="button"',
         `class="${classes.join(' ')}"`,
         'role="switch"',
         `aria-checked="${checked ? 'true' : 'false'}"`,
-        'data-skillpress-toggle-switch'
+        'data-toggle-switch'
     ];
     if (id) attrs.push(`id="${id}"`);
     if (ariaLabel) attrs.push(`aria-label="${ariaLabel}"`);

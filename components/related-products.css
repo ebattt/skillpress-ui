@@ -3,7 +3,7 @@
    ============================================================================
    Fonti:
    - elements-ui/css/components/_layout-patterns.css#L1804-L1825
-     (.related-section + qualificazione catalog-section-label / catalog-grid--products)
+     (.related-products + qualificazione catalog-section-label / catalog-grid--products)
    - elements-ui/css/components/_cards.css#L1181-L1328
      (PRODUCT CARD: catalog-section-label / catalog-grid--products /
       catalog-card--product-equal + arrow notch / catalog-card__title /
@@ -11,21 +11,21 @@
    ========================================================================== */
 
 /* --- Wrapper section --- */
-.related-section {
+.related-products {
     font-family: var(--font-family);
     background-color: var(--color-bg-white);
     padding: 0 20px 5px;
     overflow: visible;
 }
 
-.related-section .catalog-section-label {
+.related-products .catalog-section-label {
     max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 16px;
 }
 
-.related-section .catalog-grid--products {
+.related-products .catalog-grid--products {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 16px;

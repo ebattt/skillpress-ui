@@ -8,32 +8,32 @@
  * CSS-only. Nessun behavior libreria: il CMS sposta i modifier
  * `--active`, `--inactive`, `--completed` su badge, titolo e status.
  *
- * Token usati: `--color-text-strong` (= `#374151`, step-title--inactive),
+ * Token usati: `--color-text-strong` (= `#374151`, step-indicator__title--inactive),
  * `--color-border` (= `#D1D5DB`, steps-line), gradient `--color-primary` ->
- * `--color-primary-light` (= `#F08A00 -> #FFB149`, step-badge--active).
+ * `--color-primary-light` (= `#F08A00 -> #FFB149`, step-indicator__badge--active).
  * Tutti coincidenti con i valori letterali del catalogo elements-ui.
  *
  * Mobile-first: 2 colonne sotto 1024px, 4 colonne >= 1024px.
  * `.steps-line` e' nascosta sotto 1024px e visibile solo da desktop.
  *
  * Fuori scope (non implementato qui):
- * - icona check dentro `.step-badge--completed`;
+ * - icona check dentro `.step-indicator__badge--completed`;
  * - wrapper `.step-card` con hover translateY;
  * - step verticali, cliccabili, scroll spy, sticky, animazioni sequenziali.
  */
 
-.steps-section {
+.step-indicator {
     max-width: var(--page-max-width);
     margin: 0 auto;
     padding: 0 1rem;
     margin-top: 0.75rem;
 }
 
-.steps-wrapper {
+.step-indicator__wrapper {
     margin-bottom: 1rem;
 }
 
-.steps-container {
+.step-indicator__container {
     position: relative;
     max-width: 64rem;
     margin: 0 auto;
@@ -71,7 +71,7 @@
     }
 }
 
-.step-card-item {
+.step-indicator__item {
     background-color: var(--color-bg-white);
     border: 1px solid var(--color-bg-gray-200);
     border-radius: var(--radius-lg);
@@ -79,11 +79,11 @@
     transition: all var(--transition-slow);
 }
 
-.step-card-item:hover {
+.step-indicator__item:hover {
     transform: translateY(-2px);
 }
 
-.step-card-item--active {
+.step-indicator__item--active {
     border-color: var(--color-primary);
 }
 
@@ -93,7 +93,7 @@
     gap: 0.625rem;
 }
 
-.step-badge {
+.step-indicator__badge {
     flex-shrink: 0;
     width: 1.75rem;
     height: 1.75rem;
@@ -105,17 +105,17 @@
     font-size: var(--font-size-xs);
 }
 
-.step-badge--active {
+.step-indicator__badge--active {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
     color: var(--color-bg-white);
 }
 
-.step-badge--inactive {
+.step-indicator__badge--inactive {
     background: var(--color-bg-gray-200);
     color: var(--color-text-secondary);
 }
 
-.step-badge--completed {
+.step-indicator__badge--completed {
     background: var(--color-success);
     color: var(--color-bg-white);
 }
@@ -125,7 +125,7 @@
     min-width: 0;
 }
 
-.step-title {
+.step-indicator__title {
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
     overflow: hidden;
@@ -133,23 +133,23 @@
     white-space: nowrap;
 }
 
-.step-title--active {
+.step-indicator__title--active {
     color: var(--color-text);
 }
 
-.step-title--inactive {
+.step-indicator__title--inactive {
     color: var(--color-text-strong);
 }
 
-.step-status {
+.step-indicator__status {
     font-size: 10px;
     font-weight: var(--font-weight-medium);
 }
 
-.step-status--active {
+.step-indicator__status--active {
     color: var(--color-primary);
 }
 
-.step-status--inactive {
+.step-indicator__status--inactive {
     color: var(--color-text-light);
 }

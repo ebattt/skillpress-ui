@@ -6,22 +6,22 @@
  * Target demo: product-page-integration
  *
  * Dipende da:
- *   - components/image-gallery.css (.hero-image-gallery, .hero-image-container, .hero-nav-btn*)
+ *   - components/image-gallery.css (.image-gallery, .image-gallery__container, .image-gallery__nav-btn*)
  *   - primitives/rating.css         (.rating, .rating__empty, .rating__filled, .rating__star)
  *   - components/feature-box.css    (.feature-grid, .feature-box*)
  *
  * Contratto markup statico (Strategia A):
  *   <div id="product-hero" class="product-hero">
- *     <div class="hero-grid">
+ *     <div class="product-hero__grid">
  *       <!-- left slot: ImageGallery markup -->
- *       <div class="hero-info">
- *         <h1 class="hero-title">...</h1>
- *         <div class="hero-rating">
- *           <span class="hero-rating-value">...</span>
+ *       <div class="product-hero__info">
+ *         <h1 class="product-hero__title">...</h1>
+ *         <div class="product-hero__rating">
+ *           <span class="product-hero__rating-value">...</span>
  *           <!-- Rating markup -->
- *           <span class="hero-review-count">...</span>
+ *           <span class="product-hero__review-count">...</span>
  *         </div>
- *         <p class="hero-description">...</p>
+ *         <p class="product-hero__description">...</p>
  *         <!-- FeatureGrid markup -->
  *       </div>
  *     </div>
@@ -42,30 +42,30 @@
     }
 }
 
-.hero-grid {
+.product-hero__grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
 }
 
 @media (max-width: 767px) {
-    .hero-grid {
+    .product-hero__grid {
         gap: 0.75rem;
     }
 }
 
 @media (min-width: 1024px) {
-    .hero-grid {
+    .product-hero__grid {
         grid-template-columns: 35fr 65fr;
     }
 }
 
-.hero-info {
+.product-hero__info {
     display: flex;
     flex-direction: column;
 }
 
-.hero-title {
+.product-hero__title {
     margin: 0 0 0.75rem;
     color: var(--color-text);
     font-size: var(--font-size-3xl);
@@ -74,25 +74,25 @@
     letter-spacing: 0;
 }
 
-.hero-rating {
+.product-hero__rating {
     display: flex;
     align-items: center;
     gap: 0.625rem;
     margin-bottom: 0.75rem;
 }
 
-.hero-rating-value {
+.product-hero__rating-value {
     color: var(--color-text);
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);
 }
 
-.hero-review-count {
+.product-hero__review-count {
     color: var(--color-text-light);
     font-size: var(--font-size-sm);
 }
 
-.hero-description {
+.product-hero__description {
     margin: 0 0 1rem;
     color: var(--color-text-secondary);
     font-size: var(--font-size-sm);

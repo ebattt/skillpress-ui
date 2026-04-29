@@ -10,34 +10,36 @@
  * Contratto markup atteso:
  *   <div class="label-row">
  *     <label class="label-text">Formato (mm)</label>
- *     <button class="info-btn" type="button" aria-controls="info-formato"
+ *     <button class="info-btn" type="button" data-info-trigger
+ *             aria-controls="info-formato"
  *             aria-expanded="false" aria-label="Mostra informazioni">
  *       <svg>info icon</svg>
  *     </button>
  *   </div>
- *   <div id="info-formato" class="info-dropdown hidden" role="region" aria-hidden="true">
+ *   <div id="info-formato" class="info-dropdown info-dropdown--hidden"
+ *        data-info-dropdown role="region" aria-hidden="true">
  *     <p>...body content...</p>
  *   </div>
  *
  * Init (idempotente):
- *   1. Per ogni .info-btn[aria-controls=ID]:
- *      a. Trova #ID (.info-dropdown).
- *      b. Se #ID non ha .info-dropdown-header come primo figlio, lo auto-inietta:
+ *   1. Per ogni [data-info-trigger][aria-controls=ID]:
+ *      a. Trova #ID ([data-info-dropdown]).
+ *      b. Se #ID non ha .info-dropdown__header come primo figlio, lo auto-inietta:
  *         - title = textContent della .label-text adiacente (stessa .label-row).
  *         - close button con icona X SVG inline.
- *      c. Se i figli rimanenti non sono gia' wrappati in .info-dropdown-body,
+ *      c. Se i figli rimanenti non sono gia' wrappati in .info-dropdown__body,
  *         vengono wrappati.
- *   2. Wire click trigger -> toggle .hidden + sync aria-expanded + aria-hidden.
- *   3. Wire click .info-dropdown-close -> chiudi.
+ *   2. Wire click trigger -> toggle .info-dropdown--hidden + sync aria-expanded + aria-hidden.
+ *   3. Wire click .info-dropdown__close -> chiudi.
  *   4. ESC su document -> chiudi tutti gli aperti.
- *   5. Click outside (.info-dropdown e .info-btn) -> chiudi tutti gli aperti.
+ *   5. Click outside ([data-info-dropdown] e [data-info-trigger]) -> chiudi tutti gli aperti.
  *
  * Eventi emessi:
  *   - 'sp:info-dropdown:open'  bubbling, sul .info-dropdown
  *   - 'sp:info-dropdown:close' bubbling, sul .info-dropdown
  */
 (function() {
-    var TRIGGER_SELECTOR = '.info-btn[aria-controls]';
+    var TRIGGER_SELECTOR = '[data-info-trigger][aria-controls]';
     var DROPDOWN_INIT_FLAG = '__skillpressInfoDropdownInit';
     var TRIGGER_INIT_FLAG = '__skillpressInfoBtnInit';
     var DOC_INIT_FLAG = '__skillpressInfoDropdownDocInit';
@@ -67,8 +69,8 @@
     function ensureChrome(dropdown, trigger) {
         if (dropdown[DROPDOWN_INIT_FLAG]) return;
 
-        var existingHeader = dropdown.querySelector(':scope > .info-dropdown-header');
-        var existingBody = dropdown.querySelector(':scope > .info-dropdown-body');
+        var existingHeader = dropdown.querySelector(':scope > .info-dropdown__header');
+        var existingBody = dropdown.querySelector(':scope > .info-dropdown__body');
 
         // Step 1: snapshot dei figli che dovranno finire dentro il body wrapper.
         // Tutto cio' che non e' gia' header/body finisce wrappato.
@@ -84,17 +86,17 @@
         // Step 2: se header mancante, costruiscilo.
         if (!existingHeader) {
             var header = document.createElement('div');
-            header.className = 'info-dropdown-header';
+            header.className = 'info-dropdown__header';
 
             var titleText = getAssociatedLabelText(trigger);
             var title = document.createElement('h4');
-            title.className = 'info-dropdown-title';
+            title.className = 'info-dropdown__title';
             title.textContent = titleText;
             header.appendChild(title);
 
             var close = document.createElement('button');
             close.type = 'button';
-            close.className = 'info-dropdown-close';
+            close.className = 'info-dropdown__close';
             close.setAttribute('aria-label', 'Chiudi');
             close.innerHTML = CLOSE_SVG;
             header.appendChild(close);
@@ -110,7 +112,7 @@
         // Step 3: se body mancante, wrappa i nodi snapshot.
         if (!existingBody && bodyNodes.length > 0) {
             var body = document.createElement('div');
-            body.className = 'info-dropdown-body';
+            body.className = 'info-dropdown__body';
             bodyNodes.forEach(function(node) {
                 body.appendChild(node);
             });
@@ -121,11 +123,11 @@
     }
 
     function isOpen(dropdown) {
-        return !dropdown.classList.contains('hidden');
+        return !dropdown.classList.contains('info-dropdown--hidden');
     }
 
     function setOpen(dropdown, trigger, open) {
-        dropdown.classList.toggle('hidden', !open);
+        dropdown.classList.toggle('info-dropdown--hidden', !open);
         dropdown.setAttribute('aria-hidden', open ? 'false' : 'true');
         if (trigger) {
             trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -138,12 +140,12 @@
 
     function findTriggerFor(dropdown) {
         if (!dropdown.id) return null;
-        return document.querySelector('.info-btn[aria-controls="' + dropdown.id + '"]');
+        return document.querySelector('[data-info-trigger][aria-controls="' + dropdown.id + '"]');
     }
 
     function closeAll() {
         Array.prototype.forEach.call(
-            document.querySelectorAll('.info-dropdown:not(.hidden)'),
+            document.querySelectorAll('[data-info-dropdown]:not(.info-dropdown--hidden)'),
             function(dropdown) {
                 setOpen(dropdown, findTriggerFor(dropdown), false);
             }
@@ -161,17 +163,17 @@
     }
 
     function onCloseClick(event) {
-        var close = event.target.closest('.info-dropdown-close');
+        var close = event.target.closest('.info-dropdown__close');
         if (!close) return;
-        var dropdown = close.closest('.info-dropdown');
+        var dropdown = close.closest('[data-info-dropdown]');
         if (!dropdown) return;
         setOpen(dropdown, findTriggerFor(dropdown), false);
     }
 
     function onDocClick(event) {
         // Click outside: chiudi se non dentro un trigger ne' un dropdown aperto.
-        if (event.target.closest('.info-btn')) return;
-        if (event.target.closest('.info-dropdown')) return;
+        if (event.target.closest('[data-info-trigger]')) return;
+        if (event.target.closest('[data-info-dropdown]')) return;
         closeAll();
     }
 

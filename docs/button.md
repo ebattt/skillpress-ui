@@ -23,7 +23,7 @@ Button
 │   └── <text>          (label visibile o aria-label equivalente)
 ```
 
-Tag accettati: `<button type="button">` o `<a href="...">`. Per link disabilitati usare classe `.is-disabled` + `aria-disabled="true"`.
+Tag accettati: `<button type="button">` o `<a href="...">`. Per link disabilitati usare classe `.button--disabled` + `aria-disabled="true"`.
 
 ## Markup contract
 
@@ -60,9 +60,9 @@ Con icona inline (SVG, no Material Symbols):
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.button` | shell del bottone, applica padding/radius/font/transition | yes | `--primary`, `--secondary`, `--outline`, `--ghost`, `--sm`, `--full` |
+| `.button` | shell del bottone, applica padding/radius/font/transition | yes | `--primary`, `--secondary`, `--outline`, `--ghost`, `--sm`, `--full`, `--disabled` |
 | `.button__icon` | wrapper inline 1.125rem per SVG icon | no | — |
-| `.is-disabled` | stato disabilitato per `<a>` o controlli non disabilitabili nativamente | no | — |
+| `.button--disabled` | stato disabilitato per `<a>` o controlli non disabilitabili nativamente | no | — |
 
 Attributi:
 
@@ -70,7 +70,7 @@ Attributi:
 |---|---|---|---|
 | `type="button"` | `<button>` | no | Raccomandato quando il button non e' un submit. |
 | `disabled` | `<button>` | no | Stato disabilitato nativo. |
-| `aria-disabled="true"` | `<a>` o `.is-disabled` | no | Necessario per link disabilitati (no `disabled` su `<a>`). |
+| `aria-disabled="true"` | `<a>` o `.button--disabled` | no | Necessario per link disabilitati (no `disabled` su `<a>`). |
 | `href` | `<a>` | yes (se tag `<a>`) | Target di navigazione. |
 
 ## Installation

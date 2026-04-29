@@ -24,7 +24,7 @@
     background: var(--color-bg-gray-50);
 }
 
-.accordion__section.expanded {
+.accordion__section--expanded {
     background: var(--section-bg-expanded);
 }
 
@@ -98,7 +98,7 @@
     transform: translate(-50%, -50%) rotate(90deg);
 }
 
-.accordion__section.expanded .accordion__icon::after {
+.accordion__section--expanded .accordion__icon::after {
     opacity: 0;
     transform: translate(-50%, -50%) rotate(90deg) scaleX(0);
 }
@@ -112,7 +112,7 @@
         opacity var(--transition-slow);
 }
 
-.accordion__section.expanded > .accordion__content {
+.accordion__section--expanded > .accordion__content {
     max-height: 3000px;
     opacity: 1;
     overflow: visible;

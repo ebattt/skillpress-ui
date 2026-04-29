@@ -4,10 +4,10 @@ Barra fixed in basso visibile su mobile/tablet (`<=1023px`). Mostra prezzo total
 
 - Fonti:
   - `elements-ui/css/components/_layout-patterns.css#L490-L758` (MOBILE BAR section: container fixed, handle, compact, expanded, details, config-toggle, config-content + responsive 374px / 640-1023px).
-  - `elements-ui/css/components/_buttons.css#L58-L84` (`.mobile-bar-cart-btn` definito separatamente).
+  - `elements-ui/css/components/_buttons.css#L58-L84` (`.mobile-total-bar__cart-btn` definito separatamente).
   - `elements-ui/js/layout-patterns/mobile-bar.js` (catalogo elements-ui con sandbox preview interattiva).
 - Cartella: `components/` (composto: container fixed > overlay + container > 4 sezioni innestate).
-- Strategia JS demo: A — static snapshot. La libreria non aggiunge listener. Toggle (`.expanded`, `.active`, `.visible`) sono wire-up consumer-side.
+- Strategia JS demo: A — static snapshot. La libreria non aggiunge listener. Toggle (`.mobile-total-bar--expanded`, `.mobile-config-toggle--active`, `.mobile-config-content--visible`) sono wire-up consumer-side.
 
 ## Quando usarlo
 
@@ -25,28 +25,28 @@ Barra fixed in basso visibile su mobile/tablet (`<=1023px`). Mostra prezzo total
 
 ```html
 <div id="mobile-total-bar" class="mobile-total-bar">
-    <div id="mobile-bar-overlay" class="mobile-bar-overlay"></div>
-    <div class="mobile-bar-container">
-        <div id="mobile-bar-handle" class="mobile-bar-handle" role="button" tabindex="0"
+    <div id="mobile-bar-overlay" class="mobile-total-bar__overlay"></div>
+    <div class="mobile-total-bar__container">
+        <div id="mobile-bar-handle" class="mobile-total-bar__handle" role="button" tabindex="0"
              aria-label="Espandi dettagli totale" aria-expanded="false">
-            <svg class="handle-arrow" aria-hidden="true">...</svg>
+            <svg class="mobile-total-bar__handle-arrow" aria-hidden="true">...</svg>
         </div>
-        <div class="mobile-bar-compact">
-            <div class="mobile-bar-price-section">
-                <span class="mobile-bar-label">Totale</span>
-                <span id="mobile-total-price" class="mobile-bar-price">-</span>
+        <div class="mobile-total-bar__compact">
+            <div class="mobile-total-bar__price-section">
+                <span class="mobile-total-bar__label">Totale</span>
+                <span id="mobile-total-price" class="mobile-total-bar__price">-</span>
             </div>
-            <button id="mobile-add-cart-btn" class="mobile-bar-cart-btn">Aggiungi al carrello</button>
+            <button id="mobile-add-cart-btn" class="mobile-total-bar__cart-btn">Aggiungi al carrello</button>
             <div id="mobileValidationErrors"></div>
         </div>
-        <div id="mobile-bar-expanded" class="mobile-bar-expanded">
-            <div class="mobile-bar-divider"></div>
-            <div class="mobile-bar-details">
-                <div class="mobile-detail-row"><span>Quantità</span><span id="mobile-qty">50</span></div>
-                <div class="mobile-detail-row"><span>Prezzo unitario</span><span id="mobile-unit-price">-</span></div>
-                <div class="mobile-detail-row"><span>Subtotale</span><span id="mobile-subtotal">-</span></div>
-                <div class="mobile-detail-row"><span>IVA</span><span id="mobile-iva">-</span></div>
-                <div class="mobile-detail-row mobile-detail-shipping">
+        <div id="mobile-bar-expanded" class="mobile-total-bar__expanded-section">
+            <div class="mobile-total-bar__divider"></div>
+            <div class="mobile-total-bar__details">
+                <div class="mobile-total-bar__detail-row"><span>Quantità</span><span id="mobile-qty">50</span></div>
+                <div class="mobile-total-bar__detail-row"><span>Prezzo unitario</span><span id="mobile-unit-price">-</span></div>
+                <div class="mobile-total-bar__detail-row"><span>Subtotale</span><span id="mobile-subtotal">-</span></div>
+                <div class="mobile-total-bar__detail-row"><span>IVA</span><span id="mobile-iva">-</span></div>
+                <div class="mobile-total-bar__detail-row mobile-total-bar__detail-shipping">
                     <span>Spedizione</span><span class="text-green-600">Gratuita *</span>
                 </div>
             </div>
@@ -68,36 +68,36 @@ Barra fixed in basso visibile su mobile/tablet (`<=1023px`). Mostra prezzo total
 Container fixed:
 
 - `.mobile-total-bar` — root: `display: none` desktop, `display: block` `<=1023px`, `position: fixed; bottom: 0`, `z-index: var(--z-mobile-bar)` (999), `pointer-events: none`.
-- `.mobile-bar-overlay` — `display: none` di default. Slot opzionale per overlay scuro (la demo non lo attiva, ma il consumer puo' farlo via override).
-- `.mobile-bar-container` — flex column, sfondo bianco, `border-top` + `border-radius: 1rem 1rem 0 0`, box-shadow lift, `padding-bottom: calc(0.625rem + env(safe-area-inset-bottom, 0px))` per iPhone notch, `max-height: 85vh; overflow-y: auto`, `pointer-events: auto`.
+- `.mobile-total-bar__overlay` — `display: none` di default. Slot opzionale per overlay scuro (la demo non lo attiva, ma il consumer puo' farlo via override).
+- `.mobile-total-bar__container` — flex column, sfondo bianco, `border-top` + `border-radius: 1rem 1rem 0 0`, box-shadow lift, `padding-bottom: calc(0.625rem + env(safe-area-inset-bottom, 0px))` per iPhone notch, `max-height: 85vh; overflow-y: auto`, `pointer-events: auto`.
 
 Handle (chevron espansione):
 
-- `.mobile-bar-handle` — `order: 0`, flex centrato.
-- `.handle-arrow` — colore muted, `1.25rem`. `.mobile-total-bar.expanded .handle-arrow` -> `transform: rotate(180deg)`.
+- `.mobile-total-bar__handle` — `order: 0`, flex centrato.
+- `.mobile-total-bar__handle-arrow` — colore muted, `1.25rem`. `.mobile-total-bar--expanded .mobile-total-bar__handle-arrow` -> `transform: rotate(180deg)`.
 
 Sezione compatta (sempre visibile):
 
-- `.mobile-bar-compact` — `order: 2`, flex column, gap 0.375rem.
-- `.mobile-bar-price-section` — flex space-between.
-- `.mobile-bar-label` — 1.125rem semibold primary.
-- `.mobile-bar-price` — 1.125rem bold text.
-- `.mobile-bar-iva` — 0.6875rem muted (slot opzionale).
-- `.mobile-bar-cart-btn` — full width, `--color-secondary-dark`, testo bianco semibold, `padding: 0.8125rem 1rem`, `border-radius: 0.625rem`. `:active { opacity: 0.9 }`.
+- `.mobile-total-bar__compact` — `order: 2`, flex column, gap 0.375rem.
+- `.mobile-total-bar__price-section` — flex space-between.
+- `.mobile-total-bar__label` — 1.125rem semibold primary.
+- `.mobile-total-bar__price` — 1.125rem bold text.
+- `.mobile-total-bar__iva` — 0.6875rem muted (slot opzionale).
+- `.mobile-total-bar__cart-btn` — full width, `--color-secondary-dark`, testo bianco semibold, `padding: 0.8125rem 1rem`, `border-radius: 0.625rem`. `:active { opacity: 0.9 }`.
 
 Sezione espansa:
 
-- `.mobile-bar-expanded` — `order: 1`, `max-height: 0; opacity: 0` di default. Quando `.mobile-total-bar.expanded`: `max-height: 60vh; opacity: 1; padding-bottom: var(--spacing-xl)`. Transizione `var(--transition-section)` per max-height + `var(--transition-slow)` per opacity.
-- `.mobile-bar-divider` — `display: none` (placeholder DOM, mai visibile).
-- `.mobile-bar-details` — flex column, gap 0.5rem.
-- `.mobile-detail-row` — flex space-between, font-size sm. Label muted, value semibold 0.9375rem.
-- `.mobile-detail-shipping` — modifier su `.mobile-detail-row`. Value colore success.
+- `.mobile-total-bar__expanded-section` — `order: 1`, `max-height: 0; opacity: 0` di default. Quando `.mobile-total-bar--expanded`: `max-height: 60vh; opacity: 1; padding-bottom: var(--spacing-xl)`. Transizione `var(--transition-section)` per max-height + `var(--transition-slow)` per opacity.
+- `.mobile-total-bar__divider` — `display: none` (placeholder DOM, mai visibile).
+- `.mobile-total-bar__details` — flex column, gap 0.5rem.
+- `.mobile-total-bar__detail-row` — flex space-between, font-size sm. Label muted, value semibold 0.9375rem.
+- `.mobile-total-bar__detail-shipping` — modifier su `.mobile-total-bar__detail-row`. Value colore success.
 
 Toggle riepilogo:
 
 - `.mobile-config-toggle` — full width, transparent, semibold. Icone `svg` 1rem.
-- `#mobile-config-icon` — selettore id-based catalogo. Quando `.mobile-config-toggle.active`: `transform: rotate(180deg)`. Mantiene l'id originale del catalogo.
-- `.mobile-config-content` — `max-height: 0; opacity: 0` di default. Quando `.visible`: `max-height: 400px; padding: 1rem` (bottom 6rem), sfondo gray-50, border, `border-radius: var(--radius-lg)`.
+- `#mobile-config-icon` — selettore id-based catalogo. Quando `.mobile-config-toggle--active`: `transform: rotate(180deg)`. Mantiene l'id originale del catalogo.
+- `.mobile-config-content` — `max-height: 0; opacity: 0` di default. Quando `.mobile-config-content--visible`: `max-height: 400px; padding: 1rem` (bottom 6rem), sfondo gray-50, border, `border-radius: var(--radius-lg)`.
 
 Utility classes per il content iniettato dal CMS:
 
@@ -115,14 +115,14 @@ Queste classi sono **definite in `components/sidebar-totals.css`** e si applican
 
 ## Stati e modifier
 
-- `.mobile-total-bar.expanded` -> espande la barra (toggle con click sull'handle o sull'overlay).
-- `.mobile-config-toggle.active` + `.mobile-config-content.visible` -> espande il riepilogo configurazione dentro la barra (toggle indipendente dal primo).
-- ARIA: `aria-expanded` sul `.mobile-bar-handle` e `.mobile-config-toggle` aggiornati dal consumer.
+- `.mobile-total-bar--expanded` -> espande la barra (toggle con click sull'handle o sull'overlay).
+- `.mobile-config-toggle--active` + `.mobile-config-content--visible` -> espande il riepilogo configurazione dentro la barra (toggle indipendente dal primo).
+- ARIA: `aria-expanded` sul `.mobile-total-bar__handle` e `.mobile-config-toggle` aggiornati dal consumer.
 
 ## Responsive
 
 - `<=374px` (small phones): padding ridotto, font-size cart 0.8125rem, label/price 1rem.
-- `>=640px <=1023px` (tablet): `max-width: 480px` centrato su `.mobile-bar-compact`, `.mobile-bar-details`, `.mobile-config-toggle`, `.mobile-config-content.visible`. Padding container 0.5rem 1.5rem.
+- `>=640px <=1023px` (tablet): `max-width: 480px` centrato su `.mobile-total-bar__compact`, `.mobile-total-bar__details`, `.mobile-config-toggle`, `.mobile-config-content--visible`. Padding container 0.5rem 1.5rem.
 - `>=1024px` (desktop): `display: none`. Usare `SidebarTotals` desktop.
 
 ## Cosa decide il CMS / backend
@@ -131,7 +131,7 @@ Queste classi sono **definite in `components/sidebar-totals.css`** e si applican
 - valori formattati di prezzo, qty, subtotale, IVA, spedizione;
 - contenuto HTML iniettato in `.mobile-config-content` (uso delle utility `.font-bold`, `.font-semibold`);
 - click bottone carrello -> push checkout (business logic);
-- presenza/assenza `.mobile-detail-shipping` (rimuovibile se non gratuita);
+- presenza/assenza `.mobile-total-bar__detail-shipping` (rimuovibile se non gratuita);
 - gli id del markup sono *opzionali*: utili al consumer per agganciare JS. La libreria stila SOLO `#mobile-config-icon` (rotazione chevron toggle).
 
 ## Cosa decide la libreria
@@ -142,7 +142,7 @@ Queste classi sono **definite in `components/sidebar-totals.css`** e si applican
 - aspetto compact (label, price, cart button);
 - transizioni `max-height` + `opacity` per espansione;
 - aspetto config-toggle + rotazione chevron quando active;
-- aspetto config-content quando `.visible`;
+- aspetto config-content quando `.mobile-config-content--visible`;
 - responsive 374px / 640-1023px.
 
 ## Fuori scope

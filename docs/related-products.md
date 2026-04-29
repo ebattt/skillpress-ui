@@ -3,7 +3,7 @@
 Sezione "Potrebbe piacerti anche": griglia di card prodotto correlato (stile landing page) con titolo in alto e immagine sotto. Pattern CSS-only, niente JS libreria.
 
 - Fonti:
-  - `elements-ui/css/components/_layout-patterns.css#L1804-L1825` (`.related-section` wrapper + qualificazioni 1280px max-width).
+  - `elements-ui/css/components/_layout-patterns.css#L1804-L1825` (`.related-products` wrapper + qualificazioni 1280px max-width).
   - `elements-ui/css/components/_cards.css#L1181-L1328` (PRODUCT CARD section: section-label, grid responsive 5/3/2 colonne, card con aspect-ratio + arrow notch + hover scale).
   - `elements-ui/js/cards/card-image-text-below.js` (catalogo elements-ui con sandbox preview).
 - Cartella: `components/` (composto: section > h2 + grid > N anchor card).
@@ -24,7 +24,7 @@ Sezione "Potrebbe piacerti anche": griglia di card prodotto correlato (stile lan
 ## Markup base
 
 ```html
-<section class="related-section" aria-label="Prodotti correlati">
+<section class="related-products" aria-label="Prodotti correlati">
     <h2 class="catalog-section-label">Potrebbe piacerti anche</h2>
     <div class="catalog-grid catalog-grid--products">
         <a href="/products/carte-da-gioco" class="catalog-card catalog-card--product-equal">
@@ -43,7 +43,7 @@ Sezione "Potrebbe piacerti anche": griglia di card prodotto correlato (stile lan
 
 Wrapper:
 
-- `.related-section` — section bianca, padding `0 20px 5px`, `overflow: visible`. Ha qualificazioni interne che limitano `.catalog-section-label` e `.catalog-grid--products` a `max-width: 1280px` con padding orizzontale 16px.
+- `.related-products` — section bianca, padding `0 20px 5px`, `overflow: visible`. Ha qualificazioni interne che limitano `.catalog-section-label` e `.catalog-grid--products` a `max-width: 1280px` con padding orizzontale 16px.
 - `.catalog-section-label` — h2 sezione: Manrope 800, `clamp(1.15rem, 2vw, 1.7rem)`, `letter-spacing: -0.04em`, line-height 0.98, `margin-bottom: 1.2rem`.
 
 Grid:
@@ -77,7 +77,7 @@ Card content:
 
 ## Cosa decide il CMS / backend
 
-- Numero di card (la grid gestisce N item; il README di pagina dice di omettere l'intera `<section class="related-section">` se non ci sono correlati).
+- Numero di card (la grid gestisce N item; il README di pagina dice di omettere l'intera `<section class="related-products">` se non ci sono correlati).
 - Ordine prodotti correlati (DB query / regola di business).
 - `href` di ogni `<a>`.
 - `src` + `alt` + `loading="lazy"` di ogni `<img>`.
@@ -99,5 +99,5 @@ Card content:
 - Slider/scroll orizzontale (pattern v4 e' griglia CSS).
 - Variante prezzo sotto titolo (`.card__price` di un'altra famiglia, non usata qui).
 - Variante card con CTA esplicita.
-- Promozione di `.catalog-card` / `.catalog-grid` come componente standalone riusabile in landing-page: per ora vivono qualificate dentro `.related-section`. Se in futuro un secondo consumer richiede la stessa famiglia in un contesto diverso, valutare lo split in `components/catalog-card.css` separato (no premature abstraction).
+- Promozione di `.catalog-card` / `.catalog-grid` come componente standalone riusabile in landing-page: per ora vivono qualificate dentro `.related-products`. Se in futuro un secondo consumer richiede la stessa famiglia in un contesto diverso, valutare lo split in `components/catalog-card.css` separato (no premature abstraction).
 - Card vuota / loading skeleton.

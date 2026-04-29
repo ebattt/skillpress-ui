@@ -1,6 +1,6 @@
 ---
 title: FormControls
-description: Primitive CSS-only per radio group, radio option, checkbox option e stato disabled (option-disabled).
+description: Primitive CSS-only per radio group, radio option, checkbox option e stato disabled (radio-option--disabled).
 layer: primitives
 strategy: css-only
 sources:
@@ -18,7 +18,7 @@ Pattern radio + checkbox riusabili. La famiglia condivide il container
 
 `:checked` e `:disabled` sono nativi del browser. La libreria fornisce solo
 lo styling (custom radio con pallino animato, accent-color checkbox, stato
-spento via `.option-disabled`).
+spento via `.radio-option--disabled`).
 
 ## Avvertenza fonte
 
@@ -64,9 +64,9 @@ Coperti per uso futuro: `checkout` (filtri, opzioni cart), `dashboard`
 
 | Classe | Note |
 |---|---|
-| `.option-disabled` | opacity 0.5, cursor not-allowed, pointer-events none |
-| `label.option-disabled` | testo gray-400 |
-| `label.option-disabled input[type="radio"]` | opacity 0.5 |
+| `.radio-option--disabled` | opacity 0.5, cursor not-allowed, pointer-events none |
+| `label.radio-option--disabled` | testo gray-400 |
+| `label.radio-option--disabled input[type="radio"]` | opacity 0.5 |
 
 ## Markup contract
 
@@ -128,7 +128,7 @@ Gruppo di checkbox (selezione non-esclusiva):
 Opzione disabled (radio o checkbox):
 
 ```html
-<label class="radio-option option-disabled">
+<label class="radio-option radio-option--disabled">
     <input type="radio" name="rileg" value="spirale" disabled>
     <span class="radio-option-label">Spirale metallica (non disponibile)</span>
 </label>
@@ -138,7 +138,7 @@ Opzione disabled (radio o checkbox):
 
 - contenuti label, valori `value`, attributi `name`/`id`/`required`/`checked`/`disabled`;
 - group binding via `name` shared (radio mutualmente esclusivi);
-- aggiungere `.option-disabled` sull'`<label>` quando l'opzione non e' disponibile;
+- aggiungere `.radio-option--disabled` sull'`<label>` quando l'opzione non e' disponibile;
 - handler `onchange` (lato consumer/applicativo);
 - layout vertical / horizontal (style inline o classe consumer).
 

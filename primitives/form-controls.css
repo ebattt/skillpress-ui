@@ -1,12 +1,12 @@
 /**
- * FORM CONTROLLS -- radio group, radio option, checkbox option, option-disabled
+ * FORM CONTROLLS -- radio group, radio option, checkbox option, radio-option--disabled
  *
  * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
  *   - .radio-group                                       L491-495
  *   - .radio-option + .radio-option-label                L497-503, L547-550
  *   - .radio-option input[type="radio"] + ::after        L505-539
  *   - .radio-option input[type="checkbox"]               L541-545
- *   - .option-disabled                                   L811-825
+ *   - .radio-option--disabled                            L811-825
  *
  * Fonte markup: catalogo elements-ui (radio-group.js + checkbox-option.js).
  * Nessun utilizzo nelle pagine demo prodotto: la coverage e' giustificata
@@ -14,7 +14,7 @@
  * del configuratore product-page (sostituire alcuni form-select con radio-group).
  *
  * Strategia A (CSS-only). :checked e :disabled sono nativi del browser.
- * .option-disabled e' applicato manualmente sull'<label> quando l'opzione
+ * .radio-option--disabled e' applicato manualmente sull'<label> quando l'opzione
  * non e' disponibile (visualmente spenta + click bloccato via pointer-events).
  *
  * Niente SVG: il pallino radio e' un pseudo-elemento ::after. Il check del
@@ -103,19 +103,19 @@
 
 
 /* ================================================================
-   OPTION DISABLED -- label spenta + click bloccato
+   RADIO OPTION DISABLED -- label spenta + click bloccato
    ================================================================ */
-.option-disabled {
+.radio-option--disabled {
     opacity: 0.5;
     cursor: not-allowed !important;
     pointer-events: none;
     position: relative;
 }
 
-label.option-disabled {
+label.radio-option--disabled {
     color: var(--color-text-muted);
 }
 
-label.option-disabled input[type="radio"] {
+label.radio-option--disabled input[type="radio"] {
     opacity: 0.5;
 }

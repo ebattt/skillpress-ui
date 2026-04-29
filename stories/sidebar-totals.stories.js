@@ -54,20 +54,20 @@ const renderSidebar = ({
                     <h3 class="sidebar-title">Totale</h3>
                     <div class="sidebar-rows">
                         <div class="sidebar-row">
-                            <span class="sidebar-row-label">Quantità</span>
-                            <span class="sidebar-row-value">${quantita}</span>
+                            <span class="sidebar-row__label">Quantità</span>
+                            <span class="sidebar-row__value">${quantita}</span>
                         </div>
                         <div class="sidebar-row">
-                            <span class="sidebar-row-label">Miglior prezzo</span>
-                            <span class="sidebar-row-value">${bestPrice}</span>
+                            <span class="sidebar-row__label">Miglior prezzo</span>
+                            <span class="sidebar-row__value">${bestPrice}</span>
                         </div>
                         <div class="sidebar-row">
-                            <span class="sidebar-row-label">Imposta</span>
-                            <span class="sidebar-row-value">${imposta}</span>
+                            <span class="sidebar-row__label">Imposta</span>
+                            <span class="sidebar-row__value">${imposta}</span>
                         </div>
                         <div class="sidebar-row sidebar-row--green">
-                            <span class="sidebar-row-label">Spedizione gratuita *</span>
-                            <span class="sidebar-row-value">${spedizione}</span>
+                            <span class="sidebar-row__label">Spedizione gratuita *</span>
+                            <span class="sidebar-row__value">${spedizione}</span>
                         </div>
                     </div>
                     <div class="sidebar-divider"></div>

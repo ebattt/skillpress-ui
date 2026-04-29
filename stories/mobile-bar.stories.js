@@ -3,7 +3,7 @@ import '../components/mobile-bar.css';
 import { expect } from 'storybook/test';
 
 const iconChevronUp = `
-    <svg class="handle-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="mobile-total-bar__handle-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="m18 15-6-6-6 6"/>
     </svg>
 `;
@@ -53,48 +53,48 @@ const renderMobileBar = ({
     const styleOverride = visibleOverride
         ? ' style="display: block; position: relative; pointer-events: auto;"'
         : '';
-    const expandedClass = expanded ? ' expanded' : '';
-    const configActiveClass = configActive ? ' active' : '';
-    const configVisibleClass = configActive ? ' visible' : '';
+    const expandedClass = expanded ? ' mobile-total-bar--expanded' : '';
+    const configActiveClass = configActive ? ' mobile-config-toggle--active' : '';
+    const configVisibleClass = configActive ? ' mobile-config-content--visible' : '';
 
     return `
         <div id="mobile-total-bar" class="mobile-total-bar${expandedClass}"${styleOverride}>
-            <div id="mobile-bar-overlay" class="mobile-bar-overlay"></div>
-            <div class="mobile-bar-container">
-                <div id="mobile-bar-handle" class="mobile-bar-handle" role="button" tabindex="0"
+            <div id="mobile-bar-overlay" class="mobile-total-bar__overlay"></div>
+            <div class="mobile-total-bar__container">
+                <div id="mobile-bar-handle" class="mobile-total-bar__handle" role="button" tabindex="0"
                      aria-label="Espandi dettagli totale" aria-expanded="${expanded}">
                     ${iconChevronUp}
                 </div>
-                <div class="mobile-bar-compact">
-                    <div class="mobile-bar-price-section">
-                        <span class="mobile-bar-label">Totale</span>
-                        <span id="mobile-total-price" class="mobile-bar-price">${totale}</span>
+                <div class="mobile-total-bar__compact">
+                    <div class="mobile-total-bar__price-section">
+                        <span class="mobile-total-bar__label">Totale</span>
+                        <span id="mobile-total-price" class="mobile-total-bar__price">${totale}</span>
                     </div>
-                    <button id="mobile-add-cart-btn" class="mobile-bar-cart-btn">
+                    <button id="mobile-add-cart-btn" class="mobile-total-bar__cart-btn">
                         Aggiungi al carrello
                     </button>
                     <div id="mobileValidationErrors"></div>
                 </div>
-                <div id="mobile-bar-expanded" class="mobile-bar-expanded">
-                    <div class="mobile-bar-divider"></div>
-                    <div class="mobile-bar-details">
-                        <div class="mobile-detail-row">
+                <div id="mobile-bar-expanded" class="mobile-total-bar__expanded-section">
+                    <div class="mobile-total-bar__divider"></div>
+                    <div class="mobile-total-bar__details">
+                        <div class="mobile-total-bar__detail-row">
                             <span>Quantità</span>
                             <span id="mobile-qty">${qty}</span>
                         </div>
-                        <div class="mobile-detail-row">
+                        <div class="mobile-total-bar__detail-row">
                             <span>Prezzo unitario</span>
                             <span id="mobile-unit-price">${unitPrice}</span>
                         </div>
-                        <div class="mobile-detail-row">
+                        <div class="mobile-total-bar__detail-row">
                             <span>Subtotale</span>
                             <span id="mobile-subtotal">${subtotal}</span>
                         </div>
-                        <div class="mobile-detail-row">
+                        <div class="mobile-total-bar__detail-row">
                             <span>IVA</span>
                             <span id="mobile-iva">${iva}</span>
                         </div>
-                        <div class="mobile-detail-row mobile-detail-shipping">
+                        <div class="mobile-total-bar__detail-row mobile-total-bar__detail-shipping">
                             <span>Spedizione</span>
                             <span class="text-green-600">Gratuita *</span>
                         </div>
@@ -147,7 +147,7 @@ export const ReferenceFromElementsUI = {
     parameters: {
         docs: {
             description: {
-                story: 'Markup verbatim derivato da `product-page-integration/index.html#L293-L356`. Material Symbols `expand_less` (handle), `list` + `expand_more` (config-toggle) sostituiti con SVG inline. Classi `handle-arrow` e id `#mobile-config-icon` mantenuti per non rompere i selettori CSS catalogo.'
+                story: 'Markup verbatim derivato da `product-page-integration/index.html#L293-L356`. Material Symbols `expand_less` (handle), `list` + `expand_more` (config-toggle) sostituiti con SVG inline. Classe BEM `mobile-total-bar__handle-arrow` e id `#mobile-config-icon` per coprire i selettori CSS rinominati.'
             }
         }
     }
@@ -165,7 +165,7 @@ export const Expanded = {
     parameters: {
         docs: {
             description: {
-                story: 'Barra espansa (`.mobile-total-bar.expanded`): chevron handle ruotato 180deg, sezione expanded a `max-height: 60vh; opacity: 1`, 5 righe dettaglio visibili. Toggle config ancora collapsed.'
+                story: 'Barra espansa (`.mobile-total-bar--expanded`): chevron handle ruotato 180deg, sezione expanded a `max-height: 60vh; opacity: 1`, 5 righe dettaglio visibili. Toggle config ancora collapsed.'
             }
         }
     }
@@ -201,7 +201,7 @@ export const ExpandedWithConfig = {
     parameters: {
         docs: {
             description: {
-                story: 'Barra espansa + config-toggle attivo (`.mobile-config-toggle.active`) + content visibile (`.mobile-config-content.visible`). Chevron config ruotato 180deg, content gray-50 con border + radius lg. Riepilogo iniettato dal CMS con classi `.riepilogo-container`/`.riepilogo-section`/`.riepilogo-header`/`.riepilogo-row`/`.riepilogo-error`: lo stesso markup prodotto da `generateRiepilogo` v3.0.0 della demo. Le regole sono definite in `components/sidebar-totals.css` (importato dalla story).'
+                story: 'Barra espansa + config-toggle attivo (`.mobile-config-toggle--active`) + content visibile (`.mobile-config-content--visible`). Chevron config ruotato 180deg, content gray-50 con border + radius lg. Riepilogo iniettato dal CMS con classi `.riepilogo-container`/`.riepilogo-section`/`.riepilogo-header`/`.riepilogo-row`/`.riepilogo-error`: lo stesso markup prodotto da `generateRiepilogo` v3.0.0 della demo. Le regole sono definite in `components/sidebar-totals.css` (importato dalla story).'
             }
         }
     }
@@ -231,7 +231,7 @@ export const Tablet = {
         viewport: { defaultViewport: 'tablet' },
         docs: {
             description: {
-                story: 'Viewport tablet (`640-1023px`): `.mobile-bar-compact`, `.mobile-bar-details`, `.mobile-config-toggle` centrati a `max-width: 480px`. Padding container 0.5rem 1.5rem.'
+                story: 'Viewport tablet (`640-1023px`): `.mobile-total-bar__compact`, `.mobile-total-bar__details`, `.mobile-config-toggle` centrati a `max-width: 480px`. Padding container 0.5rem 1.5rem.'
             }
         }
     }

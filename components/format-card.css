@@ -10,19 +10,19 @@
  * (mode-switcher, option-buttons, orientation-toggle).
  *
  * Geometria preview: la pagina demo passa width/height inline su
- * `.format-card-preview` (e sui sub-element box-inner / custom) per riflettere
- * orientamento e proporzioni. La libreria espone solo CSS.
+ * `.format-card__preview` (e sui sub-element preview-inner / preview-custom) per
+ * riflettere orientamento e proporzioni. La libreria espone solo CSS.
  *
  * Material Symbols (icona `aspect_ratio` nella variante Libero) NON inclusi:
  * il consumer/CMS sostituisce con SVG inline come per ModeSwitcher.
  *
- * Hover preview-box / box-inner usa `var(--color-text-strong)` (= `#374151`,
+ * Hover preview-box / preview-inner usa `var(--color-text-strong)` (= `#374151`,
  * coincidente con il valore letterale del catalogo elements-ui).
  *
  * Fuori scope (non implementato qui):
  * - varianti scrollable orizzontali (`.format-cards-scroll`, `.format-cards-arrow`);
  * - espansione (`.format-card--show-more`, `.format-cards-hidden`);
- * - stato disabilitato condiviso (`.format-card.option-disabled`);
+ * - stato disabilitato condiviso (vedere `.radio-option--disabled` in FormControls);
  * - famiglia SelectionCard estesa (.paper-card, .visual-card, .effect-card, .angolo-card);
  * - js/format-card.js (toggle stato consumer-side).
  */
@@ -62,13 +62,13 @@
 }
 
 /* Preview formato (anteprima visiva) */
-.format-card-preview {
+.format-card__preview {
     position: relative;
     margin: 0 auto var(--spacing-sm);
     transition: all var(--transition-fast);
 }
 
-.format-card-preview-label {
+.format-card__preview-label {
     position: absolute;
     top: 0.125rem;
     left: var(--spacing-xs);
@@ -77,12 +77,12 @@
     font-weight: var(--font-weight-bold);
 }
 
-.format-card-preview-label--faded {
+.format-card__preview-label--faded {
     color: var(--color-border);
 }
 
 /* Box interno preview (sfondo scuro con testo bianco) */
-.format-card-preview-box {
+.format-card__preview-box {
     position: absolute;
     inset: 0;
     border-radius: 0.125rem;
@@ -92,20 +92,20 @@
     background-color: var(--color-text);
 }
 
-.format-card--selected .format-card-preview-box {
+.format-card--selected .format-card__preview-box {
     background-color: var(--color-primary);
 }
 
-.format-card:hover .format-card-preview-box {
+.format-card:hover .format-card__preview-box {
     background-color: var(--color-text-strong);
 }
 
-.format-card--selected:hover .format-card-preview-box {
+.format-card--selected:hover .format-card__preview-box {
     background-color: var(--color-primary);
 }
 
 /* Box interno per formati aperti (preview proporzionato dentro dashed) */
-.format-card-preview-box-inner {
+.format-card__preview-inner {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -116,28 +116,28 @@
     background-color: var(--color-text);
 }
 
-.format-card--selected .format-card-preview-box-inner {
+.format-card--selected .format-card__preview-inner {
     background-color: var(--color-primary);
 }
 
-.format-card:hover .format-card-preview-box-inner {
+.format-card:hover .format-card__preview-inner {
     background-color: var(--color-text-strong);
 }
 
-.format-card--selected:hover .format-card-preview-box-inner {
+.format-card--selected:hover .format-card__preview-inner {
     background-color: var(--color-primary);
 }
 
 /* Testo dimensioni in preview */
-.format-card-preview-box span,
-.format-card-preview-box-inner span {
+.format-card__preview-box span,
+.format-card__preview-inner span {
     color: var(--color-bg-white);
     font-weight: var(--font-weight-bold);
     font-size: 11px;
 }
 
 /* Bordo tratteggiato per formato comparativo / libero */
-.format-card-preview-dashed {
+.format-card__preview-dashed {
     position: absolute;
     inset: 0;
     border: 1px dashed var(--color-border);
@@ -145,7 +145,7 @@
 }
 
 /* Preview formato custom */
-.format-card-preview-custom {
+.format-card__preview-custom {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -157,35 +157,35 @@
     justify-content: center;
 }
 
-.format-card--selected .format-card-preview-custom {
+.format-card--selected .format-card__preview-custom {
     border-color: var(--color-primary);
     background-color: rgba(240, 138, 0, 0.2);
 }
 
-.format-card:hover .format-card-preview-custom {
+.format-card:hover .format-card__preview-custom {
     background-color: var(--color-bg-gray-200);
 }
 
-.format-card--selected:hover .format-card-preview-custom {
+.format-card--selected:hover .format-card__preview-custom {
     background-color: rgba(240, 138, 0, 0.2);
 }
 
 /* Testo card formato */
-.format-card-text {
+.format-card__text {
     text-align: center;
 }
 
-.format-card-name {
+.format-card__name {
     color: var(--color-text);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
 }
 
-.format-card--selected .format-card-name {
+.format-card--selected .format-card__name {
     color: var(--color-primary);
 }
 
-.format-card-dims {
+.format-card__dims {
     font-size: var(--font-size-xs);
     color: var(--color-text-light);
     margin-top: 0.125rem;

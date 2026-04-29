@@ -79,13 +79,13 @@ const renderStars = (percent = 97) => `
 
 const renderFeatureBox = ({ title, description, iconBg, iconColor, iconSvg }) => `
     <div class="feature-box">
-        <div class="feature-box-content">
-            <div class="feature-box-icon" style="background-color: ${iconBg}; color: ${iconColor};">
+        <div class="feature-box__content">
+            <div class="feature-box__icon" style="background-color: ${iconBg}; color: ${iconColor};">
                 ${iconSvg}
             </div>
             <div>
-                <h3 class="feature-box-title">${title}</h3>
-                <p class="feature-box-description">${description}</p>
+                <h3 class="feature-box__title">${title}</h3>
+                <p class="feature-box__description">${description}</p>
             </div>
         </div>
     </div>
@@ -101,26 +101,26 @@ const renderProductHero = ({
     const root = document.createElement('div');
     root.innerHTML = `
         <div id="product-hero" class="product-hero">
-            <div class="hero-grid">
-                <div class="hero-image-gallery">
-                    <div class="hero-image-container product-shadow" data-images='${JSON.stringify(productImages)}'>
+            <div class="product-hero__grid">
+                <div class="image-gallery">
+                    <div class="image-gallery__container product-shadow" data-images='${JSON.stringify(productImages)}'>
                         <img id="mainProductImage" src="${imageSrc}" alt="${imageAlt}">
-                        <button id="prevImageBtn" class="hero-nav-btn hero-nav-btn--prev" aria-label="Immagine precedente">
+                        <button id="prevImageBtn" class="image-gallery__nav-btn image-gallery__nav-btn--prev" aria-label="Immagine precedente">
                             ${chevronLeft}
                         </button>
-                        <button id="nextImageBtn" class="hero-nav-btn hero-nav-btn--next" aria-label="Immagine successiva">
+                        <button id="nextImageBtn" class="image-gallery__nav-btn image-gallery__nav-btn--next" aria-label="Immagine successiva">
                             ${chevronRight}
                         </button>
                     </div>
                 </div>
-                <div class="hero-info">
-                    <h1 class="hero-title">Brossura fresata</h1>
-                    <div class="hero-rating">
-                        <span class="hero-rating-value">${rating}</span>
+                <div class="product-hero__info">
+                    <h1 class="product-hero__title">Brossura fresata</h1>
+                    <div class="product-hero__rating">
+                        <span class="product-hero__rating-value">${rating}</span>
                         ${renderStars(starsPercent)}
-                        <span class="hero-review-count">${reviewCount}</span>
+                        <span class="product-hero__review-count">${reviewCount}</span>
                     </div>
-                    <p class="hero-description">La brossura fresata e una tecnica di rilegatura economica e resistente, ideale per libri voluminosi come romanzi e manuali. Le pagine vengono fresate per una maggiore aderenza della colla e unite a una copertina personalizzabile in cartoncino, garantendo una finitura professionale ed esteticamente accattivante.</p>
+                    <p class="product-hero__description">La brossura fresata e una tecnica di rilegatura economica e resistente, ideale per libri voluminosi come romanzi e manuali. Le pagine vengono fresate per una maggiore aderenza della colla e unite a una copertina personalizzabile in cartoncino, garantendo una finitura professionale ed esteticamente accattivante.</p>
                     <div class="feature-grid">
                         ${productBoxes.map(renderFeatureBox).join('')}
                     </div>
@@ -155,21 +155,21 @@ const renderAnatomy = () => {
     const galleryNode = document.createElement('div');
     galleryNode.style.maxWidth = '320px';
     galleryNode.innerHTML = `
-        <div class="hero-image-gallery">
-            <div class="hero-image-container product-shadow">
+        <div class="image-gallery">
+            <div class="image-gallery__container product-shadow">
                 <img src="${imageFront}" alt="Brossura fresata vista frontale" />
-                <button class="hero-nav-btn hero-nav-btn--prev" aria-label="Immagine precedente">${chevronLeft}</button>
-                <button class="hero-nav-btn hero-nav-btn--next" aria-label="Immagine successiva">${chevronRight}</button>
+                <button class="image-gallery__nav-btn image-gallery__nav-btn--prev" aria-label="Immagine precedente">${chevronLeft}</button>
+                <button class="image-gallery__nav-btn image-gallery__nav-btn--next" aria-label="Immagine successiva">${chevronRight}</button>
             </div>
         </div>
     `;
 
     const ratingNode = document.createElement('div');
     ratingNode.innerHTML = `
-        <div class="hero-rating">
-            <span class="hero-rating-value">4.85</span>
+        <div class="product-hero__rating">
+            <span class="product-hero__rating-value">4.85</span>
             ${renderStars(97)}
-            <span class="hero-review-count">52 recensioni</span>
+            <span class="product-hero__review-count">52 recensioni</span>
         </div>
     `;
 
@@ -184,7 +184,7 @@ const renderAnatomy = () => {
     const composed = renderProductHero();
 
     wrap.appendChild(block('1. Component — ImageGallery', galleryNode));
-    wrap.appendChild(block('2. Primitive — Rating (composed in .hero-rating row)', ratingNode));
+    wrap.appendChild(block('2. Primitive — Rating (composed in .product-hero__rating row)', ratingNode));
     wrap.appendChild(block('3. Component — FeatureBox grid', featureNode));
     wrap.appendChild(block('4. Section — ProductHero (composes the above)', composed));
 
@@ -198,7 +198,7 @@ export default {
         layout: 'fullscreen',
         docs: {
             description: {
-                component: 'Section di pagina: 2-column grid che compone ImageGallery (sx) + .hero-info (titolo, Rating, descrizione, FeatureBox grid). Static snapshot — behavior galleria gestito dal CMS, non dalla libreria.'
+                component: 'Section di pagina: 2-column grid che compone ImageGallery (sx) + .product-hero__info (titolo, Rating, descrizione, FeatureBox grid). Static snapshot — behavior galleria gestito dal CMS, non dalla libreria.'
             }
         }
     }

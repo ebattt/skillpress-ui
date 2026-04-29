@@ -25,35 +25,33 @@ Una eventuale versione `js/image-gallery.js` (Strategia C) potra' arrivare in fu
 
 ```text
 ImageGallery
-├── hero-image-gallery                          (column wrapper, center mobile, left-align >=1024px)
-│   └── hero-image-container                    (relative, aspect-ratio 1:1, max-width 400px, radius xl)   [product-shadow]
+├── image-gallery                               (column wrapper, center mobile, left-align >=1024px)
+│   └── image-gallery__container                (relative, aspect-ratio 1:1, max-width 400px, radius xl)   [product-shadow]
 │       ├── <img>                               (object-fit: cover, width/height 100%)
-│       ├── hero-nav-btn--prev                  (button assoluto top 50%, left 0.75rem)
+│       ├── image-gallery__nav-btn--prev        (button assoluto top 50%, left 0.75rem)
 │       │   └── <svg>                           (chevron prev, aria-hidden)
-│       └── hero-nav-btn--next                  (button assoluto top 50%, right 0.75rem)
+│       └── image-gallery__nav-btn--next        (button assoluto top 50%, right 0.75rem)
 │           └── <svg>                           (chevron next, aria-hidden)
 ```
-
-Nota sul prefisso `hero-`: e' verbatim dalla pagina demo. Una futura generalizzazione (alias `.image-gallery`) e' possibile se un'altra section riusera' lo stesso pattern.
 
 ## Markup contract
 
 Markup verbatim dalla pagina demo `product-page-integration` (sezione hero).
 
 ```html
-<div class="hero-image-gallery">
-    <div class="hero-image-container product-shadow"
+<div class="image-gallery">
+    <div class="image-gallery__container product-shadow"
          data-images='[{"src":"...","alt":"..."}, ...]'>
         <img id="mainProductImage" src="..." alt="..." />
         <button id="prevImageBtn"
-                class="hero-nav-btn hero-nav-btn--prev"
+                class="image-gallery__nav-btn image-gallery__nav-btn--prev"
                 aria-label="Immagine precedente">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </button>
         <button id="nextImageBtn"
-                class="hero-nav-btn hero-nav-btn--next"
+                class="image-gallery__nav-btn image-gallery__nav-btn--next"
                 aria-label="Immagine successiva">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -63,27 +61,27 @@ Markup verbatim dalla pagina demo `product-page-integration` (sezione hero).
 </div>
 ```
 
-Inline data-driven: `data-images` su `.hero-image-container` e' un array JSON con `src`/`alt` per ogni immagine. La libreria non lo legge: lo consuma il behavior demo.
+Inline data-driven: `data-images` su `.image-gallery__container` e' un array JSON con `src`/`alt` per ogni immagine. La libreria non lo legge: lo consuma il behavior demo.
 
 ## API Reference
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.hero-image-gallery` | colonna esterna; centra l'immagine sotto 1024px, allinea sinistra sopra | yes | — |
-| `.hero-image-container` | wrapper relativo, aspect-ratio 1:1, max-width 400px, radius xl, overflow hidden | yes | `product-shadow` |
+| `.image-gallery` | colonna esterna; centra l'immagine sotto 1024px, allinea sinistra sopra | yes | — |
+| `.image-gallery__container` | wrapper relativo, aspect-ratio 1:1, max-width 400px, radius xl, overflow hidden | yes | `product-shadow` |
 | `.product-shadow` | modifier opzionale, applica `box-shadow: var(--shadow-product)` | no | — |
-| `.hero-nav-btn` | bottone tondo 2.5rem, posizionato assoluto top 50%, background semitrasparente | yes | `--prev`, `--next` |
-| `.hero-nav-btn--prev` | posiziona il bottone a sinistra (`left: 0.75rem`) | yes (per prev) | — |
-| `.hero-nav-btn--next` | posiziona il bottone a destra (`right: 0.75rem`) | yes (per next) | — |
+| `.image-gallery__nav-btn` | bottone tondo 2.5rem, posizionato assoluto top 50%, background semitrasparente | yes | `--prev`, `--next` |
+| `.image-gallery__nav-btn--prev` | posiziona il bottone a sinistra (`left: 0.75rem`) | yes (per prev) | — |
+| `.image-gallery__nav-btn--next` | posiziona il bottone a destra (`right: 0.75rem`) | yes (per next) | — |
 
 Attributi:
 
 | Attribute | Element | Required | Note |
 |---|---|---|---|
-| `data-images` | `.hero-image-container` | no | Array JSON `[{src, alt}]`. La libreria non lo legge; usato dal behavior demo. |
+| `data-images` | `.image-gallery__container` | no | Array JSON `[{src, alt}]`. La libreria non lo legge; usato dal behavior demo. |
 | `id="mainProductImage"` | `<img>` | no | Compatibilita' con behavior demo. |
 | `id="prevImageBtn"` / `id="nextImageBtn"` | bottoni | no | Compatibilita' con behavior demo. |
-| `aria-label` | `.hero-nav-btn` | yes | Stringa descrittiva ("Immagine precedente" / "Immagine successiva"). |
+| `aria-label` | `.image-gallery__nav-btn` | yes | Stringa descrittiva ("Immagine precedente" / "Immagine successiva"). |
 | `aria-hidden="true"` | `<svg>` | yes | Chevron decorativo. |
 
 ## Installation
@@ -121,7 +119,7 @@ Valori letterali: max-width 400px del container, dimensione bottone 2.5rem, offs
 - `<img>` principale: `src`/`alt` per l'immagine inizialmente visibile.
 - frecce: SVG inline `aria-hidden="true"`. Nessuna dipendenza Material Symbols.
 - variante senza shadow: rimuovere il modifier `.product-shadow`.
-- variante senza nav: omettere i due bottoni `.hero-nav-btn`.
+- variante senza nav: omettere i due bottoni `.image-gallery__nav-btn`.
 
 ## Out of scope
 

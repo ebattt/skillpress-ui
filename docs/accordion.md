@@ -20,7 +20,7 @@ Contenitore espandibile per sezioni di configurazione o contenuto strutturato. L
 ```text
 Accordion
 └── .accordion   [data-accordion]
-    └── .accordion__section   [data-accordion-section] [.expanded]
+    └── .accordion__section   [data-accordion-section] [.accordion__section--expanded]
         ├── .accordion__header   [data-accordion-trigger] [aria-expanded]
         │   ├── .accordion__header-left
         │   │   ├── .accordion__badge   (opzionale, numero step)
@@ -30,7 +30,7 @@ Accordion
             └── .accordion__inner        (slot consumer)
 ```
 
-Default state: `collapsed`. Stato `expanded` aggiunge la classe `expanded` su `.accordion__section` e flippa `aria-expanded="true"` sul trigger.
+Default state: `collapsed`. Stato `expanded` aggiunge la classe `accordion__section--expanded` su `.accordion__section` e flippa `aria-expanded="true"` sul trigger.
 
 ## Markup contract
 
@@ -58,7 +58,7 @@ Default state: `collapsed`. Stato `expanded` aggiunge la classe `expanded` su `.
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
 | `.accordion` | container, `data-accordion` per auto-init | yes | — |
-| `.accordion__section` | sezione singola, ripetibile | yes | `expanded` |
+| `.accordion__section` | sezione singola, ripetibile | yes | `--expanded` |
 | `.accordion__header` | trigger cliccabile (`<button>`) | yes | — |
 | `.accordion__header-left` | wrapper flex per badge + title | yes | — |
 | `.accordion__badge` | badge numerato opzionale | no | — |
@@ -77,6 +77,16 @@ Attributi:
 | `aria-expanded` | `.accordion__header` | yes | Sincronizzato dal JS (`true` / `false`). |
 | `type="button"` | `.accordion__header` | yes | Necessario perche' il trigger e' un `<button>`. |
 | `aria-hidden="true"` | `.accordion__icon` | yes | L'icona e' decorativa. |
+
+## Hook data-*
+
+| Hook | Element | Role | Esposto al consumer |
+|---|---|---|---|
+| `data-accordion` | `.accordion` | Entry point: attiva l'auto-init del container. Unico hook che il backend deve scrivere per abilitare la primitiva. | si |
+| `data-accordion-section` | `.accordion__section` | Sotto-ruolo: marca le sezioni gestite dal toggle. Stabile (parte del contratto markup). | si (markup) |
+| `data-accordion-trigger` | `.accordion__header` | Sotto-ruolo: marca il pulsante che apre/chiude la sezione. | si (markup) |
+
+Solo `[data-accordion]` e' un hook funzionale di init. `[data-accordion-section]` e `[data-accordion-trigger]` sono sotto-ruoli interni del contratto markup: vanno scritti come da template, ma non vengono interrogati esternamente. La classe modifier `accordion__section--expanded` viene gestita dal JS (toggle automatico) — il backend la imposta solo per dichiarare lo stato iniziale.
 
 ## Installation
 
@@ -108,7 +118,7 @@ Cosa NON fa:
   - non persiste lo stato aperto fra refresh o navigazioni
 ```
 
-Comportamento: click su `[data-accordion-trigger]` apre o chiude la sezione associata. Quando una sezione si apre, le altre sezioni dello stesso container vengono chiuse (single-open). Il JS aggiorna `aria-expanded` e la classe `expanded`; l'icona `+/-` reagisce via CSS.
+Comportamento: click su `[data-accordion-trigger]` apre o chiude la sezione associata. Quando una sezione si apre, le altre sezioni dello stesso container vengono chiuse (single-open). Il JS aggiorna `aria-expanded` e la classe `accordion__section--expanded`; l'icona `+/-` reagisce via CSS.
 
 Namespace globale: `window.SkillpressUI.Accordion`.
 
@@ -128,7 +138,7 @@ Namespace globale: `window.SkillpressUI.Accordion`.
 
 - decide quali sezioni rendere visibili.
 - decide il contenuto degli slot `header` e `content`.
-- decide se una sezione parte `collapsed` o `expanded` (classe `expanded` + `aria-expanded` coerenti).
+- decide se una sezione parte `collapsed` o `expanded` (classe `accordion__section--expanded` + `aria-expanded` coerenti).
 - decide se mostrare o omettere il badge numerato.
 - non deve cambiare il markup interno della sezione, ne' aggiungere classi custom fuori contratto, ne' duplicare il behavior JS.
 

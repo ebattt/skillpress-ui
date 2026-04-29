@@ -42,9 +42,9 @@ export default {
 export const Default = {
     render: () => mount(`
         <div class="iva-banner">
-            <div class="iva-banner-content">
-                <span class="iva-banner-icon">${INFO_ICON_SVG}</span>
-                <div class="iva-banner-text">
+            <div class="iva-banner__content">
+                <span class="iva-banner__icon">${INFO_ICON_SVG}</span>
+                <div class="iva-banner__text">
                     <p>Per usufruire dell'aliquota ridotta al 4% per editori con ISBN e necessario compilare e firmare la dichiarazione sostitutiva.</p>
                 </div>
             </div>
@@ -59,9 +59,9 @@ export const Default = {
 export const WithDownloadButton = {
     render: () => mount(`
         <div class="iva-banner">
-            <div class="iva-banner-content">
-                <span class="iva-banner-icon">${INFO_ICON_SVG}</span>
-                <div class="iva-banner-text">
+            <div class="iva-banner__content">
+                <span class="iva-banner__icon">${INFO_ICON_SVG}</span>
+                <div class="iva-banner__text">
                     <p>Per usufruire dell'aliquota ridotta al 4% per editori con ISBN e necessario compilare e firmare la dichiarazione sostitutiva.</p>
                     <button type="button" style="color: #1C7264; font-weight: 500; text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0;">
                         Scarica la dichiarazione
@@ -148,9 +148,9 @@ export const ReferenceFromElementsUI = {
                 </div>
             </div>
             <div class="iva-banner">
-                <div class="iva-banner-content">
-                    <span class="iva-banner-icon">${INFO_ICON_SVG}</span>
-                    <div class="iva-banner-text">
+                <div class="iva-banner__content">
+                    <span class="iva-banner__icon">${INFO_ICON_SVG}</span>
+                    <div class="iva-banner__text">
                         <p>Per usufruire dell'aliquota ridotta al 4% per editori con ISBN e necessario compilare e firmare la dichiarazione sostitutiva.</p>
                         <button type="button" style="color: #1C7264; font-weight: 500; text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0;">
                             Scarica la dichiarazione

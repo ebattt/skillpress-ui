@@ -8,7 +8,7 @@
     margin-bottom: 1.25rem;
 }
 
-.mode-btn {
+.mode-switcher__btn {
     display: flex;
     align-items: center;
     gap: 0.375rem;
@@ -22,21 +22,21 @@
     cursor: pointer;
 }
 
-.mode-btn--active {
+.mode-switcher__btn--active {
     background-color: var(--color-primary);
     color: var(--color-bg-white);
 }
 
-.mode-btn--inactive {
+.mode-switcher__btn--inactive {
     background-color: var(--color-bg-gray-75);
     color: var(--color-text-strong);
 }
 
-.mode-btn--inactive:hover {
+.mode-switcher__btn--inactive:hover {
     background-color: var(--color-bg-gray-100);
 }
 
-.mode-btn svg {
+.mode-switcher__btn svg {
     width: 1rem;
     height: 1rem;
     flex-shrink: 0;

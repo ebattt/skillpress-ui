@@ -7,20 +7,20 @@ const renderStepCardItem = ({
     status,
     state = 'inactive'
 } = {}) => {
-    const itemActive = state === 'active' ? ' step-card-item--active' : '';
-    const badgeMod = `step-badge--${state}`;
-    const titleMod = state === 'active' ? 'step-title--active' : 'step-title--inactive';
-    const statusMod = state === 'active' ? 'step-status--active' : 'step-status--inactive';
+    const itemActive = state === 'active' ? ' step-indicator__item--active' : '';
+    const badgeMod = `step-indicator__badge--${state}`;
+    const titleMod = state === 'active' ? 'step-indicator__title--active' : 'step-indicator__title--inactive';
+    const statusMod = state === 'active' ? 'step-indicator__status--active' : 'step-indicator__status--inactive';
 
     return `
-        <div class="step-card-item${itemActive}" data-step="${index}">
+        <div class="step-indicator__item${itemActive}" data-step="${index}">
             <div class="step-card-content">
-                <div class="step-badge ${badgeMod}">
+                <div class="step-indicator__badge ${badgeMod}">
                     <span>${index}</span>
                 </div>
                 <div class="step-info">
-                    <h3 class="step-title ${titleMod}">${title}</h3>
-                    <span class="step-status ${statusMod}">${status}</span>
+                    <h3 class="step-indicator__title ${titleMod}">${title}</h3>
+                    <span class="step-indicator__status ${statusMod}">${status}</span>
                 </div>
             </div>
         </div>
@@ -31,9 +31,9 @@ const renderSection = (steps) => {
     const root = document.createElement('div');
     root.style.padding = '1rem 0';
     root.innerHTML = `
-        <div class="steps-section">
-            <div class="steps-wrapper">
-                <div class="steps-container">
+        <div class="step-indicator">
+            <div class="step-indicator__wrapper">
+                <div class="step-indicator__container">
                     <div class="steps-line"></div>
                     <div class="steps-grid">
                         ${steps.map(renderStepCardItem).join('')}
@@ -68,9 +68,9 @@ export default {
 export const Default = {
     render: () => renderSection(defaultSteps),
     play: async ({ canvasElement }) => {
-        const items = canvasElement.querySelectorAll('.step-card-item');
+        const items = canvasElement.querySelectorAll('.step-indicator__item');
         await expect(items.length).toBe(4);
-        const active = canvasElement.querySelector('.step-badge--active');
+        const active = canvasElement.querySelector('.step-indicator__badge--active');
         await expect(active).toBeTruthy();
     }
 };
@@ -80,52 +80,52 @@ export const ReferenceFromElementsUI = {
         const root = document.createElement('div');
         root.style.padding = '1rem 0';
         root.innerHTML = `
-            <div id="step-cards" class="steps-section">
-                <div class="steps-wrapper">
-                    <div class="steps-container">
+            <div id="step-cards" class="step-indicator">
+                <div class="step-indicator__wrapper">
+                    <div class="step-indicator__container">
                         <div class="steps-line"></div>
                         <div class="steps-grid">
-                            <div class="step-card-item step-card-item--active" data-step="1">
+                            <div class="step-indicator__item step-indicator__item--active" data-step="1">
                                 <div class="step-card-content">
-                                    <div class="step-badge step-badge--active">
+                                    <div class="step-indicator__badge step-indicator__badge--active">
                                         <span>1</span>
                                     </div>
                                     <div class="step-info">
-                                        <h3 class="step-title step-title--active">Configura</h3>
-                                        <span class="step-status step-status--active">In corso</span>
+                                        <h3 class="step-indicator__title step-indicator__title--active">Configura</h3>
+                                        <span class="step-indicator__status step-indicator__status--active">In corso</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="step-card-item" data-step="2">
+                            <div class="step-indicator__item" data-step="2">
                                 <div class="step-card-content">
-                                    <div class="step-badge step-badge--inactive">
+                                    <div class="step-indicator__badge step-indicator__badge--inactive">
                                         <span>2</span>
                                     </div>
                                     <div class="step-info">
-                                        <h3 class="step-title step-title--inactive">Carrello</h3>
-                                        <span class="step-status step-status--inactive">In attesa</span>
+                                        <h3 class="step-indicator__title step-indicator__title--inactive">Carrello</h3>
+                                        <span class="step-indicator__status step-indicator__status--inactive">In attesa</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="step-card-item" data-step="3">
+                            <div class="step-indicator__item" data-step="3">
                                 <div class="step-card-content">
-                                    <div class="step-badge step-badge--inactive">
+                                    <div class="step-indicator__badge step-indicator__badge--inactive">
                                         <span>3</span>
                                     </div>
                                     <div class="step-info">
-                                        <h3 class="step-title step-title--inactive">Pagamento</h3>
-                                        <span class="step-status step-status--inactive">In attesa</span>
+                                        <h3 class="step-indicator__title step-indicator__title--inactive">Pagamento</h3>
+                                        <span class="step-indicator__status step-indicator__status--inactive">In attesa</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="step-card-item" data-step="4">
+                            <div class="step-indicator__item" data-step="4">
                                 <div class="step-card-content">
-                                    <div class="step-badge step-badge--inactive">
+                                    <div class="step-indicator__badge step-indicator__badge--inactive">
                                         <span>4</span>
                                     </div>
                                     <div class="step-info">
-                                        <h3 class="step-title step-title--inactive">Carica file</h3>
-                                        <span class="step-status step-status--inactive">In attesa</span>
+                                        <h3 class="step-indicator__title step-indicator__title--inactive">Carica file</h3>
+                                        <span class="step-indicator__status step-indicator__status--inactive">In attesa</span>
                                     </div>
                                 </div>
                             </div>
@@ -150,52 +150,52 @@ export const MidProgress = {
         const root = document.createElement('div');
         root.style.padding = '1rem 0';
         root.innerHTML = `
-            <div class="steps-section">
-                <div class="steps-wrapper">
-                    <div class="steps-container">
+            <div class="step-indicator">
+                <div class="step-indicator__wrapper">
+                    <div class="step-indicator__container">
                         <div class="steps-line"></div>
                         <div class="steps-grid">
-                            <div class="step-card-item" data-step="1">
+                            <div class="step-indicator__item" data-step="1">
                                 <div class="step-card-content">
-                                    <div class="step-badge step-badge--completed">
+                                    <div class="step-indicator__badge step-indicator__badge--completed">
                                         <span>1</span>
                                     </div>
                                     <div class="step-info">
-                                        <h3 class="step-title step-title--inactive">Configura</h3>
-                                        <span class="step-status step-status--inactive">Completato</span>
+                                        <h3 class="step-indicator__title step-indicator__title--inactive">Configura</h3>
+                                        <span class="step-indicator__status step-indicator__status--inactive">Completato</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="step-card-item" data-step="2">
+                            <div class="step-indicator__item" data-step="2">
                                 <div class="step-card-content">
-                                    <div class="step-badge step-badge--completed">
+                                    <div class="step-indicator__badge step-indicator__badge--completed">
                                         <span>2</span>
                                     </div>
                                     <div class="step-info">
-                                        <h3 class="step-title step-title--inactive">Carrello</h3>
-                                        <span class="step-status step-status--inactive">Completato</span>
+                                        <h3 class="step-indicator__title step-indicator__title--inactive">Carrello</h3>
+                                        <span class="step-indicator__status step-indicator__status--inactive">Completato</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="step-card-item step-card-item--active" data-step="3">
+                            <div class="step-indicator__item step-indicator__item--active" data-step="3">
                                 <div class="step-card-content">
-                                    <div class="step-badge step-badge--active">
+                                    <div class="step-indicator__badge step-indicator__badge--active">
                                         <span>3</span>
                                     </div>
                                     <div class="step-info">
-                                        <h3 class="step-title step-title--active">Pagamento</h3>
-                                        <span class="step-status step-status--active">In corso</span>
+                                        <h3 class="step-indicator__title step-indicator__title--active">Pagamento</h3>
+                                        <span class="step-indicator__status step-indicator__status--active">In corso</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="step-card-item" data-step="4">
+                            <div class="step-indicator__item" data-step="4">
                                 <div class="step-card-content">
-                                    <div class="step-badge step-badge--inactive">
+                                    <div class="step-indicator__badge step-indicator__badge--inactive">
                                         <span>4</span>
                                     </div>
                                     <div class="step-info">
-                                        <h3 class="step-title step-title--inactive">Carica file</h3>
-                                        <span class="step-status step-status--inactive">In attesa</span>
+                                        <h3 class="step-indicator__title step-indicator__title--inactive">Carica file</h3>
+                                        <span class="step-indicator__status step-indicator__status--inactive">In attesa</span>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@ export const MidProgress = {
     parameters: {
         docs: {
             description: {
-                story: 'Step 1 e 2 completati (badge verde `step-badge--completed`), step 3 attivo (badge gradient arancio + bordo card primary), step 4 in attesa.'
+                story: 'Step 1 e 2 completati (badge verde `step-indicator__badge--completed`), step 3 attivo (badge gradient arancio + bordo card primary), step 4 in attesa.'
             }
         }
     }

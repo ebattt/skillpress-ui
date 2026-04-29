@@ -21,38 +21,38 @@ Griglia di feature box a 2 colonne, ciascuna con contenitore icona, titolo e des
 FeatureBox
 ├── feature-grid                       (grid 2 col, gap 0.75rem)
 │   └── feature-box × N                (background, radius, padding 0.875rem)
-│       └── feature-box-content        (flex row, align-items: flex-start, gap 0.75rem)
-│           ├── feature-box-icon       (2.25rem quadrato, slot SVG/img 1.25rem)
+│       └── feature-box__content       (flex row, align-items: flex-start, gap 0.75rem)
+│           ├── feature-box__icon      (2.25rem quadrato, slot SVG/img 1.25rem)
 │           └── <div>                  (wrapper testo)
-│               ├── feature-box-title          (h3, font-size sm, semibold)
-│               └── feature-box-description    (p, font-size xs, text-light)
+│               ├── feature-box__title          (h3, font-size sm, semibold)
+│               └── feature-box__description    (p, font-size xs, text-light)
 ```
 
 Cardinalita' tipica nella demo: 4 feature box (2 righe × 2 col).
 
 ## Markup contract
 
-Markup verbatim dalla pagina demo `product-page-integration` (dentro `.hero-info` del ProductHero). Una feature box; ripetere `.feature-box` × N dentro `.feature-grid`.
+Markup verbatim dalla pagina demo `product-page-integration` (dentro `.product-hero__info` del ProductHero). Una feature box; ripetere `.feature-box` × N dentro `.feature-grid`.
 
 ```html
 <div class="feature-grid">
     <div class="feature-box">
-        <div class="feature-box-content">
-            <div class="feature-box-icon" style="background-color: #E8F5F3;">
+        <div class="feature-box__content">
+            <div class="feature-box__icon" style="background-color: #E8F5F3;">
                 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
                     <path d="M13 2 4 14h7l-1 8 10-13h-7l1-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
                 </svg>
             </div>
             <div>
-                <h3 class="feature-box-title">Veloce</h3>
-                <p class="feature-box-description">Stampa brossura fresata con ciclo rapido</p>
+                <h3 class="feature-box__title">Veloce</h3>
+                <p class="feature-box__description">Stampa brossura fresata con ciclo rapido</p>
             </div>
         </div>
     </div>
 </div>
 ```
 
-Inline style data-driven: `style="background-color: #...;"` su `.feature-box-icon` e' editoriale (CMS sceglie un colore brand per ogni feature). La libreria fornisce solo contenitore stabile.
+Inline style data-driven: `style="background-color: #...;"` su `.feature-box__icon` e' editoriale (CMS sceglie un colore brand per ogni feature). La libreria fornisce solo contenitore stabile.
 
 ## API Reference
 
@@ -60,16 +60,16 @@ Inline style data-driven: `style="background-color: #...;"` su `.feature-box-ico
 |---|---|---|---|
 | `.feature-grid` | grid 2 colonne, gap 0.75rem | yes | — |
 | `.feature-box` | card singola, background gray-50, radius lg, padding 0.875rem; hover cambia background | yes | — |
-| `.feature-box-content` | flex row interno (icona + testo), gap 0.75rem | yes | — |
-| `.feature-box-icon` | contenitore icona quadrato 2.25rem, radius md; SVG/img figli ridimensionati a 1.25rem | yes | — |
-| `.feature-box-title` | h3, font-size sm, semibold | yes | — |
-| `.feature-box-description` | p, font-size xs, color text-light | yes | — |
+| `.feature-box__content` | flex row interno (icona + testo), gap 0.75rem | yes | — |
+| `.feature-box__icon` | contenitore icona quadrato 2.25rem, radius md; SVG/img figli ridimensionati a 1.25rem | yes | — |
+| `.feature-box__title` | h3, font-size sm, semibold | yes | — |
+| `.feature-box__description` | p, font-size xs, color text-light | yes | — |
 
 Attributi:
 
 | Attribute | Element | Required | Note |
 |---|---|---|---|
-| `style="background-color: #...;"` | `.feature-box-icon` | no | Colore di sfondo icona, editoriale CMS. |
+| `style="background-color: #...;"` | `.feature-box__icon` | no | Colore di sfondo icona, editoriale CMS. |
 | `aria-hidden="true"` | `<svg>` icona | no | Da impostare se l'icona e' decorativa. |
 | `alt=""` | `<img>` icona | no | Alt vuoto se l'icona e' decorativa. |
 
@@ -101,10 +101,10 @@ Nessun script JS richiesto.
 
 ## Note CMS
 
-- testo titolo: contenuto di `.feature-box-title`.
-- testo descrizione: contenuto di `.feature-box-description`.
-- icona: SVG inline o `<img src="...">` dentro `.feature-box-icon`. La libreria ridimensiona figli a 1.25rem.
-- colore di sfondo icona: `style="background-color: #...;"` inline su `.feature-box-icon`.
+- testo titolo: contenuto di `.feature-box__title`.
+- testo descrizione: contenuto di `.feature-box__description`.
+- icona: SVG inline o `<img src="...">` dentro `.feature-box__icon`. La libreria ridimensiona figli a 1.25rem.
+- colore di sfondo icona: `style="background-color: #...;"` inline su `.feature-box__icon`.
 - numero di feature: ripetere `.feature-box` × N dentro `.feature-grid` (tipicamente 4 nella demo prodotto).
 
 ## Out of scope
@@ -114,4 +114,4 @@ Nessun script JS richiesto.
 - badge dentro la card.
 - CTA dentro la card (non presente nella fonte).
 - dipendenza da Material Symbols o Google Fonts.
-- non sostituisce `step-card-item`, `paper-card`, `format-card` o `catalog-card`.
+- non sostituisce `step-indicator__item`, `paper-card`, `format-card` o `catalog-card`.

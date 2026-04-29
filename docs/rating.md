@@ -94,7 +94,7 @@ Valori letterali: dimensione stella `font-size: 16px`, gap inter-stella `2px`.
 ## Note CMS
 
 - calcolo width: `(rating / 5) * 100`, lasciato inline su `.rating__filled` (es. `style="width: 97%;"`).
-- composizione tipica: dentro `.hero-rating` (ProductHero), il widget Rating e' affiancato da `.hero-rating-value` (numero) e `.hero-review-count` (testo recensioni). Quel layout e' della Section, non del Rating.
+- composizione tipica: dentro `.product-hero__rating` (ProductHero), il widget Rating e' affiancato da `.product-hero__rating-value` (numero) e `.product-hero__review-count` (testo recensioni). Quel layout e' della Section, non del Rating.
 - carattere stella: la libreria usa `&#9733;` (★) ma accetta qualsiasi contenuto inline (icona, SVG): la dimensione e' fissata via `font-size`.
 
 ## Mappatura nomi (demo product-page -> libreria)

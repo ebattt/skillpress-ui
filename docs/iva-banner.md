@@ -24,16 +24,16 @@ banner) e' business logic del consumer.
 | Classe | Note |
 |---|---|
 | `.iva-banner` | container warning bg/border/radius/padding |
-| `.iva-banner-content` | flex inline icon + text, align-items flex-start |
-| `.iva-banner-icon` | icona warning, color primary, font-size 1.125rem |
-| `.iva-banner-text` | testo xs, color text-strong, line-height 1.5 |
+| `.iva-banner__content` | flex inline icon + text, align-items flex-start |
+| `.iva-banner__icon` | icona warning, color primary, font-size 1.125rem |
+| `.iva-banner__text` | testo xs, color text-strong, line-height 1.5 |
 
 ## Markup contract
 
 ```html
 <div class="iva-banner">
-    <div class="iva-banner-content">
-        <span class="iva-banner-icon" aria-hidden="true">
+    <div class="iva-banner__content">
+        <span class="iva-banner__icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round">
@@ -42,7 +42,7 @@ banner) e' business logic del consumer.
                 <line x1="12" y1="8" x2="12.01" y2="8"/>
             </svg>
         </span>
-        <div class="iva-banner-text">
+        <div class="iva-banner__text">
             <p>Per usufruire dell'aliquota ridotta al 4% per editori con ISBN
                e necessario compilare e firmare la dichiarazione sostitutiva.</p>
             <button type="button" style="...">Scarica la dichiarazione</button>
@@ -55,7 +55,7 @@ banner) e' business logic del consumer.
 
 - presenza/assenza del banner (rendering condizionale Step 6);
 - testo HTML (puo' contenere link, bottoni download dichiarazione);
-- icona dentro `.iva-banner-icon` (SVG inline);
+- icona dentro `.iva-banner__icon` (SVG inline);
 - handler dei bottoni interni.
 
 ## Cosa decide la libreria

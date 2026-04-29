@@ -96,7 +96,7 @@ export const ReferenceFromElementsUI = {
                 <ul style="display: grid; gap: 8px; margin: 0; padding-left: 18px; color: var(--color-text-secondary); font-size: var(--font-size-sm);">
                     <li><code>format-card</code> / <code>paper-card</code> / <code>visual-card</code>: futura selection card.</li>
                     <li><code>feature-box</code>: futura feature card.</li>
-                    <li><code>step-card-item</code>: futuro step indicator.</li>
+                    <li><code>step-indicator__item</code>: step indicator.</li>
                     <li><code>catalog-card--product-equal</code>: futura product/catalog card.</li>
                 </ul>
             </div>

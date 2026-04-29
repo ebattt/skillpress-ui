@@ -25,20 +25,20 @@ Sidebar configuratore desktop: box totale (qty, miglior prezzo, imposta, spedizi
             <h3 class="sidebar-title">Totale</h3>
             <div class="sidebar-rows">
                 <div class="sidebar-row">
-                    <span class="sidebar-row-label">Quantità</span>
-                    <span class="sidebar-row-value">50</span>
+                    <span class="sidebar-row__label">Quantità</span>
+                    <span class="sidebar-row__value">50</span>
                 </div>
                 <div class="sidebar-row">
-                    <span class="sidebar-row-label">Miglior prezzo</span>
-                    <span class="sidebar-row-value">-</span>
+                    <span class="sidebar-row__label">Miglior prezzo</span>
+                    <span class="sidebar-row__value">-</span>
                 </div>
                 <div class="sidebar-row">
-                    <span class="sidebar-row-label">Imposta</span>
-                    <span class="sidebar-row-value">-</span>
+                    <span class="sidebar-row__label">Imposta</span>
+                    <span class="sidebar-row__value">-</span>
                 </div>
                 <div class="sidebar-row sidebar-row--green">
-                    <span class="sidebar-row-label">Spedizione gratuita *</span>
-                    <span class="sidebar-row-value">-</span>
+                    <span class="sidebar-row__label">Spedizione gratuita *</span>
+                    <span class="sidebar-row__value">-</span>
                 </div>
             </div>
             <div class="sidebar-divider"></div>
@@ -80,8 +80,8 @@ Riepilogo righe totale:
 - `.sidebar-title` — h3, font-size lg, bold, letter-spacing -0.025em.
 - `.sidebar-rows` — wrapper, font 0.9375rem, `> * + * { margin-top: 0.375rem }`.
 - `.sidebar-row` — flex space-between.
-- `.sidebar-row-label` — colore `text-secondary`.
-- `.sidebar-row-value` — semibold, colore `text`.
+- `.sidebar-row__label` — colore `text-secondary`.
+- `.sidebar-row__value` — semibold, colore `text`.
 - `.sidebar-row--green` — modifier per la riga "spedizione gratuita" (override colore `#16A34A` su row, label, value; label diventa medium).
 - `.sidebar-divider` — linea `1px solid #D1D5DB`, margin 0.75rem 0.
 

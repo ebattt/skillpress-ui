@@ -6,16 +6,17 @@
      (MOBILE BAR: container, handle, compact, expanded, details, config-toggle,
       config-content + responsive 374px / 640-1023px).
    - elements-ui/css/components/_buttons.css#L58-L84
-     (BOTTONE CARRELLO: .mobile-bar-cart-btn).
+     (BOTTONE CARRELLO: .mobile-total-bar__cart-btn).
    - elements-ui/js/layout-patterns/mobile-bar.js (sandbox catalogo).
 
-   Strategia A: static snapshot. Toggle .expanded / .active / .visible sono
+   Strategia A: static snapshot. Toggle .mobile-total-bar--expanded /
+   .mobile-config-toggle--active / .mobile-config-content--visible sono
    wire-up consumer-side. Niente JS libreria.
 
    Material Symbols sostituiti con SVG inline: i selettori che dipendevano da
-   .material-symbols-outlined nel catalogo (.mobile-bar-cart-btn, .mobile-config-toggle)
-   sono tradotti con svg. Le classi originali .handle-arrow e l'id #mobile-config-icon
-   sono mantenuti.
+   .material-symbols-outlined nel catalogo (.mobile-total-bar__cart-btn,
+   .mobile-config-toggle) sono tradotti con svg. La classe BEM
+   .mobile-total-bar__handle-arrow e l'id #mobile-config-icon sono mantenuti.
    ========================================================================== */
 
 /* --- Container fixed bottom --- */
@@ -35,11 +36,11 @@
     }
 }
 
-.mobile-bar-overlay {
+.mobile-total-bar__overlay {
     display: none;
 }
 
-.mobile-bar-container {
+.mobile-total-bar__container {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -55,7 +56,7 @@
 }
 
 /* --- Handle (chevron espansione) --- */
-.mobile-bar-handle {
+.mobile-total-bar__handle {
     order: 0;
     display: flex;
     justify-content: center;
@@ -64,7 +65,7 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-.handle-arrow {
+.mobile-total-bar__handle-arrow {
     color: var(--color-text-muted);
     width: 1.25rem;
     height: 1.25rem;
@@ -72,46 +73,46 @@
     line-height: 1;
 }
 
-.mobile-total-bar.expanded .handle-arrow {
+.mobile-total-bar--expanded .mobile-total-bar__handle-arrow {
     transform: rotate(180deg);
 }
 
 /* --- Sezione compatta (sempre visibile) --- */
-.mobile-bar-compact {
+.mobile-total-bar__compact {
     display: flex;
     flex-direction: column;
     gap: 0.375rem;
     order: 2;
 }
 
-.mobile-bar-price-section {
+.mobile-total-bar__price-section {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--spacing-sm);
 }
 
-.mobile-bar-label {
+.mobile-total-bar__label {
     font-size: 1.125rem;
     font-weight: var(--font-weight-semibold);
     color: var(--color-primary);
 }
 
-.mobile-bar-price {
+.mobile-total-bar__price {
     font-size: 1.125rem;
     font-weight: var(--font-weight-bold);
     color: var(--color-text);
     line-height: 1;
 }
 
-.mobile-bar-iva {
+.mobile-total-bar__iva {
     font-size: 0.6875rem;
     color: var(--color-text-muted);
     line-height: 1;
 }
 
 /* --- Bottone carrello mobile (da _buttons.css) --- */
-.mobile-bar-cart-btn {
+.mobile-total-bar__cart-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,17 +129,17 @@
     transition: opacity var(--transition-fast);
 }
 
-.mobile-bar-cart-btn:active {
+.mobile-total-bar__cart-btn:active {
     opacity: 0.9;
 }
 
-.mobile-bar-cart-btn svg {
+.mobile-total-bar__cart-btn svg {
     width: 1.125rem;
     height: 1.125rem;
 }
 
-/* --- Sezione espansa (visibile solo quando .expanded) --- */
-.mobile-bar-expanded {
+/* --- Sezione espansa (visibile solo quando .mobile-total-bar--expanded) --- */
+.mobile-total-bar__expanded-section {
     order: 1;
     max-height: 0;
     overflow: hidden;
@@ -146,42 +147,42 @@
     transition: max-height var(--transition-section), opacity var(--transition-slow);
 }
 
-.mobile-total-bar.expanded .mobile-bar-expanded {
+.mobile-total-bar--expanded .mobile-total-bar__expanded-section {
     max-height: 60vh;
     opacity: 1;
     overflow-y: auto;
     padding-bottom: var(--spacing-xl);
 }
 
-.mobile-bar-divider {
+.mobile-total-bar__divider {
     display: none;
 }
 
 /* --- Righe dettaglio --- */
-.mobile-bar-details {
+.mobile-total-bar__details {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
 }
 
-.mobile-detail-row {
+.mobile-total-bar__detail-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: var(--font-size-sm);
 }
 
-.mobile-detail-row > span:first-child {
+.mobile-total-bar__detail-row > span:first-child {
     color: var(--color-text);
 }
 
-.mobile-detail-row > span:last-child {
+.mobile-total-bar__detail-row > span:last-child {
     font-weight: var(--font-weight-semibold);
     color: var(--color-text);
     font-size: 0.9375rem;
 }
 
-.mobile-detail-shipping > span:last-child {
+.mobile-total-bar__detail-shipping > span:last-child {
     color: var(--color-success);
 }
 
@@ -213,7 +214,7 @@
     transition: transform var(--transition-normal);
 }
 
-.mobile-config-toggle.active #mobile-config-icon {
+.mobile-config-toggle--active #mobile-config-icon {
     transform: rotate(180deg);
 }
 
@@ -226,7 +227,7 @@
     margin-top: 0;
 }
 
-.mobile-config-content.visible {
+.mobile-config-content--visible {
     max-height: 400px;
     opacity: 1;
     overflow-y: auto;
@@ -241,7 +242,7 @@
     line-height: 1.6;
 }
 
-.mobile-config-content.visible > div {
+.mobile-config-content--visible > div {
     padding: 0.25rem 0;
 }
 
@@ -251,58 +252,58 @@
    `.riepilogo-row--indent`, `.riepilogo-error`, `.riepilogo-empty`,
    `.riepilogo-muted`, `.riepilogo-placeholder`. Queste utility sono
    definite in `components/sidebar-totals.css` e si applicano anche
-   dentro `.mobile-config-content.visible` quando il consumer importa
+   dentro `.mobile-config-content--visible` quando il consumer importa
    entrambi i CSS (cosa che il bundle `demo-minimal.css` fa di default).
-   Le regole legacy `.mobile-config-content.visible .font-bold` /
+   Le regole legacy `.mobile-config-content--visible .font-bold` /
    `.font-semibold` del catalogo sono state rimosse: non corrispondono
    piu' all'output del generatore. */
 
 /* --- Responsive: small phones (<=374px) --- */
 @media (max-width: 374px) {
-    .mobile-bar-container {
+    .mobile-total-bar__container {
         padding: 0.375rem 0.75rem 0.75rem;
         padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
     }
 
-    .mobile-bar-cart-btn {
+    .mobile-total-bar__cart-btn {
         padding: 0.75rem 0.875rem;
         font-size: 0.8125rem;
     }
 
-    .mobile-bar-price {
+    .mobile-total-bar__price {
         font-size: 1rem;
     }
 
-    .mobile-bar-label {
+    .mobile-total-bar__label {
         font-size: 1rem;
     }
 }
 
 /* --- Responsive: tablet (640-1023px) --- */
 @media (min-width: 640px) and (max-width: 1023px) {
-    .mobile-bar-container {
+    .mobile-total-bar__container {
         padding: 0.5rem 1.5rem 1rem;
         padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
     }
 
-    .mobile-bar-compact {
+    .mobile-total-bar__compact {
         width: 100%;
         max-width: 480px;
         margin: 0 auto;
     }
 
-    .mobile-bar-cart-btn {
+    .mobile-total-bar__cart-btn {
         padding: 0.875rem 1.25rem;
         font-size: 0.9375rem;
     }
 
-    .mobile-bar-price {
+    .mobile-total-bar__price {
         font-size: 1.125rem;
     }
 
-    .mobile-bar-details,
+    .mobile-total-bar__details,
     .mobile-config-toggle,
-    .mobile-config-content.visible {
+    .mobile-config-content--visible {
         max-width: 480px;
         margin-left: auto;
         margin-right: auto;

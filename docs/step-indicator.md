@@ -19,18 +19,18 @@ Tracker orizzontale di step con badge numerati e linea di connessione orizzontal
 
 ```text
 StepIndicator
-├── steps-section            (page wrapper, max-width: --page-max-width)
-│   └── steps-wrapper        (margin-bottom 1rem)
-│       └── steps-container  (relative, max-width 64rem)
-│           ├── steps-line   (visibile >=1024px, height 1px, color #D1D5DB)
-│           └── steps-grid   (2 col mobile / 4 col >=1024px, z-index 10)
-│               └── step-card-item × N    [--active]
+├── step-indicator                    (page wrapper, max-width: --page-max-width)
+│   └── step-indicator__wrapper       (margin-bottom 1rem)
+│       └── step-indicator__container (relative, max-width 64rem)
+│           ├── steps-line            (visibile >=1024px, height 1px, color #D1D5DB)
+│           └── steps-grid            (2 col mobile / 4 col >=1024px, z-index 10)
+│               └── step-indicator__item × N    [--active]
 │                   └── step-card-content (flex row, gap 0.625rem)
-│                       ├── step-badge    [--active | --inactive | --completed]
+│                       ├── step-indicator__badge    [--active | --inactive | --completed]
 │                       │   └── <span>N</span>
 │                       └── step-info     (flex 1, min-width 0 per ellipsis)
-│                           ├── step-title  (h3) [--active | --inactive]
-│                           └── step-status (span) [--active | --inactive]
+│                           ├── step-indicator__title  (h3) [--active | --inactive]
+│                           └── step-indicator__status (span) [--active | --inactive]
 ```
 
 Cardinalita' tipica: 2 / 3 / 4 step. La grid resta `repeat(4, 1fr)` da 1024px anche con meno step (le celle non occupate restano vuote).
@@ -40,30 +40,30 @@ Cardinalita' tipica: 2 / 3 / 4 step. La grid resta `repeat(4, 1fr)` da 1024px an
 Markup verbatim dalla pagina demo `product-page-integration/index.html#L512-L564`. Step 1 attivo, step 2-4 inattivi.
 
 ```html
-<div id="step-cards" class="steps-section">
-    <div class="steps-wrapper">
-        <div class="steps-container">
+<div id="step-cards" class="step-indicator">
+    <div class="step-indicator__wrapper">
+        <div class="step-indicator__container">
             <div class="steps-line"></div>
             <div class="steps-grid">
-                <div class="step-card-item step-card-item--active" data-step="1">
+                <div class="step-indicator__item step-indicator__item--active" data-step="1">
                     <div class="step-card-content">
-                        <div class="step-badge step-badge--active">
+                        <div class="step-indicator__badge step-indicator__badge--active">
                             <span>1</span>
                         </div>
                         <div class="step-info">
-                            <h3 class="step-title step-title--active">Configura</h3>
-                            <span class="step-status step-status--active">In corso</span>
+                            <h3 class="step-indicator__title step-indicator__title--active">Configura</h3>
+                            <span class="step-indicator__status step-indicator__status--active">In corso</span>
                         </div>
                     </div>
                 </div>
-                <div class="step-card-item" data-step="2">
+                <div class="step-indicator__item" data-step="2">
                     <div class="step-card-content">
-                        <div class="step-badge step-badge--inactive">
+                        <div class="step-indicator__badge step-indicator__badge--inactive">
                             <span>2</span>
                         </div>
                         <div class="step-info">
-                            <h3 class="step-title step-title--inactive">Carrello</h3>
-                            <span class="step-status step-status--inactive">In attesa</span>
+                            <h3 class="step-indicator__title step-indicator__title--inactive">Carrello</h3>
+                            <span class="step-indicator__status step-indicator__status--inactive">In attesa</span>
                         </div>
                     </div>
                 </div>
@@ -78,28 +78,28 @@ Markup verbatim dalla pagina demo `product-page-integration/index.html#L512-L564
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.steps-section` | page wrapper, applica `--page-max-width` e padding | yes | — |
-| `.steps-wrapper` | wrapper interno con `margin-bottom: 1rem` | yes | — |
-| `.steps-container` | contesto `position: relative` per la `.steps-line` | yes | — |
+| `.step-indicator` | page wrapper, applica `--page-max-width` e padding | yes | — |
+| `.step-indicator__wrapper` | wrapper interno con `margin-bottom: 1rem` | yes | — |
+| `.step-indicator__container` | contesto `position: relative` per la `.steps-line` | yes | — |
 | `.steps-line` | linea orizzontale di connessione, visibile >=1024px | yes | — |
 | `.steps-grid` | grid responsive 2 col mobile / 4 col desktop | yes | — |
-| `.step-card-item` | card del singolo step | yes | `--active` |
+| `.step-indicator__item` | card del singolo step | yes | `--active` |
 | `.step-card-content` | flex row interno (badge + info) | yes | — |
-| `.step-badge` | cerchio 1.75rem con numero | yes | `--active`, `--inactive`, `--completed` |
+| `.step-indicator__badge` | cerchio 1.75rem con numero | yes | `--active`, `--inactive`, `--completed` |
 | `.step-info` | wrapper testo, applica ellipsis | yes | — |
-| `.step-title` | titolo h3 dello step | yes | `--active`, `--inactive` |
-| `.step-status` | label stato testuale | yes | `--active`, `--inactive` |
+| `.step-indicator__title` | titolo h3 dello step | yes | `--active`, `--inactive` |
+| `.step-indicator__status` | label stato testuale | yes | `--active`, `--inactive` |
 
 Attributi:
 
 | Attribute | Element | Required | Note |
 |---|---|---|---|
-| `data-step="N"` | `.step-card-item` | no | Riferimento numerico. Usato dal CMS, non dalla libreria. |
-| `id="step-cards"` | `.steps-section` | no | Ancora di pagina opzionale. |
+| `data-step="N"` | `.step-indicator__item` | no | Riferimento numerico. Usato dal CMS, non dalla libreria. |
+| `id="step-cards"` | `.step-indicator` | no | Ancora di pagina opzionale. |
 
 ### Modifiers in catalog non in demo
 
-- `.step-badge--completed`: documentato in `_cards.css#L1105` (background `--color-success`, testo bianco). Non esibito nella pagina `product-page-integration` perche' lo step 1 e' sempre quello attivo. Implementato in libreria, visibile in story `MidProgress`. Nessuna icona check al posto del numero.
+- `.step-indicator__badge--completed`: documentato in `_cards.css#L1105` (background `--color-success`, testo bianco). Non esibito nella pagina `product-page-integration` perche' lo step 1 e' sempre quello attivo. Implementato in libreria, visibile in story `MidProgress`. Nessuna icona check al posto del numero.
 
 ## Installation
 
@@ -130,19 +130,19 @@ Nessun script JS richiesto.
 `--color-primary`, `--color-bg-white`, `--color-bg-gray-200`, `--color-text`, `--color-text-secondary`, `--color-text-light`, `--color-success`, `--radius-lg`, `--radius-full`, `--font-size-xs`, `--font-weight-bold`, `--font-weight-semibold`, `--font-weight-medium`, `--transition-slow`, `--page-max-width`.
 
 Valori letterali mantenuti dal catalogo:
-- `#374151` su `.step-title--inactive`.
+- `#374151` su `.step-indicator__title--inactive`.
 - `#D1D5DB` su `.steps-line`.
-- gradient `linear-gradient(135deg, #F08A00 0%, #FFB149 100%)` su `.step-badge--active`.
+- gradient `linear-gradient(135deg, #F08A00 0%, #FFB149 100%)` su `.step-indicator__badge--active`.
 
 ## Note CMS
 
 - spostare i modifier `--active`/`--inactive`/`--completed` sui sub-element corretti in coppia: badge + titolo + status devono restare coerenti.
-- testo dei titoli/status: l'overflow e' troncato con ellipsis su `.step-title`. Mantenere stringhe brevi (max ~20 char per cella desktop).
+- testo dei titoli/status: l'overflow e' troncato con ellipsis su `.step-indicator__title`. Mantenere stringhe brevi (max ~20 char per cella desktop).
 - `data-step` e' libero: la libreria non lo legge, ma e' utile per query CMS-side e analytics.
 
 ## Out of scope
 
-- icona check dentro `.step-badge--completed` (resta solo numero).
+- icona check dentro `.step-indicator__badge--completed` (resta solo numero).
 - wrapper `.step-card` con hover translateY (la pagina demo non lo usa).
 - step verticali.
 - step cliccabili (resta `<div>`).

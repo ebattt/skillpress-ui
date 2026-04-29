@@ -28,7 +28,7 @@ const renderButton = ({
     const content = `${icon ? plusIcon : ''}${label}`;
 
     root.innerHTML = tag === 'a'
-        ? `<a class="${classes}${disabled ? ' is-disabled' : ''}" href="#"${disabled ? ' aria-disabled="true"' : ''}>${content}</a>`
+        ? `<a class="${classes}${disabled ? ' button--disabled' : ''}" href="#"${disabled ? ' aria-disabled="true"' : ''}>${content}</a>`
         : `<button class="${classes}" type="button"${disabledAttrs}>${content}</button>`;
 
     return root;

@@ -1,5 +1,5 @@
 {
-  "date": "2026-04-28T14:50:59.053Z",
+  "date": "2026-04-29T12:22:24.203Z",
   "viewports": [
     {
       "viewport": "mobile-iphone14",
@@ -12,38 +12,134 @@
         {
           "key": "body",
           "status": "size-diff",
-          "demo": "390x3063 f=16px",
-          "consumer": "390x2999 f=16px"
+          "demo": "964x382 f=16px",
+          "consumer": "390x2639 f=16px"
+        },
+        {
+          "key": "modeSwitcher",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "modeBtn",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "modeBtnActive",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "modeBtnInactive",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "orientationToggle",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "orientationBtn",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "formatCards",
-          "status": "size-diff",
-          "demo": "340x302 f=16px",
-          "consumer": "332x302 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "formatCard",
-          "status": "size-diff",
-          "demo": "166x147 f=16px",
-          "consumer": "162x147 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "featureGrid",
-          "status": "size-diff",
-          "demo": "366x178 f=16px",
-          "consumer": "366x174 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "featureBox",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "featureBoxTitle",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "heroImage",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "heroTitle",
-          "status": "size-diff",
-          "demo": "366x36 f=24px",
-          "consumer": "366x29 f=24px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "priceTableSection",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "priceTableFull",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "priceCellBtn",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "priceQtyBtn",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "priceArrowRight",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "accordionFirst",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "mobileBar",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "stepCard",
-          "status": "size-diff",
-          "demo": "173x60 f=16px",
-          "consumer": "161x60 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         }
       ]
     },
@@ -58,38 +154,134 @@
         {
           "key": "body",
           "status": "size-diff",
-          "demo": "360x3051 f=16px",
-          "consumer": "360x3010 f=16px"
+          "demo": "964x382 f=16px",
+          "consumer": "360x2624 f=16px"
+        },
+        {
+          "key": "modeSwitcher",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "modeBtn",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "modeBtnActive",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "modeBtnInactive",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "orientationToggle",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "orientationBtn",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "formatCards",
-          "status": "size-diff",
-          "demo": "310x302 f=16px",
-          "consumer": "302x302 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "formatCard",
-          "status": "size-diff",
-          "demo": "151x147 f=16px",
-          "consumer": "147x147 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "featureGrid",
-          "status": "size-diff",
-          "demo": "336x197 f=16px",
-          "consumer": "336x192 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "featureBox",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "featureBoxTitle",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "heroImage",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "heroTitle",
-          "status": "size-diff",
-          "demo": "336x36 f=24px",
-          "consumer": "336x29 f=24px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "priceTableSection",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "priceTableFull",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "priceCellBtn",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "priceQtyBtn",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "priceArrowRight",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "accordionFirst",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "mobileBar",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "stepCard",
-          "status": "size-diff",
-          "demo": "158x60 f=16px",
-          "consumer": "146x60 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         }
       ]
     },
@@ -104,74 +296,134 @@
         {
           "key": "body",
           "status": "size-diff",
-          "demo": "768x2825 f=16px",
-          "consumer": "768x2812 f=16px"
+          "demo": "752x382 f=16px",
+          "consumer": "768x2518 f=16px"
         },
         {
           "key": "modeSwitcher",
-          "status": "size-diff",
-          "demo": "736x35 f=16px",
-          "consumer": "720x35 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "modeBtn",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "modeBtnActive",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "modeBtnInactive",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "orientationToggle",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "orientationBtn",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "formatCards",
-          "status": "size-diff",
-          "demo": "702x147 f=16px",
-          "consumer": "686x147 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "formatCard",
-          "status": "size-diff",
-          "demo": "170x147 f=16px",
-          "consumer": "166x147 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "featureGrid",
-          "status": "size-diff",
-          "demo": "736x147 f=16px",
-          "consumer": "688x144 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "featureBox",
-          "status": "size-diff",
-          "demo": "362x68 f=16px",
-          "consumer": "338x66 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "featureBoxTitle",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "heroImage",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "heroTitle",
-          "status": "size-diff",
-          "demo": "736x42 f=27.9808px",
-          "consumer": "688x34 f=27.9808px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "priceTableSection",
-          "status": "size-diff",
-          "demo": "702x361 f=16px",
-          "consumer": "686x361 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "priceTableFull",
-          "status": "size-diff",
-          "demo": "702x361 f=12px",
-          "consumer": "686x361 f=12px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "priceCellBtn",
-          "status": "size-diff",
-          "demo": "144x32 f=12px",
-          "consumer": "140x32 f=12px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "priceQtyBtn",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "priceArrowRight",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "accordionFirst",
-          "status": "size-diff",
-          "demo": "736x58 f=16px",
-          "consumer": "720x58 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
+        },
+        {
+          "key": "mobileBar",
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         },
         {
           "key": "stepCard",
-          "status": "size-diff",
-          "demo": "362x60 f=16px",
-          "consumer": "338x60 f=16px"
+          "status": "missing",
+          "demo": false,
+          "consumer": true
         }
       ]
     }

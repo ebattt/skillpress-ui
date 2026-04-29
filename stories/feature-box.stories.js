@@ -9,13 +9,13 @@ const renderFeatureBox = ({
 } = {}) => {
     return `
         <div class="feature-box">
-            <div class="feature-box-content">
-                <div class="feature-box-icon" style="background-color: ${iconBg}; color: ${iconColor};">
+            <div class="feature-box__content">
+                <div class="feature-box__icon" style="background-color: ${iconBg}; color: ${iconColor};">
                     ${iconSvg}
                 </div>
                 <div>
-                    <h3 class="feature-box-title">${title}</h3>
-                    <p class="feature-box-description">${description}</p>
+                    <h3 class="feature-box__title">${title}</h3>
+                    <p class="feature-box__description">${description}</p>
                 </div>
             </div>
         </div>

@@ -13,11 +13,11 @@ const renderDefault = () => {
     const container = document.createElement('div');
     container.innerHTML = `
         <div class="orientation-toggle">
-            <button class="orientation-btn orientation-btn--active">
+            <button class="orientation-toggle__btn orientation-toggle__btn--active">
                 ${verticalSVG}
                 Verticale
             </button>
-            <button class="orientation-btn">
+            <button class="orientation-toggle__btn">
                 ${horizontalSVG}
                 Orizzontale
             </button>
@@ -31,8 +31,8 @@ export const Default = {
     play: async ({ canvas }) => {
         const v = canvas.getByRole('button', { name: /Verticale/ });
         const h = canvas.getByRole('button', { name: /Orizzontale/ });
-        await expect(v).toHaveClass('orientation-btn--active');
-        await expect(h).not.toHaveClass('orientation-btn--active');
+        await expect(v).toHaveClass('orientation-toggle__btn--active');
+        await expect(h).not.toHaveClass('orientation-toggle__btn--active');
     }
 };
 
@@ -40,11 +40,11 @@ export const HorizontalActive = () => {
     const container = document.createElement('div');
     container.innerHTML = `
         <div class="orientation-toggle">
-            <button class="orientation-btn">
+            <button class="orientation-toggle__btn">
                 ${verticalSVG}
                 Verticale
             </button>
-            <button class="orientation-btn orientation-btn--active">
+            <button class="orientation-toggle__btn orientation-toggle__btn--active">
                 ${horizontalSVG}
                 Orizzontale
             </button>
@@ -57,11 +57,11 @@ export const ReferenceFromElementsUI = () => {
     const container = document.createElement('div');
     container.innerHTML = `
         <div class="orientation-toggle">
-            <button class="orientation-btn orientation-btn--active">
+            <button class="orientation-toggle__btn orientation-toggle__btn--active">
                 ${verticalSVG}
                 Verticale
             </button>
-            <button class="orientation-btn">
+            <button class="orientation-toggle__btn">
                 ${horizontalSVG}
                 Orizzontale
             </button>

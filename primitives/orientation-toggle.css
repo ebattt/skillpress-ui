@@ -13,7 +13,7 @@
     width: fit-content;
 }
 
-.orientation-btn {
+.orientation-toggle__btn {
     display: flex;
     align-items: center;
     gap: 0.375rem;
@@ -28,17 +28,17 @@
     font-family: inherit;
 }
 
-.orientation-btn:hover {
+.orientation-toggle__btn:hover {
     color: var(--color-text-secondary);
 }
 
-.orientation-btn--active {
+.orientation-toggle__btn--active {
     background-color: var(--color-bg-white);
     box-shadow: var(--shadow-sm);
     color: var(--color-text);
     font-weight: var(--font-weight-medium);
 }
 
-.orientation-btn svg {
+.orientation-toggle__btn svg {
     stroke: currentColor;
 }

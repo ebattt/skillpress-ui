@@ -14,7 +14,7 @@
     function syncSection(section, isExpanded) {
         var trigger = getTrigger(section);
 
-        section.classList.toggle('expanded', isExpanded);
+        section.classList.toggle('accordion__section--expanded', isExpanded);
 
         if (trigger) {
             trigger.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
@@ -30,7 +30,7 @@
 
     function closeSiblings(container, currentSection) {
         getSections(container).forEach(function(section) {
-            if (section === currentSection || !section.classList.contains('expanded')) {
+            if (section === currentSection || !section.classList.contains('accordion__section--expanded')) {
                 return;
             }
 
@@ -54,7 +54,7 @@
             return;
         }
 
-        nextState = !section.classList.contains('expanded');
+        nextState = !section.classList.contains('accordion__section--expanded');
 
         if (nextState) {
             closeSiblings(container, section);
@@ -73,7 +73,7 @@
         container.__skillpressAccordionInit = true;
 
         getSections(container).forEach(function(section) {
-            syncSection(section, section.classList.contains('expanded'));
+            syncSection(section, section.classList.contains('accordion__section--expanded'));
         });
 
         return container;

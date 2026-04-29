@@ -24,7 +24,7 @@
  * - click bottone carrello;
  * - variante BEM `.sidebar-box*`, alias `.sidebar-total-price`, `.sidebar-total-iva`,
  *   `.product-sidebar` (non referenziati dalla pagina demo);
- * - `.sidebar-download-divider` + `.config-download-btns` + `.config-download-btn`
+ * - `.download-buttons__divider` + `.download-buttons` + `.download-buttons__btn`
  *   (gia' coperti da `primitives/download-buttons.css`).
  */
 
@@ -87,11 +87,11 @@
     justify-content: space-between;
 }
 
-.sidebar-row-label {
+.sidebar-row__label {
     color: var(--color-text-secondary);
 }
 
-.sidebar-row-value {
+.sidebar-row__value {
     font-weight: var(--font-weight-semibold);
     color: var(--color-text);
 }
@@ -100,12 +100,12 @@
     color: var(--color-success);
 }
 
-.sidebar-row--green .sidebar-row-label {
+.sidebar-row--green .sidebar-row__label {
     font-weight: var(--font-weight-medium);
     color: var(--color-success);
 }
 
-.sidebar-row--green .sidebar-row-value {
+.sidebar-row--green .sidebar-row__value {
     color: var(--color-success);
 }
 

@@ -55,12 +55,12 @@
 }
 
 /* Stato ON: classe + aria-checked, entrambi supportati per coerenza */
-.toggle-switch.is-checked,
+.toggle-switch--checked,
 .toggle-switch[aria-checked="true"] {
     background-color: var(--color-primary);
 }
 
-.toggle-switch.is-checked:hover,
+.toggle-switch--checked:hover,
 .toggle-switch[aria-checked="true"]:hover {
     background-color: var(--color-primary-dark);
 }
@@ -79,7 +79,7 @@
     pointer-events: none;
 }
 
-.toggle-switch.is-checked .toggle-switch__thumb,
+.toggle-switch--checked .toggle-switch__thumb,
 .toggle-switch[aria-checked="true"] .toggle-switch__thumb {
     transform: translateX(1.25rem);  /* 20px = 44 - 4 - 20 */
 }
@@ -107,8 +107,8 @@
     background-color: var(--color-bg-gray-200);
 }
 
-.toggle-switch.is-checked:disabled:hover,
-.toggle-switch.is-checked[aria-disabled="true"]:hover,
+.toggle-switch--checked:disabled:hover,
+.toggle-switch--checked[aria-disabled="true"]:hover,
 .toggle-switch[aria-checked="true"]:disabled:hover,
 .toggle-switch[aria-checked="true"][aria-disabled="true"]:hover {
     background-color: var(--color-primary);

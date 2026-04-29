@@ -2,19 +2,19 @@
    CONFIG DOWNLOAD BUTTONS (istruzioni + template sotto sidebar total box)
    Source: elements-ui/css/components/_layout-patterns.css#L2028-L2062
    ================================================================ */
-.sidebar-download-divider {
+.download-buttons__divider {
     margin-top: 1.5rem;
     border-top: 1px solid var(--color-bg-gray-200);
 }
 
-.config-download-btns {
+.download-buttons {
     display: flex;
     justify-content: flex-start;
     gap: 0.5rem;
     margin-top: 1rem;
 }
 
-.config-download-btn {
+.download-buttons__btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,6 +31,6 @@
     transition: background-color var(--transition-fast);
 }
 
-.config-download-btn:hover {
+.download-buttons__btn:hover {
     background-color: rgba(240, 138, 0, 0.1);
 }

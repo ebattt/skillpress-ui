@@ -9,7 +9,7 @@
  *   - .facciate-row + .spessore-display            L449-487
  *   - .form-select                                 L190-223
  *   - .error-msg + .error-inline + .success-inline L292-329
- *   - .custom-dims*                                L776-805
+ *   - .custom-dims + .custom-dims__grid/field/label L776-805
  *   - .nome-ref-row                                L174-184
  *
  * Fonte markup verbatim (template literal):
@@ -230,26 +230,26 @@ textarea.form-input {
     gap: var(--spacing-sm);
 }
 
-.custom-dims-grid {
+.custom-dims__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.625rem;
 }
 
-.custom-dims-field {
+.custom-dims__field {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
 }
 
-.custom-dims-label {
+.custom-dims__label {
     font-size: 0.9375rem;
     font-weight: var(--font-weight-medium);
     color: var(--color-text);
 }
 
 @media (max-width: 640px) {
-    .custom-dims-grid {
+    .custom-dims__grid {
         grid-template-columns: 1fr;
     }
 }

@@ -5,11 +5,11 @@
  *
  * API:
  *   window.SkillpressUI.ToggleSwitch.init(rootOrSelector?)
- *   Default selector: '[data-skillpress-toggle-switch]'
+ *   Default selector: '[data-toggle-switch]'
  *
  * Comportamento:
  *   - click + Space + Enter
- *   - flippa la classe .is-checked e l'attributo aria-checked
+ *   - flippa la classe .toggle-switch--checked e l'attributo aria-checked
  *   - emette CustomEvent('toggle-switch:change', { detail: { checked } }) bubbling
  *   - rispetta disabled / aria-disabled
  *   - NON gestisce stato di business (es. IVA, prezzi)
@@ -19,7 +19,7 @@
  * chiama (l'init e' idempotente).
  */
 (function() {
-    var DEFAULT_SELECTOR = '[data-skillpress-toggle-switch]';
+    var DEFAULT_SELECTOR = '[data-toggle-switch]';
     var INIT_FLAG = '__skillpressToggleSwitchInit';
 
     function isDisabled(el) {
@@ -29,13 +29,13 @@
     }
 
     function isChecked(el) {
-        if (el.classList.contains('is-checked')) return true;
+        if (el.classList.contains('toggle-switch--checked')) return true;
         if (el.getAttribute('aria-checked') === 'true') return true;
         return false;
     }
 
     function setChecked(el, checked) {
-        el.classList.toggle('is-checked', checked);
+        el.classList.toggle('toggle-switch--checked', checked);
         el.setAttribute('aria-checked', checked ? 'true' : 'false');
         el.dispatchEvent(new CustomEvent('toggle-switch:change', {
             bubbles: true,
@@ -64,7 +64,7 @@
 
         // Sync iniziale: garantisce coerenza tra classe e aria-checked
         var checked = isChecked(el);
-        el.classList.toggle('is-checked', checked);
+        el.classList.toggle('toggle-switch--checked', checked);
         el.setAttribute('aria-checked', checked ? 'true' : 'false');
 
         // role di default se mancante (markup atteso: button)
