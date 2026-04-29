@@ -78,6 +78,20 @@ sono responsabilita' del consumer / backend.
 | `.qty-iva-row--single` | 1 colonna |
 | `.qty-iva-row--double` | 2 colonne, single col `<= 640px` |
 
+### Facciate row + spessore display
+
+Layout flex per Step 1 "Facciate" del configuratore: input numerico + callout
+spessore mm calcolato.
+
+| Classe | Note |
+|---|---|
+| `.facciate-row` | flex inline align-items center, gap 0.75rem, `min-width: 0` per evitare overflow |
+| `.facciate-input-wrap` | flex 1 (lo spazio rimanente lo prende l'input) |
+| `.spessore-display` | flex inline icon + label + value, `flex-shrink: 0`, `white-space: nowrap` |
+| `.spessore-display svg` | icona 1rem, colore `--color-text` (replica catalog `.spessore-display .material-symbols-outlined`) |
+| `.spessore-label` | font sm medium |
+| `.spessore-value` | font sm bold (e' il dato calcolato) |
+
 ## Markup contract
 
 Form-field con label-row + select:
@@ -130,6 +144,31 @@ Custom dims grid:
     </div>
 </div>
 ```
+
+Facciate row + spessore display (Step 1 configuratore):
+
+```html
+<div class="form-field">
+    <div class="label-row">
+        <label class="label-text">Facciate</label>
+        <span class="label-hint">(comprese le 4 di copertina)</span>
+    </div>
+    <div class="facciate-row">
+        <div class="facciate-input-wrap">
+            <input type="number" class="form-input" value="48" min="24" step="4"/>
+        </div>
+        <div class="spessore-display">
+            <!-- SVG vertical-align-center icon 16x16 -->
+            <span class="spessore-label">Spessore</span>
+            <span class="spessore-value">5.5 mm</span>
+        </div>
+    </div>
+</div>
+```
+
+Il valore di `.spessore-value` e' calcolato lato business logic (in funzione di
+numero facciate, grammatura, carta). Il backend rende il numero finale; la
+libreria fornisce solo lo stile.
 
 Nome-ref-row con required + optional:
 

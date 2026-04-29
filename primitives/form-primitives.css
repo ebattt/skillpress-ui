@@ -5,6 +5,8 @@
  *   - .form-field                                  L33-35
  *   - .label-row + .label-text + .label-hint       L41-69
  *   - .form-input + textarea.form-input            L99-133
+ *   - .nome-lavoro-input (alias semantico)         L137-168
+ *   - .facciate-row + .spessore-display            L449-487
  *   - .form-select                                 L190-223
  *   - .error-msg + .error-inline + .success-inline L292-329
  *   - .custom-dims*                                L776-805
@@ -98,6 +100,37 @@
 
 textarea.form-input {
     resize: none;
+}
+
+
+/* ================================================================
+   NOME LAVORO INPUT -- alias semantico di .form-input
+   Stessa resa visiva, classe distinta per la sezione "Nome del lavoro".
+   Fonte catalog: _form-inputs.css L137-L168.
+   ================================================================ */
+.nome-lavoro-input {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.375rem 0.625rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-white);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    transition: border-color var(--transition-fast);
+    box-sizing: border-box;
+}
+
+.nome-lavoro-input:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+}
+
+.nome-lavoro-input--error {
+    border-color: var(--color-error-light);
 }
 
 
@@ -260,4 +293,52 @@ textarea.form-input {
     .qty-iva-row--double {
         grid-template-columns: 1fr;
     }
+}
+
+
+/* ================================================================
+   FACCIATE ROW + SPESSORE DISPLAY -- input numerico + callout spessore
+   Fonte catalog: _form-inputs.css L449-L487.
+   Layout flex inline: .facciate-input-wrap (flex 1) + .spessore-display (shrink 0).
+   Material Symbols `vertical_align_center` del catalog -> SVG inline lato consumer.
+   Il selettore catalog `.spessore-display .material-symbols-outlined` viene
+   replicato come `.spessore-display svg` per garantire dimensione/colore.
+   ================================================================ */
+.facciate-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+}
+
+.facciate-input-wrap {
+    flex: 1;
+    min-width: 0;
+}
+
+.spessore-display {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.spessore-display svg {
+    color: var(--color-text);
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+}
+
+.spessore-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+.spessore-value {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
 }

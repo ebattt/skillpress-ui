@@ -188,6 +188,47 @@ export const CustomDimsGrid = {
     `)
 };
 
+const SPESSORE_ICON_SVG = `
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="8 7 12 3 16 7"/>
+        <polyline points="8 17 12 21 16 17"/>
+        <line x1="12" y1="3" x2="12" y2="21"/>
+    </svg>
+`;
+
+export const FacciateRow = {
+    render: () => mount(`
+        <div class="form-field">
+            <div class="label-row">
+                <label class="label-text">Facciate</label>
+                <span class="label-hint">(comprese le 4 di copertina)</span>
+            </div>
+            <div class="facciate-row">
+                <div class="facciate-input-wrap">
+                    <input type="number" class="form-input" value="48" min="24" step="4"/>
+                </div>
+                <div class="spessore-display">
+                    ${SPESSORE_ICON_SVG}
+                    <span class="spessore-label">Spessore</span>
+                    <span class="spessore-value">5.5 mm</span>
+                </div>
+            </div>
+        </div>
+    `),
+    parameters: {
+        docs: {
+            description: {
+                story: 'Layout flex per Step 1 "Facciate": input numerico (flex 1) + callout spessore mm (shrink 0). Il valore della `.spessore-value` e\' calcolato lato business logic; qui hardcoded come placeholder.'
+            }
+        }
+    },
+    play: async ({ canvas }) => {
+        const value = canvas.getByText('5.5 mm');
+        await expect(value).toHaveClass('spessore-value');
+    }
+};
+
 export const NomeRefRow = {
     render: () => mount(`
         <div class="nome-ref-row">
