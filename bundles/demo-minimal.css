@@ -24,4 +24,6 @@
 @import '../components/related-products.css';
 @import '../components/mobile-bar.css';
 @import '../primitives/form-primitives.css';
+@import '../primitives/form-controls.css';
+@import '../primitives/iva-banner.css';
 @import '../primitives/info-dropdown.css';

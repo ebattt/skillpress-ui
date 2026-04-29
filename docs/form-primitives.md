@@ -74,6 +74,9 @@ sono responsabilita' del consumer / backend.
 | `.custom-dims-field` | colonna grid (label + input) |
 | `.custom-dims-label` | label 15px medium (alias di `.label-text` per nome semantico) |
 | `.nome-ref-row` | grid 2 col per nome + referente, single col `<= 640px` |
+| `.qty-iva-row` | grid wrapper Step 6 (qty + IVA), gap 0.625rem |
+| `.qty-iva-row--single` | 1 colonna |
+| `.qty-iva-row--double` | 2 colonne, single col `<= 640px` |
 
 ## Markup contract
 

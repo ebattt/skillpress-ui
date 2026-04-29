@@ -1,0 +1,70 @@
+/**
+ * IVA BANNER -- callout informativo warning per IVA 4% (editori con ISBN)
+ *
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
+ *   - .iva-banner            L679-684
+ *   - .iva-banner-content    L686-690
+ *   - .iva-banner-icon       L692-696
+ *   - .iva-banner-text       L698-702
+ *
+ * Fonte markup: product-page-integration/js/sections/section-6.js#L274-L285
+ * (renderizzato condizionalmente quando state.selections.ivaMode === '4').
+ *
+ * Strategia A (CSS-only). La condizione di visibilita' (mostrare/nascondere
+ * il banner in base alla scelta IVA) e' business logic consumer-side.
+ *
+ * Material Symbols 'info' sostituito con SVG inline lato consumer dentro
+ * .iva-banner-icon (icona info 18x18, color primary tramite currentColor).
+ *
+ * Pattern callout warning specifico per IVA: se in futuro emergeranno altri
+ * callout simili, valutare promozione a primitiva generica .callout--warning.
+ */
+
+
+/* ================================================================
+   IVA BANNER -- container warning bg + border + radius
+   ================================================================ */
+.iva-banner {
+    background-color: var(--color-warning-bg);
+    border: 1px solid var(--color-warning-border);
+    border-radius: var(--radius-lg);
+    padding: 0.75rem;
+}
+
+
+/* ================================================================
+   IVA BANNER CONTENT -- flex inline icon + text
+   ================================================================ */
+.iva-banner-content {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+}
+
+
+/* ================================================================
+   IVA BANNER ICON -- icona warning, color primary
+   ================================================================ */
+.iva-banner-icon {
+    color: var(--color-primary);
+    font-size: 1.125rem;
+    flex-shrink: 0;
+}
+
+.iva-banner-icon svg {
+    display: block;
+}
+
+
+/* ================================================================
+   IVA BANNER TEXT -- testo xs, color text-strong
+   ================================================================ */
+.iva-banner-text {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-strong);
+    line-height: 1.5;
+}
+
+.iva-banner-text > * + * {
+    margin-top: var(--spacing-xs);
+}

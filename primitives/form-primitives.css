@@ -236,3 +236,28 @@ textarea.form-input {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* ================================================================
+   GRIGLIA QUANTITA + IVA -- layout Step 6 (qty-iva-row)
+   Modificatori --single (1 col) / --double (2 col).
+   --double diventa 1 col sotto 640px.
+   ================================================================ */
+.qty-iva-row {
+    display: grid;
+    gap: 0.625rem;
+}
+
+.qty-iva-row--single {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.qty-iva-row--double {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 640px) {
+    .qty-iva-row--double {
+        grid-template-columns: 1fr;
+    }
+}

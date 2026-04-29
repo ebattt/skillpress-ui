@@ -1,0 +1,83 @@
+---
+title: IvaBanner
+description: Callout warning informativo per la dichiarazione IVA 4% (editori con ISBN). Pattern usato nello Step 6 del configuratore quando l'utente seleziona aliquota agevolata.
+layer: primitives
+strategy: css-only
+sources:
+  catalog_css: elements-ui/css/components/_form-inputs.css (L679-702)
+  demo: product-page-integration/js/sections/section-6.js (L274-285)
+status: implemented-local
+package_path: primitives/iva-banner.css
+---
+
+# IvaBanner
+
+Callout informativo arancione/warning che appare in Step 6 del configuratore
+quando viene selezionata l'aliquota IVA 4% (editori con ISBN). Avvisa
+l'utente che e' richiesta la compilazione di una dichiarazione sostitutiva.
+
+Strategia A (CSS-only). La condizione di visibilita' (mostrare/nascondere il
+banner) e' business logic del consumer.
+
+## Classi pubbliche
+
+| Classe | Note |
+|---|---|
+| `.iva-banner` | container warning bg/border/radius/padding |
+| `.iva-banner-content` | flex inline icon + text, align-items flex-start |
+| `.iva-banner-icon` | icona warning, color primary, font-size 1.125rem |
+| `.iva-banner-text` | testo xs, color text-strong, line-height 1.5 |
+
+## Markup contract
+
+```html
+<div class="iva-banner">
+    <div class="iva-banner-content">
+        <span class="iva-banner-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+        </span>
+        <div class="iva-banner-text">
+            <p>Per usufruire dell'aliquota ridotta al 4% per editori con ISBN
+               e necessario compilare e firmare la dichiarazione sostitutiva.</p>
+            <button type="button" style="...">Scarica la dichiarazione</button>
+        </div>
+    </div>
+</div>
+```
+
+## Cosa decide il CMS / backend
+
+- presenza/assenza del banner (rendering condizionale Step 6);
+- testo HTML (puo' contenere link, bottoni download dichiarazione);
+- icona dentro `.iva-banner-icon` (SVG inline);
+- handler dei bottoni interni.
+
+## Cosa decide la libreria
+
+- `--color-warning-bg` (#FFF7ED) come background;
+- `--color-warning-border` (#FED7AA) come border;
+- radius `--radius-lg`, padding 0.75rem;
+- color icon `--color-primary`, flex-shrink 0;
+- font-size testo xs (`var(--font-size-xs)` = 12px), line-height 1.5;
+- spacing tra paragrafi consecutivi (`> * + *` margin-top xs).
+
+## Composizione
+
+Renderizzato sotto la riga `.qty-iva-row qty-iva-row--double` quando
+`state.selections.ivaMode === '4'`. Il contesto applicativo e' Step 6
+del configuratore.
+
+## Fuori scope
+
+- modal "Scarica dichiarazione" (overlay separato): pattern modal dedicato
+  futuro, non incluso nel banner.
+- variante callout informativo generica (`.callout--warning`/`--info`): se
+  emergeranno altri banner simili, valutare promozione a primitiva generica.
+- variante banner di errore / successo: niente coverage finche' non emerge
+  un consumer reale.

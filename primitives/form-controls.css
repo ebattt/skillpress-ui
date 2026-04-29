@@ -1,0 +1,121 @@
+/**
+ * FORM CONTROLLS -- radio group, radio option, checkbox option, option-disabled
+ *
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
+ *   - .radio-group                                       L491-495
+ *   - .radio-option + .radio-option-label                L497-503, L547-550
+ *   - .radio-option input[type="radio"] + ::after        L505-539
+ *   - .radio-option input[type="checkbox"]               L541-545
+ *   - .option-disabled                                   L811-825
+ *
+ * Fonte markup: catalogo elements-ui (radio-group.js + checkbox-option.js).
+ * Nessun utilizzo nelle pagine demo prodotto: la coverage e' giustificata
+ * dall'uso futuro su `checkout` / `dashboard` e dall'estensione opzionale
+ * del configuratore product-page (sostituire alcuni form-select con radio-group).
+ *
+ * Strategia A (CSS-only). :checked e :disabled sono nativi del browser.
+ * .option-disabled e' applicato manualmente sull'<label> quando l'opzione
+ * non e' disponibile (visualmente spenta + click bloccato via pointer-events).
+ *
+ * Niente SVG: il pallino radio e' un pseudo-elemento ::after. Il check del
+ * checkbox e' nativo via accent-color.
+ *
+ * Dipende da form-primitives.css (per .label-row + .label-text). Bundle
+ * ordering: form-controls.css DOPO form-primitives.css.
+ */
+
+
+/* ================================================================
+   RADIO GROUP -- contenitore flex column / row
+   ================================================================ */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+
+/* ================================================================
+   RADIO OPTION -- label + input + testo
+   ================================================================ */
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    position: relative;
+}
+
+.radio-option-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+}
+
+
+/* ================================================================
+   INPUT RADIO -- custom CSS appearance + pallino arancione checked
+   ================================================================ */
+.radio-option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--color-bg-gray-200);
+    border-radius: 50%;
+    background: var(--color-bg-white);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+    margin: 0;
+    position: relative;
+}
+
+.radio-option input[type="radio"]::after {
+    content: '';
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform var(--transition-fast);
+}
+
+.radio-option input[type="radio"]:checked {
+    border-color: var(--color-primary);
+}
+
+.radio-option input[type="radio"]:checked::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+/* ================================================================
+   INPUT CHECKBOX -- nativo con accent-color primary
+   ================================================================ */
+.radio-option input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--color-primary);
+}
+
+
+/* ================================================================
+   OPTION DISABLED -- label spenta + click bloccato
+   ================================================================ */
+.option-disabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+    pointer-events: none;
+    position: relative;
+}
+
+label.option-disabled {
+    color: var(--color-text-muted);
+}
+
+label.option-disabled input[type="radio"] {
+    opacity: 0.5;
+}
