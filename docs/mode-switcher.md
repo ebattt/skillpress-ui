@@ -6,13 +6,15 @@ strategy: css-only
 sources:
   catalog_css: elements-ui/css/components/_buttons.css#L90-L127
   demo: product-page-integration/index.html#L184-L193
-status: verified-local-link-dev
+status: post-bem-2026-04-29
 package_path: primitives/mode-switcher.css
 ---
 
 # ModeSwitcher
 
 Gruppo di bottoni pill per selezione esclusiva tra due o piu' modalita'. Il CMS/JS consumer gestisce il toggle dei modifier `--active`/`--inactive` e l'attributo `aria-pressed`. La libreria fornisce solo lo stile visivo.
+
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element `mode-btn` rinominato con prefisso `mode-switcher__btn`. Nessun hook `data-*` (componente CSS-only, toggle consumer-side).
 
 ## Anatomy
 
@@ -55,6 +57,16 @@ Attributi:
 | `role="group"` | `.mode-switcher` | yes | Raggruppa i bottoni per accessibilita' |
 | `aria-label` | `.mode-switcher` | yes | Descrizione del gruppo |
 | `aria-pressed` | `.mode-switcher__btn` | yes | `"true"` sul bottone attivo, `"false"` sugli altri |
+
+## Mappatura nomi (demo product-page -> libreria)
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.mode-btn` | `.mode-switcher__btn` |
+| `.mode-btn--active` | `.mode-switcher__btn--active` |
+| `.mode-btn--inactive` | `.mode-switcher__btn--inactive` |
+
+`.mode-switcher` (block root) e' invariato. La interaction `mode-aware-blocks.js` e' stata aggiornata coerentemente in Wave 1 (legge `.mode-switcher .mode-switcher__btn--active`).
 
 ## Installation
 

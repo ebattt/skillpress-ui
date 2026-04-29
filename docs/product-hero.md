@@ -6,13 +6,15 @@ strategy: static-snapshot-A
 sources:
   catalog_css: elements-ui/css/components/_layout-patterns.css#L764-L888
   demo: product-page-integration/index.html#L400-L499
-status: verified-local-link-dev
+status: post-bem-2026-04-29
 package_path: components/product-hero.css
 ---
 
 # ProductHero
 
 Section hero del prodotto: layout 2 colonne (35/65 da 1024px) che compone ImageGallery a sinistra e a destra titolo, Rating, descrizione e FeatureGrid. Strategia A: static snapshot — la libreria non implementa il cambio immagine, non calcola il rating e non emette eventi. I bottoni `prev`/`next` restano nel markup per visual parity.
+
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element `hero-*` rinominati con prefisso `product-hero__*`. Le foglie composte (ImageGallery, Rating, FeatureBox) hanno propria mappatura nei rispettivi docs. Nessun hook `data-*` (componente CSS-only).
 
 ## Strategia JS demo
 
@@ -108,6 +110,22 @@ Attributi:
 | `id="prevImageBtn"` / `id="nextImageBtn"` | bottoni nav | no | Compatibilita' con behavior demo. |
 | `data-images` | `.image-gallery__container` | no | Array JSON CMS, non letto dalla libreria. |
 | `style="width: NN%;"` | `.rating__filled` | yes | Percentuale calcolata `(rating / 5) * 100`. |
+
+## Mappatura nomi (demo product-page -> libreria)
+
+La demo originale usava prefissi `hero-*` per tutti i sub-element del ProductHero. La libreria post-prompt-19 usa il prefisso BEM `product-hero__*`.
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.hero-grid` | `.product-hero__grid` |
+| `.hero-info` | `.product-hero__info` |
+| `.hero-title` | `.product-hero__title` |
+| `.hero-rating` | `.product-hero__rating` |
+| `.hero-rating-value` | `.product-hero__rating-value` |
+| `.hero-review-count` | `.product-hero__review-count` |
+| `.hero-description` | `.product-hero__description` |
+
+`.product-hero` (block root) e' invariato. Per le foglie composte vedi `image-gallery.md` (rename `.hero-image-gallery/-container/-nav-btn`), `feature-box.md` e `rating.md` (gia' BEM strict).
 
 ## Installation
 

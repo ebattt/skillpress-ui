@@ -7,13 +7,15 @@ sources:
   catalog_css: elements-ui/css/components/_cards.css#L1037-L1178
   catalog_js: elements-ui/js/cards/card-step.js
   demo: product-page-integration/index.html#L512-L564
-status: verified-local-link-dev
+status: post-bem-2026-04-29
 package_path: components/step-indicator.css
 ---
 
 # StepIndicator
 
 Tracker orizzontale di step con badge numerati e linea di connessione orizzontale visibile da desktop. Lo stato di avanzamento e' controllato dal CMS spostando i modifier `--active` / `--inactive` / `--completed` sui sub-element. Nessun behavior JS della libreria: il rendering riflette quel che il backend imposta in HTML.
+
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Refactor large: root `.steps-section` -> `.step-indicator`; sub-element `.step-card-item/.step-badge/.step-title/.step-status` -> `.step-indicator__item/__badge/__title/__status`. Nessun hook `data-*` (componente CSS-only). Utility legacy `.step-card`, `.step-card-content`, `.step-info`, `.steps-grid`, `.steps-line` mantenute (helper di layout interno).
 
 ## Anatomy
 
@@ -100,6 +102,28 @@ Attributi:
 ### Modifiers in catalog non in demo
 
 - `.step-indicator__badge--completed`: documentato in `_cards.css#L1105` (background `--color-success`, testo bianco). Non esibito nella pagina `product-page-integration` perche' lo step 1 e' sempre quello attivo. Implementato in libreria, visibile in story `MidProgress`. Nessuna icona check al posto del numero.
+
+## Mappatura nomi (demo product-page -> libreria)
+
+La demo originale usava prefisso `step-*` con root `.steps-section`. La libreria post-prompt-19 usa BEM strict `.step-indicator__*`.
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.steps-section` | `.step-indicator` |
+| `.steps-wrapper` | `.step-indicator__wrapper` |
+| `.steps-container` | `.step-indicator__container` |
+| `.step-card-item` | `.step-indicator__item` |
+| `.step-card-item--active` | `.step-indicator__item--active` |
+| `.step-badge` | `.step-indicator__badge` |
+| `.step-badge--active` | `.step-indicator__badge--active` |
+| `.step-badge--inactive` | `.step-indicator__badge--inactive` |
+| `.step-badge--completed` | `.step-indicator__badge--completed` |
+| `.step-title` | `.step-indicator__title` |
+| `.step-title--active` | `.step-indicator__title--active` |
+| `.step-title--inactive` | `.step-indicator__title--inactive` |
+| `.step-status` | `.step-indicator__status` |
+
+Utility/helper di layout invariati (block separati): `.step-card`, `.step-card-content`, `.step-info`, `.steps-grid`, `.steps-line`.
 
 ## Installation
 

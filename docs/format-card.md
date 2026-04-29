@@ -7,13 +7,15 @@ sources:
   catalog_css: elements-ui/css/components/_cards.css#L30-L191
   catalog_js: elements-ui/js/cards/card-dimension.js, elements-ui/js/cards/card-selection.js
   demo: product-page-integration/js/sections/section-1.js#L199-L266
-status: verified-local-link-dev
+status: post-bem-2026-04-29
 package_path: components/format-card.css
 ---
 
 # FormatCard
 
 Selection card per scegliere il formato del prodotto. Card a 1 colonna su mobile (sotto 480px) e 4 colonne da 480px in su, dentro un container `.format-cards`. CSS-only: lo stato selezionato e' applicato dal CMS aggiungendo `.format-card--selected` alla card scelta. Coerente con le altre primitive del configuratore (mode-switcher, option-buttons, orientation-toggle): la libreria fornisce solo markup + look, il toggle e' consumer-side.
+
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element di `.format-card` rinominati con doppio underscore (`format-card-preview` -> `format-card__preview`, ecc.). Nessun hook `data-*` (componente CSS-only, toggle consumer-side).
 
 Implementazione minima della famiglia SelectionCard: solo `.format-card*`. Le varianti `paper-card`, `visual-card`, `effect-card`, `angolo-card` restano fuori scope finche' non vengono richieste sulla pagina demo.
 
@@ -113,6 +115,22 @@ Markup verbatim derivato da `product-page-integration/js/sections/section-1.js#L
 | `.format-card__dims` | dimensioni testuali | yes | — |
 
 Geometria preview: la libreria non impone width/height su `.format-card__preview` / `box-inner` / `custom`. Il CMS passa lo `style` inline in funzione di orientamento e proporzioni del formato (vertical 56x79, horizontal 79x56 nella demo).
+
+## Mappatura nomi (demo product-page -> libreria)
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.format-card-preview` | `.format-card__preview` |
+| `.format-card-preview-label` | `.format-card__preview-label` |
+| `.format-card-preview-box` | `.format-card__preview-box` |
+| `.format-card-preview-custom` | `.format-card__preview-custom` |
+| `.format-card-preview-inner` | `.format-card__preview-inner` |
+| `.format-card-preview-dashed` | `.format-card__preview-dashed` |
+| `.format-card-text` | `.format-card__text` |
+| `.format-card-name` | `.format-card__name` |
+| `.format-card-dims` | `.format-card__dims` |
+
+`.format-cards` (container), `.format-card` (block), `.format-card--selected` (modifier) sono invariati.
 
 ## Stati
 

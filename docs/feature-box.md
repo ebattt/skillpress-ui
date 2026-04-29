@@ -7,13 +7,15 @@ sources:
   catalog_css: elements-ui/css/components/_cards.css#L982-L1030
   catalog_js: elements-ui/js/cards/card-feature.js
   demo: product-page-integration/index.html
-status: verified-local-link-dev
+status: post-bem-2026-04-29
 package_path: components/feature-box.css
 ---
 
 # FeatureBox
 
 Griglia di feature box a 2 colonne, ciascuna con contenitore icona, titolo e descrizione. La libreria controlla layout, padding e tipografia; l'icona e' uno slot editoriale (SVG inline o `<img>` da URL CMS) e il colore di sfondo dell'icona si imposta inline dal consumer.
+
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element rinominati con doppio underscore (`feature-box-content` -> `feature-box__content`, ecc.). Nessun hook `data-*` (componente CSS-only).
 
 ## Anatomy
 
@@ -72,6 +74,17 @@ Attributi:
 | `style="background-color: #...;"` | `.feature-box__icon` | no | Colore di sfondo icona, editoriale CMS. |
 | `aria-hidden="true"` | `<svg>` icona | no | Da impostare se l'icona e' decorativa. |
 | `alt=""` | `<img>` icona | no | Alt vuoto se l'icona e' decorativa. |
+
+## Mappatura nomi (demo product-page -> libreria)
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.feature-box-content` | `.feature-box__content` |
+| `.feature-box-icon` | `.feature-box__icon` |
+| `.feature-box-title` | `.feature-box__title` |
+| `.feature-box-description` | `.feature-box__description` |
+
+`.feature-grid` (utility container) e `.feature-box` (block) sono invariati.
 
 ## Installation
 

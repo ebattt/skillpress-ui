@@ -136,8 +136,10 @@ async function shoot(browser, url, vp) {
        2) scrolla la tabella di 100px
        3) misura di nuovo: la posizione dovrebbe essere INVARIATA (freccia fissa) */
     const arrowFixed = await page.evaluate(() => {
-        const arrow = document.querySelector('.price-nav-arrow-horizontal.right');
-        const section = document.querySelector('.price-table-section, #priceTableContainer');
+        /* demo (legacy): .price-nav-arrow-horizontal.right + .price-table-section
+           consumer (post-19 BEM): .price-table__nav-arrow-horizontal--right + .price-table__section */
+        const arrow = document.querySelector('.price-table__nav-arrow-horizontal--right, .price-nav-arrow-horizontal.right');
+        const section = document.querySelector('.price-table__section, .price-table-section, #priceTableContainer');
         if (!arrow || !section) return { ok: 'no-arrow-or-section' };
         const before = arrow.getBoundingClientRect();
         const beforeX = Math.round(before.x);

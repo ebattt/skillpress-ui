@@ -2,6 +2,8 @@
 
 Barra fixed in basso visibile su mobile/tablet (`<=1023px`). Mostra prezzo totale + CTA carrello in compact + sezione espandibile con dettagli + toggle riepilogo configurazione. Componente CSS-only senza behavior libreria.
 
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element `mobile-bar-*` rinominati con prefisso `mobile-total-bar__*`; modifier `expanded`/`active`/`visible` standalone -> `mobile-total-bar--expanded`, `mobile-config-toggle--active`, `mobile-config-content--visible` (BEM strict). Nessun hook `data-*` (componente CSS-only).
+
 - Fonti:
   - `elements-ui/css/components/_layout-patterns.css#L490-L758` (MOBILE BAR section: container fixed, handle, compact, expanded, details, config-toggle, config-content + responsive 374px / 640-1023px).
   - `elements-ui/css/components/_buttons.css#L58-L84` (`.mobile-total-bar__cart-btn` definito separatamente).
@@ -158,3 +160,31 @@ Queste classi sono **definite in `components/sidebar-totals.css`** e si applican
 
 - `SidebarTotals` (desktop `>=1024px`) + `MobileTotalBar` (mobile `<=1023px`): coppia mutuamente esclusiva via media query, stesso ruolo (riepilogo totale + CTA carrello).
 - `Accordion` configuratore: la barra mobile riepiloga lo stato calcolato dal configuratore.
+
+## Mappatura nomi (demo product-page -> libreria)
+
+La demo originale usava prefisso `mobile-bar-*` con modifier standalone (`expanded`, `active`, `visible`). La libreria post-prompt-19 usa BEM strict.
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.mobile-total-bar.expanded` (compound) | `.mobile-total-bar.mobile-total-bar--expanded` |
+| `.expanded` (standalone, su mobile-total-bar) | `.mobile-total-bar--expanded` |
+| `.mobile-bar-overlay` | `.mobile-total-bar__overlay` |
+| `.mobile-bar-container` | `.mobile-total-bar__container` |
+| `.mobile-bar-handle` | `.mobile-total-bar__handle` |
+| `.handle-arrow` | `.mobile-total-bar__handle-arrow` |
+| `.mobile-bar-compact` | `.mobile-total-bar__compact` |
+| `.mobile-bar-price-section` | `.mobile-total-bar__price-section` |
+| `.mobile-bar-label` | `.mobile-total-bar__label` |
+| `.mobile-bar-price` | `.mobile-total-bar__price` |
+| `.mobile-bar-iva` | `.mobile-total-bar__iva` |
+| `.mobile-bar-cart-btn` | `.mobile-total-bar__cart-btn` |
+| `.mobile-bar-expanded` | `.mobile-total-bar__expanded-section` |
+| `.mobile-bar-divider` | `.mobile-total-bar__divider` |
+| `.mobile-bar-details` | `.mobile-total-bar__details` |
+| `.mobile-detail-row` | `.mobile-total-bar__detail-row` |
+| `.mobile-detail-shipping` | `.mobile-total-bar__detail-shipping` |
+| `.mobile-config-toggle.active` (compound) | `.mobile-config-toggle.mobile-config-toggle--active` |
+| `.mobile-config-content.visible` (compound) | `.mobile-config-content.mobile-config-content--visible` |
+
+Block invariati: `.mobile-total-bar` (root), `.mobile-config-toggle`, `.mobile-config-content`. Id `#mobile-config-icon` e tutti gli `id="mobile-*"` documentati restano invariati (utility consumer).

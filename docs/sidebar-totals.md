@@ -2,6 +2,8 @@
 
 Sidebar configuratore desktop: box totale (qty, miglior prezzo, imposta, spedizione, totale evidenziato), input codice promo, toggle riepilogo configurazione, bottone "Aggiungi al carrello". Componente CSS-only senza behavior libreria.
 
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element di `.sidebar-row` rinominati con doppio underscore (`sidebar-row-label/value` -> `sidebar-row__label/value`); modifier `riepilogo-content.visible` (compound) -> `.riepilogo-content--visible`. Eccezioni italiane (`.riepilogo-*`, `.promo-*`, `.add-to-cart-btn`) mantenute come block name. Nessun hook `data-*` (componente CSS-only).
+
 - Fonte: `elements-ui/css/components/_layout-patterns.css#L189-L246, L249-L272, L324-L341, L344-L365, L367-L418` + `elements-ui/css/components/_buttons.css#L29-L55, L261-L285` + `elements-ui/js/layout-patterns/sidebar-summary.js`.
 - Cartella: `components/` (composto: container > box gray-50 con righe + divider + totale + input promo + button + content + cart button).
 - Strategia JS demo: A — static snapshot. La libreria non aggiunge listener.
@@ -157,6 +159,19 @@ Per accessibilita' il consumer DEVE:
 - aspetto bottone riepilogo (teal soft + radius lg + hover);
 - aspetto bottone carrello (full width, secondary-dark, radius full, shadow lg);
 - container scroll del riepilogo content.
+
+## Mappatura nomi (demo product-page -> libreria)
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.sidebar-row-label` | `.sidebar-row__label` |
+| `.sidebar-row-value` | `.sidebar-row__value` |
+| `.riepilogo-content.visible` (compound) | `.riepilogo-content.riepilogo-content--visible` |
+| `.visible` (standalone, su riepilogo-content) | `.riepilogo-content--visible` |
+
+Foglie composte (DownloadButtons): vedi `download-buttons.md` (rename `.config-download-btns/-btn`, `.sidebar-download-divider`).
+
+Eccezioni italiane mantenute (block name singoli, non rinominati): `.configurator-sidebar`, `.sidebar-total-box`, `.sidebar-rows`, `.sidebar-row` (+`--green`), `.sidebar-divider`, `.sidebar-title`, `.sidebar-total-row`, `.sidebar-total-label`, `.sidebar-total-value`, `.promo-section`, `.promo-input`, `.riepilogo-section`, `.riepilogo-btn`, `.riepilogo-content`, `.riepilogo-container`, `.riepilogo-header`, `.riepilogo-row` (+`--indent`), `.riepilogo-error`, `.riepilogo-muted`, `.riepilogo-placeholder`, `.riepilogo-empty`, `.riepilogo-indent` (alias legacy), `.riepilogo-section-header` (alias legacy), `.add-to-cart-btn`.
 
 ## Fuori scope
 

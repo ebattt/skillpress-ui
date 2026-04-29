@@ -7,13 +7,15 @@ sources:
   catalog_css: elements-ui/css/components/_layout-patterns.css
   catalog_js: elements-ui/js/page-init.js
   demo: product-page-integration/index.html
-status: implemented-local
+status: post-bem-2026-04-29
 package_path: components/image-gallery.css
 ---
 
 # ImageGallery
 
 Galleria immagine prodotto: container quadrato 1:1 con immagine principale `object-fit: cover` e due bottoni nav `prev`/`next` posizionati assoluti su `top: 50%`. Il behavior prev/next non e' implementato in libreria (Strategia A): la pagina demo legge `data-images` e ruota le immagini lato consumer.
+
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Root rinominato da `.hero-image-gallery` -> `.image-gallery` (riusabile fuori dall'hero). Nessun hook `data-*` di libreria (`data-images` resta payload consumer).
 
 ## Strategia JS demo
 
@@ -83,6 +85,20 @@ Attributi:
 | `id="prevImageBtn"` / `id="nextImageBtn"` | bottoni | no | Compatibilita' con behavior demo. |
 | `aria-label` | `.image-gallery__nav-btn` | yes | Stringa descrittiva ("Immagine precedente" / "Immagine successiva"). |
 | `aria-hidden="true"` | `<svg>` | yes | Chevron decorativo. |
+
+## Mappatura nomi (demo product-page -> libreria)
+
+La demo originale (`product-page-integration`) usava i prefissi `hero-*` perche' la galleria viveva solo dentro il ProductHero. La libreria post-prompt-19 promuove la galleria a componente standalone con prefisso `image-gallery`.
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.hero-image-gallery` | `.image-gallery` |
+| `.hero-image-container` | `.image-gallery__container` |
+| `.hero-nav-btn` | `.image-gallery__nav-btn` |
+| `.hero-nav-btn--prev` | `.image-gallery__nav-btn--prev` |
+| `.hero-nav-btn--next` | `.image-gallery__nav-btn--next` |
+
+`.product-shadow` (utility globale) resta invariata.
 
 ## Installation
 

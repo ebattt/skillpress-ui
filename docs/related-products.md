@@ -2,6 +2,8 @@
 
 Sezione "Potrebbe piacerti anche": griglia di card prodotto correlato (stile landing page) con titolo in alto e immagine sotto. Pattern CSS-only, niente JS libreria.
 
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Root rinominato da `.related-section` -> `.related-products` (block name allineato al componente). Le classi `.catalog-card*` / `.catalog-grid*` sono vendor esterno (gia' BEM, invariate). Nessun hook `data-*` (componente CSS-only).
+
 - Fonti:
   - `elements-ui/css/components/_layout-patterns.css#L1804-L1825` (`.related-products` wrapper + qualificazioni 1280px max-width).
   - `elements-ui/css/components/_cards.css#L1181-L1328` (PRODUCT CARD section: section-label, grid responsive 5/3/2 colonne, card con aspect-ratio + arrow notch + hover scale).
@@ -93,6 +95,16 @@ Card content:
 - Hover scale image + arrow.
 - Tipografia titolo sezione (Manrope) e titolo card (Helvetica Neue).
 - Spaziatura tra card e larghezza max contenitore (1280px).
+
+## Mappatura nomi (demo product-page -> libreria)
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.related-section` | `.related-products` |
+| `.related-section-label` (eventuale) | `.related-products__label` |
+| `.related-section-title` (eventuale) | `.related-products__title` |
+
+Vendor esterno invariato (gia' BEM): `.catalog-card`, `.catalog-card--product-equal`, `.catalog-card__image`, `.catalog-card__image--product`, `.catalog-card__image-wrap`, `.catalog-card__title`, `.catalog-grid`, `.catalog-grid--products`, `.catalog-section-label`.
 
 ## Fuori scope
 

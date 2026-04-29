@@ -6,13 +6,15 @@ strategy: css-only
 sources:
   catalog_css: elements-ui/css/components/_buttons.css#L444-L487
   demo: product-page-integration/js/sections/section-1.js#L158-L173
-status: verified-local-link-dev
+status: post-bem-2026-04-29
 package_path: primitives/orientation-toggle.css
 ---
 
 # OrientationToggle
 
 Toggle compatto a due stati (Verticale/Orizzontale) con icona SVG che mostra la preview del formato. Il container ha sfondo grigio semitrasparente; il bottone attivo ha sfondo bianco con ombra. Il CMS/JS consumer gestisce il toggle del modifier `--active`.
+
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element `orientation-btn` -> `orientation-toggle__btn`. Nessun hook `data-*` (componente CSS-only, toggle consumer-side).
 
 ## Anatomy
 
@@ -51,6 +53,15 @@ Markup verbatim da `product-page-integration/js/sections/section-1.js#L158-L173`
 |---|---|---|---|
 | `.orientation-toggle` | container compatto con sfondo grigio | yes | — |
 | `.orientation-toggle__btn` | singolo bottone toggle | yes | `--active` |
+
+## Mappatura nomi (demo product-page -> libreria)
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.orientation-btn` | `.orientation-toggle__btn` |
+| `.orientation-btn--active` | `.orientation-toggle__btn--active` |
+
+`.orientation-toggle` (block root) e' invariato. La interaction `js/interactions/orientation-toggle.js` e' stata aggiornata coerentemente in Wave 1.
 
 ## Installation
 

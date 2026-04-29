@@ -7,7 +7,7 @@ sources:
   catalog_css: elements-ui/css/components/_form-inputs.css (L491-550, L811-825)
   catalog_radio: elements-ui/js/buttons/radio-group.js
   catalog_checkbox: elements-ui/js/buttons/checkbox-option.js
-status: implemented-local
+status: post-bem-2026-04-29
 package_path: primitives/form-controls.css
 ---
 
@@ -15,6 +15,8 @@ package_path: primitives/form-controls.css
 
 Pattern radio + checkbox riusabili. La famiglia condivide il container
 `.radio-group` e l'item `.radio-option`: cambia solo il tipo di `<input>` interno.
+
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Modifier `option-disabled` standalone -> `radio-option--disabled` (BEM strict). Nessun hook `data-*` (componente CSS-only).
 
 `:checked` e `:disabled` sono nativi del browser. La libreria fornisce solo
 lo styling (custom radio con pallino animato, accent-color checkbox, stato
@@ -159,6 +161,15 @@ Opzione disabled (radio o checkbox):
 - `.radio-option-label` (14px) e' diverso da `.label-text` (15px): non sono
   intercambiabili, hanno ruoli semantici diversi (label gruppo vs etichetta
   singola opzione).
+
+## Mappatura nomi (demo product-page -> libreria)
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.option-disabled` (standalone) | `.radio-option--disabled` (sempre namespacato) |
+| `.radio-option.option-disabled` (compound) | `.radio-option.radio-option--disabled` |
+
+`.radio-group`, `.radio-option`, `.radio-option-label` e i discendenti `input[type="radio"]`/`input[type="checkbox"]` sono invariati.
 
 ## Fuori scope
 

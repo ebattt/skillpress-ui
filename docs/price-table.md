@@ -2,6 +2,8 @@
 
 Tabella prezzi stile Google Flights: header data spedizione, righe quantita, intersezione = prezzo. Componente CSS-only senza behavior libreria.
 
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Refactor massiccio: root `.price-table-full` -> `.price-table`; tutti i prefissi `.price-th/-td/-tr/-cell-btn/-qty-btn/-nav-arrow*` -> `.price-table__*`. Nessun hook `data-*` (componente CSS-only).
+
 - Fonte: `elements-ui/css/components/_layout-patterns.css#L918-L1236`, `elements-ui/js/layout-patterns/price-table.js`, `product-page-integration/js/sections/section-6.js#L355-L442`.
 - Cartella: `components/` (composto: wrapper > nav arrows + table > thead/tbody con sub-element specializzati).
 - Strategia JS demo: A — static snapshot. La libreria non aggiunge listener.
@@ -200,6 +202,43 @@ L'interazione tipica nella demo:
 - animazione `@keyframes cellSelect` (esiste in catalogo ma usata solo da JS feedback);
 - variante doppio-underscore legacy `.price-table` / `.price-table__row` / `.price-table__cell` (non referenziata da nessuna pagina demo);
 - regola `#priceTableContainer table tbody tr { transition }` legata all'id (duplicato della transition di `.price-table__row`).
+
+## Mappatura nomi (demo product-page -> libreria)
+
+La demo originale usava prefissi non-BEM (`.price-th`, `.price-td`, `.price-tr`, `.price-cell-btn`, ecc.) con modifier come classi separate (`.disabled`, `.left`, `.right`). La libreria post-prompt-19 usa BEM strict.
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.price-table-full` | `.price-table` |
+| `.price-table-wrapper` | `.price-table__wrapper` |
+| `.price-table-scroll-wrap` | `.price-table__scroll-wrap` |
+| `.price-table-section` | `.price-table__section` |
+| `.price-th` | `.price-table__header-cell` |
+| `.price-th--left` | `.price-table__header-cell--left` |
+| `.price-th--center` | `.price-table__header-cell--center` |
+| `.price-th--selected` | `.price-table__header-cell--selected` |
+| `.price-th--corner` | `.price-table__header-cell--corner` |
+| `.price-th-day` | `.price-table__header-day` |
+| `.price-th-date` | `.price-table__header-date` |
+| `.price-th-date--light` | `.price-table__header-date--light` |
+| `.price-tr` | `.price-table__row` |
+| `.price-tr--active` | `.price-table__row--active` |
+| `.price-td` | `.price-table__cell` |
+| `.price-td--left` | `.price-table__cell--left` |
+| `.price-td--center` | `.price-table__cell--center` |
+| `.price-qty-btn` | `.price-table__qty-btn` |
+| `.price-qty-btn--active` | `.price-table__qty-btn--active` |
+| `.price-cell-btn` | `.price-table__cell-btn` |
+| `.price-cell-btn--default` | `.price-table__cell-btn--default` |
+| `.price-cell-btn--row-active` | `.price-table__cell-btn--row-active` |
+| `.price-cell-btn--selected` | `.price-table__cell-btn--selected` |
+| `.price-nav-arrow` | `.price-table__nav-arrow` |
+| `.price-nav-arrow.disabled` (compound) | `.price-table__nav-arrow--disabled` |
+| `.price-nav-arrow-horizontal` | `.price-table__nav-arrow-horizontal` |
+| `.price-nav-arrow-horizontal.left` (compound) | `.price-table__nav-arrow-horizontal--left` |
+| `.price-nav-arrow-horizontal.right` (compound) | `.price-table__nav-arrow-horizontal--right` |
+
+La interaction `js/interactions/price-table.js` (~25 selettori) e' stata aggiornata coerentemente in Wave 1.
 
 ## Sostituzione Material Symbols
 

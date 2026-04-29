@@ -6,13 +6,15 @@ strategy: css-only
 sources:
   catalog_css: elements-ui/css/components/_buttons.css#L129-L177
   demo: product-page-integration/js/configurator.js#L687-L693
-status: verified-local-link-dev
+status: post-bem-2026-04-29
 package_path: primitives/option-buttons.css
 ---
 
 # OptionButtons
 
 Gruppo di bottoni inline per selezione esclusiva di un'opzione tra N (formati, grammature, finiture, ecc.). Usato nella modalita' "Veloce" del configuratore. Il CMS/JS consumer gestisce il toggle dei modifier `--selected`/`--default` al click.
+
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Root rinominato da `.option-btns-wrap` -> `.option-buttons`; sub-element `option-btn` -> `option-buttons__btn`. Nessun hook `data-*` (componente CSS-only, toggle consumer-side).
 
 ## Anatomy
 
@@ -42,6 +44,16 @@ Markup ricostruito da `product-page-integration/js/configurator.js#L687-L693`.
 |---|---|---|---|
 | `.option-buttons` | flex container del gruppo | yes | — |
 | `.option-buttons__btn` | singolo bottone opzione | yes | `--default`, `--selected`, `--borderless` |
+
+## Mappatura nomi (demo product-page -> libreria)
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.option-btns-wrap` | `.option-buttons` |
+| `.option-btn` | `.option-buttons__btn` |
+| `.option-btn--default` | `.option-buttons__btn--default` |
+| `.option-btn--selected` | `.option-buttons__btn--selected` |
+| `.option-btn--borderless` | `.option-buttons__btn--borderless` |
 
 ## Installation
 

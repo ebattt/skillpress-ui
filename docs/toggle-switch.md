@@ -7,7 +7,7 @@ sources:
   catalog_css: elements-ui/css/components/_form-inputs.css
   catalog_js: elements-ui/js/buttons/toggle-switch.js
   demo: product-page-integration/index.html
-status: implemented-local
+status: post-bem-2026-04-29
 package_path: primitives/toggle-switch.css
 js_path: js/toggle-switch.js
 ---
@@ -15,6 +15,8 @@ js_path: js/toggle-switch.js
 # ToggleSwitch
 
 Primitiva form per switch binario on/off. Track + thumb CSS-only, behavior JS minimo che flippa la classe `toggle-switch--checked` e l'attributo `aria-checked` ed emette `toggle-switch:change`. Lo stato iniziale (on/off, disabled) e' impostato dal CMS nel markup; la libreria non gestisce persistenza ne' logica di business.
+
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Modifier `is-checked`/`active` standalone -> `toggle-switch--checked` (BEM strict). Hook entry semplificato: `[data-skillpress-toggle-switch]` -> `[data-toggle-switch]`.
 
 ## Anatomy
 
@@ -109,6 +111,16 @@ Attributi:
 | `aria-labelledby` / `aria-label` | `.toggle-switch` | no | Consigliato quando il label non e' associato via `for`. |
 | `data-toggle-switch` | `.toggle-switch` | yes | Selettore di default di `init()`. |
 
+## Hook `data-*`
+
+La libreria seleziona via `[data-*]`, mai via classi CSS:
+
+| Attributo | Ruolo | Note |
+|-----------|-------|------|
+| `data-toggle-switch` | Entry point sul `<button>` switch | Obbligatorio per auto-discovery di `init()`. Sostituisce il vecchio `data-skillpress-toggle-switch`. |
+
+La classe `.toggle-switch--checked` e' pure-style: viene gestita dal JS (toggle automatico sincronizzato con `aria-checked`). Il backend la imposta solo per dichiarare lo stato iniziale insieme a `aria-checked="true"`. Le classi `.toggle-switch`, `.toggle-switch__thumb`, `.toggle-switch__label` sono il contratto markup (relazione DOM via classe BEM stabile), non hook entry.
+
 ## Behavior JS
 
 ```text
@@ -170,3 +182,15 @@ Oppure via bundle (gia' include `toggle-switch.css`):
 - persistenza dello stato tra refresh: il consumer e' responsabile dell'idratazione iniziale.
 - gestione di gruppi (radio-like): per scelte mutuamente esclusive usare un altro pattern.
 - ricalcolo prezzi / abilitazione altri campi: sono logica consumer, non libreria.
+
+## Mappatura nomi (demo product-page -> libreria)
+
+La demo originale usava modifier `is-checked` (alias `active`) come classe standalone e attributo entry `data-skillpress-toggle-switch`. La libreria post-prompt-19 usa BEM strict + hook semplificato.
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.toggle-switch.is-checked` (compound) | `.toggle-switch.toggle-switch--checked` |
+| `.is-checked` / `.active` (standalone) | `.toggle-switch--checked` |
+| `[data-skillpress-toggle-switch]` | `[data-toggle-switch]` |
+
+`.toggle-switch` (block), `.toggle-switch__thumb`, `.toggle-switch__label`, `.toggle-switch-field` (wrapper opzionale) sono invariati. Attributi ARIA nativi (`aria-checked`, `aria-disabled`, `role="switch"`, `disabled`) restano invariati.

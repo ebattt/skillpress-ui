@@ -6,7 +6,7 @@ strategy: css-only
 sources:
   catalog_css: elements-ui/css/components/_form-inputs.css (L679-702)
   demo: product-page-integration/js/sections/section-6.js (L274-285)
-status: implemented-local
+status: post-bem-2026-04-29
 package_path: primitives/iva-banner.css
 ---
 
@@ -18,6 +18,8 @@ l'utente che e' richiesta la compilazione di una dichiarazione sostitutiva.
 
 Strategia A (CSS-only). La condizione di visibilita' (mostrare/nascondere il
 banner) e' business logic del consumer.
+
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element rinominati con doppio underscore (`iva-banner-content` -> `iva-banner__content`, ecc.). Nessun hook `data-*` (componente CSS-only).
 
 ## Classi pubbliche
 
@@ -72,6 +74,16 @@ banner) e' business logic del consumer.
 Renderizzato sotto la riga `.qty-iva-row qty-iva-row--double` quando
 `state.selections.ivaMode === '4'`. Il contesto applicativo e' Step 6
 del configuratore.
+
+## Mappatura nomi (demo product-page -> libreria)
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.iva-banner-content` | `.iva-banner__content` |
+| `.iva-banner-icon` | `.iva-banner__icon` |
+| `.iva-banner-text` | `.iva-banner__text` |
+
+`.iva-banner` (block, italiano-derived) e' invariato.
 
 ## Fuori scope
 

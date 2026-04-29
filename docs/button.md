@@ -6,13 +6,15 @@ strategy: css-only
 sources:
   catalog_css: elements-ui/css/components/_buttons.css
   demo: product-page-integration/index.html
-status: published-alpha-3
+status: post-bem-2026-04-29
 package_path: primitives/button.css
 ---
 
 # Button
 
 Primitiva di comandi cliccabili: dimensioni, colori, stati hover/focus/disabled, varianti visive e allineamento testo + icona opzionale. Nessun behavior JS della libreria; il consumer gestisce click, submit, navigazione e loading state.
+
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Modifier `is-disabled` standalone -> `button--disabled` (BEM strict). Nessun hook `data-*` (componente CSS-only).
 
 ## Anatomy
 
@@ -72,6 +74,15 @@ Attributi:
 | `disabled` | `<button>` | no | Stato disabilitato nativo. |
 | `aria-disabled="true"` | `<a>` o `.button--disabled` | no | Necessario per link disabilitati (no `disabled` su `<a>`). |
 | `href` | `<a>` | yes (se tag `<a>`) | Target di navigazione. |
+
+## Mappatura nomi (demo product-page -> libreria)
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.button.is-disabled` (compound) | `.button.button--disabled` |
+| `.is-disabled` (standalone) | `.button--disabled` (sempre namespacato) |
+
+`.button[aria-disabled="true"]` resta invariato (attributo ARIA nativo).
 
 ## Installation
 

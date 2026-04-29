@@ -6,7 +6,7 @@ strategy: css-only
 sources:
   catalog_css: elements-ui/css/components/_form-inputs.css
   demo: product-page-integration/js/sections/section-1.js, section-6.js
-status: implemented-local
+status: post-bem-2026-04-29
 package_path: primitives/form-primitives.css
 ---
 
@@ -20,6 +20,8 @@ helper specifiche del configuratore (`.custom-dims` + `.custom-dims__grid/field/
 
 Strategia A (CSS-only). Validazione, swap modifier `--error`, render messaggi
 sono responsabilita' del consumer / backend.
+
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element di `.custom-dims` rinominati con doppio underscore. Eccezioni italiane (`.facciate-row`, `.spessore-display`, `.qty-iva-row`, `.nome-lavoro-input`, `.nome-ref-row`) mantenute come block name. Nessun hook `data-*` (componente CSS-only).
 
 ## Classi pubbliche
 
@@ -212,6 +214,16 @@ Nome-ref-row con required + optional:
 `primitives/info-dropdown.css` consuma `.label-row` + `.label-text` da
 `form-primitives.css`. Il bundle `bundles/demo-minimal.css` deve quindi importare
 `form-primitives.css` PRIMA di `info-dropdown.css`.
+
+## Mappatura nomi (demo product-page -> libreria)
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.custom-dims-grid` | `.custom-dims__grid` |
+| `.custom-dims-field` | `.custom-dims__field` |
+| `.custom-dims-label` | `.custom-dims__label` |
+
+Eccezioni italiane mantenute (block name singoli, non rinominati): `.facciate-row`, `.facciate-input-wrap`, `.spessore-display`, `.spessore-label`, `.spessore-value`, `.qty-iva-row` (+`--single`/`--double`), `.nome-lavoro-input` (+`--error`), `.nome-ref-row`. Tutto il resto (`.form-field`, `.form-input`, `.form-select`, `.label-row`, `.label-text`, `.label-text__required`, `.label-text__optional`, `.label-hint`, `.error-msg`, `.error-inline`, `.success-inline`) e' invariato.
 
 ## Fuori scope
 

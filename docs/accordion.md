@@ -6,7 +6,7 @@ strategy: css+js
 sources:
   catalog_css: elements-ui/css/components/_layout-patterns.css
   demo: product-page-integration/index.html
-status: published-alpha-3
+status: post-bem-2026-04-29
 package_path: primitives/accordion.css
 js_path: js/accordion.js
 ---
@@ -14,6 +14,8 @@ js_path: js/accordion.js
 # Accordion
 
 Contenitore espandibile per sezioni di configurazione o contenuto strutturato. La libreria controlla markup interno, stati visuali, aria e toggle locale del pannello (single-open per container). L'icona `+/-` e' disegnata dal CSS via `::before/::after` e non richiede Material Symbols.
+
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Modifier `expanded` standalone -> `accordion__section--expanded` (BEM strict). Vedi `iterations/bem-standardization/accordion/CHANGELOG.md`.
 
 ## Anatomy
 
@@ -87,6 +89,17 @@ Attributi:
 | `data-accordion-trigger` | `.accordion__header` | Sotto-ruolo: marca il pulsante che apre/chiude la sezione. | si (markup) |
 
 Solo `[data-accordion]` e' un hook funzionale di init. `[data-accordion-section]` e `[data-accordion-trigger]` sono sotto-ruoli interni del contratto markup: vanno scritti come da template, ma non vengono interrogati esternamente. La classe modifier `accordion__section--expanded` viene gestita dal JS (toggle automatico) — il backend la imposta solo per dichiarare lo stato iniziale.
+
+## Mappatura nomi (demo product-page -> libreria)
+
+La demo originale (`product-page-integration`) usava il modifier non-BEM `expanded` come classe standalone. La libreria post-prompt-19 usa solo il modifier BEM completo. Il backend deve usare i nomi LIBRERIA, non quelli demo.
+
+| Demo / catalog (old) | Libreria (current) |
+|----------------------|--------------------|
+| `.accordion__section.expanded` (compound) | `.accordion__section.accordion__section--expanded` |
+| `.expanded` (standalone) | `.accordion__section--expanded` |
+
+Tutto il resto del contratto (`.accordion`, `.accordion__section`, `.accordion__header`, `.accordion__header-left`, `.accordion__badge`, `.accordion__title`, `.accordion__icon`, `.accordion__content`, `.accordion__inner`) era gia' BEM strict prima del prompt 19: nessuna divergenza.
 
 ## Installation
 
