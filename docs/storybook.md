@@ -63,7 +63,9 @@ Il package pubblicato resta limitato dal campo `files` in `package.json`:
 ]
 ```
 
-Quindi Storybook, stories, demo pages, documentazione estesa, `node_modules` e `storybook-static` restano nel repository ma non entrano nel tarball npm.
+Quindi Storybook, stories e documentazione estesa restano nel repository ma
+non entrano nel tarball npm. Output generati come `storybook-static/` e
+`scripts/visual-diff-out/` sono ignorati e vanno rigenerati quando servono.
 
 ## Flusso per backend
 

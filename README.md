@@ -7,29 +7,23 @@ Manrope e servito dal package. Material Symbols non e una dipendenza runtime glo
 
 ## Stato
 
-Bootstrap minimale per validare packaging e consumo npm.
+Versione corrente: `0.2.0-alpha.0`.
 
 Perimetro attuale:
 - Manrope self-hosted nel package
 - token
 - reset/base
 - utility
-- Button CSS
-- Badge CSS
-- Card CSS
-- Accordion Section CSS
-- Accordion Section behavior JS
-- Breadcrumb CSS
-- Toggle Switch CSS
-- Toggle Switch behavior JS (`role="switch"`, `aria-checked`, evento `toggle-switch:change`)
-- Feature Box CSS (componente composto)
-- demo HTML minimale
-- demo `cms-composition` che ricostruisce parzialmente la header di product-page-integration
+- primitive CSS/JS: Button, Badge, Card, Accordion, Breadcrumb, Rating,
+  ToggleSwitch, DownloadButtons, ModeSwitcher, OptionButtons,
+  OrientationToggle, FormPrimitives, FormControls, IvaBanner, InfoDropdown
+- componenti composti: FeatureBox, ImageGallery, ProductHero, StepIndicator,
+  FormatCard, PriceTable, SidebarTotals, RelatedProducts, MobileTotalBar
+- bundle runtime `bundles/demo-minimal.css`
 - Storybook nel repository per visualizzazione e documentazione tecnica
 
 Fuori dal perimetro attuale:
 - product-card
-- componenti composti
 - demo ricche con contenuti applicativi
 
 ## Storybook

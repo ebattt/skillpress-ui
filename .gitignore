@@ -1,4 +1,9 @@
 node_modules/
+storybook-static/
+scripts/visual-diff-out/
 *.tgz
 .DS_Store
 .npmrc
+*.swp
+*.swo
+*~

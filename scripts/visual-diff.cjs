@@ -5,7 +5,7 @@
  *   npm run visual-diff
  *   node scripts/visual-diff.cjs                            # usa default 5500/5510
  *   DEMO=http://192.168.6.115:5500/product-page-integration/ \
- *   CONSUMER=http://192.168.6.115:5510/product-page-integration/ \
+ *   CONSUMER=http://192.168.6.115:5510/demo-pages/product-page-integration/ \
  *     node scripts/visual-diff.cjs                          # override URLs
  *
  * Output: scripts/visual-diff-out/{demo,consumer}-{viewport}.png + report.json
@@ -32,7 +32,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DEMO = process.env.DEMO || 'http://127.0.0.1:5500/product-page-integration/';
-const CONSUMER = process.env.CONSUMER || 'http://127.0.0.1:5510/product-page-integration/';
+const CONSUMER = process.env.CONSUMER || 'http://127.0.0.1:5510/demo-pages/product-page-integration/';
 const OUT_DIR = path.join(__dirname, 'visual-diff-out');
 
 const VIEWPORTS = [
@@ -50,27 +50,27 @@ async function measureCommon(page) {
         const sels = {
             body:               'body',
             modeSwitcher:       '.mode-switcher',
-            modeBtn:            '.mode-switcher__btn',
-            modeBtnActive:      '.mode-switcher__btn--active',
-            modeBtnInactive:    '.mode-switcher__btn--inactive, .mode-switcher__btn:not(.mode-switcher__btn--active)',
+            modeBtn:            '.mode-switcher__btn, .mode-btn',
+            modeBtnActive:      '.mode-switcher__btn--active, .mode-btn--active',
+            modeBtnInactive:    '.mode-switcher__btn--inactive, .mode-switcher__btn:not(.mode-switcher__btn--active), .mode-btn--inactive',
             optionBtn:          '.option-buttons__btn',
             orientationToggle:  '.orientation-toggle',
-            orientationBtn:     '.orientation-toggle__btn',
+            orientationBtn:     '.orientation-toggle__btn, .orientation-btn',
             formatCards:        '.format-cards',
             formatCard:         '.format-card',
             featureGrid:        '.feature-grid',
             featureBox:         '.feature-box',
-            featureBoxTitle:    '.feature-box__title',
-            heroImage:          '.image-gallery__container',
-            heroTitle:          '.product-hero__title',
+            featureBoxTitle:    '.feature-box__title, .feature-box-title',
+            heroImage:          '.image-gallery__container, .hero-image-container',
+            heroTitle:          '.product-hero__title, .hero-title',
             priceTableSection:  '.price-table__section, #priceTableContainer',
-            priceTableFull:     '.price-table',
-            priceCellBtn:       '.price-table__cell-btn',
-            priceQtyBtn:        '.price-table__qty-btn',
-            priceArrowRight:    '.price-table__nav-arrow-horizontal--right',
+            priceTableFull:     '.price-table, .price-table-full',
+            priceCellBtn:       '.price-table__cell-btn, .price-cell-btn',
+            priceQtyBtn:        '.price-table__qty-btn, .price-qty-btn',
+            priceArrowRight:    '.price-table__nav-arrow-horizontal--right, .price-nav-arrow-horizontal.right',
             accordionFirst:     '.accordion__section',
             mobileBar:          '.mobile-total-bar',
-            stepCard:           '.step-indicator__item',
+            stepCard:           '.step-indicator__item, .step-card-item',
         };
         for (const k of Object.keys(sels)) {
             const els = document.querySelectorAll(sels[k]);

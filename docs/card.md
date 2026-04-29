@@ -6,7 +6,7 @@ strategy: css-only
 sources:
   catalog_css: elements-ui/css/components/_cards.css
   demo: product-page-integration/index.html
-status: verified-local-link-dev
+status: published-0.2.0-alpha.0
 package_path: primitives/card.css
 ---
 
