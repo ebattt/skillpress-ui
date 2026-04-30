@@ -1,27 +1,27 @@
 /**
- * PAPER PREVIEW -- select carta + trigger + pannello preview inline
+ * PREVIEW -- controllo selezionabile + trigger + pannello anteprima inline
  *
- * Fonte look: product-page-integration/js/sections/helpers.js renderPaperPreview()
+ * Fonte look: product-page-integration/js/sections/helpers.js renderPreview()
  * e elements-ui/css/components/_buttons.css + _cards.css.
- * Strategia C: behavior open/close UI puro via js/paper-preview.js.
+ * Strategia C: behavior open/close UI puro via js/preview.js.
  */
-.paper-preview {
+.preview {
     position: relative;
 }
 
-.paper-preview__row {
+.preview__row {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     min-width: 0;
 }
 
-.paper-preview__select {
+.preview__select {
     flex: 1;
     min-width: 0;
 }
 
-.paper-preview__trigger {
+.preview__trigger {
     display: flex;
     align-items: center;
     gap: 0.25rem;
@@ -38,17 +38,17 @@
     padding: 0;
 }
 
-.paper-preview__trigger:hover {
+.preview__trigger:hover {
     color: var(--color-secondary-dark);
 }
 
-.paper-preview__trigger svg {
+.preview__trigger svg {
     width: 1rem;
     height: 1rem;
     flex-shrink: 0;
 }
 
-.paper-preview__panel {
+.preview__panel {
     background-color: var(--color-bg-white);
     border: 1px solid var(--color-bg-gray-200);
     border-radius: var(--radius-lg);
@@ -60,24 +60,24 @@
     transition: max-height var(--transition-slow), opacity var(--transition-normal), visibility var(--transition-normal);
 }
 
-.paper-preview--open .paper-preview__panel,
-.paper-preview__panel[aria-hidden="false"] {
+.preview--open .preview__panel,
+.preview__panel[aria-hidden="false"] {
     max-height: 500px;
     opacity: 1;
     visibility: visible;
 }
 
-.paper-preview__content {
+.preview__content {
     display: flex;
     flex-direction: column;
 }
 
-.paper-preview__image-wrap {
+.preview__image-wrap {
     position: relative;
     flex-shrink: 0;
 }
 
-.paper-preview__image {
+.preview__image {
     width: 100%;
     height: 12rem;
     background-color: var(--color-bg-gray-100);
@@ -87,15 +87,15 @@
     overflow: hidden;
 }
 
-.paper-preview__image img,
-.paper-preview__image-media {
+.preview__image img,
+.preview__image-media {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-.paper-preview__placeholder {
+.preview__placeholder {
     position: absolute;
     inset: 0;
     display: flex;
@@ -106,19 +106,19 @@
     color: var(--color-border);
 }
 
-.paper-preview__placeholder svg {
+.preview__placeholder svg {
     width: 2.5rem;
     height: 2.5rem;
 }
 
-.paper-preview__info {
+.preview__info {
     flex: 1;
     padding: 0.75rem;
     display: flex;
     flex-direction: column;
 }
 
-.paper-preview__header {
+.preview__header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -126,14 +126,14 @@
     margin-bottom: 0.5rem;
 }
 
-.paper-preview__title {
+.preview__title {
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-sm);
     color: var(--color-text);
     margin: 0;
 }
 
-.paper-preview__close {
+.preview__close {
     color: var(--color-text-muted);
     background: transparent;
     border: none;
@@ -143,16 +143,16 @@
     transition: color var(--transition-fast);
 }
 
-.paper-preview__close:hover {
+.preview__close:hover {
     color: var(--color-text-secondary);
 }
 
-.paper-preview__close svg {
+.preview__close svg {
     width: 1.125rem;
     height: 1.125rem;
 }
 
-.paper-preview__description {
+.preview__description {
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
     line-height: 1.625;
@@ -160,7 +160,7 @@
     flex: 1;
 }
 
-.paper-preview__badges {
+.preview__badges {
     display: flex;
     flex-wrap: wrap;
     gap: 0.25rem 1rem;
@@ -168,7 +168,7 @@
     margin-top: auto;
 }
 
-.paper-preview__badge {
+.preview__badge {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
@@ -176,24 +176,24 @@
     font-weight: var(--font-weight-medium);
 }
 
-.paper-preview__badge svg {
+.preview__badge svg {
     width: var(--font-size-xs);
     height: var(--font-size-xs);
 }
 
 @media (min-width: 640px) {
-    .paper-preview__content {
+    .preview__content {
         flex-direction: row;
     }
 
-    .paper-preview__image {
+    .preview__image {
         width: 12rem;
         height: 12rem;
     }
 }
 
 @media (min-width: 768px) {
-    .paper-preview__image {
+    .preview__image {
         width: 16rem;
         height: 16rem;
     }
