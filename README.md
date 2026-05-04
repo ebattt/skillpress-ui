@@ -7,7 +7,7 @@ Manrope e servito dal package. Material Symbols non e una dipendenza runtime glo
 
 ## Stato
 
-Versione corrente: `0.2.0-alpha.0`.
+Versione corrente: `0.2.0-alpha.2`.
 
 Perimetro attuale:
 - Manrope self-hosted nel package
@@ -18,13 +18,41 @@ Perimetro attuale:
   ToggleSwitch, DownloadButtons, ModeSwitcher, OptionButtons,
   OrientationToggle, FormPrimitives, FormControls, IvaBanner, InfoDropdown
 - componenti composti: FeatureBox, ImageGallery, ProductHero, StepIndicator,
-  FormatCard, PriceTable, SidebarTotals, RelatedProducts, MobileTotalBar
+  FormatCard, Preview, MediaChoiceCard, PriceTable, SidebarTotals,
+  RelatedProducts, MobileTotalBar
 - bundle runtime `bundles/demo-minimal.css`
 - Storybook nel repository per visualizzazione e documentazione tecnica
 
 Fuori dal perimetro attuale:
 - product-card
+- ContentTabs / schede editoriali "Descrizione / Info tecniche"
 - demo ricche con contenuti applicativi
+
+## Backend/CMS contract
+
+La libreria non legge JSON direttamente. Il backend/CMS deve renderizzare HTML
+con classi pubbliche e hook `data-*` documentati.
+
+```text
+dati CMS -> presentation type -> markup skillpress-ui
+```
+
+Esempi:
+
+| Presentation type | Componente |
+|---|---|
+| `select` | `FormPrimitives` / `.form-select` |
+| `choice-group` | `OptionButtons` |
+| `preview` | `Preview` |
+| `dependent-select` | `Preview` + `.form-select` + `.form-select`/`OptionButtons` |
+| `media-choice` | `MediaChoiceCard` |
+| `format-choice` | `FormatCard` + `OrientationToggle` |
+
+Demo consumer utile per il team backend:
+
+```text
+Skillpress-frontend/consumer-libreria/demo-pages/backend-contract/
+```
 
 ## Storybook
 
