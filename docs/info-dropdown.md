@@ -31,7 +31,7 @@ label-row
 info-dropdown#ID  [data-info-dropdown] [info-dropdown--hidden]   (pannello collapsible inline)
 ├── info-dropdown__header               (auto-iniettato dal JS)
 │   ├── info-dropdown__title            (auto-popolato da label-text)
-│   └── info-dropdown__close            (auto-creato con SVG X inline)
+│   └── info-dropdown__close            (auto-creato; icona X via CSS)
 └── info-dropdown__body                 (auto-wrappato attorno al contenuto CMS)
     ├── <p>...</p>                      (CMS-injected)
     ├── <ul>...</ul>                    (CMS-injected)
@@ -119,9 +119,7 @@ Esempio (no auto-derive):
      data-info-dropdown role="region">
     <div class="info-dropdown__header">
         <h4 class="info-dropdown__title">Titolo personalizzato</h4>
-        <button type="button" class="info-dropdown__close" aria-label="Chiudi">
-            <!-- SVG X -->
-        </button>
+        <button type="button" class="info-dropdown__close" aria-label="Chiudi"></button>
     </div>
     <div class="info-dropdown__body">
         <p>Body content...</p>
@@ -141,7 +139,8 @@ Esempio (no auto-derive):
 - Layout `.label-row` (inline-flex con gap).
 - Stile `.info-btn` (icona info CSS teal, hover, focus-visible).
 - Geometria `.info-dropdown` (max-height transition, border, radius, padding).
-- Header auto-injection (titolo + close button + ARIA).
+- Header auto-injection (titolo + close button senza SVG + ARIA).
+- Icona `.info-btn` e icona close `.info-dropdown__close` disegnate via CSS dalla libreria.
 - Body auto-wrapping.
 - Behavior toggle (click trigger + click close + ESC + click outside + apertura singola).
 - Sync `aria-expanded` ↔ `aria-hidden` ↔ `.info-dropdown--hidden`.

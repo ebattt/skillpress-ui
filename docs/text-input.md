@@ -65,9 +65,7 @@ modificare il contratto base di `.form-input`.
 <div class="form-field">
     <div class="label-row">
         <label class="label-text">Campo Esempio <span class="label-text__required">*</span></label>
-        <button type="button" class="info-btn" aria-label="Info Campo Esempio">
-            <!-- SVG inline 16x16 info icon -->
-        </button>
+        <button type="button" class="info-btn" aria-label="Info Campo Esempio"></button>
     </div>
     <input type="text" class="form-input" placeholder="Inserisci valore...">
 </div>
@@ -112,6 +110,7 @@ modificare il contratto base di `.form-input`.
 - valore iniziale (`value="..."`)
 - attributi standard (`disabled`, `min`, `max`, `step`, `type`, `pattern`, ...)
 - presenza/assenza dell'`.info-btn` e relativo `aria-controls` (per agganciare un `InfoDropdown`)
+- nessun SVG dentro `.info-btn`: l'icona info e' CSS della libreria
 - testo del messaggio di errore in `.error-msg`
 - swap del modifier `--error` in base alla validazione
 
