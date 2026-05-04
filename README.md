@@ -16,7 +16,8 @@ Perimetro attuale:
 - utility
 - primitive CSS/JS: Button, Badge, Card, Accordion, Breadcrumb, Rating,
   ToggleSwitch, DownloadButtons, ModeSwitcher, OptionButtons,
-  OrientationToggle, FormPrimitives, FormControls, IvaBanner, InfoDropdown
+  OrientationToggle, FormPrimitives, FormControls, ValidationIndicator,
+  IvaBanner, InfoDropdown
 - componenti composti: FeatureBox, ImageGallery, ProductHero, StepIndicator,
   FormatCard, Preview, MediaChoiceCard, PriceTable, SidebarTotals,
   RelatedProducts, MobileTotalBar
@@ -47,6 +48,7 @@ Esempi:
 | `dependent-select` | `Preview` + `.form-select` + `.form-select`/`OptionButtons` |
 | `media-choice` | `MediaChoiceCard` |
 | `format-choice` | `FormatCard` + `OrientationToggle` |
+| `validation-indicator` | `ValidationIndicator` |
 
 Demo consumer utile per il team backend:
 

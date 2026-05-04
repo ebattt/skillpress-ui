@@ -1,0 +1,58 @@
+/**
+ * VALIDATION INDICATOR -- indicatore inline validazione
+ *
+ * Fonte CSS:
+ *   - Skillpress-frontend/elements-ui/css/components/_configurator-patterns.css
+ *     `.multicop-validation`, `.multicop-total`, `.multicop-total-count`
+ *   - Skillpress-frontend/elements-ui/js/components-feedback-status.js
+ *     `feedback-status/validation-indicator`
+ *   - Skillpress-frontend/product-page-integration/js/sections/section-6.js
+ *     output visuale reale Step 6 multicopertina
+ *
+ * Strategia A (CSS-only). Il backend/frontend applicativo decide se mostrare
+ * l'errore, testo e conteggio; la libreria controlla look, spacing e icona.
+ */
+
+.validation-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.125rem;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    color: var(--color-error-light);
+}
+
+.validation-indicator::before {
+    content: "!";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--font-size-sm);
+    height: var(--font-size-sm);
+    flex-shrink: 0;
+    border: 1.5px solid currentColor;
+    border-radius: var(--radius-full);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+}
+
+.validation-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.validation-total__count {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+}
+
+.validation-total__count strong {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}

@@ -25,6 +25,7 @@
 @import '../components/mobile-bar.css';
 @import '../primitives/form-primitives.css';
 @import '../primitives/form-controls.css';
+@import '../primitives/validation-indicator.css';
 @import '../primitives/iva-banner.css';
 @import '../primitives/info-dropdown.css';
 @import '../components/preview.css';
