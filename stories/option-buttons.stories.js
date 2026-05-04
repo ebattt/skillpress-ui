@@ -55,6 +55,18 @@ export const ManyOptions = () => {
     return container;
 };
 
+export const EqualColumns = () => {
+    const container = document.createElement('div');
+    container.style.maxWidth = '720px';
+    container.innerHTML = `
+        <div class="option-buttons option-buttons--equal" role="group" aria-label="Controllo file">
+            <button class="option-buttons__btn option-buttons__btn--selected">Standard - gratuito</button>
+            <button class="option-buttons__btn option-buttons__btn--default">Plus - 11,90 euro</button>
+        </div>
+    `;
+    return container;
+};
+
 export const Borderless = () => {
     const container = document.createElement('div');
     container.innerHTML = `

@@ -22,12 +22,17 @@ Gruppo di bottoni inline per selezione esclusiva di un'opzione tra N (formati, g
 mutuamente esclusiva. In codice runtime oggi si usa `OptionButtons` senza
 nuovo CSS.
 
+Formati, grammature, controllo file e altri gruppi di testo condividono lo
+stesso elemento generico: cambia solo la label delle opzioni. Il CMS/backend
+puo' aggiungere una preferenza di layout, ad esempio `equal`, quando il gruppo
+deve occupare la riga con colonne uguali.
+
 Esempi CMS:
 
 | Dato CMS | Presentation type | Runtime |
 |---|---|---|
 | Grammatura | Choice group | `.option-buttons` |
-| Controllo file | Choice group | `.option-buttons` |
+| Controllo file | Choice group equal | `.option-buttons.option-buttons--equal` |
 | Copia Green Si/No | Choice group | `.option-buttons` |
 
 Non creare componenti dedicati come `GrammaturaButton` se cambia solo il nome
@@ -39,6 +44,10 @@ della variante CMS.
 OptionButtons
 └── option-buttons   (flex wrap, gap 0.375rem)
     └── option-buttons__btn × N   [--default | --selected | --borderless]
+
+OptionButtons equal
+└── option-buttons option-buttons--equal   (grid 2 colonne uguali)
+    └── option-buttons__btn × 2
 ```
 
 ## Markup contract
@@ -55,11 +64,22 @@ Markup ricostruito da `product-page-integration/js/configurator.js#L687-L693`.
 </div>
 ```
 
+Per choice group a due opzioni che devono occupare tutta la riga, usare il
+modifier di layout. Questo replica il look di `.controllo-btns` senza esporre
+un componente domain-specific:
+
+```html
+<div class="option-buttons option-buttons--equal" role="group" aria-label="Controllo file">
+    <button class="option-buttons__btn option-buttons__btn--selected">Standard - gratuito</button>
+    <button class="option-buttons__btn option-buttons__btn--default">Plus - 11,90 euro</button>
+</div>
+```
+
 ## API Reference
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.option-buttons` | flex container del gruppo | yes | — |
+| `.option-buttons` | container del gruppo | yes | `--equal` |
 | `.option-buttons__btn` | singolo bottone opzione | yes | `--default`, `--selected`, `--borderless` |
 
 ## Mappatura nomi (demo product-page -> libreria)
@@ -86,6 +106,7 @@ Nessun script JS richiesto.
 - `Default` (A4 selezionato) → `primitives-optionbuttons--default`
 - `NoneSelected` (tutti default) → `primitives-optionbuttons--none-selected`
 - `ManyOptions` (5 opzioni, terza selezionata) → `primitives-optionbuttons--many-options`
+- `EqualColumns` (2 opzioni a larghezza piena) → `primitives-optionbuttons--equal-columns`
 - `Borderless` (variante senza bordo) → `primitives-optionbuttons--borderless`
 - `ReferenceFromElementsUI` (markup verbatim demo) → `primitives-optionbuttons--reference-from-elements-ui`
 
@@ -95,7 +116,8 @@ Nessun script JS richiesto.
 
 Valori letterali mantenuti dal catalogo:
 - `#ffffff` su `.option-buttons__btn--default` e `--borderless` (sfondo bianco).
-- `#d1d5db` su `.option-buttons__btn--default:hover` (border hover).
+- bordo trasparente sui bottoni default/selected: il look della product page
+  non mostra un contorno grigio attorno alle opzioni testuali.
 
 ## Note CMS
 
@@ -103,6 +125,9 @@ Valori letterali mantenuti dal catalogo:
 - esattamente un bottone ha `--selected`, gli altri `--default`.
 - testo del bottone: label breve dell'opzione.
 - `--borderless` e' una variante visiva per contesti dove il bordo non serve.
+- `--equal` e' una variante di layout per due opzioni che devono riempire la
+  riga, ad esempio `Controllo file`. Non usarla automaticamente per tutti i
+  choice group a due opzioni: e' una scelta di presentation/layout.
 
 ## Out of scope
 

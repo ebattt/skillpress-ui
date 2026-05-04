@@ -134,22 +134,47 @@
 }
 
 .preview__close {
+    position: relative;
     color: var(--color-text-muted);
     background: transparent;
     border: none;
     padding: 0;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.125rem;
+    height: 1.125rem;
     line-height: 1;
     transition: color var(--transition-fast);
+}
+
+.preview__close::before,
+.preview__close::after {
+    content: "";
+    position: absolute;
+    width: 0.875rem;
+    height: 2px;
+    background: currentColor;
+    border-radius: var(--radius-full);
+}
+
+.preview__close::before {
+    transform: rotate(45deg);
+}
+
+.preview__close::after {
+    transform: rotate(-45deg);
 }
 
 .preview__close:hover {
     color: var(--color-text-secondary);
 }
 
-.preview__close svg {
-    width: 1.125rem;
-    height: 1.125rem;
+.preview__close:focus-visible {
+    outline: 2px solid var(--color-text-secondary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
 }
 
 .preview__description {

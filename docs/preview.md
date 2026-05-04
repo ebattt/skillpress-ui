@@ -48,9 +48,8 @@ bottoni/card, bottone Anteprima e pannello inline con immagine e testo.
             <div class="preview__info">
                 <div class="preview__header">
                     <h4 class="preview__title">Patinata Opaca</h4>
-                    <button class="preview__close" type="button" data-preview-close>
-                        <!-- SVG close -->
-                    </button>
+                    <button class="preview__close" type="button" data-preview-close
+                            aria-label="Chiudi anteprima"></button>
                 </div>
                 <p class="preview__description">Descrizione carta dal CMS.</p>
             </div>
@@ -101,8 +100,9 @@ Eventi: `sp:preview:open`, `sp:preview:close`,
 Il CMS decide label, opzioni, immagine, alt, descrizione e stato iniziale.
 Eventuali metadati come FSC o certificazioni vanno inseriti nel testo
 descrittivo.
-La libreria decide layout, stati visuali, ARIA base, comportamento open/close e
-sincronizzazione del pannello con la selezione corrente.
+La libreria decide layout, stati visuali, ARIA base, comportamento open/close,
+sincronizzazione del pannello con la selezione corrente e icona chrome del
+bottone close.
 
 La sorgente puo' essere:
 
