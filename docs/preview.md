@@ -13,7 +13,7 @@ package_path: components/preview.css
 # Preview
 
 `Preview` copre il pattern generico del configuratore: una select o un gruppo di
-bottoni/card, bottone Anteprima e pannello inline con immagine, testo e badge.
+bottoni/card, bottone Anteprima e pannello inline con immagine e testo.
 
 ## Markup ufficiale
 
@@ -53,9 +53,6 @@ bottoni/card, bottone Anteprima e pannello inline con immagine, testo e badge.
                     </button>
                 </div>
                 <p class="preview__description">Descrizione carta dal CMS.</p>
-                <div class="preview__badges">
-                    <span class="preview__badge">FSC</span>
-                </div>
             </div>
         </div>
     </div>
@@ -82,8 +79,6 @@ bottoni/card, bottone Anteprima e pannello inline con immagine, testo e badge.
 | `.preview__title` | titolo carta |
 | `.preview__close` | chiusura |
 | `.preview__description` | descrizione |
-| `.preview__badges` | lista badge |
-| `.preview__badge` | badge/metadato |
 
 ## Hook JS
 
@@ -103,7 +98,9 @@ Eventi: `sp:preview:open`, `sp:preview:close`,
 
 ## Integrazione CMS
 
-Il CMS decide label, opzioni, immagine, alt, descrizione, badge e stato iniziale.
+Il CMS decide label, opzioni, immagine, alt, descrizione e stato iniziale.
+Eventuali metadati come FSC o certificazioni vanno inseriti nel testo
+descrittivo.
 La libreria decide layout, stati visuali, ARIA base, comportamento open/close e
 sincronizzazione del pannello con la selezione corrente.
 

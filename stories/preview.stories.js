@@ -42,8 +42,7 @@ const render = (open = false) => {
                             <h4 class="preview__title">Patinata Opaca</h4>
                             <button class="preview__close" type="button" data-preview-close aria-label="Chiudi anteprima">${closeIcon}</button>
                         </div>
-                        <p class="preview__description">Carta patinata opaca di alta qualita, ideale per cataloghi e riviste.</p>
-                        <div class="preview__badges"><span class="preview__badge">FSC</span></div>
+                        <p class="preview__description">Carta patinata opaca di alta qualita, ideale per cataloghi e riviste. Certificazione FSC indicata nel testo descrittivo quando gestita da CMS.</p>
                     </div>
                 </div>
             </div>

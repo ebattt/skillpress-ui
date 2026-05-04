@@ -156,29 +156,8 @@
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
     line-height: 1.625;
-    margin: 0 0 0.75rem;
+    margin: 0;
     flex: 1;
-}
-
-.preview__badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 1rem;
-    font-size: var(--font-size-xs);
-    margin-top: auto;
-}
-
-.preview__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    color: var(--color-success);
-    font-weight: var(--font-weight-medium);
-}
-
-.preview__badge svg {
-    width: var(--font-size-xs);
-    height: var(--font-size-xs);
 }
 
 @media (min-width: 640px) {
