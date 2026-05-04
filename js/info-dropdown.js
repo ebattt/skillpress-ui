@@ -12,9 +12,7 @@
  *     <label class="label-text">Formato (mm)</label>
  *     <button class="info-btn" type="button" data-info-trigger
  *             aria-controls="info-formato"
- *             aria-expanded="false" aria-label="Mostra informazioni">
- *       <svg>info icon</svg>
- *     </button>
+ *             aria-expanded="false" aria-label="Mostra informazioni"></button>
  *   </div>
  *   <div id="info-formato" class="info-dropdown info-dropdown--hidden"
  *        data-info-dropdown role="region" aria-hidden="true">
@@ -26,7 +24,7 @@
  *      a. Trova #ID ([data-info-dropdown]).
  *      b. Se #ID non ha .info-dropdown__header come primo figlio, lo auto-inietta:
  *         - title = textContent della .label-text adiacente (stessa .label-row).
- *         - close button con icona X SVG inline.
+ *         - close button vuoto; icona X disegnata da CSS.
  *      c. Se i figli rimanenti non sono gia' wrappati in .info-dropdown__body,
  *         vengono wrappati.
  *   2. Wire click trigger -> toggle .info-dropdown--hidden + sync aria-expanded + aria-hidden.
@@ -43,14 +41,6 @@
     var DROPDOWN_INIT_FLAG = '__skillpressInfoDropdownInit';
     var TRIGGER_INIT_FLAG = '__skillpressInfoBtnInit';
     var DOC_INIT_FLAG = '__skillpressInfoDropdownDocInit';
-
-    var CLOSE_SVG = ''
-        + '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"'
-        + ' stroke="currentColor" stroke-width="2" stroke-linecap="round"'
-        + ' stroke-linejoin="round" aria-hidden="true">'
-        + '<line x1="18" y1="6" x2="6" y2="18"></line>'
-        + '<line x1="6" y1="6" x2="18" y2="18"></line>'
-        + '</svg>';
 
     function getDropdown(trigger) {
         var id = trigger.getAttribute('aria-controls');
@@ -98,7 +88,6 @@
             close.type = 'button';
             close.className = 'info-dropdown__close';
             close.setAttribute('aria-label', 'Chiudi');
-            close.innerHTML = CLOSE_SVG;
             header.appendChild(close);
 
             // Inserisce header come PRIMO figlio del dropdown.

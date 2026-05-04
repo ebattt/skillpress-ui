@@ -27,7 +27,7 @@ banner) e' business logic del consumer.
 |---|---|
 | `.iva-banner` | container warning bg/border/radius/padding |
 | `.iva-banner__content` | flex inline icon + text, align-items flex-start |
-| `.iva-banner__icon` | icona warning, color primary, font-size 1.125rem |
+| `.iva-banner__icon` | icona info disegnata via CSS, color primary |
 | `.iva-banner__text` | testo xs, color text-strong, line-height 1.5 |
 
 ## Markup contract
@@ -35,15 +35,7 @@ banner) e' business logic del consumer.
 ```html
 <div class="iva-banner">
     <div class="iva-banner__content">
-        <span class="iva-banner__icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="12" y1="16" x2="12" y2="12"/>
-                <line x1="12" y1="8" x2="12.01" y2="8"/>
-            </svg>
-        </span>
+        <span class="iva-banner__icon" aria-hidden="true"></span>
         <div class="iva-banner__text">
             <p>Per usufruire dell'aliquota ridotta al 4% per editori con ISBN
                e necessario compilare e firmare la dichiarazione sostitutiva.</p>
@@ -57,7 +49,6 @@ banner) e' business logic del consumer.
 
 - presenza/assenza del banner (rendering condizionale Step 6);
 - testo HTML (puo' contenere link, bottoni download dichiarazione);
-- icona dentro `.iva-banner__icon` (SVG inline);
 - handler dei bottoni interni.
 
 ## Cosa decide la libreria
@@ -65,7 +56,7 @@ banner) e' business logic del consumer.
 - `--color-warning-bg` (#FFF7ED) come background;
 - `--color-warning-border` (#FED7AA) come border;
 - radius `--radius-lg`, padding 0.75rem;
-- color icon `--color-primary`, flex-shrink 0;
+- icona info dentro `.iva-banner__icon` via CSS, color `--color-primary`;
 - font-size testo xs (`var(--font-size-xs)` = 12px), line-height 1.5;
 - spacing tra paragrafi consecutivi (`> * + *` margin-top xs).
 

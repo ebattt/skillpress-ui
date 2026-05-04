@@ -1,25 +1,5 @@
 import { expect } from 'storybook/test';
 
-const INFO_ICON_SVG = `
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="2"
-         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <line x1="12" y1="16" x2="12" y2="12"/>
-        <line x1="12" y1="8" x2="12.01" y2="8"/>
-    </svg>
-`;
-
-const SELECT_INFO_SVG = `
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="2"
-         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <line x1="12" y1="16" x2="12" y2="12"/>
-        <line x1="12" y1="8" x2="12.01" y2="8"/>
-    </svg>
-`;
-
 const mount = (html) => {
     const root = document.createElement('div');
     root.style.maxWidth = '640px';
@@ -43,7 +23,7 @@ export const Default = {
     render: () => mount(`
         <div class="iva-banner">
             <div class="iva-banner__content">
-                <span class="iva-banner__icon">${INFO_ICON_SVG}</span>
+                <span class="iva-banner__icon" aria-hidden="true"></span>
                 <div class="iva-banner__text">
                     <p>Per usufruire dell'aliquota ridotta al 4% per editori con ISBN e necessario compilare e firmare la dichiarazione sostitutiva.</p>
                 </div>
@@ -60,7 +40,7 @@ export const WithDownloadButton = {
     render: () => mount(`
         <div class="iva-banner">
             <div class="iva-banner__content">
-                <span class="iva-banner__icon">${INFO_ICON_SVG}</span>
+                <span class="iva-banner__icon" aria-hidden="true"></span>
                 <div class="iva-banner__text">
                     <p>Per usufruire dell'aliquota ridotta al 4% per editori con ISBN e necessario compilare e firmare la dichiarazione sostitutiva.</p>
                     <button type="button" style="color: #1C7264; font-weight: 500; text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0;">
@@ -82,9 +62,7 @@ export const QtyIvaRowDouble = {
             <div>
                 <div class="label-row">
                     <label class="label-text">IVA</label>
-                    <button type="button" class="info-btn" aria-label="Info IVA">
-                        ${SELECT_INFO_SVG}
-                    </button>
+                    <button type="button" class="info-btn" aria-label="Info IVA"></button>
                 </div>
                 <select class="form-select">
                     <option value="22" selected>22%</option>
@@ -137,9 +115,7 @@ export const ReferenceFromElementsUI = {
                 <div>
                     <div class="label-row">
                         <label class="label-text">IVA</label>
-                        <button type="button" class="info-btn" aria-label="Info IVA">
-                            ${SELECT_INFO_SVG}
-                        </button>
+                        <button type="button" class="info-btn" aria-label="Info IVA"></button>
                     </div>
                     <select class="form-select">
                         <option value="22">22%</option>
@@ -149,7 +125,7 @@ export const ReferenceFromElementsUI = {
             </div>
             <div class="iva-banner">
                 <div class="iva-banner__content">
-                    <span class="iva-banner__icon">${INFO_ICON_SVG}</span>
+                    <span class="iva-banner__icon" aria-hidden="true"></span>
                     <div class="iva-banner__text">
                         <p>Per usufruire dell'aliquota ridotta al 4% per editori con ISBN e necessario compilare e firmare la dichiarazione sostitutiva.</p>
                         <button type="button" style="color: #1C7264; font-weight: 500; text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0;">

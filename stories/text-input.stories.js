@@ -1,15 +1,5 @@
 import { expect, userEvent } from 'storybook/test';
 
-const INFO_ICON_SVG = `
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="2"
-         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <line x1="12" y1="16" x2="12" y2="12"/>
-        <line x1="12" y1="8" x2="12.01" y2="8"/>
-    </svg>
-`;
-
 const ERROR_ICON_SVG = `
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
          stroke="currentColor" stroke-width="2"
@@ -71,9 +61,7 @@ export const WithLabelAndInfoButton = {
         <div class="form-field">
             <div class="label-row">
                 <label class="label-text">Campo Esempio <span class="label-text__required">*</span></label>
-                <button type="button" class="info-btn" aria-label="Info Campo Esempio">
-                    ${INFO_ICON_SVG}
-                </button>
+                <button type="button" class="info-btn" aria-label="Info Campo Esempio"></button>
             </div>
             <input type="text" class="form-input" placeholder="Inserisci valore..."/>
         </div>
@@ -86,9 +74,7 @@ export const WithLabelHint = {
             <div class="label-row">
                 <label class="label-text">Campo Esempio</label>
                 <span class="label-hint">(testo di aiuto)</span>
-                <button type="button" class="info-btn" aria-label="Info Campo Esempio">
-                    ${INFO_ICON_SVG}
-                </button>
+                <button type="button" class="info-btn" aria-label="Info Campo Esempio"></button>
             </div>
             <input type="text" class="form-input" placeholder="Inserisci valore..."/>
         </div>
@@ -182,7 +168,7 @@ export const AllVariants = {
             <div class="form-field">
                 <div class="label-row">
                     <label class="label-text">Campo Esempio <span class="label-text__required">*</span></label>
-                    <button type="button" class="info-btn" aria-label="Info">${INFO_ICON_SVG}</button>
+                    <button type="button" class="info-btn" aria-label="Info"></button>
                 </div>
                 <input type="text" class="form-input" placeholder="Inserisci valore..."/>
             </div>
@@ -190,7 +176,7 @@ export const AllVariants = {
                 <div class="label-row">
                     <label class="label-text">Campo Esempio</label>
                     <span class="label-hint">(testo di aiuto)</span>
-                    <button type="button" class="info-btn" aria-label="Info">${INFO_ICON_SVG}</button>
+                    <button type="button" class="info-btn" aria-label="Info"></button>
                 </div>
                 <input type="text" class="form-input" placeholder="Inserisci valore..."/>
             </div>
@@ -237,7 +223,7 @@ export const ReferenceFromElementsUI = {
             <div class="form-field">
                 <div class="label-row">
                     <label class="label-text">Campo Esempio <span class="label-text__required">*</span></label>
-                    <button type="button" class="info-btn" aria-label="Info">${INFO_ICON_SVG}</button>
+                    <button type="button" class="info-btn" aria-label="Info"></button>
                 </div>
                 <input type="text" class="form-input" placeholder="Inserisci valore..."/>
             </div>
@@ -252,7 +238,7 @@ export const ReferenceFromElementsUI = {
     parameters: {
         docs: {
             description: {
-                story: 'Replica una selezione delle 7 varianti dal preview catalog elements-ui (`elements-ui/js/components-form-inputs.js#L1-L127`). Material Symbols del catalog sostituiti con SVG inline.'
+                story: 'Replica una selezione delle 7 varianti dal preview catalog elements-ui (`elements-ui/js/components-form-inputs.js#L1-L127`). Le icone Info sono disegnate dalla libreria via CSS.'
             }
         }
     }

@@ -13,8 +13,8 @@
  * Strategia A (CSS-only). La condizione di visibilita' (mostrare/nascondere
  * il banner in base alla scelta IVA) e' business logic consumer-side.
  *
- * Material Symbols 'info' sostituito con SVG inline lato consumer dentro
- * .iva-banner__icon (icona info 18x18, color primary tramite currentColor).
+ * Icona info disegnata dalla libreria via CSS dentro .iva-banner__icon.
+ * Il consumer non deve fornire SVG, immagini o testo.
  *
  * Pattern callout warning specifico per IVA: se in futuro emergeranno altri
  * callout simili, valutare promozione a primitiva generica .callout--warning.
@@ -43,16 +43,31 @@
 
 
 /* ================================================================
-   IVA BANNER ICON -- icona warning, color primary
+   IVA BANNER ICON -- icona info, color primary
    ================================================================ */
 .iva-banner__icon {
     color: var(--color-primary);
-    font-size: 1.125rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.125rem;
+    height: 1.125rem;
     flex-shrink: 0;
 }
 
-.iva-banner__icon svg {
-    display: block;
+.iva-banner__icon::before {
+    content: "i";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 1rem;
+    height: 1rem;
+    border: 1.5px solid currentColor;
+    border-radius: var(--radius-full);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
 }
 
 

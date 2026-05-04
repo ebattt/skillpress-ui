@@ -16,8 +16,8 @@
  *   - Override esplicito: se il consumer scrive gia' .info-dropdown__header come
  *     primo figlio, l'auto-injection viene saltata.
  *
- * Material Symbols ('info' nel trigger, 'close' nel close button) sostituiti con
- * SVG inline: 'info' lato consumer dentro .info-btn, 'close' iniettato dalla JS.
+ * Icone UI: la libreria disegna info e close via CSS. Il consumer non deve
+ * fornire SVG, immagini o testo dentro .info-btn / .info-dropdown__close.
  *
  * Dipendenze: .label-row e .label-text sono definite in primitives/form-primitives.css
  * (consolidamento 2026-04-28). In bundles/demo-minimal.css form-primitives.css deve
@@ -36,7 +36,25 @@
     cursor: pointer;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
     transition: color var(--transition-fast);
+}
+
+.info-btn::before {
+    content: "i";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 0.875rem;
+    height: 0.875rem;
+    border: 1.5px solid currentColor;
+    border-radius: var(--radius-full);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
 }
 
 .info-btn:hover {
@@ -48,11 +66,6 @@
     outline-offset: 2px;
     border-radius: var(--radius-sm);
 }
-
-.info-btn svg {
-    display: block;
-}
-
 
 /* ================================================================
    INFO DROPDOWN -- pannello collapsible inline
@@ -110,6 +123,7 @@
 }
 
 .info-dropdown__close {
+    position: relative;
     color: var(--color-text-muted);
     background: transparent;
     border: none;
@@ -118,7 +132,28 @@
     margin-top: -0.125rem;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    width: 1.125rem;
+    height: 1.125rem;
     transition: color var(--transition-fast);
+}
+
+.info-dropdown__close::before,
+.info-dropdown__close::after {
+    content: "";
+    position: absolute;
+    width: 0.875rem;
+    height: 2px;
+    background: currentColor;
+    border-radius: var(--radius-full);
+}
+
+.info-dropdown__close::before {
+    transform: rotate(45deg);
+}
+
+.info-dropdown__close::after {
+    transform: rotate(-45deg);
 }
 
 .info-dropdown__close:hover {
@@ -130,11 +165,6 @@
     outline-offset: 2px;
     border-radius: var(--radius-sm);
 }
-
-.info-dropdown__close svg {
-    display: block;
-}
-
 
 /* ================================================================
    INFO DROPDOWN BODY -- corpo (auto-wrappato)

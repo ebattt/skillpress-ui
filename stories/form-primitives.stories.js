@@ -1,15 +1,5 @@
 import { expect } from 'storybook/test';
 
-const INFO_ICON_SVG = `
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="2"
-         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <line x1="12" y1="16" x2="12" y2="12"/>
-        <line x1="12" y1="8" x2="12.01" y2="8"/>
-    </svg>
-`;
-
 const ERROR_ICON_SVG = `
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
          stroke="currentColor" stroke-width="2"
@@ -131,9 +121,7 @@ export const LabelVariants = {
                 <div class="label-row">
                     <label class="label-text">Facciate</label>
                     <span class="label-hint">(comprese le 4 di copertina)</span>
-                    <button type="button" class="info-btn" aria-label="Info Facciate">
-                        ${INFO_ICON_SVG}
-                    </button>
+                    <button type="button" class="info-btn" aria-label="Info Facciate"></button>
                 </div>
                 <input type="number" class="form-input" value="48" min="24" step="4"/>
             </div>
@@ -255,9 +243,7 @@ export const ReferenceFromElementsUI = {
                 <div class="label-row">
                     <label class="label-text">Facciate</label>
                     <span class="label-hint">(comprese le 4 di copertina)</span>
-                    <button type="button" class="info-btn" aria-label="Info Facciate">
-                        ${INFO_ICON_SVG}
-                    </button>
+                    <button type="button" class="info-btn" aria-label="Info Facciate"></button>
                 </div>
                 <input type="number" class="form-input form-input--error" value="23" min="24" step="4"/>
                 <div class="error-msg">

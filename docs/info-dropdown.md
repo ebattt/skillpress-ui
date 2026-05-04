@@ -26,7 +26,7 @@ Contratto **semplificato**: il CMS scrive **solo il body**. La libreria auto-der
 ```text
 label-row
 ├── label-text                          (testo della label, fonte del titolo)
-└── info-btn[data-info-trigger][aria-controls=ID]   (trigger, icona info SVG)
+└── info-btn[data-info-trigger][aria-controls=ID]   (trigger, icona info via CSS)
 
 info-dropdown#ID  [data-info-dropdown] [info-dropdown--hidden]   (pannello collapsible inline)
 ├── info-dropdown__header               (auto-iniettato dal JS)
@@ -53,15 +53,7 @@ Solo body, niente header da scrivere. Il consumer fornisce:
                 data-info-trigger
                 aria-controls="info-formato"
                 aria-expanded="false"
-                aria-label="Mostra informazioni">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2"
-                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="12" y1="16" x2="12" y2="12"/>
-                <line x1="12" y1="8" x2="12.01" y2="8"/>
-            </svg>
-        </button>
+                aria-label="Mostra informazioni"></button>
     </div>
     <div id="info-formato" class="info-dropdown info-dropdown--hidden"
          data-info-dropdown
@@ -80,6 +72,8 @@ Attributi richiesti:
 - `data-info-dropdown` su `.info-dropdown` (entry point hook libreria).
 - `aria-controls` su `.info-btn` deve corrispondere all'`id` di `.info-dropdown`.
 - `.info-dropdown--hidden` (modifier BEM) per stato chiuso iniziale.
+- Il consumer non deve inserire SVG, immagini o testo dentro `.info-btn`: l'icona
+  info e' generata dalla libreria via CSS.
 
 ## Hook data-*
 
@@ -145,7 +139,7 @@ Esempio (no auto-derive):
 ## Cosa decide la libreria
 
 - Layout `.label-row` (inline-flex con gap).
-- Stile `.info-btn` (icona teal, hover, focus-visible).
+- Stile `.info-btn` (icona info CSS teal, hover, focus-visible).
 - Geometria `.info-dropdown` (max-height transition, border, radius, padding).
 - Header auto-injection (titolo + close button + ARIA).
 - Body auto-wrapping.

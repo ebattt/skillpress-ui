@@ -8,16 +8,6 @@ const initInfoDropdown = (root) => {
     });
 };
 
-const INFO_ICON_SVG = `
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="2"
-         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <line x1="12" y1="16" x2="12" y2="12"/>
-        <line x1="12" y1="8" x2="12.01" y2="8"/>
-    </svg>
-`;
-
 const renderField = ({
     label,
     id,
@@ -32,9 +22,7 @@ const renderField = ({
                     data-info-trigger
                     aria-controls="${id}"
                     aria-expanded="${open ? 'true' : 'false'}"
-                    aria-label="Mostra informazioni">
-                ${INFO_ICON_SVG}
-            </button>
+                    aria-label="Mostra informazioni"></button>
         </div>
         <div id="${id}" class="info-dropdown${open ? '' : ' info-dropdown--hidden'}"
              data-info-dropdown
@@ -167,7 +155,7 @@ export const ReferenceFromElementsUI = {
     parameters: {
         docs: {
             description: {
-                story: 'Pattern verbatim dal catalogo `elements-ui/js/buttons/button-info.js` (Button Info). Material Symbols `info` e `close` sostituiti con SVG inline. Onclick inline sostituito con `aria-controls` + delegated handler della libreria.'
+                story: 'Pattern verbatim dal catalogo `elements-ui/js/buttons/button-info.js` (Button Info). icone `info` e `close` disegnate dalla libreria via CSS. Onclick inline sostituito con `aria-controls` + delegated handler della libreria.'
             }
         }
     }
