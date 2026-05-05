@@ -3,9 +3,6 @@ import '../primitives/form-primitives.css';
 import '../js/preview.js';
 import { expect } from 'storybook/test';
 
-const eyeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>';
-const closeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>';
-
 const render = (open = false) => {
     const root = document.createElement('div');
     root.style.maxWidth = '680px';
@@ -27,7 +24,7 @@ const render = (open = false) => {
                     </select>
                 </div>
                 <button class="preview__trigger" type="button" data-preview-trigger aria-controls="preview-story" aria-expanded="${open ? 'true' : 'false'}">
-                    ${eyeIcon}<span>Anteprima</span>
+                    <span>Anteprima</span>
                 </button>
             </div>
             <div id="preview-story" class="preview__panel" data-preview-panel aria-hidden="${open ? 'false' : 'true'}">
@@ -40,7 +37,7 @@ const render = (open = false) => {
                     <div class="preview__info">
                         <div class="preview__header">
                             <h4 class="preview__title">Patinata Opaca</h4>
-                            <button class="preview__close" type="button" data-preview-close aria-label="Chiudi anteprima">${closeIcon}</button>
+                            <button class="preview__close" type="button" data-preview-close aria-label="Chiudi anteprima"></button>
                         </div>
                         <p class="preview__description">Carta patinata opaca di alta qualita, ideale per cataloghi e riviste. Certificazione FSC indicata nel testo descrittivo quando gestita da CMS.</p>
                     </div>

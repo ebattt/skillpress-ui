@@ -4,6 +4,9 @@
  * Fonte look: product-page-integration/js/sections/helpers.js renderPreview()
  * e elements-ui/css/components/_buttons.css + _cards.css.
  * Strategia C: behavior open/close UI puro via js/preview.js.
+ *
+ * Icone UI: la libreria disegna l'occhio del trigger e la X di chiusura via CSS.
+ * Il consumer non deve fornire SVG o immagini dentro .preview__trigger / .preview__close.
  */
 .preview {
     position: relative;
@@ -42,10 +45,15 @@
     color: var(--color-secondary-dark);
 }
 
-.preview__trigger svg {
+.preview__trigger::before {
+    content: "";
+    display: block;
     width: 1rem;
     height: 1rem;
     flex-shrink: 0;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .preview__panel {

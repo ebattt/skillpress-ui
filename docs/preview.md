@@ -33,8 +33,7 @@ bottoni/card, bottone Anteprima e pannello inline con immagine e testo.
                 data-preview-trigger
                 aria-controls="preview-panel"
                 aria-expanded="false">
-            <!-- SVG visibility -->
-            Anteprima
+            <span>Anteprima</span>
         </button>
     </div>
     <div id="preview-panel" class="preview__panel"
@@ -102,7 +101,8 @@ Eventuali metadati come FSC o certificazioni vanno inseriti nel testo
 descrittivo.
 La libreria decide layout, stati visuali, ARIA base, comportamento open/close,
 sincronizzazione del pannello con la selezione corrente e icona chrome del
-bottone close.
+bottone trigger/close. Il consumer non deve inserire SVG o immagini dentro
+`.preview__trigger` e `.preview__close`.
 
 La sorgente puo' essere:
 
