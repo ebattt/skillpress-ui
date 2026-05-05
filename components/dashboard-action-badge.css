@@ -1,0 +1,70 @@
+/**
+ * DASHBOARD ACTION BADGE -- Required action chip
+ * Fonte: Skillpress-frontend/dashboard/index.html
+ * Data estrazione: 2026-05-05
+ */
+
+.dash-action-badge {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    height: 1.125rem;
+    padding: 0.125rem 0.375rem;
+    background-color: var(--color-error);
+    border: none;
+    border-radius: var(--radius-full);
+    color: var(--color-bg-white);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.62rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background-color var(--transition-fast);
+}
+
+.dash-action-badge:hover,
+.dash-action-badge--error:hover {
+    background-color: #b91c1c;
+}
+
+.dash-action-badge:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.dash-action-badge--error {
+    background-color: var(--color-error);
+    color: var(--color-bg-white);
+}
+
+.dash-action-badge__icon {
+    display: none;
+    width: 0.8rem;
+    height: 0.8rem;
+    flex: 0 0 auto;
+    background-color: currentColor;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+}
+
+.dash-action-badge__icon--upload {
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 3 7 8h3v6h4V8h3l-5-5Zm-7 14v3h14v-3h-2v1H7v-1H5Z'/%3E%3C/svg%3E");
+}
+
+.dash-action-badge__icon--receipt {
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 3h12v18l-2-1.25L14 21l-2-1.25L10 21l-2-1.25L6 21V3Zm3 5h6V6H9v2Zm0 4h6v-2H9v2Zm0 4h4v-2H9v2Z'/%3E%3C/svg%3E");
+}
+
+.dash-action-badge__icon--error {
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2 1 21h22L12 2Zm1 15h-2v-2h2v2Zm0-4h-2V8h2v5Z'/%3E%3C/svg%3E");
+}
+
+.table-title-cell__actions .dash-action-badge,
+.table-actions-list .dash-action-badge {
+    max-width: 100%;
+}

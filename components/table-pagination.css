@@ -1,0 +1,83 @@
+/**
+ * TABLE PAGINATION -- Dashboard table pagination controls
+ * Fonte: Skillpress-frontend/dashboard/index.html
+ * Data estrazione: 2026-05-05
+ */
+
+.table-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+.table-pagination__list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    color: var(--color-text-light);
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: inherit;
+    font-size: 0.8125rem;
+    font-weight: var(--font-weight-semibold);
+    line-height: 1;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        opacity var(--transition-fast);
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: var(--color-bg-gray-100);
+    color: var(--color-text);
+}
+
+.pagination-btn:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+}
+
+.pagination-btn--active {
+    background: var(--color-primary);
+    color: var(--color-bg-white);
+}
+
+.pagination-btn--active:hover {
+    background: var(--color-primary-dark);
+}
+
+.pagination-btn__icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    flex: 0 0 auto;
+    background-color: currentColor;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+}
+
+.pagination-btn__icon--prev {
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m15.5 5-7 7 7 7 1.4-1.4-5.6-5.6 5.6-5.6L15.5 5Z'/%3E%3C/svg%3E");
+}
+
+.pagination-btn__icon--next {
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m8.5 19 7-7-7-7-1.4 1.4 5.6 5.6-5.6 5.6L8.5 19Z'/%3E%3C/svg%3E");
+}
