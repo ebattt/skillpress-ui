@@ -11,19 +11,19 @@
  * `--row-active` (cella prezzo) in base a stato applicativo (qty selezionata,
  * data spedizione selezionata, prezzo cliccato, conversione IVA Lordo/Netto).
  *
- * Material Symbols (`keyboard_arrow_up`, `keyboard_arrow_down`, `chevron_left`,
- * `chevron_right`) NON inclusi: il consumer/CMS usa SVG inline. Le regole CSS
- * sulle icone sono tradotte da `.material-symbols-outlined` a `svg`, mantenendo
- * dimensioni equivalenti (28px verticale, 18px orizzontale).
+ * Material Symbols (`keyboard_arrow_up`, `keyboard_arrow_down`) NON inclusi:
+ * il consumer/CMS usa SVG inline. Le regole CSS sulle icone sono tradotte da
+ * `.material-symbols-outlined` a `svg`, mantenendo dimensioni equivalenti
+ * (28px verticale).
  *
- * Geometria tabella: `min-width: 500px` forza lo scroll orizzontale sotto questa
- * larghezza. Il consumer wrappa la tabella in `.price-table__section` (overflow-x: auto)
- * o equivalente (la demo usa `id="priceTableContainer"`; in libreria la regola e'
- * sulla classe). Su mobile (<= 767px) le frecce orizzontali `.price-table__nav-arrow-horizontal`
- * diventano visibili come overlay per agevolare lo scroll.
+ * Geometria tabella: la tabella resta leggibile con scrollbar orizzontale nativa
+ * quando esiste overflow. Default `min-width: 500px` (fallback 4 colonne); con `:has()`
+ * i browser moderni riducono automaticamente la min-width per 1/2/3 colonne.
+ * Il consumer wrappa la tabella in `.price-table__section` (overflow-x: auto)
+ * o equivalente.
  *
  * Fuori scope (non implementato qui):
- * - behavior selezione cella / nav verticale / scroll orizzontale mobile
+ * - behavior selezione cella / nav verticale
  *   (vive in `product-page-integration/js/sections/section-6.js`);
  * - calcolo prezzo IVA, paginazione qty, ricerca `closestDisplayedQty`;
  * - animazione `@keyframes cellSelect` (usata solo in feedback JS);
@@ -41,33 +41,67 @@
     gap: 0;
 }
 
-/* Wrapper position: relative attorno a .price-table__section. Necessario perche'
-   le frecce orizzontali (`.price-table__nav-arrow-horizontal`) sono `position: absolute`
-   FRATELLO di `.price-table__section`, NON figlio: cosi' restano fisse mentre il
-   container scrolla. (Pattern verbatim demo: `<div class="relative">`.) */
+/* Wrapper compatibile con il vecchio markup che posizionava frecce orizzontali.
+   Le frecce sono deprecate: la scrollbar nativa e' ora l'affordance primaria. */
 .price-table__scroll-wrap {
     position: relative;
 }
 
-/* Contenitore tabella con scroll orizzontale.
-   `scroll-behavior: smooth` per swipe e click su `.price-table__nav-arrow-horizontal`.
-   Scrollbar nascosta su mobile (l'unica affordance di scroll resta la freccia
-   `.price-table__nav-arrow-horizontal--right` overlay). */
+/* Contenitore tabella con scrollbar orizzontale quando esiste overflow.
+   E' piu' chiara delle vecchie frecce overlay e funziona senza JS consumer. */
 .price-table__section {
+    position: relative;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-bg-gray-200) transparent;
+    padding-bottom: 0.25rem;
 }
 
-@media (max-width: 767px) {
-    .price-table__section {
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
+.price-table__section--scrollable {
+    padding-bottom: 0.875rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
 
-    .price-table__section::-webkit-scrollbar {
-        display: none;
-    }
+.price-table__section--scrollable::-webkit-scrollbar {
+    display: none;
+}
+
+.price-table__section--scrollable::after {
+    content: "";
+    position: sticky;
+    left: 0;
+    bottom: 0.125rem;
+    display: block;
+    width: 100%;
+    height: 0.375rem;
+    border-radius: var(--radius-full);
+    background:
+        linear-gradient(var(--color-text-muted), var(--color-text-muted))
+            var(--price-table-scroll-thumb-left, 0%) center /
+            var(--price-table-scroll-thumb-width, 32%) 100% no-repeat,
+        var(--color-bg-gray-200);
+    pointer-events: none;
+}
+
+.price-table__section::-webkit-scrollbar {
+    height: 8px;
+}
+
+.price-table__section::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.price-table__section::-webkit-scrollbar-thumb {
+    background: var(--color-bg-gray-200);
+    border-radius: var(--radius-full);
+}
+
+.price-table__section::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
 }
 
 /* ===== Tabella ===== */
@@ -76,6 +110,23 @@
     font-size: var(--font-size-xs);
     border-collapse: collapse;
     min-width: 500px;
+    table-layout: fixed;
+}
+
+/* Progressive enhancement: ottimizza lo spazio quando il backend rende meno
+   colonne data. Senza :has() resta il fallback leggibile a 500px. */
+@supports selector(:has(*)) {
+    .price-table:not(:has(.price-table__header-cell--center:nth-of-type(3))) {
+        min-width: min(100%, 18rem);
+    }
+
+    .price-table:has(.price-table__header-cell--center:nth-of-type(3)):not(:has(.price-table__header-cell--center:nth-of-type(4))) {
+        min-width: min(100%, 24rem);
+    }
+
+    .price-table:has(.price-table__header-cell--center:nth-of-type(4)):not(:has(.price-table__header-cell--center:nth-of-type(5))) {
+        min-width: 28rem;
+    }
 }
 
 /* ===== Header cells ===== */
@@ -179,7 +230,10 @@
     transition: all var(--transition-fast);
     font-weight: var(--font-weight-medium);
     font-size: var(--font-size-xs);
+    line-height: 1.25;
     cursor: pointer;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 .price-table__cell-btn--default {
@@ -240,7 +294,7 @@
     pointer-events: none;
 }
 
-/* ===== Navigation arrows (horizontal / mobile overlay) ===== */
+/* ===== Navigation arrows (horizontal / legacy overlay) ===== */
 .price-table__nav-arrow-horizontal {
     position: absolute;
     top: 50%;
@@ -258,6 +312,7 @@
     cursor: pointer;
     transition: all var(--transition-fast);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    display: none !important;
 }
 
 /* Posizionamento DENTRO il container (le frecce restano fisse rispetto al
@@ -281,20 +336,10 @@
     border-color: var(--color-primary);
 }
 
-/* ===== Mobile responsive =====
-   Sotto 767px il consumer/CMS attiva le frecce orizzontali overlay
-   (`.price-table__nav-arrow-horizontal`) per agevolare lo scroll orizzontale
-   imposto dal `min-width: 500px` della tabella. Touch targets celle
-   prezzo / qty button portati a 40px+ per standard e-commerce mobile. */
+/* ===== Responsive =====
+   Touch targets celle prezzo / qty button portati a 40px+ per standard
+   e-commerce mobile. Lo scroll orizzontale resta nativo e visibile. */
 @media (max-width: 767px) {
-    .price-table__nav-arrow-horizontal {
-        display: flex !important;
-    }
-
-    .price-table__nav-arrow-horizontal[style*="display: none"] {
-        display: none !important;
-    }
-
     .price-table__nav-arrow svg {
         width: 24px;
         height: 24px;
@@ -308,5 +353,32 @@
     .price-table__qty-btn {
         min-height: 40px;
         padding: 0.5rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .price-table {
+        font-size: 0.6875rem;
+    }
+
+    .price-table__header-cell,
+    .price-table__cell {
+        padding: 0.375rem;
+    }
+
+    .price-table__cell--center {
+        padding: 0.3125rem;
+    }
+
+    .price-table__cell-btn {
+        padding: 0.5rem 0.25rem;
+    }
+
+    .price-table__header-day {
+        font-size: 0.6875rem;
+    }
+
+    .price-table__header-date {
+        font-size: 0.625rem;
     }
 }

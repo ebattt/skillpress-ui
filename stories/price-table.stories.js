@@ -1,5 +1,5 @@
 import '../components/price-table.css';
-import { expect } from 'storybook/test';
+import { expect, waitFor } from 'storybook/test';
 
 const arrowUp = `
     <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -13,24 +13,44 @@ const arrowDown = `
     </svg>
 `;
 
-const chevronLeft = `
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="m15 18-6-6 6-6"/>
-    </svg>
-`;
-
-const chevronRight = `
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="m9 18 6-6-6-6"/>
-    </svg>
-`;
-
-const renderRoot = (innerHTML) => {
+const renderRoot = (innerHTML, { maxWidth = '720px' } = {}) => {
     const root = document.createElement('div');
     root.style.padding = '1rem 0';
-    root.style.maxWidth = '720px';
+    root.style.maxWidth = maxWidth;
     root.innerHTML = innerHTML;
     return root;
+};
+
+const syncScrollableIndicator = (section) => {
+    if (!section) return;
+
+    const sync = () => {
+        const maxScrollLeft = section.scrollWidth - section.clientWidth;
+        const canScroll = maxScrollLeft > 1;
+
+        section.classList.toggle('price-table__section--scrollable', canScroll);
+
+        if (!canScroll) {
+            section.style.removeProperty('--price-table-scroll-thumb-width');
+            section.style.removeProperty('--price-table-scroll-thumb-left');
+            return;
+        }
+
+        const thumbWidth = Math.max(16, Math.min(100, (section.clientWidth / section.scrollWidth) * 100));
+        const thumbLeft = maxScrollLeft > 0 ? (section.scrollLeft / maxScrollLeft) * 100 : 0;
+
+        section.style.setProperty('--price-table-scroll-thumb-width', `${thumbWidth.toFixed(2)}%`);
+        section.style.setProperty('--price-table-scroll-thumb-left', `${thumbLeft.toFixed(2)}%`);
+    };
+
+    sync();
+    requestAnimationFrame(sync);
+    window.setTimeout(sync, 0);
+
+    if (section._priceTableStorySync) return;
+    section._priceTableStorySync = sync;
+    section.addEventListener('scroll', sync);
+    window.addEventListener('resize', sync);
 };
 
 // Backend dichiara N date (1..4 raccomandato per leggibilita'). Default snapshot = 4 colonne
@@ -132,7 +152,7 @@ export default {
         layout: 'padded',
         docs: {
             description: {
-                component: 'Tabella prezzi stile Google Flights: header data spedizione, righe quantita, intersezione = prezzo. **Data-driven**: il backend dichiara N colonne (1..4 raccomandato per leggibilita\'); la libreria si adatta automaticamente via CSS table. CSS-only. Il consumer applica i modifier `.price-table__header-cell--selected` (colonna), `.price-table__row--active` (riga qty), `.price-table__cell-btn--selected` / `--row-active` (cella) in base allo stato applicativo.'
+                component: 'Tabella prezzi stile Google Flights: header data spedizione, righe quantita, intersezione = prezzo. **Data-driven**: il backend dichiara N colonne. La libreria ottimizza automaticamente 1/2/3 colonne e usa scrollbar orizzontale nativa quando 4+ colonne non entrano nel contenitore. CSS-only. Il consumer applica i modifier `.price-table__header-cell--selected` (colonna), `.price-table__row--active` (riga qty), `.price-table__cell-btn--selected` / `--row-active` (cella) in base allo stato applicativo.'
             }
         }
     }
@@ -213,6 +233,34 @@ export const FourColumns = {
     }
 };
 
+export const HorizontalScrollbar = {
+    render: () => {
+        const root = renderRoot(renderTable({ activeQty: 50, selectedCol: 0, cols: 4 }), { maxWidth: '320px' });
+        syncScrollableIndicator(root.querySelector('.price-table__section'));
+        return root;
+    },
+    play: async ({ canvasElement }) => {
+        const section = canvasElement.querySelector('.price-table__section');
+        await expect(section.scrollWidth).toBeGreaterThan(section.clientWidth);
+        await waitFor(() => expect(section).toHaveClass('price-table__section--scrollable'));
+
+        const initialThumbLeft = section.style.getPropertyValue('--price-table-scroll-thumb-left');
+        section.scrollLeft = section.scrollWidth - section.clientWidth;
+        section.dispatchEvent(new Event('scroll'));
+        await waitFor(() => expect(section.style.getPropertyValue('--price-table-scroll-thumb-left')).not.toBe(initialThumbLeft));
+
+        const horizontalArrows = canvasElement.querySelectorAll('.price-table__nav-arrow-horizontal');
+        await expect(horizontalArrows.length).toBe(0);
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: 'Contenitore stretto con 4 colonne: la tabella conserva una larghezza minima leggibile e mostra l\'indicatore orizzontale custom. La story applica `.price-table__section--scrollable` solo quando `scrollWidth > clientWidth` e aggiorna `--price-table-scroll-thumb-left` durante lo scroll, come dovrebbe fare il consumer.'
+            }
+        }
+    }
+};
+
 export const SecondColumnSelected = {
     render: () => renderRoot(renderTable({ activeQty: 50, selectedCol: 1 })),
     parameters: {
@@ -269,7 +317,7 @@ export const NoSelection = {
     }
 };
 
-export const WithMobileArrows = {
+export const LegacyHorizontalArrowsHidden = {
     render: () => {
         const html = `
             <div class="price-table__wrapper">
@@ -277,8 +325,8 @@ export const WithMobileArrows = {
                     <button type="button" class="price-table__nav-arrow" aria-label="Quantita precedenti">${arrowUp}</button>
                 </div>
                 <div class="price-table__section" style="position: relative;">
-                    <button type="button" class="price-table__nav-arrow-horizontal price-table__nav-arrow-horizontal--left" aria-label="Scorri a sinistra">${chevronLeft}</button>
-                    <button type="button" class="price-table__nav-arrow-horizontal price-table__nav-arrow-horizontal--right" aria-label="Scorri a destra">${chevronRight}</button>
+                    <button type="button" class="price-table__nav-arrow-horizontal price-table__nav-arrow-horizontal--left" aria-label="Scorri a sinistra" style="display: flex;"></button>
+                    <button type="button" class="price-table__nav-arrow-horizontal price-table__nav-arrow-horizontal--right" aria-label="Scorri a destra" style="display: flex;"></button>
                     <table class="price-table">
                         <thead>${renderHeader(0)}</thead>
                         <tbody>${renderBody(50, 0)}</tbody>
@@ -291,10 +339,17 @@ export const WithMobileArrows = {
         `;
         return renderRoot(html);
     },
+    play: async ({ canvasElement }) => {
+        const arrows = canvasElement.querySelectorAll('.price-table__nav-arrow-horizontal');
+        await expect(arrows.length).toBe(2);
+        arrows.forEach((arrow) => {
+            expect(getComputedStyle(arrow).display).toBe('none');
+        });
+    },
     parameters: {
         docs: {
             description: {
-                story: 'Variante con frecce orizzontali per scroll mobile. `.price-table__nav-arrow-horizontal--left` / `--right` sono overlay assoluti su un wrapper `position: relative`. Sotto 767px la regola CSS le rende sempre `display: flex !important`; il consumer JS le nasconde via `style="display: none"` quando lo scroll non e\' necessario (es. tabella che entra interamente).'
+                story: 'Compatibilita con markup legacy: anche se il consumer rende le vecchie frecce orizzontali e prova a mostrarle inline, il CSS della libreria le nasconde. Lo scroll laterale deve passare dalla scrollbar nativa.'
             }
         }
     }

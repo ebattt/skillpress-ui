@@ -2,7 +2,7 @@
 
 Tabella prezzi stile Google Flights: header data spedizione, righe quantita, intersezione = prezzo. Componente CSS-only senza behavior libreria.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Refactor massiccio: root `.price-table-full` -> `.price-table`; tutti i prefissi `.price-th/-td/-tr/-cell-btn/-qty-btn/-nav-arrow*` -> `.price-table__*`. Nessun hook `data-*` (componente CSS-only).
+> Aggiornato 2026-05-05: responsive production pass. La tabella usa scrollbar orizzontale nativa visibile quando il contenuto eccede il contenitore; le vecchie frecce orizzontali overlay sono legacy e nascoste dal CSS.
 
 - Fonte: `elements-ui/css/components/_layout-patterns.css#L918-L1236`, `elements-ui/js/layout-patterns/price-table.js`, `product-page-integration/js/sections/section-6.js#L355-L442`.
 - Cartella: `components/` (composto: wrapper > nav arrows + table > thead/tbody con sub-element specializzati).
@@ -17,8 +17,8 @@ Il backend dichiara `N` colonne data (date di consegna). **Range raccomandato: 1
 | 1 | una sola opzione consegna | l'unica `<th>` riceve sia (implicitamente) la prima posizione che `.price-table__header-cell--corner` (ultima). |
 | 2 | scelta veloce vs scontata | la seconda `<th>` riceve `.price-table__header-cell--corner`. |
 | 3 | configurazione intermedia | la terza `<th>` riceve `.price-table__header-cell--corner`. |
-| 4 (max racc.) | caso massimo demo | la quarta `<th>` riceve `.price-table__header-cell--corner`. Caso peggiore per il viewport mobile: la libreria gestisce con 3 breakpoint progressivi (640/480/380px) per mantenere tutto visibile senza scroll. |
-| 5+ | sconsigliato | la libreria non lo blocca, ma su mobile <=640px il testo dei prezzi diventa illeggibile. |
+| 4 | caso massimo demo | la quarta `<th>` riceve `.price-table__header-cell--corner`. Se il contenitore e' stretto, la tabella mantiene una larghezza minima leggibile e mostra scrollbar orizzontale. |
+| 5+ | supportato con cautela | la libreria non lo blocca; su mobile viene gestito tramite scrollbar orizzontale. Valutare se troppe date rendono il confronto poco chiaro. |
 
 Ogni riga `<tr>` contiene `1 + N` celle: una `<td class="price-table__cell--left">` (qty button) + `N` celle `<td class="price-table__cell--center">` (price button). Il backend genera esattamente `N` celle prezzo per riga; la libreria non valida la coerenza.
 
@@ -28,8 +28,10 @@ Il consumer/CMS posiziona i modifier `.price-table__header-cell--selected` (colo
 
 | Breakpoint | Comportamento |
 |---|---|
-| `>= 768px` (desktop / tablet) | `min-width: 500px` sulla `<table>`, scroll orizzontale via `.price-table__section { overflow-x: auto }` se la viewport e' piu' stretta del contenuto. Frecce orizzontali (`.price-table__nav-arrow-horizontal`) gestite dal JS consumer (mostrate via `style="display: flex"` solo se serve scrollare). |
-| `<= 767px` (mobile) | Le frecce orizzontali diventano sempre `display: flex !important` (regola CSS). Il consumer JS le nasconde via inline `style="display: none"` quando la tabella entra senza scroll. Frecce verticali ridotte a 24x24. |
+| Browser senza `:has()` | fallback leggibile: `min-width: 500px`, scrollbar orizzontale quando serve via `.price-table__section { overflow-x: auto }`. |
+| Browser con `:has()` | min-width ottimizzata in base alle colonne data: 1 colonna `min(100%, 18rem)`, 2 colonne `min(100%, 24rem)`, 3 colonne `28rem`, 4+ colonne fallback `500px`. |
+| `<= 767px` (mobile) | Scrollbar orizzontale nativa visibile quando la tabella eccede il contenitore; frecce verticali ridotte a 24x24; touch target celle prezzo/qty almeno 40px. |
+| `<= 480px` (small mobile) | padding e font leggermente ridotti per aumentare la densita senza sacrificare leggibilita. |
 
 ## Quando usarlo
 
@@ -38,7 +40,7 @@ Il consumer/CMS posiziona i modifier `.price-table__header-cell--selected` (colo
 
 ## Quando NON usarlo
 
-- Singolo elenco prezzi (usa `Card` + lista). Una colonna sola = la table e' overkill.
+- Singolo elenco prezzi senza asse quantita x consegna (usa `Card` + lista). Una sola colonna data e' supportata quando la scelta resta comunque una matrice quantita/prezzo.
 - Tabella generica non-prezzo: questo blocco e' specializzato (token `--color-secondary` per stato selected, `--font-size-xs`).
 
 ## Markup base (snapshot consumer)
@@ -111,13 +113,14 @@ Il consumer/CMS posiziona i modifier `.price-table__header-cell--selected` (colo
 | Classe | Ruolo |
 |---|---|
 | `.price-table__wrapper` | Flex column, contiene frecce verticali e contenitore tabella. |
-| `.price-table__section` | Wrapper tabella con `overflow-x: auto`. Sostituisce `id="priceTableContainer"` della demo. |
+| `.price-table__section` | Wrapper tabella con `overflow-x: auto`, quindi scrollbar orizzontale quando il contenuto eccede il contenitore. Sostituisce `id="priceTableContainer"` della demo. |
+| `.price-table__section--scrollable` | Modifier applicato dal consumer quando `scrollWidth > clientWidth`. Nasconde la scrollbar nativa e disegna una barra orizzontale custom sempre visibile, evitando doppioni sui sistemi con scrollbar overlay. |
 
 ### Tabella
 
 | Classe | Ruolo |
 |---|---|
-| `.price-table` | `<table>` base. `width: 100%`, `min-width: 500px` (forza scroll orizzontale su viewport stretti), `font-size: var(--font-size-xs)`, `border-collapse`. |
+| `.price-table` | `<table>` base. `width: 100%`, fallback `min-width: 500px`, `table-layout: fixed`, `font-size: var(--font-size-xs)`, `border-collapse`. Nei browser moderni la min-width si riduce automaticamente per 1/2/3 colonne. |
 
 ### Header cells
 
@@ -164,9 +167,9 @@ Il consumer/CMS posiziona i modifier `.price-table__header-cell--selected` (colo
 |---|---|
 | `.price-table__nav-arrow` | Bottone verticale (su / giu): trasparente, padding 4px 16px. SVG figlio renderizzato a 28x28 (24x24 sotto 767px). |
 | `.price-table__nav-arrow--disabled` | Stato disabled: opacity 0.25, pointer-events none. |
-| `.price-table__nav-arrow-horizontal` | Overlay assoluto per scroll mobile: 28x28 round button. Va dentro un wrapper `position: relative`. |
-| `.price-table__nav-arrow-horizontal--left` | Posiziona a `left: -6px`. |
-| `.price-table__nav-arrow-horizontal--right` | Posiziona a `right: -6px`. |
+| `.price-table__nav-arrow-horizontal` | Legacy overlay per vecchio markup di scroll laterale. Il CSS corrente lo nasconde con `display: none !important`; usare scrollbar nativa. |
+| `.price-table__nav-arrow-horizontal--left` | Legacy. |
+| `.price-table__nav-arrow-horizontal--right` | Legacy. |
 
 ## Stati combinati
 
@@ -184,19 +187,21 @@ L'interazione tipica nella demo:
 - quale riga qty e' `--active`;
 - quale `.price-table__cell-btn` e' `--selected`;
 - handler click: la libreria non aggiunge listener;
-- visibilita' frecce orizzontali mobile (`display: none` quando non serve scroll);
+- applicazione di `.price-table__section--scrollable` quando il container e' realmente scrollabile;
+- aggiornamento di `--price-table-scroll-thumb-width` e `--price-table-scroll-thumb-left` durante scroll/resize;
 - stato `--disabled` delle frecce verticali (primo / ultimo pagina).
 
 ## Cosa decide la libreria
 
 - 24 classi pubbliche + relative regole layout/colore/hover/transizione;
-- min-width tabella 500px;
-- breakpoint mobile 767px (icone vert da 28px a 24px, freccia orizzontale `display: flex` forzato);
+- min-width tabella e ottimizzazione automatica 1/2/3 colonne con `:has()`;
+- indicatore orizzontale stabile `.price-table__section--scrollable` quando serve; la scrollbar nativa viene nascosta in quello stato per evitare doppioni;
+- breakpoint mobile 767px (icone verticali da 28px a 24px, touch target 40px) e 480px (densita extra);
 - token CSS riferiti (color, radius, spacing, font, transition, shadow).
 
 ## Fuori scope
 
-- behavior selezione cella + nav verticale + scroll orizzontale mobile (vive in `section-6.js`);
+- behavior selezione cella + nav verticale (vive in `section-6.js` o consumer equivalente);
 - calcolo prezzo IVA (`displayPrice = price.value * ivaRate`);
 - paginazione qty (`vStart`, `vCount`), ricerca `closestDisplayedQty`;
 - animazione `@keyframes cellSelect` (esiste in catalogo ma usata solo da JS feedback);
@@ -246,4 +251,4 @@ Il catalogo usa `<span class="material-symbols-outlined">keyboard_arrow_up</span
 
 Conversione mantenuta:
 - vertical 28px → SVG 28x28; mobile <= 767px → 24x24 (gia' nel media query).
-- horizontal 18px → SVG 18x18.
+- horizontal 18px → SVG 18x18 solo per markup legacy; la classe e' nascosta dal CSS corrente.
