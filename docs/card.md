@@ -18,7 +18,7 @@ Superficie contenitore generica per blocchi informativi o selezionabili: bordo, 
 
 ```text
 Card
-└── .card   [--interactive | --selected | --disabled | --surface-muted]
+└── .card   [--interactive | --selected | --disabled | --control-row | --surface-muted]
     ├── .card__media     (opzionale, immagine/picture full-width)
     ├── .card__header    (opzionale, eyebrow + titolo)
     │   ├── .card__eyebrow
@@ -70,7 +70,7 @@ Con slot opzionali (header, body, footer):
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.card` | shell della superficie, applica bordo/radius/background | yes | `--interactive`, `--selected`, `--disabled`, `--surface-muted` |
+| `.card` | shell della superficie, applica bordo/radius/background | yes | `--interactive`, `--selected`, `--disabled`, `--control-row`, `--surface-muted` |
 | `.card__media` | wrapper immagine full-width | no | — |
 | `.card__header` | header flex con eyebrow + titolo | no | — |
 | `.card__body` | slot principale, flex 1 | no | — |
@@ -80,6 +80,7 @@ Con slot opzionali (header, body, footer):
 | `.card__eyebrow` | label sopra-testo, font-size xs | no | — |
 | `.card__actions` | slot ripetibile per Button o link | no | — |
 | `.card--surface-muted` | superficie grigia per pannelli interni checkout/dashboard | no | — |
+| `.card--control-row` | superficie per righe controllo con titolo 14px/600 e subtitle xs | no | — |
 
 Almeno uno tra `.card__body`, `.card__header` o contenuto equivalente deve essere presente.
 
@@ -110,6 +111,7 @@ Nessun script JS richiesto.
 - `Default` → `primitives-card--default`
 - `InteractiveStates` → `primitives-card--interactive-states`
 - `SurfaceMuted` → `primitives-card--surface-muted`
+- `ControlRow` → `primitives-card--control-row`
 - `ReferenceFromElementsUI` → `primitives-card--reference-from-elements-ui`
 
 ## Token usati
@@ -121,6 +123,7 @@ Nessun script JS richiesto.
 - elemento HTML usato (`article`, `section`, `div`, `a` quando semanticamente corretto).
 - contenuto degli slot.
 - stato iniziale `selected` o `disabled`.
+- variante `card--control-row` per righe compatte con toggle/azione laterale.
 - superficie `card--surface-muted` quando la pagina reale richiede un box grigio
   con bordo e padding ampio.
 - composizione con primitive esistenti come Button e Badge.

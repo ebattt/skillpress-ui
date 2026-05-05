@@ -11,6 +11,11 @@
     margin-top: var(--spacing-sm);
 }
 
+.form-layout--compact .label-text {
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+}
+
 .form-layout > * + * {
     margin-top: var(--section-gap);
 }

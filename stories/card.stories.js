@@ -100,6 +100,27 @@ export const SurfaceMuted = {
     }
 };
 
+export const ControlRow = {
+    render: () => {
+        const root = document.createElement('div');
+        root.style.maxWidth = '520px';
+        root.innerHTML = `
+            <article class="card card--control-row">
+                <div class="card__header">
+                    <div>
+                        <h3 class="card__title">Multispedizione</h3>
+                        <p class="card__description">Invia i prodotti a indirizzi diversi</p>
+                    </div>
+                </div>
+            </article>
+        `;
+        return root;
+    },
+    play: async ({ canvas }) => {
+        await expect(canvas.getByRole('heading', { name: 'Multispedizione' })).toBeInTheDocument();
+    }
+};
+
 export const ReferenceFromElementsUI = {
     render: () => {
         const root = document.createElement('div');

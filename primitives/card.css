@@ -114,6 +114,32 @@
     box-shadow: 0 0 0 1px var(--selection-highlight-border);
 }
 
+.card--control-row .card__title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.25rem;
+}
+
+.card--control-row > .card__header {
+    align-items: center;
+    padding: var(--spacing-md);
+}
+
+.card--control-row > .card__header > *:first-child {
+    min-width: 0;
+}
+
+.card--control-row .toggle-switch {
+    flex: 0 0 auto;
+}
+
+.card--control-row .card__description {
+    margin-top: 0.125rem;
+    color: var(--color-text-light);
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+}
+
 .card--surface-muted {
     background: var(--color-bg-gray-50);
     border-color: var(--color-bg-gray-200);

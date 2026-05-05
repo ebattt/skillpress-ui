@@ -10,7 +10,7 @@ const renderBillingForm = () => {
     root.style.padding = '1.25rem';
     root.style.borderRadius = 'var(--radius-xl)';
     root.innerHTML = `
-        <div class="form-layout" data-form-layout>
+        <div class="form-layout form-layout--compact" data-form-layout>
             <div class="form-layout__copy-row">
                 <button class="button button--ghost button--sm" type="button">Copia dati dalla spedizione</button>
             </div>

@@ -34,7 +34,7 @@ Non viene creato `BillingForm`: il pattern e' un helper generico di layout form.
 ## Markup
 
 ```html
-<div class="form-layout" data-form-layout>
+<div class="form-layout form-layout--compact" data-form-layout>
     <div class="form-layout__copy-row">
         <button class="button button--ghost button--sm" type="button">
             Copia dati dalla spedizione
@@ -59,12 +59,17 @@ Non viene creato `BillingForm`: il pattern e' un helper generico di layout form.
 ## Classi
 
 - `.form-layout`
+- `.form-layout--compact`
 - `.form-layout__row`
 - `.form-layout__row--2`
 - `.form-layout__row--3`
 - `.form-layout__copy-row`
 - `.form-layout__actions`
 - `.form-layout__actions--end`
+
+`form-layout--compact` riduce le label interne a 14px/1.25rem per i form
+checkout densi. Non cambia `FormPrimitives` globalmente, quindi la product page
+mantiene la scala 15px delle label configuratore.
 
 ## Fuori Scope
 

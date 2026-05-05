@@ -121,6 +121,10 @@ Nessun JavaScript di libreria richiesto.
 - Il backend decide elenco righe, quantità, min/max/value degli input e badge.
 - `allocation-badge--success|warning|error` sono stati presentazionali.
 - Per gli input usare sempre `form-input allocation-rows__input`.
+- Le righe top-level usano peso semibold; le righe child restano piu' leggere
+  per mantenere gerarchia visiva coerente nei riepiloghi.
+- Nei riepiloghi desktop il badge resta allineato a destra; su mobile passa
+  sotto al nome per evitare compressioni.
 - La libreria non aggiorna badge o totali al cambio input.
 
 ## Out of scope
