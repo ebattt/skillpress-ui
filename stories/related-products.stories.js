@@ -45,7 +45,7 @@ export default {
         layout: 'fullscreen',
         docs: {
             description: {
-                component: 'Sezione "Potrebbe piacerti anche": griglia responsive 5/3/2 colonne di card prodotto correlato (anchor click-anywhere con titolo + immagine + arrow notch in basso a destra). CSS-only, niente JS libreria. Hover: arrow scale 1.12 + colore scuro, immagine scale 1.05.'
+                component: 'Sezione "Potrebbe piacerti anche": griglia responsive 5/3/2 colonne di card prodotto correlato (anchor click-anywhere con titolo + immagine). CSS-only, niente JS libreria. Hover: immagine scale 1.05.'
             }
         }
     }

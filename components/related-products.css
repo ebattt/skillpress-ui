@@ -6,7 +6,7 @@
      (.related-products + qualificazione catalog-section-label / catalog-grid--products)
    - elements-ui/css/components/_cards.css#L1181-L1328
      (PRODUCT CARD: catalog-section-label / catalog-grid--products /
-      catalog-card--product-equal + arrow notch / catalog-card__title /
+      catalog-card--product-equal / catalog-card__title /
       catalog-card__image-wrap / catalog-card__image--product + responsive)
    ========================================================================== */
 
@@ -74,31 +74,6 @@
     cursor: pointer;
 }
 
-/* --- Arrow notch — bottom-right corner --- */
-.catalog-card--product-equal::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 2.6rem;
-    height: 2.6rem;
-    border-top-left-radius: 0.85rem;
-    background-color: var(--color-bg-white, #fff);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 12L12 4' stroke='%23F08A00' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M5 4L12 4L12 11' stroke='%23F08A00' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 0.95rem;
-    transform-origin: bottom right;
-    transition: transform 0.2s ease, background-image 0.2s ease;
-    z-index: 2;
-}
-
-.catalog-card--product-equal:hover::after,
-.catalog-card--product-equal:focus-within::after {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 12L12 4' stroke='%23D67800' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M5 4L12 4L12 11' stroke='%23D67800' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    transform: scale(1.12);
-}
-
 .catalog-card--product-equal:hover,
 .catalog-card--product-equal:focus-within {
     transform: none;
@@ -139,7 +114,7 @@
 }
 
 .catalog-card__image--product {
-    width: 80%;
+    width: 100%;
     max-height: none;
     height: auto;
     object-fit: contain;
