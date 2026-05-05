@@ -28,6 +28,10 @@
     background: var(--section-bg-expanded);
 }
 
+.accordion--surface-white .accordion__section--expanded {
+    background: var(--color-bg-white);
+}
+
 .accordion__header {
     width: 100%;
     display: flex;
@@ -163,6 +167,10 @@
     border-radius: 0 0 var(--section-radius) var(--section-radius);
     min-width: 0;
     overflow-x: hidden;
+}
+
+.accordion--surface-white .accordion__inner {
+    background-color: var(--color-bg-white);
 }
 
 .accordion__inner > * + * {

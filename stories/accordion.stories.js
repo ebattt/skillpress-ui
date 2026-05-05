@@ -39,12 +39,12 @@ const createSection = ({
     </section>
 `;
 
-const renderAccordion = (sections) => {
+const renderAccordion = (sections, className = 'accordion') => {
     const root = document.createElement('div');
 
     root.innerHTML = `
         <div style="max-width: 760px;">
-            <div class="accordion" data-accordion>
+            <div class="${className}" data-accordion>
                 ${sections.join('')}
             </div>
         </div>
@@ -160,6 +160,31 @@ export const WithHeaderIcons = {
             content: createContent('Slot pagamento.')
         })
     ])
+};
+
+export const SurfaceWhite = {
+    render: () => renderAccordion([
+        createSection({
+            title: 'Carrello',
+            icon: 'cart',
+            withBadge: false,
+            expanded: true,
+            content: createContent('Contenuto checkout su superficie bianca.')
+        }),
+        createSection({
+            title: 'Spedizione',
+            icon: 'shipping',
+            withBadge: false,
+            content: createContent('Secondo pannello checkout.')
+        })
+    ], 'accordion accordion--surface-white'),
+    parameters: {
+        docs: {
+            description: {
+                story: 'Variant for checkout-like contexts where the opened panel must stay white instead of using the product-page gray expanded surface.'
+            }
+        }
+    }
 };
 
 export const PopulatedContentSlot = {
