@@ -13,7 +13,7 @@ js_path: js/accordion.js
 
 # Accordion
 
-Contenitore espandibile per sezioni di configurazione o contenuto strutturato. La libreria controlla markup interno, stati visuali, aria e toggle locale del pannello (single-open per container). L'icona `+/-` e' disegnata dal CSS via `::before/::after` e non richiede Material Symbols.
+Contenitore espandibile per sezioni di configurazione o contenuto strutturato. La libreria controlla markup interno, stati visuali, aria e toggle locale del pannello (single-open per container). L'icona `+/-` e le icone chrome opzionali di header sono disegnate dal CSS e non richiedono Material Symbols.
 
 > Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Modifier `expanded` standalone -> `accordion__section--expanded` (BEM strict). Vedi `iterations/bem-standardization/accordion/CHANGELOG.md`.
 
@@ -25,7 +25,8 @@ Accordion
     └── .accordion__section   [data-accordion-section] [.accordion__section--expanded]
         ├── .accordion__header   [data-accordion-trigger] [aria-expanded]
         │   ├── .accordion__header-left
-        │   │   ├── .accordion__badge   (opzionale, numero step)
+        │   │   ├── .accordion__badge       (opzionale, numero step)
+        │   │   ├── .accordion__header-icon (opzionale, set chiuso: cart/shipping/payment)
         │   │   └── .accordion__title
         │   └── .accordion__icon         (icona +/- decorativa, aria-hidden)
         └── .accordion__content
@@ -55,6 +56,18 @@ Default state: `collapsed`. Stato `expanded` aggiunge la classe `accordion__sect
 </div>
 ```
 
+Markup con icona chrome library-owned, usato per la shell checkout:
+
+```html
+<button class="accordion__header" type="button" data-accordion-trigger aria-expanded="false">
+  <span class="accordion__header-left">
+    <span class="accordion__header-icon accordion__header-icon--cart" aria-hidden="true"></span>
+    <span class="accordion__title">Carrello</span>
+  </span>
+  <span class="accordion__icon" aria-hidden="true"></span>
+</button>
+```
+
 ## API Reference
 
 | Class | Role | Required | Modifiers |
@@ -64,6 +77,7 @@ Default state: `collapsed`. Stato `expanded` aggiunge la classe `accordion__sect
 | `.accordion__header` | trigger cliccabile (`<button>`) | yes | — |
 | `.accordion__header-left` | wrapper flex per badge + title | yes | — |
 | `.accordion__badge` | badge numerato opzionale | no | — |
+| `.accordion__header-icon` | icona chrome opzionale, disegnata dalla libreria | no | `--cart`, `--shipping`, `--payment` |
 | `.accordion__title` | titolo della sezione | yes | — |
 | `.accordion__icon` | icona +/- decorativa (CSS pseudo-elements) | yes | — |
 | `.accordion__content` | wrapper collassato (max-height/opacity) | yes | — |
@@ -79,6 +93,7 @@ Attributi:
 | `aria-expanded` | `.accordion__header` | yes | Sincronizzato dal JS (`true` / `false`). |
 | `type="button"` | `.accordion__header` | yes | Necessario perche' il trigger e' un `<button>`. |
 | `aria-hidden="true"` | `.accordion__icon` | yes | L'icona e' decorativa. |
+| `aria-hidden="true"` | `.accordion__header-icon` | yes, se presente | Le icone header sono chrome decorativo. |
 
 ## Hook data-*
 
@@ -153,7 +168,11 @@ Namespace globale: `window.SkillpressUI.Accordion`.
 - decide il contenuto degli slot `header` e `content`.
 - decide se una sezione parte `collapsed` o `expanded` (classe `accordion__section--expanded` + `aria-expanded` coerenti).
 - decide se mostrare o omettere il badge numerato.
+- puo' scegliere un'icona header solo dal set chiuso documentato:
+  `.accordion__header-icon--cart`, `.accordion__header-icon--shipping`,
+  `.accordion__header-icon--payment`.
 - non deve cambiare il markup interno della sezione, ne' aggiungere classi custom fuori contratto, ne' duplicare il behavior JS.
+- non deve fornire SVG, immagini, Material Symbols o altri asset per le icone chrome dell'header.
 
 ## Out of scope
 

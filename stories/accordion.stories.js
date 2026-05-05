@@ -19,12 +19,14 @@ const createSection = ({
     title,
     expanded = false,
     withBadge = true,
+    icon = '',
     content = createContent()
 }) => `
     <section class="accordion__section${expanded ? ' accordion__section--expanded' : ''}" data-accordion-section>
         <button class="accordion__header" type="button" data-accordion-trigger aria-expanded="${expanded ? 'true' : 'false'}">
             <span class="accordion__header-left">
                 ${withBadge ? `<span class="accordion__badge">${number}</span>` : ''}
+                ${icon ? `<span class="accordion__header-icon accordion__header-icon--${icon}" aria-hidden="true"></span>` : ''}
                 <span class="accordion__title">${title}</span>
             </span>
             <span class="accordion__icon" aria-hidden="true"></span>
@@ -132,6 +134,30 @@ export const WithoutBadge = {
             title: 'Accordion senza badge',
             withBadge: false,
             content: createContent('Il badge numerato e opzionale; il layout header resta valido.')
+        })
+    ])
+};
+
+export const WithHeaderIcons = {
+    render: () => renderAccordion([
+        createSection({
+            title: 'Carrello',
+            icon: 'cart',
+            withBadge: false,
+            expanded: true,
+            content: createContent('Slot carrello.')
+        }),
+        createSection({
+            title: 'Spedizione',
+            icon: 'shipping',
+            withBadge: false,
+            content: createContent('Slot spedizione.')
+        }),
+        createSection({
+            title: 'Pagamento',
+            icon: 'payment',
+            withBadge: false,
+            content: createContent('Slot pagamento.')
         })
     ])
 };
