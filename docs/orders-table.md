@@ -15,15 +15,25 @@
 <link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/primitives/badge.css">
 <link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/dashboard-action-badge.css">
 <link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/orders-table.css">
+<script defer src="/node_modules/@ebattt/skillpress-ui/js/orders-table.js"></script>
 ```
 
-Nessun JS richiesto in questa iterazione.
+Il JS e' opzionale e abilita le righe dettagli mobile:
+
+```html
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+    window.SkillpressUI.OrdersTable.init();
+});
+</script>
+```
 
 ## Responsabilita
 
 La libreria decide wrapper, bordo/radius, colonne compact, ellipsis titolo,
-layout liste prodotto/azioni e responsive statico. Backend/app decidono righe,
-status, action chip, dati ordine e routing.
+layout liste prodotto/azioni, responsive statico e, quando inizializzata, la
+riga dettagli mobile generata dalle celle `.td-mobile-hide`. Backend/app
+decidono righe, status, action chip, dati ordine e routing.
 
 ## Reuse Audit
 
@@ -99,9 +109,18 @@ sopra e sotto la tabella.
 - `.td-mobile-hide`, `.th-mobile-hide`, `.td-simplified-show`,
   `.th-simplified-show`
 
+## Mobile Details
+
+`SkillpressUI.OrdersTable.init()`:
+
+- aggiunge `.th-mobile-chevron` e `.td-mobile-chevron`;
+- marca le righe con `[data-orders-table-row]`;
+- genera una riga `.tr-mobile-details[hidden][data-orders-table-detail]`;
+- sincronizza `aria-expanded` e `hidden`;
+- non aggiunge CTA di routing o dettaglio ordine.
+
 ## Fuori Scope
 
-- mobile expandable detail row;
 - routing/detail ordine;
 - upload o pagamento;
 - filtri reali/API;

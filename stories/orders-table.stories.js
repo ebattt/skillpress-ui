@@ -1,6 +1,7 @@
 import '../primitives/badge.css';
 import '../components/dashboard-action-badge.css';
 import '../components/orders-table.css';
+import '../js/orders-table.js';
 import { expect, within } from 'storybook/test';
 
 const actionBadge = (label, icon = 'upload', error = false) => `
@@ -139,6 +140,25 @@ export const ReferenceFromDashboardPage = {
         docs: {
             description: {
                 story: 'Source shape from `dashboard/index.html` orders table. Status uses Badge and action chips use DashboardActionBadge.'
+            }
+        }
+    }
+};
+
+export const MobileDetails = {
+    render: () => renderTable(rows.slice(0, 2)),
+    play: async ({ canvasElement }) => {
+        window.SkillpressUI.OrdersTable.init(canvasElement);
+        const canvas = within(canvasElement);
+        const toggle = canvas.getAllByLabelText('Mostra dettagli riga')[0];
+        toggle.click();
+        await expect(canvas.getByText('Prodotti')).toBeInTheDocument();
+        await expect(toggle.closest('tr')).toHaveAttribute('aria-expanded', 'true');
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: 'Optional JS behavior: hidden mobile columns are rendered into an expandable details row. Routing/detail CTA remains out of scope.'
             }
         }
     }
