@@ -101,6 +101,22 @@ export const FullWidth = {
     }
 };
 
+export const Dashed = {
+    render: () => {
+        const root = document.createElement('div');
+        root.style.maxWidth = '520px';
+        root.innerHTML = renderButton({
+            label: 'Aggiungi destinazione',
+            variant: 'dashed',
+            icon: true
+        }).innerHTML;
+        return root;
+    },
+    play: async ({ canvas }) => {
+        await expect(canvas.getByRole('button', { name: /Aggiungi destinazione/ })).toHaveClass('button--dashed');
+    }
+};
+
 export const Disabled = {
     render: () => renderGroup([
         { label: 'Button disabled', variant: 'primary', disabled: true },

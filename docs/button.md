@@ -20,7 +20,7 @@ Primitiva di comandi cliccabili: dimensioni, colori, stati hover/focus/disabled,
 
 ```text
 Button
-├── .button   [--primary | --secondary | --outline | --ghost | --sm | --full]
+├── .button   [--primary | --secondary | --outline | --ghost | --dashed | --sm | --full]
 │   ├── .button__icon   (opzionale, slot SVG inline)
 │   └── <text>          (label visibile o aria-label equivalente)
 ```
@@ -62,9 +62,15 @@ Con icona inline (SVG, no Material Symbols):
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.button` | shell del bottone, applica padding/radius/font/transition | yes | `--primary`, `--secondary`, `--outline`, `--ghost`, `--sm`, `--full`, `--disabled` |
+| `.button` | shell del bottone, applica padding/radius/font/transition | yes | `--primary`, `--secondary`, `--outline`, `--ghost`, `--dashed`, `--sm`, `--full`, `--disabled` |
 | `.button__icon` | wrapper inline 1.125rem per SVG icon | no | — |
 | `.button--disabled` | stato disabilitato per `<a>` o controlli non disabilitabili nativamente | no | — |
+
+Modifier aggiuntivo:
+
+| Class | Role |
+|---|---|
+| `.button--dashed` | comando full-width con bordo tratteggiato, usato per aggiungere destinazioni/righe |
 
 Attributi:
 
@@ -106,12 +112,13 @@ Nessun script JS richiesto.
 - `Variants` → `primitives-button--variants`
 - `WithIcon` → `primitives-button--with-icon`
 - `FullWidth` → `primitives-button--full-width`
+- `Dashed` → `primitives-button--dashed`
 - `Disabled` → `primitives-button--disabled`
 - `ReferenceFromOriginal` → `primitives-button--reference-from-original`
 
 ## Token usati
 
-`--radius-full`, `--radius-sm`, `--font-size-sm`, `--font-weight-semibold`, `--font-weight-medium`, `--line-height-normal`, `--transition-fast`, `--color-border-focus`, `--color-primary`, `--color-primary-dark`, `--color-secondary`, `--color-secondary-dark`, `--color-secondary-light`, `--color-bg-white`, `--color-bg-gray-50`, `--color-bg-gray-200`, `--color-text`, `--color-border`, `--shadow-lg`, `--shadow-xl`.
+`--radius-full`, `--radius-xl`, `--radius-sm`, `--font-size-sm`, `--font-weight-semibold`, `--font-weight-medium`, `--line-height-normal`, `--transition-fast`, `--color-border-focus`, `--color-primary`, `--color-primary-dark`, `--color-secondary`, `--color-secondary-dark`, `--color-secondary-light`, `--color-bg-white`, `--color-bg-gray-50`, `--color-bg-gray-200`, `--color-text`, `--color-text-light`, `--color-border`, `--shadow-lg`, `--shadow-xl`.
 
 Valori letterali mantenuti dal catalogo:
 - `rgba(28, 114, 100, 0.08)` su hover di `.button--ghost`.
