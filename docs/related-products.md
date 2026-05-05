@@ -6,7 +6,7 @@ Sezione "Potrebbe piacerti anche": griglia di card prodotto correlato (stile lan
 
 - Fonti:
   - `elements-ui/css/components/_layout-patterns.css#L1804-L1825` (`.related-products` wrapper + qualificazioni 1280px max-width).
-  - `elements-ui/css/components/_cards.css#L1181-L1328` (PRODUCT CARD section: section-label, grid responsive 5/3/2 colonne, card con aspect-ratio + arrow notch + hover scale).
+  - `Skillpress-frontend/landing-page/css/components/_products.css` (PRODUCT CARD section aggiornata: section-label, grid responsive 5/3/2 colonne, card minimal con aspect-ratio + hover image scale).
   - `elements-ui/js/cards/card-image-text-below.js` (catalogo elements-ui con sandbox preview).
 - Cartella: `components/` (composto: section > h2 + grid > N anchor card).
 - Strategia JS demo: A — static snapshot. La libreria non aggiunge listener. Il pattern e' link statico, hover/focus sono CSS-only.
@@ -15,7 +15,7 @@ Sezione "Potrebbe piacerti anche": griglia di card prodotto correlato (stile lan
 
 - Sezione di prodotti correlati al fondo di una pagina prodotto (caso primario: Skillpress product-page-integration).
 - Griglia prodotti landing-page con card click-anywhere (titolo + immagine senza CTA esplicita).
-- Pattern card-link statiche con arrow notch in basso a destra.
+- Pattern card-link statiche titolo + immagine.
 
 ## Quando NON usarlo
 
@@ -58,8 +58,6 @@ Card:
 - `.catalog-card` — base card (vive solo qualificata via `.catalog-card--product-equal`, inclusa per fedelta').
 - `.catalog-card--product-equal` — card link product:
   - `display: flex column`, `aspect-ratio: 5/5.5`, sfondo `#F7F7F8`, `border-radius: 1rem`, `padding: 1rem 1rem 0`, `text-decoration: none`;
-  - arrow notch `::after`: 2.6rem in basso a destra, `border-top-left-radius: 0.85rem`, sfondo bianco con freccia SVG arancione (`#F08A00`) embedded data URI;
-  - hover/focus arrow: `transform: scale(1.12)` + freccia colore scuro `#D67800`;
   - hover/focus card: nessuna trasformazione/shadow sul wrapper.
 
 Card content:
@@ -67,12 +65,11 @@ Card content:
 - `.catalog-card__title` — h3 titolo: Helvetica Neue, `clamp(0.9rem, 1.1vw, 1.1rem)`, weight 700, text-align left, `margin: 0 0 0.5rem`. Qualificato dentro `.catalog-grid--products`.
 - `.catalog-card__image-wrap` — wrapper immagine: `flex: 1`, centrato, sfondo trasparente, padding 0.
 - `.catalog-card__image` — base image (qualificata dentro `.catalog-grid--products`, reset `margin-top: 0`, `flex: none`).
-- `.catalog-card__image--product` — img product: `width: 80%`, `object-fit: contain`. Hover: `transform: scale(1.05)`. Mobile (<640px): `width: min(100%, 150px)`.
+- `.catalog-card__image--product` — img product: `width: 100%`, `object-fit: contain`. Hover: `transform: scale(1.05)`. Mobile (<640px): `width: min(100%, 150px)`.
 
 ## Stati e modifier
 
 - `:hover` / `:focus-within` su `.catalog-card--product-equal`:
-  - arrow notch scala 1.12 + colore freccia `#D67800`;
   - immagine scala 1.05;
   - card stessa: nessuna trasformazione (per evitare jitter sul layout grid).
 - Nessun modifier toggleabile (`--selected`, `--active`): le card sono link statici. Il CMS gestisce stato attivo via routing pagina, non via classe.
@@ -91,8 +88,7 @@ Card content:
 - Layout grid responsive (5/3/2 colonne).
 - `aspect-ratio` card (`5/5.5`) e proporzioni interne.
 - Sfondo card, border-radius, padding interno.
-- Geometria + colori arrow notch (data URI inline, no font icon).
-- Hover scale image + arrow.
+- Hover scale image.
 - Tipografia titolo sezione (Manrope) e titolo card (Helvetica Neue).
 - Spaziatura tra card e larghezza max contenitore (1280px).
 
