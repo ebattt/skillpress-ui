@@ -48,12 +48,12 @@ Variante preview non fotografica:
 |---|---|
 | `.media-choice-cards` | wrapper flex |
 | `.media-choice-cards--grid` | wrapper grid 3/6 colonne |
-| `.media-choice-card` | card opzione |
+| `.media-choice-card` | card opzione 6.5rem x min 7.75rem |
 | `.media-choice-card--selected` | stato selezionato |
 | `.media-choice-card--disabled` | stato disabilitato |
-| `.media-choice-card__image-wrap` | cornice immagine |
+| `.media-choice-card__image-wrap` | cornice immagine 5rem x 5rem |
 | `.media-choice-card__image` | immagine |
-| `.media-choice-card__preview` | preview disegnata / geometrica |
+| `.media-choice-card__preview` | preview disegnata / geometrica 4rem x 4rem |
 | `.media-choice-card__label` | label |
 | `.media-choice-card__meta` | sottotesto/meta |
 

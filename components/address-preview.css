@@ -20,6 +20,10 @@
     line-height: 1rem;
 }
 
+.address-preview[hidden] {
+    display: none;
+}
+
 .address-preview--field-follow {
     margin-top: var(--spacing-sm);
 }

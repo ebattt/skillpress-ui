@@ -63,7 +63,8 @@ Non viene creato `BillingForm`: il pattern e' un helper generico di layout form.
 - `.form-layout__row`
 - `.form-layout__row--2`
 - `.form-layout__row--3`
-- `.form-layout__copy-row`
+- `.form-layout__copy-row` per azione opzionale sopra i campi, senza divisore
+  interno.
 - `.form-layout__actions`
 - `.form-layout__actions--end`
 

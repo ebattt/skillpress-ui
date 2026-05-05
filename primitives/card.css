@@ -120,6 +120,10 @@
     line-height: 1.25rem;
 }
 
+.card--control-row {
+    border-radius: var(--radius-xl);
+}
+
 .card--control-row > .card__header {
     align-items: center;
     padding: var(--spacing-md);

@@ -32,6 +32,20 @@
     background: var(--color-bg-white);
 }
 
+.accordion--surface-white .accordion__header {
+    padding: var(--spacing-md) 1.25rem;
+}
+
+.accordion--surface-white .accordion__header-left {
+    gap: 0.875rem;
+}
+
+.accordion--surface-white .accordion__title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+}
+
 .accordion__header {
     width: 100%;
     display: flex;
@@ -171,6 +185,8 @@
 
 .accordion--surface-white .accordion__inner {
     background-color: var(--color-bg-white);
+    border-top: 0;
+    padding: 0 1.25rem 1.25rem;
 }
 
 .accordion__inner > * + * {

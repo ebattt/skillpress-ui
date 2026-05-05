@@ -73,7 +73,7 @@ Markup con icona chrome library-owned, usato per la shell checkout:
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
 | `.accordion` | container, `data-accordion` per auto-init | yes | — |
-| `.accordion--surface-white` | root modifier: sezione aperta e inner restano bianchi | no | — |
+| `.accordion--surface-white` | root modifier checkout-like: sezione aperta e inner restano bianchi, header piu' ampio, contenuto senza divisore superiore | no | — |
 | `.accordion__section` | sezione singola, ripetibile | yes | `--expanded` |
 | `.accordion__header` | trigger cliccabile (`<button>`) | yes | — |
 | `.accordion__header-left` | wrapper flex per badge + title | yes | — |
@@ -164,7 +164,9 @@ Namespace globale: `window.SkillpressUI.Accordion`.
 
 Default accordion usa `--section-bg-expanded` e `.accordion__inner` grigio,
 come nel configuratore product page. Per contesti in cui il pannello aperto deve
-restare bianco, usare il modifier root `.accordion--surface-white`.
+restare bianco, usare il modifier root `.accordion--surface-white`. Questa
+variante segue il pattern checkout `checkout-section / section-header /
+section-content`: header piu' ampio e contenuto senza linea divisoria superiore.
 
 ```html
 <div class="accordion accordion--surface-white" data-accordion>
@@ -173,7 +175,7 @@ restare bianco, usare il modifier root `.accordion--surface-white`.
 ```
 
 Il modifier non cambia behavior, ARIA o struttura DOM: cambia solo la superficie
-visiva di sezione aperta e contenuto.
+visiva di sezione aperta, header e contenuto.
 
 ## Token usati
 

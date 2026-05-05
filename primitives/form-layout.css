@@ -34,9 +34,8 @@
 }
 
 .form-layout__copy-row {
-    margin-bottom: var(--section-gap);
-    padding-bottom: var(--section-gap);
-    border-bottom: 1px solid var(--color-bg-gray-100);
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .form-layout__actions {

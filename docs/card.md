@@ -80,7 +80,7 @@ Con slot opzionali (header, body, footer):
 | `.card__eyebrow` | label sopra-testo, font-size xs | no | — |
 | `.card__actions` | slot ripetibile per Button o link | no | — |
 | `.card--surface-muted` | superficie grigia per pannelli interni checkout/dashboard | no | — |
-| `.card--control-row` | superficie per righe controllo con titolo 14px/600 e subtitle xs | no | — |
+| `.card--control-row` | superficie per righe controllo checkout-like con radius xl, titolo 14px/600 e subtitle xs | no | — |
 
 Almeno uno tra `.card__body`, `.card__header` o contenuto equivalente deve essere presente.
 
@@ -123,7 +123,8 @@ Nessun script JS richiesto.
 - elemento HTML usato (`article`, `section`, `div`, `a` quando semanticamente corretto).
 - contenuto degli slot.
 - stato iniziale `selected` o `disabled`.
-- variante `card--control-row` per righe compatte con toggle/azione laterale.
+- variante `card--control-row` per righe compatte con toggle/azione laterale,
+  radius xl e allineamento coerente con la riga `shipping-toggle-row`.
 - superficie `card--surface-muted` quando la pagina reale richiede un box grigio
   con bordo e padding ampio.
 - composizione con primitive esistenti come Button e Badge.
