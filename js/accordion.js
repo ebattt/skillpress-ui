@@ -11,10 +11,59 @@
         return section.querySelector(TRIGGER_SELECTOR);
     }
 
-    function syncSection(section, isExpanded) {
+    function getContent(section) {
+        var children = Array.prototype.slice.call(section.children);
+        for (var i = 0; i < children.length; i++) {
+            if (children[i].classList.contains('accordion__content')) {
+                return children[i];
+            }
+        }
+        return null;
+    }
+
+    function setContentHeight(section, isExpanded, animate) {
+        var content = getContent(section);
+
+        if (!content) {
+            return;
+        }
+
+        if (!animate) {
+            content.style.maxHeight = isExpanded ? 'none' : '0px';
+            content.style.overflow = isExpanded ? 'visible' : 'hidden';
+            return;
+        }
+
+        content.style.overflow = 'hidden';
+
+        if (isExpanded) {
+            content.style.maxHeight = '0px';
+            content.offsetHeight;
+            content.style.maxHeight = content.scrollHeight + 'px';
+
+            content.addEventListener('transitionend', function onOpenEnd(event) {
+                if (event.target !== content || event.propertyName !== 'max-height') {
+                    return;
+                }
+                content.removeEventListener('transitionend', onOpenEnd);
+                if (section.classList.contains('accordion__section--expanded')) {
+                    content.style.maxHeight = 'none';
+                    content.style.overflow = 'visible';
+                }
+            });
+            return;
+        }
+
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.offsetHeight;
+        content.style.maxHeight = '0px';
+    }
+
+    function syncSection(section, isExpanded, animate) {
         var trigger = getTrigger(section);
 
         section.classList.toggle('accordion__section--expanded', isExpanded);
+        setContentHeight(section, isExpanded, animate !== false);
 
         if (trigger) {
             trigger.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
@@ -34,7 +83,7 @@
                 return;
             }
 
-            syncSection(section, false);
+            syncSection(section, false, true);
             emit(section, false);
         });
     }
@@ -56,12 +105,14 @@
 
         nextState = !section.classList.contains('accordion__section--expanded');
 
-        if (nextState) {
-            closeSiblings(container, section);
-        }
-
-        syncSection(section, nextState);
+        syncSection(section, nextState, true);
         emit(section, nextState);
+
+        if (nextState) {
+            window.requestAnimationFrame(function() {
+                closeSiblings(container, section);
+            });
+        }
     }
 
     function init(container) {
@@ -73,7 +124,7 @@
         container.__skillpressAccordionInit = true;
 
         getSections(container).forEach(function(section) {
-            syncSection(section, section.classList.contains('accordion__section--expanded'));
+            syncSection(section, section.classList.contains('accordion__section--expanded'), false);
         });
 
         return container;

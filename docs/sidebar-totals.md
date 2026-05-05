@@ -74,6 +74,10 @@ Sidebar configuratore desktop: box totale (qty, miglior prezzo, imposta, spedizi
 
 Container/layout:
 
+- `.configurator-section` — wrapper del configuratore, max-width pagina e padding coerenti con `product-page-integration`.
+- `.configurator-grid` — griglia responsive `1fr` mobile, `1fr 380px` desktop >=1024px.
+- `.config-column` — colonna sinistra configuratore, flex column, spacing verticale `--spacing-lg`.
+- `.config-section-title` — titolo "Modalità di configurazione", 1.375rem bold.
 - `.configurator-sidebar` — sticky a `top: 250px; margin-top: 100px` >=1024px, `display: none !important` <1024px.
 - `.sidebar-total-box` — box `bg-gray-50`, `radius-xl` 0.75rem, padding 1rem, `> * + * { margin-top: 0.75rem }`.
 

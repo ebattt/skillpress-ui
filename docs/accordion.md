@@ -131,7 +131,7 @@ Cosa NON fa:
   - non persiste lo stato aperto fra refresh o navigazioni
 ```
 
-Comportamento: click su `[data-accordion-trigger]` apre o chiude la sezione associata. Quando una sezione si apre, le altre sezioni dello stesso container vengono chiuse (single-open). Il JS aggiorna `aria-expanded` e la classe `accordion__section--expanded`; l'icona `+/-` reagisce via CSS.
+Comportamento: click su `[data-accordion-trigger]` apre o chiude la sezione associata. Quando una sezione si apre, il JS apre subito la sezione cliccata e chiude le altre sezioni dello stesso container al frame successivo (single-open), evitando un movimento brusco close-then-open. Durante la transizione il JS misura l'altezza reale di `.accordion__content`; a fine apertura rimuove il vincolo inline (`max-height: none`) per non tagliare contenuti dinamici. Il JS aggiorna `aria-expanded` e la classe `accordion__section--expanded`; l'icona `+/-` reagisce via CSS.
 
 Namespace globale: `window.SkillpressUI.Accordion`.
 

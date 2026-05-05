@@ -1,6 +1,7 @@
 /**
  * SIDEBAR TOTALS — Composed component (sidebar configuratore: totale + promo + riepilogo + carrello)
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css righe 189-246, 249-272, 324-341, 344-365, 367-418
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css righe 1886-1910
+ *           + righe 189-246, 249-272, 324-341, 344-365, 367-418
  *           + Skillpress-frontend/elements-ui/css/components/_buttons.css righe 29-55 (.add-to-cart-btn), 261-285 (.riepilogo-btn)
  * Fonte markup: Skillpress-frontend/product-page-integration/index.html righe 202-249
  * Catalogo dichiarazione: Skillpress-frontend/elements-ui/js/layout-patterns/sidebar-summary.js
@@ -27,6 +28,45 @@
  * - `.download-buttons__divider` + `.download-buttons` + `.download-buttons__btn`
  *   (gia' coperti da `primitives/download-buttons.css`).
  */
+
+/* ================================================================
+   GRIGLIA CONFIGURATORE
+   ================================================================ */
+.configurator-section {
+    max-width: var(--page-max-width);
+    margin: 0 auto;
+    padding: 1rem var(--page-padding-x) 2.5rem;
+}
+
+.configurator-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+}
+
+@media (min-width: 1024px) {
+    .configurator-grid {
+        grid-template-columns: 1fr 380px;
+    }
+}
+
+.config-column {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.config-column > * + * {
+    margin-top: var(--spacing-lg);
+}
+
+.config-section-title {
+    font-size: 1.375rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.025em;
+}
 
 /* ================================================================
    SIDEBAR CONTAINER (sticky desktop / hidden mobile sotto 1024px)
