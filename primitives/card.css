@@ -114,6 +114,30 @@
     box-shadow: 0 0 0 1px var(--selection-highlight-border);
 }
 
+.card--surface-muted {
+    background: var(--color-bg-gray-50);
+    border-color: var(--color-bg-gray-200);
+    border-radius: var(--radius-xl);
+}
+
+.card--surface-muted > .card__header {
+    padding: 1.25rem 1.25rem 0;
+}
+
+.card--surface-muted > .card__body {
+    padding: 1.25rem;
+}
+
+.card--surface-muted .card__title {
+    margin-bottom: var(--spacing-md);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.5rem;
+}
+
+.card--surface-muted > .card__header + .card__body {
+    padding-top: var(--spacing-md);
+}
+
 .card--disabled,
 .card[aria-disabled="true"] {
     opacity: 0.55;

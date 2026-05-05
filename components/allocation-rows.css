@@ -1,0 +1,148 @@
+/**
+ * ALLOCATION ROWS -- checkout copy allocation rows and status badges.
+ * Fonte: Skillpress-frontend/checkout/js/sections/shipping-section.js righe 273-437
+ * CSS fonte: checkout/css/components/_shipping.css righe 324-465,
+ * checkout/css/components/_feedback-status.css righe 27-49
+ *
+ * CSS-only. Allocation totals, validation and destination management stay outside.
+ */
+
+.allocation-summary-box {
+    background: var(--color-bg-gray-50);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-md);
+}
+
+.allocation-summary-box__title {
+    margin: 0 0 var(--spacing-sm);
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.25rem;
+}
+
+.allocation-summary-box__rows > * + * {
+    margin-top: 0.375rem;
+}
+
+.allocation-rows {
+    display: block;
+}
+
+.allocation-rows--section {
+    margin-top: var(--spacing-sm);
+}
+
+.allocation-rows > * + * {
+    margin-top: 0.5rem;
+}
+
+.allocation-rows__group {
+    display: block;
+}
+
+.allocation-rows__group + .allocation-rows__group,
+.allocation-rows__group + .allocation-rows__row,
+.allocation-rows__row + .allocation-rows__group {
+    margin-top: 0.5rem;
+}
+
+.allocation-rows__children {
+    margin-top: 0.25rem;
+    margin-left: 0.375rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--color-bg-gray-200);
+}
+
+.allocation-rows__children > * + * {
+    margin-top: 0.25rem;
+}
+
+.allocation-rows__label {
+    display: block;
+    margin-top: var(--section-gap);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-light);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1rem;
+    text-transform: uppercase;
+}
+
+.allocation-rows__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    min-width: 0;
+}
+
+.allocation-rows__row--parent .allocation-rows__name {
+    font-weight: var(--font-weight-semibold);
+}
+
+.allocation-rows__row--child .allocation-rows__name {
+    font-size: var(--font-size-xs);
+}
+
+.allocation-rows__info {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-width: 0;
+}
+
+.allocation-rows__name {
+    min-width: 0;
+    color: var(--color-text);
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+}
+
+.allocation-rows__qty {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+    white-space: nowrap;
+}
+
+.allocation-rows__input {
+    width: 4rem;
+    flex: 0 0 4rem;
+    padding: 0.3rem 0.25rem;
+    text-align: center;
+}
+
+.allocation-badge {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 0.125rem var(--spacing-sm);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: 1rem;
+    white-space: nowrap;
+}
+
+.allocation-badge--success {
+    color: var(--color-success);
+    background: var(--color-success-bg);
+}
+
+.allocation-badge--warning {
+    color: var(--color-alloc-badge-warning-text);
+    background: var(--color-alloc-badge-warning-bg);
+}
+
+.allocation-badge--error {
+    color: var(--color-error);
+    background: var(--color-error-bg);
+}
+
+@media (max-width: 640px) {
+    .allocation-rows__row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

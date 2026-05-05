@@ -83,6 +83,23 @@ export const InteractiveStates = {
     ])
 };
 
+export const SurfaceMuted = {
+    render: () => {
+        const root = document.createElement('div');
+        root.style.maxWidth = '520px';
+        root.innerHTML = renderCard({
+            title: 'Box checkout',
+            description: 'Superficie grigia per raggruppare form, preview indirizzo e scelte metodo nel checkout.',
+            variantClasses: 'card--surface-muted'
+        }).innerHTML;
+        return root;
+    },
+    play: async ({ canvas }) => {
+        await expect(canvas.getByRole('heading', { name: 'Box checkout' })).toBeInTheDocument();
+        await expect(canvas.getByText(/superficie grigia/i)).toBeInTheDocument();
+    }
+};
+
 export const ReferenceFromElementsUI = {
     render: () => {
         const root = document.createElement('div');

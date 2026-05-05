@@ -70,6 +70,7 @@ di gruppo, stato selected e sotto-elementi `name/detail/price/icon`.
 ## Classi
 
 - `.method-choice`
+- `.method-choice--flat`
 - `.method-choice__title`
 - `.method-choice__grid`
 - `.method-choice-card`
