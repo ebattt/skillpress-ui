@@ -1,0 +1,266 @@
+/**
+ * QUOTE REQUEST TABLE -- Dashboard editable quote request table
+ * Fonte: Skillpress-frontend/dashboard/index.html
+ * Data estrazione: 2026-05-06
+ */
+
+.quote-request-section {
+    margin-top: 2rem;
+}
+
+.quote-request-section__title {
+    margin: 0 0 1.5rem;
+    color: var(--color-text);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.25;
+}
+
+.quote-request-section .table-wrapper {
+    margin-bottom: 1.5rem;
+}
+
+.quote-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.quote-table thead th {
+    padding: 0.5rem 0.75rem;
+    background-color: var(--color-bg-gray-50);
+    border-bottom: 2px solid var(--color-bg-gray-200);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.03em;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.quote-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--color-bg-gray-100);
+    color: var(--color-text-strong);
+    font-size: var(--font-size-sm);
+    vertical-align: top;
+}
+
+.quote-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.quote-th-num,
+.quote-td-num {
+    width: 4.5rem;
+    white-space: nowrap;
+}
+
+.quote-td-num {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+.quote-th-qty {
+    width: 5rem;
+    text-align: center;
+}
+
+.quote-td-qty {
+    font-weight: var(--font-weight-semibold);
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.quote-th-action {
+    width: 3rem;
+}
+
+.quote-td-action {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.quote-product-name {
+    margin-bottom: 0.25rem;
+    color: var(--color-text-strong);
+    font-weight: var(--font-weight-semibold);
+}
+
+.quote-product-meta {
+    color: var(--color-text-meta);
+    font-size: var(--font-size-xs);
+    line-height: 1.4;
+}
+
+.quote-row-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    min-height: 2.25rem;
+    padding: 0;
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: inherit;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast);
+}
+
+.quote-row-btn:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.quote-row-btn--remove,
+.quote-row-btn--add {
+    background: none;
+    color: var(--color-text-muted);
+}
+
+.quote-row-btn--remove:hover {
+    background: var(--color-error-badge-bg);
+    color: var(--color-error-badge-text);
+}
+
+.quote-row-btn--add:hover {
+    background: var(--color-success-badge-bg);
+    color: var(--color-success-badge-text);
+}
+
+.quote-row-btn__icon {
+    display: inline-block;
+    width: 1.125rem;
+    height: 1.125rem;
+    background-color: currentColor;
+}
+
+.quote-row-btn__icon--remove {
+    -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 11h14v2H5v-2Z'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 11h14v2H5v-2Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.quote-row-btn__icon--add {
+    -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5Z'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.quote-form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.quote-input {
+    width: 100%;
+    padding: 0.375rem 0.625rem;
+    border: 1px solid var(--color-bg-gray-200);
+    border-radius: var(--radius-lg);
+    color: var(--color-text-strong);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    transition:
+        border-color var(--transition-normal),
+        box-shadow var(--transition-normal);
+}
+
+.quote-input::placeholder {
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-normal);
+}
+
+.quote-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(240, 138, 0, 0.12);
+}
+
+.quote-input--textarea {
+    min-height: 2.5rem;
+    resize: vertical;
+}
+
+.quote-input--qty {
+    width: 100%;
+    max-width: 5rem;
+    -moz-appearance: textfield;
+    text-align: center;
+}
+
+.quote-input--qty::-webkit-outer-spin-button,
+.quote-input--qty::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+.quote-footer-cell {
+    padding: 0.75rem;
+    border-top: 2px solid var(--color-bg-gray-200);
+    font-size: var(--font-size-sm);
+}
+
+.quote-submit-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--color-primary);
+    border: none;
+    border-radius: var(--radius-xl);
+    color: var(--color-bg-white);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9375rem;
+    font-weight: var(--font-weight-bold);
+    transition: background-color var(--transition-normal);
+}
+
+.quote-submit-btn:hover {
+    background: var(--color-primary-dark);
+}
+
+.quote-submit-btn:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+@media (max-width: 639px) {
+    .quote-col-hide {
+        display: none !important;
+    }
+
+    .quote-table thead th {
+        padding: 0.4375rem 0.5rem;
+    }
+
+    .quote-table td {
+        padding: 0.625rem 0.5rem;
+    }
+
+    .quote-th-num,
+    .quote-td-num {
+        width: 3.5rem;
+        font-size: 0.75rem;
+    }
+
+    .quote-th-qty {
+        width: 3.5rem;
+    }
+
+    .quote-th-action {
+        width: 2.5rem;
+    }
+
+    .quote-input--qty {
+        max-width: 3.5rem;
+    }
+
+    .quote-table tfoot td[colspan="4"] {
+        display: none;
+    }
+}
