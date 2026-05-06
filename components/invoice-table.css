@@ -1,0 +1,185 @@
+/**
+ * INVOICE TABLE -- Dashboard invoices download table
+ * Fonte: Skillpress-frontend/dashboard/index.html
+ * Data estrazione: 2026-05-06
+ */
+
+.table-wrapper {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-bg-gray-200);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+.invoice-table-section {
+    margin-top: 2.5rem;
+}
+
+.invoice-table-section__title {
+    margin: 0 0 1.25rem;
+    color: var(--color-text);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.35;
+}
+
+.invoice-table-section__filters {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.invoice-table-section__filters .orders-filter-select {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 7.5rem;
+}
+
+.invoice-table {
+    width: 100%;
+    min-width: 0;
+    border-collapse: collapse;
+}
+
+.invoice-table th {
+    padding: 0.4375rem 0.6875rem;
+    background-color: var(--color-bg-gray-50);
+    border-bottom: 2px solid var(--color-bg-gray-200);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.03em;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.invoice-table td {
+    padding: 0.5625rem 0.6875rem;
+    border-bottom: 1px solid var(--color-bg-gray-100);
+    color: var(--color-text-strong);
+    font-size: var(--font-size-sm);
+    line-height: 1.45;
+    vertical-align: middle;
+}
+
+.invoice-table td.font-semibold,
+.invoice-table .font-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+
+.invoice-table tbody tr {
+    transition: background-color var(--transition-fast);
+}
+
+.invoice-table tbody tr:hover {
+    background-color: var(--color-row-hover);
+}
+
+.invoice-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.invoice-table .dash-link--download {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.invoice-table .dash-link--download:hover {
+    color: var(--color-primary-dark);
+}
+
+.invoice-table .dash-link--download:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.invoice-table .dash-link--download__icon {
+    display: inline-block;
+    width: 1.125rem;
+    height: 1.125rem;
+    flex: 0 0 auto;
+    background-color: currentColor;
+    vertical-align: middle;
+}
+
+.invoice-table .dash-link--download__icon--download {
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3Cpath d='M5 21h14'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3Cpath d='M5 21h14'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+@media (max-width: 639px) {
+    .invoice-table-section {
+        margin-top: 2rem;
+    }
+
+    .invoice-table-section__filters {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .invoice-table-section__filters .orders-filter-select {
+        flex: 1 1 8rem;
+        min-width: 0;
+    }
+
+    .invoice-table th {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.68rem;
+    }
+
+    .invoice-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .invoice-table th:first-child,
+    .invoice-table td:first-child {
+        padding-left: 0.875rem;
+    }
+
+    .invoice-table th:last-child,
+    .invoice-table td:last-child {
+        padding-right: 0.875rem;
+    }
+
+    .invoice-table .dash-link--download {
+        gap: 0.25rem;
+    }
+
+    .invoice-table .dash-link--download__icon {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .invoice-table td {
+        padding-top: 0.6875rem;
+        padding-bottom: 0.6875rem;
+    }
+
+    .invoice-table th:first-child,
+    .invoice-table td:first-child {
+        padding-left: 0.75rem;
+    }
+
+    .invoice-table th:last-child,
+    .invoice-table td:last-child {
+        padding-right: 0.75rem;
+    }
+}
