@@ -39,7 +39,7 @@ const renderQuotes = () => {
 };
 
 export default {
-    title: 'Components/SearchFilterBar',
+    title: 'Dashboard/Orders/SearchFilterBar',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

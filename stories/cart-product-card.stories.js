@@ -94,7 +94,7 @@ const renderList = (cards) => {
 };
 
 export default {
-    title: 'Components/CartProductCard',
+    title: 'Checkout/Cart/CartProductCard',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

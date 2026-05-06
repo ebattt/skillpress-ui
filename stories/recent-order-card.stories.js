@@ -71,7 +71,7 @@ const renderGrid = (items = orders) => {
 };
 
 export default {
-    title: 'Components/RecentOrderCard',
+    title: 'Dashboard/Overview/RecentOrderCard',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

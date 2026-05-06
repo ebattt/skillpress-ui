@@ -64,7 +64,7 @@ const renderBillingForm = () => {
 };
 
 export default {
-    title: 'Primitives/FormLayout',
+    title: 'Checkout/Forms/FormLayout',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

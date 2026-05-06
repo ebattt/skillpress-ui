@@ -85,7 +85,7 @@ const allocationSummary = () => `
 `;
 
 export default {
-    title: 'Components/AllocationRows',
+    title: 'Checkout/Shipping & Payment/AllocationRows',
     tags: ['autodocs'],
     parameters: {
         docs: {

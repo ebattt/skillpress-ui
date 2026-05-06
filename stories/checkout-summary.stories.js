@@ -72,7 +72,7 @@ const renderSummary = ({
 };
 
 export default {
-    title: 'Components/CheckoutSummary',
+    title: 'Checkout/Summary/CheckoutSummary',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

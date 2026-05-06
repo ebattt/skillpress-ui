@@ -29,7 +29,7 @@ const renderGroup = () => {
 };
 
 export default {
-    title: 'Components/DashboardActionBadge',
+    title: 'Dashboard/Orders/DashboardActionBadge',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

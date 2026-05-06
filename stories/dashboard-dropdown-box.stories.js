@@ -28,7 +28,7 @@ const renderDropdown = ({ expanded = false, alert = false, type = 'payment' } = 
 };
 
 export default {
-    title: 'Components/DashboardDropdownBox',
+    title: 'Dashboard/Order Detail/DashboardDropdownBox',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

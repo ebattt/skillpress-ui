@@ -146,7 +146,7 @@ const renderTable = ({ activeQty = 50, selectedCol = 0, cols = 4, navUpDisabled 
 `;
 
 export default {
-    title: 'Components/PriceTable',
+    title: 'Product Page/Configurator/PriceTable',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

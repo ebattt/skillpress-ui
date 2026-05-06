@@ -131,7 +131,7 @@ const horizontalGrid = (selected = 'a4') => `
 `;
 
 export default {
-    title: 'Components/FormatCard',
+    title: 'Product Page/Configurator/FormatCard',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

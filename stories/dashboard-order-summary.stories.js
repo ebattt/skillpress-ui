@@ -51,7 +51,7 @@ const renderSummary = ({ multiple = false } = {}) => {
 };
 
 export default {
-    title: 'Components/DashboardOrderSummary',
+    title: 'Dashboard/Order Detail/DashboardOrderSummary',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

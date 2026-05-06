@@ -113,7 +113,7 @@ const renderTable = (items = rows) => {
 };
 
 export default {
-    title: 'Components/OrdersTable',
+    title: 'Dashboard/Orders/OrdersTable',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

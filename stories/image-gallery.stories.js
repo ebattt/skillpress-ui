@@ -39,7 +39,7 @@ const renderGallery = ({ src = imageFront, alt = 'Brossura fresata vista frontal
 };
 
 export default {
-    title: 'Components/ImageGallery',
+    title: 'Product Page/Hero/ImageGallery',
     tags: ['autodocs'],
     parameters: {
         docs: {

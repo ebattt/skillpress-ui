@@ -43,7 +43,7 @@ const renderGroup = ({ title = 'Metodo di spedizione', id = 'method-choice-title
 };
 
 export default {
-    title: 'Components/MethodChoiceCard',
+    title: 'Checkout/Shipping & Payment/MethodChoiceCard',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

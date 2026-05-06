@@ -5,7 +5,18 @@ export const parameters = {
     layout: 'padded',
     options: {
         storySort: {
-            order: ['Foundation', 'Primitives', 'Components', 'Sections']
+            order: [
+                'Foundation',
+                'Primitives',
+                'Components',
+                'Product Page',
+                ['Hero', 'Configurator', 'Post Configurator'],
+                'Checkout',
+                ['Cart', 'Shipping & Payment', 'Summary', 'Forms'],
+                'Dashboard',
+                ['Overview', 'Orders', 'Order Detail'],
+                'Sections'
+            ]
         }
     }
 };

@@ -49,7 +49,7 @@ const renderSteps = ({ rejected = false } = {}) => {
 };
 
 export default {
-    title: 'Components/OrderStatusSteps',
+    title: 'Dashboard/Order Detail/OrderStatusSteps',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

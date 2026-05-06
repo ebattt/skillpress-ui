@@ -99,7 +99,7 @@ const renderSidebar = ({
 };
 
 export default {
-    title: 'Components/SidebarTotals',
+    title: 'Product Page/Configurator/SidebarTotals',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

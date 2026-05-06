@@ -32,7 +32,7 @@ const renderAddressPreview = ({
 };
 
 export default {
-    title: 'Components/AddressPreview',
+    title: 'Checkout/Shipping & Payment/AddressPreview',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

@@ -49,7 +49,7 @@ const render = (open = false) => {
     return root;
 };
 
-export default { title: 'Components/Preview', tags: ['autodocs'] };
+export default { title: 'Product Page/Configurator/Preview', tags: ['autodocs'] };
 
 export const Default = {
     render: () => render(false),

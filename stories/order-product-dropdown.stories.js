@@ -66,7 +66,7 @@ const renderCard = ({ expanded = false, details = false } = {}) => {
 };
 
 export default {
-    title: 'Components/OrderProductDropdown',
+    title: 'Dashboard/Order Detail/OrderProductDropdown',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

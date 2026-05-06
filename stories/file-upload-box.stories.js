@@ -74,7 +74,7 @@ const renderModal = ({ visible = false, rejected = false } = {}) => {
 };
 
 export default {
-    title: 'Components/FileUploadBox',
+    title: 'Dashboard/Order Detail/FileUploadBox',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

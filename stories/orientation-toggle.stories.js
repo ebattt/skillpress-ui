@@ -3,7 +3,7 @@ import '../primitives/orientation-toggle.css';
 import { expect } from 'storybook/test';
 
 export default {
-    title: 'Primitives/OrientationToggle',
+    title: 'Product Page/Configurator/OrientationToggle',
 };
 
 const verticalSVG = `<svg width="10" height="14" viewBox="0 0 10 14" fill="none"><rect x="0.5" y="0.5" width="9" height="13" rx="1" stroke-width="1" fill="white"/></svg>`;

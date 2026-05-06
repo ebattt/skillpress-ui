@@ -3,7 +3,7 @@ import { expect } from 'storybook/test';
 
 const sampleSvg = (label, color) => `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><rect width="80" height="80" fill="${color}" opacity=".2"/><rect x="16" y="16" width="48" height="48" rx="6" fill="${color}" opacity=".75"/><text x="40" y="46" text-anchor="middle" fill="white" font-size="12" font-weight="700">${label}</text></svg>`)}`;
 
-export default { title: 'Components/MediaChoiceCard', tags: ['autodocs'] };
+export default { title: 'Product Page/Configurator/MediaChoiceCard', tags: ['autodocs'] };
 
 export const Effects = {
     render: () => {

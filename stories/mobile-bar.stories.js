@@ -114,7 +114,7 @@ const renderMobileBar = ({
 };
 
 export default {
-    title: 'Components/MobileTotalBar',
+    title: 'Product Page/Post Configurator/MobileTotalBar',
     tags: ['autodocs'],
     parameters: {
         layout: 'fullscreen',

@@ -20,7 +20,7 @@ const renderDashboardWelcomeBox = ({
 };
 
 export default {
-    title: 'Components/DashboardWelcomeBox',
+    title: 'Dashboard/Overview/DashboardWelcomeBox',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

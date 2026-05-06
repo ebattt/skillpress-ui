@@ -27,7 +27,7 @@ const renderPagination = ({
 };
 
 export default {
-    title: 'Components/TablePagination',
+    title: 'Dashboard/Orders/TablePagination',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

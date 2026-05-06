@@ -8,7 +8,7 @@ const mount = (html) => {
 };
 
 export default {
-    title: 'Primitives/IvaBanner',
+    title: 'Product Page/Configurator/IvaBanner',
     tags: ['autodocs'],
     parameters: {
         docs: {

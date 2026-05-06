@@ -38,7 +38,7 @@ const renderHeader = ({ status = 'warning' } = {}) => {
 };
 
 export default {
-    title: 'Components/OrderDetailHeader',
+    title: 'Dashboard/Order Detail/OrderDetailHeader',
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',

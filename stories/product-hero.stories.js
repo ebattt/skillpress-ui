@@ -192,7 +192,7 @@ const renderAnatomy = () => {
 };
 
 export default {
-    title: 'Sections/ProductHero',
+    title: 'Product Page/Hero/ProductHero',
     tags: ['autodocs'],
     parameters: {
         layout: 'fullscreen',
