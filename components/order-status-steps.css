@@ -1,0 +1,165 @@
+.product-stepper {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0.75rem 0.875rem 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.product-stepper__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 0.4375rem;
+    width: 5.5rem;
+    padding: 0;
+    color: inherit;
+    font-family: inherit;
+    text-align: center;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    opacity: 0.78;
+    transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+.product-stepper__step:hover,
+.product-stepper__step--active,
+.product-stepper__step--completed,
+.product-stepper__step--rejected,
+.product-stepper__step--selected {
+    opacity: 1;
+}
+
+.product-stepper__step:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 0.25rem;
+    border-radius: var(--radius-md);
+}
+
+.product-stepper__circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2.125rem;
+    height: 2.125rem;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    font-weight: 800;
+    background: var(--color-bg-white);
+    border: 1.5px solid #dbe3ec;
+    border-radius: var(--radius-full);
+    transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.product-stepper__num,
+.product-stepper__icon {
+    line-height: 1;
+}
+
+.product-stepper__icon {
+    display: inline-flex;
+    width: 1.15rem;
+    height: 1.15rem;
+}
+
+.product-stepper__icon--check::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: currentColor;
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m20 6-11 11-5-5' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+}
+
+.product-stepper__label {
+    color: #9aa7b5;
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.25;
+    white-space: normal;
+    transition: color var(--transition-fast);
+}
+
+.product-stepper__connector {
+    flex: 1;
+    min-width: 1rem;
+    height: 1px;
+    margin: 1rem 0.375rem 0;
+    background: #dbe3ec;
+    transition: background var(--transition-fast);
+}
+
+.product-stepper__connector--completed {
+    background: var(--color-secondary);
+}
+
+.product-stepper__step--completed .product-stepper__circle {
+    color: var(--color-bg-white);
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+.product-stepper__step--completed .product-stepper__label,
+.product-stepper__step--active .product-stepper__label,
+.product-stepper__step--rejected .product-stepper__label {
+    color: var(--color-secondary);
+}
+
+.product-stepper__step--active .product-stepper__circle,
+.product-stepper__step--rejected .product-stepper__circle {
+    color: var(--color-secondary);
+    background: var(--color-bg-white);
+    border-color: var(--color-secondary);
+    border-width: 2.5px;
+}
+
+.product-stepper__step--pending .product-stepper__circle {
+    color: #9aa7b5;
+    background: var(--color-bg-white);
+    border-color: #dbe3ec;
+}
+
+.product-stepper__step--pending .product-stepper__label {
+    color: #9aa7b5;
+}
+
+.product-stepper__step--selected .product-stepper__label {
+    text-decoration: none;
+}
+
+@media (max-width: 639px) {
+    .product-stepper {
+        padding: 0.75rem 0.75rem 0.125rem;
+    }
+
+    .product-stepper__step {
+        width: 4.75rem;
+    }
+
+    .product-stepper__circle {
+        width: 1.75rem;
+        height: 1.75rem;
+        font-size: 0.72rem;
+    }
+
+    .product-stepper__icon {
+        width: 0.9rem;
+        height: 0.9rem;
+    }
+
+    .product-stepper__label {
+        font-size: 0.68rem;
+    }
+
+    .product-stepper__connector {
+        min-width: 0.5rem;
+        margin: 0.875rem 0.25rem 0;
+    }
+}
