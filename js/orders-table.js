@@ -18,6 +18,19 @@
         }).length;
     }
 
+    function getDetailAction(row) {
+        var label = row.getAttribute('data-orders-table-detail-action-label');
+        var action = row.getAttribute('data-orders-table-detail-action');
+        if (!label || !action) return '';
+
+        var idName = row.getAttribute('data-orders-table-detail-action-id-name') || 'data-id';
+        var idValue = row.getAttribute('data-orders-table-detail-action-id') || '';
+
+        return '<button class="orders-table-detail-action" type="button" data-action="' +
+            escapeHtml(action) + '"' + (idValue ? ' ' + escapeHtml(idName) + '="' + escapeHtml(idValue) + '"' : '') +
+            '>' + escapeHtml(label) + '</button>';
+    }
+
     function closeDetailRow(detailRow) {
         if (!detailRow) return;
         detailRow.hidden = true;
@@ -67,7 +80,7 @@
         details.forEach(function (detail) {
             html += '<div><dt>' + escapeHtml(detail.label) + '</dt><dd>' + detail.value + '</dd></div>';
         });
-        html += '</dl></td>';
+        html += '</dl>' + getDetailAction(row) + '</td>';
         detailRow.innerHTML = html;
 
         return detailRow;
@@ -102,6 +115,7 @@
 
     function initTable(table) {
         if (!table || table.getAttribute('data-orders-table-mobile-init') === '1') return;
+        if (table.hasAttribute('data-supplier-activity-table')) return;
         if (!table.querySelector('.td-mobile-hide')) return;
 
         var headerRow = table.querySelector('thead tr');
@@ -142,7 +156,7 @@
 
     function init(root) {
         var scope = root || document;
-        scope.querySelectorAll('[data-orders-table], .orders-table').forEach(initTable);
+        scope.querySelectorAll('[data-orders-table], .orders-table:not([data-supplier-activity-table])').forEach(initTable);
     }
 
     namespace.OrdersTable = {
