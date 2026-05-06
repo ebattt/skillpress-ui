@@ -116,6 +116,14 @@
     background-color: var(--color-secondary-dark);
 }
 
+.orders-filter-btn--dashboard-primary {
+    background-color: #f08a00;
+}
+
+.orders-filter-btn--dashboard-primary:hover {
+    background-color: #d97c00;
+}
+
 .orders-filter-btn__icon {
     width: 1.125rem;
     height: 1.125rem;

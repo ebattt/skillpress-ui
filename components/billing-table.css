@@ -46,6 +46,11 @@
     vertical-align: middle;
 }
 
+.billing-table td.font-semibold,
+.billing-table strong {
+    font-weight: var(--font-weight-semibold);
+}
+
 .billing-table tbody tr {
     border-bottom: 1px solid var(--color-bg-gray-200);
     transition: background-color var(--transition-fast);
@@ -93,6 +98,11 @@
     max-width: 2rem;
     padding-right: 0.125rem !important;
     padding-left: 0.125rem !important;
+}
+
+.billing-table tbody tr[aria-expanded="true"] .td-mobile-chevron__icon {
+    background-color: var(--color-primary);
+    transform: rotate(180deg);
 }
 
 .billing-table__icon,
@@ -153,4 +163,86 @@
 .dash-link--download__icon--download {
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3Cpath d='M5 21h14'/%3E%3C/svg%3E") center / contain no-repeat;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3Cpath d='M5 21h14'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+@media (max-width: 639px) {
+    .billing-table {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .billing-table th {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.68rem;
+    }
+
+    .billing-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .billing-table .th-mobile-hide,
+    .billing-table .td-mobile-hide,
+    .billing-table .billing-table__pref-col {
+        display: none !important;
+    }
+
+    .billing-table th:first-child,
+    .billing-table td:first-child {
+        padding-left: 0.875rem;
+    }
+
+    .billing-table th:last-child,
+    .billing-table td:last-child {
+        padding-right: 0.875rem;
+    }
+
+    .billing-table td:first-child {
+        width: auto;
+        min-width: 0;
+        white-space: normal;
+    }
+
+    .billing-table td.td-text-center:not(.billing-table__pref-col) {
+        width: 2.75rem;
+        min-width: 2.75rem;
+        max-width: 2.75rem;
+        padding-left: 0.375rem;
+        padding-right: 0.875rem;
+        text-align: right;
+    }
+
+    .billing-table td.td-text-center:not(.billing-table__pref-col) .dash-link--download {
+        justify-content: flex-end;
+    }
+
+    .billing-table__mobile-address {
+        max-width: 100%;
+        margin-top: 0.25rem;
+        color: var(--color-text-meta);
+        font-size: 0.78rem;
+        line-height: 1.35;
+    }
+
+    .dash-link--download__icon {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .billing-table td {
+        padding-top: 0.6875rem;
+        padding-bottom: 0.6875rem;
+    }
+
+    .billing-table th:first-child,
+    .billing-table td:first-child {
+        padding-left: 0.75rem;
+    }
+
+    .billing-table th:last-child,
+    .billing-table td:last-child {
+        padding-right: 0.75rem;
+    }
 }

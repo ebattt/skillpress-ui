@@ -93,6 +93,24 @@
     color: var(--color-secondary-dark);
 }
 
+.button--dashboard-link {
+    min-height: auto;
+    padding: 0;
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 0;
+    color: var(--color-primary);
+    box-shadow: none;
+    font-size: 0.9375rem;
+}
+
+.button--dashboard-link:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--color-primary-dark);
+    box-shadow: none;
+}
+
 .button--dashed {
     width: 100%;
     min-height: auto;
