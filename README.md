@@ -7,7 +7,7 @@ Manrope e servito dal package. Material Symbols non e una dipendenza runtime glo
 
 ## Stato
 
-Versione corrente: `0.2.0-alpha.10`.
+Versione corrente: `0.2.0-alpha.11`.
 
 Perimetro attuale:
 - Manrope self-hosted nel package
@@ -21,7 +21,7 @@ Perimetro attuale:
 - componenti composti: FeatureBox, ImageGallery, ProductHero, StepIndicator,
   FormatCard, Preview, MediaChoiceCard, PriceTable, SidebarTotals,
   RelatedProducts, MobileTotalBar, runtime dashboard pubblicati fino ad alpha.10
-  incluso `BillingFormCard`
+  incluso `BillingFormCard`, runtime dashboard shell `DashboardShell`
 - bundle runtime `bundles/demo-minimal.css`
 - Storybook nel repository per visualizzazione e documentazione tecnica
 
