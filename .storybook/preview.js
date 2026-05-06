@@ -14,7 +14,7 @@ export const parameters = {
                 'Checkout',
                 ['Cart', 'Shipping & Payment', 'Summary', 'Forms'],
                 'Dashboard',
-                ['Overview', 'Orders', 'Order Detail'],
+                ['Overview', 'Orders', 'Order Detail', 'Billing'],
                 'Sections'
             ]
         }

@@ -464,65 +464,99 @@
 }
 
 @media (max-width: 639px) {
+    .table-wrapper--scroll {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .orders-table {
+        width: 100%;
+        max-width: 100%;
+    }
+
     .orders-table th {
-        padding: 0.375rem 0.1875rem;
-        font-size: var(--font-size-xs);
+        padding: 0.35rem 0.125rem;
+        font-size: 0.64rem;
         white-space: normal;
     }
 
     .orders-table td {
-        padding: 0.5rem 0.1875rem;
-        font-size: 0.8125rem;
+        padding: 0.45rem 0.125rem;
+        font-size: 0.76rem;
         white-space: normal;
     }
 
     .orders-table--compact .th-id,
     .orders-table--compact .td-id {
-        width: 3.95rem;
+        width: 3rem;
     }
 
     .orders-table--compact .th-status,
     .orders-table--compact .td-status,
     .orders-table--compact .th-payment,
     .orders-table--compact .td-payment {
-        width: 5.85rem;
+        width: 5.25rem;
     }
 
     .orders-table--compact .th-total,
     .orders-table--compact .td-total {
-        width: 6.35rem;
-        padding-right: 2rem !important;
+        width: 3.85rem;
     }
 
     .orders-table--compact .th-title,
     .orders-table--compact .td-title {
-        width: clamp(5.75rem, 19vw, 6.75rem);
-        min-width: 5.75rem;
-        max-width: 6.75rem;
+        width: auto;
+        min-width: 0;
+        max-width: none;
     }
 
     .table-title-cell {
-        width: min(100%, 6.75rem);
-        min-width: 5.75rem;
-        max-width: 6.75rem;
+        width: 100%;
+        min-width: 0;
+        max-width: none;
         gap: 0.3125rem;
     }
 
+    .table-title-cell__text {
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        text-overflow: clip;
+    }
+
     .orders-table .badge {
-        font-size: 0.625rem;
-        padding: 0.125rem 0.3125rem;
+        font-size: 0.56rem;
+        padding: 0.125rem 0.25rem;
+        white-space: normal;
+        text-align: center;
     }
 
     .table-title-cell__actions {
-        gap: 0.25rem;
-        min-height: 1.375rem;
+        display: none;
+    }
+
+    .table-title-cell__actions .dash-action-badge {
+        max-width: min(100%, 6.5rem);
     }
 
     .td-mobile-chevron,
     .th-mobile-chevron {
-        width: 1.875rem;
-        min-width: 1.875rem;
-        max-width: 1.875rem;
+        width: 1.35rem;
+        min-width: 1.35rem;
+        max-width: 1.35rem;
+    }
+
+    .td-mobile-chevron__button {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    .td-mobile-chevron__icon {
+        width: 1.125rem;
+        height: 1.125rem;
     }
 
     .orders-table--compact .th-id,
@@ -537,47 +571,47 @@
         padding-right: 0.125rem !important;
     }
 
-    .orders-table--compact .th-total,
-    .orders-table--compact .td-total {
-        padding-right: 2rem !important;
-    }
-
     .mobile-details-grid {
         grid-template-columns: 1fr;
         gap: 0.625rem;
+        max-width: 100%;
+        overflow-wrap: anywhere;
     }
 
     .tr-mobile-details td {
         padding: 0.75rem;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
     }
 }
 
 @media (max-width: 480px) {
     .orders-table--compact .th-id,
     .orders-table--compact .td-id {
-        width: 3.7rem;
+        width: 2.75rem;
     }
 
     .orders-table--compact .th-status,
     .orders-table--compact .td-status {
-        width: 5.5rem;
+        width: 5.1rem;
     }
 
     .orders-table--compact .th-total,
     .orders-table--compact .td-total {
-        width: 6.1rem;
+        width: 3.75rem;
     }
 
     .orders-table--compact .th-title,
     .orders-table--compact .td-title {
-        width: clamp(5.25rem, 17vw, 6.25rem);
-        min-width: 5.25rem;
-        max-width: 6.25rem;
+        width: auto;
+        min-width: 0;
+        max-width: none;
     }
 
     .table-title-cell {
-        width: min(100%, 6.25rem);
-        min-width: 5.25rem;
-        max-width: 6.25rem;
+        width: 100%;
+        min-width: 0;
+        max-width: none;
     }
 }

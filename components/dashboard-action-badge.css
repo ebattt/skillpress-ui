@@ -68,3 +68,17 @@
 .table-actions-list .dash-action-badge {
     max-width: 100%;
 }
+
+@media (max-width: 639px) {
+    .dash-action-badge {
+        max-width: 100%;
+        height: auto;
+        min-height: 1rem;
+        padding: 0.125rem 0.3125rem;
+        font-size: 0.54rem;
+        line-height: 1.15;
+        letter-spacing: 0.015em;
+        white-space: normal;
+        text-align: left;
+    }
+}
