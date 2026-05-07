@@ -122,7 +122,7 @@ Snapshot consumer base della tabella prezzi.
 
 | Classe | Ruolo |
 |---|---|
-| `.price-table` | `<table>` base. `width: 100%`, fallback `min-width: 500px`, `table-layout: fixed`, `font-size: var(--font-size-xs)`, `border-collapse`. Nei browser moderni la min-width si riduce automaticamente per 1/2/3 colonne. |
+| `.price-table` | `<table>` base. `width: 100%`, fallback `min-width: 500px`, `font-size: var(--font-size-xs)`, `border-collapse`. Usa table layout automatico come la demo originale, cosi' la colonna quantita resta stretta e le colonne prezzo assorbono lo spazio. Nei browser moderni la min-width si riduce automaticamente per 1/2/3 colonne. |
 
 ### Header cells
 
@@ -158,7 +158,7 @@ Snapshot consumer base della tabella prezzi.
 
 | Classe | Ruolo |
 |---|---|
-| `.price-table__cell-btn` | Bottone prezzo base: radius sm, font xs. |
+| `.price-table__cell-btn` | Bottone prezzo base: radius sm, font xs, line-height normal allineata alla demo originale. |
 | `.price-table__cell-btn--default` | Bg bianco, bordo gray-200; hover bordo secondary. |
 | `.price-table__cell-btn--row-active` | Bg `#e8f5f3`, bordo `rgba(28,114,100,0.3)`; hover bordo secondary. |
 | `.price-table__cell-btn--selected` | Bg `--color-secondary`, testo bianco, `--shadow-md`. |

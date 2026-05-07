@@ -163,7 +163,7 @@ Nessun script JS richiesto dalla libreria.
 
 ## Token usati
 
-`--page-max-width`, `--page-padding-x`, `--color-text`, `--color-text-secondary`, `--color-text-light`, `--font-size-3xl`, `--font-size-base`, `--font-size-sm`, `--font-weight-bold`, `--font-weight-semibold`, `--line-height-tight`.
+`--page-max-width`, `--page-padding-x`, `--color-text`, `--color-text-secondary`, `--color-text-light`, `--font-size-3xl`, `--font-size-base`, `--font-size-sm`, `--font-weight-bold`, `--font-weight-semibold`, `--line-height-normal`.
 
 ## Note CMS
 
