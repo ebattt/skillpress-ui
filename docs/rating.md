@@ -108,6 +108,30 @@ Storico: prima della 0.2.0 il rating usava `.stars-outer` / `.stars-empty` / `.s
 | `.stars-filled` | `.rating__filled` |
 | `.star-icon` | `.rating__star` |
 
+## Classi pubbliche
+
+`.rating`, `.rating__empty`, `.rating__filled`, `.rating__star`.
+
+## Data hooks
+
+Nessun hook `data-*` pubblico. `Rating` e' CSS-only.
+
+## Modifier / stati
+
+Lo stato visuale e' il `width` inline di `.rating__filled`. Non ci sono modifier pubblici.
+
+## Backend owns
+
+Valore numerico del rating, percentuale inline, testo recensioni quando composto in `ProductHero` e validazione del range.
+
+## Library owns
+
+Layering stelle vuote/piene, clipping, colori e spaziatura interna.
+
+## Demo-only
+
+Valori rating e conteggi recensioni usati nelle stories/lab page.
+
 ## Out of scope
 
 - rating interattivo (selezione utente).

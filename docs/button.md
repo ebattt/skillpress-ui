@@ -130,6 +130,30 @@ Valori letterali mantenuti dal catalogo:
 - stato iniziale disabled quando necessario.
 - eventuale icona inline SVG nello slot `.button__icon`.
 
+## Classi pubbliche
+
+`.button`, `.button__icon` e i modifier `.button--primary`, `.button--secondary`, `.button--outline`, `.button--ghost`, `.button--dashed`, `.button--sm`, `.button--full`, `.button--disabled`.
+
+## Data hooks
+
+Nessun hook `data-*` pubblico. `Button` e' CSS-only.
+
+## Modifier / stati
+
+Varianti visuali, dimensione small/full-width e stato disabled. Gli stati hover/focus sono gestiti dal CSS; loading e pressed state non fanno parte del contratto.
+
+## Backend owns
+
+Testo, destinazione link, tipo submit/button, stato disabled iniziale, eventuale SVG inline e gestione click/submit/routing.
+
+## Library owns
+
+Spaziatura, colori, radius, focus ring, allineamento icona/testo e resa disabled.
+
+## Demo-only
+
+Eventuali handler di click, analytics, label di esempio e URL dimostrativi nelle lab page.
+
 ## Out of scope
 
 - icon-only button.

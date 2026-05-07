@@ -130,6 +130,30 @@ Nessun script JS richiesto.
 - composizione con primitive esistenti come Button e Badge.
 - eventuali immagini o URL editoriali dentro lo slot media.
 
+## Classi pubbliche
+
+`.card`, `.card__media`, `.card__header`, `.card__body`, `.card__footer`, `.card__title`, `.card__description`, `.card__eyebrow`, `.card__actions` e i modifier `.card--interactive`, `.card--selected`, `.card--disabled`, `.card--control-row`, `.card--surface-muted`.
+
+## Data hooks
+
+Nessun hook `data-*` pubblico. `Card` e' CSS-only.
+
+## Modifier / stati
+
+Interattiva, selezionata, disabilitata, control row e surface muted. La libreria non applica o rimuove i modifier a runtime.
+
+## Backend owns
+
+Scelta semantica del tag, contenuti degli slot, URL/immagini, stato iniziale selezionato/disabilitato e azioni applicative.
+
+## Library owns
+
+Superficie, bordo, radius, padding, gerarchia tipografica base, hover/focus visuale e stati di superficie.
+
+## Demo-only
+
+Contenuti placeholder, azioni non collegate e composizioni lab usate per mostrare gli slot.
+
 ## Out of scope
 
 - product-card o catalog-card.

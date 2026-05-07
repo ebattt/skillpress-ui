@@ -69,6 +69,30 @@ Nessun script JS richiesto.
 - visibilita' del badge.
 - nessuna classe interna fuori contratto.
 
+## Classi pubbliche
+
+`.badge` e i modifier `.badge--success`, `.badge--warning`, `.badge--error`, `.badge--info`, `.badge--cancelled`, `.badge--neutral`.
+
+## Data hooks
+
+Nessun hook `data-*` pubblico. `Badge` e' CSS-only.
+
+## Modifier / stati
+
+Varianti semantiche visuali. Il significato applicativo dello stato non e' interpretato dalla libreria.
+
+## Backend owns
+
+Mapping stato dominio -> variante visuale, testo visibile, visibilita' del badge e ordine nel markup.
+
+## Library owns
+
+Layout inline, dot decorativo, colore variante, tipografia e radius.
+
+## Demo-only
+
+Label e stati dimostrativi nelle stories/lab page.
+
 ## Out of scope
 
 - badge solidi con background pieno.

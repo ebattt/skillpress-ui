@@ -100,6 +100,30 @@ Nessun script JS richiesto.
 - quale voce e' corrente (classe `--current` + omissione `<a>`).
 - markup Schema.org richiesto dal contratto (`itemscope`, `itemtype`, `itemprop`, `<meta itemprop="position">`).
 
+## Classi pubbliche
+
+`.breadcrumb`, `.breadcrumb__list`, `.breadcrumb__item`, `.breadcrumb__item--current`, `.breadcrumb__link`.
+
+## Data hooks
+
+Nessun hook `data-*` pubblico. `Breadcrumb` e' CSS-only.
+
+## Modifier / stati
+
+Voce corrente tramite `.breadcrumb__item--current` e omissione del link. Non ci sono stati runtime.
+
+## Backend owns
+
+Albero navigazione, URL, ordine, voce corrente, traduzioni e markup Schema.org.
+
+## Library owns
+
+Layout flex/wrap, separatore `/`, colori, hover/focus link e spaziatura.
+
+## Demo-only
+
+Gerarchie e URL di esempio nelle lab page.
+
 ## Out of scope
 
 - icone home o chevron al posto di `/` (variante non presente in `elements-ui`).

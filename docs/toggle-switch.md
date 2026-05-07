@@ -194,3 +194,27 @@ La demo originale usava modifier `is-checked` (alias `active`) come classe stand
 | `[data-skillpress-toggle-switch]` | `[data-toggle-switch]` |
 
 `.toggle-switch` (block), `.toggle-switch__thumb`, `.toggle-switch__label`, `.toggle-switch-field` (wrapper opzionale) sono invariati. Attributi ARIA nativi (`aria-checked`, `aria-disabled`, `role="switch"`, `disabled`) restano invariati.
+
+## Classi pubbliche
+
+`.toggle-switch-field`, `.toggle-switch`, `.toggle-switch__thumb`, `.toggle-switch__label`, `.toggle-switch--checked`.
+
+## Data hooks
+
+`data-toggle-switch` e' l'hook pubblico di inizializzazione. La libreria non usa classi CSS come selector entry.
+
+## Modifier / stati
+
+Checked tramite `.toggle-switch--checked` + `aria-checked="true"`; disabled tramite `disabled` o `aria-disabled="true"`.
+
+## Backend owns
+
+Stato iniziale, label accessibile, persistenza, sincronizzazione con form e reazioni applicative all'evento `toggle-switch:change`.
+
+## Library owns
+
+Track/thumb, animazione visuale, sincronizzazione classe/ARIA in `init()`, blocco dello stato disabled ed evento UI.
+
+## Demo-only
+
+Toggle multicopertina e handler dimostrativi che mostrano come ascoltare il cambio stato.

@@ -164,6 +164,30 @@ Valori letterali mantenuti dal catalogo:
 - testo dei titoli/status: l'overflow e' troncato con ellipsis su `.step-indicator__title`. Mantenere stringhe brevi (max ~20 char per cella desktop).
 - `data-step` e' libero: la libreria non lo legge, ma e' utile per query CMS-side e analytics.
 
+## Classi pubbliche
+
+`.step-indicator`, `.step-indicator__wrapper`, `.step-indicator__container`, `.steps-line`, `.steps-grid`, `.step-indicator__item`, `.step-card-content`, `.step-indicator__badge`, `.step-info`, `.step-indicator__title`, `.step-indicator__status` e i modifier documentati `--active`, `--inactive`, `--completed`.
+
+## Data hooks
+
+Nessun hook `data-*` richiesto dalla libreria. `data-step` e' opzionale e consumer/backend-owned.
+
+## Modifier / stati
+
+Step attivo, inattivo e completato tramite modifier sui sub-element. La libreria non sincronizza automaticamente gli stati.
+
+## Backend owns
+
+Numero step, label, stato corrente/completato, coerenza dei modifier, `data-step` opzionale e analytics.
+
+## Library owns
+
+Layout responsive, connettore desktop, badge, colori stato, ellipsis dei titoli e spaziatura.
+
+## Demo-only
+
+Titoli degli step configuratore prodotto e progressione statica usata nelle stories/lab page.
+
 ## Out of scope
 
 - icona check dentro `.step-indicator__badge--completed` (resta solo numero).
