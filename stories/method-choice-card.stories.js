@@ -17,10 +17,11 @@ const paymentMethods = [
     ['store', 'In sede', 'Contanti/POS']
 ];
 
-const renderCard = ([icon, name, detail], selected = false) => `
+const renderCard = ([icon, name, detail, disabled = false], selected = false) => `
     <button class="method-choice-card${selected ? ' method-choice-card--selected' : ''}"
             type="button"
             aria-pressed="${selected ? 'true' : 'false'}"
+            ${disabled ? 'disabled aria-disabled="true"' : ''}
             data-method-choice-card>
         ${icon ? `<span class="method-choice-card__icon method-choice-card__icon--${icon}" aria-hidden="true"></span>` : ''}
         <span class="method-choice-card__name">${name}</span>
@@ -90,5 +91,23 @@ export const ReferenceFromCheckout = {
                 story: 'Reference from checkout shipping/payment tag grids. Demo classes `shipping-tag`/`payment-tag` converge into `method-choice-card`; Material Symbols payment icons are CSS-owned.'
             }
         }
+    }
+};
+
+export const DisabledAndLongLabels = {
+    render: () => renderGroup({
+        title: 'Metodo di pagamento',
+        id: 'payment-disabled-long-title',
+        items: [
+            ['card', 'Carta aziendale con autorizzazione amministrativa', 'Visa, Mastercard, Amex'],
+            ['paypal', 'PayPal', 'Non disponibile per importi superiori a 400 euro', true],
+            ['bank', 'Bonifico bancario anticipato', 'Verifica contabile richiesta']
+        ],
+        selectedIndex: 0
+    }),
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        await expect(canvas.getByRole('button', { name: /PayPal/ })).toBeDisabled();
+        await expect(canvas.getByText('Carta aziendale con autorizzazione amministrativa')).toHaveClass('method-choice-card__name');
     }
 };

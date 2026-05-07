@@ -193,6 +193,53 @@ visiva di sezione aperta, header e contenuto.
 - non deve cambiare il markup interno della sezione, ne' aggiungere classi custom fuori contratto, ne' duplicare il behavior JS.
 - non deve fornire SVG, immagini, Material Symbols o altri asset per le icone chrome dell'header.
 
+## Classi pubbliche
+
+- `.accordion`
+- `.accordion--surface-white`
+- `.accordion__section`
+- `.accordion__section--expanded`
+- `.accordion__header`
+- `.accordion__header-left`
+- `.accordion__badge`
+- `.accordion__header-icon`
+- `.accordion__header-icon--cart`
+- `.accordion__header-icon--shipping`
+- `.accordion__header-icon--payment`
+- `.accordion__title`
+- `.accordion__icon`
+- `.accordion__content`
+- `.accordion__inner`
+
+## Data hooks
+
+- `data-accordion`: hook pubblico di init del runtime.
+- `data-accordion-section`: sotto-ruolo stabile del markup.
+- `data-accordion-trigger`: sotto-ruolo stabile del markup.
+
+## Modifier / stati
+
+- `.accordion__section--expanded` + `aria-expanded="true"`: sezione aperta.
+- Sezione senza modifier + `aria-expanded="false"`: sezione chiusa.
+- `.accordion--surface-white`: variante di superficie checkout-like.
+
+## Backend owns
+
+- Numero sezioni, titoli, contenuti slot e stato iniziale aperto/chiuso.
+- Scelta di badge e icona header tra quelle documentate.
+- Logica business tra sezioni, persistenza e dipendenze form.
+
+## Library owns
+
+- Toggle locale single-open, sync `aria-expanded`, altezza pannello e eventi
+  `sp:accordion:open|close`.
+- Icone chrome CSS `cart|shipping|payment`, spacing, superfici e transizioni.
+
+## Demo-only
+
+- Contenuti degli slot nelle pagine consumer e fixture product-page/checkout.
+- Qualsiasi script che collega accordion a prezzi, form o routing.
+
 ## Out of scope
 
 - accordion come contenitore arbitrario con gerarchie diverse.

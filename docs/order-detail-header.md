@@ -23,7 +23,7 @@ usa classi `.order-header__badge*`. `Breadcrumb` non e' corretto perche' la
 fonte e' una back action contestuale. `Button` non replica il back link light e
 non copre il blocco header. `Card` non c'entra: la fonte non ha superficie.
 
-## Markup
+## Markup contract
 
 ```html
 <div class="order-detail-header" data-order-detail-header>
@@ -47,7 +47,7 @@ non copre il blocco header. `Card` non c'entra: la fonte non ha superficie.
 </div>
 ```
 
-## Classi
+## Classi pubbliche
 
 - `.order-detail-header`
 - `.order-detail-header__back`
@@ -65,11 +65,33 @@ non copre il blocco header. `Card` non c'entra: la fonte non ha superficie.
 - `.order-header__subtitle-emphasis`
 - `.order-header__meta`
 
-## Responsabilita'
+## Data hooks
+
+Nessun data-* pubblico richiesto. Il componente e CSS-only.
+
+`data-order-detail-header`, `data-dashboard-nav` e `data-dashboard-action-badge`
+sono locator/wiring demo/app o hook di componenti figli, non API richiesta da
+`OrderDetailHeader`.
+
+## Modifier / stati
+
+Modifier pubblici: `.order-header__badge--warning`, `.order-header__badge--success`,
+`.order-header__badge--error`, `.order-header__badge--neutral`.
+
+## Backend owns
 
 Il backend/app decide contenuti, stato iniziale, modifier badge e destinazione
-della back action. La libreria decide spacing, gerarchia tipografica, dot badge,
-icona back e responsive.
+della back action.
+
+## Library owns
+
+La libreria decide spacing, gerarchia tipografica, dot badge, icona back e
+responsive.
+
+## Demo-only
+
+`data-dashboard-nav` per routing demo/app. Eventuali `data-section`, toolbar
+scenari, renderer didattici e fixture non sono API pubbliche del componente.
 
 ## Differenze dalla demo
 
@@ -78,7 +100,7 @@ icona back e responsive.
   `.order-header__top`.
 - `.back-link` viene ricondotto a `.order-detail-header__back`.
 
-## Fuori Scope
+## Out of scope
 
 Routing, fetch dati ordine, cambio stato, payment action box, prodotti,
 summary, stepper e upload.

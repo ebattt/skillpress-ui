@@ -33,7 +33,7 @@ centrati.
 `Button` e `Card` sono primitive troppo generiche: non documentano il contratto
 di gruppo, stato selected e sotto-elementi `name/detail/price/icon`.
 
-## Markup
+## Markup contract
 
 ```html
 <div class="method-choice" data-method-choice>
@@ -67,7 +67,7 @@ di gruppo, stato selected e sotto-elementi `name/detail/price/icon`.
 </button>
 ```
 
-## Classi
+## Classi pubbliche
 
 - `.method-choice`
 - `.method-choice--flat`
@@ -85,13 +85,37 @@ di gruppo, stato selected e sotto-elementi `name/detail/price/icon`.
 - `.method-choice-card__detail`
 - `.method-choice-card__price`
 
-## Attributi
+## Data hooks
 
 - `[data-method-choice]`: root semantica del gruppo.
 - `[data-method-choice-card]`: card cliccabile.
-- `aria-pressed="true|false"`: stato accessibile della selezione.
 
-## Fuori Scope
+## Modifier / stati
+
+- `.method-choice--flat`: rimuove separatore/margine quando il gruppo vive gia'
+  in una sezione incorniciata.
+- `.method-choice-card--selected` + `aria-pressed="true"`: opzione selezionata.
+- Card senza modifier + `aria-pressed="false"`: opzione disponibile.
+- `disabled` o `aria-disabled="true"`: opzione non selezionabile.
+
+## Backend owns
+
+- Opzioni disponibili, label, detail, price e stato iniziale.
+- Toggle al click, validazione step e sync con spedizione/pagamento.
+- Uso di `disabled` / `aria-disabled` per opzioni non disponibili.
+
+## Library owns
+
+- Grid responsive, tile, hover/focus, selected/disabled state e icone CSS
+  `card|paypal|bank|cash|store`.
+- Stabilita' delle classi pubbliche e hook markup documentati sopra.
+
+## Demo-only
+
+- Fixture metodi spedizione/pagamento e scenari Storybook con label lunghe.
+- Qualsiasi binding demo che cambia selezione o simula gateway.
+
+## Out of scope
 
 - validazione step;
 - calcolo prezzi/spedizione;

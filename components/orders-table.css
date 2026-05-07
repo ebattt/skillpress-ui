@@ -46,6 +46,13 @@
     vertical-align: middle;
 }
 
+.orders-table__empty {
+    padding: 2rem 1rem;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    text-align: center;
+}
+
 .orders-table tbody tr {
     border-bottom: 1px solid var(--color-bg-gray-200);
     transition: background-color var(--transition-fast);

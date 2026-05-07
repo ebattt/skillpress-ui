@@ -24,7 +24,7 @@ pre-acquisto, con root `.checkout-summary`, CTA di avanzamento, note e help.
 `SidebarTotals` e' specifico del configuratore prodotto. `Card` non copre il
 contratto item/totali/CTA della fonte reale.
 
-## Markup
+## Markup contract
 
 ```html
 <article class="order-summary order-detail-grid__summary" data-dashboard-order-summary>
@@ -62,7 +62,7 @@ contratto item/totali/CTA della fonte reale.
 </article>
 ```
 
-## Classi
+## Classi pubbliche
 
 - `.order-summary`
 - `.order-detail-grid__summary`
@@ -84,11 +84,32 @@ contratto item/totali/CTA della fonte reale.
 - `.order-summary__download-btn`
 - `.order-summary__download-icon`
 
-## Responsabilita'
+## Data hooks
+
+Nessun data-* pubblico richiesto. Il componente e CSS-only.
+
+`data-dashboard-order-summary` puo' essere usato come locator demo/app, ma non e'
+richiesto dalla libreria.
+
+## Modifier / stati
+
+Nessun modifier visuale pubblico dedicato. Gli stati derivano da contenuti e CTA
+renderizzati dal backend/app.
+
+## Backend owns
 
 Il backend/app decide righe item, label, importi formattati, presenza della CTA
-e comportamento del download. La libreria decide layout, sticky desktop,
-spacing, typography, superficie e icona download.
+e comportamento del download.
+
+## Library owns
+
+La libreria decide layout, sticky desktop, spacing, typography, superficie e
+icona download.
+
+## Demo-only
+
+`data-dashboard-order-summary` se usato come locator. Eventuali `data-section`,
+toolbar scenari, renderer didattici e fixture appartengono alla demo/app.
 
 ## Differenze dalla demo
 
@@ -96,7 +117,7 @@ spacing, typography, superficie e icona download.
 - `.dash-btn--outline` della demo viene ricondotto a
   `.order-summary__download-btn`, elemento BEM del componente.
 
-## Fuori Scope
+## Out of scope
 
 Calcoli fiscali, formattazione valuta, download reale, routing, payment/shipping
 dropdown e header dettaglio ordine.

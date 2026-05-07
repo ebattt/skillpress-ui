@@ -2,7 +2,7 @@
 
 Pannelli tracking prodotto per il dettaglio ordine dashboard. Deriva da `dashboard/js/order-products.js` e da `dashboard/css/components/_order-detail.css`.
 
-## Responsabilita
+## Scope
 - mostrare banner stato step, gruppi file e file box;
 - fornire stati visuali per file mancanti, pronti, approvati, errore, locked e copia zero;
 - sincronizzare il pannello visibile con `OrderStatusSteps`.
@@ -20,7 +20,7 @@ Se il markup viene iniettato dopo il load:
 window.SkillpressUI.OrderStepDetail.init(root);
 ```
 
-## Markup minimo
+## Markup contract
 
 ```html
 <div data-order-step-detail>
@@ -39,22 +39,70 @@ window.SkillpressUI.OrderStepDetail.init(root);
 </div>
 ```
 
-## Backend/CMS decide
-- prodotti, step, pannelli renderizzati e stato iniziale;
-- testi, file, URL istruzioni/template/report/tracking;
-- azioni e payload applicativi.
+## Classi pubbliche
 
-## Libreria decide
-- layout, spacing, responsive e stati visuali;
-- icone chrome via CSS;
-- show/hide pannelli con `hidden` e `aria-hidden`;
-- evento `sp:order-step-detail-change`.
+- `.product-step-detail`
+- `.step-status-banner`
+- `.step-status-banner--info`
+- `.step-status-banner--neutral`
+- `.step-status-banner--success`
+- `.step-status-banner--warning`
+- `.step-status-banner--error`
+- `.step-status-banner--locked`
+- `.step-status-banner__body`
+- `.step-status-banner__title`
+- `.step-status-banner__text`
+- `.product-file-box`
+- `.product-file-box--empty`
+- `.product-file-box--ready`
+- `.product-file-box--uploaded`
+- `.product-file-box--error`
+- `.product-file-box--locked`
+- `.product-file-box--selected`
+- `.product-file-box--readonly`
+- `.product-file-box--cz`
+- `.product-file-box--cz-confirmed`
+- `.product-file-box--cz-replaced`
+- `.product-file-box--cz-tochange`
+- `.product-file-box--cz-removed`
+- `.product-file-box--cz-neutral`
+- `.product-file-box__state--success`
+- `.product-file-box__state--warning`
+- `.product-file-box__state--muted`
 
-## Stati
+## Data hooks
+
+| Hook | Obbligatorio | Elemento | Ruolo |
+|---|---:|---|---|
+| `data-order-step-detail` | si | root | init componente |
+| `data-order-step-detail-panel` | si | pannello step | pannello da sincronizzare |
+| `data-step-id` | si | pannello step | id pannello da abbinare allo step selezionato |
+
+## Modifier / stati
+
 - Banner: `.step-status-banner--info|neutral|success|warning|error|locked`
 - File box: `.product-file-box--empty|ready|uploaded|error|locked|selected|readonly`
 - Copia zero: `.product-file-box--cz|--cz-confirmed|--cz-replaced|--cz-tochange|--cz-removed|--cz-neutral`
 - File state: `.product-file-box__state--success|warning|muted`
 
-## Fuori scope
+## Backend owns
+
+- prodotti, step, pannelli renderizzati e stato iniziale;
+- testi, file, URL istruzioni/template/report/tracking;
+- azioni e payload applicativi.
+
+## Library owns
+
+- layout, spacing, responsive e stati visuali;
+- icone chrome via CSS;
+- show/hide pannelli con `hidden` e `aria-hidden`;
+- evento `sp:order-step-detail-change`.
+
+## Demo-only
+
+Eventuali `data-action`, `data-section`, toolbar scenari, renderer didattici e
+fixture appartengono alla demo/app e non sono API pubbliche del componente.
+
+## Out of scope
+
 Upload reale, verifica PDF, avanzamento ordine, tracking, validazione, persistenza e chiamate API.

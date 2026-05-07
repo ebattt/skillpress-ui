@@ -43,7 +43,9 @@ Il consumer/CMS posiziona i modifier `.price-table__header-cell--selected` (colo
 - Singolo elenco prezzi senza asse quantita x consegna (usa `Card` + lista). Una sola colonna data e' supportata quando la scelta resta comunque una matrice quantita/prezzo.
 - Tabella generica non-prezzo: questo blocco e' specializzato (token `--color-secondary` per stato selected, `--font-size-xs`).
 
-## Markup base (snapshot consumer)
+## Markup contract
+
+Snapshot consumer base della tabella prezzi.
 
 ```html
 <div class="price-table__wrapper">
@@ -179,7 +181,24 @@ L'interazione tipica nella demo:
 2. il CMS sceglie una riga qty → applica `.price-table__row--active` su `<tr>`, `.price-table__qty-btn--active` su `<button>` qty, `.price-table__cell-btn--row-active` su tutte le `.price-table__cell-btn` della riga;
 3. all'intersezione (riga active + colonna selected), la `.price-table__cell-btn` riceve `--selected` (sostituisce `--row-active`).
 
-## Cosa decide il CMS/backend
+## Data hooks
+
+Nessun `data-*` pubblico. Il componente e' CSS-only; eventuali hook per
+selezione prezzo, tracking o analytics restano consumer/backend.
+
+## Modifier / stati
+
+- `.price-table__header-cell--selected`: colonna data selezionata.
+- `.price-table__header-date--light`: data leggibile su header selezionato.
+- `.price-table__row--active`: riga quantita selezionata.
+- `.price-table__qty-btn--active`: bottone quantita attivo.
+- `.price-table__cell-btn--row-active`: prezzo nella riga attiva, ma non
+  intersezione selezionata.
+- `.price-table__cell-btn--selected`: cella prezzo selezionata.
+- `.price-table__section--scrollable`: indicatore scroll orizzontale custom.
+- `.price-table__nav-arrow--disabled`: freccia verticale disabilitata.
+
+## Backend owns
 
 - numero di righe qty e di colonne data;
 - testi: numero qty, giorno settimana, data, prezzo formattato (incluso conversione IVA);
@@ -191,7 +210,7 @@ L'interazione tipica nella demo:
 - aggiornamento di `--price-table-scroll-thumb-width` e `--price-table-scroll-thumb-left` durante scroll/resize;
 - stato `--disabled` delle frecce verticali (primo / ultimo pagina).
 
-## Cosa decide la libreria
+## Library owns
 
 - 24 classi pubbliche + relative regole layout/colore/hover/transizione;
 - min-width tabella e ottimizzazione automatica 1/2/3 colonne con `:has()`;
@@ -199,7 +218,14 @@ L'interazione tipica nella demo:
 - breakpoint mobile 767px (icone verticali da 28px a 24px, touch target 40px) e 480px (densita extra);
 - token CSS riferiti (color, radius, spacing, font, transition, shadow).
 
-## Fuori scope
+## Demo-only
+
+- Fixture prezzi/date della product page e calcolo sconti demo.
+- Script demo che aggiorna selezione, paginazione quantita e thumb scroll.
+- Markup legacy delle frecce orizzontali overlay, mantenuto solo per
+  retrocompatibilita' visuale e nascosto dal CSS corrente.
+
+## Out of scope
 
 - behavior selezione cella + nav verticale (vive in `section-6.js` o consumer equivalente);
 - calcolo prezzo IVA (`displayPrice = price.value * ivaRate`);

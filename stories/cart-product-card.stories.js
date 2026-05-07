@@ -53,9 +53,9 @@ const renderCard = ({
 } = {}) => `
     <div class="cart-product-card" data-cart-product-card>
         <div class="cart-product-card__row">
-            <div class="cart-product-card__image-wrap">
-                <img src="${image}" alt="${name}" class="cart-product-card__image">
-            </div>
+                            <div class="cart-product-card__image-wrap">
+                                ${image ? `<img src="${image}" alt="${name}" class="cart-product-card__image">` : ''}
+                            </div>
             <div class="cart-product-card__body">
                 <div class="cart-product-card__header">
                     <div class="cart-product-card__info">
@@ -159,5 +159,18 @@ export const MultipleProducts = {
         const canvas = within(canvasElement);
         await expect(canvas.getAllByRole('button', { name: 'Dettagli prodotto' })).toHaveLength(2);
         await expect(canvas.getByRole('heading', { name: 'Libro con copertina rigida' })).toBeInTheDocument();
+    }
+};
+
+export const MissingImage = {
+    render: () => renderList(renderCard({
+        name: 'Prodotto senza immagine configurata',
+        image: '',
+        details: renderDetails({ format: 'Personalizzato', pages: '64' })
+    })),
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        await expect(canvas.getByRole('heading', { name: 'Prodotto senza immagine configurata' })).toBeInTheDocument();
+        await expect(canvasElement.querySelector('.cart-product-card__image-wrap')).toBeInTheDocument();
     }
 };

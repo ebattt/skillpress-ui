@@ -90,6 +90,39 @@ Valore letterale mantenuto dal catalogo:
 - esattamente un bottone deve avere `--active` in ogni momento.
 - le SVG inline usano `stroke: currentColor` dalla regola `.orientation-toggle__btn svg`; nella demo il colore e' forzato con `style="stroke: ..."` inline che puo' essere omesso se la regola CSS e' sufficiente.
 
+## Classi pubbliche
+
+- `.orientation-toggle`
+- `.orientation-toggle__btn`
+- `.orientation-toggle__btn--active`
+
+## Data hooks
+
+Nessun `data-*` pubblico. Il componente e' CSS-only; eventuali hook di binding
+del consumer restano privati.
+
+## Modifier / stati
+
+- `.orientation-toggle__btn--active`: orientamento selezionato.
+- Bottone senza modifier: orientamento disponibile non selezionato.
+
+## Backend owns
+
+- Stato iniziale verticale/orizzontale.
+- Toggle al click e aggiornamento di formato, dimensioni e preview dipendenti.
+- SVG inline o label se il consumer decide di renderizzarle dinamicamente.
+
+## Library owns
+
+- Layout compatto, spacing, stato attivo, hover/focus e styling SVG via
+  `currentColor`.
+- Stabilita' delle classi pubbliche documentate sopra.
+
+## Demo-only
+
+- Binding con `js/interactions/orientation-toggle.js` e fixture product-page.
+- Qualsiasi `data-*` non documentato aggiunto dalla demo.
+
 ## Out of scope
 
 - behavior toggle JS (il consumer gestisce il click → swap modifier).

@@ -1,0 +1,18 @@
+/* Checkout runtime bundle for backend/CMS integrations. */
+@import '../base/fonts.css';
+@import '../tokens/tokens.css';
+@import '../base/reset.css';
+@import '../utilities/utilities.css';
+@import '../primitives/button.css';
+@import '../primitives/badge.css';
+@import '../primitives/card.css';
+@import '../primitives/form-primitives.css';
+@import '../primitives/form-controls.css';
+@import '../primitives/form-layout.css';
+@import '../primitives/accordion.css';
+@import '../primitives/toggle-switch.css';
+@import '../components/cart-product-card.css';
+@import '../components/checkout-summary.css';
+@import '../components/address-preview.css';
+@import '../components/method-choice-card.css';
+@import '../components/allocation-rows.css';

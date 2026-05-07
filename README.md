@@ -7,7 +7,7 @@ Manrope e servito dal package. Material Symbols non e una dipendenza runtime glo
 
 ## Stato
 
-Versione corrente: `0.2.0-alpha.11`.
+Versione corrente: `0.2.0-alpha.14`.
 
 Perimetro attuale:
 - Manrope self-hosted nel package
@@ -20,9 +20,11 @@ Perimetro attuale:
   IvaBanner, InfoDropdown
 - componenti composti: FeatureBox, ImageGallery, ProductHero, StepIndicator,
   FormatCard, Preview, MediaChoiceCard, PriceTable, SidebarTotals,
-  RelatedProducts, MobileTotalBar, runtime dashboard pubblicati fino ad alpha.10
+  RelatedProducts, MobileTotalBar, runtime dashboard inclusi nella versione corrente
   incluso `BillingFormCard`, runtime dashboard shell `DashboardShell`
-- bundle runtime `bundles/demo-minimal.css`
+- bundle runtime production `bundles/product-page.css`, `bundles/checkout.css`,
+  `bundles/dashboard.css`; `bundles/demo-minimal.css` resta disponibile per
+  compatibilita' lab/demo
 - Storybook nel repository per visualizzazione e documentazione tecnica
 
 Fuori dal perimetro attuale:
@@ -90,7 +92,9 @@ npm install @ebattt/skillpress-ui
 ## Import
 
 ```css
-@import '@ebattt/skillpress-ui/bundles/demo-minimal.css';
+@import '@ebattt/skillpress-ui/bundles/product-page.css';
+@import '@ebattt/skillpress-ui/bundles/checkout.css';
+@import '@ebattt/skillpress-ui/bundles/dashboard.css';
 ```
 
 ```html

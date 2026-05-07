@@ -25,7 +25,7 @@ e gli stati del banner. `Card` non copre bordo tratteggiato, layout e stati.
 `FileUploadBox` copre modal/dropzone file, non il banner pagamento.
 `DashboardDropdownBox` copre la disclosure Pagamento nella sidebar.
 
-## Markup
+## Markup contract
 
 ```html
 <div class="order-action-box" data-order-payment-action-box>
@@ -74,7 +74,7 @@ Badge verificato:
 </span>
 ```
 
-## Classi
+## Classi pubbliche
 
 - `.order-action-box`
 - `.order-action-box--uploaded`
@@ -103,15 +103,33 @@ Badge verificato:
 - `.order-payment-status`
 - `.order-payment-status--verified`
 
-Hook opzionale:
+## Data hooks
 
-- `[data-order-payment-action-box]`
+Nessun data-* pubblico richiesto. Il componente e CSS-only.
 
-## Responsabilita'
+`data-order-payment-action-box` puo' essere usato come locator demo/app, ma non
+e' richiesto dalla libreria.
+
+## Modifier / stati
+
+Modifier pubblici: `.order-action-box--uploaded`, `.order-action-box--done`,
+`.order-action-box__icon-wrap--uploaded`, `.order-action-box__icon-wrap--done`,
+`.order-action-box__body--done`, `.order-action-box__title--uploaded`,
+`.order-action-box__btn--demo`, `.order-payment-status--verified`.
+
+## Backend owns
 
 Il backend/app decide presenza del box, stato, testo, nome file, attributi
-`data-action`, apertura modal, upload, verifica e aggiornamenti dati. La
-libreria decide layout, spacing, bordo, stati visuali, focus e icone.
+`data-action`, apertura modal, upload, verifica e aggiornamenti dati.
+
+## Library owns
+
+La libreria decide layout, spacing, bordo, stati visuali, focus e icone.
+
+## Demo-only
+
+`data-action` e' wiring demo/app, non API pubblica del componente. Eventuali
+toolbar scenari, renderer didattici e fixture appartengono alla demo/app.
 
 ## Import
 
@@ -119,7 +137,7 @@ libreria decide layout, spacing, bordo, stati visuali, focus e icone.
 <link rel="stylesheet" href="../node_modules/@ebattt/skillpress-ui/components/order-payment-action-box.css">
 ```
 
-## Fuori Scope
+## Out of scope
 
 Modal contabile, upload reale, validazione file, eventi submit, simulazione
 verifica, aggiornamento pagamento/sidebar/header e business logic.

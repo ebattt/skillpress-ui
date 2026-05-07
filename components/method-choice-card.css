@@ -59,6 +59,19 @@
     box-shadow: var(--shadow-sm);
 }
 
+.method-choice-card:disabled,
+.method-choice-card[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.method-choice-card:disabled:hover,
+.method-choice-card[aria-disabled="true"]:hover {
+    background: var(--color-bg-white);
+    border-color: var(--color-bg-gray-200);
+    box-shadow: none;
+}
+
 .method-choice-card:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;

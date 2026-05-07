@@ -66,7 +66,7 @@ upload reale e stato ordine restano fuori scope.
 </article>
 ```
 
-## API Reference
+## Classi pubbliche
 
 | Class | Role |
 |---|---|
@@ -85,15 +85,15 @@ upload reale e stato ordine restano fuori scope.
 | `.product-step-card__details` | dettagli prodotto |
 | `.detail-section`, `.detail-heading`, `.detail-label`, `.detail-sep` | helper contenuto dettagli |
 
-Hook:
+## Data hooks
 
-| Attribute | Element |
-|---|---|
-| `data-order-product-dropdown` | root |
-| `data-order-product-dropdown-trigger` | trigger principale |
-| `data-order-product-dropdown-content` | contenuto espanso |
-| `data-order-product-dropdown-details-trigger` | trigger dettagli |
-| `data-order-product-dropdown-details` | contenuto dettagli |
+| Hook | Obbligatorio | Elemento | Ruolo |
+|---|---:|---|---|
+| `data-order-product-dropdown` | si | root | init componente |
+| `data-order-product-dropdown-trigger` | si | trigger principale | toggle disclosure card |
+| `data-order-product-dropdown-content` | si | contenuto espanso | pannello da mostrare/nascondere |
+| `data-order-product-dropdown-details-trigger` | no | trigger dettagli | toggle dettagli prodotto |
+| `data-order-product-dropdown-details` | no | contenuto dettagli | pannello dettagli prodotto |
 
 JS:
 
@@ -101,19 +101,29 @@ JS:
 window.SkillpressUI.OrderProductDropdown.init();
 ```
 
-## Cosa decide il CMS/backend
+## Modifier / stati
+
+Nessun modifier visuale pubblico richiesto per l'apertura: il JS sincronizza
+`hidden` e `aria-expanded`.
+
+## Backend owns
 
 - nome, meta, prezzo, immagine;
 - badge e action slot;
 - contenuto dettagli;
 - stato iniziale expanded/collapsed.
 
-## Cosa decide la libreria
+## Library owns
 
 - layout card e responsive;
 - disclosure UI e ARIA;
 - hover/focus;
 - chevron CSS.
+
+## Demo-only
+
+Eventuali `data-action`, `data-section`, toolbar scenari, renderer didattici e
+fixture appartengono alla demo/app e non sono API pubbliche del componente.
 
 ## Out of scope
 

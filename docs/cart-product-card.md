@@ -34,7 +34,7 @@ Il toggle usa:
 
 Non gestisce rimozione articolo, calcoli prezzo, IVA o stato carrello.
 
-## Markup minimo
+## Markup contract
 
 ```html
 <div class="cart-list">
@@ -78,7 +78,7 @@ Non gestisce rimozione articolo, calcoli prezzo, IVA o stato carrello.
 </div>
 ```
 
-## Classi
+## Classi pubbliche
 
 - `.cart-list`
 - `.cart-product-card`
@@ -106,7 +106,39 @@ Non gestisce rimozione articolo, calcoli prezzo, IVA o stato carrello.
 - `.cart-details-inline__label`
 - `.cart-details-inline__sep`
 
-## Fuori Scope
+## Data hooks
+
+- `data-cart-product-card`: root pubblica inizializzata dal runtime.
+- `data-cart-product-card-toggle`: trigger del pannello dettagli.
+- `data-cart-product-card-details`: pannello dettagli sincronizzato dal runtime.
+- `data-cart-product-card-remove`: hook opzionale consumer/demo per rimozione;
+  la libreria non lo legge.
+
+## Modifier / stati
+
+- `aria-expanded="true|false"` su `.cart-product-card__details-toggle`.
+- `aria-hidden="false|true"` su `.cart-product-card__details`.
+- Immagine mancante: `.cart-product-card__image-wrap` puo' restare vuoto; la
+  libreria mantiene dimensioni e sfondo placeholder.
+
+## Backend owns
+
+- Lista prodotti, titolo, specs, prezzo gia' formattato, immagine e `alt`.
+- `id`/`aria-controls` univoci per ogni card.
+- Contenuto del pannello dettagli e azione di rimozione prodotto.
+
+## Library owns
+
+- Layout card, responsive, icone CSS dettagli/chevron, hover/focus e disclosure
+  dettagli via `CartProductCard.init`.
+- Sync degli attributi ARIA documentati sopra.
+
+## Demo-only
+
+- Fixture prodotti checkout, immagini demo e contenuto dettagli inline.
+- Hook `data-cart-product-card-remove` quando usato per simulare la rimozione.
+
+## Out of scope
 
 - pricing e formattazione valuta;
 - rimozione prodotto;

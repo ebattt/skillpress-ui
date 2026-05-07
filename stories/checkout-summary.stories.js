@@ -26,7 +26,21 @@ const renderSummary = ({
     sticky = false,
     cta = 'Avanti',
     disabled = false,
-    helpHref = '#'
+    helpHref = '#',
+    items = [
+        renderItem(),
+        renderItem({
+            name: 'Libro con copertina rigida',
+            qty: '100 copie',
+            price: '1.299,99 &euro;'
+        })
+    ],
+    totals = [
+        renderTotalRow('Subtotale', '2.219,98 &euro;'),
+        renderTotalRow('Imposta', '488,40 &euro;'),
+        renderTotalRow('Spedizione', 'Gratuita')
+    ],
+    grandTotal = '2.708,38 &euro;'
 } = {}) => {
     const root = document.createElement('div');
     root.style.maxWidth = '380px';
@@ -37,23 +51,16 @@ const renderSummary = ({
                 <div>
                     <h3 class="checkout-summary__title" id="checkout-summary-title">Riepilogo ordine</h3>
                     <div class="checkout-summary__items">
-                        ${renderItem()}
-                        ${renderItem({
-                            name: 'Libro con copertina rigida',
-                            qty: '100 copie',
-                            price: '1.299,99 &euro;'
-                        })}
+                        ${items.length ? items.join('') : '<p class="checkout-summary__empty">Nessun prodotto nel carrello.</p>'}
                     </div>
                     <hr class="checkout-summary__divider">
                     <div class="checkout-summary__totals">
-                        ${renderTotalRow('Subtotale', '2.219,98 &euro;')}
-                        ${renderTotalRow('Imposta', '488,40 &euro;')}
-                        ${renderTotalRow('Spedizione', 'Gratuita')}
+                        ${totals.join('')}
                     </div>
                     <hr class="checkout-summary__divider">
                     <div class="checkout-summary__grand-total">
                         <span class="checkout-summary__grand-label">Totale</span>
-                        <span class="checkout-summary__grand-value">2.708,38 &euro;</span>
+                        <span class="checkout-summary__grand-value">${grandTotal}</span>
                     </div>
                 </div>
                 <a class="checkout-summary__cta"${ctaAttrs}>${cta}</a>
@@ -129,5 +136,23 @@ export const ReferenceFromCheckout = {
                 story: 'Reference from `checkout/js/sections/sidebar-section.js`: items list, subtotal/tax/shipping rows, grand total, CTA, file-upload note and help link. Demo Material Symbols info icon is replaced by CSS chrome.'
             }
         }
+    }
+};
+
+export const EmptyCart = {
+    render: () => renderSummary({
+        disabled: true,
+        items: [],
+        totals: [
+            renderTotalRow('Subtotale', '0,00 &euro;'),
+            renderTotalRow('Imposta', '0,00 &euro;'),
+            renderTotalRow('Spedizione', '-')
+        ],
+        grandTotal: '0,00 &euro;'
+    }),
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        await expect(canvas.getByText('Nessun prodotto nel carrello.')).toHaveClass('checkout-summary__empty');
+        await expect(canvas.getByRole('link', { name: 'Avanti' })).toHaveAttribute('aria-disabled', 'true');
     }
 };

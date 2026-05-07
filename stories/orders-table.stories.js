@@ -86,6 +86,9 @@ const renderRows = (items = rows) => items.map((row) => `
 `).join('');
 
 const renderTable = (items = rows) => {
+    const body = items.length
+        ? renderRows(items)
+        : '<tr><td class="orders-table__empty" colspan="11">Nessun ordine disponibile</td></tr>';
     const root = document.createElement('div');
     root.innerHTML = `
         <div class="table-wrapper table-wrapper--scroll">
@@ -105,7 +108,7 @@ const renderTable = (items = rows) => {
                         <th class="th-text-right th-total">Totale</th>
                     </tr>
                 </thead>
-                <tbody>${renderRows(items)}</tbody>
+                <tbody>${body}</tbody>
             </table>
         </div>
     `;
@@ -140,6 +143,21 @@ export const ReferenceFromDashboardPage = {
         docs: {
             description: {
                 story: 'Source shape from `dashboard/index.html` orders table. Status uses Badge and action chips use DashboardActionBadge.'
+            }
+        }
+    }
+};
+
+export const Empty = {
+    render: () => renderTable([]),
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        await expect(canvas.getByText('Nessun ordine disponibile')).toBeInTheDocument();
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: 'Empty dashboard table state. Backend/app decides when the collection is empty; the library owns spacing and table-safe empty markup styling.'
             }
         }
     }

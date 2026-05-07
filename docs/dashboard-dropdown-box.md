@@ -49,7 +49,7 @@ DashboardDropdownBox
 </div>
 ```
 
-## API Reference
+## Classi pubbliche
 
 | Class | Role |
 |---|---|
@@ -63,13 +63,13 @@ DashboardDropdownBox
 | `.dash-dropdown-box__chevron` | chevron disclosure |
 | `.dash-dropdown-box__content` | pannello contenuto |
 
-Hook:
+## Data hooks
 
-| Attribute | Element | Note |
-|---|---|---|
-| `data-dashboard-dropdown-box` | root | init componente |
-| `data-dashboard-dropdown-box-trigger` | trigger | toggle disclosure |
-| `data-dashboard-dropdown-box-content` | content | pannello da mostrare/nascondere |
+| Hook | Obbligatorio | Elemento | Ruolo |
+|---|---:|---|---|
+| `data-dashboard-dropdown-box` | si | root | init componente |
+| `data-dashboard-dropdown-box-trigger` | si | trigger | toggle disclosure |
+| `data-dashboard-dropdown-box-content` | si | content | pannello da mostrare/nascondere |
 
 JS:
 
@@ -78,14 +78,18 @@ window.SkillpressUI.DashboardDropdownBox.init();
 window.SkillpressUI.DashboardDropdownBox.setExpanded(root, true);
 ```
 
-Eventi:
+## Modifier / stati
+
+Modifier pubblici: `.dash-dropdown-box--alert`.
+
+Eventi pubblici:
 
 | Evento | Note |
 |---|---|
 | `sp:dashboard-dropdown-box-open` | emesso su root |
 | `sp:dashboard-dropdown-box-close` | emesso su root |
 
-## Cosa decide il CMS/backend
+## Backend owns
 
 - label trigger;
 - contenuto interno;
@@ -93,12 +97,17 @@ Eventi:
 - modifier `dash-dropdown-box--alert`;
 - dati e azioni di pagamento/spedizione.
 
-## Cosa decide la libreria
+## Library owns
 
 - layout box e trigger;
 - border, radius, hover/focus;
 - icone CSS;
 - toggle `aria-expanded`/`hidden`.
+
+## Demo-only
+
+Eventuali `data-section`, `data-action`, toolbar scenari, renderer didattici e
+fixture appartengono alla demo/app e non sono API pubbliche del componente.
 
 ## Installation
 

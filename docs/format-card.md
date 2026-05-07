@@ -139,6 +139,53 @@ Geometria preview: la libreria non impone width/height su `.format-card__preview
 - `.format-card--selected` → bg `--selection-highlight-bg` (`#FFF4E6`), border + name `--color-primary`, preview-box / box-inner bg `--color-primary`, preview-custom bg `rgba(240,138,0,0.2)`.
 - `.format-card--selected:hover` → mantiene stato selezionato, preview-custom resta `rgba(240,138,0,0.2)`.
 
+## Classi pubbliche
+
+- `.format-cards`
+- `.format-card`
+- `.format-card--selected`
+- `.format-card__preview`
+- `.format-card__preview-label`
+- `.format-card__preview-label--faded`
+- `.format-card__preview-box`
+- `.format-card__preview-inner`
+- `.format-card__preview-dashed`
+- `.format-card__preview-custom`
+- `.format-card__text`
+- `.format-card__name`
+- `.format-card__dims`
+
+## Data hooks
+
+Nessun `data-*` funzionale pubblico. Attributi come `data-format` sono ammessi
+come hook consumer/backend, ma la libreria non li legge e non li stabilizza come
+API.
+
+## Modifier / stati
+
+- `.format-card--selected`: formato selezionato.
+- `.format-card__preview-label--faded`: label formato base attenuata nelle
+  preview comparative/custom.
+- Hover/focus sono gestiti dal CSS della libreria.
+
+## Backend owns
+
+- Lista formati, label, dimensioni, orientamento e proporzioni.
+- Geometria preview via inline style (`width`/`height`) coerente con il formato.
+- Stato selezionato iniziale e toggle tra card.
+- Eventuali hook consumer come `data-format`.
+
+## Library owns
+
+- Grid `.format-cards`, styling della card, stato selected, hover/focus e
+  responsive 2/4 colonne.
+- Styling degli slot preview e del testo, senza leggere dati dominio.
+
+## Demo-only
+
+- Calcolo fixture delle dimensioni demo e script del configuratore product-page.
+- SVG custom di esempio per `Libero` e qualsiasi selector non documentato.
+
 ## Installation
 
 ```html

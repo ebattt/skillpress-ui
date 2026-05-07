@@ -129,6 +129,43 @@ Valori letterali mantenuti dal catalogo:
   riga, ad esempio `Controllo file`. Non usarla automaticamente per tutti i
   choice group a due opzioni: e' una scelta di presentation/layout.
 
+## Classi pubbliche
+
+- `.option-buttons`
+- `.option-buttons--equal`
+- `.option-buttons__btn`
+- `.option-buttons__btn--default`
+- `.option-buttons__btn--selected`
+- `.option-buttons__btn--borderless`
+
+## Data hooks
+
+Nessun `data-*` pubblico. Il componente e' CSS-only; eventuali hook di binding
+per il configuratore restano consumer/demo.
+
+## Modifier / stati
+
+- `.option-buttons__btn--selected`: opzione selezionata.
+- `.option-buttons__btn--default`: opzione disponibile non selezionata.
+- `.option-buttons__btn--borderless`: variante visiva senza bordo.
+- `.option-buttons--equal`: layout a colonne uguali per gruppi brevi.
+
+## Backend owns
+
+- Lista opzioni, label, ordine e stato selezionato iniziale.
+- Toggle al click e sync con valori form/prezzi.
+- Scelta del layout `--equal` quando e' una decisione di presentation type.
+
+## Library owns
+
+- Layout flex/grid, spacing, colore, hover/focus e stati visuali dei bottoni.
+- Stabilita' delle classi pubbliche documentate sopra.
+
+## Demo-only
+
+- Mapping da fixture/configuratore demo a opzioni renderizzate.
+- Hook o attributi non documentati usati solo dagli script demo.
+
 ## Out of scope
 
 - behavior toggle JS (il consumer gestisce il click → swap modifier).

@@ -28,7 +28,7 @@ semantica diversi. `OrderProductDropdown` copre la card prodotto e lo slot dove
 questo stepper puo' vivere, ma non il tracking. `Badge`, `Button`, `Card` e
 `OrdersTable` non coprono connettori, cerchi numerati e selezione step.
 
-## Markup
+## Markup contract
 
 ```html
 <div class="product-stepper" data-order-status-steps>
@@ -54,7 +54,7 @@ questo stepper puo' vivere, ma non il tracking. `Badge`, `Button`, `Card` e
 </div>
 ```
 
-## API
+## Classi pubbliche
 
 | Class | Role |
 |---|---|
@@ -72,15 +72,20 @@ questo stepper puo' vivere, ma non il tracking. `Badge`, `Button`, `Card` e
 | `.product-stepper__connector` | Connettore tra step. |
 | `.product-stepper__connector--completed` | Connettore completato. |
 
-Hook:
+## Data hooks
 
-| Attribute | Element | Note |
-|---|---|---|
-| `data-order-status-steps` | root | Entry point JS. |
-| `data-order-status-steps-item` | step button | Item selezionabile. |
-| `data-step-id` | step button | Id applicativo opzionale. |
+| Hook | Obbligatorio | Elemento | Ruolo |
+|---|---:|---|---|
+| `data-order-status-steps` | si | root | init componente |
+| `data-order-status-steps-item` | si | step button | item selezionabile |
+| `data-step-id` | no | step button | id applicativo incluso nel dettaglio evento |
 
-## Behavior JS
+## Modifier / stati
+
+Modifier pubblici: `.product-stepper__step--completed`,
+`.product-stepper__step--active`, `.product-stepper__step--pending`,
+`.product-stepper__step--rejected`, `.product-stepper__step--selected` e
+`.product-stepper__connector--completed`.
 
 `window.SkillpressUI.OrderStatusSteps.init(root)` inizializza il componente in
 modo idempotente. Al click:
@@ -91,13 +96,22 @@ modo idempotente. Al click:
 
 La libreria non apre pannelli e non decide l'avanzamento reale.
 
-## Responsabilita'
+## Backend owns
 
 Il backend/app decide numero step, label, stato iniziale, step selezionato e
-associazione con eventuali contenuti applicativi. La libreria decide layout,
-spacing, responsive, hover/focus, icona check e behavior UI di selezione.
+associazione con eventuali contenuti applicativi.
 
-## Fuori scope
+## Library owns
+
+La libreria decide layout, spacing, responsive, hover/focus, icona check,
+sincronizzazione `aria-pressed` e behavior UI di selezione.
+
+## Demo-only
+
+Eventuali `data-section`, `data-action`, toolbar scenari, renderer didattici e
+fixture appartengono alla demo/app e non sono API pubbliche del componente.
+
+## Out of scope
 
 Upload file, controllo file, report, produzione, spedizione, tracking corriere,
 stato ordine reale e pannelli `step-status-banner`.

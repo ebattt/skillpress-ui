@@ -24,7 +24,7 @@ senza introdurre runtime JS o business logic.
 che li compone. Per questo il gap `.order-detail-grid*` viene coperto da un
 layout helper dedicato.
 
-## Markup
+## Markup contract
 
 ```html
 <section class="order-detail-view" data-dashboard-order-detail-layout>
@@ -54,7 +54,7 @@ layout helper dedicato.
 </section>
 ```
 
-## Classi
+## Classi pubbliche
 
 - `.order-detail-view`
 - `.order-detail-grid`
@@ -64,11 +64,14 @@ layout helper dedicato.
 - `.order-detail-grid__payment`
 - `.order-detail-grid__shipping`
 
-Hook opzionale:
+## Data hooks
 
-- `[data-dashboard-order-detail-layout]`
+Nessun data-* pubblico richiesto. Il componente e CSS-only.
 
-## Responsive
+`data-dashboard-order-detail-layout` puo' essere usato come locator demo/app, ma
+non e' richiesto dalla libreria.
+
+## Modifier / stati
 
 Desktop `>=1024px`: griglia a due colonne `2fr / 1fr`, prodotti a sinistra e
 sidebar a destra.
@@ -76,11 +79,20 @@ sidebar a destra.
 Mobile/tablet `<1024px`: la sidebar usa `display: contents`; i figli vengono
 riordinati come nella demo: pagamento, spedizione, prodotti, riepilogo.
 
-## Responsabilita'
+## Backend owns
 
 Il backend/app decide contenuto e presenza dei blocchi figli, dati ordine,
-azioni, routing e stati. La libreria decide griglia, gap, ordine responsive e
-adattamenti dei box sidebar.
+azioni, routing e stati.
+
+## Library owns
+
+La libreria decide griglia, gap, ordine responsive e adattamenti dei box
+sidebar.
+
+## Demo-only
+
+`data-dashboard-order-detail-layout` se usato come locator. Eventuali `data-section`,
+toolbar scenari, renderer didattici e fixture appartengono alla demo/app.
 
 ## Import
 
@@ -88,7 +100,7 @@ adattamenti dei box sidebar.
 <link rel="stylesheet" href="../node_modules/@ebattt/skillpress-ui/components/dashboard-order-detail-layout.css">
 ```
 
-## Fuori Scope
+## Out of scope
 
 `OrderPaymentActionBox`, `.order-action-box`, pagamento reale, upload, tracking,
 routing dashboard e qualunque stato applicativo.

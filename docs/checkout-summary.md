@@ -27,7 +27,7 @@ Il backend/CMS decide item, label, importi gia' formattati, CTA `href`/testo, no
 
 `MobileTotalBar` non basta: e' una barra fixed mobile del configuratore prodotto, non una sidebar checkout.
 
-## Markup Minimo
+## Markup contract
 
 ```html
 <aside class="checkout-summary checkout-summary--sticky" aria-labelledby="checkout-summary-title">
@@ -69,7 +69,7 @@ Il backend/CMS decide item, label, importi gia' formattati, CTA `href`/testo, no
 </aside>
 ```
 
-## Classi
+## Classi pubbliche
 
 - `.checkout-summary`
 - `.checkout-summary--sticky`
@@ -81,6 +81,7 @@ Il backend/CMS decide item, label, importi gia' formattati, CTA `href`/testo, no
 - `.checkout-summary__item-name`
 - `.checkout-summary__item-qty`
 - `.checkout-summary__item-price`
+- `.checkout-summary__empty`
 - `.checkout-summary__divider`
 - `.checkout-summary__totals`
 - `.checkout-summary__total-row`
@@ -97,12 +98,34 @@ Il backend/CMS decide item, label, importi gia' formattati, CTA `href`/testo, no
 - `.checkout-summary__help-text`
 - `.checkout-summary__help-link`
 
-## Stati
+## Data hooks
+
+Nessun `data-*` pubblico. Eventuali hook di step checkout, analytics o tracking
+CTA restano consumer/backend.
+
+## Modifier / stati
 
 - `.checkout-summary--sticky`: sticky desktop/tablet quando il summary vive nella colonna laterale.
 - `.checkout-summary__cta:disabled` o `[aria-disabled="true"]`: stato non cliccabile.
+- `.checkout-summary__empty`: messaggio empty cart nello slot lista articoli.
 
-## Fuori Scope
+## Backend owns
+
+- Lista articoli, righe totale, importi gia' formattati e messaggio empty.
+- `href`, testo e disabled state della CTA.
+- Testo nota, link assistenza e navigazione step checkout.
+
+## Library owns
+
+- Layout sidebar/card, sticky opt-in, spacing, colori, CTA hover/focus/disabled,
+  icona info CSS e stile empty message.
+
+## Demo-only
+
+- Fixture carrello checkout e testi di supporto della demo.
+- Qualsiasi simulazione di step o pagamento collegata alla CTA.
+
+## Out of scope
 
 - calcolo subtotale, IVA, spedizione e totale;
 - coupon, carrello, rimozione prodotti;

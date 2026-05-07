@@ -20,7 +20,15 @@ logout reale, fetch API o auth.
 ## Import
 
 ```html
+<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/primitives/dashboard-nav-icons.css">
 <link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/dashboard-shell.css">
+<script defer src="/node_modules/@ebattt/skillpress-ui/js/dashboard-shell.js"></script>
+```
+
+Oppure via bundle pagina:
+
+```html
+<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/bundles/dashboard.css">
 <script defer src="/node_modules/@ebattt/skillpress-ui/js/dashboard-shell.js"></script>
 ```
 
@@ -33,11 +41,17 @@ logout reale, fetch API o auth.
       <button class="dashboard-shell__nav-item dashboard-shell__nav-item--profile"
               type="button"
               data-dashboard-shell-nav-item="account"
-              aria-current="false">Profilo</button>
+              aria-current="false">
+        <span class="dashboard-nav-icon dashboard-nav-icon--account" aria-hidden="true"></span>
+        <span>Profilo</span>
+      </button>
       <button class="dashboard-shell__nav-item"
               type="button"
               data-dashboard-shell-nav-item="dashboard"
-              aria-current="page">Dashboard</button>
+              aria-current="page">
+        <span class="dashboard-nav-icon dashboard-nav-icon--dashboard" aria-hidden="true"></span>
+        <span>Dashboard</span>
+      </button>
     </nav>
   </aside>
   <main class="dashboard-shell__main">
@@ -93,6 +107,30 @@ viste come `order-detail` e `quote-request`.
 Usare `data-dashboard-shell-navigate-disabled-mobile` su trigger che devono
 navigare su desktop ma delegare un altro behavior su mobile, ad esempio una
 riga `OrdersTable` che su mobile espande i dettagli riga.
+
+## Icone nav
+
+Le icone della navigazione sono classi pubbliche library-owned, renderizzate via
+CSS mask e incluse in `primitives/dashboard-nav-icons.css` e nel bundle
+`bundles/dashboard.css`.
+
+```html
+<span class="dashboard-nav-icon dashboard-nav-icon--orders" aria-hidden="true"></span>
+```
+
+Classi disponibili:
+
+- `.dashboard-nav-icon--account`
+- `.dashboard-nav-icon--dashboard`
+- `.dashboard-nav-icon--orders`
+- `.dashboard-nav-icon--billing`
+- `.dashboard-nav-icon--quotes`
+- `.dashboard-nav-icon--supplier`
+- `.dashboard-nav-icon--logout`
+
+Le icone sono decorative: usare sempre `aria-hidden="true"` e mantenere una
+label testuale nel bottone. Il backend/app sceglie quali voci mostrare; la
+libreria fornisce solo il set grafico e gli stati colore tramite `currentColor`.
 
 ## Fuori Scope
 

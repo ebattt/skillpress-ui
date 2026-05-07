@@ -107,6 +107,40 @@ Valori letterali mantenuti dal catalogo:
 - le icone SVG sono opzionali: senza icona il bottone mostra solo testo.
 - `id` sui bottoni e' opzionale: usato dal JS demo per il binding, non dalla libreria.
 
+## Classi pubbliche
+
+- `.mode-switcher`
+- `.mode-switcher__btn`
+- `.mode-switcher__btn--active`
+- `.mode-switcher__btn--inactive`
+
+## Data hooks
+
+Nessun `data-*` pubblico. Il componente e' CSS-only; eventuali hook di binding
+del consumer restano privati dell'app/demo.
+
+## Modifier / stati
+
+- `.mode-switcher__btn--active` + `aria-pressed="true"`: opzione selezionata.
+- `.mode-switcher__btn--inactive` + `aria-pressed="false"`: opzione non
+  selezionata.
+
+## Backend owns
+
+- Numero di opzioni, label e SVG opzionali.
+- Stato selezionato iniziale e coerenza tra modifier e `aria-pressed`.
+- Toggle al click e qualsiasi logica che mostra/nasconde contenuti dipendenti.
+
+## Library owns
+
+- Layout pill, colori, spacing, font, hover/focus e supporto a icone inline.
+- Stabilita' delle classi pubbliche documentate sopra.
+
+## Demo-only
+
+- `id="modeVeloce"` / `id="modeAvanzata"` e binding del configuratore demo.
+- Qualsiasi selector di scenario o telemetry non documentato qui.
+
 ## Out of scope
 
 - behavior toggle JS (il consumer gestisce il click → swap modifier + aria-pressed).
