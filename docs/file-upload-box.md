@@ -98,7 +98,6 @@ FileUploadBox
         </div>
         <div class="file-modal__footer">
             <button class="file-modal__submit" type="button" data-file-upload-box-role="submit">
-                <span class="file-modal__icon file-modal__icon--send" aria-hidden="true"></span>
                 Invia file
             </button>
         </div>

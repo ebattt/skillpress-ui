@@ -160,6 +160,26 @@
     background: var(--color-bg-white);
 }
 
+.product-step-card__actions-bar .dash-link--reorder {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--color-primary-dark);
+    font-weight: 600;
+    font-size: 0.78rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+    padding: 0;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+.product-step-card__actions-bar .dash-link--reorder:hover {
+    color: var(--color-primary-dark);
+}
+
 .product-step-card__details-toggle {
     display: inline-flex;
     align-items: center;
