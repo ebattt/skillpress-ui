@@ -1,0 +1,80 @@
+/* ============================================================================
+   FEEDATY WIDGET
+   ============================================================================
+   Fonte:
+   - Skillpress-frontend/landing-page/index.html#L30-L32, #L125-L128
+   - Skillpress-frontend/landing-page/css/components/_showcase.css#L75-L98,L889-L893
+   - Skillpress-frontend/landing-page/css/components/_products.css#L496-L504
+   ========================================================================== */
+
+.feedaty-widget {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    font-family: var(--font-family, 'Manrope', sans-serif);
+}
+
+.feedaty-widget--inline {
+    margin-top: clamp(0.35rem, 0.7vw, 0.6rem);
+    padding-left: 0;
+}
+
+.feedaty-widget--carousel {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem clamp(1rem, 3vw, 1.5rem);
+}
+
+.feedaty-widget__title {
+    display: block;
+    padding: 0;
+    margin: 0 0 1.2rem;
+    color: var(--color-text, #111418);
+    font-family: 'Manrope', var(--font-family, sans-serif);
+    font-size: clamp(1.15rem, 2vw, 1.7rem);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: 0;
+    text-transform: none;
+    background: none;
+    border-radius: 0;
+}
+
+.feedaty-widget .feedaty_widget,
+.feedaty-widget .feedaty_widget > div,
+.feedaty-widget .feedaty_widget iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+}
+
+.feedaty-widget .feedaty_widget {
+    overflow: hidden;
+}
+
+.feedaty-widget--inline .feedaty_widget,
+.feedaty-widget--inline .feedaty_widget > div,
+.feedaty-widget--inline .feedaty_widget * {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+.feedaty-widget__placeholder {
+    min-height: 56px;
+    padding: 0.875rem 1rem;
+    color: var(--color-text-light, #6B7280);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    background: var(--color-bg-gray-50, #F9FAFB);
+    border: 1px dashed var(--color-border, #E5E7EB);
+    border-radius: 0.75rem;
+}
+
+@media (max-width: 640px) {
+    .feedaty-widget--inline .feedaty_widget {
+        width: calc(100% / 0.92) !important;
+        transform: scale(0.92);
+        transform-origin: left top;
+    }
+}

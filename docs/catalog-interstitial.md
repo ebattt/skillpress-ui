@@ -19,7 +19,7 @@ Card editoriali intermedie della landing catalogo: split foto/testo, card wide o
 
 ## Classi pubbliche
 
-- `.catalog-interstitial`: root max-width e grid responsive.
+- `.catalog-interstitial`: root max-width, padding sezione compatta e grid responsive.
 - `.catalog-interstitial--full`: variante a una card wide.
 - `.catalog-interstitial--trio`: variante a tre feature card.
 - `.catalog-interstitial__card`: card navigabile.
@@ -56,7 +56,7 @@ Card editoriali intermedie della landing catalogo: split foto/testo, card wide o
 
 ## Library owns
 
-- Max-width, padding e grid responsive.
+- Max-width, padding sezione compatta e grid responsive.
 - Immagini full-bleed/contained, overlay, radius, background e tipografia.
 - Runtime idempotente `window.SkillpressUI.CatalogInterstitial.init(root)`.
 - Overlay link accessibile se il backend rende `data-card-link`.

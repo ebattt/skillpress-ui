@@ -1,4 +1,5 @@
 import '../components/catalog-stage.css';
+import '../components/feedaty-widget.css';
 import '../js/catalog-stage.js';
 import { expect } from 'storybook/test';
 
@@ -33,8 +34,10 @@ const renderStage = ({
                 </div>
             </div>
             ${withReviews ? `
-            <div class="catalog-stage__reviews-inline" data-catalog-stage-reviews>
-                <div class="feedaty_widget" data-ver="2021" data-id="69d773285807d" data-type="merchant" data-variant="Striscia-2" data-lang="all" data-gui="all"></div>
+            <div class="catalog-stage__reviews-inline feedaty-widget feedaty-widget--inline" data-catalog-stage-reviews data-feedaty-widget data-feedaty-widget-sdk="false">
+                <div class="feedaty_widget" data-ver="2021" data-id="69d773285807d" data-type="merchant" data-variant="Striscia-2" data-lang="all" data-gui="all">
+                    <div class="feedaty-widget__placeholder">Feedaty merchant strip</div>
+                </div>
             </div>` : ''}
         </div>
     </section>
@@ -54,7 +57,7 @@ export default {
         layout: 'fullscreen',
         docs: {
             description: {
-                component: 'Stage fotografico landing con slider immagini, overlay titolo/testo, CTA e slot recensioni app-owned.'
+                component: 'Stage fotografico landing con slider immagini, overlay titolo/testo, CTA e slot recensioni componibile con FeedatyWidget.'
             }
         }
     }
@@ -74,7 +77,7 @@ export const ReferenceFromLandingPage = {
     parameters: {
         docs: {
             description: {
-                story: 'Riferimento da `landing-page/index.html#L19-L34` e `_showcase.css#L12-L137`. Lo script Feedaty e gli asset demo locali restano app-owned.'
+                story: 'Riferimento da `landing-page/index.html#L19-L34` e `_showcase.css#L12-L137`. Lo slot reviews compone `FeedatyWidget`; in Storybook lo SDK e disabilitato.'
             }
         }
     }

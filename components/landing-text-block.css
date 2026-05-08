@@ -1,0 +1,52 @@
+/* ============================================================================
+   LANDING TEXT BLOCK
+   ============================================================================
+   Fonte:
+   - Skillpress-frontend/landing-page/index.html#L134-L141
+   - Skillpress-frontend/landing-page/css/components/_products.css#L512-L552
+   ========================================================================== */
+
+.landing-text-block {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem clamp(1rem, 3vw, 1.5rem);
+    color: var(--color-text-light, #6B7280);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: clamp(0.82rem, 0.95vw, 0.92rem);
+    line-height: 1.65;
+}
+
+.landing-text-block__title {
+    margin: 0 0 1rem;
+    color: var(--color-text, #111418);
+    font-family: 'Manrope', var(--font-family, sans-serif);
+    font-size: clamp(1.15rem, 2vw, 1.7rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0;
+}
+
+.landing-text-block__subtitle {
+    margin: 1.5rem 0 0.5rem;
+    color: var(--color-text, #111418);
+    font-family: 'Manrope', var(--font-family, sans-serif);
+    font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+
+.landing-text-block p {
+    margin: 0 0 0.75rem;
+}
+
+.landing-text-block ul {
+    margin: 0.5rem 0 1rem;
+    padding-left: 1.25rem;
+    list-style: disc;
+}
+
+.landing-text-block li {
+    margin-bottom: 0.3rem;
+}

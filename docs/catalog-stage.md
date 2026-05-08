@@ -24,7 +24,7 @@ Stage fotografico della landing catalogo: slider immagini editoriale, overlay ti
                 <button class="catalog-stage__dot" type="button" data-catalog-stage-dot aria-label="Mostra immagine 2" aria-current="false"></button>
             </div>
         </div>
-        <div class="catalog-stage__reviews-inline" data-catalog-stage-reviews>
+        <div class="catalog-stage__reviews-inline feedaty-widget feedaty-widget--inline" data-catalog-stage-reviews data-feedaty-widget>
             <div class="feedaty_widget" data-ver="2021" data-id="69d773285807d" data-type="merchant" data-variant="Striscia-2" data-lang="all" data-gui="all"></div>
         </div>
     </div>
@@ -41,7 +41,7 @@ Stage fotografico della landing catalogo: slider immagini editoriale, overlay ti
 - `.catalog-stage__overlay`, `.catalog-stage__overlay-title`, `.catalog-stage__overlay-text`.
 - `.catalog-stage__image-button`: CTA pill.
 - `.catalog-stage__dots`, `.catalog-stage__dot`, `.catalog-stage__dot--active`: controlli slider.
-- `.catalog-stage__reviews-inline`: slot per widget recensioni o markup app-owned.
+- `.catalog-stage__reviews-inline`: slot per widget recensioni, tipicamente composto con `FeedatyWidget`.
 
 ## Data hooks
 
@@ -67,7 +67,7 @@ Stage fotografico della landing catalogo: slider immagini editoriale, overlay ti
 - Immagini `src`/`alt` e numero slide.
 - Titolo, testo overlay, CTA `href` e label.
 - ID/anchor.
-- Presenza e contenuto dello slot reviews.
+- Presenza e contenuto dello slot reviews, inclusi attributi Feedaty.
 - Intervallo e scelta autoplay.
 
 ## Library owns
@@ -81,10 +81,10 @@ Stage fotografico della landing catalogo: slider immagini editoriale, overlay ti
 ## Demo-only
 
 - URL asset demo.
-- Feedaty SDK e widget reale: lo script terzo non fa parte del package.
+- Configurazione Feedaty demo.
 
 ## Out of scope
 
-- Caricamento SDK Feedaty.
+- Policy consenso/privacy del caricamento Feedaty.
 - Tracking click, routing reale, dati remoti.
 - Catalog grid, interstitial, text block, navbar e footer.

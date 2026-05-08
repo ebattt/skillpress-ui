@@ -15,7 +15,7 @@
     max-width: 1200px;
     min-width: 0;
     margin: 0 auto;
-    padding: 0 clamp(1rem, 3vw, 1.5rem);
+    padding: 1rem clamp(1rem, 3vw, 1.5rem);
     font-family: var(--font-family, 'Manrope', sans-serif);
 }
 
