@@ -1,5 +1,5 @@
-import '../components/feedaty-widget.css';
-import '../js/feedaty-widget.js';
+import '../../components/feedaty-widget.css';
+import '../../js/feedaty-widget.js';
 import { expect } from 'storybook/test';
 
 const renderInline = () => `
@@ -28,7 +28,7 @@ const renderRoot = (html) => {
 };
 
 export default {
-    title: 'Landing Page/FeedatyWidget',
+    title: 'Landing Page/Reviews/FeedatyWidget',
     tags: ['autodocs'],
     parameters: {
         layout: 'fullscreen',

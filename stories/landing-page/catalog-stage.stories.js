@@ -1,6 +1,6 @@
-import '../components/catalog-stage.css';
-import '../components/feedaty-widget.css';
-import '../js/catalog-stage.js';
+import '../../components/catalog-stage.css';
+import '../../components/feedaty-widget.css';
+import '../../js/catalog-stage.js';
 import { expect } from 'storybook/test';
 
 const IMAGES = [
@@ -51,7 +51,7 @@ const renderRoot = (html) => {
 };
 
 export default {
-    title: 'Landing Page/CatalogStage',
+    title: 'Landing Page/Catalog/CatalogStage',
     tags: ['autodocs'],
     parameters: {
         layout: 'fullscreen',

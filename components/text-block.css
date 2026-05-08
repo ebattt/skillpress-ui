@@ -1,12 +1,12 @@
 /* ============================================================================
-   LANDING TEXT BLOCK
+   TEXT BLOCK
    ============================================================================
    Fonte:
    - Skillpress-frontend/landing-page/index.html#L134-L141
    - Skillpress-frontend/landing-page/css/components/_products.css#L512-L552
    ========================================================================== */
 
-.landing-text-block {
+.text-block {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -17,7 +17,7 @@
     line-height: 1.65;
 }
 
-.landing-text-block__title {
+.text-block__title {
     margin: 0 0 1rem;
     color: var(--color-text, #111418);
     font-family: 'Manrope', var(--font-family, sans-serif);
@@ -27,7 +27,7 @@
     letter-spacing: 0;
 }
 
-.landing-text-block__subtitle {
+.text-block__subtitle {
     margin: 1.5rem 0 0.5rem;
     color: var(--color-text, #111418);
     font-family: 'Manrope', var(--font-family, sans-serif);
@@ -37,16 +37,16 @@
     letter-spacing: 0;
 }
 
-.landing-text-block p {
+.text-block p {
     margin: 0 0 0.75rem;
 }
 
-.landing-text-block ul {
+.text-block ul {
     margin: 0.5rem 0 1rem;
     padding-left: 1.25rem;
     list-style: disc;
 }
 
-.landing-text-block li {
+.text-block li {
     margin-bottom: 0.3rem;
 }

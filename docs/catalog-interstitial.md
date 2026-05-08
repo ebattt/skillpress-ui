@@ -68,5 +68,5 @@ Card editoriali intermedie della landing catalogo: split foto/testo, card wide o
 
 ## Out of scope
 
-- CatalogProductGrid, CatalogStage, LandingTextBlock, navbar, footer e Feedaty.
+- CatalogProductGrid, CatalogStage, TextBlock, navbar, footer e Feedaty.
 - Query prodotti, tracking click e routing applicativo.

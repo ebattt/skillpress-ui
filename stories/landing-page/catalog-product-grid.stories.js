@@ -1,5 +1,5 @@
-import '../components/catalog-product-grid.css';
-import '../js/catalog-product-grid.js';
+import '../../components/catalog-product-grid.css';
+import '../../js/catalog-product-grid.js';
 import { expect } from 'storybook/test';
 
 const ASSET = 'https://placehold.co/220x180/f7f7f8/111418?text=Prodotto';
@@ -55,7 +55,7 @@ const renderRoot = (html) => {
 };
 
 export default {
-    title: 'Landing Page/CatalogProductGrid',
+    title: 'Landing Page/Catalog/CatalogProductGrid',
     tags: ['autodocs'],
     parameters: {
         layout: 'fullscreen',

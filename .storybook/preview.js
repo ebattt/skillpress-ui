@@ -16,7 +16,7 @@ export const parameters = {
                 'Dashboard',
                 ['Overview', 'Orders', 'Order Detail', 'Billing'],
                 'Landing Page',
-                ['CatalogStage', 'CatalogProductGrid', 'CatalogInterstitial', 'FeedatyWidget', 'LandingTextBlock'],
+                ['Catalog', 'Reviews'],
                 'Sections'
             ]
         }

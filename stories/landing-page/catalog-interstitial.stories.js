@@ -1,5 +1,5 @@
-import '../components/catalog-interstitial.css';
-import '../js/catalog-interstitial.js';
+import '../../components/catalog-interstitial.css';
+import '../../js/catalog-interstitial.js';
 import { expect } from 'storybook/test';
 
 const PHOTO = 'https://placehold.co/900x520/dfe3e8/111418?text=Stampa';
@@ -63,7 +63,7 @@ const trioMarkup = `
 `;
 
 export default {
-    title: 'Landing Page/CatalogInterstitial',
+    title: 'Landing Page/Catalog/CatalogInterstitial',
     tags: ['autodocs'],
     parameters: {
         layout: 'fullscreen',
