@@ -63,7 +63,7 @@ const trioMarkup = `
 `;
 
 export default {
-    title: 'Components/CatalogInterstitial',
+    title: 'Landing Page/CatalogInterstitial',
     tags: ['autodocs'],
     parameters: {
         layout: 'fullscreen',

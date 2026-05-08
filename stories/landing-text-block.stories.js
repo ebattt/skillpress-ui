@@ -13,7 +13,7 @@ const renderTextBlock = () => `
 `;
 
 export default {
-    title: 'Components/LandingTextBlock',
+    title: 'Landing Page/LandingTextBlock',
     tags: ['autodocs'],
     parameters: {
         layout: 'fullscreen',

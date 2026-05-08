@@ -55,7 +55,7 @@ const renderRoot = (html) => {
 };
 
 export default {
-    title: 'Components/CatalogProductGrid',
+    title: 'Landing Page/CatalogProductGrid',
     tags: ['autodocs'],
     parameters: {
         layout: 'fullscreen',

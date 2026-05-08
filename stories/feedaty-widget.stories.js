@@ -28,7 +28,7 @@ const renderRoot = (html) => {
 };
 
 export default {
-    title: 'Components/FeedatyWidget',
+    title: 'Landing Page/FeedatyWidget',
     tags: ['autodocs'],
     parameters: {
         layout: 'fullscreen',

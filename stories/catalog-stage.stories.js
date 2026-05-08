@@ -51,7 +51,7 @@ const renderRoot = (html) => {
 };
 
 export default {
-    title: 'Components/CatalogStage',
+    title: 'Landing Page/CatalogStage',
     tags: ['autodocs'],
     parameters: {
         layout: 'fullscreen',

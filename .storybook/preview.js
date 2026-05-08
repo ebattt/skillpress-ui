@@ -15,6 +15,8 @@ export const parameters = {
                 ['Cart', 'Shipping & Payment', 'Summary', 'Forms'],
                 'Dashboard',
                 ['Overview', 'Orders', 'Order Detail', 'Billing'],
+                'Landing Page',
+                ['CatalogStage', 'CatalogProductGrid', 'CatalogInterstitial', 'FeedatyWidget', 'LandingTextBlock'],
                 'Sections'
             ]
         }
