@@ -7,7 +7,7 @@ Manrope e servito dal package. Material Symbols non e una dipendenza runtime glo
 
 ## Stato
 
-Versione corrente: `0.2.0-alpha.16`.
+Versione corrente: `0.2.0-alpha.20`.
 
 Perimetro attuale:
 - Manrope self-hosted nel package
@@ -23,8 +23,9 @@ Perimetro attuale:
   RelatedProducts, MobileTotalBar, runtime dashboard inclusi nella versione corrente
   incluso `BillingFormCard`, runtime dashboard shell `DashboardShell`
 - bundle runtime production `bundles/product-page.css`, `bundles/checkout.css`,
-  `bundles/dashboard.css`; `bundles/demo-minimal.css` resta disponibile per
-  compatibilita' lab/demo
+  `bundles/dashboard.css`, `bundles/landing.css`; `bundles/blog.css` e'
+  preparato localmente per la prossima alpha blog; `bundles/demo-minimal.css`
+  resta disponibile per compatibilita' lab/demo
 - Storybook nel repository per visualizzazione e documentazione tecnica
 
 Fuori dal perimetro attuale:
@@ -95,6 +96,7 @@ npm install @ebattt/skillpress-ui
 @import '@ebattt/skillpress-ui/bundles/product-page.css';
 @import '@ebattt/skillpress-ui/bundles/checkout.css';
 @import '@ebattt/skillpress-ui/bundles/dashboard.css';
+@import '@ebattt/skillpress-ui/bundles/landing.css';
 ```
 
 ```html

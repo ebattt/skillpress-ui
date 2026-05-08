@@ -1,0 +1,69 @@
+/* ============================================================================
+   ARTICLE BODY
+   ============================================================================
+   Fonte: Skillpress-frontend/blog-page-static/article.html
+   ========================================================================== */
+
+.article-body {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 3vw, 1.5rem);
+    color: var(--color-text-strong, #374151);
+    font-size: var(--font-size-sm, 0.875rem);
+    line-height: 1.7;
+}
+
+.article-body p {
+    margin: 0 0 1rem;
+}
+
+.article-body h2 {
+    margin: 2rem 0 0.85rem;
+    color: var(--color-text, #111418);
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+
+.article-body h2:first-child {
+    margin-top: 0;
+}
+
+.article-body ul,
+.article-body ol {
+    margin: 0 0 1rem;
+    padding-left: 1.15rem;
+}
+
+.article-body ul {
+    list-style: disc;
+}
+
+.article-body ol {
+    list-style: decimal;
+}
+
+.article-body li {
+    margin-bottom: 0.35rem;
+    line-height: 1.65;
+}
+
+.article-body strong {
+    color: var(--color-text, #111418);
+    font-weight: 700;
+}
+
+.article-body a {
+    color: var(--color-primary-dark, #d67800);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+}
+
+@media (max-width: 639px) {
+    .article-body h2 {
+        margin: 1.5rem 0 0.65rem;
+    }
+}

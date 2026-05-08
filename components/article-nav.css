@@ -1,0 +1,73 @@
+/* ============================================================================
+   ARTICLE NAV
+   ============================================================================
+   Fonte: Skillpress-frontend/blog-page-static/article.html
+   ========================================================================== */
+
+.article-nav {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 3vw, 1.5rem) 0.5rem;
+}
+
+.article-nav__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.article-nav__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 2rem;
+    padding: 0.45rem 0.9rem;
+    color: var(--color-bg-white, #fff);
+    background: var(--color-primary, #f08a00);
+    border-radius: var(--radius-full, 9999px);
+    font-size: var(--font-size-xs, 0.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: background var(--transition-normal, 200ms ease);
+}
+
+.article-nav__link:hover,
+.article-nav__link:focus-visible {
+    background: var(--color-primary-dark, #d67800);
+}
+
+.article-nav__link:focus-visible {
+    outline: 2px solid var(--color-border-focus, #3b82f6);
+    outline-offset: 2px;
+}
+
+.article-nav__link--prev::before {
+    content: "<";
+}
+
+.article-nav__link--next::after {
+    content: ">";
+}
+
+.article-nav__item:only-child.article-nav__item--next,
+.article-nav__item--next:first-child {
+    margin-left: auto;
+}
+
+@media (max-width: 374px) {
+    .article-nav__list {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .article-nav__link {
+        width: 100%;
+        justify-content: center;
+    }
+}

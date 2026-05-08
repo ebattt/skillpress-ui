@@ -1,0 +1,83 @@
+/* ============================================================================
+   ARTICLE HERO
+   ============================================================================
+   Fonte: Skillpress-frontend/blog-page-static/article.html
+   ========================================================================== */
+
+.article-hero {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0.75rem clamp(1rem, 3vw, 1.5rem) 0;
+}
+
+.article-hero__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.article-hero__category {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.65rem;
+    color: var(--color-primary-dark, #d67800);
+    background: rgba(240, 138, 0, 0.1);
+    border-radius: var(--radius-full, 9999px);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.article-hero__title {
+    margin: 0;
+    color: var(--color-text, #111418);
+    font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0;
+}
+
+.article-hero__meta {
+    margin: 0;
+    color: var(--color-text-muted, #9ca3af);
+    font-size: var(--font-size-xs, 0.75rem);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.article-hero__media {
+    margin: 0 0 2rem;
+    overflow: hidden;
+    background: var(--color-bg-gray-75, #f7f7f8);
+    border: 1px solid rgba(17, 20, 24, 0.08);
+    border-radius: var(--radius-xl, 0.75rem);
+}
+
+.article-hero__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 360px;
+    object-fit: cover;
+}
+
+@media (max-width: 639px) {
+    .article-hero__header {
+        gap: 0.6rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .article-hero__media {
+        margin-bottom: 1.5rem;
+        border-radius: var(--radius-lg, 0.5rem);
+    }
+
+    .article-hero__media img {
+        max-height: 240px;
+    }
+}
