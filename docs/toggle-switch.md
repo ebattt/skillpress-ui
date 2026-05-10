@@ -28,38 +28,38 @@ ToggleSwitch
 │   └── toggle-switch__label       (label esterna, slot consumer)
 ```
 
-Lo switch standalone (senza wrapper field) e' valido: `.toggle-switch-field` e' opt-in solo quando serve la label inline.
+Lo switch standalone (senza wrapper field) e' valido: `.sp-toggle-switch-field` e' opt-in solo quando serve la label inline.
 
 ## Markup contract
 
-Markup verbatim dalla pagina demo `product-page-integration` (sidebar configuratore, toggle multicopertina). Il consumer monta `aria-checked` iniziale; `init()` sincronizza la classe `.toggle-switch--checked` di conseguenza.
+Markup verbatim dalla pagina demo `product-page-integration` (sidebar configuratore, toggle multicopertina). Il consumer monta `aria-checked` iniziale; `init()` sincronizza la classe `.sp-toggle-switch--checked` di conseguenza.
 
 ```html
 <button
     type="button"
-    class="toggle-switch"
+    class="sp-toggle-switch"
     role="switch"
     aria-checked="false"
     data-toggle-switch>
-    <span class="toggle-switch__thumb"></span>
+    <span class="sp-toggle-switch__thumb"></span>
 </button>
 ```
 
 Variante con label inline:
 
 ```html
-<span class="toggle-switch-field">
+<span class="sp-toggle-switch-field">
     <button
         type="button"
         id="multicop-switch"
-        class="toggle-switch"
+        class="sp-toggle-switch"
         role="switch"
         aria-checked="false"
         aria-labelledby="multicop-label"
         data-toggle-switch>
-        <span class="toggle-switch__thumb"></span>
+        <span class="sp-toggle-switch__thumb"></span>
     </button>
-    <label id="multicop-label" for="multicop-switch" class="toggle-switch__label">Multicopertina</label>
+    <label id="multicop-label" for="multicop-switch" class="sp-toggle-switch__label">Multicopertina</label>
 </span>
 ```
 
@@ -68,11 +68,11 @@ Variante stato iniziale ON:
 ```html
 <button
     type="button"
-    class="toggle-switch toggle-switch--checked"
+    class="sp-toggle-switch sp-toggle-switch--checked"
     role="switch"
     aria-checked="true"
     data-toggle-switch>
-    <span class="toggle-switch__thumb"></span>
+    <span class="sp-toggle-switch__thumb"></span>
 </button>
 ```
 
@@ -81,13 +81,13 @@ Variante disabled:
 ```html
 <button
     type="button"
-    class="toggle-switch"
+    class="sp-toggle-switch"
     role="switch"
     aria-checked="false"
     aria-disabled="true"
     disabled
     data-toggle-switch>
-    <span class="toggle-switch__thumb"></span>
+    <span class="sp-toggle-switch__thumb"></span>
 </button>
 ```
 
@@ -95,21 +95,21 @@ Variante disabled:
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.toggle-switch-field` | wrapper opzionale label + switch (inline-flex) | no | — |
-| `.toggle-switch` | track, e' il `<button>` stesso (44x24) | yes | `--checked` |
-| `.toggle-switch__thumb` | knob 20x20, animato via `translateX` quando checked | yes | — |
-| `.toggle-switch__label` | label esterna, tipografia base | no | — |
+| `.sp-toggle-switch-field` | wrapper opzionale label + switch (inline-flex) | no | — |
+| `.sp-toggle-switch` | track, e' il `<button>` stesso (44x24) | yes | `--checked` |
+| `.sp-toggle-switch__thumb` | knob 20x20, animato via `translateX` quando checked | yes | — |
+| `.sp-toggle-switch__label` | label esterna, tipografia base | no | — |
 
 Attributi:
 
 | Attribute | Element | Required | Note |
 |---|---|---|---|
-| `role="switch"` | `.toggle-switch` | yes | Auto-applicato da `init()` se mancante. |
-| `aria-checked` | `.toggle-switch` | yes | `"true"` / `"false"`. Sincronizzato da `init()` con la classe `.toggle-switch--checked`. |
-| `aria-disabled` | `.toggle-switch` | no | Alternativa a `disabled`; entrambi disabilitano il behavior. |
-| `disabled` | `.toggle-switch` | no | Disabilita il bottone nativo. |
-| `aria-labelledby` / `aria-label` | `.toggle-switch` | no | Consigliato quando il label non e' associato via `for`. |
-| `data-toggle-switch` | `.toggle-switch` | yes | Selettore di default di `init()`. |
+| `role="switch"` | `.sp-toggle-switch` | yes | Auto-applicato da `init()` se mancante. |
+| `aria-checked` | `.sp-toggle-switch` | yes | `"true"` / `"false"`. Sincronizzato da `init()` con la classe `.sp-toggle-switch--checked`. |
+| `aria-disabled` | `.sp-toggle-switch` | no | Alternativa a `disabled`; entrambi disabilitano il behavior. |
+| `disabled` | `.sp-toggle-switch` | no | Disabilita il bottone nativo. |
+| `aria-labelledby` / `aria-label` | `.sp-toggle-switch` | no | Consigliato quando il label non e' associato via `for`. |
+| `data-toggle-switch` | `.sp-toggle-switch` | yes | Selettore di default di `init()`. |
 
 ## Hook `data-*`
 
@@ -119,7 +119,7 @@ La libreria seleziona via `[data-*]`, mai via classi CSS:
 |-----------|-------|------|
 | `data-toggle-switch` | Entry point sul `<button>` switch | Obbligatorio per auto-discovery di `init()`. Sostituisce il vecchio `data-skillpress-toggle-switch`. |
 
-La classe `.toggle-switch--checked` e' pure-style: viene gestita dal JS (toggle automatico sincronizzato con `aria-checked`). Il backend la imposta solo per dichiarare lo stato iniziale insieme a `aria-checked="true"`. Le classi `.toggle-switch`, `.toggle-switch__thumb`, `.toggle-switch__label` sono il contratto markup (relazione DOM via classe BEM stabile), non hook entry.
+La classe `.sp-toggle-switch--checked` e' pure-style: viene gestita dal JS (toggle automatico sincronizzato con `aria-checked`). Il backend la imposta solo per dichiarare lo stato iniziale insieme a `aria-checked="true"`. Le classi `.sp-toggle-switch`, `.sp-toggle-switch__thumb`, `.sp-toggle-switch__label` sono il contratto markup (relazione DOM via classe BEM stabile), non hook entry.
 
 ## Behavior JS
 
@@ -168,10 +168,10 @@ Oppure via bundle (gia' include `toggle-switch.css`):
 
 ## Note CMS
 
-- stato iniziale: settare `aria-checked="true"` (e/o classe `.toggle-switch--checked`) nel markup. `init()` sincronizza la classe con l'attributo.
+- stato iniziale: settare `aria-checked="true"` (e/o classe `.sp-toggle-switch--checked`) nel markup. `init()` sincronizza la classe con l'attributo.
 - stato disabled: `disabled` o `aria-disabled="true"`. Entrambi bloccano il toggle e applicano lo stile `opacity: 0.5`.
-- testo della label: contenuto di `.toggle-switch__label`, libero (la libreria controlla solo tipografia base).
-- logica di business: ascoltare `toggle-switch:change` sul nodo `.toggle-switch` e leggere `event.detail.checked`.
+- testo della label: contenuto di `.sp-toggle-switch__label`, libero (la libreria controlla solo tipografia base).
+- logica di business: ascoltare `toggle-switch:change` sul nodo `.sp-toggle-switch` e leggere `event.detail.checked`.
 
 ## Out of scope
 
@@ -189,15 +189,15 @@ La demo originale usava modifier `is-checked` (alias `active`) come classe stand
 
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|
-| `.toggle-switch.is-checked` (compound) | `.toggle-switch.toggle-switch--checked` |
-| `.is-checked` / `.active` (standalone) | `.toggle-switch--checked` |
+| `.sp-toggle-switch.is-checked` (compound) | `.sp-toggle-switch.sp-toggle-switch--checked` |
+| `.is-checked` / `.active` (standalone) | `.sp-toggle-switch--checked` |
 | `[data-skillpress-toggle-switch]` | `[data-toggle-switch]` |
 
-`.toggle-switch` (block), `.toggle-switch__thumb`, `.toggle-switch__label`, `.toggle-switch-field` (wrapper opzionale) sono invariati. Attributi ARIA nativi (`aria-checked`, `aria-disabled`, `role="switch"`, `disabled`) restano invariati.
+`.sp-toggle-switch` (block), `.sp-toggle-switch__thumb`, `.sp-toggle-switch__label`, `.sp-toggle-switch-field` (wrapper opzionale) sono invariati. Attributi ARIA nativi (`aria-checked`, `aria-disabled`, `role="switch"`, `disabled`) restano invariati.
 
 ## Classi pubbliche
 
-`.toggle-switch-field`, `.toggle-switch`, `.toggle-switch__thumb`, `.toggle-switch__label`, `.toggle-switch--checked`.
+`.sp-toggle-switch-field`, `.sp-toggle-switch`, `.sp-toggle-switch__thumb`, `.sp-toggle-switch__label`, `.sp-toggle-switch--checked`.
 
 ## Data hooks
 
@@ -205,7 +205,7 @@ La demo originale usava modifier `is-checked` (alias `active`) come classe stand
 
 ## Modifier / stati
 
-Checked tramite `.toggle-switch--checked` + `aria-checked="true"`; disabled tramite `disabled` o `aria-disabled="true"`.
+Checked tramite `.sp-toggle-switch--checked` + `aria-checked="true"`; disabled tramite `disabled` o `aria-disabled="true"`.
 
 ## Backend owns
 

@@ -9,7 +9,7 @@
  *
  * Contratto markup statico (Strategia A: behavior galleria fuori scope):
  *   <div class="image-gallery">
- *     <div class="image-gallery__container product-shadow" data-images='[...]'>
+ *     <div class="image-gallery__container product-shadow" data-image-gallery-images='[...]'>
  *       <img ... />
  *       <button class="image-gallery__nav-btn image-gallery__nav-btn--prev" aria-label="...">
  *         <svg aria-hidden="true">...</svg>

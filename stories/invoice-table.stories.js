@@ -15,18 +15,18 @@ const rows = [
     { invoice: 'FT-2024-086', ddt: '1038', date: '01/11/24', total: '&euro; 78,90' }
 ];
 
-const downloadIcon = '<span class="dash-link--download__icon dash-link--download__icon--download" aria-hidden="true"></span>';
+const downloadIcon = '<span class="dashboard-link--download__icon dashboard-link--download__icon--download" aria-hidden="true"></span>';
 
 const renderRows = (items) => items.map((row) => `
     <tr>
         <td>
-            <button class="dash-link--download" type="button" aria-label="Scarica fattura ${row.invoice}">
+            <button class="dashboard-link--download" type="button" aria-label="Scarica fattura ${row.invoice}">
                 <span class="font-semibold">${row.invoice}</span>
                 ${downloadIcon}
             </button>
         </td>
         <td>
-            <button class="dash-link--download" type="button" aria-label="Scarica DDT ${row.ddt}">
+            <button class="dashboard-link--download" type="button" aria-label="Scarica DDT ${row.ddt}">
                 <span class="font-semibold">${row.ddt}</span>
                 ${downloadIcon}
             </button>
@@ -38,12 +38,12 @@ const renderRows = (items) => items.map((row) => `
 
 const renderFilters = () => `
     <div class="invoice-table-section__filters" aria-label="Filtri fatture">
-        <select class="orders-filter-select" data-filter="invoice-status" aria-label="Stato fattura">
+        <select class="orders-filter-select" data-search-filter-bar-filter="invoice-status" aria-label="Stato fattura">
             <option>Tutte le fatture</option>
             <option>Pagate</option>
             <option>In sospeso</option>
         </select>
-        <select class="orders-filter-select" data-filter="invoice-year" aria-label="Anno fattura">
+        <select class="orders-filter-select" data-search-filter-bar-filter="invoice-year" aria-label="Anno fattura">
             <option>2025</option>
             <option>2024</option>
             <option>2023</option>
@@ -109,7 +109,7 @@ export const Default = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
         await expect(canvas.getByText('FT-2025-024')).toBeInTheDocument();
-        await expect(canvas.getAllByLabelText(/Scarica fattura/)[0]).toHaveClass('dash-link--download');
+        await expect(canvas.getAllByLabelText(/Scarica fattura/)[0]).toHaveClass('dashboard-link--download');
     }
 };
 

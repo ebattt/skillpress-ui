@@ -44,12 +44,12 @@ Do not use it for:
                     </td>
                     <td class="quote-col-hide"></td>
                     <td class="quote-td-qty">500</td>
-                    <td class="quote-col-hide td-text-right">-</td>
-                    <td class="quote-col-hide td-text-right">-</td>
-                    <td class="quote-col-hide td-text-right">-</td>
-                    <td class="quote-col-hide td-text-right">-</td>
+                    <td class="quote-col-hide orders-table__cell--text-right">-</td>
+                    <td class="quote-col-hide orders-table__cell--text-right">-</td>
+                    <td class="quote-col-hide orders-table__cell--text-right">-</td>
+                    <td class="quote-col-hide orders-table__cell--text-right">-</td>
                     <td class="quote-td-action">
-                        <button class="quote-row-btn quote-row-btn--remove" type="button" data-action="remove-quote-row" title="Rimuovi">
+                        <button class="quote-row-btn quote-row-btn--remove" type="button" data-orders-table-action="remove-quote-row" title="Rimuovi">
                             <span class="quote-row-btn__icon quote-row-btn__icon--remove" aria-hidden="true"></span>
                         </button>
                     </td>
@@ -57,7 +57,7 @@ Do not use it for:
             </tbody>
         </table>
     </div>
-    <button class="quote-submit-btn" type="button" data-action="submit-quote">Invia richiesta</button>
+    <button class="quote-submit-btn" type="button" data-orders-table-action="submit-quote">Invia richiesta</button>
 </section>
 ```
 

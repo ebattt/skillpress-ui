@@ -1,8 +1,28 @@
+/**
+ * DashboardShell -- dashboard layout with view routing and mobile menu.
+ *
+ * @public-data data-dashboard-shell, data-dashboard-shell-initial-view, data-dashboard-shell-view, data-dashboard-shell-nav-item, data-dashboard-shell-navigate, data-dashboard-shell-navigate-disabled-mobile, data-dashboard-shell-mobile-menu, data-dashboard-shell-back, data-dashboard-shell-parent
+ * @public-event sp:dashboard-shell:change
+ */
 (function () {
     'use strict';
 
     var namespace = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = namespace.helpers || {};
     var mobileQuery = window.matchMedia('(max-width: 1023px)');
+
+    function dispatch(target, name, detail) {
+        if (typeof helpers.dispatch === 'function') {
+            try { helpers.dispatch(target, name, detail); return; } catch (e) { /* fallthrough */ }
+        }
+        target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
+    }
+
+    function emitWithLegacyAlias(target, normalized, legacy, detail) {
+        dispatch(target, normalized, detail);
+        // deprecated alias, removed in v0.3
+        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
+    }
     var parentNavMap = {
         'order-detail': 'orders',
         'quote-request': 'quotes'
@@ -48,13 +68,10 @@
     }
 
     function dispatchChange(root, viewName) {
-        root.dispatchEvent(new CustomEvent('sp:dashboard-shell-change', {
-            bubbles: true,
-            detail: {
-                view: viewName,
-                nav: getNavForView(root, viewName)
-            }
-        }));
+        emitWithLegacyAlias(root, 'sp:dashboard-shell:change', 'sp:dashboard-shell-change', {
+            view: viewName,
+            nav: getNavForView(root, viewName)
+        });
     }
 
     function setCurrentNav(root, viewName) {
@@ -140,7 +157,9 @@
     }
 
     function initRoot(root) {
-        if (!root || root.dataset.dashboardShellInit === 'true') return;
+        if (!root || root.__skillpressDashboardShellInitialized) return;
+        root.__skillpressDashboardShellInitialized = true;
+        // deprecated alias, removed in v0.3
         root.dataset.dashboardShellInit = 'true';
 
         root.addEventListener('click', function (event) {
@@ -160,6 +179,7 @@
         syncResponsiveState(root);
     }
 
+    /** @public */
     function init(rootOrDocument) {
         findRoots(rootOrDocument).forEach(initRoot);
     }
@@ -180,7 +200,9 @@
         showMobileMenu: showMobileMenu
     };
 
-    if (document.readyState === 'loading') {
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function () { init(document); });
     } else {
         init(document);

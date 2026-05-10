@@ -48,19 +48,19 @@ const checkIcon = '<span class="billing-table__icon billing-table__icon--check" 
 
 const renderRows = (items) => items.map((row) => `
     <tr>
-        <td class="font-semibold td-nowrap">${row.name}<span class="billing-table__mobile-address">${row.mobileAddress}</span></td>
-        <td class="td-mobile-hide">${row.piva}</td>
-        <td class="td-nowrap td-mobile-hide">${row.cf}</td>
-        <td class="td-mobile-hide">${row.address}</td>
-        <td class="td-mobile-hide">${row.email}</td>
-        <td class="td-mobile-hide">${row.sdi}</td>
-        <td class="td-mobile-hide">${row.billing ? 'Si' : 'No'}</td>
-        <td class="td-mobile-hide">${row.shipping ? 'Si' : 'No'}</td>
-        <td class="td-text-center billing-table__pref-col">${row.billing ? checkIcon : ''}</td>
-        <td class="td-text-center billing-table__pref-col">${row.shipping ? checkIcon : ''}</td>
-        <td class="td-text-center">
-            <button class="dash-link--download" type="button" data-action="edit-billing" data-record-id="${row.id}" title="Modifica">
-                <span class="dash-link--download__icon dash-link--download__icon--edit" aria-hidden="true"></span>
+        <td class="font-semibold orders-table__cell--nowrap">${row.name}<span class="billing-table__mobile-address">${row.mobileAddress}</span></td>
+        <td class="orders-table__cell--mobile-hide">${row.piva}</td>
+        <td class="orders-table__cell--nowrap orders-table__cell--mobile-hide">${row.cf}</td>
+        <td class="orders-table__cell--mobile-hide">${row.address}</td>
+        <td class="orders-table__cell--mobile-hide">${row.email}</td>
+        <td class="orders-table__cell--mobile-hide">${row.sdi}</td>
+        <td class="orders-table__cell--mobile-hide">${row.billing ? 'Si' : 'No'}</td>
+        <td class="orders-table__cell--mobile-hide">${row.shipping ? 'Si' : 'No'}</td>
+        <td class="orders-table__cell--text-center billing-table__pref-col">${row.billing ? checkIcon : ''}</td>
+        <td class="orders-table__cell--text-center billing-table__pref-col">${row.shipping ? checkIcon : ''}</td>
+        <td class="orders-table__cell--text-center">
+            <button class="dashboard-link--download" type="button" data-orders-table-action="edit-billing" data-billing-form-card-record-id="${row.id}" title="Modifica">
+                <span class="dashboard-link--download__icon dashboard-link--download__icon--edit" aria-hidden="true"></span>
             </button>
         </td>
     </tr>
@@ -111,7 +111,7 @@ export const Default = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
         await expect(canvas.getByText('Giacomo Battiston')).toBeInTheDocument();
-        await expect(canvas.getAllByTitle('Modifica')[0]).toHaveClass('dash-link--download');
+        await expect(canvas.getAllByTitle('Modifica')[0]).toHaveClass('dashboard-link--download');
     }
 };
 

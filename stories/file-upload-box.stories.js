@@ -5,7 +5,7 @@ import { expect, within } from 'storybook/test';
 const renderModal = ({ visible = false, rejected = false } = {}) => {
     const root = document.createElement('div');
     root.innerHTML = `
-        <button class="button button--primary" type="button" data-file-upload-box-open="#story-file-upload-modal">
+        <button class="sp-button sp-button--primary" type="button" data-file-upload-box-open="#story-file-upload-modal">
             Apri upload
         </button>
         <div id="story-file-upload-modal"

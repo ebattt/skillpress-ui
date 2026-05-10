@@ -1,0 +1,3544 @@
+{
+  "generatedAt": "2026-05-08T19:52:46.434Z",
+  "sourceVersion": "0.2.0-alpha.21",
+  "decisions": {
+    "dashWinner": "dashboard-",
+    "czRenameVsDelete": {
+      "rename": 0,
+      "delete": 16
+    }
+  },
+  "primitives": [
+    {
+      "old": ".accordion",
+      "new": ".sp-accordion",
+      "file": "primitives/accordion.css",
+      "type": "block"
+    },
+    {
+      "old": ".accordion--surface-white",
+      "new": ".sp-accordion--surface-white",
+      "file": "primitives/accordion.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".accordion__badge",
+      "new": ".sp-accordion__badge",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".accordion__content",
+      "new": ".sp-accordion__content",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".accordion__header",
+      "new": ".sp-accordion__header",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".accordion__header-icon",
+      "new": ".sp-accordion__header-icon",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".accordion__header-icon--cart",
+      "new": ".sp-accordion__header-icon--cart",
+      "file": "primitives/accordion.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".accordion__header-icon--payment",
+      "new": ".sp-accordion__header-icon--payment",
+      "file": "primitives/accordion.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".accordion__header-icon--shipping",
+      "new": ".sp-accordion__header-icon--shipping",
+      "file": "primitives/accordion.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".accordion__header-left",
+      "new": ".sp-accordion__header-left",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".accordion__icon",
+      "new": ".sp-accordion__icon",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".accordion__inner",
+      "new": ".sp-accordion__inner",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".accordion__section",
+      "new": ".sp-accordion__section",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".accordion__section--expanded",
+      "new": ".sp-accordion__section--expanded",
+      "file": "primitives/accordion.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".accordion__title",
+      "new": ".sp-accordion__title",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".org",
+      "new": ".sp-org",
+      "file": "primitives/accordion.css",
+      "type": "block"
+    },
+    {
+      "old": ".w3",
+      "new": ".sp-w3",
+      "file": "primitives/accordion.css",
+      "type": "block"
+    },
+    {
+      "old": ".badge",
+      "new": ".sp-badge",
+      "file": "primitives/badge.css",
+      "type": "block"
+    },
+    {
+      "old": ".badge--cancelled",
+      "new": ".sp-badge--cancelled",
+      "file": "primitives/badge.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".badge--error",
+      "new": ".sp-badge--error",
+      "file": "primitives/badge.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".badge--info",
+      "new": ".sp-badge--info",
+      "file": "primitives/badge.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".badge--neutral",
+      "new": ".sp-badge--neutral",
+      "file": "primitives/badge.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".badge--success",
+      "new": ".sp-badge--success",
+      "file": "primitives/badge.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".badge--warning",
+      "new": ".sp-badge--warning",
+      "file": "primitives/badge.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".breadcrumb",
+      "new": ".sp-breadcrumb",
+      "file": "primitives/breadcrumb.css",
+      "type": "block"
+    },
+    {
+      "old": ".breadcrumb__item",
+      "new": ".sp-breadcrumb__item",
+      "file": "primitives/breadcrumb.css",
+      "type": "element"
+    },
+    {
+      "old": ".breadcrumb__item--current",
+      "new": ".sp-breadcrumb__item--current",
+      "file": "primitives/breadcrumb.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".breadcrumb__link",
+      "new": ".sp-breadcrumb__link",
+      "file": "primitives/breadcrumb.css",
+      "type": "element"
+    },
+    {
+      "old": ".breadcrumb__list",
+      "new": ".sp-breadcrumb__list",
+      "file": "primitives/breadcrumb.css",
+      "type": "element"
+    },
+    {
+      "old": ".button",
+      "new": ".sp-button",
+      "file": "primitives/button.css",
+      "type": "block"
+    },
+    {
+      "old": ".button--dashboard-link",
+      "new": ".sp-button--dashboard-link",
+      "file": "primitives/button.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".button--dashed",
+      "new": ".sp-button--dashed",
+      "file": "primitives/button.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".button--disabled",
+      "new": ".sp-button--disabled",
+      "file": "primitives/button.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".button--full",
+      "new": ".sp-button--full",
+      "file": "primitives/button.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".button--ghost",
+      "new": ".sp-button--ghost",
+      "file": "primitives/button.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".button--outline",
+      "new": ".sp-button--outline",
+      "file": "primitives/button.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".button--primary",
+      "new": ".sp-button--primary",
+      "file": "primitives/button.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".button--secondary",
+      "new": ".sp-button--secondary",
+      "file": "primitives/button.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".button--sm",
+      "new": ".sp-button--sm",
+      "file": "primitives/button.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".button__icon",
+      "new": ".sp-button__icon",
+      "file": "primitives/button.css",
+      "type": "element"
+    },
+    {
+      "old": ".card",
+      "new": ".sp-card",
+      "file": "primitives/card.css",
+      "type": "block"
+    },
+    {
+      "old": ".card--control-row",
+      "new": ".sp-card--control-row",
+      "file": "primitives/card.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".card--disabled",
+      "new": ".sp-card--disabled",
+      "file": "primitives/card.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".card--interactive",
+      "new": ".sp-card--interactive",
+      "file": "primitives/card.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".card--selected",
+      "new": ".sp-card--selected",
+      "file": "primitives/card.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".card--surface-muted",
+      "new": ".sp-card--surface-muted",
+      "file": "primitives/card.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".card__actions",
+      "new": ".sp-card__actions",
+      "file": "primitives/card.css",
+      "type": "element"
+    },
+    {
+      "old": ".card__body",
+      "new": ".sp-card__body",
+      "file": "primitives/card.css",
+      "type": "element"
+    },
+    {
+      "old": ".card__description",
+      "new": ".sp-card__description",
+      "file": "primitives/card.css",
+      "type": "element"
+    },
+    {
+      "old": ".card__eyebrow",
+      "new": ".sp-card__eyebrow",
+      "file": "primitives/card.css",
+      "type": "element"
+    },
+    {
+      "old": ".card__footer",
+      "new": ".sp-card__footer",
+      "file": "primitives/card.css",
+      "type": "element"
+    },
+    {
+      "old": ".card__header",
+      "new": ".sp-card__header",
+      "file": "primitives/card.css",
+      "type": "element"
+    },
+    {
+      "old": ".card__media",
+      "new": ".sp-card__media",
+      "file": "primitives/card.css",
+      "type": "element"
+    },
+    {
+      "old": ".card__title",
+      "new": ".sp-card__title",
+      "file": "primitives/card.css",
+      "type": "element"
+    },
+    {
+      "old": ".toggle-switch",
+      "new": ".sp-toggle-switch",
+      "file": "primitives/card.css",
+      "type": "block"
+    },
+    {
+      "old": ".dashboard-nav-icon",
+      "new": ".sp-dashboard-nav-icon",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "block"
+    },
+    {
+      "old": ".dashboard-nav-icon--account",
+      "new": ".sp-dashboard-nav-icon--account",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".dashboard-nav-icon--billing",
+      "new": ".sp-dashboard-nav-icon--billing",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".dashboard-nav-icon--dashboard",
+      "new": ".sp-dashboard-nav-icon--dashboard",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".dashboard-nav-icon--logout",
+      "new": ".sp-dashboard-nav-icon--logout",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".dashboard-nav-icon--orders",
+      "new": ".sp-dashboard-nav-icon--orders",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".dashboard-nav-icon--quotes",
+      "new": ".sp-dashboard-nav-icon--quotes",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".dashboard-nav-icon--supplier",
+      "new": ".sp-dashboard-nav-icon--supplier",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".org",
+      "new": ".sp-org",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "block"
+    },
+    {
+      "old": ".w3",
+      "new": ".sp-w3",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "block"
+    },
+    {
+      "old": ".download-buttons",
+      "new": ".sp-download-buttons",
+      "file": "primitives/download-buttons.css",
+      "type": "block"
+    },
+    {
+      "old": ".download-buttons__btn",
+      "new": ".sp-download-buttons__btn",
+      "file": "primitives/download-buttons.css",
+      "type": "element"
+    },
+    {
+      "old": ".download-buttons__divider",
+      "new": ".sp-download-buttons__divider",
+      "file": "primitives/download-buttons.css",
+      "type": "element"
+    },
+    {
+      "old": ".radio-group",
+      "new": ".sp-radio-group",
+      "file": "primitives/form-controls.css",
+      "type": "block"
+    },
+    {
+      "old": ".radio-option",
+      "new": ".sp-radio-option",
+      "file": "primitives/form-controls.css",
+      "type": "block"
+    },
+    {
+      "old": ".radio-option--disabled",
+      "new": ".sp-radio-option--disabled",
+      "file": "primitives/form-controls.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".radio-option-label",
+      "new": ".sp-radio-option-label",
+      "file": "primitives/form-controls.css",
+      "type": "block"
+    },
+    {
+      "old": ".form-layout",
+      "new": ".sp-form-layout",
+      "file": "primitives/form-layout.css",
+      "type": "block"
+    },
+    {
+      "old": ".form-layout--compact",
+      "new": ".sp-form-layout--compact",
+      "file": "primitives/form-layout.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".form-layout__actions",
+      "new": ".sp-form-layout__actions",
+      "file": "primitives/form-layout.css",
+      "type": "element"
+    },
+    {
+      "old": ".form-layout__actions--end",
+      "new": ".sp-form-layout__actions--end",
+      "file": "primitives/form-layout.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".form-layout__copy-row",
+      "new": ".sp-form-layout__copy-row",
+      "file": "primitives/form-layout.css",
+      "type": "element"
+    },
+    {
+      "old": ".form-layout__row",
+      "new": ".sp-form-layout__row",
+      "file": "primitives/form-layout.css",
+      "type": "element"
+    },
+    {
+      "old": ".form-layout__row--2",
+      "new": ".sp-form-layout__row--2",
+      "file": "primitives/form-layout.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".form-layout__row--3",
+      "new": ".sp-form-layout__row--3",
+      "file": "primitives/form-layout.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".label-text",
+      "new": ".sp-label-text",
+      "file": "primitives/form-layout.css",
+      "type": "block"
+    },
+    {
+      "old": ".custom-dims",
+      "new": ".sp-custom-dims",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".custom-dims__field",
+      "new": ".sp-custom-dims__field",
+      "file": "primitives/form-primitives.css",
+      "type": "element"
+    },
+    {
+      "old": ".custom-dims__grid",
+      "new": ".sp-custom-dims__grid",
+      "file": "primitives/form-primitives.css",
+      "type": "element"
+    },
+    {
+      "old": ".custom-dims__label",
+      "new": ".sp-custom-dims__label",
+      "file": "primitives/form-primitives.css",
+      "type": "element"
+    },
+    {
+      "old": ".error-inline",
+      "new": ".sp-error-inline",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".error-msg",
+      "new": ".sp-error-msg",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".facciate-input-wrap",
+      "new": ".sp-facciate-input-wrap",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".facciate-row",
+      "new": ".sp-facciate-row",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".form-field",
+      "new": ".sp-form-field",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".form-input",
+      "new": ".sp-form-input",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".form-input--error",
+      "new": ".sp-form-input--error",
+      "file": "primitives/form-primitives.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".form-select",
+      "new": ".sp-form-select",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".label-hint",
+      "new": ".sp-label-hint",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".label-row",
+      "new": ".sp-label-row",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".label-text",
+      "new": ".sp-label-text",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".label-text__optional",
+      "new": ".sp-label-text__optional",
+      "file": "primitives/form-primitives.css",
+      "type": "element"
+    },
+    {
+      "old": ".label-text__required",
+      "new": ".sp-label-text__required",
+      "file": "primitives/form-primitives.css",
+      "type": "element"
+    },
+    {
+      "old": ".nome-lavoro-input",
+      "new": ".sp-nome-lavoro-input",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".nome-lavoro-input--error",
+      "new": ".sp-nome-lavoro-input--error",
+      "file": "primitives/form-primitives.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".nome-ref-row",
+      "new": ".sp-nome-ref-row",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".org",
+      "new": ".sp-org",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".qty-iva-row",
+      "new": ".sp-qty-iva-row",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".qty-iva-row--double",
+      "new": ".sp-qty-iva-row--double",
+      "file": "primitives/form-primitives.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".qty-iva-row--single",
+      "new": ".sp-qty-iva-row--single",
+      "file": "primitives/form-primitives.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".spessore-display",
+      "new": ".sp-spessore-display",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".spessore-label",
+      "new": ".sp-spessore-label",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".spessore-value",
+      "new": ".sp-spessore-value",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".success-inline",
+      "new": ".sp-success-inline",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".w3",
+      "new": ".sp-w3",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".info-btn",
+      "new": ".sp-info-btn",
+      "file": "primitives/info-dropdown.css",
+      "type": "block"
+    },
+    {
+      "old": ".info-dropdown",
+      "new": ".sp-info-dropdown",
+      "file": "primitives/info-dropdown.css",
+      "type": "block"
+    },
+    {
+      "old": ".info-dropdown--hidden",
+      "new": ".sp-info-dropdown--hidden",
+      "file": "primitives/info-dropdown.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".info-dropdown__body",
+      "new": ".sp-info-dropdown__body",
+      "file": "primitives/info-dropdown.css",
+      "type": "element"
+    },
+    {
+      "old": ".info-dropdown__close",
+      "new": ".sp-info-dropdown__close",
+      "file": "primitives/info-dropdown.css",
+      "type": "element"
+    },
+    {
+      "old": ".info-dropdown__header",
+      "new": ".sp-info-dropdown__header",
+      "file": "primitives/info-dropdown.css",
+      "type": "element"
+    },
+    {
+      "old": ".info-dropdown__title",
+      "new": ".sp-info-dropdown__title",
+      "file": "primitives/info-dropdown.css",
+      "type": "element"
+    },
+    {
+      "old": ".info-note",
+      "new": ".sp-info-note",
+      "file": "primitives/info-dropdown.css",
+      "type": "block"
+    },
+    {
+      "old": ".info-note__muted",
+      "new": ".sp-info-note__muted",
+      "file": "primitives/info-dropdown.css",
+      "type": "element"
+    },
+    {
+      "old": ".info-note__title",
+      "new": ".sp-info-note__title",
+      "file": "primitives/info-dropdown.css",
+      "type": "element"
+    },
+    {
+      "old": ".iva-banner",
+      "new": ".sp-iva-banner",
+      "file": "primitives/iva-banner.css",
+      "type": "block"
+    },
+    {
+      "old": ".iva-banner__content",
+      "new": ".sp-iva-banner__content",
+      "file": "primitives/iva-banner.css",
+      "type": "element"
+    },
+    {
+      "old": ".iva-banner__icon",
+      "new": ".sp-iva-banner__icon",
+      "file": "primitives/iva-banner.css",
+      "type": "element"
+    },
+    {
+      "old": ".iva-banner__text",
+      "new": ".sp-iva-banner__text",
+      "file": "primitives/iva-banner.css",
+      "type": "element"
+    },
+    {
+      "old": ".mode-switcher",
+      "new": ".sp-mode-switcher",
+      "file": "primitives/mode-switcher.css",
+      "type": "block"
+    },
+    {
+      "old": ".mode-switcher__btn",
+      "new": ".sp-mode-switcher__btn",
+      "file": "primitives/mode-switcher.css",
+      "type": "element"
+    },
+    {
+      "old": ".mode-switcher__btn--active",
+      "new": ".sp-mode-switcher__btn--active",
+      "file": "primitives/mode-switcher.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".mode-switcher__btn--inactive",
+      "new": ".sp-mode-switcher__btn--inactive",
+      "file": "primitives/mode-switcher.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".option-buttons",
+      "new": ".sp-option-buttons",
+      "file": "primitives/option-buttons.css",
+      "type": "block"
+    },
+    {
+      "old": ".option-buttons--equal",
+      "new": ".sp-option-buttons--equal",
+      "file": "primitives/option-buttons.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".option-buttons__btn",
+      "new": ".sp-option-buttons__btn",
+      "file": "primitives/option-buttons.css",
+      "type": "element"
+    },
+    {
+      "old": ".option-buttons__btn--borderless",
+      "new": ".sp-option-buttons__btn--borderless",
+      "file": "primitives/option-buttons.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".option-buttons__btn--default",
+      "new": ".sp-option-buttons__btn--default",
+      "file": "primitives/option-buttons.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".option-buttons__btn--selected",
+      "new": ".sp-option-buttons__btn--selected",
+      "file": "primitives/option-buttons.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".orientation-toggle",
+      "new": ".sp-orientation-toggle",
+      "file": "primitives/orientation-toggle.css",
+      "type": "block"
+    },
+    {
+      "old": ".orientation-toggle__btn",
+      "new": ".sp-orientation-toggle__btn",
+      "file": "primitives/orientation-toggle.css",
+      "type": "element"
+    },
+    {
+      "old": ".orientation-toggle__btn--active",
+      "new": ".sp-orientation-toggle__btn--active",
+      "file": "primitives/orientation-toggle.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".rating",
+      "new": ".sp-rating",
+      "file": "primitives/rating.css",
+      "type": "block"
+    },
+    {
+      "old": ".rating__empty",
+      "new": ".sp-rating__empty",
+      "file": "primitives/rating.css",
+      "type": "element"
+    },
+    {
+      "old": ".rating__filled",
+      "new": ".sp-rating__filled",
+      "file": "primitives/rating.css",
+      "type": "element"
+    },
+    {
+      "old": ".rating__star",
+      "new": ".sp-rating__star",
+      "file": "primitives/rating.css",
+      "type": "element"
+    },
+    {
+      "old": ".toggle-switch",
+      "new": ".sp-toggle-switch",
+      "file": "primitives/toggle-switch.css",
+      "type": "block"
+    },
+    {
+      "old": ".toggle-switch--checked",
+      "new": ".sp-toggle-switch--checked",
+      "file": "primitives/toggle-switch.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".toggle-switch-field",
+      "new": ".sp-toggle-switch-field",
+      "file": "primitives/toggle-switch.css",
+      "type": "block"
+    },
+    {
+      "old": ".toggle-switch__label",
+      "new": ".sp-toggle-switch__label",
+      "file": "primitives/toggle-switch.css",
+      "type": "element"
+    },
+    {
+      "old": ".toggle-switch__thumb",
+      "new": ".sp-toggle-switch__thumb",
+      "file": "primitives/toggle-switch.css",
+      "type": "element"
+    },
+    {
+      "old": ".validation-indicator",
+      "new": ".sp-validation-indicator",
+      "file": "primitives/validation-indicator.css",
+      "type": "block"
+    },
+    {
+      "old": ".validation-total",
+      "new": ".sp-validation-total",
+      "file": "primitives/validation-indicator.css",
+      "type": "block"
+    },
+    {
+      "old": ".validation-total__count",
+      "new": ".sp-validation-total__count",
+      "file": "primitives/validation-indicator.css",
+      "type": "element"
+    }
+  ],
+  "dataAttrs": [
+    {
+      "old": "data-accordion",
+      "new": "data-accordion",
+      "owner": null,
+      "files": [
+        "demo-pages/minimal/index.html",
+        "js/accordion.js",
+        "stories/accordion.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-accordion-section",
+      "new": "data-accordion-section",
+      "owner": null,
+      "files": [
+        "demo-pages/minimal/index.html",
+        "js/accordion.js",
+        "stories/accordion.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-accordion-trigger",
+      "new": "data-accordion-trigger",
+      "owner": null,
+      "files": [
+        "demo-pages/minimal/index.html",
+        "js/accordion.js",
+        "stories/accordion.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-action",
+      "new": "data-orders-table-action",
+      "owner": "orders-table",
+      "files": [
+        "js/orders-table.js",
+        "stories/billing-table.stories.js",
+        "stories/order-payment-action-box.stories.js",
+        "stories/quote-request-table.stories.js",
+        "stories/search-filter-bar.stories.js",
+        "stories/supplier-activity-table.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "rows in orders-table"
+    },
+    {
+      "old": "data-address-preview",
+      "new": "data-address-preview",
+      "owner": null,
+      "files": [
+        "stories/address-preview.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-allocation-rows",
+      "new": "data-allocation-rows",
+      "owner": null,
+      "files": [
+        "stories/allocation-rows.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-article-card",
+      "new": "data-article-card",
+      "owner": null,
+      "files": [
+        "stories/blog-page/article-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-billing-form-card",
+      "new": "data-billing-form-card",
+      "owner": null,
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-billing-form-card-close",
+      "new": "data-billing-form-card-close",
+      "owner": null,
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-billing-form-card-focus",
+      "new": "data-billing-form-card-focus",
+      "owner": null,
+      "files": [
+        "js/billing-form-card.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-billing-form-card-mode",
+      "new": "data-billing-form-card-mode",
+      "owner": null,
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-billing-form-card-open",
+      "new": "data-billing-form-card-open",
+      "owner": null,
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-billing-form-card-submit",
+      "new": "data-billing-form-card-submit",
+      "owner": null,
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-billing-form-card-target",
+      "new": "data-billing-form-card-target",
+      "owner": null,
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-billing-form-card-title",
+      "new": "data-billing-form-card-title",
+      "owner": null,
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-card-href",
+      "new": "data-card-href",
+      "owner": "article-card",
+      "files": [
+        "stories/blog-page/article-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-card-link",
+      "new": "data-card-link",
+      "owner": "catalog-interstitial",
+      "files": [
+        "js/catalog-interstitial.js",
+        "stories/landing-page/catalog-interstitial.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-card-link-label",
+      "new": "data-card-link-label",
+      "owner": "catalog-interstitial",
+      "files": [
+        "js/catalog-interstitial.js",
+        "stories/landing-page/catalog-interstitial.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-cart-product-card",
+      "new": "data-cart-product-card",
+      "owner": null,
+      "files": [
+        "js/cart-product-card.js",
+        "stories/cart-product-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-cart-product-card-details",
+      "new": "data-cart-product-card-details",
+      "owner": null,
+      "files": [
+        "js/cart-product-card.js",
+        "stories/cart-product-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-cart-product-card-remove",
+      "new": "data-cart-product-card-remove",
+      "owner": null,
+      "files": [
+        "stories/cart-product-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-cart-product-card-toggle",
+      "new": "data-cart-product-card-toggle",
+      "owner": null,
+      "files": [
+        "js/cart-product-card.js",
+        "stories/cart-product-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-interstitial",
+      "new": "data-catalog-interstitial",
+      "owner": null,
+      "files": [
+        "js/catalog-interstitial.js",
+        "stories/landing-page/catalog-interstitial.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-interstitial-card",
+      "new": "data-catalog-interstitial-card",
+      "owner": null,
+      "files": [
+        "js/catalog-interstitial.js",
+        "stories/landing-page/catalog-interstitial.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-interstitial-init",
+      "new": "data-catalog-interstitial-init",
+      "owner": null,
+      "files": [
+        "js/catalog-interstitial.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-product-grid",
+      "new": "data-catalog-product-grid",
+      "owner": null,
+      "files": [
+        "js/catalog-product-grid.js",
+        "stories/landing-page/catalog-product-grid.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-product-grid-card",
+      "new": "data-catalog-product-grid-card",
+      "owner": null,
+      "files": [
+        "js/catalog-product-grid.js",
+        "stories/landing-page/catalog-product-grid.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-product-grid-init",
+      "new": "data-catalog-product-grid-init",
+      "owner": null,
+      "files": [
+        "js/catalog-product-grid.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-product-grid-items",
+      "new": "data-catalog-product-grid-items",
+      "owner": null,
+      "files": [
+        "js/catalog-product-grid.js",
+        "stories/landing-page/catalog-product-grid.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-product-grid-toggle",
+      "new": "data-catalog-product-grid-toggle",
+      "owner": null,
+      "files": [
+        "js/catalog-product-grid.js",
+        "stories/landing-page/catalog-product-grid.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-stage",
+      "new": "data-catalog-stage",
+      "owner": null,
+      "files": [
+        "js/catalog-stage.js",
+        "stories/landing-page/catalog-stage.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-stage-autoplay",
+      "new": "data-catalog-stage-autoplay",
+      "owner": null,
+      "files": [
+        "js/catalog-stage.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-stage-dot",
+      "new": "data-catalog-stage-dot",
+      "owner": null,
+      "files": [
+        "js/catalog-stage.js",
+        "stories/landing-page/catalog-stage.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-stage-init",
+      "new": "data-catalog-stage-init",
+      "owner": null,
+      "files": [
+        "js/catalog-stage.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-stage-interval",
+      "new": "data-catalog-stage-interval",
+      "owner": null,
+      "files": [
+        "js/catalog-stage.js",
+        "stories/landing-page/catalog-stage.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-stage-reviews",
+      "new": "data-catalog-stage-reviews",
+      "owner": null,
+      "files": [
+        "stories/landing-page/catalog-stage.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-catalog-stage-slide",
+      "new": "data-catalog-stage-slide",
+      "owner": null,
+      "files": [
+        "js/catalog-stage.js",
+        "stories/landing-page/catalog-stage.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-collapse-label",
+      "new": "data-catalog-product-grid-collapse-label",
+      "owner": "catalog-product-grid",
+      "files": [
+        "js/catalog-product-grid.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "catalog-product-grid.js"
+    },
+    {
+      "old": "data-create-label",
+      "new": "data-billing-form-card-create-label",
+      "owner": "billing-form-card",
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "inferred owner from files"
+    },
+    {
+      "old": "data-dashboard-action-badge",
+      "new": "data-dashboard-action-badge",
+      "owner": null,
+      "files": [
+        "stories/dashboard-action-badge.stories.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-detail-header.stories.js",
+        "stories/order-product-dropdown.stories.js",
+        "stories/orders-table.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-dropdown-box",
+      "new": "data-dashboard-dropdown-box",
+      "owner": null,
+      "files": [
+        "js/dashboard-dropdown-box.js",
+        "stories/dashboard-dropdown-box.stories.js",
+        "stories/dashboard-order-detail-layout.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-dropdown-box-content",
+      "new": "data-dashboard-dropdown-box-content",
+      "owner": null,
+      "files": [
+        "js/dashboard-dropdown-box.js",
+        "stories/dashboard-dropdown-box.stories.js",
+        "stories/dashboard-order-detail-layout.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-dropdown-box-trigger",
+      "new": "data-dashboard-dropdown-box-trigger",
+      "owner": null,
+      "files": [
+        "js/dashboard-dropdown-box.js",
+        "stories/dashboard-dropdown-box.stories.js",
+        "stories/dashboard-order-detail-layout.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-order-detail-layout",
+      "new": "data-dashboard-order-detail-layout",
+      "owner": null,
+      "files": [
+        "stories/dashboard-order-detail-layout.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-order-summary",
+      "new": "data-dashboard-order-summary",
+      "owner": null,
+      "files": [
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/dashboard-order-summary.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-settings-form",
+      "new": "data-dashboard-settings-form",
+      "owner": null,
+      "files": [
+        "js/dashboard-settings-form.js",
+        "stories/dashboard-settings-form.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-settings-form-actions",
+      "new": "data-dashboard-settings-form-actions",
+      "owner": null,
+      "files": [
+        "js/dashboard-settings-form.js",
+        "stories/dashboard-settings-form.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-settings-form-cancel",
+      "new": "data-dashboard-settings-form-cancel",
+      "owner": null,
+      "files": [
+        "js/dashboard-settings-form.js",
+        "stories/dashboard-settings-form.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-settings-form-edit",
+      "new": "data-dashboard-settings-form-edit",
+      "owner": null,
+      "files": [
+        "js/dashboard-settings-form.js",
+        "stories/dashboard-settings-form.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-settings-form-field",
+      "new": "data-dashboard-settings-form-field",
+      "owner": null,
+      "files": [
+        "js/dashboard-settings-form.js",
+        "stories/dashboard-settings-form.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-settings-form-save",
+      "new": "data-dashboard-settings-form-save",
+      "owner": null,
+      "files": [
+        "js/dashboard-settings-form.js",
+        "stories/dashboard-settings-form.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-settings-form-section",
+      "new": "data-dashboard-settings-form-section",
+      "owner": null,
+      "files": [
+        "js/dashboard-settings-form.js",
+        "stories/dashboard-settings-form.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-shell",
+      "new": "data-dashboard-shell",
+      "owner": null,
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-shell-back",
+      "new": "data-dashboard-shell-back",
+      "owner": null,
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-shell-initial-view",
+      "new": "data-dashboard-shell-initial-view",
+      "owner": null,
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-shell-mobile-menu",
+      "new": "data-dashboard-shell-mobile-menu",
+      "owner": null,
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-shell-nav",
+      "new": "data-dashboard-shell-nav",
+      "owner": null,
+      "files": [
+        "stories/dashboard-shell.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-shell-nav-item",
+      "new": "data-dashboard-shell-nav-item",
+      "owner": null,
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-shell-navigate",
+      "new": "data-dashboard-shell-navigate",
+      "owner": null,
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-shell-navigate-disabled-mobile",
+      "new": "data-dashboard-shell-navigate-disabled-mobile",
+      "owner": null,
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-shell-parent",
+      "new": "data-dashboard-shell-parent",
+      "owner": null,
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-shell-view",
+      "new": "data-dashboard-shell-view",
+      "owner": null,
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-dashboard-welcome-box",
+      "new": "data-dashboard-welcome-box",
+      "owner": null,
+      "files": [
+        "stories/dashboard-welcome-box.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-driven",
+      "new": "data-rating-driven",
+      "owner": "rating",
+      "files": [
+        "primitives/rating.css"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "inferred owner from files"
+    },
+    {
+      "old": "data-edit-label",
+      "new": "data-billing-form-card-edit-label",
+      "owner": "billing-form-card",
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "inferred owner from files"
+    },
+    {
+      "old": "data-expand-label",
+      "new": "data-catalog-product-grid-expand-label",
+      "owner": "catalog-product-grid",
+      "files": [
+        "js/catalog-product-grid.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "catalog-product-grid.js"
+    },
+    {
+      "old": "data-feedaty-widget",
+      "new": "data-feedaty-widget",
+      "owner": null,
+      "files": [
+        "js/feedaty-widget.js",
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-feedaty-widget-init",
+      "new": "data-feedaty-widget-init",
+      "owner": null,
+      "files": [
+        "js/feedaty-widget.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-feedaty-widget-sdk",
+      "new": "data-feedaty-widget-sdk",
+      "owner": null,
+      "files": [
+        "js/feedaty-widget.js",
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-feedaty-widget-sdk-src",
+      "new": "data-feedaty-widget-sdk-src",
+      "owner": null,
+      "files": [
+        "js/feedaty-widget.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-file-upload-box",
+      "new": "data-file-upload-box",
+      "owner": null,
+      "files": [
+        "js/file-upload-box.js",
+        "stories/file-upload-box.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-file-upload-box-open",
+      "new": "data-file-upload-box-open",
+      "owner": null,
+      "files": [
+        "js/file-upload-box.js",
+        "stories/file-upload-box.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-file-upload-box-role",
+      "new": "data-file-upload-box-role",
+      "owner": null,
+      "files": [
+        "js/file-upload-box.js",
+        "stories/file-upload-box.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-filter",
+      "new": "data-search-filter-bar-filter",
+      "owner": "search-filter-bar",
+      "files": [
+        "stories/invoice-table.stories.js",
+        "stories/search-filter-bar.stories.js",
+        "stories/supplier-activity-table.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "search-filter-bar.stories.js"
+    },
+    {
+      "old": "data-form",
+      "new": "data-billing-form-card-form",
+      "owner": "billing-form-card",
+      "files": [
+        "stories/billing-form-card.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "inferred owner from files"
+    },
+    {
+      "old": "data-form-layout",
+      "new": "data-form-layout",
+      "owner": null,
+      "files": [
+        "stories/form-layout.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-format",
+      "new": "data-format-card-format",
+      "owner": "format-card",
+      "files": [
+        "stories/format-card.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "inferred owner from files"
+    },
+    {
+      "old": "data-gui",
+      "new": "data-gui",
+      "owner": null,
+      "files": [
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": true,
+      "componentScoped": false,
+      "action": "keep"
+    },
+    {
+      "old": "data-id",
+      "new": "data-id",
+      "owner": null,
+      "files": [
+        "js/orders-table.js",
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": true,
+      "componentScoped": false,
+      "action": "keep"
+    },
+    {
+      "old": "data-images",
+      "new": "data-image-gallery-images",
+      "owner": "image-gallery",
+      "files": [
+        "components/image-gallery.css",
+        "stories/image-gallery.stories.js",
+        "stories/product-hero.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "inferred owner from files"
+    },
+    {
+      "old": "data-info-dropdown",
+      "new": "data-info-dropdown",
+      "owner": null,
+      "files": [
+        "js/info-dropdown.js",
+        "stories/info-dropdown.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-info-trigger",
+      "new": "data-info-dropdown-info-trigger",
+      "owner": "info-dropdown",
+      "files": [
+        "js/info-dropdown.js",
+        "stories/info-dropdown.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "inferred owner from files"
+    },
+    {
+      "old": "data-initial-rows",
+      "new": "data-catalog-product-grid-initial-rows",
+      "owner": "catalog-product-grid",
+      "files": [
+        "js/catalog-product-grid.js",
+        "stories/landing-page/catalog-product-grid.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "catalog-product-grid.js"
+    },
+    {
+      "old": "data-lang",
+      "new": "data-lang",
+      "owner": null,
+      "files": [
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": true,
+      "componentScoped": false,
+      "action": "keep"
+    },
+    {
+      "old": "data-method-choice",
+      "new": "data-method-choice-card-method-choice",
+      "owner": "method-choice-card",
+      "files": [
+        "stories/method-choice-card.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "inferred owner from files"
+    },
+    {
+      "old": "data-method-choice-card",
+      "new": "data-method-choice-card",
+      "owner": null,
+      "files": [
+        "stories/method-choice-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-order-detail-header",
+      "new": "data-order-detail-header",
+      "owner": null,
+      "files": [
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-detail-header.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-order-id",
+      "new": "data-recent-order-card-order-id",
+      "owner": "recent-order-card",
+      "files": [
+        "stories/orders-table.stories.js",
+        "stories/recent-order-card.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "split: recent-order-card"
+    },
+    {
+      "old": "data-order-id",
+      "new": "data-orders-table-order-id",
+      "owner": "orders-table",
+      "files": [
+        "stories/orders-table.stories.js",
+        "stories/recent-order-card.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "split: orders-table"
+    },
+    {
+      "old": "data-order-payment-action-box",
+      "new": "data-order-payment-action-box",
+      "owner": null,
+      "files": [
+        "stories/order-payment-action-box.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-order-product-dropdown",
+      "new": "data-order-product-dropdown",
+      "owner": null,
+      "files": [
+        "js/order-product-dropdown.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-product-dropdown.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-order-product-dropdown-content",
+      "new": "data-order-product-dropdown-content",
+      "owner": null,
+      "files": [
+        "js/order-product-dropdown.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-product-dropdown.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-order-product-dropdown-details",
+      "new": "data-order-product-dropdown-details",
+      "owner": null,
+      "files": [
+        "js/order-product-dropdown.js",
+        "stories/order-product-dropdown.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-order-product-dropdown-details-trigger",
+      "new": "data-order-product-dropdown-details-trigger",
+      "owner": null,
+      "files": [
+        "js/order-product-dropdown.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-product-dropdown.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-order-product-dropdown-trigger",
+      "new": "data-order-product-dropdown-trigger",
+      "owner": null,
+      "files": [
+        "js/order-product-dropdown.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-product-dropdown.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-order-status-steps",
+      "new": "data-order-status-steps",
+      "owner": null,
+      "files": [
+        "js/order-status-steps.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-status-steps.stories.js",
+        "stories/order-step-detail.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-order-status-steps-item",
+      "new": "data-order-status-steps-item",
+      "owner": null,
+      "files": [
+        "js/order-status-steps.js",
+        "js/order-step-detail.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-status-steps.stories.js",
+        "stories/order-step-detail.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-order-step-detail",
+      "new": "data-order-step-detail",
+      "owner": null,
+      "files": [
+        "js/order-step-detail.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-step-detail.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-order-step-detail-panel",
+      "new": "data-order-step-detail-panel",
+      "owner": null,
+      "files": [
+        "components/order-step-detail.css",
+        "js/order-step-detail.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-step-detail.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-orders-table",
+      "new": "data-orders-table",
+      "owner": null,
+      "files": [
+        "js/orders-table.js",
+        "stories/orders-table.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-orders-table-detail",
+      "new": "data-orders-table-detail",
+      "owner": null,
+      "files": [
+        "js/orders-table.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-orders-table-detail-action",
+      "new": "data-orders-table-detail-action",
+      "owner": null,
+      "files": [
+        "js/orders-table.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-orders-table-detail-action-id",
+      "new": "data-orders-table-detail-action-id",
+      "owner": null,
+      "files": [
+        "js/orders-table.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-orders-table-detail-action-id-name",
+      "new": "data-orders-table-detail-action-id-name",
+      "owner": null,
+      "files": [
+        "js/orders-table.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-orders-table-detail-action-label",
+      "new": "data-orders-table-detail-action-label",
+      "owner": null,
+      "files": [
+        "js/orders-table.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-orders-table-mobile-init",
+      "new": "data-orders-table-mobile-init",
+      "owner": null,
+      "files": [
+        "js/orders-table.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-orders-table-row",
+      "new": "data-orders-table-row",
+      "owner": null,
+      "files": [
+        "components/orders-table.css",
+        "js/orders-table.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-orders-table-toggle",
+      "new": "data-orders-table-toggle",
+      "owner": null,
+      "files": [
+        "js/orders-table.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-preview",
+      "new": "data-preview",
+      "owner": null,
+      "files": [
+        "js/preview.js",
+        "stories/preview.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-preview-close",
+      "new": "data-preview-close",
+      "owner": null,
+      "files": [
+        "js/preview.js",
+        "stories/preview.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-preview-description",
+      "new": "data-preview-description",
+      "owner": null,
+      "files": [
+        "stories/preview.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-preview-image",
+      "new": "data-preview-image",
+      "owner": null,
+      "files": [
+        "stories/preview.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-preview-option",
+      "new": "data-preview-option",
+      "owner": null,
+      "files": [
+        "js/preview.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-preview-panel",
+      "new": "data-preview-panel",
+      "owner": null,
+      "files": [
+        "js/preview.js",
+        "stories/preview.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-preview-title",
+      "new": "data-preview-title",
+      "owner": null,
+      "files": [
+        "stories/preview.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-preview-trigger",
+      "new": "data-preview-trigger",
+      "owner": null,
+      "files": [
+        "js/preview.js",
+        "stories/preview.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-recent-order-card",
+      "new": "data-recent-order-card",
+      "owner": null,
+      "files": [
+        "stories/recent-order-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-recent-order-card-list",
+      "new": "data-recent-order-card-list",
+      "owner": null,
+      "files": [
+        "stories/recent-order-card.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-record-id",
+      "new": "data-billing-form-card-record-id",
+      "owner": "billing-form-card",
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-table.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "billing-form-card.js"
+    },
+    {
+      "old": "data-search-filter-bar",
+      "new": "data-search-filter-bar",
+      "owner": null,
+      "files": [
+        "stories/search-filter-bar.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-step",
+      "new": "data-step-indicator-step",
+      "owner": "step-indicator",
+      "files": [
+        "stories/step-indicator.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "step-indicator.stories.js"
+    },
+    {
+      "old": "data-step-id",
+      "new": "data-order-status-steps-step-id",
+      "owner": "order-status-steps",
+      "files": [
+        "js/order-status-steps.js",
+        "js/order-step-detail.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-status-steps.stories.js",
+        "stories/order-step-detail.stories.js"
+      ],
+      "keep": false,
+      "thirdParty": false,
+      "componentScoped": false,
+      "action": "rename",
+      "context": "order-status-steps.js"
+    },
+    {
+      "old": "data-supplier-activity-table",
+      "new": "data-supplier-activity-table",
+      "owner": null,
+      "files": [
+        "js/orders-table.js",
+        "js/supplier-activity-table.js",
+        "stories/supplier-activity-table.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-supplier-activity-table-detail",
+      "new": "data-supplier-activity-table-detail",
+      "owner": null,
+      "files": [
+        "stories/supplier-activity-table.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-supplier-activity-table-init",
+      "new": "data-supplier-activity-table-init",
+      "owner": null,
+      "files": [
+        "js/supplier-activity-table.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-supplier-activity-table-row",
+      "new": "data-supplier-activity-table-row",
+      "owner": null,
+      "files": [
+        "js/supplier-activity-table.js",
+        "stories/supplier-activity-table.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-supplier-activity-table-toggle",
+      "new": "data-supplier-activity-table-toggle",
+      "owner": null,
+      "files": [
+        "js/supplier-activity-table.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-table-pagination",
+      "new": "data-table-pagination",
+      "owner": null,
+      "files": [
+        "stories/table-pagination.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-toggle-switch",
+      "new": "data-toggle-switch",
+      "owner": null,
+      "files": [
+        "demo-pages/cms-composition/index.html",
+        "js/toggle-switch.js",
+        "stories/toggle-switch.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-topic-nav",
+      "new": "data-topic-nav",
+      "owner": null,
+      "files": [
+        "stories/blog-page/topic-nav.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": false,
+      "componentScoped": true,
+      "action": "keep"
+    },
+    {
+      "old": "data-type",
+      "new": "data-type",
+      "owner": null,
+      "files": [
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": true,
+      "componentScoped": false,
+      "action": "keep"
+    },
+    {
+      "old": "data-variant",
+      "new": "data-variant",
+      "owner": null,
+      "files": [
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": true,
+      "componentScoped": false,
+      "action": "keep"
+    },
+    {
+      "old": "data-ver",
+      "new": "data-ver",
+      "owner": null,
+      "files": [
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "keep": true,
+      "thirdParty": true,
+      "componentScoped": false,
+      "action": "keep"
+    }
+  ],
+  "legacy": {
+    "cz": [
+      {
+        "old": ".cz-action-btn",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-action-btn--change",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-action-btn--confirm",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-action-btn--upload",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-choice-btn",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-choice-btn--change",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-choice-btn--confirm",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-choice-group",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-file-actions",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-file-actions--stack",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-pending-count",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-status-badge",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-status-badge--confirmed",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-status-badge--neutral",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-status-badge--replaced",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      },
+      {
+        "old": ".cz-status-badge--tochange",
+        "new": null,
+        "action": "delete",
+        "files": [
+          "components/order-step-detail.css"
+        ],
+        "usageFound": []
+      }
+    ],
+    "td": [
+      {
+        "old": ".td-id",
+        "new": ".orders-table__cell--id",
+        "action": "rename",
+        "files": [
+          "components/orders-table.css",
+          "docs/orders-table.md"
+        ]
+      },
+      {
+        "old": ".td-mobile-chevron",
+        "new": ".orders-table__cell--mobile-chevron",
+        "action": "rename",
+        "files": [
+          "components/billing-table.css",
+          "components/orders-table.css",
+          "docs/orders-table.md",
+          "js/orders-table.js"
+        ]
+      },
+      {
+        "old": ".td-mobile-hide",
+        "new": ".orders-table__cell--mobile-hide",
+        "action": "rename",
+        "files": [
+          "components/billing-table.css",
+          "components/orders-table.css",
+          "docs/orders-table.md",
+          "js/orders-table.js"
+        ]
+      },
+      {
+        "old": ".td-nowrap",
+        "new": ".orders-table__cell--nowrap",
+        "action": "rename",
+        "files": [
+          "components/orders-table.css",
+          "docs/orders-table.md"
+        ]
+      },
+      {
+        "old": ".td-payment",
+        "new": ".orders-table__cell--payment",
+        "action": "rename",
+        "files": [
+          "components/orders-table.css",
+          "docs/orders-table.md"
+        ]
+      },
+      {
+        "old": ".td-pezzi",
+        "new": ".orders-table__cell--pezzi",
+        "action": "rename",
+        "files": [
+          "components/orders-table.css",
+          "docs/orders-table.md"
+        ]
+      },
+      {
+        "old": ".td-prodotti",
+        "new": ".orders-table__cell--prodotti",
+        "action": "rename",
+        "files": [
+          "components/orders-table.css",
+          "docs/orders-table.md"
+        ]
+      },
+      {
+        "old": ".td-simplified-show",
+        "new": ".orders-table__cell--simplified-show",
+        "action": "rename",
+        "files": [
+          "components/orders-table.css",
+          "docs/orders-table.md"
+        ]
+      },
+      {
+        "old": ".td-spedizione",
+        "new": ".orders-table__cell--spedizione",
+        "action": "rename",
+        "files": [
+          "components/orders-table.css",
+          "docs/orders-table.md"
+        ]
+      },
+      {
+        "old": ".td-status",
+        "new": ".orders-table__cell--status",
+        "action": "rename",
+        "files": [
+          "components/orders-table.css",
+          "docs/orders-table.md"
+        ]
+      },
+      {
+        "old": ".td-text-center",
+        "new": ".orders-table__cell--text-center",
+        "action": "rename",
+        "files": [
+          "components/billing-table.css"
+        ]
+      },
+      {
+        "old": ".td-text-right",
+        "new": ".orders-table__cell--text-right",
+        "action": "rename",
+        "files": [
+          "components/orders-table.css",
+          "docs/orders-table.md"
+        ]
+      },
+      {
+        "old": ".td-title",
+        "new": ".orders-table__cell--title",
+        "action": "rename",
+        "files": [
+          "components/orders-table.css",
+          "docs/orders-table.md",
+          "js/orders-table.js"
+        ]
+      },
+      {
+        "old": ".td-total",
+        "new": ".orders-table__cell--total",
+        "action": "rename",
+        "files": [
+          "components/orders-table.css",
+          "docs/orders-table.md"
+        ]
+      }
+    ],
+    "dash": [
+      {
+        "old": ".dash-action-badge",
+        "new": ".dashboard-action-badge",
+        "action": "rename",
+        "files": [
+          "components/dashboard-action-badge.css",
+          "components/order-detail-header.css",
+          "components/order-product-dropdown.css",
+          "components/orders-table.css",
+          "docs/dashboard-action-badge.md",
+          "js/orders-table.js"
+        ]
+      },
+      {
+        "old": ".dash-action-badge--error",
+        "new": ".dashboard-action-badge--error",
+        "action": "rename",
+        "files": [
+          "components/dashboard-action-badge.css",
+          "docs/dashboard-action-badge.md"
+        ]
+      },
+      {
+        "old": ".dash-btn--outline",
+        "new": ".dashboard-btn--outline",
+        "action": "rename",
+        "files": [
+          "docs/dashboard-order-summary.md"
+        ]
+      },
+      {
+        "old": ".dash-dropdown-box",
+        "new": ".dashboard-dropdown-box",
+        "action": "rename",
+        "files": [
+          "components/dashboard-dropdown-box.css",
+          "components/dashboard-order-detail-layout.css",
+          "docs/dashboard-dropdown-box.md"
+        ]
+      },
+      {
+        "old": ".dash-dropdown-box--alert",
+        "new": ".dashboard-dropdown-box--alert",
+        "action": "rename",
+        "files": [
+          "components/dashboard-dropdown-box.css",
+          "docs/dashboard-dropdown-box.md"
+        ]
+      },
+      {
+        "old": ".dash-greeting-banner",
+        "new": ".dashboard-greeting-banner",
+        "action": "rename",
+        "files": [
+          "components/dashboard-welcome-box.css",
+          "docs/dashboard-welcome-box.md"
+        ]
+      },
+      {
+        "old": ".dash-link--download",
+        "new": ".dashboard-link--download",
+        "action": "rename",
+        "files": [
+          "components/billing-table.css",
+          "components/invoice-table.css"
+        ]
+      },
+      {
+        "old": ".dash-link--reorder",
+        "new": ".dashboard-link--reorder",
+        "action": "rename",
+        "files": [
+          "components/order-product-dropdown.css"
+        ]
+      },
+      {
+        "old": ".dash-order-card",
+        "new": ".dashboard-order-card",
+        "action": "rename",
+        "files": [
+          "components/recent-order-card.css",
+          "docs/dashboard-action-badge.md",
+          "docs/recent-order-card.md"
+        ]
+      },
+      {
+        "old": ".dash-recent-orders-grid",
+        "new": ".dashboard-recent-orders-grid",
+        "action": "rename",
+        "files": [
+          "components/recent-order-card.css",
+          "docs/recent-order-card.md"
+        ]
+      }
+    ],
+    "dashboard": [
+      {
+        "old": ".dashboard-nav-icon",
+        "new": ".dashboard-nav-icon",
+        "action": "keep",
+        "files": [
+          "components/dashboard-shell.css",
+          "primitives/dashboard-nav-icons.css"
+        ]
+      },
+      {
+        "old": ".dashboard-nav-icon--account",
+        "new": ".dashboard-nav-icon--account",
+        "action": "keep",
+        "files": [
+          "docs/dashboard-shell.md",
+          "primitives/dashboard-nav-icons.css"
+        ]
+      },
+      {
+        "old": ".dashboard-nav-icon--billing",
+        "new": ".dashboard-nav-icon--billing",
+        "action": "keep",
+        "files": [
+          "docs/dashboard-shell.md",
+          "primitives/dashboard-nav-icons.css"
+        ]
+      },
+      {
+        "old": ".dashboard-nav-icon--dashboard",
+        "new": ".dashboard-nav-icon--dashboard",
+        "action": "keep",
+        "files": [
+          "docs/dashboard-shell.md",
+          "primitives/dashboard-nav-icons.css"
+        ]
+      },
+      {
+        "old": ".dashboard-nav-icon--logout",
+        "new": ".dashboard-nav-icon--logout",
+        "action": "keep",
+        "files": [
+          "docs/dashboard-shell.md",
+          "primitives/dashboard-nav-icons.css"
+        ]
+      },
+      {
+        "old": ".dashboard-nav-icon--orders",
+        "new": ".dashboard-nav-icon--orders",
+        "action": "keep",
+        "files": [
+          "docs/dashboard-shell.md",
+          "primitives/dashboard-nav-icons.css"
+        ]
+      },
+      {
+        "old": ".dashboard-nav-icon--quotes",
+        "new": ".dashboard-nav-icon--quotes",
+        "action": "keep",
+        "files": [
+          "docs/dashboard-shell.md",
+          "primitives/dashboard-nav-icons.css"
+        ]
+      },
+      {
+        "old": ".dashboard-nav-icon--supplier",
+        "new": ".dashboard-nav-icon--supplier",
+        "action": "keep",
+        "files": [
+          "docs/dashboard-shell.md",
+          "primitives/dashboard-nav-icons.css"
+        ]
+      },
+      {
+        "old": ".dashboard-settings-form",
+        "new": ".dashboard-settings-form",
+        "action": "keep",
+        "files": [
+          "components/dashboard-settings-form.css",
+          "docs/dashboard-settings-form.md"
+        ]
+      },
+      {
+        "old": ".dashboard-shell",
+        "new": ".dashboard-shell",
+        "action": "keep",
+        "files": [
+          "components/dashboard-shell.css"
+        ]
+      }
+    ],
+    "riepilogo": [
+      {
+        "old": ".riepilogo-btn",
+        "new": ".sidebar-totals__btn",
+        "action": "rename",
+        "files": [
+          "components/sidebar-totals.css",
+          "docs/sidebar-totals.md",
+          "stories/sidebar-totals.stories.js"
+        ]
+      },
+      {
+        "old": ".riepilogo-container",
+        "new": ".sidebar-totals__container",
+        "action": "rename",
+        "files": [
+          "components/mobile-bar.css",
+          "components/sidebar-totals.css",
+          "docs/mobile-bar.md",
+          "docs/sidebar-totals.md",
+          "stories/mobile-bar.stories.js"
+        ]
+      },
+      {
+        "old": ".riepilogo-content",
+        "new": ".sidebar-totals__content",
+        "action": "rename",
+        "files": [
+          "components/sidebar-totals.css",
+          "docs/sidebar-totals.md",
+          "stories/sidebar-totals.stories.js"
+        ]
+      },
+      {
+        "old": ".riepilogo-content--visible",
+        "new": ".sidebar-totals__content--visible",
+        "action": "rename",
+        "files": [
+          "docs/sidebar-totals.md"
+        ]
+      },
+      {
+        "old": ".riepilogo-empty",
+        "new": ".sidebar-totals__empty",
+        "action": "rename",
+        "files": [
+          "components/mobile-bar.css",
+          "components/sidebar-totals.css",
+          "docs/mobile-bar.md",
+          "docs/sidebar-totals.md",
+          "stories/sidebar-totals.stories.js"
+        ]
+      },
+      {
+        "old": ".riepilogo-error",
+        "new": ".sidebar-totals__error",
+        "action": "rename",
+        "files": [
+          "components/mobile-bar.css",
+          "components/sidebar-totals.css",
+          "docs/mobile-bar.md",
+          "docs/sidebar-totals.md",
+          "stories/mobile-bar.stories.js"
+        ]
+      },
+      {
+        "old": ".riepilogo-header",
+        "new": ".sidebar-totals__header",
+        "action": "rename",
+        "files": [
+          "components/mobile-bar.css",
+          "components/sidebar-totals.css",
+          "docs/mobile-bar.md",
+          "docs/sidebar-totals.md",
+          "stories/mobile-bar.stories.js"
+        ]
+      },
+      {
+        "old": ".riepilogo-indent",
+        "new": ".sidebar-totals__indent",
+        "action": "rename",
+        "files": [
+          "components/sidebar-totals.css",
+          "docs/sidebar-totals.md",
+          "stories/sidebar-totals.stories.js"
+        ]
+      },
+      {
+        "old": ".riepilogo-muted",
+        "new": ".sidebar-totals__muted",
+        "action": "rename",
+        "files": [
+          "components/mobile-bar.css",
+          "components/sidebar-totals.css",
+          "docs/mobile-bar.md",
+          "docs/sidebar-totals.md"
+        ]
+      },
+      {
+        "old": ".riepilogo-placeholder",
+        "new": ".sidebar-totals__placeholder",
+        "action": "rename",
+        "files": [
+          "components/mobile-bar.css",
+          "components/sidebar-totals.css",
+          "docs/mobile-bar.md",
+          "docs/sidebar-totals.md"
+        ]
+      },
+      {
+        "old": ".riepilogo-row",
+        "new": ".sidebar-totals__row",
+        "action": "rename",
+        "files": [
+          "components/mobile-bar.css",
+          "components/sidebar-totals.css",
+          "docs/mobile-bar.md",
+          "docs/sidebar-totals.md",
+          "stories/mobile-bar.stories.js",
+          "stories/sidebar-totals.stories.js"
+        ]
+      },
+      {
+        "old": ".riepilogo-row--indent",
+        "new": ".sidebar-totals__row--indent",
+        "action": "rename",
+        "files": [
+          "components/mobile-bar.css",
+          "components/sidebar-totals.css",
+          "docs/mobile-bar.md",
+          "docs/sidebar-totals.md"
+        ]
+      },
+      {
+        "old": ".riepilogo-section",
+        "new": ".sidebar-totals__section",
+        "action": "rename",
+        "files": [
+          "components/mobile-bar.css",
+          "components/sidebar-totals.css",
+          "docs/mobile-bar.md",
+          "docs/sidebar-totals.md",
+          "stories/mobile-bar.stories.js"
+        ]
+      },
+      {
+        "old": ".riepilogo-section-header",
+        "new": ".sidebar-totals__section-header",
+        "action": "rename",
+        "files": [
+          "components/sidebar-totals.css",
+          "docs/sidebar-totals.md",
+          "stories/sidebar-totals.stories.js"
+        ]
+      }
+    ]
+  },
+  "bigComponents": {
+    "sidebar-totals": {
+      "file": "components/sidebar-totals.css",
+      "keep": [
+        ".sidebar-totals",
+        ".sidebar-totals__section",
+        ".sidebar-totals__row",
+        ".sidebar-totals__row--indent"
+      ],
+      "rename": [
+        {
+          "old": ".configurator-section",
+          "new": ".configurator__section",
+          "note": "spostare in nuovo file configurator"
+        },
+        {
+          "old": ".sidebar-section",
+          "new": ".sidebar-totals__section",
+          "note": "unifica con BEM block"
+        },
+        {
+          "old": ".riepilogo-row",
+          "new": ".sidebar-totals__row",
+          "note": "legacy italiano -> BEM"
+        },
+        {
+          "old": ".riepilogo-row--indent",
+          "new": ".sidebar-totals__row--indent",
+          "note": "legacy italiano -> BEM"
+        }
+      ],
+      "move": [
+        {
+          "class": ".promo-field",
+          "to": "components/promo-field.css",
+          "note": "estrarre come componente autonomo"
+        }
+      ],
+      "replace": [
+        {
+          "class": ".add-to-cart-btn",
+          "with": ".sp-button--primary",
+          "note": "sostituire con primitive"
+        }
+      ]
+    },
+    "order-step-detail": {
+      "file": "components/order-step-detail.css",
+      "keep": [
+        ".order-step-detail",
+        ".order-step-detail__banner"
+      ],
+      "rename": [
+        {
+          "old": ".step-status-banner",
+          "new": ".order-step-detail__banner",
+          "note": "block annidato -> BEM element"
+        }
+      ],
+      "move": [
+        {
+          "class": ".product-file-box",
+          "to": "components/product-file-box.css",
+          "note": "estrarre come componente autonomo"
+        },
+        {
+          "class": ".demo-step-btn",
+          "to": "lab/demo-only",
+          "note": "demo-only, non includere in bundle"
+        }
+      ],
+      "delete": [
+        {
+          "prefix": ".cz-*",
+          "note": "tutte le cz-* sono unused (vedi sezione legacy.cz)"
+        }
+      ]
+    },
+    "orders-table": {
+      "file": "components/orders-table.css",
+      "keep": [
+        ".orders-table",
+        ".orders-table__row",
+        ".orders-table__cell",
+        ".orders-table__actions"
+      ],
+      "rename": [
+        {
+          "old": ".td-id",
+          "new": ".orders-table__cell--id",
+          "note": "td-* -> __cell--*"
+        },
+        {
+          "old": ".td-mobile-chevron",
+          "new": ".orders-table__cell--mobile-chevron",
+          "note": "td-* -> __cell--*"
+        },
+        {
+          "old": ".td-mobile-hide",
+          "new": ".orders-table__cell--mobile-hide",
+          "note": "td-* -> __cell--*"
+        },
+        {
+          "old": ".td-nowrap",
+          "new": ".orders-table__cell--nowrap",
+          "note": "td-* -> __cell--*"
+        },
+        {
+          "old": ".td-payment",
+          "new": ".orders-table__cell--payment",
+          "note": "td-* -> __cell--*"
+        },
+        {
+          "old": ".td-pezzi",
+          "new": ".orders-table__cell--pezzi",
+          "note": "td-* -> __cell--*"
+        },
+        {
+          "old": ".td-prodotti",
+          "new": ".orders-table__cell--prodotti",
+          "note": "td-* -> __cell--*"
+        },
+        {
+          "old": ".td-simplified-show",
+          "new": ".orders-table__cell--simplified-show",
+          "note": "td-* -> __cell--*"
+        },
+        {
+          "old": ".td-spedizione",
+          "new": ".orders-table__cell--spedizione",
+          "note": "td-* -> __cell--*"
+        },
+        {
+          "old": ".td-status",
+          "new": ".orders-table__cell--status",
+          "note": "td-* -> __cell--*"
+        },
+        {
+          "old": ".td-text-center",
+          "new": ".orders-table__cell--text-center",
+          "note": "td-* -> __cell--*"
+        },
+        {
+          "old": ".td-text-right",
+          "new": ".orders-table__cell--text-right",
+          "note": "td-* -> __cell--*"
+        },
+        {
+          "old": ".td-title",
+          "new": ".orders-table__cell--title",
+          "note": "td-* -> __cell--*"
+        },
+        {
+          "old": ".td-total",
+          "new": ".orders-table__cell--total",
+          "note": "td-* -> __cell--*"
+        }
+      ],
+      "move": [],
+      "notes": "celle dettaglio mobile -> normalizzare prefisso BEM in fase 4"
+    },
+    "related-products": {
+      "file": "components/related-products.css",
+      "keep": [
+        ".related-products"
+      ],
+      "rename": [],
+      "move": [
+        {
+          "class": ".catalog-grid--products",
+          "to": "primitives/catalog-grid.css",
+          "note": "shared con catalog-product-grid.css"
+        },
+        {
+          "class": ".catalog-section-label",
+          "to": "primitives/catalog-grid.css",
+          "note": "shared, leakage globale"
+        }
+      ],
+      "notes": "fase 4: estrarre primitive sp-catalog-grid condivisa"
+    },
+    "mobile-bar": {
+      "file": "components/mobile-bar.css",
+      "keep": [
+        ".mobile-bar"
+      ],
+      "rename": [
+        {
+          "old": ".riepilogo-btn",
+          "new": ".sidebar-totals__btn",
+          "note": "riepilogo-* -> sidebar-totals__*"
+        },
+        {
+          "old": ".riepilogo-container",
+          "new": ".sidebar-totals__container",
+          "note": "riepilogo-* -> sidebar-totals__*"
+        },
+        {
+          "old": ".riepilogo-content",
+          "new": ".sidebar-totals__content",
+          "note": "riepilogo-* -> sidebar-totals__*"
+        },
+        {
+          "old": ".riepilogo-content--visible",
+          "new": ".sidebar-totals__content--visible",
+          "note": "riepilogo-* -> sidebar-totals__*"
+        },
+        {
+          "old": ".riepilogo-empty",
+          "new": ".sidebar-totals__empty",
+          "note": "riepilogo-* -> sidebar-totals__*"
+        },
+        {
+          "old": ".riepilogo-error",
+          "new": ".sidebar-totals__error",
+          "note": "riepilogo-* -> sidebar-totals__*"
+        },
+        {
+          "old": ".riepilogo-header",
+          "new": ".sidebar-totals__header",
+          "note": "riepilogo-* -> sidebar-totals__*"
+        },
+        {
+          "old": ".riepilogo-indent",
+          "new": ".sidebar-totals__indent",
+          "note": "riepilogo-* -> sidebar-totals__*"
+        },
+        {
+          "old": ".riepilogo-muted",
+          "new": ".sidebar-totals__muted",
+          "note": "riepilogo-* -> sidebar-totals__*"
+        },
+        {
+          "old": ".riepilogo-placeholder",
+          "new": ".sidebar-totals__placeholder",
+          "note": "riepilogo-* -> sidebar-totals__*"
+        },
+        {
+          "old": ".riepilogo-row",
+          "new": ".sidebar-totals__row",
+          "note": "riepilogo-* -> sidebar-totals__*"
+        },
+        {
+          "old": ".riepilogo-row--indent",
+          "new": ".sidebar-totals__row--indent",
+          "note": "riepilogo-* -> sidebar-totals__*"
+        },
+        {
+          "old": ".riepilogo-section",
+          "new": ".sidebar-totals__section",
+          "note": "riepilogo-* -> sidebar-totals__*"
+        },
+        {
+          "old": ".riepilogo-section-header",
+          "new": ".sidebar-totals__section-header",
+          "note": "riepilogo-* -> sidebar-totals__*"
+        }
+      ],
+      "move": [],
+      "notes": "mobile-bar embedda copie delle classi riepilogo-*; rinominate via mappa sidebar-totals"
+    },
+    "quote-request-table": {
+      "file": "components/quote-request-table.css",
+      "keep": [
+        ".quote-request-table",
+        ".quote-request-table__row",
+        ".quote-request-table__cell"
+      ],
+      "rename": [],
+      "move": [],
+      "notes": "estrarre mappa puntuale in fase 4 quando i selettori sono enumerati"
+    }
+  },
+  "ambiguous": [],
+  "dashConflicts": []
+}

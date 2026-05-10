@@ -1,16 +1,37 @@
+/**
+ * FileUploadBox -- modal/dialog box for file uploads.
+ *
+ * @public-data data-file-upload-box, data-file-upload-box-open, data-file-upload-box-role
+ * @public-event sp:file-upload-box:open, sp:file-upload-box:close, sp:file-upload-box:submit
+ */
 (function () {
     'use strict';
 
     var namespace = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = namespace.helpers || {};
     var initializedOpeners = false;
 
     function escapeHtml(value) {
+        if (typeof helpers.escapeHtml === 'function') return helpers.escapeHtml(value);
         return String(value == null ? '' : value)
             .replace(/&/g, '&amp;')
             .replace(/</g, '&lt;')
             .replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;')
             .replace(/'/g, '&#039;');
+    }
+
+    function dispatch(target, name, detail) {
+        if (typeof helpers.dispatch === 'function') {
+            try { helpers.dispatch(target, name, detail); return; } catch (e) { /* fallthrough */ }
+        }
+        target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
+    }
+
+    function emitWithLegacyAlias(target, normalized, legacy, detail) {
+        dispatch(target, normalized, detail);
+        // deprecated alias, removed in v0.3
+        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
     }
 
     function truncateFileName(name) {
@@ -37,6 +58,7 @@
     function renderEmpty(root, text) {
         var tableBody = getRole(root, 'table-body');
         if (!tableBody) return;
+        // safe: text e' costante o stringa controllata, escapata.
         tableBody.innerHTML = '<tr><td colspan="6" class="file-modal__table-empty">' +
             escapeHtml(text || 'Non sono presenti file') +
         '</td></tr>';
@@ -52,6 +74,7 @@
             year: 'numeric'
         });
 
+        // safe: file.name/size + date sono escapati prima di entrare nel template.
         tableBody.innerHTML = '<tr>' +
             '<td class="file-modal-table__cell">1</td>' +
             '<td class="file-modal-table__cell file-modal-table__cell--name">' + escapeHtml(truncateFileName(file.name)) + '</td>' +
@@ -77,21 +100,36 @@
         syncSubmit(root);
     }
 
-    function open(root) {
+    function open(root, triggerEl) {
         if (!root) return;
+        // F015: salva il trigger pre-open per restore focus post-close.
+        if (triggerEl && typeof triggerEl.focus === 'function') {
+            root.__lastTrigger = triggerEl;
+        } else {
+            var active = document.activeElement;
+            if (active && active !== document.body && active !== document.documentElement) {
+                root.__lastTrigger = active;
+            }
+        }
         root.hidden = false;
         root.setAttribute('aria-hidden', 'false');
         var dialog = root.querySelector('.file-modal__content');
         if (dialog) dialog.focus();
         syncSubmit(root);
-        root.dispatchEvent(new CustomEvent('sp:file-upload-box-open', { bubbles: true }));
+        emitWithLegacyAlias(root, 'sp:file-upload-box:open', 'sp:file-upload-box-open');
     }
 
     function close(root) {
         if (!root) return;
+        var wasOpen = !root.hidden;
         root.hidden = true;
         root.setAttribute('aria-hidden', 'true');
-        root.dispatchEvent(new CustomEvent('sp:file-upload-box-close', { bubbles: true }));
+        // F015: restore focus al trigger originale post-close.
+        if (wasOpen && root.__lastTrigger && typeof root.__lastTrigger.focus === 'function') {
+            try { root.__lastTrigger.focus(); } catch (e) { /* noop */ }
+        }
+        root.__lastTrigger = null;
+        emitWithLegacyAlias(root, 'sp:file-upload-box:close', 'sp:file-upload-box-close');
     }
 
     function removeFile(root) {
@@ -104,18 +142,18 @@
 
     function submit(root) {
         if (!root.__fileUploadBoxPendingFile) return;
-        root.dispatchEvent(new CustomEvent('sp:file-upload-box-submit', {
-            bubbles: true,
-            detail: {
-                file: root.__fileUploadBoxPendingFile,
-                fileName: root.__fileUploadBoxPendingFile.name
-            }
-        }));
+        var detail = {
+            file: root.__fileUploadBoxPendingFile,
+            fileName: root.__fileUploadBoxPendingFile.name
+        };
+        emitWithLegacyAlias(root, 'sp:file-upload-box:submit', 'sp:file-upload-box-submit', detail);
         close(root);
     }
 
     function initRoot(root) {
-        if (!root || root.__fileUploadBoxInitialized) return;
+        if (!root || root.__skillpressFileUploadBoxInitialized) return;
+        root.__skillpressFileUploadBoxInitialized = true;
+        // deprecated alias, removed in v0.3
         root.__fileUploadBoxInitialized = true;
 
         var dropzone = getRole(root, 'dropzone');
@@ -127,6 +165,14 @@
 
         root.addEventListener('click', function (event) {
             if (event.target === root) close(root);
+        });
+
+        // F015: Escape chiude il dialog quando aperto.
+        root.addEventListener('keydown', function (event) {
+            if ((event.key === 'Escape' || event.key === 'Esc') && !root.hidden) {
+                event.stopPropagation();
+                close(root);
+            }
         });
 
         if (closeButton) {
@@ -175,6 +221,7 @@
         syncSubmit(root);
     }
 
+    /** @public */
     function init(scope) {
         var context = scope || document;
         var roots = [];
@@ -192,7 +239,8 @@
                 if (!target) return;
                 event.preventDefault();
                 initRoot(target);
-                open(target);
+                // F015: passa il trigger per consentire focus restore al close.
+                open(target, opener);
             });
         }
     }
@@ -204,7 +252,9 @@
         removeFile: removeFile
     };
 
-    if (document.readyState === 'loading') {
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function () { init(document); });
     } else {
         init(document);

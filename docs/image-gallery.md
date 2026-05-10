@@ -13,13 +13,13 @@ package_path: components/image-gallery.css
 
 # ImageGallery
 
-Galleria immagine prodotto: container quadrato 1:1 con immagine principale `object-fit: cover` e due bottoni nav `prev`/`next` posizionati assoluti su `top: 50%`. Il behavior prev/next non e' implementato in libreria (Strategia A): la pagina demo legge `data-images` e ruota le immagini lato consumer.
+Galleria immagine prodotto: container quadrato 1:1 con immagine principale `object-fit: cover` e due bottoni nav `prev`/`next` posizionati assoluti su `top: 50%`. Il behavior prev/next non e' implementato in libreria (Strategia A): la pagina demo legge `data-image-gallery-images` e ruota le immagini lato consumer.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Root rinominato da `.hero-image-gallery` -> `.image-gallery` (riusabile fuori dall'hero). Nessun hook `data-*` di libreria (`data-images` resta payload consumer).
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Root rinominato da `.hero-image-gallery` -> `.image-gallery` (riusabile fuori dall'hero). Nessun hook `data-*` di libreria (`data-image-gallery-images` resta payload consumer).
 
 ## Strategia JS demo
 
-Strategia A — static snapshot. La libreria fornisce solo CSS. La pagina demo (`product-page-integration/js/page-init.js#L54-L86`) implementa il behavior prev/next leggendo l'attributo `data-images`. Il consumer monta lo stato iniziale statico con i bottoni visibili ma senza listener.
+Strategia A — static snapshot. La libreria fornisce solo CSS. La pagina demo (`product-page-integration/js/page-init.js#L54-L86`) implementa il behavior prev/next leggendo l'attributo `data-image-gallery-images`. Il consumer monta lo stato iniziale statico con i bottoni visibili ma senza listener.
 
 Una eventuale versione `js/image-gallery.js` (Strategia C) potra' arrivare in futuro con lo stesso pattern di `accordion.js` / `toggle-switch.js`.
 
@@ -43,7 +43,7 @@ Markup verbatim dalla pagina demo `product-page-integration` (sezione hero).
 ```html
 <div class="image-gallery">
     <div class="image-gallery__container product-shadow"
-         data-images='[{"src":"...","alt":"..."}, ...]'>
+         data-image-gallery-images='[{"src":"...","alt":"..."}, ...]'>
         <img id="mainProductImage" src="..." alt="..." />
         <button id="prevImageBtn"
                 class="image-gallery__nav-btn image-gallery__nav-btn--prev"
@@ -63,7 +63,7 @@ Markup verbatim dalla pagina demo `product-page-integration` (sezione hero).
 </div>
 ```
 
-Inline data-driven: `data-images` su `.image-gallery__container` e' un array JSON con `src`/`alt` per ogni immagine. La libreria non lo legge: lo consuma il behavior demo.
+Inline data-rating-driven: `data-image-gallery-images` su `.image-gallery__container` e' un array JSON con `src`/`alt` per ogni immagine. La libreria non lo legge: lo consuma il behavior demo.
 
 ## API Reference
 
@@ -80,7 +80,7 @@ Attributi:
 
 | Attribute | Element | Required | Note |
 |---|---|---|---|
-| `data-images` | `.image-gallery__container` | no | Array JSON `[{src, alt}]`. La libreria non lo legge; usato dal behavior demo. |
+| `data-image-gallery-images` | `.image-gallery__container` | no | Array JSON `[{src, alt}]`. La libreria non lo legge; usato dal behavior demo. |
 | `id="mainProductImage"` | `<img>` | no | Compatibilita' con behavior demo. |
 | `id="prevImageBtn"` / `id="nextImageBtn"` | bottoni | no | Compatibilita' con behavior demo. |
 | `aria-label` | `.image-gallery__nav-btn` | yes | Stringa descrittiva ("Immagine precedente" / "Immagine successiva"). |
@@ -131,7 +131,7 @@ Valori letterali: max-width 400px del container, dimensione bottone 2.5rem, offs
 
 ## Note CMS
 
-- `data-images`: array JSON con `src`/`alt` di ogni immagine. La libreria non lo legge; il consumer (pagina demo) lo usa per il cambio.
+- `data-image-gallery-images`: array JSON con `src`/`alt` di ogni immagine. La libreria non lo legge; il consumer (pagina demo) lo usa per il cambio.
 - `<img>` principale: `src`/`alt` per l'immagine inizialmente visibile.
 - frecce: SVG inline `aria-hidden="true"`. Nessuna dipendenza Material Symbols.
 - variante senza shadow: rimuovere il modifier `.product-shadow`.

@@ -37,19 +37,19 @@ forzate primitive visuali per coprire il banner.
 ## Markup Minimo
 
 ```html
-<div class="dash-greeting-banner" data-dashboard-welcome-box>
-    <h1 class="dash-greeting-banner__title">
+<div class="dashboard-greeting-banner" data-dashboard-welcome-box>
+    <h1 class="dashboard-greeting-banner__title">
         Ciao <span class="user-name">Mario Rossi</span>
     </h1>
-    <p class="dash-greeting-banner__subtitle">Benvenuto nella dashboard</p>
+    <p class="dashboard-greeting-banner__subtitle">Benvenuto nella dashboard</p>
 </div>
 ```
 
 ## Classi
 
-- `.dash-greeting-banner`
-- `.dash-greeting-banner__title`
-- `.dash-greeting-banner__subtitle`
+- `.dashboard-greeting-banner`
+- `.dashboard-greeting-banner__title`
+- `.dashboard-greeting-banner__subtitle`
 - `.user-name`
 
 ## Attributi

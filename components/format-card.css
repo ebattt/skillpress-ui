@@ -22,7 +22,7 @@
  * Fuori scope (non implementato qui):
  * - varianti scrollable orizzontali (`.format-cards-scroll`, `.format-cards-arrow`);
  * - espansione (`.format-card--show-more`, `.format-cards-hidden`);
- * - stato disabilitato condiviso (vedere `.radio-option--disabled` in FormControls);
+ * - stato disabilitato condiviso (vedere `.sp-radio-option--disabled` in FormControls);
  * - famiglia SelectionCard estesa (.paper-card, .visual-card, .effect-card, .angolo-card);
  * - js/format-card.js (toggle stato consumer-side).
  */
@@ -34,6 +34,8 @@
     gap: var(--spacing-sm);
 }
 
+/* breakpoint-exception: 479px collassa la grid 4-col -> 2-col su phones stretti
+   prima di raggiungere il default mobile (4-col stava overflow su iPhone SE). */
 @media (max-width: 479px) {
     .format-cards {
         grid-template-columns: repeat(2, 1fr);

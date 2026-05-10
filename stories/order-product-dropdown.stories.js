@@ -20,8 +20,8 @@ const renderCard = ({ expanded = false, details = false } = {}) => {
                             <p class="product-step-card__name">Brossura fresata</p>
                             <p class="product-step-card__meta">200 copie</p>
                             <div class="product-step-card__badges">
-                                <span class="dash-action-badge" data-dashboard-action-badge>
-                                    <span class="dash-action-badge__icon dash-action-badge__icon--upload" aria-hidden="true"></span>
+                                <span class="dashboard-action-badge" data-dashboard-action-badge>
+                                    <span class="dashboard-action-badge__icon dashboard-action-badge__icon--upload" aria-hidden="true"></span>
                                     Carica file
                                 </span>
                             </div>
@@ -42,7 +42,7 @@ const renderCard = ({ expanded = false, details = false } = {}) => {
                         <span class="product-step-card__details-toggle-label">Dettagli prodotto</span>
                         <span class="product-step-card__details-chevron" aria-hidden="true"></span>
                     </button>
-                    <button class="button button--primary button--sm" type="button">Carica file</button>
+                    <button class="sp-button sp-button--primary sp-button--sm" type="button">Carica file</button>
                 </div>
                 <div class="product-step-card__details-section">
                     <div class="product-step-card__details" data-order-product-dropdown-details ${details ? '' : 'hidden'}>

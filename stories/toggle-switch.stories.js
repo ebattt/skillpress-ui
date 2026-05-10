@@ -33,7 +33,7 @@ const renderSwitch = ({
 
     return `
         <button ${attrs.join(' ')}>
-            <span class="toggle-switch__thumb"></span>
+            <span class="sp-toggle-switch__thumb"></span>
         </button>
     `;
 };
@@ -44,9 +44,9 @@ const renderField = ({
     label = 'Multicopertina',
     id = 'sp-toggle-field'
 } = {}) => `
-    <span class="toggle-switch-field">
+    <span class="sp-toggle-switch-field">
         ${renderSwitch({ checked, disabled, id, ariaLabel: label })}
-        <label class="toggle-switch__label" for="${id}">${label}</label>
+        <label class="sp-toggle-switch__label" for="${id}">${label}</label>
     </span>
 `;
 
@@ -116,7 +116,7 @@ export const ReferenceFromElementsUI = {
          *      markup multicop con div + classi --active
          *  - elements-ui/js/checkout/checkout-toggle-switch.js
          *      markup checkout con button[role=switch][aria-checked]
-         *      + .toggle-switch + .toggle-switch-handle
+         *      + .sp-toggle-switch + .toggle-switch-handle
          *  - product-page-integration: toggle multicopertina nella sidebar
          *  - checkout: toggle multispedizione
          *

@@ -15,18 +15,18 @@ js_path: js/info-dropdown.js
 
 # InfoDropdown
 
-Disclosure inline per pannelli di aiuto contestuale: un bottone con icona `info` (`.info-btn`) accanto a una label apre un pannello collapsible (`.info-dropdown`) con titolo, body HTML libero e bottone close.
+Disclosure inline per pannelli di aiuto contestuale: un bottone con icona `info` (`.sp-info-btn`) accanto a una label apre un pannello collapsible (`.sp-info-dropdown`) con titolo, body HTML libero e bottone close.
 
-Contratto **semplificato**: il CMS scrive **solo il body**. La libreria auto-deriva il titolo dalla `.label-text` adiacente e auto-inietta header (titolo + close) e wrapper body al primo init.
+Contratto **semplificato**: il CMS scrive **solo il body**. La libreria auto-deriva il titolo dalla `.sp-label-text` adiacente e auto-inietta header (titolo + close) e wrapper body al primo init.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element rinominati con doppio underscore (`info-dropdown-header` -> `info-dropdown__header`, ecc.); modifier `hidden` standalone -> `info-dropdown--hidden`; aggiunti hook `[data-info-trigger]` + `[data-info-dropdown]` come entry point JS.
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element rinominati con doppio underscore (`info-dropdown-header` -> `info-dropdown__header`, ecc.); modifier `hidden` standalone -> `info-dropdown--hidden`; aggiunti hook `[data-info-dropdown-info-trigger]` + `[data-info-dropdown]` come entry point JS.
 
 ## Anatomy
 
 ```text
 label-row
 ├── label-text                          (testo della label, fonte del titolo)
-└── info-btn[data-info-trigger][aria-controls=ID]   (trigger, icona info via CSS)
+└── info-btn[data-info-dropdown-info-trigger][aria-controls=ID]   (trigger, icona info via CSS)
 
 info-dropdown#ID  [data-info-dropdown] [info-dropdown--hidden]   (pannello collapsible inline)
 ├── info-dropdown__header               (auto-iniettato dal JS)
@@ -45,22 +45,22 @@ info-dropdown#ID  [data-info-dropdown] [info-dropdown--hidden]   (pannello colla
 Solo body, niente header da scrivere. Il consumer fornisce:
 
 ```html
-<div class="form-field">
-    <div class="label-row">
-        <label class="label-text">Formato (mm)</label>
+<div class="sp-form-field">
+    <div class="sp-label-row">
+        <label class="sp-label-text">Formato (mm)</label>
         <button type="button"
-                class="info-btn"
-                data-info-trigger
+                class="sp-info-btn"
+                data-info-dropdown-info-trigger
                 aria-controls="info-formato"
                 aria-expanded="false"
                 aria-label="Mostra informazioni"></button>
     </div>
-    <div id="info-formato" class="info-dropdown info-dropdown--hidden"
+    <div id="info-formato" class="sp-info-dropdown sp-info-dropdown--hidden"
          data-info-dropdown
          role="region" aria-hidden="true">
         <p>Il <strong>formato</strong> indica le dimensioni del prodotto finito.</p>
-        <div class="info-note">
-            <p class="info-note__title">Nota tolleranze</p>
+        <div class="sp-info-note">
+            <p class="sp-info-note__title">Nota tolleranze</p>
             <p>Riduzione fino al 99% possibile per stampa.</p>
         </div>
     </div>
@@ -68,11 +68,11 @@ Solo body, niente header da scrivere. Il consumer fornisce:
 ```
 
 Attributi richiesti:
-- `data-info-trigger` su `.info-btn` (entry point hook libreria).
-- `data-info-dropdown` su `.info-dropdown` (entry point hook libreria).
-- `aria-controls` su `.info-btn` deve corrispondere all'`id` di `.info-dropdown`.
-- `.info-dropdown--hidden` (modifier BEM) per stato chiuso iniziale.
-- Il consumer non deve inserire SVG, immagini o testo dentro `.info-btn`: l'icona
+- `data-info-dropdown-info-trigger` su `.sp-info-btn` (entry point hook libreria).
+- `data-info-dropdown` su `.sp-info-dropdown` (entry point hook libreria).
+- `aria-controls` su `.sp-info-btn` deve corrispondere all'`id` di `.sp-info-dropdown`.
+- `.sp-info-dropdown--hidden` (modifier BEM) per stato chiuso iniziale.
+- Il consumer non deve inserire SVG, immagini o testo dentro `.sp-info-btn`: l'icona
   info e' generata dalla libreria via CSS.
 
 ## Hook data-*
@@ -81,10 +81,10 @@ Entry point dichiarativi (la libreria scopre i nodi via questi attributi, non vi
 
 | Hook | Ruolo | Note |
 |------|-------|------|
-| `[data-info-trigger]` | trigger | Combinato con `[aria-controls]` per agganciare il dropdown. La classe `.info-btn` resta come stile visivo (block esterno). |
-| `[data-info-dropdown]` | pannello collapsible | Coppia con `[data-info-trigger][aria-controls=ID]` (id del dropdown). |
+| `[data-info-dropdown-info-trigger]` | trigger | Combinato con `[aria-controls]` per agganciare il dropdown. La classe `.sp-info-btn` resta come stile visivo (block esterno). |
+| `[data-info-dropdown]` | pannello collapsible | Coppia con `[data-info-dropdown-info-trigger][aria-controls=ID]` (id del dropdown). |
 
-Le classi `.info-dropdown__header / __title / __close / __body` sono usate dalla libreria solo come *relazione DOM* via classe BEM stabile (auto-injection chrome + delegated close click), non come hook entry. Stessa eccezione per `.label-row` e `.label-text` (relazione FormPrimitives).
+Le classi `.sp-info-dropdown__header / __title / __close / __body` sono usate dalla libreria solo come *relazione DOM* via classe BEM stabile (auto-injection chrome + delegated close click), non come hook entry. Stessa eccezione per `.sp-label-row` e `.sp-label-text` (relazione FormPrimitives).
 
 ## API
 
@@ -96,32 +96,32 @@ window.SkillpressUI.InfoDropdown.init(rootOrSelector?)
 - Idempotente: piu' chiamate non duplicano header/body wrapper.
 - Per markup montato dinamicamente (es. consumer `consumer:sections:loaded`), richiamare `init(root)` con il container appena montato.
 
-Eventi emessi (bubbling, sul `.info-dropdown`):
+Eventi emessi (bubbling, sul `.sp-info-dropdown`):
 - `sp:info-dropdown:open`
 - `sp:info-dropdown:close`
 
 ## Behavior
 
-- Click `[data-info-trigger]` -> toggle `.info-dropdown--hidden` sul dropdown associato + sync `aria-expanded` (trigger) + `aria-hidden` (dropdown).
-- Click `.info-dropdown__close` -> chiudi.
+- Click `[data-info-dropdown-info-trigger]` -> toggle `.sp-info-dropdown--hidden` sul dropdown associato + sync `aria-expanded` (trigger) + `aria-hidden` (dropdown).
+- Click `.sp-info-dropdown__close` -> chiudi.
 - ESC -> chiudi tutti i dropdown aperti.
-- Click outside (`[data-info-dropdown]` e `[data-info-trigger]`) -> chiudi tutti.
+- Click outside (`[data-info-dropdown]` e `[data-info-dropdown-info-trigger]`) -> chiudi tutti.
 - Apertura singola: aprire un dropdown chiude gli altri.
 
 ## Override esplicito
 
-Se il consumer scrive gia' un `.info-dropdown__header` come primo figlio del dropdown, l'auto-injection viene saltata: il consumer mantiene il controllo completo del titolo e della struttura. Stesso per `.info-dropdown__body` esplicito.
+Se il consumer scrive gia' un `.sp-info-dropdown__header` come primo figlio del dropdown, l'auto-injection viene saltata: il consumer mantiene il controllo completo del titolo e della struttura. Stesso per `.sp-info-dropdown__body` esplicito.
 
 Esempio (no auto-derive):
 
 ```html
-<div id="info-custom" class="info-dropdown info-dropdown--hidden"
+<div id="info-custom" class="sp-info-dropdown sp-info-dropdown--hidden"
      data-info-dropdown role="region">
-    <div class="info-dropdown__header">
-        <h4 class="info-dropdown__title">Titolo personalizzato</h4>
-        <button type="button" class="info-dropdown__close" aria-label="Chiudi"></button>
+    <div class="sp-info-dropdown__header">
+        <h4 class="sp-info-dropdown__title">Titolo personalizzato</h4>
+        <button type="button" class="sp-info-dropdown__close" aria-label="Chiudi"></button>
     </div>
-    <div class="info-dropdown__body">
+    <div class="sp-info-dropdown__body">
         <p>Body content...</p>
     </div>
 </div>
@@ -129,21 +129,21 @@ Esempio (no auto-derive):
 
 ## Cosa decide il CMS / backend
 
-- Testo della `.label-text` (titolo si auto-deriva da qui).
+- Testo della `.sp-label-text` (titolo si auto-deriva da qui).
 - Contenuto HTML del corpo (paragrafi, liste, `info-note` opzionale).
 - ID univoco del dropdown.
 - Quanti dropdown istanziare per pagina.
 
 ## Cosa decide la libreria
 
-- Layout `.label-row` (inline-flex con gap).
-- Stile `.info-btn` (icona info CSS teal, hover, focus-visible).
-- Geometria `.info-dropdown` (max-height transition, border, radius, padding).
+- Layout `.sp-label-row` (inline-flex con gap).
+- Stile `.sp-info-btn` (icona info CSS teal, hover, focus-visible).
+- Geometria `.sp-info-dropdown` (max-height transition, border, radius, padding).
 - Header auto-injection (titolo + close button senza SVG + ARIA).
-- Icona `.info-btn` e icona close `.info-dropdown__close` disegnate via CSS dalla libreria.
+- Icona `.sp-info-btn` e icona close `.sp-info-dropdown__close` disegnate via CSS dalla libreria.
 - Body auto-wrapping.
 - Behavior toggle (click trigger + click close + ESC + click outside + apertura singola).
-- Sync `aria-expanded` ↔ `aria-hidden` ↔ `.info-dropdown--hidden`.
+- Sync `aria-expanded` ↔ `aria-hidden` ↔ `.sp-info-dropdown--hidden`.
 
 ## Fuori scope
 
@@ -156,15 +156,15 @@ La demo originale usava classi `info-dropdown-*` con singolo dash e modifier `hi
 
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|
-| `.info-dropdown.hidden` (compound) | `.info-dropdown.info-dropdown--hidden` |
-| `.hidden` (standalone, su info-dropdown) | `.info-dropdown--hidden` |
-| `.info-dropdown-header` | `.info-dropdown__header` |
-| `.info-dropdown-body` | `.info-dropdown__body` |
-| `.info-dropdown-title` | `.info-dropdown__title` |
-| `.info-dropdown-close` | `.info-dropdown__close` |
-| `.info-note-title` | `.info-note__title` |
-| `.info-note-muted` | `.info-note__muted` |
-| `.info-btn[aria-controls]` (selettore JS) | `[data-info-trigger][aria-controls]` (hook) |
-| `.info-dropdown` (selettore JS) | `[data-info-dropdown]` (hook) |
+| `.sp-info-dropdown.hidden` (compound) | `.sp-info-dropdown.sp-info-dropdown--hidden` |
+| `.hidden` (standalone, su info-dropdown) | `.sp-info-dropdown--hidden` |
+| `.info-dropdown-header` | `.sp-info-dropdown__header` |
+| `.info-dropdown-body` | `.sp-info-dropdown__body` |
+| `.info-dropdown-title` | `.sp-info-dropdown__title` |
+| `.info-dropdown-close` | `.sp-info-dropdown__close` |
+| `.info-note-title` | `.sp-info-note__title` |
+| `.info-note-muted` | `.sp-info-note__muted` |
+| `.sp-info-btn[aria-controls]` (selettore JS) | `[data-info-dropdown-info-trigger][aria-controls]` (hook) |
+| `.sp-info-dropdown` (selettore JS) | `[data-info-dropdown]` (hook) |
 
-`.info-btn` resta come block esterno (classe pure-style); il discovery JS avviene via `[data-info-trigger]`. `.info-note` resta come block separato.
+`.sp-info-btn` resta come block esterno (classe pure-style); il discovery JS avviene via `[data-info-dropdown-info-trigger]`. `.sp-info-note` resta come block separato.

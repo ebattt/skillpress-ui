@@ -26,10 +26,10 @@ export default {
                 component: `Showcase delle 7 varianti del catalog Text Input.
 
 Tutti i selettori provengono dalla primitiva FormPrimitives gia' coperta:
-\`.form-field\`, \`.label-row\`, \`.label-text\` (+ \`__required\`/\`__optional\`),
-\`.label-hint\`, \`.form-input\` (+ \`--error\`/\`:disabled\`/\`:focus\`),
-\`.error-msg\`, \`.nome-ref-row\`. La variante 6 introduce \`.nome-lavoro-input\`
-come alias semantico di \`.form-input\` (CSS identico, classe distinta per la
+\`.sp-form-field\`, \`.sp-label-row\`, \`.sp-label-text\` (+ \`__required\`/\`__optional\`),
+\`.sp-label-hint\`, \`.sp-form-input\` (+ \`--error\`/\`:disabled\`/\`:focus\`),
+\`.sp-error-msg\`, \`.sp-nome-ref-row\`. La variante 6 introduce \`.sp-nome-lavoro-input\`
+come alias semantico di \`.sp-form-input\` (CSS identico, classe distinta per la
 sezione "Nome del lavoro").
 
 Strategia A static snapshot: validazione e swap modifier sono business logic
@@ -41,16 +41,16 @@ consumer-side.`
 
 export const Default = {
     render: () => mount(`
-        <div class="form-field">
-            <div class="label-row">
-                <label class="label-text">Campo Esempio</label>
+        <div class="sp-form-field">
+            <div class="sp-label-row">
+                <label class="sp-label-text">Campo Esempio</label>
             </div>
-            <input type="text" class="form-input" placeholder="Inserisci valore..."/>
+            <input type="text" class="sp-form-input" placeholder="Inserisci valore..."/>
         </div>
     `),
     play: async ({ canvas }) => {
         const input = canvas.getByPlaceholderText('Inserisci valore...');
-        await expect(input).toHaveClass('form-input');
+        await expect(input).toHaveClass('sp-form-input');
         await userEvent.click(input);
         await expect(input).toHaveFocus();
     }
@@ -58,37 +58,37 @@ export const Default = {
 
 export const WithLabelAndInfoButton = {
     render: () => mount(`
-        <div class="form-field">
-            <div class="label-row">
-                <label class="label-text">Campo Esempio <span class="label-text__required">*</span></label>
-                <button type="button" class="info-btn" aria-label="Info Campo Esempio"></button>
+        <div class="sp-form-field">
+            <div class="sp-label-row">
+                <label class="sp-label-text">Campo Esempio <span class="sp-label-text__required">*</span></label>
+                <button type="button" class="sp-info-btn" aria-label="Info Campo Esempio"></button>
             </div>
-            <input type="text" class="form-input" placeholder="Inserisci valore..."/>
+            <input type="text" class="sp-form-input" placeholder="Inserisci valore..."/>
         </div>
     `)
 };
 
 export const WithLabelHint = {
     render: () => mount(`
-        <div class="form-field">
-            <div class="label-row">
-                <label class="label-text">Campo Esempio</label>
-                <span class="label-hint">(testo di aiuto)</span>
-                <button type="button" class="info-btn" aria-label="Info Campo Esempio"></button>
+        <div class="sp-form-field">
+            <div class="sp-label-row">
+                <label class="sp-label-text">Campo Esempio</label>
+                <span class="sp-label-hint">(testo di aiuto)</span>
+                <button type="button" class="sp-info-btn" aria-label="Info Campo Esempio"></button>
             </div>
-            <input type="text" class="form-input" placeholder="Inserisci valore..."/>
+            <input type="text" class="sp-form-input" placeholder="Inserisci valore..."/>
         </div>
     `)
 };
 
 export const ErrorState = {
     render: () => mount(`
-        <div class="form-field">
-            <div class="label-row">
-                <label class="label-text">Campo Esempio <span class="label-text__required">*</span></label>
+        <div class="sp-form-field">
+            <div class="sp-label-row">
+                <label class="sp-label-text">Campo Esempio <span class="sp-label-text__required">*</span></label>
             </div>
-            <input type="text" class="form-input form-input--error" value=""/>
-            <div class="error-msg">
+            <input type="text" class="sp-form-input sp-form-input--error" value=""/>
+            <div class="sp-error-msg">
                 ${ERROR_ICON_SVG}
                 Questo campo e obbligatorio
             </div>
@@ -96,17 +96,17 @@ export const ErrorState = {
     `),
     play: async ({ canvas }) => {
         const input = canvas.getByRole('textbox');
-        await expect(input).toHaveClass('form-input--error');
+        await expect(input).toHaveClass('sp-form-input--error');
     }
 };
 
 export const Disabled = {
     render: () => mount(`
-        <div class="form-field">
-            <div class="label-row">
-                <label class="label-text">Campo Esempio</label>
+        <div class="sp-form-field">
+            <div class="sp-label-row">
+                <label class="sp-label-text">Campo Esempio</label>
             </div>
-            <input type="text" class="form-input" value="Non modificabile" disabled/>
+            <input type="text" class="sp-form-input" value="Non modificabile" disabled/>
         </div>
     `),
     play: async ({ canvas }) => {
@@ -117,40 +117,40 @@ export const Disabled = {
 
 export const NomeLavoroInput = {
     render: () => mount(`
-        <div class="form-field">
-            <div class="label-row">
-                <label class="label-text">Campo Esempio <span class="label-text__optional">(opzionale)</span></label>
+        <div class="sp-form-field">
+            <div class="sp-label-row">
+                <label class="sp-label-text">Campo Esempio <span class="sp-label-text__optional">(opzionale)</span></label>
             </div>
-            <input type="text" class="nome-lavoro-input" placeholder="Inserisci valore..."/>
+            <input type="text" class="sp-nome-lavoro-input" placeholder="Inserisci valore..."/>
         </div>
     `),
     parameters: {
         docs: {
             description: {
-                story: 'Variante 6: classe `.nome-lavoro-input` come alias semantico di `.form-input`. Stessa resa visiva, classe distinta per la sezione "Nome del lavoro". Useful quando il backend genera markup specifico per quella sezione e vuole una classe dedicata per stile/test/CSS-targeting futuro.'
+                story: 'Variante 6: classe `.sp-nome-lavoro-input` come alias semantico di `.sp-form-input`. Stessa resa visiva, classe distinta per la sezione "Nome del lavoro". Useful quando il backend genera markup specifico per quella sezione e vuole una classe dedicata per stile/test/CSS-targeting futuro.'
             }
         }
     },
     play: async ({ canvas }) => {
         const input = canvas.getByPlaceholderText('Inserisci valore...');
-        await expect(input).toHaveClass('nome-lavoro-input');
+        await expect(input).toHaveClass('sp-nome-lavoro-input');
     }
 };
 
 export const TwoColumnLayout = {
     render: () => mount(`
-        <div class="nome-ref-row">
+        <div class="sp-nome-ref-row">
             <div>
-                <label class="label-text" style="display: block; margin-bottom: 0.375rem;">
-                    Campo Esempio <span class="label-text__required">*</span>
+                <label class="sp-label-text" style="display: block; margin-bottom: 0.375rem;">
+                    Campo Esempio <span class="sp-label-text__required">*</span>
                 </label>
-                <input type="text" class="form-input" placeholder="Inserisci valore..."/>
+                <input type="text" class="sp-form-input" placeholder="Inserisci valore..."/>
             </div>
             <div>
-                <label class="label-text" style="display: block; margin-bottom: 0.375rem;">
-                    Campo Esempio <span class="label-text__optional">(opzionale)</span>
+                <label class="sp-label-text" style="display: block; margin-bottom: 0.375rem;">
+                    Campo Esempio <span class="sp-label-text__optional">(opzionale)</span>
                 </label>
-                <input type="text" class="form-input" placeholder="Inserisci valore..."/>
+                <input type="text" class="sp-form-input" placeholder="Inserisci valore..."/>
             </div>
         </div>
     `)
@@ -159,54 +159,54 @@ export const TwoColumnLayout = {
 export const AllVariants = {
     render: () => mount(`
         <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-            <div class="form-field">
-                <div class="label-row">
-                    <label class="label-text">Campo Esempio</label>
+            <div class="sp-form-field">
+                <div class="sp-label-row">
+                    <label class="sp-label-text">Campo Esempio</label>
                 </div>
-                <input type="text" class="form-input" placeholder="Inserisci valore..."/>
+                <input type="text" class="sp-form-input" placeholder="Inserisci valore..."/>
             </div>
-            <div class="form-field">
-                <div class="label-row">
-                    <label class="label-text">Campo Esempio <span class="label-text__required">*</span></label>
-                    <button type="button" class="info-btn" aria-label="Info"></button>
+            <div class="sp-form-field">
+                <div class="sp-label-row">
+                    <label class="sp-label-text">Campo Esempio <span class="sp-label-text__required">*</span></label>
+                    <button type="button" class="sp-info-btn" aria-label="Info"></button>
                 </div>
-                <input type="text" class="form-input" placeholder="Inserisci valore..."/>
+                <input type="text" class="sp-form-input" placeholder="Inserisci valore..."/>
             </div>
-            <div class="form-field">
-                <div class="label-row">
-                    <label class="label-text">Campo Esempio</label>
-                    <span class="label-hint">(testo di aiuto)</span>
-                    <button type="button" class="info-btn" aria-label="Info"></button>
+            <div class="sp-form-field">
+                <div class="sp-label-row">
+                    <label class="sp-label-text">Campo Esempio</label>
+                    <span class="sp-label-hint">(testo di aiuto)</span>
+                    <button type="button" class="sp-info-btn" aria-label="Info"></button>
                 </div>
-                <input type="text" class="form-input" placeholder="Inserisci valore..."/>
+                <input type="text" class="sp-form-input" placeholder="Inserisci valore..."/>
             </div>
-            <div class="form-field">
-                <div class="label-row">
-                    <label class="label-text">Campo Esempio <span class="label-text__required">*</span></label>
+            <div class="sp-form-field">
+                <div class="sp-label-row">
+                    <label class="sp-label-text">Campo Esempio <span class="sp-label-text__required">*</span></label>
                 </div>
-                <input type="text" class="form-input form-input--error" value=""/>
-                <div class="error-msg">${ERROR_ICON_SVG}Questo campo e obbligatorio</div>
+                <input type="text" class="sp-form-input sp-form-input--error" value=""/>
+                <div class="sp-error-msg">${ERROR_ICON_SVG}Questo campo e obbligatorio</div>
             </div>
-            <div class="form-field">
-                <div class="label-row">
-                    <label class="label-text">Campo Esempio</label>
+            <div class="sp-form-field">
+                <div class="sp-label-row">
+                    <label class="sp-label-text">Campo Esempio</label>
                 </div>
-                <input type="text" class="form-input" value="Non modificabile" disabled/>
+                <input type="text" class="sp-form-input" value="Non modificabile" disabled/>
             </div>
-            <div class="form-field">
-                <div class="label-row">
-                    <label class="label-text">Campo Esempio <span class="label-text__optional">(opzionale)</span></label>
+            <div class="sp-form-field">
+                <div class="sp-label-row">
+                    <label class="sp-label-text">Campo Esempio <span class="sp-label-text__optional">(opzionale)</span></label>
                 </div>
-                <input type="text" class="nome-lavoro-input" placeholder="Inserisci valore..."/>
+                <input type="text" class="sp-nome-lavoro-input" placeholder="Inserisci valore..."/>
             </div>
-            <div class="nome-ref-row">
+            <div class="sp-nome-ref-row">
                 <div>
-                    <label class="label-text" style="display: block; margin-bottom: 0.375rem;">Campo Esempio <span class="label-text__required">*</span></label>
-                    <input type="text" class="form-input" placeholder="Inserisci valore..."/>
+                    <label class="sp-label-text" style="display: block; margin-bottom: 0.375rem;">Campo Esempio <span class="sp-label-text__required">*</span></label>
+                    <input type="text" class="sp-form-input" placeholder="Inserisci valore..."/>
                 </div>
                 <div>
-                    <label class="label-text" style="display: block; margin-bottom: 0.375rem;">Campo Esempio <span class="label-text__optional">(opzionale)</span></label>
-                    <input type="text" class="form-input" placeholder="Inserisci valore..."/>
+                    <label class="sp-label-text" style="display: block; margin-bottom: 0.375rem;">Campo Esempio <span class="sp-label-text__optional">(opzionale)</span></label>
+                    <input type="text" class="sp-form-input" placeholder="Inserisci valore..."/>
                 </div>
             </div>
         </div>
@@ -216,22 +216,22 @@ export const AllVariants = {
 export const ReferenceFromElementsUI = {
     render: () => mount(`
         <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-            <div class="form-field">
-                <div class="label-row"><label class="label-text">Campo Esempio</label></div>
-                <input type="text" class="form-input" placeholder="Inserisci valore..."/>
+            <div class="sp-form-field">
+                <div class="sp-label-row"><label class="sp-label-text">Campo Esempio</label></div>
+                <input type="text" class="sp-form-input" placeholder="Inserisci valore..."/>
             </div>
-            <div class="form-field">
-                <div class="label-row">
-                    <label class="label-text">Campo Esempio <span class="label-text__required">*</span></label>
-                    <button type="button" class="info-btn" aria-label="Info"></button>
+            <div class="sp-form-field">
+                <div class="sp-label-row">
+                    <label class="sp-label-text">Campo Esempio <span class="sp-label-text__required">*</span></label>
+                    <button type="button" class="sp-info-btn" aria-label="Info"></button>
                 </div>
-                <input type="text" class="form-input" placeholder="Inserisci valore..."/>
+                <input type="text" class="sp-form-input" placeholder="Inserisci valore..."/>
             </div>
-            <div class="form-field">
-                <div class="label-row">
-                    <label class="label-text">Campo Esempio <span class="label-text__optional">(opzionale)</span></label>
+            <div class="sp-form-field">
+                <div class="sp-label-row">
+                    <label class="sp-label-text">Campo Esempio <span class="sp-label-text__optional">(opzionale)</span></label>
                 </div>
-                <input type="text" class="nome-lavoro-input" placeholder="Inserisci valore..."/>
+                <input type="text" class="sp-nome-lavoro-input" placeholder="Inserisci valore..."/>
             </div>
         </div>
     `),

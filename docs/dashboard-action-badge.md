@@ -34,30 +34,30 @@ usa le varianti CTA del bottone.
 
 `Card` non c'entra: non e' una superficie.
 
-`RecentOrderCard` contiene `.dash-order-card__action-alert`, che e' un alert
-interno alla card overview, diverso dal chip `.dash-action-badge` usato in
+`RecentOrderCard` contiene `.dashboard-order-card__action-alert`, che e' un alert
+interno alla card overview, diverso dal chip `.dashboard-action-badge` usato in
 tabelle e dettaglio ordine.
 
 ## Markup Minimo
 
 ```html
-<span class="dash-action-badge" data-dashboard-action-badge>
-    <span class="dash-action-badge__icon dash-action-badge__icon--upload" aria-hidden="true"></span>
+<span class="dashboard-action-badge" data-dashboard-action-badge>
+    <span class="dashboard-action-badge__icon dashboard-action-badge__icon--upload" aria-hidden="true"></span>
     Carica file
 </span>
 ```
 
-La fonte dashboard nasconde `.dash-action-badge__icon`; il runtime mantiene lo
+La fonte dashboard nasconde `.dashboard-action-badge__icon`; il runtime mantiene lo
 stesso default. Le icone sono CSS library-owned, non Material Symbols.
 
 ## Classi
 
-- `.dash-action-badge`
-- `.dash-action-badge--error`
-- `.dash-action-badge__icon`
-- `.dash-action-badge__icon--upload`
-- `.dash-action-badge__icon--receipt`
-- `.dash-action-badge__icon--error`
+- `.dashboard-action-badge`
+- `.dashboard-action-badge--error`
+- `.dashboard-action-badge__icon`
+- `.dashboard-action-badge__icon--upload`
+- `.dashboard-action-badge__icon--receipt`
+- `.dashboard-action-badge__icon--error`
 
 ## Attributi
 
@@ -66,7 +66,7 @@ stesso default. Le icone sono CSS library-owned, non Material Symbols.
 
 ## Modifier
 
-- `.dash-action-badge--error`: variante esplicita errore, oggi visualmente
+- `.dashboard-action-badge--error`: variante esplicita errore, oggi visualmente
   equivalente al default rosso.
 
 ## Fuori Scope

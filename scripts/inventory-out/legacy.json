@@ -1,0 +1,697 @@
+{
+  "generatedAt": "2026-05-08T19:46:22.154Z",
+  "cz": [
+    {
+      "class": ".cz-action-btn",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-action-btn--change",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-action-btn--confirm",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-action-btn--upload",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-choice-btn",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-choice-btn--change",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-choice-btn--confirm",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-choice-group",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-file-actions",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-file-actions--stack",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-pending-count",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-status-badge",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-status-badge--confirmed",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-status-badge--neutral",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-status-badge--replaced",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    },
+    {
+      "class": ".cz-status-badge--tochange",
+      "files": [
+        "components/order-step-detail.css"
+      ]
+    }
+  ],
+  "riepilogo": [
+    {
+      "class": ".riepilogo-btn",
+      "files": [
+        "components/sidebar-totals.css",
+        "docs/sidebar-totals.md",
+        "stories/sidebar-totals.stories.js"
+      ]
+    },
+    {
+      "class": ".riepilogo-container",
+      "files": [
+        "components/mobile-bar.css",
+        "components/sidebar-totals.css",
+        "docs/mobile-bar.md",
+        "docs/sidebar-totals.md",
+        "stories/mobile-bar.stories.js"
+      ]
+    },
+    {
+      "class": ".riepilogo-content",
+      "files": [
+        "components/sidebar-totals.css",
+        "docs/sidebar-totals.md",
+        "stories/sidebar-totals.stories.js"
+      ]
+    },
+    {
+      "class": ".riepilogo-content--visible",
+      "files": [
+        "docs/sidebar-totals.md"
+      ]
+    },
+    {
+      "class": ".riepilogo-empty",
+      "files": [
+        "components/mobile-bar.css",
+        "components/sidebar-totals.css",
+        "docs/mobile-bar.md",
+        "docs/sidebar-totals.md",
+        "stories/sidebar-totals.stories.js"
+      ]
+    },
+    {
+      "class": ".riepilogo-error",
+      "files": [
+        "components/mobile-bar.css",
+        "components/sidebar-totals.css",
+        "docs/mobile-bar.md",
+        "docs/sidebar-totals.md",
+        "stories/mobile-bar.stories.js"
+      ]
+    },
+    {
+      "class": ".riepilogo-header",
+      "files": [
+        "components/mobile-bar.css",
+        "components/sidebar-totals.css",
+        "docs/mobile-bar.md",
+        "docs/sidebar-totals.md",
+        "stories/mobile-bar.stories.js"
+      ]
+    },
+    {
+      "class": ".riepilogo-indent",
+      "files": [
+        "components/sidebar-totals.css",
+        "docs/sidebar-totals.md",
+        "stories/sidebar-totals.stories.js"
+      ]
+    },
+    {
+      "class": ".riepilogo-muted",
+      "files": [
+        "components/mobile-bar.css",
+        "components/sidebar-totals.css",
+        "docs/mobile-bar.md",
+        "docs/sidebar-totals.md"
+      ]
+    },
+    {
+      "class": ".riepilogo-placeholder",
+      "files": [
+        "components/mobile-bar.css",
+        "components/sidebar-totals.css",
+        "docs/mobile-bar.md",
+        "docs/sidebar-totals.md"
+      ]
+    },
+    {
+      "class": ".riepilogo-row",
+      "files": [
+        "components/mobile-bar.css",
+        "components/sidebar-totals.css",
+        "docs/mobile-bar.md",
+        "docs/sidebar-totals.md",
+        "stories/mobile-bar.stories.js",
+        "stories/sidebar-totals.stories.js"
+      ]
+    },
+    {
+      "class": ".riepilogo-row--indent",
+      "files": [
+        "components/mobile-bar.css",
+        "components/sidebar-totals.css",
+        "docs/mobile-bar.md",
+        "docs/sidebar-totals.md"
+      ]
+    },
+    {
+      "class": ".riepilogo-section",
+      "files": [
+        "components/mobile-bar.css",
+        "components/sidebar-totals.css",
+        "docs/mobile-bar.md",
+        "docs/sidebar-totals.md",
+        "stories/mobile-bar.stories.js"
+      ]
+    },
+    {
+      "class": ".riepilogo-section-header",
+      "files": [
+        "components/sidebar-totals.css",
+        "docs/sidebar-totals.md",
+        "stories/sidebar-totals.stories.js"
+      ]
+    }
+  ],
+  "td": [
+    {
+      "class": ".td-id",
+      "files": [
+        "components/orders-table.css",
+        "docs/orders-table.md"
+      ]
+    },
+    {
+      "class": ".td-mobile-chevron",
+      "files": [
+        "components/billing-table.css",
+        "components/orders-table.css",
+        "docs/orders-table.md",
+        "js/orders-table.js"
+      ]
+    },
+    {
+      "class": ".td-mobile-hide",
+      "files": [
+        "components/billing-table.css",
+        "components/orders-table.css",
+        "docs/orders-table.md",
+        "js/orders-table.js"
+      ]
+    },
+    {
+      "class": ".td-nowrap",
+      "files": [
+        "components/orders-table.css",
+        "docs/orders-table.md"
+      ]
+    },
+    {
+      "class": ".td-payment",
+      "files": [
+        "components/orders-table.css",
+        "docs/orders-table.md"
+      ]
+    },
+    {
+      "class": ".td-pezzi",
+      "files": [
+        "components/orders-table.css",
+        "docs/orders-table.md"
+      ]
+    },
+    {
+      "class": ".td-prodotti",
+      "files": [
+        "components/orders-table.css",
+        "docs/orders-table.md"
+      ]
+    },
+    {
+      "class": ".td-simplified-show",
+      "files": [
+        "components/orders-table.css",
+        "docs/orders-table.md"
+      ]
+    },
+    {
+      "class": ".td-spedizione",
+      "files": [
+        "components/orders-table.css",
+        "docs/orders-table.md"
+      ]
+    },
+    {
+      "class": ".td-status",
+      "files": [
+        "components/orders-table.css",
+        "docs/orders-table.md"
+      ]
+    },
+    {
+      "class": ".td-text-center",
+      "files": [
+        "components/billing-table.css"
+      ]
+    },
+    {
+      "class": ".td-text-right",
+      "files": [
+        "components/orders-table.css",
+        "docs/orders-table.md"
+      ]
+    },
+    {
+      "class": ".td-title",
+      "files": [
+        "components/orders-table.css",
+        "docs/orders-table.md",
+        "js/orders-table.js"
+      ]
+    },
+    {
+      "class": ".td-total",
+      "files": [
+        "components/orders-table.css",
+        "docs/orders-table.md"
+      ]
+    }
+  ],
+  "dash": [
+    {
+      "class": ".dash-action-badge",
+      "files": [
+        "components/dashboard-action-badge.css",
+        "components/order-detail-header.css",
+        "components/order-product-dropdown.css",
+        "components/orders-table.css",
+        "docs/dashboard-action-badge.md",
+        "js/orders-table.js"
+      ]
+    },
+    {
+      "class": ".dash-action-badge--error",
+      "files": [
+        "components/dashboard-action-badge.css",
+        "docs/dashboard-action-badge.md"
+      ]
+    },
+    {
+      "class": ".dash-btn--outline",
+      "files": [
+        "docs/dashboard-order-summary.md"
+      ]
+    },
+    {
+      "class": ".dash-dropdown-box",
+      "files": [
+        "components/dashboard-dropdown-box.css",
+        "components/dashboard-order-detail-layout.css",
+        "docs/dashboard-dropdown-box.md"
+      ]
+    },
+    {
+      "class": ".dash-dropdown-box--alert",
+      "files": [
+        "components/dashboard-dropdown-box.css",
+        "docs/dashboard-dropdown-box.md"
+      ]
+    },
+    {
+      "class": ".dash-greeting-banner",
+      "files": [
+        "components/dashboard-welcome-box.css",
+        "docs/dashboard-welcome-box.md"
+      ]
+    },
+    {
+      "class": ".dash-link--download",
+      "files": [
+        "components/billing-table.css",
+        "components/invoice-table.css"
+      ]
+    },
+    {
+      "class": ".dash-link--reorder",
+      "files": [
+        "components/order-product-dropdown.css"
+      ]
+    },
+    {
+      "class": ".dash-order-card",
+      "files": [
+        "components/recent-order-card.css",
+        "docs/dashboard-action-badge.md",
+        "docs/recent-order-card.md"
+      ]
+    },
+    {
+      "class": ".dash-recent-orders-grid",
+      "files": [
+        "components/recent-order-card.css",
+        "docs/recent-order-card.md"
+      ]
+    }
+  ],
+  "dashboard": [
+    {
+      "class": ".dashboard-nav-icon",
+      "files": [
+        "components/dashboard-shell.css",
+        "primitives/dashboard-nav-icons.css"
+      ]
+    },
+    {
+      "class": ".dashboard-nav-icon--account",
+      "files": [
+        "docs/dashboard-shell.md",
+        "primitives/dashboard-nav-icons.css"
+      ]
+    },
+    {
+      "class": ".dashboard-nav-icon--billing",
+      "files": [
+        "docs/dashboard-shell.md",
+        "primitives/dashboard-nav-icons.css"
+      ]
+    },
+    {
+      "class": ".dashboard-nav-icon--dashboard",
+      "files": [
+        "docs/dashboard-shell.md",
+        "primitives/dashboard-nav-icons.css"
+      ]
+    },
+    {
+      "class": ".dashboard-nav-icon--logout",
+      "files": [
+        "docs/dashboard-shell.md",
+        "primitives/dashboard-nav-icons.css"
+      ]
+    },
+    {
+      "class": ".dashboard-nav-icon--orders",
+      "files": [
+        "docs/dashboard-shell.md",
+        "primitives/dashboard-nav-icons.css"
+      ]
+    },
+    {
+      "class": ".dashboard-nav-icon--quotes",
+      "files": [
+        "docs/dashboard-shell.md",
+        "primitives/dashboard-nav-icons.css"
+      ]
+    },
+    {
+      "class": ".dashboard-nav-icon--supplier",
+      "files": [
+        "docs/dashboard-shell.md",
+        "primitives/dashboard-nav-icons.css"
+      ]
+    },
+    {
+      "class": ".dashboard-settings-form",
+      "files": [
+        "components/dashboard-settings-form.css",
+        "docs/dashboard-settings-form.md"
+      ]
+    },
+    {
+      "class": ".dashboard-shell",
+      "files": [
+        "components/dashboard-shell.css"
+      ]
+    }
+  ],
+  "markers": {
+    "link-dev": [
+      {
+        "file": "docs/allocation-rows.md",
+        "count": 1
+      },
+      {
+        "file": "docs/dashboard-dropdown-box.md",
+        "count": 1
+      },
+      {
+        "file": "docs/dashboard-order-detail-layout.md",
+        "count": 1
+      },
+      {
+        "file": "docs/dashboard-order-summary.md",
+        "count": 1
+      },
+      {
+        "file": "docs/file-upload-box.md",
+        "count": 1
+      },
+      {
+        "file": "docs/order-detail-header.md",
+        "count": 1
+      },
+      {
+        "file": "docs/order-payment-action-box.md",
+        "count": 1
+      },
+      {
+        "file": "docs/order-product-dropdown.md",
+        "count": 1
+      },
+      {
+        "file": "docs/order-status-steps.md",
+        "count": 1
+      }
+    ],
+    "LOCAL": [],
+    "picsum": [
+      {
+        "file": "stories/preview.stories.js",
+        "count": 3
+      }
+    ],
+    "placehold": [
+      {
+        "file": "base/reset.css",
+        "count": 2
+      },
+      {
+        "file": "components/billing-form-card.css",
+        "count": 1
+      },
+      {
+        "file": "components/dashboard-settings-form.css",
+        "count": 1
+      },
+      {
+        "file": "components/feedaty-widget.css",
+        "count": 1
+      },
+      {
+        "file": "components/mobile-bar.css",
+        "count": 1
+      },
+      {
+        "file": "components/preview.css",
+        "count": 2
+      },
+      {
+        "file": "components/quote-request-table.css",
+        "count": 1
+      },
+      {
+        "file": "components/search-filter-bar.css",
+        "count": 1
+      },
+      {
+        "file": "components/sidebar-totals.css",
+        "count": 1
+      },
+      {
+        "file": "components/supplier-activity-table.css",
+        "count": 2
+      },
+      {
+        "file": "docs/article-nav.md",
+        "count": 1
+      },
+      {
+        "file": "docs/card.md",
+        "count": 1
+      },
+      {
+        "file": "docs/cart-product-card.md",
+        "count": 1
+      },
+      {
+        "file": "docs/download-buttons.md",
+        "count": 2
+      },
+      {
+        "file": "docs/feedaty-widget.md",
+        "count": 1
+      },
+      {
+        "file": "docs/form-primitives.md",
+        "count": 3
+      },
+      {
+        "file": "docs/mobile-bar.md",
+        "count": 2
+      },
+      {
+        "file": "docs/preview.md",
+        "count": 2
+      },
+      {
+        "file": "docs/search-filter-bar.md",
+        "count": 2
+      },
+      {
+        "file": "docs/sidebar-totals.md",
+        "count": 5
+      },
+      {
+        "file": "docs/supplier-activity-table.md",
+        "count": 2
+      },
+      {
+        "file": "docs/text-input.md",
+        "count": 6
+      },
+      {
+        "file": "stories/billing-form-card.stories.js",
+        "count": 9
+      },
+      {
+        "file": "stories/dashboard-order-detail-layout.stories.js",
+        "count": 1
+      },
+      {
+        "file": "stories/dashboard-settings-form.stories.js",
+        "count": 3
+      },
+      {
+        "file": "stories/download-buttons.stories.js",
+        "count": 5
+      },
+      {
+        "file": "stories/form-layout.stories.js",
+        "count": 6
+      },
+      {
+        "file": "stories/form-primitives.stories.js",
+        "count": 5
+      },
+      {
+        "file": "stories/landing-page/catalog-interstitial.stories.js",
+        "count": 3
+      },
+      {
+        "file": "stories/landing-page/catalog-product-grid.stories.js",
+        "count": 1
+      },
+      {
+        "file": "stories/landing-page/catalog-stage.stories.js",
+        "count": 1
+      },
+      {
+        "file": "stories/landing-page/feedaty-widget.stories.js",
+        "count": 2
+      },
+      {
+        "file": "stories/order-product-dropdown.stories.js",
+        "count": 1
+      },
+      {
+        "file": "stories/quote-request-table.stories.js",
+        "count": 5
+      },
+      {
+        "file": "stories/related-products.stories.js",
+        "count": 4
+      },
+      {
+        "file": "stories/search-filter-bar.stories.js",
+        "count": 3
+      },
+      {
+        "file": "stories/sidebar-totals.stories.js",
+        "count": 1
+      },
+      {
+        "file": "stories/supplier-activity-table.stories.js",
+        "count": 2
+      },
+      {
+        "file": "stories/text-input.stories.js",
+        "count": 17
+      },
+      {
+        "file": "tokens/tokens.css",
+        "count": 1
+      }
+    ],
+    "127.0.0.1": []
+  },
+  "stats": {
+    "cz": 16,
+    "riepilogo": 14,
+    "td": 14,
+    "dash": 10,
+    "dashboard": 10
+  }
+}

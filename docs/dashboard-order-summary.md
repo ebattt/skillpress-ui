@@ -114,7 +114,7 @@ toolbar scenari, renderer didattici e fixture appartengono alla demo/app.
 ## Differenze dalla demo
 
 - Material Symbols `download` viene sostituita da icona CSS library-owned.
-- `.dash-btn--outline` della demo viene ricondotto a
+- `.dashboard-btn--outline` della demo viene ricondotto a
   `.order-summary__download-btn`, elemento BEM del componente.
 
 ## Out of scope

@@ -45,10 +45,10 @@ Esempi:
 
 | Presentation type | Componente |
 |---|---|
-| `select` | `FormPrimitives` / `.form-select` |
+| `select` | `FormPrimitives` / `.sp-form-select` |
 | `choice-group` | `OptionButtons` |
 | `preview` | `Preview` |
-| `dependent-select` | `Preview` + `.form-select` + `.form-select`/`OptionButtons` |
+| `dependent-select` | `Preview` + `.sp-form-select` + `.sp-form-select`/`OptionButtons` |
 | `media-choice` | `MediaChoiceCard` |
 | `format-choice` | `FormatCard` + `OrientationToggle` |
 | `validation-indicator` | `ValidationIndicator` |
@@ -81,7 +81,7 @@ Build statica:
 npm run build-storybook
 ```
 
-Dettagli: [`docs/storybook.md`](./docs/storybook.md).
+Dettagli: [`docs/storybook.md`](https://github.com/ebattt/skillpress-ui/blob/main/docs/storybook.md).
 
 ## Installazione
 
@@ -107,7 +107,7 @@ npm install @ebattt/skillpress-ui
 Button:
 
 ```html
-<button class="button button--primary" type="button">
+<button class="sp-button sp-button--primary" type="button">
   Aggiungi al carrello
 </button>
 ```
@@ -115,16 +115,16 @@ Button:
 Badge:
 
 ```html
-<span class="badge badge--success">Consegnato</span>
+<span class="sp-badge sp-badge--success">Consegnato</span>
 ```
 
 Card:
 
 ```html
-<article class="card">
-  <div class="card__body">
-    <h3 class="card__title">Card base</h3>
-    <p class="card__description">Contenuto sintetico popolato dal consumer.</p>
+<article class="sp-card">
+  <div class="sp-card__body">
+    <h3 class="sp-card__title">Card base</h3>
+    <p class="sp-card__description">Contenuto sintetico popolato dal consumer.</p>
   </div>
 </article>
 ```
@@ -132,12 +132,12 @@ Card:
 Breadcrumb:
 
 ```html
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <ol class="breadcrumb__list">
-    <li class="breadcrumb__item">
-      <a class="breadcrumb__link" href="/">Homepage</a>
+<nav class="sp-breadcrumb" aria-label="Breadcrumb">
+  <ol class="sp-breadcrumb__list">
+    <li class="sp-breadcrumb__item">
+      <a class="sp-breadcrumb__link" href="/">Homepage</a>
     </li>
-    <li class="breadcrumb__item breadcrumb__item--current">Pagina corrente</li>
+    <li class="sp-breadcrumb__item sp-breadcrumb__item--current">Pagina corrente</li>
   </ol>
 </nav>
 ```
@@ -163,22 +163,49 @@ Feature Box:
 Accordion:
 
 ```html
-<div class="accordion" data-accordion>
-  <section class="accordion__section" data-accordion-section>
-    <button class="accordion__header" type="button" data-accordion-trigger aria-expanded="false">
-      <span class="accordion__header-left">
-        <span class="accordion__badge">1</span>
-        <span class="accordion__title">Accordion Section</span>
+<div class="sp-accordion" data-accordion>
+  <section class="sp-accordion__section" data-accordion-section>
+    <button class="sp-accordion__header" type="button" data-accordion-trigger aria-expanded="false">
+      <span class="sp-accordion__header-left">
+        <span class="sp-accordion__badge">1</span>
+        <span class="sp-accordion__title">Accordion Section</span>
       </span>
-      <span class="accordion__icon" aria-hidden="true"></span>
+      <span class="sp-accordion__icon" aria-hidden="true"></span>
     </button>
 
-    <div class="accordion__content">
-      <div class="accordion__inner"></div>
+    <div class="sp-accordion__content">
+      <div class="sp-accordion__inner"></div>
     </div>
   </section>
 </div>
 ```
+
+## Versioning policy
+
+L'API pubblica della libreria e' descritta in `dist/public-api.json` ed e'
+derivata dalle annotazioni `@public` nei sorgenti (script
+`scripts/build-public-api.cjs`). Il file `public-api.json` contiene quattro
+sezioni:
+
+- `css.primitives` -- classi BEM primitive prefissate `sp-*` (block + element + modifier).
+- `css.components` -- nomi dei componenti CSS domain-scoped.
+- `data` -- attributi `data-*` letti dal runtime JS pubblico.
+- `events` -- custom events emessi (`sp:{component}:{action}`).
+- `js` -- moduli esposti su `window.SkillpressUI.<Component>`.
+
+| Tipo modifica | Bump |
+|---|---|
+| Look (colori, spaziature, tipografia, transizioni) | patch / minor |
+| Aggiunta classe/variante `@public` | minor |
+| Rimozione/rename classe `@public`, `data-*`, evento `sp:*` | major |
+| Modifica markup minimo richiesto al backend | major |
+
+Il `CHANGELOG.md` distingue **visual change** (look-only, sicuro) da
+**contract change** (breaking, richiede coordinamento backend).
+
+Lo script `npm run check:contract` confronta `dist/public-api.json` con la
+versione precedente committata e fallisce se vengono rimosse voci pubbliche
+senza bump major (vedi `scripts/check-contract.cjs`).
 
 ## Nota
 

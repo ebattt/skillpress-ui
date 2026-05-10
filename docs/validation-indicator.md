@@ -25,14 +25,14 @@ problema da correggere.
 
 ```text
 ValidationIndicator
-└── .validation-indicator
+└── .sp-validation-indicator
     ├── ::before   (icona errore CSS)
     └── testo
 
 ValidationTotal
-└── .validation-total
-    ├── .validation-total__count
-    └── .validation-indicator   (solo se invalido)
+└── .sp-validation-total
+    ├── .sp-validation-total__count
+    └── .sp-validation-indicator   (solo se invalido)
 ```
 
 ## Markup Contract
@@ -40,7 +40,7 @@ ValidationTotal
 Indicatore errore:
 
 ```html
-<span class="validation-indicator">
+<span class="sp-validation-indicator">
     Mancano 20
 </span>
 ```
@@ -48,17 +48,17 @@ Indicatore errore:
 Contesto con totale valido: nessun indicatore.
 
 ```html
-<div class="validation-total">
-    <span class="validation-total__count">Totale: <strong>50</strong> / 50 copie</span>
+<div class="sp-validation-total">
+    <span class="sp-validation-total__count">Totale: <strong>50</strong> / 50 copie</span>
 </div>
 ```
 
 Contesto con totale invalido:
 
 ```html
-<div class="validation-total">
-    <span class="validation-total__count">Totale: <strong>40</strong> / 50 copie</span>
-    <span class="validation-indicator">Mancano 10 copie</span>
+<div class="sp-validation-total">
+    <span class="sp-validation-total__count">Totale: <strong>40</strong> / 50 copie</span>
+    <span class="sp-validation-indicator">Mancano 10 copie</span>
 </div>
 ```
 
@@ -66,9 +66,9 @@ Contesto con totale invalido:
 
 | Classe | Ruolo | Required | Modifiers |
 |---|---|---|---|
-| `.validation-indicator` | indicatore inline errore con icona CSS + testo | yes | — |
-| `.validation-total` | riga flex totale + indicatore | no | — |
-| `.validation-total__count` | testo conteggio/contesto | no | — |
+| `.sp-validation-indicator` | indicatore inline errore con icona CSS + testo | yes | — |
+| `.sp-validation-total` | riga flex totale + indicatore | no | — |
+| `.sp-validation-total__count` | testo conteggio/contesto | no | — |
 
 ## Cosa Decide Backend/CMS
 
@@ -76,7 +76,7 @@ Contesto con totale invalido:
 - valore del conteggio;
 - presenza o assenza della riga totale;
 - presenza o assenza dell'indicatore. Se lo stato e' valido, non renderizzare
-  `.validation-indicator`.
+  `.sp-validation-indicator`.
 
 ## Cosa Decide La Libreria
 

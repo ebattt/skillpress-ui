@@ -26,8 +26,8 @@ const renderHeader = ({ status = 'warning' } = {}) => {
                     <span class="order-header__subtitle-line">Consegna prevista <strong class="order-header__subtitle-emphasis">12/03/2026</strong></span>
                 </p>
                 <div class="order-header__meta">
-                    <span class="dash-action-badge" data-dashboard-action-badge>
-                        <span class="dash-action-badge__icon dash-action-badge__icon--upload" aria-hidden="true"></span>
+                    <span class="dashboard-action-badge" data-dashboard-action-badge>
+                        <span class="dashboard-action-badge__icon dashboard-action-badge__icon--upload" aria-hidden="true"></span>
                         File richiesto
                     </span>
                 </div>

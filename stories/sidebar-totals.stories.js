@@ -80,14 +80,14 @@ const renderSidebar = ({
                     <label for="${promoId}">Hai un codice promo?</label>
                     <input type="text" id="${promoId}" placeholder="Inserisci codice" class="promo-input"/>
                 </div>
-                <div class="riepilogo-section">
+                <div class="sidebar-totals__section">
                     <label>Vuoi visualizzare il riepilogo?</label>
-                    <button class="riepilogo-btn" aria-expanded="${expanded}" aria-controls="${riepId}">
+                    <button class="sidebar-totals__btn" aria-expanded="${expanded}" aria-controls="${riepId}">
                         ${iconList}
                         ${riepilogoOpen ? 'Nascondi riepilogo' : 'Mostra riepilogo'}
                         ${iconChevronDown}
                     </button>
-                    <div id="${riepId}" class="riepilogo-content"${contentStyle}>${riepilogoContent}</div>
+                    <div id="${riepId}" class="sidebar-totals__content"${contentStyle}>${riepilogoContent}</div>
                 </div>
                 <button class="add-to-cart-btn">
                     ${iconCart}
@@ -167,19 +167,19 @@ export const RiepilogoOpen = {
         totale: '397,15 euro',
         riepilogoOpen: true,
         riepilogoContent: `
-            <div class="riepilogo-section-header">Configurazione</div>
-            <div class="riepilogo-row">Formato: <strong>A4</strong></div>
-            <div class="riepilogo-row">Orientamento: <strong>verticale</strong></div>
-            <div class="riepilogo-row">Quantita: <strong>50</strong></div>
-            <div class="riepilogo-section-header">Spedizione</div>
-            <div class="riepilogo-row">Data: <strong>lunedi 09/03</strong></div>
-            <div class="riepilogo-indent">Spedizione gratuita inclusa.</div>
+            <div class="sidebar-totals__section-header">Configurazione</div>
+            <div class="sidebar-totals__row">Formato: <strong>A4</strong></div>
+            <div class="sidebar-totals__row">Orientamento: <strong>verticale</strong></div>
+            <div class="sidebar-totals__row">Quantita: <strong>50</strong></div>
+            <div class="sidebar-totals__section-header">Spedizione</div>
+            <div class="sidebar-totals__row">Data: <strong>lunedi 09/03</strong></div>
+            <div class="sidebar-totals__indent">Spedizione gratuita inclusa.</div>
         `
     })),
     parameters: {
         docs: {
             description: {
-                story: 'Riepilogo aperto: il consumer ha settato `aria-expanded="true"` sul `.riepilogo-btn` e reso visibile `.riepilogo-content` (qui via `style="display: block"`). Il content usa le utility classes `.riepilogo-section-header`, `.riepilogo-row`, `.riepilogo-indent`. Max-height 300px + scroll automatico.'
+                story: 'Riepilogo aperto: il consumer ha settato `aria-expanded="true"` sul `.sidebar-totals__btn` e reso visibile `.sidebar-totals__content` (qui via `style="display: block"`). Il content usa le utility classes `.sidebar-totals__section-header`, `.sidebar-totals__row`, `.sidebar-totals__indent`. Max-height 300px + scroll automatico.'
             }
         }
     }
@@ -189,12 +189,12 @@ export const RiepilogoEmpty = {
     render: () => renderRoot(renderSidebar({
         quantita: '50',
         riepilogoOpen: true,
-        riepilogoContent: '<div class="riepilogo-empty">Nessuna configurazione selezionata.</div>'
+        riepilogoContent: '<div class="sidebar-totals__empty">Nessuna configurazione selezionata.</div>'
     })),
     parameters: {
         docs: {
             description: {
-                story: 'Riepilogo aperto su stato vuoto: utility class `.riepilogo-empty` (text-align center, color text-light, padding 1rem).'
+                story: 'Riepilogo aperto su stato vuoto: utility class `.sidebar-totals__empty` (text-align center, color text-light, padding 1rem).'
             }
         }
     }

@@ -1,6 +1,6 @@
 ---
 title: Rating
-description: Rating a stelle CSS-only con overlay clip data-driven via width inline.
+description: Rating a stelle CSS-only con overlay clip data-rating-driven via width inline.
 layer: primitives
 strategy: css-only
 sources:
@@ -12,7 +12,7 @@ package_path: primitives/rating.css
 
 # Rating
 
-Primitiva CSS-only per il rating a stelle sovrapposte. Lo stato pieno e' un overlay clippato via `overflow: hidden` + `width` percentuale calcolata dal CMS come `(rating / 5) * 100`. Nessun behavior JS: il valore arriva come stile inline su `.rating__filled`.
+Primitiva CSS-only per il rating a stelle sovrapposte. Lo stato pieno e' un overlay clippato via `overflow: hidden` + `width` percentuale calcolata dal CMS come `(rating / 5) * 100`. Nessun behavior JS: il valore arriva come stile inline su `.sp-rating__filled`.
 
 ## Anatomy
 
@@ -25,41 +25,41 @@ Rating
 │       └── rating__star × 5  (color --color-primary)
 ```
 
-Le due righe contengono lo stesso numero di `.rating__star` (5). La `.rating__filled` e' posizionata assoluta sopra `.rating__empty` e clippata dal `width` inline.
+Le due righe contengono lo stesso numero di `.sp-rating__star` (5). La `.sp-rating__filled` e' posizionata assoluta sopra `.sp-rating__empty` e clippata dal `width` inline.
 
 ## Markup contract
 
 Markup verbatim dalla pagina demo `product-page-integration/index.html#L408-L418` (hero prodotto, `4.85 / 5 = 97%`).
 
 ```html
-<div class="rating">
-    <div class="rating__empty">
-        <span class="rating__star">&#9733;</span>
-        <span class="rating__star">&#9733;</span>
-        <span class="rating__star">&#9733;</span>
-        <span class="rating__star">&#9733;</span>
-        <span class="rating__star">&#9733;</span>
+<div class="sp-rating">
+    <div class="sp-rating__empty">
+        <span class="sp-rating__star">&#9733;</span>
+        <span class="sp-rating__star">&#9733;</span>
+        <span class="sp-rating__star">&#9733;</span>
+        <span class="sp-rating__star">&#9733;</span>
+        <span class="sp-rating__star">&#9733;</span>
     </div>
-    <div class="rating__filled" style="width: 97%;">
-        <span class="rating__star">&#9733;</span>
-        <span class="rating__star">&#9733;</span>
-        <span class="rating__star">&#9733;</span>
-        <span class="rating__star">&#9733;</span>
-        <span class="rating__star">&#9733;</span>
+    <div class="sp-rating__filled" style="width: 97%;">
+        <span class="sp-rating__star">&#9733;</span>
+        <span class="sp-rating__star">&#9733;</span>
+        <span class="sp-rating__star">&#9733;</span>
+        <span class="sp-rating__star">&#9733;</span>
+        <span class="sp-rating__star">&#9733;</span>
     </div>
 </div>
 ```
 
-Inline style data-driven: lo `style="width: NN%;"` su `.rating__filled` e' calcolato dal CMS come `(rating / 5) * 100`. Es. `4.85 / 5 = 0.97 -> 97%`. Tenere lo stile inline (non spostarlo in classe).
+Inline style data-rating-driven: lo `style="width: NN%;"` su `.sp-rating__filled` e' calcolato dal CMS come `(rating / 5) * 100`. Es. `4.85 / 5 = 0.97 -> 97%`. Tenere lo stile inline (non spostarlo in classe).
 
 ## API Reference
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.rating` | wrapper relativo che contiene i due layer | yes | — |
-| `.rating__empty` | riga di stelle base, color `--color-bg-gray-200` | yes | — |
-| `.rating__filled` | overlay assoluto delle stelle piene, clippato via `overflow: hidden` + width inline | yes | — |
-| `.rating__star` | span singolo per stella, eredita colore dal layer | yes | — |
+| `.sp-rating` | wrapper relativo che contiene i due layer | yes | — |
+| `.sp-rating__empty` | riga di stelle base, color `--color-bg-gray-200` | yes | — |
+| `.sp-rating__filled` | overlay assoluto delle stelle piene, clippato via `overflow: hidden` + width inline | yes | — |
+| `.sp-rating__star` | span singolo per stella, eredita colore dal layer | yes | — |
 
 ## Installation
 
@@ -93,7 +93,7 @@ Valori letterali: dimensione stella `font-size: 16px`, gap inter-stella `2px`.
 
 ## Note CMS
 
-- calcolo width: `(rating / 5) * 100`, lasciato inline su `.rating__filled` (es. `style="width: 97%;"`).
+- calcolo width: `(rating / 5) * 100`, lasciato inline su `.sp-rating__filled` (es. `style="width: 97%;"`).
 - composizione tipica: dentro `.product-hero__rating` (ProductHero), il widget Rating e' affiancato da `.product-hero__rating-value` (numero) e `.product-hero__review-count` (testo recensioni). Quel layout e' della Section, non del Rating.
 - carattere stella: la libreria usa `&#9733;` (★) ma accetta qualsiasi contenuto inline (icona, SVG): la dimensione e' fissata via `font-size`.
 
@@ -103,14 +103,14 @@ Storico: prima della 0.2.0 il rating usava `.stars-outer` / `.stars-empty` / `.s
 
 | Vecchio (pre-0.2.0) | Nuovo (BEM) |
 |---|---|
-| `.stars-outer` | `.rating` |
-| `.stars-empty` | `.rating__empty` |
-| `.stars-filled` | `.rating__filled` |
-| `.star-icon` | `.rating__star` |
+| `.stars-outer` | `.sp-rating` |
+| `.stars-empty` | `.sp-rating__empty` |
+| `.stars-filled` | `.sp-rating__filled` |
+| `.star-icon` | `.sp-rating__star` |
 
 ## Classi pubbliche
 
-`.rating`, `.rating__empty`, `.rating__filled`, `.rating__star`.
+`.sp-rating`, `.sp-rating__empty`, `.sp-rating__filled`, `.sp-rating__star`.
 
 ## Data hooks
 
@@ -118,7 +118,7 @@ Nessun hook `data-*` pubblico. `Rating` e' CSS-only.
 
 ## Modifier / stati
 
-Lo stato visuale e' il `width` inline di `.rating__filled`. Non ci sono modifier pubblici.
+Lo stato visuale e' il `width` inline di `.sp-rating__filled`. Non ci sono modifier pubblici.
 
 ## Backend owns
 

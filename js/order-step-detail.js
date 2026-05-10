@@ -1,10 +1,32 @@
+/**
+ * OrderStepDetail -- panel listener showing detail for selected order step.
+ *
+ * Listens to OrderStatusSteps to switch active panel.
+ *
+ * @public-data data-order-step-detail, data-order-step-detail-panel
+ * @public-event sp:order-step-detail:change
+ */
 (function () {
     'use strict';
 
     var namespace = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = namespace.helpers || {};
+
+    function dispatch(target, name, detail) {
+        if (typeof helpers.dispatch === 'function') {
+            try { helpers.dispatch(target, name, detail); return; } catch (e) { /* fallthrough */ }
+        }
+        target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
+    }
+
+    function emitWithLegacyAlias(target, normalized, legacy, detail) {
+        dispatch(target, normalized, detail);
+        // deprecated alias, removed in v0.3
+        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
+    }
 
     function getStepId(element) {
-        return element ? element.getAttribute('data-step-id') || '' : '';
+        return element ? element.getAttribute('data-order-status-steps-step-id') || '' : '';
     }
 
     function setPanel(panel, visible) {
@@ -22,13 +44,10 @@
             setPanel(panel, selected);
         });
 
-        root.dispatchEvent(new CustomEvent('sp:order-step-detail-change', {
-            bubbles: true,
-            detail: {
-                stepId: stepId,
-                panel: selectedPanel
-            }
-        }));
+        emitWithLegacyAlias(root, 'sp:order-step-detail:change', 'sp:order-step-detail-change', {
+            stepId: stepId,
+            panel: selectedPanel
+        });
     }
 
     function getInitialStepId(root) {
@@ -43,18 +62,24 @@
     }
 
     function initRoot(root) {
-        if (!root || root.__orderStepDetailInitialized) return;
+        if (!root || root.__skillpressOrderStepDetailInitialized) return;
+        root.__skillpressOrderStepDetailInitialized = true;
+        // deprecated alias, removed in v0.3
         root.__orderStepDetailInitialized = true;
 
         var initialStepId = getInitialStepId(root);
         if (initialStepId) selectPanel(root, initialStepId);
 
-        root.addEventListener('sp:order-status-steps-change', function (event) {
+        function onStatusChange(event) {
             var detail = event.detail || {};
             if (detail.stepId) selectPanel(root, detail.stepId);
-        });
+        }
+        // Ascolta sia evento normalizzato che legacy alias (compat consumer).
+        root.addEventListener('sp:order-status-steps:change', onStatusChange);
+        root.addEventListener('sp:order-status-steps-change', onStatusChange);
     }
 
+    /** @public */
     function init(scope) {
         var context = scope || document;
         var roots = [];
@@ -68,7 +93,9 @@
         selectPanel: selectPanel
     };
 
-    if (document.readyState === 'loading') {
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function () { init(document); });
     } else {
         init(document);

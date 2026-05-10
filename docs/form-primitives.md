@@ -12,16 +12,16 @@ package_path: primitives/form-primitives.css
 
 # FormPrimitives
 
-Set di primitive form fondamentali: contenitore `.form-field`, label (con varianti
-`required` / `optional` / `hint` / `info-btn`), input testo/numero (`.form-input` +
-`--error`/`:disabled`), select nativo con freccia SVG embedded (`.form-select`),
-messaggi inline (`.error-msg`, `.error-inline`, `.success-inline`) e due griglie
-helper specifiche del configuratore (`.custom-dims` + `.custom-dims__grid/field/label`, `.nome-ref-row`).
+Set di primitive form fondamentali: contenitore `.sp-form-field`, label (con varianti
+`required` / `optional` / `hint` / `info-btn`), input testo/numero (`.sp-form-input` +
+`--error`/`:disabled`), select nativo con freccia SVG embedded (`.sp-form-select`),
+messaggi inline (`.sp-error-msg`, `.sp-error-inline`, `.sp-success-inline`) e due griglie
+helper specifiche del configuratore (`.sp-custom-dims` + `.sp-custom-dims__grid/field/label`, `.sp-nome-ref-row`).
 
 Strategia A (CSS-only). Validazione, swap modifier `--error`, render messaggi
 sono responsabilita' del consumer / backend.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element di `.custom-dims` rinominati con doppio underscore. Eccezioni italiane (`.facciate-row`, `.spessore-display`, `.qty-iva-row`, `.nome-lavoro-input`, `.nome-ref-row`) mantenute come block name. Nessun hook `data-*` (componente CSS-only).
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element di `.sp-custom-dims` rinominati con doppio underscore. Eccezioni italiane (`.sp-facciate-row`, `.sp-spessore-display`, `.sp-qty-iva-row`, `.sp-nome-lavoro-input`, `.sp-nome-ref-row`) mantenute come block name. Nessun hook `data-*` (componente CSS-only).
 
 ## Classi pubbliche
 
@@ -29,56 +29,56 @@ sono responsabilita' del consumer / backend.
 
 | Classe | Note |
 |---|---|
-| `.form-field` | wrapper generico (`position: relative`) per ogni campo |
+| `.sp-form-field` | wrapper generico (`position: relative`) per ogni campo |
 
 ### Label
 
 | Classe | Note |
 |---|---|
-| `.label-row` | flex inline label + info-btn + hint, gap 4px |
-| `.label-text` | testo label 15px medium |
-| `.label-text__required` | asterisco rosso `--color-error` |
-| `.label-text__optional` | testo "(opzionale)" piccolo grigio |
-| `.label-hint` | hint piccolo grigio nello stesso row |
+| `.sp-label-row` | flex inline label + info-btn + hint, gap 4px |
+| `.sp-label-text` | testo label 15px medium |
+| `.sp-label-text__required` | asterisco rosso `--color-error` |
+| `.sp-label-text__optional` | testo "(opzionale)" piccolo grigio |
+| `.sp-label-hint` | hint piccolo grigio nello stesso row |
 
 ### Input testo / numero / textarea
 
 | Classe | Note |
 |---|---|
-| `.form-input` | input full-width, padding 6/10, border 1px, radius sm |
-| `.form-input--error` | bordo `--color-error-light` |
-| `.form-input:focus` | bordo `--color-border-focus` |
-| `.form-input:disabled` | background gray-100, cursor not-allowed |
-| `textarea.form-input` | resize disabilitato |
+| `.sp-form-input` | input full-width, padding 6/10, border 1px, radius sm |
+| `.sp-form-input--error` | bordo `--color-error-light` |
+| `.sp-form-input:focus` | bordo `--color-border-focus` |
+| `.sp-form-input:disabled` | background gray-100, cursor not-allowed |
+| `textarea.sp-form-input` | resize disabilitato |
 
 ### Select
 
 | Classe | Note |
 |---|---|
-| `.form-select` | dropdown nativo full-width, freccia SVG embedded |
-| `.form-select:focus` | bordo `--color-border-focus` |
-| `.form-select:disabled` | opacity 0.5, background gray-100 |
+| `.sp-form-select` | dropdown nativo full-width, freccia SVG embedded |
+| `.sp-form-select:focus` | bordo `--color-border-focus` |
+| `.sp-form-select:disabled` | opacity 0.5, background gray-100 |
 
 ### Messaggi inline
 
 | Classe | Note |
 |---|---|
-| `.error-msg` | flex con icona, font xs, colore error, margin-top xs |
-| `.error-inline` | variante alternativa (catalogo equivalente) |
-| `.success-inline` | flex con icona, font xs, colore success, gap 2px |
+| `.sp-error-msg` | flex con icona, font xs, colore error, margin-top xs |
+| `.sp-error-inline` | variante alternativa (catalogo equivalente) |
+| `.sp-success-inline` | flex con icona, font xs, colore success, gap 2px |
 
 ### Griglie helper
 
 | Classe | Note |
 |---|---|
-| `.custom-dims` | wrapper flex column gap sm |
-| `.custom-dims__grid` | grid 2 col, single col `<= 640px` |
-| `.custom-dims__field` | colonna grid (label + input) |
-| `.custom-dims__label` | label 15px medium (alias di `.label-text` per nome semantico) |
-| `.nome-ref-row` | grid 2 col per nome + referente, single col `<= 640px` |
-| `.qty-iva-row` | grid wrapper Step 6 (qty + IVA), gap 0.625rem |
-| `.qty-iva-row--single` | 1 colonna |
-| `.qty-iva-row--double` | 2 colonne, single col `<= 640px` |
+| `.sp-custom-dims` | wrapper flex column gap sm |
+| `.sp-custom-dims__grid` | grid 2 col, single col `<= 640px` |
+| `.sp-custom-dims__field` | colonna grid (label + input) |
+| `.sp-custom-dims__label` | label 15px medium (alias di `.sp-label-text` per nome semantico) |
+| `.sp-nome-ref-row` | grid 2 col per nome + referente, single col `<= 640px` |
+| `.sp-qty-iva-row` | grid wrapper Step 6 (qty + IVA), gap 0.625rem |
+| `.sp-qty-iva-row--single` | 1 colonna |
+| `.sp-qty-iva-row--double` | 2 colonne, single col `<= 640px` |
 
 ### Facciate row + spessore display
 
@@ -87,23 +87,23 @@ spessore mm calcolato.
 
 | Classe | Note |
 |---|---|
-| `.facciate-row` | flex inline align-items center, gap 0.75rem, `min-width: 0` per evitare overflow |
-| `.facciate-input-wrap` | flex 1 (lo spazio rimanente lo prende l'input) |
-| `.spessore-display` | flex inline icon + label + value, `flex-shrink: 0`, `white-space: nowrap` |
-| `.spessore-display svg` | icona 1rem, colore `--color-text` (replica catalog `.spessore-display .material-symbols-outlined`) |
-| `.spessore-label` | font sm medium |
-| `.spessore-value` | font sm bold (e' il dato calcolato) |
+| `.sp-facciate-row` | flex inline align-items center, gap 0.75rem, `min-width: 0` per evitare overflow |
+| `.sp-facciate-input-wrap` | flex 1 (lo spazio rimanente lo prende l'input) |
+| `.sp-spessore-display` | flex inline icon + label + value, `flex-shrink: 0`, `white-space: nowrap` |
+| `.sp-spessore-display svg` | icona 1rem, colore `--color-text` (replica catalog `.sp-spessore-display .material-symbols-outlined`) |
+| `.sp-spessore-label` | font sm medium |
+| `.sp-spessore-value` | font sm bold (e' il dato calcolato) |
 
 ## Markup contract
 
 Form-field con label-row + select:
 
 ```html
-<div class="form-field">
-    <div class="label-row">
-        <label class="label-text">Stampa interna</label>
+<div class="sp-form-field">
+    <div class="sp-label-row">
+        <label class="sp-label-text">Stampa interna</label>
     </div>
-    <select class="form-select">
+    <select class="sp-form-select">
         <option>4/4 Colori fronte e retro</option>
         <option>1/1 Nero fronte e retro</option>
     </select>
@@ -113,16 +113,16 @@ Form-field con label-row + select:
 Form-field con info-btn + label-hint + input + error:
 
 ```html
-<div class="form-field">
-    <div class="label-row">
-        <label class="label-text">Facciate</label>
-        <span class="label-hint">(comprese le 4 di copertina)</span>
-        <button type="button" class="info-btn" aria-controls="facciate-info">
+<div class="sp-form-field">
+    <div class="sp-label-row">
+        <label class="sp-label-text">Facciate</label>
+        <span class="sp-label-hint">(comprese le 4 di copertina)</span>
+        <button type="button" class="sp-info-btn" aria-controls="facciate-info">
             <!-- SVG info icon -->
         </button>
     </div>
-    <input type="number" class="form-input form-input--error" value="23" min="24" step="4"/>
-    <div class="error-msg">
+    <input type="number" class="sp-form-input sp-form-input--error" value="23" min="24" step="4"/>
+    <div class="sp-error-msg">
         <!-- SVG error icon -->
         Il minimo è 24 facciate
     </div>
@@ -132,16 +132,16 @@ Form-field con info-btn + label-hint + input + error:
 Custom dims grid:
 
 ```html
-<div class="custom-dims">
-    <label class="label-text">Dimensioni personalizzate (mm)</label>
-    <div class="custom-dims__grid">
-        <div class="custom-dims__field">
-            <label class="label-text">Larghezza</label>
-            <input type="number" class="form-input" min="100" max="330"/>
+<div class="sp-custom-dims">
+    <label class="sp-label-text">Dimensioni personalizzate (mm)</label>
+    <div class="sp-custom-dims__grid">
+        <div class="sp-custom-dims__field">
+            <label class="sp-label-text">Larghezza</label>
+            <input type="number" class="sp-form-input" min="100" max="330"/>
         </div>
-        <div class="custom-dims__field">
-            <label class="label-text">Altezza</label>
-            <input type="number" class="form-input" min="100" max="480"/>
+        <div class="sp-custom-dims__field">
+            <label class="sp-label-text">Altezza</label>
+            <input type="number" class="sp-form-input" min="100" max="480"/>
         </div>
     </div>
 </div>
@@ -150,43 +150,43 @@ Custom dims grid:
 Facciate row + spessore display (Step 1 configuratore):
 
 ```html
-<div class="form-field">
-    <div class="label-row">
-        <label class="label-text">Facciate</label>
-        <span class="label-hint">(comprese le 4 di copertina)</span>
+<div class="sp-form-field">
+    <div class="sp-label-row">
+        <label class="sp-label-text">Facciate</label>
+        <span class="sp-label-hint">(comprese le 4 di copertina)</span>
     </div>
-    <div class="facciate-row">
-        <div class="facciate-input-wrap">
-            <input type="number" class="form-input" value="48" min="24" step="4"/>
+    <div class="sp-facciate-row">
+        <div class="sp-facciate-input-wrap">
+            <input type="number" class="sp-form-input" value="48" min="24" step="4"/>
         </div>
-        <div class="spessore-display">
+        <div class="sp-spessore-display">
             <!-- SVG vertical-align-center icon 16x16 -->
-            <span class="spessore-label">Spessore</span>
-            <span class="spessore-value">5.5 mm</span>
+            <span class="sp-spessore-label">Spessore</span>
+            <span class="sp-spessore-value">5.5 mm</span>
         </div>
     </div>
 </div>
 ```
 
-Il valore di `.spessore-value` e' calcolato lato business logic (in funzione di
+Il valore di `.sp-spessore-value` e' calcolato lato business logic (in funzione di
 numero facciate, grammatura, carta). Il backend rende il numero finale; la
 libreria fornisce solo lo stile.
 
 Nome-ref-row con required + optional:
 
 ```html
-<div class="nome-ref-row">
+<div class="sp-nome-ref-row">
     <div>
-        <label class="label-text">
-            Nome del lavoro <span class="label-text__required">*</span>
+        <label class="sp-label-text">
+            Nome del lavoro <span class="sp-label-text__required">*</span>
         </label>
-        <input type="text" class="form-input" placeholder="Es. Catalogo primavera"/>
+        <input type="text" class="sp-form-input" placeholder="Es. Catalogo primavera"/>
     </div>
     <div>
-        <label class="label-text">
-            Referente <span class="label-text__optional">(opzionale)</span>
+        <label class="sp-label-text">
+            Referente <span class="sp-label-text__optional">(opzionale)</span>
         </label>
-        <input type="text" class="form-input" placeholder="Es. Mario Rossi"/>
+        <input type="text" class="sp-form-input" placeholder="Es. Mario Rossi"/>
     </div>
 </div>
 ```
@@ -211,7 +211,7 @@ Nome-ref-row con required + optional:
 
 ## Dipendenze interne
 
-`primitives/info-dropdown.css` consuma `.label-row` + `.label-text` da
+`primitives/info-dropdown.css` consuma `.sp-label-row` + `.sp-label-text` da
 `form-primitives.css`. Il bundle `bundles/demo-minimal.css` deve quindi importare
 `form-primitives.css` PRIMA di `info-dropdown.css`.
 
@@ -219,24 +219,24 @@ Nome-ref-row con required + optional:
 
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|
-| `.custom-dims-grid` | `.custom-dims__grid` |
-| `.custom-dims-field` | `.custom-dims__field` |
-| `.custom-dims-label` | `.custom-dims__label` |
+| `.custom-dims-grid` | `.sp-custom-dims__grid` |
+| `.custom-dims-field` | `.sp-custom-dims__field` |
+| `.custom-dims-label` | `.sp-custom-dims__label` |
 
-Eccezioni italiane mantenute (block name singoli, non rinominati): `.facciate-row`, `.facciate-input-wrap`, `.spessore-display`, `.spessore-label`, `.spessore-value`, `.qty-iva-row` (+`--single`/`--double`), `.nome-lavoro-input` (+`--error`), `.nome-ref-row`. Tutto il resto (`.form-field`, `.form-input`, `.form-select`, `.label-row`, `.label-text`, `.label-text__required`, `.label-text__optional`, `.label-hint`, `.error-msg`, `.error-inline`, `.success-inline`) e' invariato.
+Eccezioni italiane mantenute (block name singoli, non rinominati): `.sp-facciate-row`, `.sp-facciate-input-wrap`, `.sp-spessore-display`, `.sp-spessore-label`, `.sp-spessore-value`, `.sp-qty-iva-row` (+`--single`/`--double`), `.sp-nome-lavoro-input` (+`--error`), `.sp-nome-ref-row`. Tutto il resto (`.sp-form-field`, `.sp-form-input`, `.sp-form-select`, `.sp-label-row`, `.sp-label-text`, `.sp-label-text__required`, `.sp-label-text__optional`, `.sp-label-hint`, `.sp-error-msg`, `.sp-error-inline`, `.sp-success-inline`) e' invariato.
 
 ## Fuori scope
 
-- `.radio-group`, `.radio-option`, `input[type="radio"]/[type="checkbox"]`: iterazione
+- `.sp-radio-group`, `.sp-radio-option`, `input[type="radio"]/[type="checkbox"]`: iterazione
   separata.
 - `.delivery-option*`: iterazione separata (radio-card pattern).
-- `.qty-input*`, `.qty-btn*`, `.qty-presets*`, `.qty-iva-row*`: iterazione separata.
-- `.iva-toggle`, `.iva-btn`, `.iva-banner*`: iterazione separata.
+- `.qty-input*`, `.qty-btn*`, `.qty-presets*`, `.sp-qty-iva-row*`: iterazione separata.
+- `.iva-toggle`, `.iva-btn`, `.sp-iva-banner*`: iterazione separata.
 - `.multicop-toggle`, `.multicop-switch*`, `.multicop-label`: gia' parzialmente
   coperto da `ToggleSwitch`.
-- `.facciate-row`, `.spessore-display*`: layout step-1-specifico.
-- `.nome-lavoro-section`, `.nome-lavoro-input*`: alias step-6-specifici di
-  `.form-input`.
+- `.sp-facciate-row`, `.sp-spessore-display*`: layout step-1-specifico.
+- `.nome-lavoro-section`, `.sp-nome-lavoro-input*`: alias step-6-specifici di
+  `.sp-form-input`.
 - `.plastificazione-*`: layout finitura-specifico.
-- `.radio-option--disabled`: appartiene al pattern radio/checkbox.
+- `.sp-radio-option--disabled`: appartiene al pattern radio/checkbox.
 - `.validation-errors`: block-level error summary, edge case bassa priorita'.

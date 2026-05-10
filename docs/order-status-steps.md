@@ -36,7 +36,7 @@ questo stepper puo' vivere, ma non il tracking. `Badge`, `Button`, `Card` e
             type="button"
             aria-pressed="true"
             data-order-status-steps-item
-            data-step-id="files">
+            data-order-status-steps-step-id="files">
         <span class="product-stepper__circle">
             <span class="product-stepper__icon product-stepper__icon--check" aria-hidden="true"></span>
         </span>
@@ -47,7 +47,7 @@ questo stepper puo' vivere, ma non il tracking. `Badge`, `Button`, `Card` e
             type="button"
             aria-pressed="false"
             data-order-status-steps-item
-            data-step-id="production">
+            data-order-status-steps-step-id="production">
         <span class="product-stepper__circle"><span class="product-stepper__num">2</span></span>
         <span class="product-stepper__label">Produzione</span>
     </button>
@@ -78,7 +78,7 @@ questo stepper puo' vivere, ma non il tracking. `Badge`, `Button`, `Card` e
 |---|---:|---|---|
 | `data-order-status-steps` | si | root | init componente |
 | `data-order-status-steps-item` | si | step button | item selezionabile |
-| `data-step-id` | no | step button | id applicativo incluso nel dettaglio evento |
+| `data-order-status-steps-step-id` | no | step button | id applicativo incluso nel dettaglio evento |
 
 ## Modifier / stati
 
@@ -108,7 +108,7 @@ sincronizzazione `aria-pressed` e behavior UI di selezione.
 
 ## Demo-only
 
-Eventuali `data-section`, `data-action`, toolbar scenari, renderer didattici e
+Eventuali `data-section`, `data-orders-table-action`, toolbar scenari, renderer didattici e
 fixture appartengono alla demo/app e non sono API pubbliche del componente.
 
 ## Out of scope

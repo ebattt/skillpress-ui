@@ -10,7 +10,7 @@ const renderSteps = ({ rejected = false } = {}) => {
                     type="button"
                     aria-pressed="true"
                     data-order-status-steps-item
-                    data-step-id="files">
+                    data-order-status-steps-step-id="files">
                 <span class="product-stepper__circle">
                     <span class="product-stepper__icon product-stepper__icon--check" aria-hidden="true"></span>
                 </span>
@@ -21,7 +21,7 @@ const renderSteps = ({ rejected = false } = {}) => {
                     type="button"
                     aria-pressed="false"
                     data-order-status-steps-item
-                    data-step-id="check">
+                    data-order-status-steps-step-id="check">
                 <span class="product-stepper__circle"><span class="product-stepper__num">2</span></span>
                 <span class="product-stepper__label">Controllo</span>
             </button>
@@ -30,7 +30,7 @@ const renderSteps = ({ rejected = false } = {}) => {
                     type="button"
                     aria-pressed="false"
                     data-order-status-steps-item
-                    data-step-id="production">
+                    data-order-status-steps-step-id="production">
                 <span class="product-stepper__circle"><span class="product-stepper__num">3</span></span>
                 <span class="product-stepper__label">Produzione</span>
             </button>
@@ -39,7 +39,7 @@ const renderSteps = ({ rejected = false } = {}) => {
                     type="button"
                     aria-pressed="false"
                     data-order-status-steps-item
-                    data-step-id="shipping">
+                    data-order-status-steps-step-id="shipping">
                 <span class="product-stepper__circle"><span class="product-stepper__num">4</span></span>
                 <span class="product-stepper__label">Spedizione</span>
             </button>

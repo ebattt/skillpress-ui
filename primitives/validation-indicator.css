@@ -13,7 +13,8 @@
  * l'errore, testo e conteggio; la libreria controlla look, spacing e icona.
  */
 
-.validation-indicator {
+/** @public */
+.sp-validation-indicator {
     display: inline-flex;
     align-items: center;
     gap: 0.125rem;
@@ -23,7 +24,7 @@
     color: var(--color-error-light);
 }
 
-.validation-indicator::before {
+.sp-validation-indicator::before {
     content: "!";
     display: inline-flex;
     align-items: center;
@@ -38,7 +39,8 @@
     line-height: 1;
 }
 
-.validation-total {
+/** @public */
+.sp-validation-total {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -47,12 +49,12 @@
     margin-top: 0.5rem;
 }
 
-.validation-total__count {
+.sp-validation-total__count {
     font-size: var(--font-size-xs);
     color: var(--color-text-light);
 }
 
-.validation-total__count strong {
+.sp-validation-total__count strong {
     font-weight: var(--font-weight-medium);
     color: var(--color-text);
 }

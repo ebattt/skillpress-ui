@@ -9,18 +9,29 @@
  *
  * Comportamento:
  *   - click + Space + Enter
- *   - flippa la classe .toggle-switch--checked e l'attributo aria-checked
- *   - emette CustomEvent('toggle-switch:change', { detail: { checked } }) bubbling
+ *   - flippa la classe .sp-toggle-switch--checked e l'attributo aria-checked
+ *   - emette CustomEvent('sp:toggle-switch:change', { detail: { checked } }) bubbling
  *   - rispetta disabled / aria-disabled
  *   - NON gestisce stato di business (es. IVA, prezzi)
  *
- * Convenzione coerente con breadcrumb / accordion: nessun auto-init implicito
- * sul caricamento del modulo. La libreria espone solo init(), il consumer la
- * chiama (l'init e' idempotente).
+ * @public-data data-toggle-switch
+ * @public-event sp:toggle-switch:change
  */
 (function() {
+    'use strict';
+
     var DEFAULT_SELECTOR = '[data-toggle-switch]';
-    var INIT_FLAG = '__skillpressToggleSwitchInit';
+    var INIT_FLAG = '__skillpressToggleSwitchInitialized';
+
+    var ns = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = ns.helpers || {};
+
+    function dispatch(target, name, detail) {
+        if (typeof helpers.dispatch === 'function') {
+            try { helpers.dispatch(target, name, detail); return; } catch (e) { /* fallthrough */ }
+        }
+        target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
+    }
 
     function isDisabled(el) {
         if (el.disabled === true) return true;
@@ -29,15 +40,20 @@
     }
 
     function isChecked(el) {
-        if (el.classList.contains('toggle-switch--checked')) return true;
+        if (el.classList.contains('sp-toggle-switch--checked')) return true;
         if (el.getAttribute('aria-checked') === 'true') return true;
         return false;
     }
 
+    // deprecated alias, removed in v0.3
+    var LEGACY_CHANGE_EVENT = 'toggle-switch:change';
+
     function setChecked(el, checked) {
-        el.classList.toggle('toggle-switch--checked', checked);
+        el.classList.toggle('sp-toggle-switch--checked', checked);
         el.setAttribute('aria-checked', checked ? 'true' : 'false');
-        el.dispatchEvent(new CustomEvent('toggle-switch:change', {
+        dispatch(el, 'sp:toggle-switch:change', { checked: checked });
+        // deprecated alias, removed in v0.3
+        el.dispatchEvent(new CustomEvent(LEGACY_CHANGE_EVENT, {
             bubbles: true,
             detail: { checked: checked }
         }));
@@ -64,7 +80,7 @@
 
         // Sync iniziale: garantisce coerenza tra classe e aria-checked
         var checked = isChecked(el);
-        el.classList.toggle('toggle-switch--checked', checked);
+        el.classList.toggle('sp-toggle-switch--checked', checked);
         el.setAttribute('aria-checked', checked ? 'true' : 'false');
 
         // role di default se mancante (markup atteso: button)
@@ -78,6 +94,7 @@
         return el;
     }
 
+    /** @public */
     function init(target) {
         var nodes;
 
@@ -92,6 +109,9 @@
                 return target;
             }
             nodes = target.querySelectorAll(DEFAULT_SELECTOR);
+        } else if (target.nodeType === 9) {
+            // document
+            nodes = target.querySelectorAll(DEFAULT_SELECTOR);
         } else if (target.length != null) {
             nodes = target;
         } else {
@@ -102,8 +122,15 @@
         return nodes;
     }
 
-    window.SkillpressUI = window.SkillpressUI || {};
-    window.SkillpressUI.ToggleSwitch = {
+    ns.ToggleSwitch = {
         init: init
     };
+
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () { init(document); });
+    } else {
+        init(document);
+    }
 })();

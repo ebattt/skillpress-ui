@@ -10,7 +10,7 @@ const render = (open = false) => {
         <div class="preview${open ? ' preview--open' : ''}" data-preview>
             <div class="preview__row">
                 <div class="preview__select">
-                    <select class="form-select">
+                    <select class="sp-form-select">
                         <option data-preview-title="Patinata Opaca"
                                 data-preview-description="Carta patinata opaca di alta qualita, ideale per cataloghi e riviste."
                                 data-preview-image="https://picsum.photos/seed/paper/480/480">

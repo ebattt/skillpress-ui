@@ -7,7 +7,7 @@
  *
  * Dipende da:
  *   - components/image-gallery.css (.image-gallery, .image-gallery__container, .image-gallery__nav-btn*)
- *   - primitives/rating.css         (.rating, .rating__empty, .rating__filled, .rating__star)
+ *   - primitives/rating.css         (.sp-rating, .sp-rating__empty, .sp-rating__filled, .sp-rating__star)
  *   - components/feature-box.css    (.feature-grid, .feature-box*)
  *
  * Contratto markup statico (Strategia A):
@@ -36,7 +36,7 @@
 
 /* Mobile: meno bianco sopra/sotto, padding-x = --page-padding-x per i bordi
    laterali (allineato alla demo che usa .product-hero standalone in <main>). */
-@media (max-width: 767px) {
+@media (max-width: 639px) {
     .product-hero {
         padding: 0.75rem var(--page-padding-x) 0.5rem;
     }
@@ -48,7 +48,7 @@
     gap: 1.5rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 639px) {
     .product-hero__grid {
         gap: 0.75rem;
     }

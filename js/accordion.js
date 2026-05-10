@@ -1,7 +1,25 @@
+/**
+ * Accordion -- collapsible sections with single-open behavior.
+ *
+ * @public-data data-accordion, data-accordion-section, data-accordion-trigger
+ * @public-event sp:accordion:open, sp:accordion:close
+ */
 (function() {
+    'use strict';
+
     var ACCORDION_SELECTOR = '[data-accordion]';
     var SECTION_SELECTOR = '[data-accordion-section]';
     var TRIGGER_SELECTOR = '[data-accordion-trigger]';
+
+    var ns = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = ns.helpers || {};
+
+    function emitEvent(target, name, detail) {
+        if (typeof helpers.dispatch === 'function') {
+            try { helpers.dispatch(target, name, detail); return; } catch (e) { /* fallthrough */ }
+        }
+        target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
+    }
 
     function getSections(container) {
         return Array.prototype.slice.call(container.querySelectorAll(SECTION_SELECTOR));
@@ -14,7 +32,7 @@
     function getContent(section) {
         var children = Array.prototype.slice.call(section.children);
         for (var i = 0; i < children.length; i++) {
-            if (children[i].classList.contains('accordion__content')) {
+            if (children[i].classList.contains('sp-accordion__content')) {
                 return children[i];
             }
         }
@@ -46,7 +64,7 @@
                     return;
                 }
                 content.removeEventListener('transitionend', onOpenEnd);
-                if (section.classList.contains('accordion__section--expanded')) {
+                if (section.classList.contains('sp-accordion__section--expanded')) {
                     content.style.maxHeight = 'none';
                     content.style.overflow = 'visible';
                 }
@@ -62,7 +80,7 @@
     function syncSection(section, isExpanded, animate) {
         var trigger = getTrigger(section);
 
-        section.classList.toggle('accordion__section--expanded', isExpanded);
+        section.classList.toggle('sp-accordion__section--expanded', isExpanded);
         setContentHeight(section, isExpanded, animate !== false);
 
         if (trigger) {
@@ -71,15 +89,12 @@
     }
 
     function emit(section, isExpanded) {
-        section.dispatchEvent(new CustomEvent(
-            isExpanded ? 'sp:accordion:open' : 'sp:accordion:close',
-            { bubbles: true }
-        ));
+        emitEvent(section, isExpanded ? 'sp:accordion:open' : 'sp:accordion:close');
     }
 
     function closeSiblings(container, currentSection) {
         getSections(container).forEach(function(section) {
-            if (section === currentSection || !section.classList.contains('accordion__section--expanded')) {
+            if (section === currentSection || !section.classList.contains('sp-accordion__section--expanded')) {
                 return;
             }
 
@@ -103,7 +118,7 @@
             return;
         }
 
-        nextState = !section.classList.contains('accordion__section--expanded');
+        nextState = !section.classList.contains('sp-accordion__section--expanded');
 
         syncSection(section, nextState, true);
         emit(section, nextState);
@@ -115,27 +130,41 @@
         }
     }
 
-    function init(container) {
-        if (!container || container.__skillpressAccordionInit) {
+    function initContainer(container) {
+        if (!container || container.__skillpressAccordionInitialized) {
             return container;
         }
 
         container.addEventListener('click', onClick);
+        container.__skillpressAccordionInitialized = true;
+        // deprecated alias, removed in v0.3
         container.__skillpressAccordionInit = true;
 
         getSections(container).forEach(function(section) {
-            syncSection(section, section.classList.contains('accordion__section--expanded'), false);
+            syncSection(section, section.classList.contains('sp-accordion__section--expanded'), false);
         });
 
         return container;
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        Array.prototype.forEach.call(document.querySelectorAll(ACCORDION_SELECTOR), init);
-    });
+    /** @public */
+    function init(scope) {
+        var root = scope || document;
+        if (root.matches && root.matches(ACCORDION_SELECTOR)) {
+            initContainer(root);
+        }
+        Array.prototype.forEach.call(root.querySelectorAll(ACCORDION_SELECTOR), initContainer);
+    }
 
-    window.SkillpressUI = window.SkillpressUI || {};
-    window.SkillpressUI.Accordion = {
+    ns.Accordion = {
         init: init
     };
+
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () { init(document); });
+    } else {
+        init(document);
+    }
 })();

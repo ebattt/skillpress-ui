@@ -47,7 +47,7 @@ Markup verbatim dalla pagina demo `product-page-integration/index.html#L512-L564
         <div class="step-indicator__container">
             <div class="steps-line"></div>
             <div class="steps-grid">
-                <div class="step-indicator__item step-indicator__item--active" data-step="1">
+                <div class="step-indicator__item step-indicator__item--active" data-step-indicator-step="1">
                     <div class="step-card-content">
                         <div class="step-indicator__badge step-indicator__badge--active">
                             <span>1</span>
@@ -58,7 +58,7 @@ Markup verbatim dalla pagina demo `product-page-integration/index.html#L512-L564
                         </div>
                     </div>
                 </div>
-                <div class="step-indicator__item" data-step="2">
+                <div class="step-indicator__item" data-step-indicator-step="2">
                     <div class="step-card-content">
                         <div class="step-indicator__badge step-indicator__badge--inactive">
                             <span>2</span>
@@ -96,7 +96,7 @@ Attributi:
 
 | Attribute | Element | Required | Note |
 |---|---|---|---|
-| `data-step="N"` | `.step-indicator__item` | no | Riferimento numerico. Usato dal CMS, non dalla libreria. |
+| `data-step-indicator-step="N"` | `.step-indicator__item` | no | Riferimento numerico. Usato dal CMS, non dalla libreria. |
 | `id="step-cards"` | `.step-indicator` | no | Ancora di pagina opzionale. |
 
 ### Modifiers in catalog non in demo
@@ -162,7 +162,7 @@ Valori letterali mantenuti dal catalogo:
 
 - spostare i modifier `--active`/`--inactive`/`--completed` sui sub-element corretti in coppia: badge + titolo + status devono restare coerenti.
 - testo dei titoli/status: l'overflow e' troncato con ellipsis su `.step-indicator__title`. Mantenere stringhe brevi (max ~20 char per cella desktop).
-- `data-step` e' libero: la libreria non lo legge, ma e' utile per query CMS-side e analytics.
+- `data-step-indicator-step` e' libero: la libreria non lo legge, ma e' utile per query CMS-side e analytics.
 
 ## Classi pubbliche
 
@@ -170,7 +170,7 @@ Valori letterali mantenuti dal catalogo:
 
 ## Data hooks
 
-Nessun hook `data-*` richiesto dalla libreria. `data-step` e' opzionale e consumer/backend-owned.
+Nessun hook `data-*` richiesto dalla libreria. `data-step-indicator-step` e' opzionale e consumer/backend-owned.
 
 ## Modifier / stati
 
@@ -178,7 +178,7 @@ Step attivo, inattivo e completato tramite modifier sui sub-element. La libreria
 
 ## Backend owns
 
-Numero step, label, stato corrente/completato, coerenza dei modifier, `data-step` opzionale e analytics.
+Numero step, label, stato corrente/completato, coerenza dei modifier, `data-step-indicator-step` opzionale e analytics.
 
 ## Library owns
 

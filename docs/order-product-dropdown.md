@@ -122,7 +122,7 @@ Nessun modifier visuale pubblico richiesto per l'apertura: il JS sincronizza
 
 ## Demo-only
 
-Eventuali `data-action`, `data-section`, toolbar scenari, renderer didattici e
+Eventuali `data-orders-table-action`, `data-section`, toolbar scenari, renderer didattici e
 fixture appartengono alla demo/app e non sono API pubbliche del componente.
 
 ## Out of scope

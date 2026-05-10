@@ -12,9 +12,9 @@ const renderCard = ({
 
     root.innerHTML = `
         <article class="${classes}"${disabledAttr}>
-            <div class="card__body">
-                <h3 class="card__title">${title}</h3>
-                <p class="card__description">${description}</p>
+            <div class="sp-card__body">
+                <h3 class="sp-card__title">${title}</h3>
+                <p class="sp-card__description">${description}</p>
             </div>
         </article>
     `;
@@ -105,11 +105,11 @@ export const ControlRow = {
         const root = document.createElement('div');
         root.style.maxWidth = '520px';
         root.innerHTML = `
-            <article class="card card--control-row">
-                <div class="card__header">
+            <article class="sp-card sp-card--control-row">
+                <div class="sp-card__header">
                     <div>
-                        <h3 class="card__title">Multispedizione</h3>
-                        <p class="card__description">Invia i prodotti a indirizzi diversi</p>
+                        <h3 class="sp-card__title">Multispedizione</h3>
+                        <p class="sp-card__description">Invia i prodotti a indirizzi diversi</p>
                     </div>
                 </div>
             </article>

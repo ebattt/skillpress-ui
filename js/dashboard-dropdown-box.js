@@ -1,7 +1,27 @@
+/**
+ * DashboardDropdownBox -- collapsible dashboard module box.
+ *
+ * @public-data data-dashboard-dropdown-box, data-dashboard-dropdown-box-trigger, data-dashboard-dropdown-box-content
+ * @public-event sp:dashboard-dropdown-box:open, sp:dashboard-dropdown-box:close
+ */
 (function () {
     'use strict';
 
     var namespace = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = namespace.helpers || {};
+
+    function dispatch(target, name, detail) {
+        if (typeof helpers.dispatch === 'function') {
+            try { helpers.dispatch(target, name, detail); return; } catch (e) { /* fallthrough */ }
+        }
+        target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
+    }
+
+    function emitWithLegacyAlias(target, normalized, legacy, detail) {
+        dispatch(target, normalized, detail);
+        // deprecated alias, removed in v0.3
+        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
+    }
 
     function getTrigger(root) {
         return root.querySelector('[data-dashboard-dropdown-box-trigger]');
@@ -18,13 +38,17 @@
 
         trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         content.hidden = !expanded;
-        root.dispatchEvent(new CustomEvent(expanded ? 'sp:dashboard-dropdown-box-open' : 'sp:dashboard-dropdown-box-close', {
-            bubbles: true
-        }));
+        emitWithLegacyAlias(
+            root,
+            expanded ? 'sp:dashboard-dropdown-box:open' : 'sp:dashboard-dropdown-box:close',
+            expanded ? 'sp:dashboard-dropdown-box-open' : 'sp:dashboard-dropdown-box-close'
+        );
     }
 
     function initRoot(root) {
-        if (!root || root.__dashboardDropdownBoxInitialized) return;
+        if (!root || root.__skillpressDashboardDropdownBoxInitialized) return;
+        root.__skillpressDashboardDropdownBoxInitialized = true;
+        // deprecated alias, removed in v0.3
         root.__dashboardDropdownBoxInitialized = true;
 
         var trigger = getTrigger(root);
@@ -42,6 +66,7 @@
         });
     }
 
+    /** @public */
     function init(scope) {
         var context = scope || document;
         var roots = [];
@@ -57,7 +82,9 @@
         setExpanded: setExpanded
     };
 
-    if (document.readyState === 'loading') {
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function () { init(document); });
     } else {
         init(document);

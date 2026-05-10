@@ -6,7 +6,7 @@ const renderBadge = ({
 } = {}) => {
     const root = document.createElement('div');
 
-    root.innerHTML = `<span class="badge badge--${variant}">${label}</span>`;
+    root.innerHTML = `<span class="sp-badge badge--${variant}">${label}</span>`;
 
     return root;
 };
@@ -39,7 +39,7 @@ export const Default = {
     render: () => renderBadge(),
     play: async ({ canvas }) => {
         const badge = canvas.getByText('Consegnato');
-        await expect(badge).toHaveClass('badge', 'badge--success');
+        await expect(badge).toHaveClass('sp-badge', 'sp-badge--success');
     }
 };
 

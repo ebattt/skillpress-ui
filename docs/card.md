@@ -18,17 +18,17 @@ Superficie contenitore generica per blocchi informativi o selezionabili: bordo, 
 
 ```text
 Card
-└── .card   [--interactive | --selected | --disabled | --control-row | --surface-muted]
-    ├── .card__media     (opzionale, immagine/picture full-width)
-    ├── .card__header    (opzionale, eyebrow + titolo)
-    │   ├── .card__eyebrow
-    │   └── .card__title
-    ├── .card__body      (slot principale, flex 1)
-    │   ├── .card__title
-    │   └── .card__description
-    └── .card__footer    (opzionale, eyebrow + actions)
-        ├── .card__eyebrow
-        └── .card__actions   (slot ripetibile per Button/link)
+└── .sp-card   [--interactive | --selected | --disabled | --control-row | --surface-muted]
+    ├── .sp-card__media     (opzionale, immagine/picture full-width)
+    ├── .sp-card__header    (opzionale, eyebrow + titolo)
+    │   ├── .sp-card__eyebrow
+    │   └── .sp-card__title
+    ├── .sp-card__body      (slot principale, flex 1)
+    │   ├── .sp-card__title
+    │   └── .sp-card__description
+    └── .sp-card__footer    (opzionale, eyebrow + actions)
+        ├── .sp-card__eyebrow
+        └── .sp-card__actions   (slot ripetibile per Button/link)
 ```
 
 ## Markup contract
@@ -36,10 +36,10 @@ Card
 Markup minimo:
 
 ```html
-<article class="card">
-  <div class="card__body">
-    <h3 class="card__title">Titolo card</h3>
-    <p class="card__description">Descrizione breve del contenuto.</p>
+<article class="sp-card">
+  <div class="sp-card__body">
+    <h3 class="sp-card__title">Titolo card</h3>
+    <p class="sp-card__description">Descrizione breve del contenuto.</p>
   </div>
 </article>
 ```
@@ -47,19 +47,19 @@ Markup minimo:
 Con slot opzionali (header, body, footer):
 
 ```html
-<article class="card">
-  <div class="card__header">
+<article class="sp-card">
+  <div class="sp-card__header">
     <div>
-      <span class="card__eyebrow">Eyebrow</span>
-      <h3 class="card__title">Titolo tecnico</h3>
+      <span class="sp-card__eyebrow">Eyebrow</span>
+      <h3 class="sp-card__title">Titolo tecnico</h3>
     </div>
   </div>
-  <div class="card__body">
-    <p class="card__description">Descrizione tecnica dello slot.</p>
+  <div class="sp-card__body">
+    <p class="sp-card__description">Descrizione tecnica dello slot.</p>
   </div>
-  <div class="card__footer">
-    <span class="card__eyebrow">Footer</span>
-    <div class="card__actions">
+  <div class="sp-card__footer">
+    <span class="sp-card__eyebrow">Footer</span>
+    <div class="sp-card__actions">
       <!-- Slot azioni opzionale -->
     </div>
   </div>
@@ -70,25 +70,25 @@ Con slot opzionali (header, body, footer):
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.card` | shell della superficie, applica bordo/radius/background | yes | `--interactive`, `--selected`, `--disabled`, `--control-row`, `--surface-muted` |
-| `.card__media` | wrapper immagine full-width | no | — |
-| `.card__header` | header flex con eyebrow + titolo | no | — |
-| `.card__body` | slot principale, flex 1 | no | — |
-| `.card__footer` | footer flex con border-top | no | — |
-| `.card__title` | titolo (h3) | no | — |
-| `.card__description` | descrizione testuale, color secondary | no | — |
-| `.card__eyebrow` | label sopra-testo, font-size xs | no | — |
-| `.card__actions` | slot ripetibile per Button o link | no | — |
-| `.card--surface-muted` | superficie grigia per pannelli interni checkout/dashboard | no | — |
-| `.card--control-row` | superficie per righe controllo checkout-like con radius xl, titolo 14px/600 e subtitle xs | no | — |
+| `.sp-card` | shell della superficie, applica bordo/radius/background | yes | `--interactive`, `--selected`, `--disabled`, `--control-row`, `--surface-muted` |
+| `.sp-card__media` | wrapper immagine full-width | no | — |
+| `.sp-card__header` | header flex con eyebrow + titolo | no | — |
+| `.sp-card__body` | slot principale, flex 1 | no | — |
+| `.sp-card__footer` | footer flex con border-top | no | — |
+| `.sp-card__title` | titolo (h3) | no | — |
+| `.sp-card__description` | descrizione testuale, color secondary | no | — |
+| `.sp-card__eyebrow` | label sopra-testo, font-size xs | no | — |
+| `.sp-card__actions` | slot ripetibile per Button o link | no | — |
+| `.sp-card--surface-muted` | superficie grigia per pannelli interni checkout/dashboard | no | — |
+| `.sp-card--control-row` | superficie per righe controllo checkout-like con radius xl, titolo 14px/600 e subtitle xs | no | — |
 
-Almeno uno tra `.card__body`, `.card__header` o contenuto equivalente deve essere presente.
+Almeno uno tra `.sp-card__body`, `.sp-card__header` o contenuto equivalente deve essere presente.
 
 Attributi:
 
 | Attribute | Element | Required | Note |
 |---|---|---|---|
-| `aria-disabled="true"` | `.card` | no | Da usare quando una card interattiva non e' disponibile. |
+| `aria-disabled="true"` | `.sp-card` | no | Da usare quando una card interattiva non e' disponibile. |
 
 ## Installation
 
@@ -132,7 +132,7 @@ Nessun script JS richiesto.
 
 ## Classi pubbliche
 
-`.card`, `.card__media`, `.card__header`, `.card__body`, `.card__footer`, `.card__title`, `.card__description`, `.card__eyebrow`, `.card__actions` e i modifier `.card--interactive`, `.card--selected`, `.card--disabled`, `.card--control-row`, `.card--surface-muted`.
+`.sp-card`, `.sp-card__media`, `.sp-card__header`, `.sp-card__body`, `.sp-card__footer`, `.sp-card__title`, `.sp-card__description`, `.sp-card__eyebrow`, `.sp-card__actions` e i modifier `.sp-card--interactive`, `.sp-card--selected`, `.sp-card--disabled`, `.sp-card--control-row`, `.sp-card--surface-muted`.
 
 ## Data hooks
 

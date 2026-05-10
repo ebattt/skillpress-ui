@@ -26,7 +26,7 @@ window.SkillpressUI.OrderStepDetail.init(root);
 <div data-order-step-detail>
   <div class="product-stepper" data-order-status-steps><!-- OrderStatusSteps --></div>
 
-  <div class="product-step-detail" data-order-step-detail-panel data-step-id="files">
+  <div class="product-step-detail" data-order-step-detail-panel data-order-status-steps-step-id="files">
     <div class="step-status-banner step-status-banner--warning">
       <div class="step-status-banner__body">
         <p class="step-status-banner__title">
@@ -60,12 +60,12 @@ window.SkillpressUI.OrderStepDetail.init(root);
 - `.product-file-box--locked`
 - `.product-file-box--selected`
 - `.product-file-box--readonly`
-- `.product-file-box--cz`
-- `.product-file-box--cz-confirmed`
-- `.product-file-box--cz-replaced`
-- `.product-file-box--cz-tochange`
-- `.product-file-box--cz-removed`
-- `.product-file-box--cz-neutral`
+- `.product-file-box--annotated`
+- `.product-file-box--confirmed`
+- `.product-file-box--replaced`
+- `.product-file-box--tochange`
+- `.product-file-box--removed`
+- `.product-file-box--neutral`
 - `.product-file-box__state--success`
 - `.product-file-box__state--warning`
 - `.product-file-box__state--muted`
@@ -76,13 +76,13 @@ window.SkillpressUI.OrderStepDetail.init(root);
 |---|---:|---|---|
 | `data-order-step-detail` | si | root | init componente |
 | `data-order-step-detail-panel` | si | pannello step | pannello da sincronizzare |
-| `data-step-id` | si | pannello step | id pannello da abbinare allo step selezionato |
+| `data-order-status-steps-step-id` | si | pannello step | id pannello da abbinare allo step selezionato |
 
 ## Modifier / stati
 
 - Banner: `.step-status-banner--info|neutral|success|warning|error|locked`
 - File box: `.product-file-box--empty|ready|uploaded|error|locked|selected|readonly`
-- Copia zero: `.product-file-box--cz|--cz-confirmed|--cz-replaced|--cz-tochange|--cz-removed|--cz-neutral`
+- Copia zero: `.product-file-box--annotated|--confirmed|--replaced|--tochange|--removed|--neutral`
 - File state: `.product-file-box__state--success|warning|muted`
 
 ## Backend owns
@@ -100,7 +100,7 @@ window.SkillpressUI.OrderStepDetail.init(root);
 
 ## Demo-only
 
-Eventuali `data-action`, `data-section`, toolbar scenari, renderer didattici e
+Eventuali `data-orders-table-action`, `data-section`, toolbar scenari, renderer didattici e
 fixture appartengono alla demo/app e non sono API pubbliche del componente.
 
 ## Out of scope

@@ -24,9 +24,9 @@ or `InvoiceTable` for those contracts.
 <div class="billing-form-card" id="billing-form-card" data-billing-form-card hidden>
     <h3 class="billing-form-card__title"
         data-billing-form-card-title
-        data-create-label="Nuova anagrafica"
-        data-edit-label="Modifica anagrafica">Nuova anagrafica</h3>
-    <form class="billing-form" data-form="billing">
+        data-billing-form-card-create-label="Nuova anagrafica"
+        data-billing-form-card-edit-label="Modifica anagrafica">Nuova anagrafica</h3>
+    <form class="billing-form" data-billing-form-card-form="billing">
         <div class="billing-form__row">
             <div class="billing-form__field">
                 <label class="billing-form__label" for="bf-name">Nome *</label>
@@ -44,8 +44,8 @@ or `InvoiceTable` for those contracts.
             <button class="billing-form__btn billing-form__btn--primary"
                     type="submit"
                     data-billing-form-card-submit
-                    data-create-label="Crea anagrafica"
-                    data-edit-label="Salva modifiche">Crea anagrafica</button>
+                    data-billing-form-card-create-label="Crea anagrafica"
+                    data-billing-form-card-edit-label="Salva modifiche">Crea anagrafica</button>
         </div>
     </form>
 </div>

@@ -2,7 +2,7 @@
  * SIDEBAR TOTALS — Composed component (sidebar configuratore: totale + promo + riepilogo + carrello)
  * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css righe 1886-1910
  *           + righe 189-246, 249-272, 324-341, 344-365, 367-418
- *           + Skillpress-frontend/elements-ui/css/components/_buttons.css righe 29-55 (.add-to-cart-btn), 261-285 (.riepilogo-btn)
+ *           + Skillpress-frontend/elements-ui/css/components/_buttons.css righe 29-55 (.add-to-cart-btn), 261-285 (.sidebar-totals__btn)
  * Fonte markup: Skillpress-frontend/product-page-integration/index.html righe 202-249
  * Catalogo dichiarazione: Skillpress-frontend/elements-ui/js/layout-patterns/sidebar-summary.js
  * Target demo: product-page-integration (sidebar configuratore desktop)
@@ -10,7 +10,7 @@
  *
  * CSS-only. Nessun behavior libreria.
  *
- * Il toggle riepilogo (`.riepilogo-btn[aria-expanded]` -> `.riepilogo-content` show/hide) e'
+ * Il toggle riepilogo (`.sidebar-totals__btn[aria-expanded]` -> `.sidebar-totals__content` show/hide) e'
  * consumer-side wire-up: la libreria espone `display: none` di default e lascia al consumer/CMS
  * lo swap su click. Stessa convenzione di ModeSwitcher / OptionButtons / FormatCard / PriceTable.
  *
@@ -20,12 +20,12 @@
  *
  * Fuori scope (non implementato qui):
  * - aggiornamento valori `Quantita` / `Miglior prezzo` / `Imposta` / `Totale` (business logic configuratore);
- * - generazione HTML riepilogo dentro `.riepilogo-content`;
+ * - generazione HTML riepilogo dentro `.sidebar-totals__content`;
  * - validazione promo / errori `#validationErrors`;
  * - click bottone carrello;
  * - variante BEM `.sidebar-box*`, alias `.sidebar-total-price`, `.sidebar-total-iva`,
  *   `.product-sidebar` (non referenziati dalla pagina demo);
- * - `.download-buttons__divider` + `.download-buttons` + `.download-buttons__btn`
+ * - `.sp-download-buttons__divider` + `.sp-download-buttons` + `.sp-download-buttons__btn`
  *   (gia' coperti da `primitives/download-buttons.css`).
  */
 
@@ -204,13 +204,13 @@
 /* ================================================================
    RIEPILOGO TOGGLE + CONTENT
    ================================================================ */
-.riepilogo-section {
+.sidebar-totals__section {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
 }
 
-.riepilogo-section label {
+.sidebar-totals__section label {
     display: block;
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
@@ -218,7 +218,7 @@
     margin-bottom: 0.375rem;
 }
 
-.riepilogo-btn {
+.sidebar-totals__btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -236,17 +236,17 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-.riepilogo-btn:hover {
+.sidebar-totals__btn:hover {
     background-color: rgba(28, 114, 100, 0.15);
 }
 
-.riepilogo-btn svg {
+.sidebar-totals__btn svg {
     width: 1.125rem;
     height: 1.125rem;
     flex-shrink: 0;
 }
 
-.riepilogo-content {
+.sidebar-totals__content {
     margin-top: 0.5rem;
     max-height: 300px;
     overflow-y: auto;
@@ -258,7 +258,7 @@
     display: none;
 }
 
-.riepilogo-content > * + * {
+.sidebar-totals__content > * + * {
     margin-top: 0.5rem;
 }
 
@@ -267,65 +267,65 @@
    ----------------------------------------------------------------
    Queste classi sono prodotte dal generatore reale del riepilogo
    (`product-page-integration/js/riepilogo.js` -> `window.generateRiepilogo`).
-   Il backend/CMS inietta l'HTML risultante dentro `.riepilogo-content`
+   Il backend/CMS inietta l'HTML risultante dentro `.sidebar-totals__content`
    (sidebar desktop) o `.mobile-config-content` (mobile bar).
    ================================================================ */
-.riepilogo-container {
+.sidebar-totals__container {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
 }
 
-/* `.riepilogo-section` standalone (senza `label` figlia, prodotto da
+/* `.sidebar-totals__section` standalone (senza `label` figlia, prodotto da
    `generateRiepilogo`): wrapper di gruppo (Dettagli, Generali, Copertina, ...). */
 
-.riepilogo-header {
+.sidebar-totals__header {
     font-weight: var(--font-weight-bold);
     font-size: 1rem;
     color: var(--color-text, #111418);
 }
 
-.riepilogo-row {
+.sidebar-totals__row {
     padding-left: 0.75rem;
 }
 
-.riepilogo-row--indent {
+.sidebar-totals__row--indent {
     padding-left: 1.5rem;
     color: var(--color-text-secondary);
 }
 
-.riepilogo-error {
+.sidebar-totals__error {
     color: var(--color-error-light);
     font-weight: var(--font-weight-bold);
 }
 
-.riepilogo-muted {
+.sidebar-totals__muted {
     color: var(--color-text-light);
 }
 
-.riepilogo-placeholder {
+.sidebar-totals__placeholder {
     text-align: center;
     color: var(--color-text-light);
     padding: 1rem;
 }
 
-.riepilogo-empty {
+.sidebar-totals__empty {
     text-align: center;
     color: var(--color-text-light);
     padding: 1rem;
 }
 
 /* Alias legacy mantenuti per consumer che gia' usano i nomi vecchi.
-   - `.riepilogo-indent` -> `.riepilogo-row--indent`
-   - `.riepilogo-section-header` -> `.riepilogo-header`
+   - `.sidebar-totals__indent` -> `.sidebar-totals__row--indent`
+   - `.sidebar-totals__section-header` -> `.sidebar-totals__header`
    I generatori canonici (`generateRiepilogo` 3.0.0+) usano le forme
    nuove con doppio dash / nome senza suffisso. */
-.riepilogo-indent {
+.sidebar-totals__indent {
     padding-left: 1.5rem;
     color: var(--color-text-secondary);
 }
 
-.riepilogo-section-header {
+.sidebar-totals__section-header {
     font-weight: var(--font-weight-bold);
     font-size: 1rem;
     color: var(--color-text, #111418);

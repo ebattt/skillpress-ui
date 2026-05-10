@@ -8,7 +8,7 @@ Tabella prezzi stile Google Flights: header data spedizione, righe quantita, int
 - Cartella: `components/` (composto: wrapper > nav arrows + table > thead/tbody con sub-element specializzati).
 - Strategia JS demo: A — static snapshot. La libreria non aggiunge listener.
 
-## Contratto data-driven
+## Contratto data-rating-driven
 
 Il backend dichiara `N` colonne data (date di consegna). **Range raccomandato: 1..4 colonne** (`deliveryBaseDays = [2, 4, 6, 10]` nella pagina demo = 4 colonne, sconti progressivi 5%/30%/55%/79%). La libreria si adatta automaticamente: la tabella usa `display: table` e distribuisce le colonne via CSS senza modifier specifici per il numero.
 

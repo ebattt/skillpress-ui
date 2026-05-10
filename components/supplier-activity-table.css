@@ -290,6 +290,9 @@
     }
 }
 
+/* breakpoint-exception: 1200px e' la soglia oltre la quale i filtri supplier
+   tornano alla grid 4-col del default; sotto 1200 e sopra 640 servono 3 colonne
+   per evitare wrap del bottone azione. */
 @media (min-width: 640px) and (max-width: 1200px) {
     .supplier-activity-section__filters {
         grid-template-columns: 1fr 1fr 1fr;

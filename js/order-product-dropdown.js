@@ -1,7 +1,27 @@
+/**
+ * OrderProductDropdown -- expandable order product detail card.
+ *
+ * @public-data data-order-product-dropdown, data-order-product-dropdown-trigger, data-order-product-dropdown-content, data-order-product-dropdown-details, data-order-product-dropdown-details-trigger
+ * @public-event sp:order-product-dropdown:open, sp:order-product-dropdown:close
+ */
 (function () {
     'use strict';
 
     var namespace = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = namespace.helpers || {};
+
+    function dispatch(target, name, detail) {
+        if (typeof helpers.dispatch === 'function') {
+            try { helpers.dispatch(target, name, detail); return; } catch (e) { /* fallthrough */ }
+        }
+        target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
+    }
+
+    function emitWithLegacyAlias(target, normalized, legacy, detail) {
+        dispatch(target, normalized, detail);
+        // deprecated alias, removed in v0.3
+        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
+    }
 
     function getRoot(element) {
         return element.closest('[data-order-product-dropdown]');
@@ -13,9 +33,11 @@
         if (!trigger || !content) return;
         trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         content.hidden = !expanded;
-        root.dispatchEvent(new CustomEvent(expanded ? 'sp:order-product-dropdown-open' : 'sp:order-product-dropdown-close', {
-            bubbles: true
-        }));
+        emitWithLegacyAlias(
+            root,
+            expanded ? 'sp:order-product-dropdown:open' : 'sp:order-product-dropdown:close',
+            expanded ? 'sp:order-product-dropdown-open' : 'sp:order-product-dropdown-close'
+        );
     }
 
     function setDetailsExpanded(root, expanded) {
@@ -27,7 +49,9 @@
     }
 
     function initRoot(root) {
-        if (!root || root.__orderProductDropdownInitialized) return;
+        if (!root || root.__skillpressOrderProductDropdownInitialized) return;
+        root.__skillpressOrderProductDropdownInitialized = true;
+        // deprecated alias, removed in v0.3
         root.__orderProductDropdownInitialized = true;
 
         var trigger = root.querySelector('[data-order-product-dropdown-trigger]');
@@ -59,6 +83,7 @@
         }
     }
 
+    /** @public */
     function init(scope) {
         var context = scope || document;
         var roots = [];
@@ -73,7 +98,9 @@
         setDetailsExpanded: setDetailsExpanded
     };
 
-    if (document.readyState === 'loading') {
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function () { init(document); });
     } else {
         init(document);

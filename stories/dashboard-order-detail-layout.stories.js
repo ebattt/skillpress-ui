@@ -29,11 +29,11 @@ const renderProduct = () => `
                         <p class="product-step-card__name">Brossura fresata</p>
                         <p class="product-step-card__meta">200 copie</p>
                         <div class="product-step-card__badges">
-                            <span class="dash-action-badge" data-dashboard-action-badge>
-                                <span class="dash-action-badge__icon dash-action-badge__icon--upload" aria-hidden="true"></span>
+                            <span class="dashboard-action-badge" data-dashboard-action-badge>
+                                <span class="dashboard-action-badge__icon dashboard-action-badge__icon--upload" aria-hidden="true"></span>
                                 File richiesto
                             </span>
-                            <span class="badge badge--info">In lavorazione</span>
+                            <span class="sp-badge sp-badge--info">In lavorazione</span>
                         </div>
                     </div>
                     <div class="product-step-card__price-block">
@@ -49,32 +49,32 @@ const renderProduct = () => `
                     <span class="product-step-card__details-toggle-label">Dettagli prodotto</span>
                     <span class="product-step-card__details-chevron" aria-hidden="true"></span>
                 </button>
-                <button class="button button--primary button--sm" type="button">Carica file</button>
+                <button class="sp-button sp-button--primary sp-button--sm" type="button">Carica file</button>
             </div>
             <div class="product-stepper" data-order-status-steps>
-                <button class="product-stepper__step product-stepper__step--completed product-stepper__step--selected" type="button" aria-pressed="true" data-order-status-steps-item data-step-id="files">
+                <button class="product-stepper__step product-stepper__step--completed product-stepper__step--selected" type="button" aria-pressed="true" data-order-status-steps-item data-order-status-steps-step-id="files">
                     <span class="product-stepper__circle"><span class="product-stepper__icon product-stepper__icon--check" aria-hidden="true"></span></span>
                     <span class="product-stepper__label">File</span>
                 </button>
                 <span class="product-stepper__connector product-stepper__connector--completed" aria-hidden="true"></span>
-                <button class="product-stepper__step product-stepper__step--active" type="button" aria-pressed="false" data-order-status-steps-item data-step-id="check">
+                <button class="product-stepper__step product-stepper__step--active" type="button" aria-pressed="false" data-order-status-steps-item data-order-status-steps-step-id="check">
                     <span class="product-stepper__circle"><span class="product-stepper__num">2</span></span>
                     <span class="product-stepper__label">Controllo</span>
                 </button>
                 <span class="product-stepper__connector" aria-hidden="true"></span>
-                <button class="product-stepper__step product-stepper__step--pending" type="button" aria-pressed="false" data-order-status-steps-item data-step-id="production">
+                <button class="product-stepper__step product-stepper__step--pending" type="button" aria-pressed="false" data-order-status-steps-item data-order-status-steps-step-id="production">
                     <span class="product-stepper__circle"><span class="product-stepper__num">3</span></span>
                     <span class="product-stepper__label">Produzione</span>
                 </button>
             </div>
-            <div class="product-step-detail" data-order-step-detail-panel data-step-id="files">
+            <div class="product-step-detail" data-order-step-detail-panel data-order-status-steps-step-id="files">
                 <div class="step-status-banner step-status-banner--warning">
                     <div class="step-status-banner__body">
                         <p class="step-status-banner__title">1/3 file caricati <span class="step-status-banner__text">Mancano 2 file per procedere.</span></p>
                     </div>
                 </div>
             </div>
-            <div class="product-step-detail" data-order-step-detail-panel data-step-id="check" hidden>
+            <div class="product-step-detail" data-order-step-detail-panel data-order-status-steps-step-id="check" hidden>
                 <div class="step-status-banner step-status-banner--info">
                     <div class="step-status-banner__body">
                         <p class="step-status-banner__title">Verifica in corso</p>
@@ -119,15 +119,15 @@ const renderDropdown = (type) => {
     const title = type === 'shipping' ? 'Spedizione' : 'Pagamento';
 
     return `
-        <div class="dash-dropdown-box order-detail-grid__${type}" data-dashboard-dropdown-box>
-            <button class="dash-dropdown-box__trigger" type="button" aria-expanded="false" data-dashboard-dropdown-box-trigger>
-                <span class="dash-dropdown-box__trigger-label">
-                    <span class="dash-dropdown-box__trigger-icon dash-dropdown-box__trigger-icon--${type}" aria-hidden="true"></span>
+        <div class="dashboard-dropdown-box order-detail-grid__${type}" data-dashboard-dropdown-box>
+            <button class="dashboard-dropdown-box__trigger" type="button" aria-expanded="false" data-dashboard-dropdown-box-trigger>
+                <span class="dashboard-dropdown-box__trigger-label">
+                    <span class="dashboard-dropdown-box__trigger-icon dashboard-dropdown-box__trigger-icon--${type}" aria-hidden="true"></span>
                     ${title}
                 </span>
-                <span class="dash-dropdown-box__chevron" aria-hidden="true"></span>
+                <span class="dashboard-dropdown-box__chevron" aria-hidden="true"></span>
             </button>
-            <div class="dash-dropdown-box__content" data-dashboard-dropdown-box-content hidden>
+            <div class="dashboard-dropdown-box__content" data-dashboard-dropdown-box-content hidden>
                 <p style="margin: 1rem 0 0; font-size: 0.875rem;">Slot ${title.toLowerCase()}</p>
             </div>
         </div>

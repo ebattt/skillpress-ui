@@ -6,18 +6,18 @@ const renderDropdown = ({ expanded = false, alert = false, type = 'payment' } = 
     const title = type === 'shipping' ? 'Spedizione' : 'Pagamento';
     const root = document.createElement('div');
     root.innerHTML = `
-        <div class="dash-dropdown-box${alert ? ' dash-dropdown-box--alert' : ''}" data-dashboard-dropdown-box>
-            <button class="dash-dropdown-box__trigger"
+        <div class="dashboard-dropdown-box${alert ? ' dashboard-dropdown-box--alert' : ''}" data-dashboard-dropdown-box>
+            <button class="dashboard-dropdown-box__trigger"
                     type="button"
                     aria-expanded="${expanded ? 'true' : 'false'}"
                     data-dashboard-dropdown-box-trigger>
-                <span class="dash-dropdown-box__trigger-label">
-                    <span class="dash-dropdown-box__trigger-icon dash-dropdown-box__trigger-icon--${type}" aria-hidden="true"></span>
+                <span class="dashboard-dropdown-box__trigger-label">
+                    <span class="dashboard-dropdown-box__trigger-icon dashboard-dropdown-box__trigger-icon--${type}" aria-hidden="true"></span>
                     ${title}
                 </span>
-                <span class="dash-dropdown-box__chevron" aria-hidden="true"></span>
+                <span class="dashboard-dropdown-box__chevron" aria-hidden="true"></span>
             </button>
-            <div class="dash-dropdown-box__content" data-dashboard-dropdown-box-content ${expanded ? '' : 'hidden'}>
+            <div class="dashboard-dropdown-box__content" data-dashboard-dropdown-box-content ${expanded ? '' : 'hidden'}>
                 <div style="padding-top: 1rem; font-size: 0.875rem; color: var(--color-text);">
                     ${type === 'shipping' ? 'Corriere espresso<br><strong>07/02/2026</strong>' : 'Bonifico bancario<br><strong>In attesa di verifica</strong>'}
                 </div>

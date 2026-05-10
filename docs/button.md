@@ -20,19 +20,19 @@ Primitiva di comandi cliccabili: dimensioni, colori, stati hover/focus/disabled,
 
 ```text
 Button
-├── .button   [--primary | --secondary | --outline | --ghost | --dashed | --sm | --full]
-│   ├── .button__icon   (opzionale, slot SVG inline)
+├── .sp-button   [--primary | --secondary | --outline | --ghost | --dashed | --sm | --full]
+│   ├── .sp-button__icon   (opzionale, slot SVG inline)
 │   └── <text>          (label visibile o aria-label equivalente)
 ```
 
-Tag accettati: `<button type="button">` o `<a href="...">`. Per link disabilitati usare classe `.button--disabled` + `aria-disabled="true"`.
+Tag accettati: `<button type="button">` o `<a href="...">`. Per link disabilitati usare classe `.sp-button--disabled` + `aria-disabled="true"`.
 
 ## Markup contract
 
 Markup base con variante primary:
 
 ```html
-<button class="button button--primary" type="button">
+<button class="sp-button sp-button--primary" type="button">
   Aggiungi al carrello
 </button>
 ```
@@ -40,7 +40,7 @@ Markup base con variante primary:
 Link con stesso stile:
 
 ```html
-<a class="button button--outline" href="/preventivi">
+<a class="sp-button sp-button--outline" href="/preventivi">
   Vedi preventivi
 </a>
 ```
@@ -48,8 +48,8 @@ Link con stesso stile:
 Con icona inline (SVG, no Material Symbols):
 
 ```html
-<button class="button button--secondary" type="button">
-  <span class="button__icon" aria-hidden="true">
+<button class="sp-button sp-button--secondary" type="button">
+  <span class="sp-button__icon" aria-hidden="true">
     <svg viewBox="0 0 24 24" fill="none">
       <path d="M5 12h14M12 5v14" stroke-width="2" stroke-linecap="round" />
     </svg>
@@ -62,15 +62,15 @@ Con icona inline (SVG, no Material Symbols):
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.button` | shell del bottone, applica padding/radius/font/transition | yes | `--primary`, `--secondary`, `--outline`, `--ghost`, `--dashed`, `--sm`, `--full`, `--disabled` |
-| `.button__icon` | wrapper inline 1.125rem per SVG icon | no | — |
-| `.button--disabled` | stato disabilitato per `<a>` o controlli non disabilitabili nativamente | no | — |
+| `.sp-button` | shell del bottone, applica padding/radius/font/transition | yes | `--primary`, `--secondary`, `--outline`, `--ghost`, `--dashed`, `--sm`, `--full`, `--disabled` |
+| `.sp-button__icon` | wrapper inline 1.125rem per SVG icon | no | — |
+| `.sp-button--disabled` | stato disabilitato per `<a>` o controlli non disabilitabili nativamente | no | — |
 
 Modifier aggiuntivo:
 
 | Class | Role |
 |---|---|
-| `.button--dashed` | comando full-width con bordo tratteggiato, usato per aggiungere destinazioni/righe |
+| `.sp-button--dashed` | comando full-width con bordo tratteggiato, usato per aggiungere destinazioni/righe |
 
 Attributi:
 
@@ -78,17 +78,17 @@ Attributi:
 |---|---|---|---|
 | `type="button"` | `<button>` | no | Raccomandato quando il button non e' un submit. |
 | `disabled` | `<button>` | no | Stato disabilitato nativo. |
-| `aria-disabled="true"` | `<a>` o `.button--disabled` | no | Necessario per link disabilitati (no `disabled` su `<a>`). |
+| `aria-disabled="true"` | `<a>` o `.sp-button--disabled` | no | Necessario per link disabilitati (no `disabled` su `<a>`). |
 | `href` | `<a>` | yes (se tag `<a>`) | Target di navigazione. |
 
 ## Mappatura nomi (demo product-page -> libreria)
 
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|
-| `.button.is-disabled` (compound) | `.button.button--disabled` |
-| `.is-disabled` (standalone) | `.button--disabled` (sempre namespacato) |
+| `.sp-button.is-disabled` (compound) | `.sp-button.sp-button--disabled` |
+| `.is-disabled` (standalone) | `.sp-button--disabled` (sempre namespacato) |
 
-`.button[aria-disabled="true"]` resta invariato (attributo ARIA nativo).
+`.sp-button[aria-disabled="true"]` resta invariato (attributo ARIA nativo).
 
 ## Installation
 
@@ -121,18 +121,18 @@ Nessun script JS richiesto.
 `--radius-full`, `--radius-xl`, `--radius-sm`, `--font-size-sm`, `--font-weight-semibold`, `--font-weight-medium`, `--line-height-normal`, `--transition-fast`, `--color-border-focus`, `--color-primary`, `--color-primary-dark`, `--color-secondary`, `--color-secondary-dark`, `--color-secondary-light`, `--color-bg-white`, `--color-bg-gray-50`, `--color-bg-gray-200`, `--color-text`, `--color-text-light`, `--color-border`, `--shadow-lg`, `--shadow-xl`.
 
 Valori letterali mantenuti dal catalogo:
-- `rgba(28, 114, 100, 0.08)` su hover di `.button--ghost`.
+- `rgba(28, 114, 100, 0.08)` su hover di `.sp-button--ghost`.
 
 ## Note CMS
 
 - testo del bottone e attributi nativi (`type`, `href`, `disabled`).
 - elemento HTML usato (`<button>` vs `<a>`).
 - stato iniziale disabled quando necessario.
-- eventuale icona inline SVG nello slot `.button__icon`.
+- eventuale icona inline SVG nello slot `.sp-button__icon`.
 
 ## Classi pubbliche
 
-`.button`, `.button__icon` e i modifier `.button--primary`, `.button--secondary`, `.button--outline`, `.button--ghost`, `.button--dashed`, `.button--sm`, `.button--full`, `.button--disabled`.
+`.sp-button`, `.sp-button__icon` e i modifier `.sp-button--primary`, `.sp-button--secondary`, `.sp-button--outline`, `.sp-button--ghost`, `.sp-button--dashed`, `.sp-button--sm`, `.sp-button--full`, `.sp-button--disabled`.
 
 ## Data hooks
 

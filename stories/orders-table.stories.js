@@ -5,8 +5,8 @@ import '../js/orders-table.js';
 import { expect, within } from 'storybook/test';
 
 const actionBadge = (label, icon = 'upload', error = false) => `
-    <span class="dash-action-badge${error ? ' dash-action-badge--error' : ''}" data-dashboard-action-badge>
-        <span class="dash-action-badge__icon dash-action-badge__icon--${icon}" aria-hidden="true"></span>
+    <span class="dashboard-action-badge${error ? ' dashboard-action-badge--error' : ''}" data-dashboard-action-badge>
+        <span class="dashboard-action-badge__icon dashboard-action-badge__icon--${icon}" aria-hidden="true"></span>
         ${label}
     </span>
 `;
@@ -21,8 +21,8 @@ const rows = [
         contact: '-',
         shipped: '-',
         actions: [actionBadge('Carica file', 'upload'), actionBadge('Carica contabile', 'receipt')],
-        status: '<span class="badge badge--info">In lavorazione</span>',
-        payment: '<span class="badge badge--warning">In sospeso</span>',
+        status: '<span class="sp-badge sp-badge--info">In lavorazione</span>',
+        payment: '<span class="sp-badge sp-badge--warning">In sospeso</span>',
         delivery: 'Ritiro in sede 16:30<br><strong>12/03/2026</strong>',
         total: '&euro; 320,50'
     },
@@ -35,8 +35,8 @@ const rows = [
         contact: 'Lucia Marchetti',
         shipped: '05/02/2026',
         actions: [],
-        status: '<span class="badge badge--success">Consegnato</span>',
-        payment: '<span class="badge badge--success">Pagato</span>',
+        status: '<span class="sp-badge sp-badge--success">Consegnato</span>',
+        payment: '<span class="sp-badge sp-badge--success">Pagato</span>',
         delivery: 'Corriere espresso<br><strong>07/02/2026</strong>',
         total: '&euro; 185,00'
     },
@@ -49,39 +49,39 @@ const rows = [
         contact: '-',
         shipped: '-',
         actions: [actionBadge('File non conforme', 'error', true)],
-        status: '<span class="badge badge--info">In lavorazione</span>',
-        payment: '<span class="badge badge--warning">In sospeso</span>',
+        status: '<span class="sp-badge sp-badge--info">In lavorazione</span>',
+        payment: '<span class="sp-badge sp-badge--warning">In sospeso</span>',
         delivery: 'Standard entro<br><strong>28/03/2026</strong>',
         total: '&euro; 275,00'
     }
 ];
 
 const renderRows = (items = rows) => items.map((row) => `
-    <tr data-order-id="${row.orderId}">
-        <td class="td-id font-semibold text-dark-blue td-nowrap">${row.id}</td>
-        <td class="td-title">
+    <tr data-recent-order-card-order-id="${row.orderId}">
+        <td class="orders-table__cell--id font-semibold text-dark-blue orders-table__cell--nowrap">${row.id}</td>
+        <td class="orders-table__cell--title">
             <div class="table-title-cell">
                 <span class="table-title-cell__text" title="${row.title}">${row.title}</span>
                 ${row.actions.length ? `<div class="table-title-cell__actions" aria-label="Azioni richieste">${row.actions.join('')}</div>` : ''}
             </div>
         </td>
-        <td class="td-prodotti td-mobile-hide">
+        <td class="orders-table__cell--prodotti orders-table__cell--mobile-hide">
             <div class="product-list">
                 ${row.products.map((product) => `<span class="product-name">${product}</span>`).join('')}
             </div>
         </td>
-        <td class="td-pezzi td-text-right td-mobile-hide">
+        <td class="orders-table__cell--pezzi orders-table__cell--text-right orders-table__cell--mobile-hide">
             <div class="product-list">${row.quantities.map((quantity) => `<span>${quantity}</span>`).join('')}</div>
         </td>
-        <td class="td-mobile-hide">${row.contact}</td>
-        <td class="td-nowrap td-mobile-hide">${row.shipped}</td>
-        <td class="td-mobile-hide">
+        <td class="orders-table__cell--mobile-hide">${row.contact}</td>
+        <td class="orders-table__cell--nowrap orders-table__cell--mobile-hide">${row.shipped}</td>
+        <td class="orders-table__cell--mobile-hide">
             <div class="table-actions-list">${row.actions.join('')}</div>
         </td>
-        <td class="td-status">${row.status}</td>
-        <td class="td-payment td-mobile-hide td-simplified-show">${row.payment}</td>
-        <td class="td-spedizione td-mobile-hide">${row.delivery}</td>
-        <td class="td-total font-semibold td-text-right td-nowrap">${row.total}</td>
+        <td class="orders-table__cell--status">${row.status}</td>
+        <td class="orders-table__cell--payment orders-table__cell--mobile-hide orders-table__cell--simplified-show">${row.payment}</td>
+        <td class="orders-table__cell--spedizione orders-table__cell--mobile-hide">${row.delivery}</td>
+        <td class="orders-table__cell--total font-semibold orders-table__cell--text-right orders-table__cell--nowrap">${row.total}</td>
     </tr>
 `).join('');
 
@@ -133,7 +133,7 @@ export const Default = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
         await expect(canvas.getByText('110456')).toBeInTheDocument();
-        await expect(canvas.getByText('In lavorazione')).toHaveClass('badge', 'badge--info');
+        await expect(canvas.getByText('In lavorazione')).toHaveClass('sp-badge', 'sp-badge--info');
     }
 };
 

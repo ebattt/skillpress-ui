@@ -51,7 +51,7 @@ Righe input per una destinazione:
           <span class="allocation-rows__name">Copertina A</span>
           <span class="allocation-rows__qty">(50)</span>
         </div>
-        <input class="form-input allocation-rows__input" type="number" min="0" max="50" value="25">
+        <input class="sp-form-input allocation-rows__input" type="number" min="0" max="50" value="25">
       </div>
     </div>
   </div>
@@ -92,7 +92,7 @@ Riepilogo con badge:
 | `.allocation-rows__info` | wrapper nome + quantità | yes | — |
 | `.allocation-rows__name` | nome prodotto/copertina | yes | — |
 | `.allocation-rows__qty` | quantità o progresso | no | — |
-| `.allocation-rows__input` | input quantità, da comporre con `.form-input` | no | — |
+| `.allocation-rows__input` | input quantità, da comporre con `.sp-form-input` | no | — |
 | `.allocation-badge` | badge stato allocazione | no | `--success`, `--warning`, `--error` |
 
 Modifier root:

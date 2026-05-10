@@ -43,7 +43,7 @@ Markup verbatim derivato da `product-page-integration/js/sections/section-1.js#L
 ### Variante "stesso formato" (es. A4)
 
 ```html
-<button type="button" class="format-card format-card--selected" data-format="a4">
+<button type="button" class="format-card format-card--selected" data-format-card-format="a4">
     <div class="format-card__preview" style="width: 56px; height: 79px;">
         <span class="format-card__preview-label">A4</span>
         <div class="format-card__preview-box">
@@ -60,7 +60,7 @@ Markup verbatim derivato da `product-page-integration/js/sections/section-1.js#L
 ### Variante "comparativa" (es. Libro / A5)
 
 ```html
-<button type="button" class="format-card" data-format="libro">
+<button type="button" class="format-card" data-format-card-format="libro">
     <div class="format-card__preview" style="width: 56px; height: 79px;">
         <div class="format-card__preview-dashed"></div>
         <span class="format-card__preview-label format-card__preview-label--faded">A4</span>
@@ -78,7 +78,7 @@ Markup verbatim derivato da `product-page-integration/js/sections/section-1.js#L
 ### Variante "custom" (es. Libero)
 
 ```html
-<button type="button" class="format-card" data-format="libero">
+<button type="button" class="format-card" data-format-card-format="libero">
     <div class="format-card__preview" style="width: 56px; height: 79px;">
         <div class="format-card__preview-dashed"></div>
         <span class="format-card__preview-label format-card__preview-label--faded">A4</span>
@@ -157,7 +157,7 @@ Geometria preview: la libreria non impone width/height su `.format-card__preview
 
 ## Data hooks
 
-Nessun `data-*` funzionale pubblico. Attributi come `data-format` sono ammessi
+Nessun `data-*` funzionale pubblico. Attributi come `data-format-card-format` sono ammessi
 come hook consumer/backend, ma la libreria non li legge e non li stabilizza come
 API.
 
@@ -173,7 +173,7 @@ API.
 - Lista formati, label, dimensioni, orientamento e proporzioni.
 - Geometria preview via inline style (`width`/`height`) coerente con il formato.
 - Stato selezionato iniziale e toggle tra card.
-- Eventuali hook consumer come `data-format`.
+- Eventuali hook consumer come `data-format-card-format`.
 
 ## Library owns
 
@@ -226,15 +226,15 @@ Valori letterali mantenuti dal catalogo:
 
 - la geometria della preview (`width`/`height` inline) e' decisione del CMS, in base a `state.orientation` e proporzioni del formato.
 - il modifier `.format-card--selected` deve essere mosso in coppia tra le card del gruppo.
-- l'attributo `data-format` (o equivalente) e' libero: la libreria non lo legge, ma e' utile per query CMS-side e analytics.
+- l'attributo `data-format-card-format` (o equivalente) e' libero: la libreria non lo legge, ma e' utile per query CMS-side e analytics.
 - per la variante Libero, l'icona dentro `.format-card__preview-custom` e' uno slot: il CMS sceglie quale SVG inline usare. Niente Material Symbols.
 
 ## Out of scope
 
 - `.format-cards-scroll`, `.format-cards-arrow(--left|--right)` (scroll orizzontale e frecce nav).
 - `.format-card--show-more`, `.format-cards-hidden` (espansione card aggiuntive).
-- stato disabilitato condiviso (vedere `.radio-option--disabled` in FormControls; non implementato qui ne' nella famiglia `.paper-card`).
+- stato disabilitato condiviso (vedere `.sp-radio-option--disabled` in FormControls; non implementato qui ne' nella famiglia `.paper-card`).
 - famiglia SelectionCard estesa: `.paper-card`, `.visual-card`, `.effect-card`, `.angolo-card`.
 - behavior toggle `--selected` (resta consumer-side).
 - gestione dinamica orientamento (geometria via inline style del CMS).
-- input `.custom-dims*` per inserire larghezza/altezza personalizzate (separato).
+- input `.sp-custom-dims*` per inserire larghezza/altezza personalizzate (separato).

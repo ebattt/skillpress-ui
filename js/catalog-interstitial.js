@@ -1,12 +1,21 @@
+/**
+ * CatalogInterstitial -- card-grid interstitial promo block.
+ *
+ * @public-data data-catalog-interstitial, data-catalog-interstitial-init, data-catalog-interstitial-card, data-catalog-interstitial-link, data-catalog-interstitial-link-label
+ * @public-event (none)
+ */
 (function () {
     'use strict';
+
+    var ns = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = ns.helpers || {};
 
     function toArray(value) {
         return Array.prototype.slice.call(value || []);
     }
 
     function getCardLinkLabel(card) {
-        var explicitLabel = card.getAttribute('data-card-link-label');
+        var explicitLabel = card.getAttribute('data-catalog-interstitial-link-label');
         var title;
 
         if (explicitLabel) return explicitLabel;
@@ -16,12 +25,18 @@
     }
 
     function appendOverlayLink(card) {
-        var href = card.getAttribute('data-card-link');
+        var rawHref = card.getAttribute('data-catalog-interstitial-link');
         var label = getCardLinkLabel(card);
         var link;
         var text;
 
-        if (!href || card.querySelector('.catalog-overlay-link')) return;
+        if (!rawHref || card.querySelector('.catalog-overlay-link')) return;
+
+        // F014: valida URL prima di assegnarlo a link.href.
+        var href = typeof helpers.safeUrl === 'function'
+            ? helpers.safeUrl(rawHref)
+            : rawHref;
+        if (!href) return;
 
         link = document.createElement('a');
         link.className = 'catalog-overlay-link';
@@ -37,12 +52,15 @@
     }
 
     function initRoot(root) {
-        if (!root || root.getAttribute('data-catalog-interstitial-init') === '1') return;
-
+        if (!root || root.__skillpressCatalogInterstitialInitialized) return;
+        root.__skillpressCatalogInterstitialInitialized = true;
+        // deprecated alias, removed in v0.3
         root.setAttribute('data-catalog-interstitial-init', '1');
+
         toArray(root.querySelectorAll('[data-catalog-interstitial-card]')).forEach(appendOverlayLink);
     }
 
+    /** @public */
     function init(scope) {
         var root = scope || document;
 
@@ -54,12 +72,13 @@
         toArray(root.querySelectorAll('[data-catalog-interstitial]')).forEach(initRoot);
     }
 
-    if (document.readyState === 'loading') {
+    ns.CatalogInterstitial = { init: init };
+
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function () { init(document); });
     } else {
         init(document);
     }
-
-    window.SkillpressUI = window.SkillpressUI || {};
-    window.SkillpressUI.CatalogInterstitial = { init: init };
 })();

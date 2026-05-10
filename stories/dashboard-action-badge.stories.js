@@ -8,8 +8,8 @@ const renderBadge = ({
 } = {}) => {
     const root = document.createElement('div');
     root.innerHTML = `
-        <span class="dash-action-badge${error ? ' dash-action-badge--error' : ''}" data-dashboard-action-badge>
-            <span class="dash-action-badge__icon dash-action-badge__icon--${icon}" aria-hidden="true"></span>
+        <span class="dashboard-action-badge${error ? ' dashboard-action-badge--error' : ''}" data-dashboard-action-badge>
+            <span class="dashboard-action-badge__icon dashboard-action-badge__icon--${icon}" aria-hidden="true"></span>
             ${label}
         </span>
     `;
@@ -45,7 +45,7 @@ export const Default = {
     render: () => renderBadge(),
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
-        await expect(canvas.getByText('Carica file')).toHaveClass('dash-action-badge');
+        await expect(canvas.getByText('Carica file')).toHaveClass('dashboard-action-badge');
     }
 };
 

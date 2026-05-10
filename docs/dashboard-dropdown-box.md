@@ -21,29 +21,29 @@ il contenuto del pannello resta slot backend/app.
 
 ```text
 DashboardDropdownBox
-└── .dash-dropdown-box [--alert] [data-dashboard-dropdown-box]
-    ├── .dash-dropdown-box__trigger
-    │   ├── .dash-dropdown-box__trigger-label
-    │   │   └── .dash-dropdown-box__trigger-icon [--payment | --shipping]
-    │   └── .dash-dropdown-box__chevron
-    └── .dash-dropdown-box__content
+└── .dashboard-dropdown-box [--alert] [data-dashboard-dropdown-box]
+    ├── .dashboard-dropdown-box__trigger
+    │   ├── .dashboard-dropdown-box__trigger-label
+    │   │   └── .dashboard-dropdown-box__trigger-icon [--payment | --shipping]
+    │   └── .dashboard-dropdown-box__chevron
+    └── .dashboard-dropdown-box__content
 ```
 
 ## Markup contract
 
 ```html
-<div class="dash-dropdown-box" data-dashboard-dropdown-box>
-    <button class="dash-dropdown-box__trigger"
+<div class="dashboard-dropdown-box" data-dashboard-dropdown-box>
+    <button class="dashboard-dropdown-box__trigger"
             type="button"
             aria-expanded="false"
             data-dashboard-dropdown-box-trigger>
-        <span class="dash-dropdown-box__trigger-label">
-            <span class="dash-dropdown-box__trigger-icon dash-dropdown-box__trigger-icon--payment" aria-hidden="true"></span>
+        <span class="dashboard-dropdown-box__trigger-label">
+            <span class="dashboard-dropdown-box__trigger-icon dashboard-dropdown-box__trigger-icon--payment" aria-hidden="true"></span>
             Pagamento
         </span>
-        <span class="dash-dropdown-box__chevron" aria-hidden="true"></span>
+        <span class="dashboard-dropdown-box__chevron" aria-hidden="true"></span>
     </button>
-    <div class="dash-dropdown-box__content" data-dashboard-dropdown-box-content hidden>
+    <div class="dashboard-dropdown-box__content" data-dashboard-dropdown-box-content hidden>
         <!-- slot backend/app -->
     </div>
 </div>
@@ -53,15 +53,15 @@ DashboardDropdownBox
 
 | Class | Role |
 |---|---|
-| `.dash-dropdown-box` | shell box |
-| `.dash-dropdown-box--alert` | stato alert con bordo rosso |
-| `.dash-dropdown-box__trigger` | bottone disclosure |
-| `.dash-dropdown-box__trigger-label` | label + icona |
-| `.dash-dropdown-box__trigger-icon` | icona chrome |
-| `.dash-dropdown-box__trigger-icon--payment` | icona pagamento |
-| `.dash-dropdown-box__trigger-icon--shipping` | icona spedizione |
-| `.dash-dropdown-box__chevron` | chevron disclosure |
-| `.dash-dropdown-box__content` | pannello contenuto |
+| `.dashboard-dropdown-box` | shell box |
+| `.dashboard-dropdown-box--alert` | stato alert con bordo rosso |
+| `.dashboard-dropdown-box__trigger` | bottone disclosure |
+| `.dashboard-dropdown-box__trigger-label` | label + icona |
+| `.dashboard-dropdown-box__trigger-icon` | icona chrome |
+| `.dashboard-dropdown-box__trigger-icon--payment` | icona pagamento |
+| `.dashboard-dropdown-box__trigger-icon--shipping` | icona spedizione |
+| `.dashboard-dropdown-box__chevron` | chevron disclosure |
+| `.dashboard-dropdown-box__content` | pannello contenuto |
 
 ## Data hooks
 
@@ -80,7 +80,7 @@ window.SkillpressUI.DashboardDropdownBox.setExpanded(root, true);
 
 ## Modifier / stati
 
-Modifier pubblici: `.dash-dropdown-box--alert`.
+Modifier pubblici: `.dashboard-dropdown-box--alert`.
 
 Eventi pubblici:
 
@@ -106,7 +106,7 @@ Eventi pubblici:
 
 ## Demo-only
 
-Eventuali `data-section`, `data-action`, toolbar scenari, renderer didattici e
+Eventuali `data-section`, `data-orders-table-action`, toolbar scenari, renderer didattici e
 fixture appartengono alla demo/app e non sono API pubbliche del componente.
 
 ## Installation

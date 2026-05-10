@@ -2,15 +2,15 @@
  * FORM PRIMITIVES -- contenitore form, label, input testo/numero, select, messaggi
  *
  * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
- *   - .form-field                                  L33-35
- *   - .label-row + .label-text + .label-hint       L41-69
- *   - .form-input + textarea.form-input            L99-133
- *   - .nome-lavoro-input (alias semantico)         L137-168
- *   - .facciate-row + .spessore-display            L449-487
- *   - .form-select                                 L190-223
- *   - .error-msg + .error-inline + .success-inline L292-329
- *   - .custom-dims + .custom-dims__grid/field/label L776-805
- *   - .nome-ref-row                                L174-184
+ *   - .sp-form-field                                  L33-35
+ *   - .sp-label-row + .sp-label-text + .sp-label-hint       L41-69
+ *   - .sp-form-input + textarea.sp-form-input            L99-133
+ *   - .sp-nome-lavoro-input (alias semantico)         L137-168
+ *   - .sp-facciate-row + .sp-spessore-display            L449-487
+ *   - .sp-form-select                                 L190-223
+ *   - .sp-error-msg + .sp-error-inline + .sp-success-inline L292-329
+ *   - .sp-custom-dims + .sp-custom-dims__grid/field/label L776-805
+ *   - .sp-nome-ref-row                                L174-184
  *
  * Fonte markup verbatim (template literal):
  *   - product-page-integration/js/sections/section-1.js L76-103, L280-320, L421-466
@@ -27,7 +27,8 @@
 /* ================================================================
    FORM FIELD -- contenitore generico form-field
    ================================================================ */
-.form-field {
+/** @public */
+.sp-form-field {
     position: relative;
 }
 
@@ -35,30 +36,33 @@
 /* ================================================================
    LABEL ROW -- contenitore inline per label + info-btn + hint
    ================================================================ */
-.label-row {
+/** @public */
+.sp-label-row {
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
     margin-bottom: 0.375rem;
 }
 
-.label-text {
+/** @public */
+.sp-label-text {
     font-size: 0.9375rem;
     font-weight: var(--font-weight-medium);
     color: var(--color-text);
 }
 
-.label-text__required {
+.sp-label-text__required {
     color: var(--color-error);
 }
 
-.label-text__optional {
+.sp-label-text__optional {
     font-size: var(--font-size-xs);
     color: var(--color-text-muted);
     font-weight: var(--font-weight-normal);
 }
 
-.label-hint {
+/** @public */
+.sp-label-hint {
     font-size: var(--font-size-xs);
     color: var(--color-text-light);
 }
@@ -67,7 +71,8 @@
 /* ================================================================
    FORM INPUT -- text, number, textarea
    ================================================================ */
-.form-input {
+/** @public */
+.sp-form-input {
     width: 100%;
     max-width: 100%;
     padding: 0.375rem 0.625rem;
@@ -83,32 +88,33 @@
     box-sizing: border-box;
 }
 
-.form-input:focus {
+.sp-form-input:focus {
     outline: none;
     border-color: var(--color-border-focus);
 }
 
-.form-input--error {
+.sp-form-input--error {
     border-color: var(--color-error-light);
 }
 
-.form-input:disabled {
+.sp-form-input:disabled {
     background-color: var(--color-bg-gray-100);
     color: var(--color-text-muted);
     cursor: not-allowed;
 }
 
-textarea.form-input {
+textarea.sp-form-input {
     resize: none;
 }
 
 
 /* ================================================================
-   NOME LAVORO INPUT -- alias semantico di .form-input
+   NOME LAVORO INPUT -- alias semantico di .sp-form-input
    Stessa resa visiva, classe distinta per la sezione "Nome del lavoro".
    Fonte catalog: _form-inputs.css L137-L168.
    ================================================================ */
-.nome-lavoro-input {
+/** @public */
+.sp-nome-lavoro-input {
     width: 100%;
     max-width: 100%;
     padding: 0.375rem 0.625rem;
@@ -124,12 +130,12 @@ textarea.form-input {
     box-sizing: border-box;
 }
 
-.nome-lavoro-input:focus {
+.sp-nome-lavoro-input:focus {
     outline: none;
     border-color: var(--color-border-focus);
 }
 
-.nome-lavoro-input--error {
+.sp-nome-lavoro-input--error {
     border-color: var(--color-error-light);
 }
 
@@ -137,7 +143,8 @@ textarea.form-input {
 /* ================================================================
    FORM SELECT -- dropdown nativo con freccia SVG personalizzata
    ================================================================ */
-.form-select {
+/** @public */
+.sp-form-select {
     width: 100%;
     max-width: 100%;
     padding: 0.375rem 2.25rem 0.375rem 0.625rem;
@@ -160,12 +167,12 @@ textarea.form-input {
     font-family: inherit;
 }
 
-.form-select:focus {
+.sp-form-select:focus {
     outline: none;
     border-color: var(--color-border-focus);
 }
 
-.form-select:disabled {
+.sp-form-select:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     background-color: var(--color-bg-gray-100);
@@ -175,7 +182,8 @@ textarea.form-input {
 /* ================================================================
    MESSAGGI INLINE -- error / error-inline / success-inline
    ================================================================ */
-.error-msg {
+/** @public */
+.sp-error-msg {
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
@@ -184,13 +192,14 @@ textarea.form-input {
     margin-top: var(--spacing-xs);
 }
 
-.error-msg svg {
+.sp-error-msg svg {
     width: 14px;
     height: 14px;
     flex-shrink: 0;
 }
 
-.error-inline {
+/** @public */
+.sp-error-inline {
     font-size: var(--font-size-xs);
     color: var(--color-error);
     margin-top: var(--spacing-xs);
@@ -199,13 +208,14 @@ textarea.form-input {
     gap: var(--spacing-xs);
 }
 
-.error-inline svg {
+.sp-error-inline svg {
     width: 14px;
     height: 14px;
     flex-shrink: 0;
 }
 
-.success-inline {
+/** @public */
+.sp-success-inline {
     font-size: var(--font-size-xs);
     color: var(--color-success);
     font-weight: var(--font-weight-medium);
@@ -214,7 +224,7 @@ textarea.form-input {
     gap: 0.125rem;
 }
 
-.success-inline svg {
+.sp-success-inline svg {
     width: 14px;
     height: 14px;
     flex-shrink: 0;
@@ -224,32 +234,33 @@ textarea.form-input {
 /* ================================================================
    GRIGLIA CUSTOM DIMENSIONS -- larghezza x altezza
    ================================================================ */
-.custom-dims {
+/** @public */
+.sp-custom-dims {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
 }
 
-.custom-dims__grid {
+.sp-custom-dims__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.625rem;
 }
 
-.custom-dims__field {
+.sp-custom-dims__field {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
 }
 
-.custom-dims__label {
+.sp-custom-dims__label {
     font-size: 0.9375rem;
     font-weight: var(--font-weight-medium);
     color: var(--color-text);
 }
 
-@media (max-width: 640px) {
-    .custom-dims__grid {
+@media (max-width: 639px) {
+    .sp-custom-dims__grid {
         grid-template-columns: 1fr;
     }
 }
@@ -258,14 +269,15 @@ textarea.form-input {
 /* ================================================================
    GRIGLIA NOME + REFERENTE -- 2 input testo affiancati
    ================================================================ */
-.nome-ref-row {
+/** @public */
+.sp-nome-ref-row {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.625rem;
 }
 
-@media (max-width: 640px) {
-    .nome-ref-row {
+@media (max-width: 639px) {
+    .sp-nome-ref-row {
         grid-template-columns: 1fr;
     }
 }
@@ -276,21 +288,22 @@ textarea.form-input {
    Modificatori --single (1 col) / --double (2 col).
    --double diventa 1 col sotto 640px.
    ================================================================ */
-.qty-iva-row {
+/** @public */
+.sp-qty-iva-row {
     display: grid;
     gap: 0.625rem;
 }
 
-.qty-iva-row--single {
+.sp-qty-iva-row--single {
     grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-.qty-iva-row--double {
+.sp-qty-iva-row--double {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-@media (max-width: 640px) {
-    .qty-iva-row--double {
+@media (max-width: 639px) {
+    .sp-qty-iva-row--double {
         grid-template-columns: 1fr;
     }
 }
@@ -299,24 +312,27 @@ textarea.form-input {
 /* ================================================================
    FACCIATE ROW + SPESSORE DISPLAY -- input numerico + callout spessore
    Fonte catalog: _form-inputs.css L449-L487.
-   Layout flex inline: .facciate-input-wrap (flex 1) + .spessore-display (shrink 0).
+   Layout flex inline: .sp-facciate-input-wrap (flex 1) + .sp-spessore-display (shrink 0).
    Material Symbols `vertical_align_center` del catalog -> SVG inline lato consumer.
-   Il selettore catalog `.spessore-display .material-symbols-outlined` viene
-   replicato come `.spessore-display svg` per garantire dimensione/colore.
+   Il selettore catalog `.sp-spessore-display .material-symbols-outlined` viene
+   replicato come `.sp-spessore-display svg` per garantire dimensione/colore.
    ================================================================ */
-.facciate-row {
+/** @public */
+.sp-facciate-row {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     min-width: 0;
 }
 
-.facciate-input-wrap {
+/** @public */
+.sp-facciate-input-wrap {
     flex: 1;
     min-width: 0;
 }
 
-.spessore-display {
+/** @public */
+.sp-spessore-display {
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
@@ -324,20 +340,22 @@ textarea.form-input {
     white-space: nowrap;
 }
 
-.spessore-display svg {
+.sp-spessore-display svg {
     color: var(--color-text);
     width: 1rem;
     height: 1rem;
     flex-shrink: 0;
 }
 
-.spessore-label {
+/** @public */
+.sp-spessore-label {
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     color: var(--color-text);
 }
 
-.spessore-value {
+/** @public */
+.sp-spessore-value {
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-bold);
     color: var(--color-text);

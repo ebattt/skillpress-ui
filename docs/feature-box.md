@@ -54,7 +54,7 @@ Markup verbatim dalla pagina demo `product-page-integration` (dentro `.product-h
 </div>
 ```
 
-Inline style data-driven: `style="background-color: #...;"` su `.feature-box__icon` e' editoriale (CMS sceglie un colore brand per ogni feature). La libreria fornisce solo contenitore stabile.
+Inline style data-rating-driven: `style="background-color: #...;"` su `.feature-box__icon` e' editoriale (CMS sceglie un colore brand per ogni feature). La libreria fornisce solo contenitore stabile.
 
 ## API Reference
 

@@ -21,8 +21,8 @@ const renderCard = ({ href = '#', title = 'Prodotto', src = PLACEHOLDER, alt = '
 
 const renderSection = ({ label = 'Potrebbe piacerti anche', items = [] } = {}) => `
     <section class="related-products" aria-label="Prodotti correlati">
-        <h2 class="catalog-section-label">${label}</h2>
-        <div class="catalog-grid catalog-grid--products">
+        <h2 class="sp-catalog-grid__section-label">${label}</h2>
+        <div class="sp-catalog-grid sp-catalog-grid--products">
             ${items.map(renderCard).join('')}
         </div>
     </section>
@@ -117,7 +117,7 @@ export const CustomLabel = {
     parameters: {
         docs: {
             description: {
-                story: 'Label sezione personalizzata (`<h2 class="catalog-section-label">`). Il CMS puo\' iniettare qualunque testo.'
+                story: 'Label sezione personalizzata (`<h2 class="sp-catalog-grid__section-label">`). Il CMS puo\' iniettare qualunque testo.'
             }
         }
     }

@@ -192,6 +192,9 @@
     background-color: transparent !important;
 }
 
+/* breakpoint-exception: 1120px collassa il catalog stage 2-col -> 1-col prima
+   del cutoff desktop (1024); senza questo step la colonna prodotti rimane
+   troppo stretta per i thumbnail prima di passare a stack mobile. */
 @media (max-width: 1120px) {
     .catalog-stage {
         grid-template-columns: 1fr;
@@ -203,7 +206,7 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 639px) {
     .catalog-intro {
         padding: 0.7rem 0 0.55rem;
     }

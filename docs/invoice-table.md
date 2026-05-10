@@ -20,12 +20,12 @@ Do not use it for:
 <section class="invoice-table-section" id="billing-fatture-section">
     <h2 class="invoice-table-section__title">Fatture</h2>
     <div class="invoice-table-section__filters" aria-label="Filtri fatture">
-        <select class="orders-filter-select" data-filter="invoice-status">
+        <select class="orders-filter-select" data-search-filter-bar-filter="invoice-status">
             <option>Tutte le fatture</option>
             <option>Pagate</option>
             <option>In sospeso</option>
         </select>
-        <select class="orders-filter-select" data-filter="invoice-year">
+        <select class="orders-filter-select" data-search-filter-bar-filter="invoice-year">
             <option>2025</option>
             <option>2024</option>
             <option>2023</option>
@@ -44,15 +44,15 @@ Do not use it for:
             <tbody>
                 <tr>
                     <td>
-                        <button class="dash-link--download" type="button">
+                        <button class="dashboard-link--download" type="button">
                             <span class="font-semibold">FT-2025-024</span>
-                            <span class="dash-link--download__icon dash-link--download__icon--download" aria-hidden="true"></span>
+                            <span class="dashboard-link--download__icon dashboard-link--download__icon--download" aria-hidden="true"></span>
                         </button>
                     </td>
                     <td>
-                        <button class="dash-link--download" type="button">
+                        <button class="dashboard-link--download" type="button">
                             <span class="font-semibold">1042</span>
-                            <span class="dash-link--download__icon dash-link--download__icon--download" aria-hidden="true"></span>
+                            <span class="dashboard-link--download__icon dashboard-link--download__icon--download" aria-hidden="true"></span>
                         </button>
                     </td>
                     <td>10/09/25</td>

@@ -32,12 +32,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
 La libreria decide wrapper, bordo/radius, colonne compact, ellipsis titolo,
 layout liste prodotto/azioni, responsive statico e, quando inizializzata, la
-riga dettagli mobile generata dalle celle `.td-mobile-hide`. Backend/app
+riga dettagli mobile generata dalle celle `.orders-table__cell--mobile-hide`. Backend/app
 decidono righe, status, action chip, dati ordine e routing.
 
 ## Reuse Audit
 
-`Badge` copre gli status dot+testo. Usare `.badge badge--*`; non creare
+`Badge` copre gli status dot+testo. Usare `.sp-badge badge--*`; non creare
 `DashboardStatusBadge`.
 
 `DashboardActionBadge` copre le azioni richieste dentro la tabella.
@@ -70,26 +70,26 @@ sopra e sotto la tabella.
             </tr>
         </thead>
         <tbody>
-            <tr data-order-id="ORD-001">
-                <td class="td-id font-semibold text-dark-blue td-nowrap">110456</td>
-                <td class="td-title">
+            <tr data-recent-order-card-order-id="ORD-001">
+                <td class="orders-table__cell--id font-semibold text-dark-blue orders-table__cell--nowrap">110456</td>
+                <td class="orders-table__cell--title">
                     <div class="table-title-cell">
                         <span class="table-title-cell__text" title="Catalogo Primavera Estate">Catalogo Primavera Estate</span>
                     </div>
                 </td>
-                <td class="td-prodotti td-mobile-hide">
+                <td class="orders-table__cell--prodotti orders-table__cell--mobile-hide">
                     <div class="product-list">
                         <span class="product-name">Brossura fresata</span>
                     </div>
                 </td>
-                <td class="td-pezzi td-text-right td-mobile-hide">200</td>
-                <td class="td-mobile-hide">Lucia Marchetti</td>
-                <td class="td-mobile-hide td-nowrap">05/02/2026</td>
-                <td class="td-mobile-hide"></td>
-                <td class="td-status"><span class="badge badge--info">In lavorazione</span></td>
-                <td class="td-payment td-mobile-hide th-simplified-show"><span class="badge badge--warning">In sospeso</span></td>
-                <td class="td-spedizione td-mobile-hide">Ritiro in sede<br><strong>12/03/2026</strong></td>
-                <td class="td-total font-semibold td-text-right td-nowrap">&euro; 320,50</td>
+                <td class="orders-table__cell--pezzi orders-table__cell--text-right orders-table__cell--mobile-hide">200</td>
+                <td class="orders-table__cell--mobile-hide">Lucia Marchetti</td>
+                <td class="orders-table__cell--mobile-hide orders-table__cell--nowrap">05/02/2026</td>
+                <td class="orders-table__cell--mobile-hide"></td>
+                <td class="orders-table__cell--status"><span class="sp-badge sp-badge--info">In lavorazione</span></td>
+                <td class="orders-table__cell--payment orders-table__cell--mobile-hide th-simplified-show"><span class="sp-badge sp-badge--warning">In sospeso</span></td>
+                <td class="orders-table__cell--spedizione orders-table__cell--mobile-hide">Ritiro in sede<br><strong>12/03/2026</strong></td>
+                <td class="orders-table__cell--total font-semibold orders-table__cell--text-right orders-table__cell--nowrap">&euro; 320,50</td>
             </tr>
         </tbody>
     </table>
@@ -103,17 +103,17 @@ sopra e sotto la tabella.
 - `.table-title-cell`, `.table-title-cell__text`, `.table-title-cell__actions`
 - `.table-actions-list`
 - `.product-list`, `.product-name`
-- `.td-id`, `.td-title`, `.td-prodotti`, `.td-pezzi`, `.td-status`,
-  `.td-payment`, `.td-spedizione`, `.td-total`
-- `.td-text-right`, `.th-text-right`, `.td-nowrap`
-- `.td-mobile-hide`, `.th-mobile-hide`, `.td-simplified-show`,
+- `.orders-table__cell--id`, `.orders-table__cell--title`, `.orders-table__cell--prodotti`, `.orders-table__cell--pezzi`, `.orders-table__cell--status`,
+  `.orders-table__cell--payment`, `.orders-table__cell--spedizione`, `.orders-table__cell--total`
+- `.orders-table__cell--text-right`, `.th-text-right`, `.orders-table__cell--nowrap`
+- `.orders-table__cell--mobile-hide`, `.th-mobile-hide`, `.orders-table__cell--simplified-show`,
   `.th-simplified-show`
 
 ## Mobile Details
 
 `SkillpressUI.OrdersTable.init()`:
 
-- aggiunge `.th-mobile-chevron` e `.td-mobile-chevron`;
+- aggiunge `.th-mobile-chevron` e `.orders-table__cell--mobile-chevron`;
 - marca le righe con `[data-orders-table-row]`;
 - genera una riga `.tr-mobile-details[hidden][data-orders-table-detail]`;
 - sincronizza `aria-expanded` e `hidden`;

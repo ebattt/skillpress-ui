@@ -7,6 +7,8 @@
    - Skillpress-frontend/landing-page/css/components/_showcase.css#L500-L523
    ========================================================================== */
 
+@import "../primitives/catalog-grid.css";
+
 .catalog-product-grid {
     width: 100%;
     max-width: 1200px;
@@ -19,41 +21,6 @@
     padding-top: 0;
     padding-bottom: 0;
 }
-
-.catalog-section-label {
-    display: block;
-    padding: 0;
-    margin: 0 0 1.2rem;
-    color: var(--color-text, #111418);
-    font-family: 'Manrope', var(--font-family, sans-serif);
-    font-size: clamp(1.15rem, 2vw, 1.7rem);
-    font-weight: 800;
-    line-height: 0.98;
-    letter-spacing: 0;
-    text-transform: none;
-    background: none;
-    border-radius: 0;
-}
-
-.catalog-section-label--orange,
-.catalog-section-label--teal,
-.catalog-section-label--dark {
-    background: none;
-}
-
-.catalog-grid {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 0.85rem;
-}
-
-.catalog-grid--products {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 1rem;
-    width: 100%;
-    min-width: 0;
-}
-
 .catalog-card {
     position: relative;
     display: flex;
@@ -121,7 +88,7 @@
     border-radius: 0;
 }
 
-.catalog-grid--products .catalog-card__title {
+.sp-catalog-grid--products .catalog-card__title {
     max-width: none;
     min-width: 0;
     margin: 0 0 0.5rem;
@@ -136,7 +103,7 @@
     overflow-wrap: anywhere;
 }
 
-.catalog-grid--products .catalog-card__image {
+.sp-catalog-grid--products .catalog-card__image {
     flex: none;
     max-height: none;
     margin-top: 0;
@@ -185,25 +152,7 @@
     outline: 2px solid var(--color-primary, #F08A00);
     outline-offset: 3px;
 }
-
-@media (max-width: 1180px) {
-    .catalog-grid--products {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 900px) {
-    .catalog-grid--products {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 640px) {
-    .catalog-grid--products {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.75rem;
-    }
-
+@media (max-width: 639px) {
     .catalog-card--product-equal {
         grid-column: span 1;
         width: 100%;

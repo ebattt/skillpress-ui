@@ -6,8 +6,8 @@ Griglia catalogo prodotti per landing page: titolo sezione, card prodotto titolo
 
 ```html
 <section class="catalog-product-grid" data-catalog-product-grid aria-label="Prodotti">
-    <h2 class="catalog-section-label catalog-section-label--orange">Prodotti</h2>
-    <div class="catalog-grid catalog-grid--products" id="prodotti-grid" data-catalog-product-grid-items data-initial-rows="2">
+    <h2 class="sp-catalog-grid__section-label sp-catalog-grid__section-label--orange">Prodotti</h2>
+    <div class="sp-catalog-grid sp-catalog-grid--products" id="prodotti-grid" data-catalog-product-grid-items data-catalog-product-grid-initial-rows="2">
         <a class="catalog-card catalog-card--product-equal" href="/prodotti/brossura-fresata" data-catalog-product-grid-card>
             <h3 class="catalog-card__title">Brossura fresata</h3>
             <div class="catalog-card__image-wrap">
@@ -27,8 +27,8 @@ Griglia catalogo prodotti per landing page: titolo sezione, card prodotto titolo
 
 - `.catalog-product-grid` root della sezione catalogo, con lo stesso container landing della demo originale (`max-width: 1200px` + padding orizzontale responsive).
 - `.catalog-product-grid--compact` variante senza spacing verticale aggiuntivo.
-- `.catalog-section-label`, `.catalog-section-label--orange|--teal|--dark` titolo sezione.
-- `.catalog-grid`, `.catalog-grid--products` grid responsive.
+- `.sp-catalog-grid__section-label`, `.sp-catalog-grid__section-label--orange|--teal|--dark` titolo sezione.
+- `.sp-catalog-grid`, `.sp-catalog-grid--products` grid responsive.
 - `.catalog-card`, `.catalog-card--product-equal`, `.catalog-card--product-hidden`.
 - `.catalog-card__title`, `.catalog-card__image-wrap`, `.catalog-card__image`, `.catalog-card__image--product`.
 - `.catalog-products-toggle`, `.catalog-products-toggle__button`.
@@ -39,8 +39,8 @@ Griglia catalogo prodotti per landing page: titolo sezione, card prodotto titolo
 - `[data-catalog-product-grid-items]`: grid contenente le card gia' renderizzate.
 - `[data-catalog-product-grid-card]`: card conteggiata dal runtime show-more.
 - `[data-catalog-product-grid-toggle]`: bottone show-more/collapse.
-- `data-initial-rows`: numero righe visibili nello stato collapsed, default `2`.
-- `data-expand-label` / `data-collapse-label`: override testo toggle opzionale.
+- `data-catalog-product-grid-initial-rows`: numero righe visibili nello stato collapsed, default `2`.
+- `data-catalog-product-grid-expand-label` / `data-catalog-product-grid-collapse-label`: override testo toggle opzionale.
 
 ## Modifier / stati
 
@@ -53,7 +53,7 @@ Griglia catalogo prodotti per landing page: titolo sezione, card prodotto titolo
 - Numero e ordine prodotti.
 - `href`, titoli, immagini, `alt`, `loading`.
 - Titolo sezione e modifier colore label.
-- Presenza del toggle e valore `data-initial-rows`.
+- Presenza del toggle e valore `data-catalog-product-grid-initial-rows`.
 - Routing, tracking, analytics e dati reali.
 
 ## Library owns

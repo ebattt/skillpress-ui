@@ -1,0 +1,1850 @@
+{
+  "generatedAt": "2026-05-08T19:46:21.940Z",
+  "stats": {
+    "total": 132,
+    "componentScoped": 109,
+    "generic": 17,
+    "thirdParty": 6,
+    "demoOnly": 0
+  },
+  "data": [
+    {
+      "old": "data-accordion",
+      "files": [
+        "demo-pages/minimal/index.html",
+        "js/accordion.js",
+        "stories/accordion.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-accordion-section",
+      "files": [
+        "demo-pages/minimal/index.html",
+        "js/accordion.js",
+        "stories/accordion.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-accordion-trigger",
+      "files": [
+        "demo-pages/minimal/index.html",
+        "js/accordion.js",
+        "stories/accordion.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-action",
+      "files": [
+        "js/orders-table.js",
+        "stories/billing-table.stories.js",
+        "stories/order-payment-action-box.stories.js",
+        "stories/quote-request-table.stories.js",
+        "stories/search-filter-bar.stories.js",
+        "stories/supplier-activity-table.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": "orders-table",
+      "new": "data-orders-table-action",
+      "context": "rows in orders-table",
+      "needsReview": false
+    },
+    {
+      "old": "data-address-preview",
+      "files": [
+        "stories/address-preview.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-allocation-rows",
+      "files": [
+        "stories/allocation-rows.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-article-card",
+      "files": [
+        "stories/blog-page/article-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-billing-form-card",
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-billing-form-card-close",
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-billing-form-card-focus",
+      "files": [
+        "js/billing-form-card.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-billing-form-card-mode",
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-billing-form-card-open",
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-billing-form-card-submit",
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-billing-form-card-target",
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-billing-form-card-title",
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-card-href",
+      "files": [
+        "stories/blog-page/article-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": "article-card",
+      "new": "data-article-card-href",
+      "context": "article-card.stories.js",
+      "needsReview": false
+    },
+    {
+      "old": "data-card-link",
+      "files": [
+        "js/catalog-interstitial.js",
+        "stories/landing-page/catalog-interstitial.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": "catalog-interstitial",
+      "new": "data-catalog-interstitial-link",
+      "context": "catalog-interstitial.js",
+      "needsReview": false
+    },
+    {
+      "old": "data-card-link-label",
+      "files": [
+        "js/catalog-interstitial.js",
+        "stories/landing-page/catalog-interstitial.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": "catalog-interstitial",
+      "new": "data-catalog-interstitial-link-label",
+      "context": "catalog-interstitial.js",
+      "needsReview": false
+    },
+    {
+      "old": "data-cart-product-card",
+      "files": [
+        "js/cart-product-card.js",
+        "stories/cart-product-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-cart-product-card-details",
+      "files": [
+        "js/cart-product-card.js",
+        "stories/cart-product-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-cart-product-card-remove",
+      "files": [
+        "stories/cart-product-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-cart-product-card-toggle",
+      "files": [
+        "js/cart-product-card.js",
+        "stories/cart-product-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-interstitial",
+      "files": [
+        "js/catalog-interstitial.js",
+        "stories/landing-page/catalog-interstitial.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-interstitial-card",
+      "files": [
+        "js/catalog-interstitial.js",
+        "stories/landing-page/catalog-interstitial.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-interstitial-init",
+      "files": [
+        "js/catalog-interstitial.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-product-grid",
+      "files": [
+        "js/catalog-product-grid.js",
+        "stories/landing-page/catalog-product-grid.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-product-grid-card",
+      "files": [
+        "js/catalog-product-grid.js",
+        "stories/landing-page/catalog-product-grid.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-product-grid-init",
+      "files": [
+        "js/catalog-product-grid.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-product-grid-items",
+      "files": [
+        "js/catalog-product-grid.js",
+        "stories/landing-page/catalog-product-grid.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-product-grid-toggle",
+      "files": [
+        "js/catalog-product-grid.js",
+        "stories/landing-page/catalog-product-grid.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-stage",
+      "files": [
+        "js/catalog-stage.js",
+        "stories/landing-page/catalog-stage.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-stage-autoplay",
+      "files": [
+        "js/catalog-stage.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-stage-dot",
+      "files": [
+        "js/catalog-stage.js",
+        "stories/landing-page/catalog-stage.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-stage-init",
+      "files": [
+        "js/catalog-stage.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-stage-interval",
+      "files": [
+        "js/catalog-stage.js",
+        "stories/landing-page/catalog-stage.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-stage-reviews",
+      "files": [
+        "stories/landing-page/catalog-stage.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-catalog-stage-slide",
+      "files": [
+        "js/catalog-stage.js",
+        "stories/landing-page/catalog-stage.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-collapse-label",
+      "files": [
+        "js/catalog-product-grid.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": "catalog-product-grid",
+      "new": "data-catalog-product-grid-collapse-label",
+      "context": "catalog-product-grid.js",
+      "needsReview": false
+    },
+    {
+      "old": "data-create-label",
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-action-badge",
+      "files": [
+        "stories/dashboard-action-badge.stories.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-detail-header.stories.js",
+        "stories/order-product-dropdown.stories.js",
+        "stories/orders-table.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-dropdown-box",
+      "files": [
+        "js/dashboard-dropdown-box.js",
+        "stories/dashboard-dropdown-box.stories.js",
+        "stories/dashboard-order-detail-layout.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-dropdown-box-content",
+      "files": [
+        "js/dashboard-dropdown-box.js",
+        "stories/dashboard-dropdown-box.stories.js",
+        "stories/dashboard-order-detail-layout.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-dropdown-box-trigger",
+      "files": [
+        "js/dashboard-dropdown-box.js",
+        "stories/dashboard-dropdown-box.stories.js",
+        "stories/dashboard-order-detail-layout.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-order-detail-layout",
+      "files": [
+        "stories/dashboard-order-detail-layout.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-order-summary",
+      "files": [
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/dashboard-order-summary.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-settings-form",
+      "files": [
+        "js/dashboard-settings-form.js",
+        "stories/dashboard-settings-form.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-settings-form-actions",
+      "files": [
+        "js/dashboard-settings-form.js",
+        "stories/dashboard-settings-form.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-settings-form-cancel",
+      "files": [
+        "js/dashboard-settings-form.js",
+        "stories/dashboard-settings-form.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-settings-form-edit",
+      "files": [
+        "js/dashboard-settings-form.js",
+        "stories/dashboard-settings-form.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-settings-form-field",
+      "files": [
+        "js/dashboard-settings-form.js",
+        "stories/dashboard-settings-form.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-settings-form-save",
+      "files": [
+        "js/dashboard-settings-form.js",
+        "stories/dashboard-settings-form.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-settings-form-section",
+      "files": [
+        "js/dashboard-settings-form.js",
+        "stories/dashboard-settings-form.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-shell",
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-shell-back",
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-shell-initial-view",
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-shell-mobile-menu",
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-shell-nav",
+      "files": [
+        "stories/dashboard-shell.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-shell-nav-item",
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-shell-navigate",
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-shell-navigate-disabled-mobile",
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-shell-parent",
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-shell-view",
+      "files": [
+        "js/dashboard-shell.js",
+        "stories/dashboard-shell.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-dashboard-welcome-box",
+      "files": [
+        "stories/dashboard-welcome-box.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-driven",
+      "files": [
+        "primitives/rating.css"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-edit-label",
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-form-card.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-expand-label",
+      "files": [
+        "js/catalog-product-grid.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": "catalog-product-grid",
+      "new": "data-catalog-product-grid-expand-label",
+      "context": "catalog-product-grid.js",
+      "needsReview": false
+    },
+    {
+      "old": "data-feedaty-widget",
+      "files": [
+        "js/feedaty-widget.js",
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-feedaty-widget-init",
+      "files": [
+        "js/feedaty-widget.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-feedaty-widget-sdk",
+      "files": [
+        "js/feedaty-widget.js",
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-feedaty-widget-sdk-src",
+      "files": [
+        "js/feedaty-widget.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-file-upload-box",
+      "files": [
+        "js/file-upload-box.js",
+        "stories/file-upload-box.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-file-upload-box-open",
+      "files": [
+        "js/file-upload-box.js",
+        "stories/file-upload-box.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-file-upload-box-role",
+      "files": [
+        "js/file-upload-box.js",
+        "stories/file-upload-box.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-filter",
+      "files": [
+        "stories/invoice-table.stories.js",
+        "stories/search-filter-bar.stories.js",
+        "stories/supplier-activity-table.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": "search-filter-bar",
+      "new": "data-search-filter-bar-filter",
+      "context": "search-filter-bar.stories.js",
+      "needsReview": false
+    },
+    {
+      "old": "data-form",
+      "files": [
+        "stories/billing-form-card.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-form-layout",
+      "files": [
+        "stories/form-layout.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-format",
+      "files": [
+        "stories/format-card.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-gui",
+      "files": [
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": true,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": true
+    },
+    {
+      "old": "data-id",
+      "files": [
+        "js/orders-table.js",
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": true,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": true
+    },
+    {
+      "old": "data-images",
+      "files": [
+        "components/image-gallery.css",
+        "stories/image-gallery.stories.js",
+        "stories/product-hero.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-info-dropdown",
+      "files": [
+        "js/info-dropdown.js",
+        "stories/info-dropdown.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-info-trigger",
+      "files": [
+        "js/info-dropdown.js",
+        "stories/info-dropdown.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-initial-rows",
+      "files": [
+        "js/catalog-product-grid.js",
+        "stories/landing-page/catalog-product-grid.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": "catalog-product-grid",
+      "new": "data-catalog-product-grid-initial-rows",
+      "context": "catalog-product-grid.js",
+      "needsReview": false
+    },
+    {
+      "old": "data-lang",
+      "files": [
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": true,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": true
+    },
+    {
+      "old": "data-method-choice",
+      "files": [
+        "stories/method-choice-card.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-method-choice-card",
+      "files": [
+        "stories/method-choice-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-order-detail-header",
+      "files": [
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-detail-header.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-order-id",
+      "files": [
+        "stories/orders-table.stories.js",
+        "stories/recent-order-card.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": "ambiguous: recent-order-card vs orders-table",
+      "needsReview": true
+    },
+    {
+      "old": "data-order-payment-action-box",
+      "files": [
+        "stories/order-payment-action-box.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-order-product-dropdown",
+      "files": [
+        "js/order-product-dropdown.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-product-dropdown.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-order-product-dropdown-content",
+      "files": [
+        "js/order-product-dropdown.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-product-dropdown.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-order-product-dropdown-details",
+      "files": [
+        "js/order-product-dropdown.js",
+        "stories/order-product-dropdown.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-order-product-dropdown-details-trigger",
+      "files": [
+        "js/order-product-dropdown.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-product-dropdown.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-order-product-dropdown-trigger",
+      "files": [
+        "js/order-product-dropdown.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-product-dropdown.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-order-status-steps",
+      "files": [
+        "js/order-status-steps.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-status-steps.stories.js",
+        "stories/order-step-detail.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-order-status-steps-item",
+      "files": [
+        "js/order-status-steps.js",
+        "js/order-step-detail.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-status-steps.stories.js",
+        "stories/order-step-detail.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-order-step-detail",
+      "files": [
+        "js/order-step-detail.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-step-detail.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-order-step-detail-panel",
+      "files": [
+        "components/order-step-detail.css",
+        "js/order-step-detail.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-step-detail.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-orders-table",
+      "files": [
+        "js/orders-table.js",
+        "stories/orders-table.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-orders-table-detail",
+      "files": [
+        "js/orders-table.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-orders-table-detail-action",
+      "files": [
+        "js/orders-table.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-orders-table-detail-action-id",
+      "files": [
+        "js/orders-table.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-orders-table-detail-action-id-name",
+      "files": [
+        "js/orders-table.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-orders-table-detail-action-label",
+      "files": [
+        "js/orders-table.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-orders-table-mobile-init",
+      "files": [
+        "js/orders-table.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-orders-table-row",
+      "files": [
+        "components/orders-table.css",
+        "js/orders-table.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-orders-table-toggle",
+      "files": [
+        "js/orders-table.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-preview",
+      "files": [
+        "js/preview.js",
+        "stories/preview.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-preview-close",
+      "files": [
+        "js/preview.js",
+        "stories/preview.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-preview-description",
+      "files": [
+        "stories/preview.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-preview-image",
+      "files": [
+        "stories/preview.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-preview-option",
+      "files": [
+        "js/preview.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-preview-panel",
+      "files": [
+        "js/preview.js",
+        "stories/preview.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-preview-title",
+      "files": [
+        "stories/preview.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-preview-trigger",
+      "files": [
+        "js/preview.js",
+        "stories/preview.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-recent-order-card",
+      "files": [
+        "stories/recent-order-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-recent-order-card-list",
+      "files": [
+        "stories/recent-order-card.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-record-id",
+      "files": [
+        "js/billing-form-card.js",
+        "stories/billing-table.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": "billing-form-card",
+      "new": "data-billing-form-card-record-id",
+      "context": "billing-form-card.js",
+      "needsReview": false
+    },
+    {
+      "old": "data-search-filter-bar",
+      "files": [
+        "stories/search-filter-bar.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-step",
+      "files": [
+        "stories/step-indicator.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": "step-indicator",
+      "new": "data-step-indicator-step",
+      "context": "step-indicator.stories.js",
+      "needsReview": false
+    },
+    {
+      "old": "data-step-id",
+      "files": [
+        "js/order-status-steps.js",
+        "js/order-step-detail.js",
+        "stories/dashboard-order-detail-layout.stories.js",
+        "stories/order-status-steps.stories.js",
+        "stories/order-step-detail.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": "order-status-steps",
+      "new": "data-order-status-steps-step-id",
+      "context": "order-status-steps.js",
+      "needsReview": false
+    },
+    {
+      "old": "data-supplier-activity-table",
+      "files": [
+        "js/orders-table.js",
+        "js/supplier-activity-table.js",
+        "stories/supplier-activity-table.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-supplier-activity-table-detail",
+      "files": [
+        "stories/supplier-activity-table.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-supplier-activity-table-init",
+      "files": [
+        "js/supplier-activity-table.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-supplier-activity-table-row",
+      "files": [
+        "js/supplier-activity-table.js",
+        "stories/supplier-activity-table.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-supplier-activity-table-toggle",
+      "files": [
+        "js/supplier-activity-table.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-table-pagination",
+      "files": [
+        "stories/table-pagination.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-toggle-switch",
+      "files": [
+        "demo-pages/cms-composition/index.html",
+        "js/toggle-switch.js",
+        "stories/toggle-switch.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-topic-nav",
+      "files": [
+        "stories/blog-page/topic-nav.stories.js"
+      ],
+      "componentScoped": true,
+      "thirdParty": false,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": false
+    },
+    {
+      "old": "data-type",
+      "files": [
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": true,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": true
+    },
+    {
+      "old": "data-variant",
+      "files": [
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": true,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": true
+    },
+    {
+      "old": "data-ver",
+      "files": [
+        "stories/landing-page/catalog-stage.stories.js",
+        "stories/landing-page/feedaty-widget.stories.js"
+      ],
+      "componentScoped": false,
+      "thirdParty": true,
+      "demoOnly": false,
+      "owner": null,
+      "new": null,
+      "context": null,
+      "needsReview": true
+    }
+  ]
+}

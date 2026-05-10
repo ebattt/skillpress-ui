@@ -13,7 +13,7 @@ const renderStepCardItem = ({
     const statusMod = state === 'active' ? 'step-indicator__status--active' : 'step-indicator__status--inactive';
 
     return `
-        <div class="step-indicator__item${itemActive}" data-step="${index}">
+        <div class="step-indicator__item${itemActive}" data-step-indicator-step="${index}">
             <div class="step-card-content">
                 <div class="step-indicator__badge ${badgeMod}">
                     <span>${index}</span>
@@ -85,7 +85,7 @@ export const ReferenceFromElementsUI = {
                     <div class="step-indicator__container">
                         <div class="steps-line"></div>
                         <div class="steps-grid">
-                            <div class="step-indicator__item step-indicator__item--active" data-step="1">
+                            <div class="step-indicator__item step-indicator__item--active" data-step-indicator-step="1">
                                 <div class="step-card-content">
                                     <div class="step-indicator__badge step-indicator__badge--active">
                                         <span>1</span>
@@ -96,7 +96,7 @@ export const ReferenceFromElementsUI = {
                                     </div>
                                 </div>
                             </div>
-                            <div class="step-indicator__item" data-step="2">
+                            <div class="step-indicator__item" data-step-indicator-step="2">
                                 <div class="step-card-content">
                                     <div class="step-indicator__badge step-indicator__badge--inactive">
                                         <span>2</span>
@@ -107,7 +107,7 @@ export const ReferenceFromElementsUI = {
                                     </div>
                                 </div>
                             </div>
-                            <div class="step-indicator__item" data-step="3">
+                            <div class="step-indicator__item" data-step-indicator-step="3">
                                 <div class="step-card-content">
                                     <div class="step-indicator__badge step-indicator__badge--inactive">
                                         <span>3</span>
@@ -118,7 +118,7 @@ export const ReferenceFromElementsUI = {
                                     </div>
                                 </div>
                             </div>
-                            <div class="step-indicator__item" data-step="4">
+                            <div class="step-indicator__item" data-step-indicator-step="4">
                                 <div class="step-card-content">
                                     <div class="step-indicator__badge step-indicator__badge--inactive">
                                         <span>4</span>
@@ -155,7 +155,7 @@ export const MidProgress = {
                     <div class="step-indicator__container">
                         <div class="steps-line"></div>
                         <div class="steps-grid">
-                            <div class="step-indicator__item" data-step="1">
+                            <div class="step-indicator__item" data-step-indicator-step="1">
                                 <div class="step-card-content">
                                     <div class="step-indicator__badge step-indicator__badge--completed">
                                         <span>1</span>
@@ -166,7 +166,7 @@ export const MidProgress = {
                                     </div>
                                 </div>
                             </div>
-                            <div class="step-indicator__item" data-step="2">
+                            <div class="step-indicator__item" data-step-indicator-step="2">
                                 <div class="step-card-content">
                                     <div class="step-indicator__badge step-indicator__badge--completed">
                                         <span>2</span>
@@ -177,7 +177,7 @@ export const MidProgress = {
                                     </div>
                                 </div>
                             </div>
-                            <div class="step-indicator__item step-indicator__item--active" data-step="3">
+                            <div class="step-indicator__item step-indicator__item--active" data-step-indicator-step="3">
                                 <div class="step-card-content">
                                     <div class="step-indicator__badge step-indicator__badge--active">
                                         <span>3</span>
@@ -188,7 +188,7 @@ export const MidProgress = {
                                     </div>
                                 </div>
                             </div>
-                            <div class="step-indicator__item" data-step="4">
+                            <div class="step-indicator__item" data-step-indicator-step="4">
                                 <div class="step-card-content">
                                     <div class="step-indicator__badge step-indicator__badge--inactive">
                                         <span>4</span>

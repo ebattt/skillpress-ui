@@ -38,12 +38,12 @@ const renderTable = () => {
                         </td>
                         <td class="quote-col-hide"></td>
                         <td class="quote-td-qty">500</td>
-                        <td class="quote-col-hide td-text-right">-</td>
-                        <td class="quote-col-hide td-text-right">-</td>
-                        <td class="quote-col-hide td-text-right">-</td>
-                        <td class="quote-col-hide td-text-right">-</td>
+                        <td class="quote-col-hide orders-table__cell--text-right">-</td>
+                        <td class="quote-col-hide orders-table__cell--text-right">-</td>
+                        <td class="quote-col-hide orders-table__cell--text-right">-</td>
+                        <td class="quote-col-hide orders-table__cell--text-right">-</td>
                         <td class="quote-td-action">
-                            <button class="quote-row-btn quote-row-btn--remove" type="button" data-action="remove-quote-row" title="Rimuovi">
+                            <button class="quote-row-btn quote-row-btn--remove" type="button" data-orders-table-action="remove-quote-row" title="Rimuovi">
                                 ${iconRemove}
                             </button>
                         </td>
@@ -57,12 +57,12 @@ const renderTable = () => {
                         </td>
                         <td class="quote-col-hide"></td>
                         <td class="quote-td-qty">1000</td>
-                        <td class="quote-col-hide td-text-right">-</td>
-                        <td class="quote-col-hide td-text-right">-</td>
-                        <td class="quote-col-hide td-text-right">-</td>
-                        <td class="quote-col-hide td-text-right">-</td>
+                        <td class="quote-col-hide orders-table__cell--text-right">-</td>
+                        <td class="quote-col-hide orders-table__cell--text-right">-</td>
+                        <td class="quote-col-hide orders-table__cell--text-right">-</td>
+                        <td class="quote-col-hide orders-table__cell--text-right">-</td>
                         <td class="quote-td-action">
-                            <button class="quote-row-btn quote-row-btn--remove" type="button" data-action="remove-quote-row" title="Rimuovi">
+                            <button class="quote-row-btn quote-row-btn--remove" type="button" data-orders-table-action="remove-quote-row" title="Rimuovi">
                                 ${iconRemove}
                             </button>
                         </td>
@@ -87,7 +87,7 @@ const renderTable = () => {
                         <td class="quote-col-hide"></td>
                         <td class="quote-col-hide"></td>
                         <td class="quote-td-action">
-                            <button class="quote-row-btn quote-row-btn--add" type="button" data-action="add-quote-row" title="Aggiungi">
+                            <button class="quote-row-btn quote-row-btn--add" type="button" data-orders-table-action="add-quote-row" title="Aggiungi">
                                 ${iconAdd}
                             </button>
                         </td>
@@ -96,16 +96,16 @@ const renderTable = () => {
                 <tfoot>
                     <tr>
                         <td colspan="4" class="quote-footer-cell"></td>
-                        <td class="quote-col-hide font-semibold quote-footer-cell td-text-right">&euro; 0,00</td>
+                        <td class="quote-col-hide font-semibold quote-footer-cell orders-table__cell--text-right">&euro; 0,00</td>
                         <td class="quote-col-hide quote-footer-cell"></td>
-                        <td class="quote-col-hide font-semibold quote-footer-cell td-text-right">&euro; 0,00</td>
-                        <td class="quote-col-hide font-semibold quote-footer-cell td-text-right">&euro; 0,00</td>
+                        <td class="quote-col-hide font-semibold quote-footer-cell orders-table__cell--text-right">&euro; 0,00</td>
+                        <td class="quote-col-hide font-semibold quote-footer-cell orders-table__cell--text-right">&euro; 0,00</td>
                         <td class="quote-footer-cell"></td>
                     </tr>
                 </tfoot>
             </table>
         </div>
-        <button class="quote-submit-btn" type="button" data-action="submit-quote">Invia richiesta</button>
+        <button class="quote-submit-btn" type="button" data-orders-table-action="submit-quote">Invia richiesta</button>
     `;
     return root;
 };

@@ -117,11 +117,11 @@
 }
 
 .orders-filter-btn--dashboard-primary {
-    background-color: #f08a00;
+    background-color: var(--color-primary);
 }
 
 .orders-filter-btn--dashboard-primary:hover {
-    background-color: #d97c00;
+    background-color: var(--color-primary-dark);
 }
 
 .orders-filter-btn__icon {
@@ -138,6 +138,8 @@
     mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5Z'/%3E%3C/svg%3E");
 }
 
+/* breakpoint-exception: 1200px serve a anticipare il collasso della filter bar
+   prima del cutoff desktop (1024) per evitare overflow su laptop 1280-1200. */
 @media (max-width: 1200px) {
     .orders-filter-bar,
     .orders-filter-bar--quotes {

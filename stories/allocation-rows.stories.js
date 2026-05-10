@@ -18,14 +18,14 @@ const destinationInputs = () => `
                             <span class="allocation-rows__name">Copertina A</span>
                             <span class="allocation-rows__qty">(50)</span>
                         </div>
-                        <input class="form-input allocation-rows__input" type="number" min="0" max="50" value="25" aria-label="Copie Copertina A">
+                        <input class="sp-form-input allocation-rows__input" type="number" min="0" max="50" value="25" aria-label="Copie Copertina A">
                     </div>
                     <div class="allocation-rows__row allocation-rows__row--child">
                         <div class="allocation-rows__info">
                             <span class="allocation-rows__name">Copertina B</span>
                             <span class="allocation-rows__qty">(50)</span>
                         </div>
-                        <input class="form-input allocation-rows__input" type="number" min="0" max="50" value="25" aria-label="Copie Copertina B">
+                        <input class="sp-form-input allocation-rows__input" type="number" min="0" max="50" value="25" aria-label="Copie Copertina B">
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@ const destinationInputs = () => `
                     <span class="allocation-rows__name">Libro con copertina rigida</span>
                     <span class="allocation-rows__qty">(120)</span>
                 </div>
-                <input class="form-input allocation-rows__input" type="number" min="0" max="120" value="120" aria-label="Copie Libro con copertina rigida">
+                <input class="sp-form-input allocation-rows__input" type="number" min="0" max="120" value="120" aria-label="Copie Libro con copertina rigida">
             </div>
         </div>
     </div>

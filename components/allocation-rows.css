@@ -147,7 +147,7 @@
     background: var(--color-error-bg);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 639px) {
     .allocation-rows__row {
         align-items: flex-start;
         flex-direction: column;

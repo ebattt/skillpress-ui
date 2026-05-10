@@ -7,7 +7,7 @@ const renderBreadcrumb = (items = []) => {
         const itemClass = `breadcrumb__item${isCurrent ? ' breadcrumb__item--current' : ''}`;
         const inner = isCurrent
             ? `<span itemprop="name">${item.label}</span>`
-            : `<a class="breadcrumb__link" itemprop="item" href="${item.href || '#'}"><span itemprop="name">${item.label}</span></a>`;
+            : `<a class="sp-breadcrumb__link" itemprop="item" href="${item.href || '#'}"><span itemprop="name">${item.label}</span></a>`;
         return `
             <li class="${itemClass}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                 ${inner}
@@ -17,8 +17,8 @@ const renderBreadcrumb = (items = []) => {
     }).join('');
 
     root.innerHTML = `
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-            <ol class="breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <nav class="sp-breadcrumb" aria-label="Breadcrumb">
+            <ol class="sp-breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
                 ${list}
             </ol>
         </nav>
@@ -50,7 +50,7 @@ export const Default = {
         await expect(nav).toBeInTheDocument();
         await expect(canvas.getByRole('link', { name: 'Homepage' })).toHaveAttribute('href', '/homepage');
         const current = canvas.getByText('Brossura fresata');
-        await expect(current.closest('li')).toHaveClass('breadcrumb__item--current');
+        await expect(current.closest('li')).toHaveClass('sp-breadcrumb__item--current');
     }
 };
 

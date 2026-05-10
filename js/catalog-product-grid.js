@@ -1,3 +1,9 @@
+/**
+ * CatalogProductGrid -- product grid with expand/collapse toggle.
+ *
+ * @public-data data-catalog-product-grid, data-catalog-product-grid-init, data-catalog-product-grid-card, data-catalog-product-grid-items, data-catalog-product-grid-toggle, data-catalog-product-grid-initial-rows, data-catalog-product-grid-expand-label, data-catalog-product-grid-collapse-label
+ * @public-event sp:catalog-product-grid:toggle
+ */
 (function () {
     'use strict';
 
@@ -5,6 +11,22 @@
         collapse: 'Nascondi prodotti',
         expand: 'Mostra altri prodotti'
     };
+
+    var ns = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = ns.helpers || {};
+
+    function dispatch(target, name, detail) {
+        if (typeof helpers.dispatch === 'function') {
+            try { helpers.dispatch(target, name, detail); return; } catch (e) { /* fallthrough */ }
+        }
+        target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
+    }
+
+    function emitWithLegacyAlias(target, normalized, legacy, detail) {
+        dispatch(target, normalized, detail);
+        // deprecated alias, removed in v0.3
+        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
+    }
 
     function toArray(value) {
         return Array.prototype.slice.call(value || []);
@@ -17,7 +39,7 @@
     }
 
     function getInitialVisibleCount(grid, cards) {
-        var initialRows = parseInt(grid.getAttribute('data-initial-rows') || '2', 10);
+        var initialRows = parseInt(grid.getAttribute('data-catalog-product-grid-initial-rows') || '2', 10);
         var rowCount = Number.isFinite(initialRows) && initialRows > 0 ? initialRows : 2;
         return Math.min(cards.length, getColumnCount(grid) * rowCount);
     }
@@ -38,8 +60,8 @@
 
         state.button.hidden = state.cards.length <= state.collapsedCount;
         state.button.textContent = state.expanded
-            ? (state.button.getAttribute('data-collapse-label') || TEXT.collapse)
-            : (state.button.getAttribute('data-expand-label') || TEXT.expand);
+            ? (state.button.getAttribute('data-catalog-product-grid-collapse-label') || TEXT.collapse)
+            : (state.button.getAttribute('data-catalog-product-grid-expand-label') || TEXT.expand);
         state.button.setAttribute('aria-expanded', state.expanded ? 'true' : 'false');
     }
 
@@ -57,7 +79,7 @@
     }
 
     function initRoot(root) {
-        if (!root || root.getAttribute('data-catalog-product-grid-init') === '1') return;
+        if (!root || root.__skillpressCatalogProductGridInitialized) return;
 
         var grid = root.querySelector('[data-catalog-product-grid-items]');
         var button = root.querySelector('[data-catalog-product-grid-toggle]');
@@ -77,6 +99,8 @@
             visibleCount: 0
         };
 
+        root.__skillpressCatalogProductGridInitialized = true;
+        // deprecated alias, removed in v0.3
         root.setAttribute('data-catalog-product-grid-init', '1');
         refresh(state);
 
@@ -84,10 +108,10 @@
             state.expanded = !state.expanded;
             state.visibleCount = state.expanded ? state.cards.length : state.collapsedCount;
             sync(state);
-            root.dispatchEvent(new CustomEvent('sp:catalog-product-grid-toggle', {
-                bubbles: true,
-                detail: { expanded: state.expanded, visibleCount: state.visibleCount }
-            }));
+            emitWithLegacyAlias(root, 'sp:catalog-product-grid:toggle', 'sp:catalog-product-grid-toggle', {
+                expanded: state.expanded,
+                visibleCount: state.visibleCount
+            });
         });
 
         window.addEventListener('resize', function () {
@@ -99,6 +123,7 @@
         });
     }
 
+    /** @public */
     function init(scope) {
         var root = scope || document;
 
@@ -110,12 +135,13 @@
         toArray(root.querySelectorAll('[data-catalog-product-grid]')).forEach(initRoot);
     }
 
-    if (document.readyState === 'loading') {
+    ns.CatalogProductGrid = { init: init };
+
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function () { init(document); });
     } else {
         init(document);
     }
-
-    window.SkillpressUI = window.SkillpressUI || {};
-    window.SkillpressUI.CatalogProductGrid = { init: init };
 })();

@@ -83,7 +83,7 @@
     border-bottom: none;
 }
 
-.invoice-table .dash-link--download {
+.invoice-table .dashboard-link--download {
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-xs);
@@ -99,16 +99,16 @@
     transition: color var(--transition-fast);
 }
 
-.invoice-table .dash-link--download:hover {
+.invoice-table .dashboard-link--download:hover {
     color: var(--color-primary-dark);
 }
 
-.invoice-table .dash-link--download:focus-visible {
+.invoice-table .dashboard-link--download:focus-visible {
     outline: 2px solid var(--color-border-focus);
     outline-offset: 2px;
 }
 
-.invoice-table .dash-link--download__icon {
+.invoice-table .dashboard-link--download__icon {
     display: inline-block;
     width: 1.125rem;
     height: 1.125rem;
@@ -117,7 +117,7 @@
     vertical-align: middle;
 }
 
-.invoice-table .dash-link--download__icon--download {
+.invoice-table .dashboard-link--download__icon--download {
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3Cpath d='M5 21h14'/%3E%3C/svg%3E") center / contain no-repeat;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3Cpath d='M5 21h14'/%3E%3C/svg%3E") center / contain no-repeat;
 }
@@ -157,16 +157,18 @@
         padding-right: 0.875rem;
     }
 
-    .invoice-table .dash-link--download {
+    .invoice-table .dashboard-link--download {
         gap: 0.25rem;
     }
 
-    .invoice-table .dash-link--download__icon {
+    .invoice-table .dashboard-link--download__icon {
         width: 1.25rem;
         height: 1.25rem;
     }
 }
 
+/* breakpoint-exception: 480px raffina padding celle su phones stretti dopo il
+   restyle gia' attivo sotto 640. La canonizzazione perderebbe lo step. */
 @media (max-width: 480px) {
     .invoice-table td {
         padding-top: 0.6875rem;

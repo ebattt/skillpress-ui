@@ -4,14 +4,14 @@
  * Data estrazione: 2026-05-05
  */
 
-.dash-recent-orders-grid {
+.dashboard-recent-orders-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
     align-items: stretch;
 }
 
-.dash-order-card {
+.dashboard-order-card {
     display: flex;
     flex-direction: column;
     min-width: 0;
@@ -27,16 +27,16 @@
     transition: border-color var(--transition-fast);
 }
 
-.dash-order-card:hover {
+.dashboard-order-card:hover {
     border-color: var(--color-primary);
 }
 
-.dash-order-card:focus-within {
+.dashboard-order-card:focus-within {
     outline: 2px solid var(--color-border-focus);
     outline-offset: 2px;
 }
 
-.dash-order-card__header-row {
+.dashboard-order-card__header-row {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,14 +46,14 @@
     text-align: center;
 }
 
-.dash-order-card__number {
+.dashboard-order-card__number {
     color: var(--color-primary);
     font-size: 1.35rem;
     font-weight: 800;
     line-height: 1.625rem;
 }
 
-.dash-order-card__status {
+.dashboard-order-card__status {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -65,7 +65,7 @@
     white-space: nowrap;
 }
 
-.dash-order-card__status::before {
+.dashboard-order-card__status::before {
     content: "";
     width: 0.375rem;
     height: 0.375rem;
@@ -74,27 +74,27 @@
     flex-shrink: 0;
 }
 
-.dash-order-card__status--success {
+.dashboard-order-card__status--success {
     color: var(--color-success-badge-text, var(--color-success));
 }
 
-.dash-order-card__status--warning {
+.dashboard-order-card__status--warning {
     color: var(--color-warning-badge-text, var(--color-warning));
 }
 
-.dash-order-card__status--error {
+.dashboard-order-card__status--error {
     color: var(--color-error);
 }
 
-.dash-order-card__status--info {
+.dashboard-order-card__status--info {
     color: var(--color-info-badge-text, var(--color-info));
 }
 
-.dash-order-card__status--cancelled {
+.dashboard-order-card__status--cancelled {
     color: var(--color-cancelled-badge-text, var(--color-text-muted));
 }
 
-.dash-order-card__title {
+.dashboard-order-card__title {
     min-height: 2.7rem;
     margin: 0 0 1rem;
     color: var(--color-text);
@@ -104,7 +104,7 @@
     text-align: center;
 }
 
-.dash-order-card__title--clamp {
+.dashboard-order-card__title--clamp {
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -112,7 +112,7 @@
     -webkit-line-clamp: 2;
 }
 
-.dash-order-card__info {
+.dashboard-order-card__info {
     margin: 0 0 1rem;
     color: var(--color-text-light);
     font-size: var(--font-size-sm);
@@ -120,22 +120,22 @@
     text-align: center;
 }
 
-.dash-order-card__info strong {
+.dashboard-order-card__info strong {
     color: var(--color-text);
     font-weight: var(--font-weight-bold);
 }
 
-.dash-order-card__actions-wrap {
+.dashboard-order-card__actions-wrap {
     min-height: 1.5rem;
     margin-bottom: 0.5rem;
     text-align: center;
 }
 
-.dash-order-card__actions-wrap:empty {
+.dashboard-order-card__actions-wrap:empty {
     min-height: 0;
 }
 
-.dash-order-card__action-alert {
+.dashboard-order-card__action-alert {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
@@ -151,7 +151,7 @@
     text-transform: uppercase;
 }
 
-.dash-order-card__footer {
+.dashboard-order-card__footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -161,13 +161,13 @@
     border-top: 1px solid var(--color-bg-gray-100);
 }
 
-.dash-order-card__date {
+.dashboard-order-card__date {
     color: var(--color-text-light);
     font-size: var(--font-size-xs);
     line-height: 1.25rem;
 }
 
-.dash-order-card__total {
+.dashboard-order-card__total {
     color: var(--color-text);
     font-size: 1rem;
     font-weight: var(--font-weight-bold);
@@ -175,23 +175,23 @@
 }
 
 @media (max-width: 639px) {
-    .dash-order-card {
+    .dashboard-order-card {
         padding: 0.875rem;
     }
 
-    .dash-order-card__title {
+    .dashboard-order-card__title {
         min-height: 0;
     }
 }
 
 @media (min-width: 640px) {
-    .dash-recent-orders-grid {
+    .dashboard-recent-orders-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (min-width: 1024px) {
-    .dash-recent-orders-grid {
+    .dashboard-recent-orders-grid {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }

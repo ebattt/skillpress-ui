@@ -33,7 +33,7 @@ const renderGroup = ({ title = 'Metodo di spedizione', id = 'method-choice-title
     const root = document.createElement('div');
     root.style.maxWidth = '760px';
     root.innerHTML = `
-        <div class="method-choice" data-method-choice>
+        <div class="method-choice" data-method-choice-card-method-choice>
             <p class="method-choice__title" id="${id}">${title}</p>
             <div class="method-choice__grid" role="group" aria-labelledby="${id}">
                 ${items.map((item, index) => renderCard(item, index === selectedIndex)).join('')}

@@ -1,7 +1,7 @@
 import { expect } from 'storybook/test';
 
 const plusIcon = `
-    <span class="button__icon" aria-hidden="true">
+    <span class="sp-button__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none">
             <path d="M5 12h14M12 5v14" stroke-width="2" stroke-linecap="round" />
         </svg>
@@ -65,7 +65,7 @@ export const Default = {
     render: () => renderButton(),
     play: async ({ canvas, userEvent }) => {
         const btn = canvas.getByRole('button', { name: /Aggiungi al carrello/ });
-        await expect(btn).toHaveClass('button', 'button--primary');
+        await expect(btn).toHaveClass('sp-button', 'sp-button--primary');
         await expect(btn).not.toBeDisabled();
         await userEvent.click(btn);
     }
@@ -113,7 +113,7 @@ export const Dashed = {
         return root;
     },
     play: async ({ canvas }) => {
-        await expect(canvas.getByRole('button', { name: /Aggiungi destinazione/ })).toHaveClass('button--dashed');
+        await expect(canvas.getByRole('button', { name: /Aggiungi destinazione/ })).toHaveClass('sp-button--dashed');
     }
 };
 

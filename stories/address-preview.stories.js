@@ -91,9 +91,9 @@ export const AfterSelect = {
         root.style.padding = '1.25rem';
         root.style.borderRadius = 'var(--radius-xl)';
         root.innerHTML = `
-            <div class="form-field">
-                <label class="label-text" for="storybook-address-preview-select">Indirizzo</label>
-                <select class="form-select" id="storybook-address-preview-select">
+            <div class="sp-form-field">
+                <label class="sp-label-text" for="storybook-address-preview-select">Indirizzo</label>
+                <select class="sp-form-select" id="storybook-address-preview-select">
                     <option>Casa — Mario Rossi, Via Roma 123</option>
                 </select>
             </div>

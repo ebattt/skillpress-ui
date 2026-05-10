@@ -18,7 +18,7 @@ Badge inline che rappresenta uno stato breve con dot colorato e label testuale. 
 
 ```text
 Badge
-└── .badge   [--success | --warning | --error | --info | --cancelled | --neutral]
+└── .sp-badge   [--success | --warning | --error | --info | --cancelled | --neutral]
     ├── ::before   (dot 0.4375rem, currentColor)
     └── <text>     (label visibile)
 ```
@@ -26,14 +26,14 @@ Badge
 ## Markup contract
 
 ```html
-<span class="badge badge--success">Consegnato</span>
+<span class="sp-badge sp-badge--success">Consegnato</span>
 ```
 
 ## API Reference
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.badge` | shell inline-flex, dot decorativo via `::before` | yes | `--success`, `--warning`, `--error`, `--info`, `--cancelled`, `--neutral` |
+| `.sp-badge` | shell inline-flex, dot decorativo via `::before` | yes | `--success`, `--warning`, `--error`, `--info`, `--cancelled`, `--neutral` |
 
 Nessun attributo obbligatorio.
 
@@ -71,7 +71,7 @@ Nessun script JS richiesto.
 
 ## Classi pubbliche
 
-`.badge` e i modifier `.badge--success`, `.badge--warning`, `.badge--error`, `.badge--info`, `.badge--cancelled`, `.badge--neutral`.
+`.sp-badge` e i modifier `.sp-badge--success`, `.sp-badge--warning`, `.sp-badge--error`, `.sp-badge--info`, `.sp-badge--cancelled`, `.sp-badge--neutral`.
 
 ## Data hooks
 

@@ -36,7 +36,7 @@ di gruppo, stato selected e sotto-elementi `name/detail/price/icon`.
 ## Markup contract
 
 ```html
-<div class="method-choice" data-method-choice>
+<div class="method-choice" data-method-choice-card-method-choice>
     <p class="method-choice__title" id="shipping-methods-title">Metodo di spedizione</p>
     <div class="method-choice__grid" role="group" aria-labelledby="shipping-methods-title">
         <button class="method-choice-card method-choice-card--selected"
@@ -87,7 +87,7 @@ di gruppo, stato selected e sotto-elementi `name/detail/price/icon`.
 
 ## Data hooks
 
-- `[data-method-choice]`: root semantica del gruppo.
+- `[data-method-choice-card-method-choice]`: root semantica del gruppo.
 - `[data-method-choice-card]`: card cliccabile.
 
 ## Modifier / stati

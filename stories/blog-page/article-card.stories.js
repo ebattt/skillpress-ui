@@ -82,7 +82,7 @@ const renderCard = ({
     linkedCard = false
 } = {}) => {
     const mediaClass = ['article-card__media', contain ? 'article-card__media--contain' : ''].filter(Boolean).join(' ');
-    const cardAttrs = linkedCard ? ` data-article-card data-card-href="${href}"` : ' data-article-card';
+    const cardAttrs = linkedCard ? ` data-article-card data-article-card-href="${href}"` : ' data-article-card';
     const media = img
         ? `<a class="${mediaClass}" href="${href}"><img src="${img}" alt="${alt || title}"></a>`
         : `<div class="${mediaClass}" aria-hidden="true"></div>`;
@@ -99,7 +99,7 @@ const renderCard = ({
                 <p class="article-card__meta">${meta}</p>
                 ${action ? `
                     <div class="article-card__actions">
-                        <a class="button button--primary button--sm" href="${href}">Leggi di piu</a>
+                        <a class="sp-button sp-button--primary sp-button--sm" href="${href}">Leggi di piu</a>
                     </div>
                 ` : ''}
             </div>
@@ -206,7 +206,7 @@ export const LinkedCardHook = {
         action: true
     })),
     play: async ({ canvas }) => {
-        await expect(canvas.getByRole('article')).toHaveAttribute('data-card-href', '#file-stampa');
+        await expect(canvas.getByRole('article')).toHaveAttribute('data-article-card-href', '#file-stampa');
     }
 };
 

@@ -1,11 +1,31 @@
+/**
+ * OrderStatusSteps -- horizontal step indicator for order lifecycle.
+ *
+ * @public-data data-order-status-steps, data-order-status-steps-item, data-order-status-steps-step-id
+ * @public-event sp:order-status-steps:change
+ */
 (function () {
     'use strict';
 
     var namespace = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = namespace.helpers || {};
     var SELECTED_CLASS = 'product-stepper__step--selected';
 
+    function dispatch(target, name, detail) {
+        if (typeof helpers.dispatch === 'function') {
+            try { helpers.dispatch(target, name, detail); return; } catch (e) { /* fallthrough */ }
+        }
+        target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
+    }
+
+    function emitWithLegacyAlias(target, normalized, legacy, detail) {
+        dispatch(target, normalized, detail);
+        // deprecated alias, removed in v0.3
+        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
+    }
+
     function getStepId(item) {
-        return item.getAttribute('data-step-id') || '';
+        return item.getAttribute('data-order-status-steps-step-id') || '';
     }
 
     function selectItem(root, item) {
@@ -17,17 +37,16 @@
             candidate.setAttribute('aria-pressed', selected ? 'true' : 'false');
         });
 
-        root.dispatchEvent(new CustomEvent('sp:order-status-steps-change', {
-            bubbles: true,
-            detail: {
-                stepId: getStepId(item),
-                item: item
-            }
-        }));
+        emitWithLegacyAlias(root, 'sp:order-status-steps:change', 'sp:order-status-steps-change', {
+            stepId: getStepId(item),
+            item: item
+        });
     }
 
     function initRoot(root) {
-        if (!root || root.__orderStatusStepsInitialized) return;
+        if (!root || root.__skillpressOrderStatusStepsInitialized) return;
+        root.__skillpressOrderStatusStepsInitialized = true;
+        // deprecated alias, removed in v0.3
         root.__orderStatusStepsInitialized = true;
 
         var items = Array.prototype.slice.call(root.querySelectorAll('[data-order-status-steps-item]'));
@@ -43,6 +62,7 @@
         });
     }
 
+    /** @public */
     function init(scope) {
         var context = scope || document;
         var roots = [];
@@ -56,7 +76,9 @@
         selectItem: selectItem
     };
 
-    if (document.readyState === 'loading') {
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function () { init(document); });
     } else {
         init(document);

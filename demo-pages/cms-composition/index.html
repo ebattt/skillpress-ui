@@ -116,21 +116,21 @@ Niente CSS che corregge stili interni dei componenti.
 <main class="demo-page">
 
     <!-- Breadcrumb (primitives/breadcrumb.css) -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-        <ol class="breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
-            <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <a class="breadcrumb__link" itemprop="item" href="/homepage">
+    <nav class="sp-breadcrumb" aria-label="Breadcrumb">
+        <ol class="sp-breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li class="sp-breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a class="sp-breadcrumb__link" itemprop="item" href="/homepage">
                     <span itemprop="name">Homepage</span>
                 </a>
                 <meta itemprop="position" content="1"/>
             </li>
-            <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <a class="breadcrumb__link" itemprop="item" href="/libri-cataloghi-riviste">
+            <li class="sp-breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a class="sp-breadcrumb__link" itemprop="item" href="/libri-cataloghi-riviste">
                     <span itemprop="name">Libri Cataloghi Riviste</span>
                 </a>
                 <meta itemprop="position" content="2"/>
             </li>
-            <li class="breadcrumb__item breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <li class="sp-breadcrumb__item sp-breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                 <span itemprop="name">Brossura fresata</span>
                 <meta itemprop="position" content="3"/>
             </li>
@@ -140,8 +140,8 @@ Niente CSS che corregge stili interni dei componenti.
     <!-- Header product (Badge + titolo + descrizione + Button) -->
     <header class="demo-product-header">
         <div class="demo-product-header__meta">
-            <span class="badge badge--success">Disponibile</span>
-            <span class="badge badge--info">Spedizione 24/48h</span>
+            <span class="sp-badge sp-badge--success">Disponibile</span>
+            <span class="sp-badge sp-badge--info">Spedizione 24/48h</span>
         </div>
 
         <h1 class="demo-product-header__title">Brossura fresata</h1>
@@ -152,10 +152,10 @@ Niente CSS che corregge stili interni dei componenti.
         </p>
 
         <div class="demo-product-header__actions">
-            <button type="button" class="button button--primary">
+            <button type="button" class="sp-button sp-button--primary">
                 Configura ora
             </button>
-            <button type="button" class="button button--outline">
+            <button type="button" class="sp-button sp-button--outline">
                 Scarica template
             </button>
         </div>
@@ -242,18 +242,18 @@ Niente CSS che corregge stili interni dei componenti.
          Mostra solo il controllo: niente ricalcolo prezzo, niente logica IVA. -->
     <section aria-labelledby="demo-toggle-title" class="demo-toggle-block">
         <h2 id="demo-toggle-title" class="demo-section-title">Toggle dimostrativo</h2>
-        <span class="toggle-switch-field">
+        <span class="sp-toggle-switch-field">
             <button
                 type="button"
                 id="demo-iva-toggle"
-                class="toggle-switch"
+                class="sp-toggle-switch"
                 role="switch"
                 aria-checked="false"
                 aria-labelledby="demo-iva-label"
                 data-toggle-switch>
-                <span class="toggle-switch__thumb"></span>
+                <span class="sp-toggle-switch__thumb"></span>
             </button>
-            <label id="demo-iva-label" for="demo-iva-toggle" class="toggle-switch__label">
+            <label id="demo-iva-label" for="demo-iva-toggle" class="sp-toggle-switch__label">
                 Mostra prezzi IVA inclusa
             </label>
         </span>

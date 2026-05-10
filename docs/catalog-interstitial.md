@@ -6,11 +6,11 @@ Card editoriali intermedie della landing catalogo: split foto/testo, card wide o
 
 ```html
 <section class="catalog-interstitial" data-catalog-interstitial aria-label="Approfondimento catalogo">
-    <div class="catalog-interstitial__card catalog-interstitial__card--photo" data-catalog-interstitial-card data-card-link="#prodotti" data-card-link-label="Vai alla sezione prodotti">
+    <div class="catalog-interstitial__card catalog-interstitial__card--photo" data-catalog-interstitial-card data-catalog-interstitial-link="#prodotti" data-catalog-interstitial-link-label="Vai alla sezione prodotti">
         <img src="/assets/landing/stampa.jpg" alt="Stampa di qualita">
         <span class="catalog-interstitial__label">Scopri le nostre rilegature</span>
     </div>
-    <div class="catalog-interstitial__card catalog-interstitial__card--text" data-catalog-interstitial-card data-card-link="/prodotti" data-card-link-label="Apri la pagina prodotto Skillpress">
+    <div class="catalog-interstitial__card catalog-interstitial__card--text" data-catalog-interstitial-card data-catalog-interstitial-link="/prodotti" data-catalog-interstitial-link-label="Apri la pagina prodotto Skillpress">
         <h3 class="catalog-interstitial__heading">Qualita professionale,<br>prezzi accessibili</h3>
         <p class="catalog-interstitial__text">Carta certificata, colori fedeli e finiture curate in ogni dettaglio.</p>
     </div>
@@ -35,8 +35,8 @@ Card editoriali intermedie della landing catalogo: split foto/testo, card wide o
 
 - `[data-catalog-interstitial]`: root inizializzato dal runtime.
 - `[data-catalog-interstitial-card]`: card da rendere click-anywhere.
-- `data-card-link`: href usato per generare l'overlay link.
-- `data-card-link-label`: label accessibile opzionale.
+- `data-catalog-interstitial-link`: href usato per generare l'overlay link.
+- `data-catalog-interstitial-link-label`: label accessibile opzionale.
 
 ## Modifier / stati
 
@@ -59,12 +59,12 @@ Card editoriali intermedie della landing catalogo: split foto/testo, card wide o
 - Max-width, padding sezione compatta e grid responsive.
 - Immagini full-bleed/contained, overlay, radius, background e tipografia.
 - Runtime idempotente `window.SkillpressUI.CatalogInterstitial.init(root)`.
-- Overlay link accessibile se il backend rende `data-card-link`.
+- Overlay link accessibile se il backend rende `data-catalog-interstitial-link`.
 
 ## Demo-only
 
 - URL asset della landing originale.
-- Valori `data-card-link` verso le demo locali.
+- Valori `data-catalog-interstitial-link` verso le demo locali.
 
 ## Out of scope
 

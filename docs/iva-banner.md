@@ -25,18 +25,18 @@ banner) e' business logic del consumer.
 
 | Classe | Note |
 |---|---|
-| `.iva-banner` | container warning bg/border/radius/padding |
-| `.iva-banner__content` | flex inline icon + text, align-items flex-start |
-| `.iva-banner__icon` | icona info disegnata via CSS, color primary |
-| `.iva-banner__text` | testo xs, color text-strong, line-height 1.5 |
+| `.sp-iva-banner` | container warning bg/border/radius/padding |
+| `.sp-iva-banner__content` | flex inline icon + text, align-items flex-start |
+| `.sp-iva-banner__icon` | icona info disegnata via CSS, color primary |
+| `.sp-iva-banner__text` | testo xs, color text-strong, line-height 1.5 |
 
 ## Markup contract
 
 ```html
-<div class="iva-banner">
-    <div class="iva-banner__content">
-        <span class="iva-banner__icon" aria-hidden="true"></span>
-        <div class="iva-banner__text">
+<div class="sp-iva-banner">
+    <div class="sp-iva-banner__content">
+        <span class="sp-iva-banner__icon" aria-hidden="true"></span>
+        <div class="sp-iva-banner__text">
             <p>Per usufruire dell'aliquota ridotta al 4% per editori con ISBN
                e necessario compilare e firmare la dichiarazione sostitutiva.</p>
             <button type="button" style="...">Scarica la dichiarazione</button>
@@ -56,13 +56,13 @@ banner) e' business logic del consumer.
 - `--color-warning-bg` (#FFF7ED) come background;
 - `--color-warning-border` (#FED7AA) come border;
 - radius `--radius-lg`, padding 0.75rem;
-- icona info dentro `.iva-banner__icon` via CSS, color `--color-primary`;
+- icona info dentro `.sp-iva-banner__icon` via CSS, color `--color-primary`;
 - font-size testo xs (`var(--font-size-xs)` = 12px), line-height 1.5;
 - spacing tra paragrafi consecutivi (`> * + *` margin-top xs).
 
 ## Composizione
 
-Renderizzato sotto la riga `.qty-iva-row qty-iva-row--double` quando
+Renderizzato sotto la riga `.sp-qty-iva-row qty-iva-row--double` quando
 `state.selections.ivaMode === '4'`. Il contesto applicativo e' Step 6
 del configuratore.
 
@@ -70,11 +70,11 @@ del configuratore.
 
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|
-| `.iva-banner-content` | `.iva-banner__content` |
-| `.iva-banner-icon` | `.iva-banner__icon` |
-| `.iva-banner-text` | `.iva-banner__text` |
+| `.iva-banner-content` | `.sp-iva-banner__content` |
+| `.iva-banner-icon` | `.sp-iva-banner__icon` |
+| `.iva-banner-text` | `.sp-iva-banner__text` |
 
-`.iva-banner` (block, italiano-derived) e' invariato.
+`.sp-iva-banner` (block, italiano-derived) e' invariato.
 
 ## Fuori scope
 

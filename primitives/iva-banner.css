@@ -2,10 +2,10 @@
  * IVA BANNER -- callout informativo warning per IVA 4% (editori con ISBN)
  *
  * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
- *   - .iva-banner            L679-684
- *   - .iva-banner__content   L686-690
- *   - .iva-banner__icon      L692-696
- *   - .iva-banner__text      L698-702
+ *   - .sp-iva-banner            L679-684
+ *   - .sp-iva-banner__content   L686-690
+ *   - .sp-iva-banner__icon      L692-696
+ *   - .sp-iva-banner__text      L698-702
  *
  * Fonte markup: product-page-integration/js/sections/section-6.js#L274-L285
  * (renderizzato condizionalmente quando state.selections.ivaMode === '4').
@@ -13,7 +13,7 @@
  * Strategia A (CSS-only). La condizione di visibilita' (mostrare/nascondere
  * il banner in base alla scelta IVA) e' business logic consumer-side.
  *
- * Icona info disegnata dalla libreria via CSS dentro .iva-banner__icon.
+ * Icona info disegnata dalla libreria via CSS dentro .sp-iva-banner__icon.
  * Il consumer non deve fornire SVG, immagini o testo.
  *
  * Pattern callout warning specifico per IVA: se in futuro emergeranno altri
@@ -24,7 +24,8 @@
 /* ================================================================
    IVA BANNER -- container warning bg + border + radius
    ================================================================ */
-.iva-banner {
+/** @public */
+.sp-iva-banner {
     background-color: var(--color-warning-bg);
     border: 1px solid var(--color-warning-border);
     border-radius: var(--radius-lg);
@@ -35,7 +36,7 @@
 /* ================================================================
    IVA BANNER CONTENT -- flex inline icon + text
    ================================================================ */
-.iva-banner__content {
+.sp-iva-banner__content {
     display: flex;
     align-items: flex-start;
     gap: var(--spacing-sm);
@@ -45,7 +46,7 @@
 /* ================================================================
    IVA BANNER ICON -- icona info, color primary
    ================================================================ */
-.iva-banner__icon {
+.sp-iva-banner__icon {
     color: var(--color-primary);
     display: inline-flex;
     align-items: center;
@@ -55,7 +56,7 @@
     flex-shrink: 0;
 }
 
-.iva-banner__icon::before {
+.sp-iva-banner__icon::before {
     content: "i";
     display: inline-flex;
     align-items: center;
@@ -74,12 +75,12 @@
 /* ================================================================
    IVA BANNER TEXT -- testo xs, color text-strong
    ================================================================ */
-.iva-banner__text {
+.sp-iva-banner__text {
     font-size: var(--font-size-xs);
     color: var(--color-text-strong);
     line-height: 1.5;
 }
 
-.iva-banner__text > * + * {
+.sp-iva-banner__text > * + * {
     margin-top: var(--spacing-xs);
 }

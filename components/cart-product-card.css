@@ -220,7 +220,7 @@
     color: var(--color-bg-gray-300);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
     .cart-product-card__row {
         flex-direction: column;
     }

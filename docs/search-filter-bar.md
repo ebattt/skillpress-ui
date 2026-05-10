@@ -38,14 +38,14 @@ pattern.
 
 ```html
 <div class="orders-filter-bar orders-filter-bar--orders" data-search-filter-bar>
-    <select class="orders-filter-select" data-filter="field">
+    <select class="orders-filter-select" data-search-filter-bar-filter="field">
         <option>Numero</option>
         <option>Lavoro</option>
         <option>Referente</option>
         <option>Stato</option>
     </select>
-    <input type="text" placeholder="cerca" class="orders-filter-input" data-filter="search">
-    <button class="orders-filter-btn" type="button" data-action="filter-orders">Mostra</button>
+    <input type="text" placeholder="cerca" class="orders-filter-input" data-search-filter-bar-filter="search">
+    <button class="orders-filter-btn" type="button" data-orders-table-action="filter-orders">Mostra</button>
 </div>
 ```
 

@@ -1,9 +1,25 @@
+/**
+ * CartProductCard -- expandable cart line item card.
+ *
+ * @public-data data-cart-product-card, data-cart-product-card-toggle, data-cart-product-card-details
+ * @public-event sp:cart-product-card:open, sp:cart-product-card:close
+ */
 (function () {
     'use strict';
 
     var ROOT_SELECTOR = '[data-cart-product-card]';
     var TOGGLE_SELECTOR = '[data-cart-product-card-toggle]';
     var DETAILS_SELECTOR = '[data-cart-product-card-details]';
+
+    var ns = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = ns.helpers || {};
+
+    function dispatch(target, name, detail) {
+        if (typeof helpers.dispatch === 'function') {
+            try { helpers.dispatch(target, name, detail); return; } catch (e) { /* fallthrough */ }
+        }
+        target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
+    }
 
     function resolveDetails(root, toggle) {
         var controls = toggle.getAttribute('aria-controls');
@@ -21,10 +37,11 @@
 
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
         details.setAttribute('aria-hidden', open ? 'false' : 'true');
+        dispatch(root, open ? 'sp:cart-product-card:open' : 'sp:cart-product-card:close');
     }
 
     function bind(root) {
-        if (!root || root.dataset.cartProductCardInitialized === 'true') return;
+        if (!root || root.__skillpressCartProductCardInitialized) return;
 
         var toggle = root.querySelector(TOGGLE_SELECTOR);
         if (!toggle) return;
@@ -43,21 +60,26 @@
             setOpen(root, toggle.getAttribute('aria-expanded') !== 'true');
         });
 
+        root.__skillpressCartProductCardInitialized = true;
+        // deprecated alias, removed in v0.3
         root.dataset.cartProductCardInitialized = 'true';
     }
 
+    /** @public */
     function init(scope) {
         var container = scope || document;
+        if (container.matches && container.matches(ROOT_SELECTOR)) bind(container);
         container.querySelectorAll(ROOT_SELECTOR).forEach(bind);
     }
 
-    window.SkillpressUI = window.SkillpressUI || {};
-    window.SkillpressUI.CartProductCard = {
+    ns.CartProductCard = {
         init: init,
         setOpen: setOpen
     };
 
-    if (document.readyState === 'loading') {
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function () { init(document); });
     } else {
         init(document);

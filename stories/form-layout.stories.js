@@ -10,53 +10,53 @@ const renderBillingForm = () => {
     root.style.padding = '1.25rem';
     root.style.borderRadius = 'var(--radius-xl)';
     root.innerHTML = `
-        <div class="form-layout form-layout--compact" data-form-layout>
-            <div class="form-layout__copy-row">
-                <button class="button button--ghost button--sm" type="button">Copia dati dalla spedizione</button>
+        <div class="sp-form-layout sp-form-layout--compact" data-form-layout>
+            <div class="sp-form-layout__copy-row">
+                <button class="sp-button sp-button--ghost sp-button--sm" type="button">Copia dati dalla spedizione</button>
             </div>
 
-            <div class="form-layout__row form-layout__row--2">
-                <div class="form-field">
-                    <label class="label-text" for="storybook-billing-type">Tipologia</label>
-                    <select class="form-select" id="storybook-billing-type">
+            <div class="sp-form-layout__row sp-form-layout__row--2">
+                <div class="sp-form-field">
+                    <label class="sp-label-text" for="storybook-billing-type">Tipologia</label>
+                    <select class="sp-form-select" id="storybook-billing-type">
                         <option>Persona fisica</option>
                         <option>Societa</option>
                     </select>
                 </div>
-                <div class="form-field">
-                    <label class="label-text" for="storybook-billing-name">Nome</label>
-                    <input class="form-input" id="storybook-billing-name" type="text" placeholder="Nome e cognome o ragione sociale">
+                <div class="sp-form-field">
+                    <label class="sp-label-text" for="storybook-billing-name">Nome</label>
+                    <input class="sp-form-input" id="storybook-billing-name" type="text" placeholder="Nome e cognome o ragione sociale">
                 </div>
             </div>
 
-            <div class="form-layout__row form-layout__row--2">
-                <div class="form-field">
-                    <label class="label-text" for="storybook-billing-fiscal-code">Codice Fiscale</label>
-                    <input class="form-input" id="storybook-billing-fiscal-code" type="text" placeholder="XXXXXXXXXXXXXXXX">
+            <div class="sp-form-layout__row sp-form-layout__row--2">
+                <div class="sp-form-field">
+                    <label class="sp-label-text" for="storybook-billing-fiscal-code">Codice Fiscale</label>
+                    <input class="sp-form-input" id="storybook-billing-fiscal-code" type="text" placeholder="XXXXXXXXXXXXXXXX">
                 </div>
-                <div class="form-field">
-                    <label class="label-text" for="storybook-billing-vat">Partita IVA</label>
-                    <input class="form-input" id="storybook-billing-vat" type="text" placeholder="IT00000000000">
-                </div>
-            </div>
-
-            <div class="form-layout__row form-layout__row--3">
-                <div class="form-field">
-                    <label class="label-text" for="storybook-billing-cap">C.A.P.</label>
-                    <input class="form-input" id="storybook-billing-cap" type="text" placeholder="00000">
-                </div>
-                <div class="form-field">
-                    <label class="label-text" for="storybook-billing-city">Citta</label>
-                    <input class="form-input" id="storybook-billing-city" type="text" placeholder="Citta">
-                </div>
-                <div class="form-field">
-                    <label class="label-text" for="storybook-billing-province">Provincia</label>
-                    <input class="form-input" id="storybook-billing-province" type="text" placeholder="XX">
+                <div class="sp-form-field">
+                    <label class="sp-label-text" for="storybook-billing-vat">Partita IVA</label>
+                    <input class="sp-form-input" id="storybook-billing-vat" type="text" placeholder="IT00000000000">
                 </div>
             </div>
 
-            <div class="form-layout__actions form-layout__actions--end">
-                <button class="button button--primary button--sm" type="button">Crea profilo</button>
+            <div class="sp-form-layout__row sp-form-layout__row--3">
+                <div class="sp-form-field">
+                    <label class="sp-label-text" for="storybook-billing-cap">C.A.P.</label>
+                    <input class="sp-form-input" id="storybook-billing-cap" type="text" placeholder="00000">
+                </div>
+                <div class="sp-form-field">
+                    <label class="sp-label-text" for="storybook-billing-city">Citta</label>
+                    <input class="sp-form-input" id="storybook-billing-city" type="text" placeholder="Citta">
+                </div>
+                <div class="sp-form-field">
+                    <label class="sp-label-text" for="storybook-billing-province">Provincia</label>
+                    <input class="sp-form-input" id="storybook-billing-province" type="text" placeholder="XX">
+                </div>
+            </div>
+
+            <div class="sp-form-layout__actions sp-form-layout__actions--end">
+                <button class="sp-button sp-button--primary sp-button--sm" type="button">Crea profilo</button>
             </div>
         </div>
     `;
@@ -80,8 +80,8 @@ export const BillingProfileForm = {
     render: () => renderBillingForm(),
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
-        await expect(canvas.getByLabelText('Tipologia')).toHaveClass('form-select');
-        await expect(canvas.getByRole('button', { name: 'Crea profilo' })).toHaveClass('button--primary');
+        await expect(canvas.getByLabelText('Tipologia')).toHaveClass('sp-form-select');
+        await expect(canvas.getByRole('button', { name: 'Crea profilo' })).toHaveClass('sp-button--primary');
     }
 };
 

@@ -23,16 +23,16 @@ const createSection = ({
     content = createContent()
 }) => `
     <section class="accordion__section${expanded ? ' accordion__section--expanded' : ''}" data-accordion-section>
-        <button class="accordion__header" type="button" data-accordion-trigger aria-expanded="${expanded ? 'true' : 'false'}">
-            <span class="accordion__header-left">
-                ${withBadge ? `<span class="accordion__badge">${number}</span>` : ''}
-                ${icon ? `<span class="accordion__header-icon accordion__header-icon--${icon}" aria-hidden="true"></span>` : ''}
-                <span class="accordion__title">${title}</span>
+        <button class="sp-accordion__header" type="button" data-accordion-trigger aria-expanded="${expanded ? 'true' : 'false'}">
+            <span class="sp-accordion__header-left">
+                ${withBadge ? `<span class="sp-accordion__badge">${number}</span>` : ''}
+                ${icon ? `<span class="sp-accordion__header-icon accordion__header-icon--${icon}" aria-hidden="true"></span>` : ''}
+                <span class="sp-accordion__title">${title}</span>
             </span>
-            <span class="accordion__icon" aria-hidden="true"></span>
+            <span class="sp-accordion__icon" aria-hidden="true"></span>
         </button>
-        <div class="accordion__content">
-            <div class="accordion__inner">
+        <div class="sp-accordion__content">
+            <div class="sp-accordion__inner">
                 ${content}
             </div>
         </div>
@@ -194,7 +194,7 @@ export const PopulatedContentSlot = {
             title: 'Contenuto strutturato',
             expanded: true,
             content: `
-                <p>Lo slot interno puo contenere markup del consumer, purche resti dentro <code>.accordion__inner</code>.</p>
+                <p>Lo slot interno puo contenere markup del consumer, purche resti dentro <code>.sp-accordion__inner</code>.</p>
                 <ul>
                     <li>Testo descrittivo</li>
                     <li>Liste semplici</li>

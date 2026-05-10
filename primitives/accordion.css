@@ -4,13 +4,14 @@
  * Fonte canonica: elements-ui
  */
 
-.accordion {
+/** @public */
+.sp-accordion {
     display: flex;
     flex-direction: column;
     gap: var(--section-gap);
 }
 
-.accordion__section {
+.sp-accordion__section {
     display: flex;
     flex-direction: column;
     background: var(--section-bg);
@@ -20,33 +21,36 @@
     scroll-margin-top: 0;
 }
 
-.accordion__section:hover {
+.sp-accordion__section:hover {
     background: var(--color-bg-gray-50);
 }
 
-.accordion__section--expanded {
+/* state: aria-expanded sull'header e' la fonte primaria; .sp-accordion__section--expanded
+   e' alias visivo BEM mantenuto come variante (deprecazione prevista v0.3 -- vedi
+   audit production-readiness 2026-05-08, 03-css-bem-tokens "stati ARIA vs modifier"). */
+.sp-accordion__section--expanded {
     background: var(--section-bg-expanded);
 }
 
-.accordion--surface-white .accordion__section--expanded {
+.sp-accordion--surface-white .sp-accordion__section--expanded {
     background: var(--color-bg-white);
 }
 
-.accordion--surface-white .accordion__header {
+.sp-accordion--surface-white .sp-accordion__header {
     padding: var(--spacing-md) 1.25rem;
 }
 
-.accordion--surface-white .accordion__header-left {
+.sp-accordion--surface-white .sp-accordion__header-left {
     gap: 0.875rem;
 }
 
-.accordion--surface-white .accordion__title {
+.sp-accordion--surface-white .sp-accordion__title {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);
     line-height: 1.2;
 }
 
-.accordion__header {
+.sp-accordion__header {
     width: 100%;
     display: flex;
     align-items: center;
@@ -60,14 +64,14 @@
     text-align: left;
 }
 
-.accordion__header-left {
+.sp-accordion__header-left {
     display: flex;
     align-items: center;
     gap: 0.625rem;
     min-width: 0;
 }
 
-.accordion__badge {
+.sp-accordion__badge {
     width: var(--section-number-size);
     height: var(--section-number-size);
     background: var(--section-number-bg);
@@ -81,7 +85,7 @@
     flex-shrink: 0;
 }
 
-.accordion__header-icon {
+.sp-accordion__header-icon {
     width: var(--section-number-size);
     height: var(--section-number-size);
     display: inline-flex;
@@ -93,7 +97,7 @@
     color: var(--color-bg-white);
 }
 
-.accordion__header-icon::before {
+.sp-accordion__header-icon::before {
     content: "";
     width: 1.125rem;
     height: 1.125rem;
@@ -103,25 +107,25 @@
     mask: var(--accordion-header-icon-mask) center / contain no-repeat;
 }
 
-.accordion__header-icon--cart {
+.sp-accordion__header-icon--cart {
     --accordion-header-icon-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2Zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2ZM7.2 14.5h8.9c.75 0 1.4-.41 1.74-1.03L21 7.2A1 1 0 0 0 20.1 5H6.4L5.7 2.7A1 1 0 0 0 4.75 2H2v2h2l3.6 10.6L6.25 17H19v-2H7.2Z'/%3E%3C/svg%3E");
 }
 
-.accordion__header-icon--shipping {
+.sp-accordion__header-icon--shipping {
     --accordion-header-icon-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2h1.7c.55 0 1.08.23 1.45.64l2.35 2.6c.32.36.5.82.5 1.3V17a2 2 0 0 1-2 2h-.18a3 3 0 0 1-5.64 0H9.82a3 3 0 0 1-5.64 0H4a1 1 0 0 1-1-1V5Zm2 0v11.18A3 3 0 0 1 9.82 17H15V5H5Zm12 4v4h4v-1.46L18.7 9H17Zm-10 9.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm11 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z'/%3E%3C/svg%3E");
 }
 
-.accordion__header-icon--payment {
+.sp-accordion__header-icon--payment {
     --accordion-header-icon-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v2h16V7H4Zm0 5v5h16v-5H4Zm2 2h5v2H6v-2Z'/%3E%3C/svg%3E");
 }
 
-.accordion__title {
+.sp-accordion__title {
     font-weight: var(--font-weight-semibold);
     font-size: 0.9375rem;
     color: var(--color-text);
 }
 
-.accordion__icon {
+.sp-accordion__icon {
     width: 1.25rem;
     height: 1.25rem;
     display: inline-block;
@@ -130,8 +134,8 @@
     flex-shrink: 0;
 }
 
-.accordion__icon::before,
-.accordion__icon::after {
+.sp-accordion__icon::before,
+.sp-accordion__icon::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -146,16 +150,16 @@
         transform var(--transition-fast);
 }
 
-.accordion__icon::after {
+.sp-accordion__icon::after {
     transform: translate(-50%, -50%) rotate(90deg);
 }
 
-.accordion__section--expanded .accordion__icon::after {
+.sp-accordion__section--expanded .sp-accordion__icon::after {
     opacity: 0;
     transform: translate(-50%, -50%) rotate(90deg) scaleX(0);
 }
 
-.accordion__content {
+.sp-accordion__content {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
@@ -164,7 +168,7 @@
         opacity var(--transition-slow);
 }
 
-.accordion__section--expanded > .accordion__content {
+.sp-accordion__section--expanded > .sp-accordion__content {
     max-height: 3000px;
     opacity: 1;
     overflow: visible;
@@ -174,7 +178,7 @@
         opacity var(--transition-slow) 0.1s;
 }
 
-.accordion__inner {
+.sp-accordion__inner {
     padding: var(--spacing-md);
     border-top: 1px solid var(--color-bg-gray-200);
     background-color: var(--color-bg-gray-50);
@@ -183,24 +187,24 @@
     overflow-x: hidden;
 }
 
-.accordion--surface-white .accordion__inner {
+.sp-accordion--surface-white .sp-accordion__inner {
     background-color: var(--color-bg-white);
     border-top: 0;
     padding: 0 1.25rem 1.25rem;
 }
 
-.accordion__inner > * + * {
+.sp-accordion__inner > * + * {
     margin-top: 0.875rem;
 }
 
 /* Mobile: header piu' alto per touch target standard e-commerce. */
-@media (max-width: 767px) {
-    .accordion__header {
+@media (max-width: 639px) {
+    .sp-accordion__header {
         padding: 1rem 0.875rem;
         min-height: 56px;
     }
 
-    .accordion__title {
+    .sp-accordion__title {
         font-size: 1rem;
     }
 }

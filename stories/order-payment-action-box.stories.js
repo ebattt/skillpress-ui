@@ -14,7 +14,7 @@ const renderPending = () => {
             <div class="order-action-box__body">
                 <p class="order-action-box__title">Contabile da caricare</p>
             </div>
-            <button class="order-action-box__btn" type="button" data-action="open-receipt-modal">
+            <button class="order-action-box__btn" type="button" data-orders-table-action="open-receipt-modal">
                 <span class="order-action-box__icon order-action-box__icon--upload" aria-hidden="true"></span>
                 Carica
             </button>
@@ -34,7 +34,7 @@ const renderDone = () => {
                 <span class="order-action-box__done-label">Contabile in revisione, procedi a caricare i file</span>
                 <span class="order-action-box__done-file" title="contabile-bonifico-ordine-110456.pdf">contabile-bonifico-ordine-110456.pdf</span>
             </div>
-            <button class="order-action-box__btn order-action-box__btn--demo" type="button" data-action="demo-verify-receipt">
+            <button class="order-action-box__btn order-action-box__btn--demo" type="button" data-orders-table-action="demo-verify-receipt">
                 <span class="order-action-box__icon order-action-box__icon--verified" aria-hidden="true"></span>
                 Emula verifica
             </button>

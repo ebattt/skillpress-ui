@@ -1,6 +1,6 @@
 {
   "name": "@ebattt/skillpress-ui",
-  "version": "0.2.0-alpha.21",
+  "version": "0.2.0-alpha.22",
   "description": "Skillpress UI — design system interno",
   "repository": {
     "type": "git",
@@ -13,7 +13,26 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "pack:check": "npm pack --dry-run --cache /tmp/skillpress-npm-cache",
-    "visual-diff": "node scripts/visual-diff.cjs"
+    "visual-diff": "node scripts/visual-diff.cjs",
+    "inventory:primitives": "node scripts/inventory-primitives.cjs",
+    "inventory:data-attrs": "node scripts/inventory-data-attrs.cjs",
+    "inventory:legacy": "node scripts/inventory-legacy.cjs",
+    "inventory:all": "npm run inventory:primitives && npm run inventory:data-attrs && npm run inventory:legacy",
+    "rename-map:build": "node scripts/build-rename-map.cjs",
+    "rename-map:validate": "node scripts/validate-rename-map.cjs",
+    "rename-map:all": "npm run rename-map:build && npm run rename-map:validate",
+    "check:naming": "node scripts/check-naming.cjs",
+    "check:legacy": "CHECK_LEGACY_MAX=7 node scripts/check-legacy.cjs",
+    "check:data-attrs": "node scripts/check-data-attrs.cjs",
+    "check:init-contract": "node scripts/check-init-contract.cjs",
+    "check:hardcoded-colors": "CHECK_HARDCODED_MAX=300 node scripts/check-hardcoded-colors.cjs",
+    "check:css-vars": "CHECK_CSS_VARS_MAX=11 node scripts/check-css-vars.cjs",
+    "check:breakpoints": "CHECK_BREAKPOINTS_MAX=3 node scripts/check-breakpoints.cjs",
+    "build:dist": "node scripts/build-dist-bundles.cjs",
+    "build:public-api": "node scripts/build-public-api.cjs",
+    "check:contract": "CHECK_LEGACY_MAX=7 node scripts/check-contract.cjs",
+    "check": "npm run check:naming && npm run check:legacy && npm run check:data-attrs && npm run check:init-contract && npm run check:hardcoded-colors && npm run check:css-vars && npm run check:breakpoints && npm run build:dist && npm run pack:check",
+    "prepublishOnly": "npm run check && npm run build:public-api && npm run check:contract"
   },
   "files": [
     "fonts/",
@@ -23,10 +42,17 @@
     "primitives/",
     "components/",
     "js/",
-    "bundles/"
+    "bundles/",
+    "dist/"
   ],
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18"
+  },
+  "sideEffects": false,
   "devDependencies": {
     "@storybook/html-vite": "^10.3.5",
+    "playwright": "^1.59.1",
     "storybook": "^10.3.5",
     "vite": "^8.0.10"
   }

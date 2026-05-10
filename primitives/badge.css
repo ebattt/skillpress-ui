@@ -4,7 +4,8 @@
  * Data estrazione: 2026-04-25
  */
 
-.badge {
+/** @public */
+.sp-badge {
     --badge-color: var(--color-text-secondary);
 
     display: inline-flex;
@@ -23,7 +24,7 @@
     vertical-align: middle;
 }
 
-.badge::before {
+.sp-badge::before {
     content: "";
     width: 0.4375rem;
     height: 0.4375rem;
@@ -32,26 +33,26 @@
     flex: 0 0 auto;
 }
 
-.badge--success {
+.sp-badge--success {
     --badge-color: var(--color-success-badge-text, var(--color-success));
 }
 
-.badge--warning {
+.sp-badge--warning {
     --badge-color: var(--color-warning-badge-text, var(--color-warning));
 }
 
-.badge--error {
+.sp-badge--error {
     --badge-color: var(--color-error-badge-text, var(--color-error));
 }
 
-.badge--info {
+.sp-badge--info {
     --badge-color: var(--color-info-badge-text, var(--color-info));
 }
 
-.badge--cancelled {
+.sp-badge--cancelled {
     --badge-color: var(--color-cancelled-badge-text, var(--color-text-muted));
 }
 
-.badge--neutral {
+.sp-badge--neutral {
     --badge-color: var(--color-text-secondary);
 }

@@ -21,9 +21,9 @@ const renderBillingForm = ({ hidden = false, mode = 'create' } = {}) => {
              data-billing-form-card-mode="${mode}">
             <h3 class="billing-form-card__title"
                 data-billing-form-card-title
-                data-create-label="Nuova anagrafica"
-                data-edit-label="Modifica anagrafica">${mode === 'edit' ? 'Modifica anagrafica' : 'Nuova anagrafica'}</h3>
-            <form class="billing-form" data-form="billing">
+                data-billing-form-card-create-label="Nuova anagrafica"
+                data-billing-form-card-edit-label="Modifica anagrafica">${mode === 'edit' ? 'Modifica anagrafica' : 'Nuova anagrafica'}</h3>
+            <form class="billing-form" data-billing-form-card-form="billing">
                 <div class="billing-form__row">
                     <div class="billing-form__field">
                         <label class="billing-form__label" for="bf-name-story">Nome *</label>
@@ -111,8 +111,8 @@ const renderBillingForm = ({ hidden = false, mode = 'create' } = {}) => {
                     <button type="submit"
                             class="billing-form__btn billing-form__btn--primary"
                             data-billing-form-card-submit
-                            data-create-label="Crea anagrafica"
-                            data-edit-label="Salva modifiche">${mode === 'edit' ? 'Salva modifiche' : 'Crea anagrafica'}</button>
+                            data-billing-form-card-create-label="Crea anagrafica"
+                            data-billing-form-card-edit-label="Salva modifiche">${mode === 'edit' ? 'Salva modifiche' : 'Crea anagrafica'}</button>
                 </div>
             </form>
         </div>

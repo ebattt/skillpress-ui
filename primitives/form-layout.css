@@ -7,51 +7,52 @@
  * CSS-only. Fields come from FormPrimitives, actions from Button.
  */
 
-.form-layout {
+/** @public */
+.sp-form-layout {
     margin-top: var(--spacing-sm);
 }
 
-.form-layout--compact .label-text {
+.sp-form-layout--compact .sp-label-text {
     font-size: var(--font-size-sm);
     line-height: 1.25rem;
 }
 
-.form-layout > * + * {
+.sp-form-layout > * + * {
     margin-top: var(--section-gap);
 }
 
-.form-layout__row {
+.sp-form-layout__row {
     display: grid;
     gap: 0.625rem;
 }
 
-.form-layout__row--2 {
+.sp-form-layout__row--2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.form-layout__row--3 {
+.sp-form-layout__row--3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.form-layout__copy-row {
+.sp-form-layout__copy-row {
     margin-bottom: 0;
     padding-bottom: 0;
 }
 
-.form-layout__actions {
+.sp-form-layout__actions {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
     flex-wrap: wrap;
 }
 
-.form-layout__actions--end {
+.sp-form-layout__actions--end {
     justify-content: flex-end;
 }
 
 @media (max-width: 639px) {
-    .form-layout__row--2,
-    .form-layout__row--3 {
+    .sp-form-layout__row--2,
+    .sp-form-layout__row--3 {
         grid-template-columns: 1fr;
     }
 }

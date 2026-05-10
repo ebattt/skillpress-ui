@@ -13,22 +13,23 @@
  *     </div>
  *   </div>
  *
- * La percentuale = (rating / 5) * 100. Inline style sulla larghezza per data-driven CMS.
+ * La percentuale = (rating / 5) * 100. Inline style sulla larghezza per data-rating-driven CMS.
  */
 
-.rating {
+/** @public */
+.sp-rating {
     position: relative;
     display: inline-block;
     line-height: 1;
 }
 
-.rating__empty {
+.sp-rating__empty {
     display: flex;
     gap: 2px;
     line-height: 1;
 }
 
-.rating__filled {
+.sp-rating__filled {
     position: absolute;
     top: 0;
     left: 0;
@@ -39,13 +40,13 @@
     white-space: nowrap;
 }
 
-.rating__star {
+.sp-rating__star {
     display: inline-block;
     color: var(--color-bg-gray-200);
     font-size: 16px;
     line-height: 1;
 }
 
-.rating__filled .rating__star {
+.sp-rating__filled .sp-rating__star {
     color: var(--color-primary);
 }

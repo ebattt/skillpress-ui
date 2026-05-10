@@ -1,0 +1,3309 @@
+/* Checkout runtime bundle for backend/CMS integrations. */
+
+/* === inline base/fonts.css === */
+/**
+ * FONTS — Asset tipografici Skillpress UI
+ *
+ * Manrope e il font obbligatorio del design system e viene servito dal package.
+ * Non importare Google Fonts nel runtime consumer.
+ */
+
+@font-face {
+    font-family: "Manrope";
+    src: url("../fonts/manrope/Manrope-Variable.woff2") format("woff2-variations");
+    font-weight: 200 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* === inline tokens/tokens.css === */
+/**
+ * Fonte: elements-ui/css/tokens.css
+ * Data copia: 2026-04-23
+ * Nota: copia esatta.
+ */
+
+/**
+ * ==========================================================================
+ * TOKENS -- Design token per Skillpress UI
+ * ==========================================================================
+ *
+ * SCOPO:
+ *   Fonte unica di verita per tutti i valori di design del sistema Skillpress.
+ *   Questo file definisce colori, spaziature, raggi, ombre, transizioni,
+ *   z-index e tipografia come CSS Custom Properties su :root.
+ *
+ * CONSUMATORI:
+ *   - elements-ui/ (catalogo componenti)
+ *   - product-page-integration/ (pagina prodotto)
+ *   - qualsiasi pagina che importa product-page.css o components.css
+ *
+ * DIPENDENZE:
+ *   Nessuna -- questo file deve essere importato PRIMA di tutti gli altri.
+ *
+ * Elementi HTML: nessuno direttamente; usato da tutti i componenti.
+ * ==========================================================================
+ */
+
+:root {
+    /* === COLORI BRAND === */
+    /* Arancione Skillpress: usato per CTA, selezioni attive, badge */
+    --color-primary: #F08A00;
+    --color-primary-light: #FFB149;
+    --color-primary-dark: #D67800;
+
+    /* Teal/verde: usato per bottoni carrello, prezzi selezionati, accenti */
+    --color-secondary: #1C7264;
+    --color-secondary-light: #298979;
+    --color-secondary-dark: #0F544D;
+
+    /* Blu scuro: usato per elementi premium */
+    --color-dark: #003E51;
+
+    /* === COLORI TESTO === */
+    /* Scala di grigi per gerarchia testuale */
+    --color-text: #111418;                  /* Testo principale (quasi nero) */
+    --color-text-strong: #374151;           /* gray-700 -- testo forte/enfatizzato */
+    --color-text-secondary: #4B5563;        /* gray-600 -- testo secondario */
+    --color-text-light: #6B7280;            /* gray-500 -- testo terziario */
+    --color-text-muted: #9CA3AF;            /* gray-400 -- placeholder, disabilitato */
+
+    /* === COLORI SFONDO === */
+    /* Grigi neutri per sfondi, bordi e separatori */
+    --color-bg-white: #FFFFFF;
+    --color-bg-gray-50: #F9FAFB;            /* Sfondo sezioni, sidebar */
+    --color-bg-gray-75: #f7f7f8;            /* Sfondo bottoni inattivi */
+    --color-bg-gray-100: #F3F4F6;           /* Sfondo hover, bordi leggeri */
+    --color-bg-gray-200: #E5E7EB;           /* Bordi standard */
+    --color-bg-warm-beige: #F5F5F3;         /* Sfondo box totale */
+
+    /* === COLORI SEZIONI ACCORDION === */
+    --section-bg: var(--color-bg-white);
+    --section-bg-expanded: var(--color-bg-gray-50);
+    --section-border: var(--color-bg-gray-200);
+    --section-number-bg: var(--color-primary);
+    --section-number-color: var(--color-bg-white);
+
+    /* === COLORI SELEZIONE === */
+    /* Stati per card e opzioni selezionabili */
+    --selection-active-bg: var(--color-primary);
+    --selection-active-color: var(--color-bg-white);
+    --selection-highlight-bg: #FFF4E6;      /* Sfondo formato/opzione selezionata */
+    --selection-highlight-border: var(--color-primary);
+
+    /* === COLORI PREZZO === */
+    /* Tabella prezzi e indicatori economici */
+    --price-best-bg: #DCFCE7;               /* Verde chiaro miglior prezzo */
+    --price-best-border: #22C55E;           /* Verde bordo */
+    --price-discount-color: #16A34A;        /* Testo sconto/risparmio */
+    --price-iva-badge: #EFF6FF;             /* Badge IVA */
+
+    /* === COLORI STATO === */
+    /* Feedback visivo per errori, successi, warning */
+    --color-error: #DC2626;                 /* Rosso errore */
+    --color-error-light: #EF4444;           /* Rosso errore chiaro */
+    --color-error-bg: #FEF2F2;              /* Sfondo errore */
+    --color-success: #16A34A;               /* Verde successo */
+    --color-success-bg: #F0FDF4;            /* Sfondo successo */
+    --color-info: #3B82F6;                  /* Blu informativo */
+    --color-warning: #EA580C;               /* Arancione warning */
+    --color-warning-bg: #FFF7ED;            /* Sfondo warning */
+    --color-warning-border: #FED7AA;        /* Bordo warning */
+
+    /* === BORDI === */
+    /* Colori bordo standard e focus */
+    --color-border: #D1D5DB;               /* Bordo grigio standard */
+    --color-border-focus: #3B82F6;         /* Bordo focus blu */
+
+    /* === DIMENSIONI LAYOUT === */
+    /* Larghezze e padding principali della pagina */
+    --page-max-width: 1280px;               /* max-w-7xl */
+    --page-padding-x: 1rem;                 /* px-4 */
+    --sidebar-width: 380px;                 /* Larghezza sidebar desktop */
+    --sidebar-top: 250px;                   /* Posizione sticky sidebar */
+
+    /* === DIMENSIONI SEZIONI ACCORDION === */
+    --section-padding: 1rem;                /* Padding interno sezioni */
+    --section-gap: 0.75rem;                 /* Gap tra sezioni */
+    --section-radius: 0.75rem;              /* Border radius sezioni */
+    --section-number-size: 2rem;            /* Dimensione cerchio numero */
+
+    /* === SPAZIATURA === */
+    /* Scala a incrementi basata su 0.25rem (4px) */
+    --spacing-xs: 0.25rem;                  /* 4px */
+    --spacing-sm: 0.5rem;                   /* 8px */
+    --spacing-md: 1rem;                     /* 16px */
+    --spacing-lg: 1.5rem;                   /* 24px */
+    --spacing-xl: 2rem;                     /* 32px */
+
+    /* === RAGGIO BORDI === */
+    /* Scala progressiva per coerenza visiva */
+    --radius-sm: 0.25rem;                   /* 4px -- input, piccoli elementi */
+    --radius-md: 0.375rem;                  /* 6px -- bottoni piccoli */
+    --radius-lg: 0.5rem;                    /* 8px -- card, dropdown */
+    --radius-xl: 0.75rem;                   /* 12px -- sezioni, modal */
+    --radius-full: 9999px;                  /* Cerchio / pill */
+
+    /* === OMBRE === */
+    /* Scala progressiva per gerarchia visiva */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+    /* Ombra specifica per immagini prodotto (effetto libro) */
+    --shadow-product: 1px 1px 2px 0 rgba(255, 255, 255, 0.3) inset,
+                      -1px -1px 2px 0 rgba(230, 230, 230, 0.5) inset,
+                      -5px 5px 10px 0 rgba(230, 230, 230, 0.2),
+                      5px -5px 10px 0 rgba(230, 230, 230, 0.2),
+                      -5px -5px 10px 0 rgba(255, 255, 255, 0.9),
+                      5px 5px 13px 0 rgba(230, 230, 230, 0.9);
+
+    /* === TRANSIZIONI === */
+    /* Tre velocita per coprire tutti i casi d'uso */
+    --transition-fast: 150ms ease;          /* hover/focus immediati */
+    --transition-normal: 200ms ease;        /* dropdown, toggle */
+    --transition-slow: 300ms ease;          /* animazioni piu ampie */
+    --transition-section: 0.4s cubic-bezier(0.4, 0, 0.2, 1);  /* accordion */
+
+    /* === BREAKPOINT CANONICI ===
+       CSS non permette `var()` dentro `@media` queries, quindi i breakpoint
+       sono numeri letterali nei singoli componenti. Per garantire coerenza,
+       usare ESCLUSIVAMENTE questi 4 valori:
+
+         374px   small phones (iPhone SE 1st gen, fix mobile-bar)
+         640px   phones / tablet portrait stretti (mobile cutoff)
+         1024px  tablet landscape / small desktop (desktop cutoff)
+         1280px  wide desktop (= --page-max-width)
+
+       Convenzione `max-width` / `min-width`:
+         (max-width: 639px)   -> mobile (sotto 640)
+         (min-width: 640px)   -> tablet+
+         (max-width: 1023px)  -> mobile + tablet (sotto desktop)
+         (min-width: 1024px)  -> desktop
+         (min-width: 1280px)  -> wide desktop
+
+       Eccezioni storiche: `767px` (accordion touch target, deprecato — da
+       migrare a 640px), `480px` (price-table small refinement, da rivedere).
+       Tutti i nuovi componenti devono usare uno dei 4 canonici. */
+
+    /* === Z-INDEX === */
+    /* Gerarchia ordinata per evitare conflitti di sovrapposizione */
+    --z-base: 1;
+    --z-dropdown: 50;
+    --z-tooltip: 60;
+    --z-sticky: 70;
+    --z-overlay: 80;
+    --z-modal: 100;
+    --z-mobile-bar: 999;                    /* Barra mobile fixed */
+
+    /* === TIPOGRAFIA === */
+    /* Font stack con fallback su font di sistema */
+    --font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Scala dimensioni font — unica per tutte le pagine
+       Body text (xs-lg): fissi, non responsive
+       Heading text (xl-4xl): responsive con clamp() tra 375px e 1280px */
+    --font-size-xs: 0.75rem;                                    /* 12px */
+    --font-size-sm: 0.875rem;                                   /* 14px */
+    --font-size-base: 1rem;                                     /* 16px */
+    --font-size-lg: 1.125rem;                                   /* 18px */
+    --font-size-xl: clamp(1.125rem, 1rem + 0.39vw, 1.25rem);   /* 18px → 20px */
+    --font-size-2xl: clamp(1.25rem, 1rem + 0.78vw, 1.5rem);    /* 20px → 24px */
+    --font-size-3xl: clamp(1.5rem, 1rem + 1.56vw, 2rem);       /* 24px → 32px */
+    --font-size-4xl: clamp(1.75rem, 1.25rem + 1.56vw, 2.5rem); /* 28px → 40px */
+
+    /* Pesi font */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Line-height */
+    --line-height-tight: 1.2;               /* Heading, titoli */
+    --line-height-snug: 1.375;              /* Sottotitoli, card title */
+    --line-height-normal: 1.5;              /* Body text */
+    --line-height-relaxed: 1.625;           /* Contenuto lungo (blog, descrizioni) */
+
+    /* === TOKEN SPECIFICI SHELL === */
+    --shell-header-height: 60px;
+    --shell-sidebar-width: 280px;
+    --shell-sidebar-bg: var(--color-bg-gray-50);
+    --shell-code-bg: #1E293B;
+    --shell-code-color: #E2E8F0;
+    --shell-code-success: #4ADE80;             /* Verde successo su sfondo scuro (copy btn) */
+
+    /* === TOKEN SEMANTICI AGGIUNTIVI ===
+       Aggiunti in fase 4-sub (audit production-readiness 2026-05-08, F008).
+       Alias semantici sopra la scala grezza per ridurre hardcoded nei componenti. */
+
+    /** @public */
+    --color-text-meta: var(--color-text-light);            /* metadati neutri (e.g. icone meta dashboard) */
+    /** @public */
+    --color-row-hover: var(--color-bg-gray-50);            /* hover row su tabelle */
+    /** @public */
+    --color-status-warning-soft: #FEF3C7;                  /* amber-100 -- background warning leggero */
+    /** @public */
+    --color-status-danger-soft: #FEE2E2;                   /* red-100 -- background errore leggero */
+    /** @public */
+    --color-status-success-soft: #DBEAFE;                  /* blue-100 -- background info/success leggero */
+    /** @public */
+    --color-dashboard-border: var(--color-border);         /* alias per bordi su layout dashboard */
+    /** @public */
+    --color-error-dark: #B91C1C;                           /* red-700 -- hover/active errore */
+
+    /* Accent badges/banner verified (vedi order-payment-action-box). */
+    /** @public */
+    --color-accent-bg: rgba(28, 114, 100, 0.08);
+}
+
+/* === MOBILE TOKEN OVERRIDES ===
+   Allineato a Skillpress-frontend/elements-ui/css/components/_layout.css
+   (`@media (max-width: 639px)` riduce padding pagina/sezioni). */
+@media (max-width: 639px) {
+    :root {
+        --page-padding-x: 0.75rem;
+        --section-padding: 0.75rem;
+    }
+}
+
+
+/* === inline base/reset.css === */
+/**
+ * Fonte: elements-ui/css/_base.css
+ * Data copia: 2026-04-23
+ * Nota: copia esatta.
+ */
+
+/**
+ * ==========================================================================
+ * BASE -- CSS Reset e stili fondamentali
+ * ==========================================================================
+ *
+ * SCOPO:
+ *   Reset CSS completo (equivalente Tailwind Preflight) + stili base
+ *   per body, scrollbar e visibilita.
+ *
+ * DIPENDENZE:
+ *   - tokens.css (font-family, colori sfondo e testo)
+ *   Deve essere caricato DOPO tokens.css e PRIMA di components.css.
+ *   L'ordine corretto e' definito in product-page.css:
+ *     1. tokens.css  (design tokens)
+ *     2. _base.css   (questo file)
+ *     3. components.css (componenti)
+ *
+ * CONTENUTO:
+ *   - CSS Reset (Tailwind Preflight equivalent)
+ *   - Body configuration
+ *   - Scrollbar utilities
+ *   - Scroll behavior
+ *
+ * Elementi HTML: *, html, body, .scrollbar-hide, .scroll-smooth
+ * ==========================================================================
+ */
+
+
+/* ====================================================================
+   CSS RESET (Tailwind Preflight equivalent)
+   ==================================================================== */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--color-bg-gray-200);
+}
+
+html, :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+    -webkit-tap-highlight-color: transparent;
+}
+
+hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+}
+
+abbr:where([title]) {
+    text-decoration: underline dotted;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+b, strong {
+    font-weight: bolder;
+}
+
+code, kbd, samp, pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+    font-size: 1em;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+}
+
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+button, select {
+    text-transform: none;
+}
+
+button, input:where([type='button']), input:where([type='reset']), input:where([type='submit']) {
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none;
+}
+
+:-moz-focusring {
+    outline: auto;
+}
+
+:-moz-ui-invalid {
+    box-shadow: none;
+}
+
+progress {
+    vertical-align: baseline;
+}
+
+::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto;
+}
+
+[type='search'] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+}
+
+::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
+    margin: 0;
+}
+
+fieldset {
+    margin: 0;
+    padding: 0;
+}
+
+legend {
+    padding: 0;
+}
+
+ol, ul, menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+dialog {
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input::placeholder, textarea::placeholder {
+    opacity: 1;
+    color: var(--color-text-muted);
+}
+
+button, [role="button"] {
+    cursor: pointer;
+}
+
+:disabled {
+    cursor: default;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+[hidden]:where(:not([hidden='until-found'])) {
+    display: none;
+}
+
+
+/* ====================================================================
+   BODY CONFIGURATION
+   ==================================================================== */
+body {
+    line-height: inherit;
+    font-family: var(--font-family);
+    background: var(--color-bg-white);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+/* ====================================================================
+   SCROLLBAR UTILITIES
+   ==================================================================== */
+.scrollbar-hide {
+    scrollbar-width: none;                    /* Firefox */
+    -ms-overflow-style: none;                 /* IE and Edge */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;                            /* Chrome, Safari, Opera */
+}
+
+
+/* ====================================================================
+   SCROLL BEHAVIOR
+   ==================================================================== */
+.scroll-smooth {
+    scroll-behavior: smooth;
+}
+
+
+/* === inline utilities/utilities.css === */
+/**
+ * Fonte: elements-ui/css/components/_utilities.css
+ * Data copia: 2026-04-23
+ * Nota: copia esatta.
+ */
+
+/**
+ * ==========================================================================
+ * UTILITIES -- Classi utility (ex-Tailwind) e helpers
+ * ==========================================================================
+ *
+ * SCOPO:
+ *   Classi utility atomiche migrate da Tailwind CSS.
+ *   Organizzate per categoria: layout, spacing, typography, colors,
+ *   borders, sizing, position, visibility, interactive, responsive.
+ *
+ * NOTA:
+ *   Queste classi sono usate nell'HTML per styling rapido.
+ *   Per nuovi componenti, preferire classi semantiche nei file dedicati.
+ *
+ * DIPENDENZE:
+ *   - tokens.css (colori, dimensioni)
+ *
+ * Elementi HTML: vari (usati inline nell'HTML)
+ * ==========================================================================
+ */
+
+/* === PADDING === */
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.pb-4 {
+    padding-bottom: 1rem;
+}
+
+.pt-4 {
+    padding-top: 1rem;
+}
+
+.pb-10 {
+    padding-bottom: 2.5rem;
+}
+
+
+/* === MARGIN === */
+.mt-3 {
+    margin-top: 0.75rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mb-3 {
+    margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+    margin-bottom: 0.75rem;
+}
+
+.mb-5 {
+    margin-bottom: 1.25rem;
+}
+
+
+/* === SPACE === */
+.space-y-1 > * + * {
+    margin-top: 0.25rem;
+}
+
+.space-y-1-5 > * + * {
+    margin-top: 0.375rem;
+}
+
+.space-y-2 > * + * {
+    margin-top: 0.5rem;
+}
+
+.space-y-3 > * + * {
+    margin-top: 0.75rem;
+}
+
+.space-y-6 > * + * {
+    margin-top: 1.5rem;
+}
+
+
+/* === GAP === */
+.gap-1 {
+    gap: 0.25rem;
+}
+
+.gap-1-5 {
+    gap: 0.375rem;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.gap-2-5 {
+    gap: 0.625rem;
+}
+
+.gap-3 {
+    gap: 0.75rem;
+}
+
+.gap-6 {
+    gap: 1.5rem;
+}
+
+.gap-8 {
+    gap: 2rem;
+}
+
+
+/* === FLEXBOX === */
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-1 {
+    flex: 1 1 0%;
+}
+
+.flex-shrink-0 {
+    flex-shrink: 0;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.items-start {
+    align-items: flex-start;
+}
+
+.items-baseline {
+    align-items: baseline;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+
+/* === GRID === */
+.grid {
+    display: grid;
+}
+
+.grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+
+/* === TYPOGRAPHY === */
+.text-xs {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-normal);
+}
+
+.text-sm {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+}
+
+.text-base {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+}
+
+.text-lg {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-snug);
+}
+
+.text-xl {
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-snug);
+}
+
+.text-2xl {
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-tight);
+}
+
+.text-3xl {
+    font-size: var(--font-size-3xl);
+    line-height: var(--line-height-tight);
+}
+
+.text-4xl {
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-tight);
+}
+
+.font-medium {
+    font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+    font-weight: var(--font-weight-bold);
+}
+
+.tracking-tight {
+    letter-spacing: -0.025em;
+}
+
+.leading-relaxed {
+    line-height: 1.625;
+}
+
+.leading-snug {
+    line-height: 1.375;
+}
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+
+/* === TEXT COLORS === */
+.text-white {
+    color: #ffffff;
+}
+
+.text-gray-400 {
+    color: var(--color-text-muted);
+}
+
+.text-gray-500 {
+    color: var(--color-text-light);
+}
+
+.text-gray-600 {
+    color: var(--color-text-secondary);
+}
+
+.text-gray-700 {
+    color: var(--color-text-strong);
+}
+
+.text-gray-800 {
+    color: #1f2937;
+}
+
+.text-dark {
+    color: var(--color-text);
+}
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-accent {
+    color: var(--color-secondary);
+}
+
+.text-green-600 {
+    color: var(--color-success);
+}
+
+.text-red-500 {
+    color: var(--color-error-light);
+}
+
+.text-red-600 {
+    color: var(--color-error);
+}
+
+.text-orange-500 {
+    color: var(--color-primary);
+}
+
+.text-orange-600 {
+    color: var(--color-warning);
+}
+
+
+/* === BACKGROUND COLORS === */
+.bg-white {
+    background-color: var(--color-bg-white);
+}
+
+.bg-gray-50 {
+    background-color: var(--color-bg-gray-50);
+}
+
+.bg-gray-75 {
+    background-color: var(--color-bg-gray-75);
+}
+
+.bg-gray-100 {
+    background-color: var(--color-bg-gray-100);
+}
+
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-dark-teal {
+    background-color: var(--color-secondary-dark);
+}
+
+.bg-warm-beige {
+    background-color: var(--color-bg-warm-beige);
+}
+
+.bg-accent-10 {
+    background-color: rgba(28, 114, 100, 0.1);
+}
+
+
+/* === BORDERS === */
+.border {
+    border-width: 1px;
+    border-style: solid;
+}
+
+.border-t {
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+.border-gray-200 {
+    border-color: var(--color-bg-gray-200);
+}
+
+.border-gray-300 {
+    border-color: var(--color-border);
+}
+
+.border-red-500 {
+    border-color: var(--color-error-light);
+}
+
+.border-primary {
+    border-color: var(--color-primary);
+}
+
+
+/* === BORDER RADIUS === */
+.rounded {
+    border-radius: var(--radius-sm);
+}
+
+.rounded-md {
+    border-radius: var(--radius-md);
+}
+
+.rounded-lg {
+    border-radius: var(--radius-lg);
+}
+
+.rounded-xl {
+    border-radius: var(--radius-xl);
+}
+
+.rounded-full {
+    border-radius: var(--radius-full);
+}
+
+
+/* === SHADOWS === */
+.shadow-md {
+    box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow-lg);
+}
+
+
+/* === SIZING === */
+.w-full {
+    width: 100%;
+}
+
+.w-7 {
+    width: 1.75rem;
+}
+
+.w-9 {
+    width: 2.25rem;
+}
+
+.w-10 {
+    width: 2.5rem;
+}
+
+.h-fit {
+    height: fit-content;
+}
+
+.h-7 {
+    height: 1.75rem;
+}
+
+.h-9 {
+    height: 2.25rem;
+}
+
+.h-10 {
+    height: 2.5rem;
+}
+
+.h-px {
+    height: 1px;
+}
+
+.min-w-0 {
+    min-width: 0px;
+}
+
+
+/* === POSITION === */
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.inset-0 {
+    inset: 0;
+}
+
+.top-1-2 {
+    top: 50%;
+}
+
+.left-3 {
+    left: 0.75rem;
+}
+
+.right-3 {
+    right: 0.75rem;
+}
+
+.-translate-y-1-2 {
+    transform: translateY(-50%);
+}
+
+
+/* === INTERACTIVE === */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.transition-colors {
+    transition-property: color, background-color, border-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.hover-scale-110:hover {
+    transform: scale(1.1);
+}
+
+.hover-bg-white:hover {
+    background-color: var(--color-bg-white);
+}
+
+.hover-bg-gray-100:hover {
+    background-color: var(--color-bg-gray-100);
+}
+
+.hover-bg-teal:hover {
+    background-color: var(--color-secondary-light);
+}
+
+.hover-shadow-xl:hover {
+    box-shadow: var(--shadow-xl);
+}
+
+
+/* === FOCUS STATES === */
+.focus-ring:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-primary), 0 0 0 4px rgba(240, 138, 0, 0.2);
+}
+
+.focus-ring-accent:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-secondary);
+}
+
+
+/* === RESPONSIVE VISIBILITY === */
+@media (min-width: 768px) {
+    .md\:hidden {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lg\:hidden {
+        display: none !important;
+    }
+}
+
+
+/* === PREFERS REDUCED MOTION === */
+/* Disabilita tutte le animazioni e transizioni se l'utente lo richiede */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* === inline primitives/button.css === */
+/**
+ * BUTTON — Primitive button styles
+ * Fonte: Skillpress-frontend/elements-ui/css/components/_buttons.css
+ * Data estrazione: 2026-04-25
+ */
+
+/** @public */
+.sp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.5rem;
+    padding: 0.625rem 1rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-full);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-normal);
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        opacity var(--transition-fast);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sp-button:hover {
+    text-decoration: none;
+}
+
+.sp-button:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.sp-button:disabled,
+.sp-button[aria-disabled="true"],
+.sp-button--disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.sp-button--primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-bg-white);
+}
+
+.sp-button--primary:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+}
+
+.sp-button--secondary {
+    background-color: var(--color-secondary-dark);
+    border-color: var(--color-secondary-dark);
+    color: var(--color-bg-white);
+    box-shadow: var(--shadow-lg);
+}
+
+.sp-button--secondary:hover {
+    background-color: var(--color-secondary-light);
+    border-color: var(--color-secondary-light);
+    box-shadow: var(--shadow-xl);
+}
+
+.sp-button--outline {
+    background-color: var(--color-bg-white);
+    border-color: var(--color-bg-gray-200);
+    color: var(--color-text);
+}
+
+.sp-button--outline:hover {
+    background-color: var(--color-bg-gray-50);
+    border-color: var(--color-border);
+}
+
+.sp-button--ghost {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--color-secondary);
+}
+
+.sp-button--ghost:hover {
+    background-color: rgba(28, 114, 100, 0.08);
+    color: var(--color-secondary-dark);
+}
+
+.sp-button--dashboard-link {
+    min-height: auto;
+    padding: 0;
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 0;
+    color: var(--color-primary);
+    box-shadow: none;
+    font-size: 0.9375rem;
+}
+
+.sp-button--dashboard-link:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--color-primary-dark);
+    box-shadow: none;
+}
+
+.sp-button--dashed {
+    width: 100%;
+    min-height: auto;
+    padding: 0.625rem;
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-xl);
+    background: transparent;
+    color: var(--color-text-light);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.25rem;
+    box-shadow: none;
+}
+
+.sp-button--dashed:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background: transparent;
+}
+
+.sp-button--sm {
+    min-height: 2rem;
+    padding: 0.375rem 0.75rem;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-sm);
+}
+
+.sp-button--full {
+    width: 100%;
+}
+
+.sp-button__icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    color: currentColor;
+}
+
+.sp-button__icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    stroke: currentColor;
+}
+
+
+/* === inline primitives/badge.css === */
+/**
+ * BADGE — Dot status badge primitive
+ * Fonte: Skillpress-frontend/dashboard/css/components/_badges.css
+ * Data estrazione: 2026-04-25
+ */
+
+/** @public */
+.sp-badge {
+    --badge-color: var(--color-text-secondary);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--badge-color);
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.sp-badge::before {
+    content: "";
+    width: 0.4375rem;
+    height: 0.4375rem;
+    border-radius: var(--radius-full);
+    background: currentColor;
+    flex: 0 0 auto;
+}
+
+.sp-badge--success {
+    --badge-color: var(--color-success-badge-text, var(--color-success));
+}
+
+.sp-badge--warning {
+    --badge-color: var(--color-warning-badge-text, var(--color-warning));
+}
+
+.sp-badge--error {
+    --badge-color: var(--color-error-badge-text, var(--color-error));
+}
+
+.sp-badge--info {
+    --badge-color: var(--color-info-badge-text, var(--color-info));
+}
+
+.sp-badge--cancelled {
+    --badge-color: var(--color-cancelled-badge-text, var(--color-text-muted));
+}
+
+.sp-badge--neutral {
+    --badge-color: var(--color-text-secondary);
+}
+
+
+/* === inline primitives/card.css === */
+/**
+ * CARD — Generic card surface primitive
+ * Fonte: Skillpress-frontend/elements-ui/css/components/_cards.css
+ * Data estrazione: 2026-04-25
+ */
+
+/** @public */
+.sp-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-bg-gray-200);
+    border-radius: var(--radius-lg);
+    color: var(--color-text);
+    font-family: inherit;
+    overflow: hidden;
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.sp-card__media {
+    display: block;
+    width: 100%;
+    background: var(--color-bg-gray-100);
+    overflow: hidden;
+}
+
+.sp-card__media img,
+.sp-card__media picture {
+    display: block;
+    width: 100%;
+}
+
+.sp-card__media img {
+    height: auto;
+    object-fit: cover;
+}
+
+.sp-card__header,
+.sp-card__body,
+.sp-card__footer {
+    padding: var(--spacing-md);
+}
+
+.sp-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+}
+
+.sp-card__body {
+    flex: 1 1 auto;
+}
+
+.sp-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    border-top: 1px solid var(--color-bg-gray-200);
+}
+
+.sp-card__title {
+    margin: 0;
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-snug);
+}
+
+.sp-card__description {
+    margin: var(--spacing-xs) 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+}
+
+.sp-card__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.sp-card__eyebrow {
+    color: var(--color-text-light);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-normal);
+}
+
+.sp-card--interactive {
+    cursor: pointer;
+}
+
+.sp-card--interactive:hover {
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.sp-card--interactive:focus-within {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.sp-card--selected {
+    background: var(--selection-highlight-bg);
+    border-color: var(--selection-highlight-border);
+    box-shadow: 0 0 0 1px var(--selection-highlight-border);
+}
+
+.sp-card--control-row .sp-card__title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.25rem;
+}
+
+.sp-card--control-row {
+    border-radius: var(--radius-xl);
+}
+
+.sp-card--control-row > .sp-card__header {
+    align-items: center;
+    padding: var(--spacing-md);
+}
+
+.sp-card--control-row > .sp-card__header > *:first-child {
+    min-width: 0;
+}
+
+.sp-card--control-row .sp-toggle-switch {
+    flex: 0 0 auto;
+}
+
+.sp-card--control-row .sp-card__description {
+    margin-top: 0.125rem;
+    color: var(--color-text-light);
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+}
+
+.sp-card--surface-muted {
+    background: var(--color-bg-gray-50);
+    border-color: var(--color-bg-gray-200);
+    border-radius: var(--radius-xl);
+}
+
+.sp-card--surface-muted > .sp-card__header {
+    padding: 1.25rem 1.25rem 0;
+}
+
+.sp-card--surface-muted > .sp-card__body {
+    padding: 1.25rem;
+}
+
+.sp-card--surface-muted .sp-card__title {
+    margin-bottom: var(--spacing-md);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.5rem;
+}
+
+.sp-card--surface-muted > .sp-card__header + .sp-card__body {
+    padding-top: var(--spacing-md);
+}
+
+.sp-card--disabled,
+.sp-card[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.sp-card--interactive.sp-card--disabled:hover,
+.sp-card--interactive[aria-disabled="true"]:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* === inline primitives/form-primitives.css === */
+/**
+ * FORM PRIMITIVES -- contenitore form, label, input testo/numero, select, messaggi
+ *
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
+ *   - .sp-form-field                                  L33-35
+ *   - .sp-label-row + .sp-label-text + .sp-label-hint       L41-69
+ *   - .sp-form-input + textarea.sp-form-input            L99-133
+ *   - .sp-nome-lavoro-input (alias semantico)         L137-168
+ *   - .sp-facciate-row + .sp-spessore-display            L449-487
+ *   - .sp-form-select                                 L190-223
+ *   - .sp-error-msg + .sp-error-inline + .sp-success-inline L292-329
+ *   - .sp-custom-dims + .sp-custom-dims__grid/field/label L776-805
+ *   - .sp-nome-ref-row                                L174-184
+ *
+ * Fonte markup verbatim (template literal):
+ *   - product-page-integration/js/sections/section-1.js L76-103, L280-320, L421-466
+ *   - product-page-integration/js/sections/section-6.js L329-343
+ *
+ * Strategia A (CSS-only). I modifier (--error) sono gestiti consumer-side
+ * dal codice di validazione applicativa.
+ *
+ * Material Symbols (icone error/info/check) sostituiti da SVG inline lato consumer.
+ * La freccia del select e' embedded come data:image/svg+xml nel background-image.
+ */
+
+
+/* ================================================================
+   FORM FIELD -- contenitore generico form-field
+   ================================================================ */
+/** @public */
+.sp-form-field {
+    position: relative;
+}
+
+
+/* ================================================================
+   LABEL ROW -- contenitore inline per label + info-btn + hint
+   ================================================================ */
+/** @public */
+.sp-label-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: 0.375rem;
+}
+
+/** @public */
+.sp-label-text {
+    font-size: 0.9375rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+.sp-label-text__required {
+    color: var(--color-error);
+}
+
+.sp-label-text__optional {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-normal);
+}
+
+/** @public */
+.sp-label-hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+}
+
+
+/* ================================================================
+   FORM INPUT -- text, number, textarea
+   ================================================================ */
+/** @public */
+.sp-form-input {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.375rem 0.625rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-white);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    transition: border-color var(--transition-fast);
+    box-sizing: border-box;
+}
+
+.sp-form-input:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+}
+
+.sp-form-input--error {
+    border-color: var(--color-error-light);
+}
+
+.sp-form-input:disabled {
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+}
+
+textarea.sp-form-input {
+    resize: none;
+}
+
+
+/* ================================================================
+   NOME LAVORO INPUT -- alias semantico di .sp-form-input
+   Stessa resa visiva, classe distinta per la sezione "Nome del lavoro".
+   Fonte catalog: _form-inputs.css L137-L168.
+   ================================================================ */
+/** @public */
+.sp-nome-lavoro-input {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.375rem 0.625rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-white);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    transition: border-color var(--transition-fast);
+    box-sizing: border-box;
+}
+
+.sp-nome-lavoro-input:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+}
+
+.sp-nome-lavoro-input--error {
+    border-color: var(--color-error-light);
+}
+
+
+/* ================================================================
+   FORM SELECT -- dropdown nativo con freccia SVG personalizzata
+   ================================================================ */
+/** @public */
+.sp-form-select {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.375rem 2.25rem 0.375rem 0.625rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-white);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    overflow: hidden;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 12px 8px;
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+    font-family: inherit;
+}
+
+.sp-form-select:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+}
+
+.sp-form-select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--color-bg-gray-100);
+}
+
+
+/* ================================================================
+   MESSAGGI INLINE -- error / error-inline / success-inline
+   ================================================================ */
+/** @public */
+.sp-error-msg {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--color-error);
+    margin-top: var(--spacing-xs);
+}
+
+.sp-error-msg svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+/** @public */
+.sp-error-inline {
+    font-size: var(--font-size-xs);
+    color: var(--color-error);
+    margin-top: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.sp-error-inline svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+/** @public */
+.sp-success-inline {
+    font-size: var(--font-size-xs);
+    color: var(--color-success);
+    font-weight: var(--font-weight-medium);
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+}
+
+.sp-success-inline svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+
+/* ================================================================
+   GRIGLIA CUSTOM DIMENSIONS -- larghezza x altezza
+   ================================================================ */
+/** @public */
+.sp-custom-dims {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.sp-custom-dims__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.625rem;
+}
+
+.sp-custom-dims__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.sp-custom-dims__label {
+    font-size: 0.9375rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+@media (max-width: 639px) {
+    .sp-custom-dims__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ================================================================
+   GRIGLIA NOME + REFERENTE -- 2 input testo affiancati
+   ================================================================ */
+/** @public */
+.sp-nome-ref-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.625rem;
+}
+
+@media (max-width: 639px) {
+    .sp-nome-ref-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ================================================================
+   GRIGLIA QUANTITA + IVA -- layout Step 6 (qty-iva-row)
+   Modificatori --single (1 col) / --double (2 col).
+   --double diventa 1 col sotto 640px.
+   ================================================================ */
+/** @public */
+.sp-qty-iva-row {
+    display: grid;
+    gap: 0.625rem;
+}
+
+.sp-qty-iva-row--single {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.sp-qty-iva-row--double {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 639px) {
+    .sp-qty-iva-row--double {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ================================================================
+   FACCIATE ROW + SPESSORE DISPLAY -- input numerico + callout spessore
+   Fonte catalog: _form-inputs.css L449-L487.
+   Layout flex inline: .sp-facciate-input-wrap (flex 1) + .sp-spessore-display (shrink 0).
+   Material Symbols `vertical_align_center` del catalog -> SVG inline lato consumer.
+   Il selettore catalog `.sp-spessore-display .material-symbols-outlined` viene
+   replicato come `.sp-spessore-display svg` per garantire dimensione/colore.
+   ================================================================ */
+/** @public */
+.sp-facciate-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+}
+
+/** @public */
+.sp-facciate-input-wrap {
+    flex: 1;
+    min-width: 0;
+}
+
+/** @public */
+.sp-spessore-display {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.sp-spessore-display svg {
+    color: var(--color-text);
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+}
+
+/** @public */
+.sp-spessore-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+/** @public */
+.sp-spessore-value {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+}
+
+
+/* === inline primitives/form-controls.css === */
+/**
+ * FORM CONTROLLS -- radio group, radio option, checkbox option, radio-option--disabled
+ *
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
+ *   - .sp-radio-group                                       L491-495
+ *   - .sp-radio-option + .sp-radio-option-label                L497-503, L547-550
+ *   - .sp-radio-option input[type="radio"] + ::after        L505-539
+ *   - .sp-radio-option input[type="checkbox"]               L541-545
+ *   - .sp-radio-option--disabled                            L811-825
+ *
+ * Fonte markup: catalogo elements-ui (radio-group.js + checkbox-option.js).
+ * Nessun utilizzo nelle pagine demo prodotto: la coverage e' giustificata
+ * dall'uso futuro su `checkout` / `dashboard` e dall'estensione opzionale
+ * del configuratore product-page (sostituire alcuni form-select con radio-group).
+ *
+ * Strategia A (CSS-only). :checked e :disabled sono nativi del browser.
+ * .sp-radio-option--disabled e' applicato manualmente sull'<label> quando l'opzione
+ * non e' disponibile (visualmente spenta + click bloccato via pointer-events).
+ *
+ * Niente SVG: il pallino radio e' un pseudo-elemento ::after. Il check del
+ * checkbox e' nativo via accent-color.
+ *
+ * Dipende da form-primitives.css (per .sp-label-row + .sp-label-text). Bundle
+ * ordering: form-controls.css DOPO form-primitives.css.
+ */
+
+
+/* ================================================================
+   RADIO GROUP -- contenitore flex column / row
+   ================================================================ */
+/** @public */
+.sp-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+
+/* ================================================================
+   RADIO OPTION -- label + input + testo
+   ================================================================ */
+/** @public */
+.sp-radio-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    position: relative;
+}
+
+/** @public */
+.sp-radio-option-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+}
+
+
+/* ================================================================
+   INPUT RADIO -- custom CSS appearance + pallino arancione checked
+   ================================================================ */
+.sp-radio-option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--color-bg-gray-200);
+    border-radius: 50%;
+    background: var(--color-bg-white);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+    margin: 0;
+    position: relative;
+}
+
+.sp-radio-option input[type="radio"]::after {
+    content: '';
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform var(--transition-fast);
+}
+
+.sp-radio-option input[type="radio"]:checked {
+    border-color: var(--color-primary);
+}
+
+.sp-radio-option input[type="radio"]:checked::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+/* ================================================================
+   INPUT CHECKBOX -- nativo con accent-color primary
+   ================================================================ */
+.sp-radio-option input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--color-primary);
+}
+
+
+/* ================================================================
+   RADIO OPTION DISABLED -- label spenta + click bloccato
+   ================================================================ */
+.sp-radio-option--disabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+    pointer-events: none;
+    position: relative;
+}
+
+label.sp-radio-option--disabled {
+    color: var(--color-text-muted);
+}
+
+label.sp-radio-option--disabled input[type="radio"] {
+    opacity: 0.5;
+}
+
+
+/* === inline primitives/form-layout.css === */
+/**
+ * FORM LAYOUT -- Small form grid/layout helpers.
+ * Fonte markup: Skillpress-frontend/checkout/js/sections/payment-section.js righe 109-181
+ * Fonte CSS: Skillpress-frontend/checkout/css/components/_payment.css righe 90-127
+ * Target demo: checkout
+ *
+ * CSS-only. Fields come from FormPrimitives, actions from Button.
+ */
+
+/** @public */
+.sp-form-layout {
+    margin-top: var(--spacing-sm);
+}
+
+.sp-form-layout--compact .sp-label-text {
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+}
+
+.sp-form-layout > * + * {
+    margin-top: var(--section-gap);
+}
+
+.sp-form-layout__row {
+    display: grid;
+    gap: 0.625rem;
+}
+
+.sp-form-layout__row--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sp-form-layout__row--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sp-form-layout__copy-row {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.sp-form-layout__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.sp-form-layout__actions--end {
+    justify-content: flex-end;
+}
+
+@media (max-width: 639px) {
+    .sp-form-layout__row--2,
+    .sp-form-layout__row--3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* === inline primitives/accordion.css === */
+/**
+ * ACCORDION — Estratto da elements-ui/css/components/_layout-patterns.css
+ * Data estrazione: 2026-04-23
+ * Fonte canonica: elements-ui
+ */
+
+/** @public */
+.sp-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+}
+
+.sp-accordion__section {
+    display: flex;
+    flex-direction: column;
+    background: var(--section-bg);
+    border: 1px solid var(--section-border);
+    border-radius: var(--section-radius);
+    transition: background var(--transition-fast);
+    scroll-margin-top: 0;
+}
+
+.sp-accordion__section:hover {
+    background: var(--color-bg-gray-50);
+}
+
+/* state: aria-expanded sull'header e' la fonte primaria; .sp-accordion__section--expanded
+   e' alias visivo BEM mantenuto come variante (deprecazione prevista v0.3 -- vedi
+   audit production-readiness 2026-05-08, 03-css-bem-tokens "stati ARIA vs modifier"). */
+.sp-accordion__section--expanded {
+    background: var(--section-bg-expanded);
+}
+
+.sp-accordion--surface-white .sp-accordion__section--expanded {
+    background: var(--color-bg-white);
+}
+
+.sp-accordion--surface-white .sp-accordion__header {
+    padding: var(--spacing-md) 1.25rem;
+}
+
+.sp-accordion--surface-white .sp-accordion__header-left {
+    gap: 0.875rem;
+}
+
+.sp-accordion--surface-white .sp-accordion__title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+}
+
+.sp-accordion__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.sp-accordion__header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-width: 0;
+}
+
+.sp-accordion__badge {
+    width: var(--section-number-size);
+    height: var(--section-number-size);
+    background: var(--section-number-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--section-number-color);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    flex-shrink: 0;
+}
+
+.sp-accordion__header-icon {
+    width: var(--section-number-size);
+    height: var(--section-number-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    color: var(--color-bg-white);
+}
+
+.sp-accordion__header-icon::before {
+    content: "";
+    width: 1.125rem;
+    height: 1.125rem;
+    display: block;
+    background: currentColor;
+    -webkit-mask: var(--accordion-header-icon-mask) center / contain no-repeat;
+    mask: var(--accordion-header-icon-mask) center / contain no-repeat;
+}
+
+.sp-accordion__header-icon--cart {
+    --accordion-header-icon-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2Zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2ZM7.2 14.5h8.9c.75 0 1.4-.41 1.74-1.03L21 7.2A1 1 0 0 0 20.1 5H6.4L5.7 2.7A1 1 0 0 0 4.75 2H2v2h2l3.6 10.6L6.25 17H19v-2H7.2Z'/%3E%3C/svg%3E");
+}
+
+.sp-accordion__header-icon--shipping {
+    --accordion-header-icon-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2h1.7c.55 0 1.08.23 1.45.64l2.35 2.6c.32.36.5.82.5 1.3V17a2 2 0 0 1-2 2h-.18a3 3 0 0 1-5.64 0H9.82a3 3 0 0 1-5.64 0H4a1 1 0 0 1-1-1V5Zm2 0v11.18A3 3 0 0 1 9.82 17H15V5H5Zm12 4v4h4v-1.46L18.7 9H17Zm-10 9.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm11 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z'/%3E%3C/svg%3E");
+}
+
+.sp-accordion__header-icon--payment {
+    --accordion-header-icon-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v2h16V7H4Zm0 5v5h16v-5H4Zm2 2h5v2H6v-2Z'/%3E%3C/svg%3E");
+}
+
+.sp-accordion__title {
+    font-weight: var(--font-weight-semibold);
+    font-size: 0.9375rem;
+    color: var(--color-text);
+}
+
+.sp-accordion__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: inline-block;
+    position: relative;
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+}
+
+.sp-accordion__icon::before,
+.sp-accordion__icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.875rem;
+    height: 0.125rem;
+    background: currentColor;
+    border-radius: var(--radius-full);
+    transform: translate(-50%, -50%);
+    transition:
+        opacity var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.sp-accordion__icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.sp-accordion__section--expanded .sp-accordion__icon::after {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(90deg) scaleX(0);
+}
+
+.sp-accordion__content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+        max-height var(--transition-section),
+        opacity var(--transition-slow);
+}
+
+.sp-accordion__section--expanded > .sp-accordion__content {
+    max-height: 3000px;
+    opacity: 1;
+    overflow: visible;
+    overflow-x: hidden;
+    transition:
+        max-height var(--transition-section),
+        opacity var(--transition-slow) 0.1s;
+}
+
+.sp-accordion__inner {
+    padding: var(--spacing-md);
+    border-top: 1px solid var(--color-bg-gray-200);
+    background-color: var(--color-bg-gray-50);
+    border-radius: 0 0 var(--section-radius) var(--section-radius);
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+.sp-accordion--surface-white .sp-accordion__inner {
+    background-color: var(--color-bg-white);
+    border-top: 0;
+    padding: 0 1.25rem 1.25rem;
+}
+
+.sp-accordion__inner > * + * {
+    margin-top: 0.875rem;
+}
+
+/* Mobile: header piu' alto per touch target standard e-commerce. */
+@media (max-width: 639px) {
+    .sp-accordion__header {
+        padding: 1rem 0.875rem;
+        min-height: 56px;
+    }
+
+    .sp-accordion__title {
+        font-size: 1rem;
+    }
+}
+
+
+/* === inline primitives/toggle-switch.css === */
+/**
+ * TOGGLE SWITCH -- Binary on/off switch primitive
+ * Fonte CSS:
+ *   - Skillpress-frontend/elements-ui/css/components/_form-inputs.css
+ *     (sezione "TOGGLE SWITCH (multicopertina on/off)" -- .multicop-switch / .multicop-switch-knob)
+ * Fonte markup:
+ *   - Skillpress-frontend/elements-ui/js/buttons/toggle-switch.js
+ *     (variante multicop -- div + classi --active)
+ *   - Skillpress-frontend/elements-ui/js/checkout/checkout-toggle-switch.js
+ *     (variante checkout -- button[role=switch][aria-checked] + .sp-toggle-switch.active)
+ * Target demo:
+ *   - product-page-integration (multicopertina nella sidebar config)
+ *   - checkout (multispedizione)
+ * Data estrazione: 2026-04-27
+ *
+ * Convergenza:
+ *   I due sorgenti hanno geometrie equivalenti (track ~44x24, thumb ~20x20).
+ *   La libreria adotta il pattern button[role=switch] (checkout) come piu
+ *   accessibile, e ne deriva un'API BEM unica: .sp-toggle-switch (track) +
+ *   .sp-toggle-switch__thumb (knob) + opzionale .sp-toggle-switch__label (testo).
+ */
+
+/* Wrapper opzionale: label + switch su una riga */
+/** @public */
+.sp-toggle-switch-field {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+/* Track (e' il <button> stesso) */
+/** @public */
+.sp-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 2.75rem;          /* 44px */
+    height: 1.5rem;          /* 24px */
+    flex-shrink: 0;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-gray-200);
+    cursor: pointer;
+    transition: background-color var(--transition-normal);
+    font-family: inherit;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sp-toggle-switch:hover {
+    background-color: var(--color-border);
+}
+
+.sp-toggle-switch:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+/* state: aria-checked="true|false" e' la fonte primaria di stato.
+   .sp-toggle-switch--checked e' alias visivo BEM (deprecazione prevista v0.3 --
+   vedi audit production-readiness 2026-05-08, sezione "stati ARIA vs modifier"). */
+.sp-toggle-switch--checked,
+.sp-toggle-switch[aria-checked="true"] {
+    background-color: var(--color-primary);
+}
+
+.sp-toggle-switch--checked:hover,
+.sp-toggle-switch[aria-checked="true"]:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* Thumb (knob) */
+.sp-toggle-switch__thumb {
+    position: absolute;
+    top: 0.125rem;           /* 2px */
+    left: 0.125rem;          /* 2px */
+    width: 1.25rem;          /* 20px */
+    height: 1.25rem;         /* 20px */
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-white);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal);
+    pointer-events: none;
+}
+
+.sp-toggle-switch--checked .sp-toggle-switch__thumb,
+.sp-toggle-switch[aria-checked="true"] .sp-toggle-switch__thumb {
+    transform: translateX(1.25rem);  /* 20px = 44 - 4 - 20 */
+}
+
+/* Label esterna (slot consumer): non controlla testo, solo tipografia base */
+.sp-toggle-switch__label {
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Stato disabled */
+.sp-toggle-switch:disabled,
+.sp-toggle-switch[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.sp-toggle-switch:disabled:hover,
+.sp-toggle-switch[aria-disabled="true"]:hover {
+    /* annulla hover quando disabled */
+    background-color: var(--color-bg-gray-200);
+}
+
+.sp-toggle-switch--checked:disabled:hover,
+.sp-toggle-switch--checked[aria-disabled="true"]:hover,
+.sp-toggle-switch[aria-checked="true"]:disabled:hover,
+.sp-toggle-switch[aria-checked="true"][aria-disabled="true"]:hover {
+    background-color: var(--color-primary);
+}
+
+.sp-toggle-switch-field:has(.sp-toggle-switch:disabled) .sp-toggle-switch__label,
+.sp-toggle-switch-field:has(.sp-toggle-switch[aria-disabled="true"]) .sp-toggle-switch__label {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+
+/* === inline components/cart-product-card.css === */
+/**
+ * CART PRODUCT CARD -- Checkout cart item with expandable details.
+ * Fonte markup: Skillpress-frontend/checkout/js/sections/cart-section.js righe 46-118
+ * Fonte CSS: Skillpress-frontend/checkout/css/components/_cart.css righe 25-223, 379-404
+ * Target demo: checkout
+ *
+ * CSS + optional JS (`js/cart-product-card.js`) for details disclosure.
+ * Business logic for prices, cart mutations and product data stays outside the library.
+ */
+
+.cart-list > * + * {
+    margin-top: var(--spacing-md);
+}
+
+.cart-product-card {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-bg-gray-200);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: none;
+}
+
+.cart-product-card__row {
+    display: flex;
+}
+
+.cart-product-card__image-wrap {
+    width: 9rem;
+    flex-shrink: 0;
+    background: var(--color-bg-gray-50);
+    padding: var(--section-gap);
+}
+
+.cart-product-card__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 120px;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+}
+
+.cart-product-card__body {
+    flex: 1;
+    padding: var(--spacing-md);
+}
+
+.cart-product-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+}
+
+.cart-product-card__info {
+    flex: 1;
+}
+
+.cart-product-card__title {
+    margin: 0 0 0.375rem;
+    font-size: var(--font-size-base);
+    line-height: 1.5rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+}
+
+.cart-product-card__specs {
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+    color: var(--color-text-secondary);
+}
+
+.cart-product-card__specs > * + * {
+    margin-top: var(--spacing-xs);
+}
+
+.cart-product-card__price-wrap {
+    flex-shrink: 0;
+    padding-left: var(--spacing-md);
+    text-align: right;
+}
+
+.cart-product-card__price {
+    font-size: var(--font-size-lg);
+    line-height: 1.75rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+}
+
+.cart-product-card__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--section-gap);
+    padding-top: 0.625rem;
+    border-top: 1px solid var(--color-bg-gray-200);
+}
+
+.cart-product-card__remove-btn {
+    padding: 0;
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.cart-product-card__remove-btn:hover {
+    color: var(--color-error-light);
+}
+
+.cart-product-card__remove-btn:focus-visible,
+.cart-product-card__details-toggle:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.cart-product-card__details-section {
+    border-top: 1px solid var(--color-bg-gray-200);
+}
+
+.cart-product-card__details-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.625rem var(--spacing-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-light);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.cart-product-card__details-toggle:hover {
+    color: var(--color-text-strong);
+    background: var(--color-bg-gray-50);
+}
+
+.cart-product-card__details-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.cart-product-card__details-toggle-label::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 1rem;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 6h13'/%3E%3Cpath d='M8 12h13'/%3E%3Cpath d='M8 18h13'/%3E%3Cpath d='M3 6h.01'/%3E%3Cpath d='M3 12h.01'/%3E%3Cpath d='M3 18h.01'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 6h13'/%3E%3Cpath d='M8 12h13'/%3E%3Cpath d='M8 18h13'/%3E%3Cpath d='M3 6h.01'/%3E%3Cpath d='M3 12h.01'/%3E%3Cpath d='M3 18h.01'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.cart-product-card__details-chevron {
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 1rem;
+    background: currentColor;
+    transition: transform var(--transition-normal);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m6 9 6 6 6-6' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m6 9 6 6 6-6' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.cart-product-card__details-toggle[aria-expanded="true"] .cart-product-card__details-chevron {
+    transform: rotate(180deg);
+}
+
+.cart-product-card__details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height var(--transition-slow), opacity var(--transition-normal);
+}
+
+.cart-product-card__details[aria-hidden="false"] {
+    max-height: 400px;
+    opacity: 1;
+}
+
+.cart-product-card__details-inner {
+    padding: 0 var(--spacing-md) 0.75rem;
+}
+
+.cart-details-inline {
+    font-size: var(--font-size-xs);
+    line-height: 1.625;
+}
+
+.cart-details-inline__section {
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-bg-gray-100);
+}
+
+.cart-details-inline__section:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.cart-details-inline__heading {
+    margin-right: 0.25rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-strong);
+}
+
+.cart-details-inline__label {
+    color: var(--color-text-light);
+}
+
+.cart-details-inline__sep {
+    margin: 0 0.25rem;
+    color: var(--color-bg-gray-300);
+}
+
+@media (max-width: 1023px) {
+    .cart-product-card__row {
+        flex-direction: column;
+    }
+
+    .cart-product-card__image-wrap {
+        width: 100%;
+        height: 180px;
+    }
+
+    .cart-product-card__header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .cart-product-card__price-wrap {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .cart-product-card__price-wrap > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--spacing-md);
+    }
+}
+
+
+/* === inline components/checkout-summary.css === */
+/**
+ * CHECKOUT SUMMARY -- Checkout order summary sidebar.
+ * Fonte markup: Skillpress-frontend/checkout/js/sections/sidebar-section.js righe 30-88
+ * Fonte CSS: Skillpress-frontend/checkout/css/components/_sidebar.css righe 29-247
+ * Target demo: checkout
+ *
+ * CSS-only. Prices, CTA navigation, cart state and checkout validation stay outside.
+ */
+
+.checkout-summary {
+    height: fit-content;
+}
+
+.checkout-summary--sticky {
+    align-self: flex-start;
+}
+
+@media (min-width: 1024px) {
+    .checkout-summary--sticky {
+        position: sticky;
+        top: 20px;
+    }
+}
+
+.checkout-summary > * + * {
+    margin-top: var(--section-gap);
+}
+
+.checkout-summary__card {
+    background: var(--color-bg-gray-50);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-md);
+}
+
+.checkout-summary__card > * + * {
+    margin-top: var(--section-gap);
+}
+
+.checkout-summary__title {
+    margin: 0 0 var(--section-gap);
+    font-size: var(--font-size-base);
+    line-height: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+}
+
+.checkout-summary__items {
+    margin-bottom: var(--spacing-md);
+}
+
+.checkout-summary__items > * + * {
+    margin-top: var(--section-gap);
+}
+
+.checkout-summary__empty {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+}
+
+.checkout-summary__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+}
+
+.checkout-summary__item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.checkout-summary__item-name {
+    margin: 0;
+    overflow: hidden;
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+    font-weight: var(--font-weight-medium);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.checkout-summary__item-qty {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+}
+
+.checkout-summary__item-price {
+    flex: 0 0 auto;
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+    font-weight: var(--font-weight-semibold);
+}
+
+.checkout-summary__divider {
+    margin: var(--section-gap) 0;
+    border: 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.checkout-summary__totals {
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+}
+
+.checkout-summary__totals > * + * {
+    margin-top: 0.375rem;
+}
+
+.checkout-summary__total-row {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+}
+
+.checkout-summary__total-label {
+    color: var(--color-text-secondary);
+}
+
+.checkout-summary__total-value {
+    color: var(--color-text);
+    font-weight: var(--font-weight-semibold);
+    text-align: right;
+}
+
+.checkout-summary__grand-total {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+}
+
+.checkout-summary__grand-label {
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+    line-height: 1.5rem;
+    font-weight: var(--font-weight-bold);
+}
+
+.checkout-summary__grand-value {
+    color: var(--color-primary);
+    font-size: var(--font-size-2xl);
+    line-height: 2rem;
+    font-weight: var(--font-weight-bold);
+    text-align: right;
+}
+
+.checkout-summary__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: var(--spacing-sm);
+    padding: var(--section-gap) var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-full);
+    background: var(--color-secondary-dark);
+    color: var(--color-bg-white);
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    font: inherit;
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast);
+}
+
+.checkout-summary__cta:hover {
+    background: var(--color-secondary-light);
+    box-shadow: var(--shadow-xl);
+    text-decoration: none;
+}
+
+.checkout-summary__cta:focus-visible,
+.checkout-summary__help-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.checkout-summary__cta:disabled,
+.checkout-summary__cta[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+.checkout-summary__note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    padding: var(--section-gap);
+    border-radius: var(--radius-lg);
+    background: var(--color-success-bg);
+}
+
+.checkout-summary__note-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    flex: 0 0 1.125rem;
+    color: var(--color-secondary);
+}
+
+.checkout-summary__note-icon::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 16v-4'/%3E%3Cpath d='M12 8h.01'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 16v-4'/%3E%3Cpath d='M12 8h.01'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.checkout-summary__note-text {
+    margin: 0;
+    color: var(--color-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+}
+
+.checkout-summary__help {
+    padding: var(--spacing-sm) 0;
+    text-align: center;
+}
+
+.checkout-summary__help-text {
+    margin: 0 0 var(--spacing-xs);
+    color: var(--color-text-light);
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+}
+
+.checkout-summary__help-link {
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.checkout-summary__help-link:hover {
+    color: var(--color-primary-light);
+}
+
+
+/* === inline components/address-preview.css === */
+/**
+ * ADDRESS PREVIEW -- Compact checkout address/billing profile display.
+ * Fonte markup: Skillpress-frontend/checkout/js/sections/shipping-section.js righe 88-102
+ * Fonte CSS: Skillpress-frontend/checkout/css/components/_shipping.css righe 87-118
+ * Fonte correlata: checkout/js/sections/payment-section.js righe 91-105
+ * Target demo: checkout
+ *
+ * CSS-only. Address selection, edit/create flows and validation stay outside.
+ */
+
+.address-preview {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    padding: 0.625rem var(--section-gap);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-white);
+    color: var(--color-text-light);
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+}
+
+.address-preview[hidden] {
+    display: none;
+}
+
+.address-preview--field-follow {
+    margin-top: var(--spacing-sm);
+}
+
+.address-preview__icon {
+    width: 0.875rem;
+    height: 0.875rem;
+    flex: 0 0 0.875rem;
+    margin-top: 1px;
+    color: var(--color-text-muted);
+}
+
+.address-preview__icon::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.address-preview__lines {
+    min-width: 0;
+}
+
+.address-preview__lines > * {
+    margin: 0;
+}
+
+.address-preview__lines > * + * {
+    margin-top: 0.125rem;
+}
+
+.address-preview__name {
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+}
+
+.address-preview__secondary {
+    color: var(--color-text-muted);
+}
+
+
+/* === inline components/method-choice-card.css === */
+/**
+ * METHOD CHOICE CARD -- Selectable checkout method tiles.
+ * Fonte shipping: Skillpress-frontend/checkout/js/sections/shipping-section.js righe 209-247
+ * Fonte payment: Skillpress-frontend/checkout/js/sections/payment-section.js righe 320-353
+ * CSS fonte: checkout/css/components/_shipping.css righe 120-185,
+ * checkout/css/components/_payment.css righe 190-250
+ * Target demo: checkout
+ *
+ * CSS-only. Selection state, validation, prices and checkout logic stay outside.
+ */
+
+.method-choice {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-bg-gray-200);
+}
+
+.method-choice--flat {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+
+.method-choice__title {
+    margin: 0 0 0.625rem;
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+    font-weight: var(--font-weight-semibold);
+}
+
+.method-choice__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-sm);
+}
+
+.method-choice-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 68px;
+    gap: 0.125rem;
+    padding: var(--section-gap) var(--spacing-sm);
+    border: 1.5px solid var(--color-bg-gray-200);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-white);
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    text-align: center;
+    transition: background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.method-choice-card:hover {
+    background: #fff7ed;
+    border-color: #fed7aa;
+    box-shadow: var(--shadow-sm);
+}
+
+.method-choice-card:disabled,
+.method-choice-card[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.method-choice-card:disabled:hover,
+.method-choice-card[aria-disabled="true"]:hover {
+    background: var(--color-bg-white);
+    border-color: var(--color-bg-gray-200);
+    box-shadow: none;
+}
+
+.method-choice-card:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.method-choice-card--selected,
+.method-choice-card[aria-pressed="true"] {
+    background: #fff4e6;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.method-choice-card__icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-bottom: 0.125rem;
+    color: var(--color-text-light);
+}
+
+.method-choice-card__icon::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: currentColor;
+    -webkit-mask: var(--method-choice-card-icon) center / contain no-repeat;
+    mask: var(--method-choice-card-icon) center / contain no-repeat;
+}
+
+.method-choice-card--selected .method-choice-card__icon,
+.method-choice-card[aria-pressed="true"] .method-choice-card__icon {
+    color: var(--color-primary);
+}
+
+.method-choice-card__icon--card {
+    color: var(--color-info);
+    --method-choice-card-icon: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='5' width='20' height='14' rx='2'/%3E%3Cpath d='M2 10h20'/%3E%3Cpath d='M6 15h4'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.method-choice-card__icon--paypal {
+    color: #4f46e5;
+    --method-choice-card-icon: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 20h5'/%3E%3Cpath d='M9 20V9'/%3E%3Cpath d='M7 9h7a4 4 0 0 1 0 8H9'/%3E%3Cpath d='M8 4h8a4 4 0 0 1 0 8H9'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.method-choice-card__icon--bank {
+    color: var(--color-secondary);
+    --method-choice-card-icon: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 10h18'/%3E%3Cpath d='M5 10v8'/%3E%3Cpath d='M9 10v8'/%3E%3Cpath d='M15 10v8'/%3E%3Cpath d='M19 10v8'/%3E%3Cpath d='M3 18h18'/%3E%3Cpath d='m12 3 9 5H3l9-5Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.method-choice-card__icon--cash {
+    color: var(--color-warning);
+    --method-choice-card-icon: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='6' width='18' height='12' rx='2'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3Cpath d='M7 12h.01'/%3E%3Cpath d='M17 12h.01'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.method-choice-card__icon--store {
+    color: var(--color-text-light);
+    --method-choice-card-icon: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 10h16l-1-5H5l-1 5Z'/%3E%3Cpath d='M5 10v9h14v-9'/%3E%3Cpath d='M9 19v-5h6v5'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.method-choice-card__name {
+    color: var(--color-text);
+    font-size: var(--font-size-xs);
+    line-height: 1.25;
+    font-weight: var(--font-weight-semibold);
+}
+
+.method-choice-card--selected .method-choice-card__name,
+.method-choice-card[aria-pressed="true"] .method-choice-card__name {
+    color: var(--color-primary);
+}
+
+.method-choice-card__detail,
+.method-choice-card__price {
+    color: var(--color-text-muted);
+    font-size: 0.7rem;
+    line-height: 1.25;
+}
+
+.method-choice-card__price {
+    color: var(--color-success);
+    font-weight: var(--font-weight-semibold);
+}
+
+@media (min-width: 640px) {
+    .method-choice__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .method-choice__grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+
+/* === inline components/allocation-rows.css === */
+/**
+ * ALLOCATION ROWS -- checkout copy allocation rows and status badges.
+ * Fonte: Skillpress-frontend/checkout/js/sections/shipping-section.js righe 273-437
+ * CSS fonte: checkout/css/components/_shipping.css righe 324-465,
+ * checkout/css/components/_feedback-status.css righe 27-49
+ *
+ * CSS-only. Allocation totals, validation and destination management stay outside.
+ */
+
+.allocation-summary-box {
+    background: var(--color-bg-gray-50);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-md);
+}
+
+.allocation-summary-box__title {
+    margin: 0 0 var(--spacing-sm);
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.25rem;
+}
+
+.allocation-summary-box__rows > * + * {
+    margin-top: 0.375rem;
+}
+
+.allocation-rows {
+    display: block;
+}
+
+.allocation-rows--section {
+    margin-top: var(--spacing-sm);
+}
+
+.allocation-rows > * + * {
+    margin-top: 0.5rem;
+}
+
+.allocation-rows__group {
+    display: block;
+}
+
+.allocation-rows__group + .allocation-rows__group,
+.allocation-rows__group + .allocation-rows__row,
+.allocation-rows__row + .allocation-rows__group {
+    margin-top: 0.5rem;
+}
+
+.allocation-rows__children {
+    margin-top: 0.25rem;
+    margin-left: 0.375rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--color-bg-gray-200);
+}
+
+.allocation-rows__children > * + * {
+    margin-top: 0.25rem;
+}
+
+.allocation-rows__label {
+    display: block;
+    margin-top: var(--section-gap);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-light);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1rem;
+    text-transform: uppercase;
+}
+
+.allocation-rows__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    min-width: 0;
+}
+
+.allocation-rows__row:not(.allocation-rows__row--child) .allocation-rows__name {
+    font-weight: var(--font-weight-semibold);
+}
+
+.allocation-rows__row--parent .allocation-rows__name {
+    font-weight: var(--font-weight-semibold);
+}
+
+.allocation-rows__row--child .allocation-rows__name {
+    font-size: var(--font-size-xs);
+}
+
+.allocation-rows__info {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    min-width: 0;
+}
+
+.allocation-rows__name {
+    min-width: 0;
+    color: var(--color-text);
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+}
+
+.allocation-rows__qty {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+    white-space: nowrap;
+}
+
+.allocation-rows__input {
+    width: 4rem;
+    flex: 0 0 4rem;
+    padding: 0.3rem 0.25rem;
+    text-align: center;
+}
+
+.allocation-badge {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: auto;
+    padding: 0.125rem var(--spacing-sm);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: 1rem;
+    white-space: nowrap;
+}
+
+.allocation-badge--success {
+    color: var(--color-success);
+    background: var(--color-success-bg);
+}
+
+.allocation-badge--warning {
+    color: var(--color-alloc-badge-warning-text);
+    background: var(--color-alloc-badge-warning-bg);
+}
+
+.allocation-badge--error {
+    color: var(--color-error);
+    background: var(--color-error-bg);
+}
+
+@media (max-width: 639px) {
+    .allocation-rows__row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .allocation-badge {
+        margin-left: 0;
+    }
+}
+
+

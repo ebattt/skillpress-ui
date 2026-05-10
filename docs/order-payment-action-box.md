@@ -35,7 +35,7 @@ e gli stati del banner. `Card` non copre bordo tratteggiato, layout e stati.
     <div class="order-action-box__body">
         <p class="order-action-box__title">Contabile da caricare</p>
     </div>
-    <button class="order-action-box__btn" type="button" data-action="open-receipt-modal">
+    <button class="order-action-box__btn" type="button" data-orders-table-action="open-receipt-modal">
         <span class="order-action-box__icon order-action-box__icon--upload" aria-hidden="true"></span>
         Carica
     </button>
@@ -53,7 +53,7 @@ Stato in revisione:
         <span class="order-action-box__done-label">Contabile in revisione, procedi a caricare i file</span>
         <span class="order-action-box__done-file" title="contabile-bonifico.pdf">contabile-bonifico.pdf</span>
     </div>
-    <button class="order-action-box__btn order-action-box__btn--demo" type="button" data-action="demo-verify-receipt">
+    <button class="order-action-box__btn order-action-box__btn--demo" type="button" data-orders-table-action="demo-verify-receipt">
         <span class="order-action-box__icon order-action-box__icon--verified" aria-hidden="true"></span>
         Emula verifica
     </button>
@@ -120,7 +120,7 @@ Modifier pubblici: `.order-action-box--uploaded`, `.order-action-box--done`,
 ## Backend owns
 
 Il backend/app decide presenza del box, stato, testo, nome file, attributi
-`data-action`, apertura modal, upload, verifica e aggiornamenti dati.
+`data-orders-table-action`, apertura modal, upload, verifica e aggiornamenti dati.
 
 ## Library owns
 
@@ -128,7 +128,7 @@ La libreria decide layout, spacing, bordo, stati visuali, focus e icone.
 
 ## Demo-only
 
-`data-action` e' wiring demo/app, non API pubblica del componente. Eventuali
+`data-orders-table-action` e' wiring demo/app, non API pubblica del componente. Eventuali
 toolbar scenari, renderer didattici e fixture appartengono alla demo/app.
 
 ## Import

@@ -1,0 +1,30 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  library:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: install
+        run: npm ci
+      - name: install playwright chromium (for visual-diff devDep)
+        run: npx playwright install --with-deps chromium
+      - name: aggregate check
+        run: npm run check
+      - name: build storybook (smoke)
+        run: npm run build-storybook --if-present
+      - name: upload dist
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-bundles
+          path: dist/
+          retention-days: 7

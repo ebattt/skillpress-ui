@@ -20,7 +20,7 @@ const renderRoot = (innerHTML) => {
 
 const verticalGrid = (selected = 'a4') => `
     <div class="format-cards">
-        <button type="button" class="format-card${selected === 'a4' ? ' format-card--selected' : ''}" data-format="a4">
+        <button type="button" class="format-card${selected === 'a4' ? ' format-card--selected' : ''}" data-format-card-format="a4">
             <div class="format-card__preview" style="width: 56px; height: 79px;">
                 <span class="format-card__preview-label">A4</span>
                 <div class="format-card__preview-box">
@@ -32,7 +32,7 @@ const verticalGrid = (selected = 'a4') => `
                 <div class="format-card__dims">210 × 297 mm</div>
             </div>
         </button>
-        <button type="button" class="format-card${selected === 'libro' ? ' format-card--selected' : ''}" data-format="libro">
+        <button type="button" class="format-card${selected === 'libro' ? ' format-card--selected' : ''}" data-format-card-format="libro">
             <div class="format-card__preview" style="width: 56px; height: 79px;">
                 <div class="format-card__preview-dashed"></div>
                 <span class="format-card__preview-label format-card__preview-label--faded">A4</span>
@@ -45,7 +45,7 @@ const verticalGrid = (selected = 'a4') => `
                 <div class="format-card__dims">165 × 235 mm</div>
             </div>
         </button>
-        <button type="button" class="format-card${selected === 'a5' ? ' format-card--selected' : ''}" data-format="a5">
+        <button type="button" class="format-card${selected === 'a5' ? ' format-card--selected' : ''}" data-format-card-format="a5">
             <div class="format-card__preview" style="width: 56px; height: 79px;">
                 <div class="format-card__preview-dashed"></div>
                 <span class="format-card__preview-label format-card__preview-label--faded">A4</span>
@@ -58,7 +58,7 @@ const verticalGrid = (selected = 'a4') => `
                 <div class="format-card__dims">148 × 210 mm</div>
             </div>
         </button>
-        <button type="button" class="format-card${selected === 'libero' ? ' format-card--selected' : ''}" data-format="libero">
+        <button type="button" class="format-card${selected === 'libero' ? ' format-card--selected' : ''}" data-format-card-format="libero">
             <div class="format-card__preview" style="width: 56px; height: 79px;">
                 <div class="format-card__preview-dashed"></div>
                 <span class="format-card__preview-label format-card__preview-label--faded">A4</span>
@@ -76,7 +76,7 @@ const verticalGrid = (selected = 'a4') => `
 
 const horizontalGrid = (selected = 'a4') => `
     <div class="format-cards">
-        <button type="button" class="format-card${selected === 'a4' ? ' format-card--selected' : ''}" data-format="a4">
+        <button type="button" class="format-card${selected === 'a4' ? ' format-card--selected' : ''}" data-format-card-format="a4">
             <div class="format-card__preview" style="width: 79px; height: 56px;">
                 <span class="format-card__preview-label">A4</span>
                 <div class="format-card__preview-box">
@@ -88,7 +88,7 @@ const horizontalGrid = (selected = 'a4') => `
                 <div class="format-card__dims">297 × 210 mm</div>
             </div>
         </button>
-        <button type="button" class="format-card${selected === 'libro' ? ' format-card--selected' : ''}" data-format="libro">
+        <button type="button" class="format-card${selected === 'libro' ? ' format-card--selected' : ''}" data-format-card-format="libro">
             <div class="format-card__preview" style="width: 79px; height: 56px;">
                 <div class="format-card__preview-dashed"></div>
                 <span class="format-card__preview-label format-card__preview-label--faded">A4</span>
@@ -101,7 +101,7 @@ const horizontalGrid = (selected = 'a4') => `
                 <div class="format-card__dims">235 × 165 mm</div>
             </div>
         </button>
-        <button type="button" class="format-card${selected === 'a5' ? ' format-card--selected' : ''}" data-format="a5">
+        <button type="button" class="format-card${selected === 'a5' ? ' format-card--selected' : ''}" data-format-card-format="a5">
             <div class="format-card__preview" style="width: 79px; height: 56px;">
                 <div class="format-card__preview-dashed"></div>
                 <span class="format-card__preview-label format-card__preview-label--faded">A4</span>
@@ -114,7 +114,7 @@ const horizontalGrid = (selected = 'a4') => `
                 <div class="format-card__dims">210 × 148 mm</div>
             </div>
         </button>
-        <button type="button" class="format-card${selected === 'libero' ? ' format-card--selected' : ''}" data-format="libero">
+        <button type="button" class="format-card${selected === 'libero' ? ' format-card--selected' : ''}" data-format-card-format="libero">
             <div class="format-card__preview" style="width: 79px; height: 56px;">
                 <div class="format-card__preview-dashed"></div>
                 <span class="format-card__preview-label format-card__preview-label--faded">A4</span>
@@ -148,9 +148,9 @@ export const Default = {
     play: async ({ canvas }) => {
         const cards = canvas.getAllByRole('button');
         await expect(cards.length).toBeGreaterThanOrEqual(4);
-        const a4 = cards.find(c => c.getAttribute('data-format') === 'a4');
+        const a4 = cards.find(c => c.getAttribute('data-format-card-format') === 'a4');
         await expect(a4).toHaveClass('format-card--selected');
-        const others = cards.filter(c => c.getAttribute('data-format') && c.getAttribute('data-format') !== 'a4');
+        const others = cards.filter(c => c.getAttribute('data-format-card-format') && c.getAttribute('data-format-card-format') !== 'a4');
         for (const o of others) {
             await expect(o).not.toHaveClass('format-card--selected');
         }
@@ -200,7 +200,7 @@ export const LiberoSelected = {
 export const SinglePreviewBox = {
     render: () => renderRoot(`
         <div class="format-cards">
-            <button type="button" class="format-card format-card--selected" data-format="a4">
+            <button type="button" class="format-card format-card--selected" data-format-card-format="a4">
                 <div class="format-card__preview" style="width: 56px; height: 79px;">
                     <span class="format-card__preview-label">A4</span>
                     <div class="format-card__preview-box">

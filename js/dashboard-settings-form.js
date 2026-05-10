@@ -1,7 +1,27 @@
+/**
+ * DashboardSettingsForm -- inline edit/save settings form section.
+ *
+ * @public-data data-dashboard-settings-form, data-dashboard-settings-form-section, data-dashboard-settings-form-actions, data-dashboard-settings-form-edit, data-dashboard-settings-form-save, data-dashboard-settings-form-cancel, data-dashboard-settings-form-field
+ * @public-event sp:dashboard-settings-form:edit, sp:dashboard-settings-form:save, sp:dashboard-settings-form:close
+ */
 (function () {
     'use strict';
 
     var namespace = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = namespace.helpers || {};
+
+    function dispatch(target, name, detail) {
+        if (typeof helpers.dispatch === 'function') {
+            try { helpers.dispatch(target, name, detail); return; } catch (e) { /* fallthrough */ }
+        }
+        target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
+    }
+
+    function emitWithLegacyAlias(target, normalized, legacy, detail) {
+        dispatch(target, normalized, detail);
+        // deprecated alias, removed in v0.3
+        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
+    }
 
     function findRoots(context) {
         var scope = context || document;
@@ -70,13 +90,13 @@
             edit.hidden = editing;
         }
 
-        root.dispatchEvent(new CustomEvent(editing ? 'sp:dashboard-settings-form-edit' : 'sp:dashboard-settings-form-close', {
-            bubbles: true,
-            detail: {
-                section: sectionId,
-                restored: !!restoreValues
-            }
-        }));
+        var detail = { section: sectionId, restored: !!restoreValues };
+        emitWithLegacyAlias(
+            root,
+            editing ? 'sp:dashboard-settings-form:edit' : 'sp:dashboard-settings-form:close',
+            editing ? 'sp:dashboard-settings-form-edit' : 'sp:dashboard-settings-form-close',
+            detail
+        );
         return true;
     }
 
@@ -98,10 +118,12 @@
             edit.hidden = false;
         }
 
-        root.dispatchEvent(new CustomEvent('sp:dashboard-settings-form-save', {
-            bubbles: true,
-            detail: { section: sectionId }
-        }));
+        emitWithLegacyAlias(
+            root,
+            'sp:dashboard-settings-form:save',
+            'sp:dashboard-settings-form-save',
+            { section: sectionId }
+        );
         return true;
     }
 
@@ -127,13 +149,16 @@
         }
     }
 
+    /** @public */
     function init(context) {
         findRoots(context).forEach(function (root) {
-            if (root.dataset.dashboardSettingsFormInitialized === 'true') return;
+            if (root.__skillpressDashboardSettingsFormInitialized) return;
+            root.__skillpressDashboardSettingsFormInitialized = true;
+            // deprecated alias, removed in v0.3
+            root.dataset.dashboardSettingsFormInitialized = 'true';
             root.addEventListener('click', function (event) {
                 handleClick(root, event);
             });
-            root.dataset.dashboardSettingsFormInitialized = 'true';
         });
     }
 
@@ -143,10 +168,10 @@
         save: save
     };
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function () {
-            init(document);
-        });
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () { init(document); });
     } else {
         init(document);
     }

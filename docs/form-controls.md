@@ -14,13 +14,13 @@ package_path: primitives/form-controls.css
 # FormControls
 
 Pattern radio + checkbox riusabili. La famiglia condivide il container
-`.radio-group` e l'item `.radio-option`: cambia solo il tipo di `<input>` interno.
+`.sp-radio-group` e l'item `.sp-radio-option`: cambia solo il tipo di `<input>` interno.
 
 > Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Modifier `option-disabled` standalone -> `radio-option--disabled` (BEM strict). Nessun hook `data-*` (componente CSS-only).
 
 `:checked` e `:disabled` sono nativi del browser. La libreria fornisce solo
 lo styling (custom radio con pallino animato, accent-color checkbox, stato
-spento via `.radio-option--disabled`).
+spento via `.sp-radio-option--disabled`).
 
 ## Avvertenza fonte
 
@@ -38,55 +38,55 @@ Coperti per uso futuro: `checkout` (filtri, opzioni cart), `dashboard`
 
 | Classe | Note |
 |---|---|
-| `.radio-group` | flex column gap `--spacing-sm`. Per layout orizzontale: `style="flex-direction: row; gap: 1rem"` inline. |
+| `.sp-radio-group` | flex column gap `--spacing-sm`. Per layout orizzontale: `style="flex-direction: row; gap: 1rem"` inline. |
 
 ### Item
 
 | Classe | Note |
 |---|---|
-| `.radio-option` | flex inline label + input + label-text, cursor pointer |
-| `.radio-option-label` | testo dell'opzione, font sm |
+| `.sp-radio-option` | flex inline label + input + label-text, cursor pointer |
+| `.sp-radio-option-label` | testo dell'opzione, font sm |
 
 ### Input radio (custom CSS)
 
 | Selettore | Note |
 |---|---|
-| `.radio-option input[type="radio"]` | 1.25rem, bordo gray-200 2px, radius 50%, sfondo bianco |
-| `.radio-option input[type="radio"]::after` | pallino primary 0.625rem, scale(0) di default |
-| `.radio-option input[type="radio"]:checked` | bordo primary |
-| `.radio-option input[type="radio"]:checked::after` | pallino primary scale(1) |
+| `.sp-radio-option input[type="radio"]` | 1.25rem, bordo gray-200 2px, radius 50%, sfondo bianco |
+| `.sp-radio-option input[type="radio"]::after` | pallino primary 0.625rem, scale(0) di default |
+| `.sp-radio-option input[type="radio"]:checked` | bordo primary |
+| `.sp-radio-option input[type="radio"]:checked::after` | pallino primary scale(1) |
 
 ### Input checkbox (native)
 
 | Selettore | Note |
 |---|---|
-| `.radio-option input[type="checkbox"]` | 1rem, accent-color primary (browser native styling) |
+| `.sp-radio-option input[type="checkbox"]` | 1rem, accent-color primary (browser native styling) |
 
 ### Stato disabled
 
 | Classe | Note |
 |---|---|
-| `.radio-option--disabled` | opacity 0.5, cursor not-allowed, pointer-events none |
-| `label.radio-option--disabled` | testo gray-400 |
-| `label.radio-option--disabled input[type="radio"]` | opacity 0.5 |
+| `.sp-radio-option--disabled` | opacity 0.5, cursor not-allowed, pointer-events none |
+| `label.sp-radio-option--disabled` | testo gray-400 |
+| `label.sp-radio-option--disabled input[type="radio"]` | opacity 0.5 |
 
 ## Markup contract
 
 Radio group verticale:
 
 ```html
-<div class="form-field">
-    <div class="label-row">
-        <label class="label-text">Tipo rilegatura</label>
+<div class="sp-form-field">
+    <div class="sp-label-row">
+        <label class="sp-label-text">Tipo rilegatura</label>
     </div>
-    <div class="radio-group">
-        <label class="radio-option">
+    <div class="sp-radio-group">
+        <label class="sp-radio-option">
             <input type="radio" name="rilegatura" value="brossura" checked>
-            <span class="radio-option-label">Brossura fresata PUR</span>
+            <span class="sp-radio-option-label">Brossura fresata PUR</span>
         </label>
-        <label class="radio-option">
+        <label class="sp-radio-option">
             <input type="radio" name="rilegatura" value="non-rilegata">
-            <span class="radio-option-label">Non rilegata, tagliata</span>
+            <span class="sp-radio-option-label">Non rilegata, tagliata</span>
         </label>
     </div>
 </div>
@@ -95,14 +95,14 @@ Radio group verticale:
 Radio group orizzontale (`flex-direction: row` inline):
 
 ```html
-<div class="radio-group" style="flex-direction: row; gap: 1rem;">
-    <label class="radio-option">
+<div class="sp-radio-group" style="flex-direction: row; gap: 1rem;">
+    <label class="sp-radio-option">
         <input type="radio" name="orient" value="vertical" checked>
-        <span class="radio-option-label">Verticale</span>
+        <span class="sp-radio-option-label">Verticale</span>
     </label>
-    <label class="radio-option">
+    <label class="sp-radio-option">
         <input type="radio" name="orient" value="horizontal">
-        <span class="radio-option-label">Orizzontale</span>
+        <span class="sp-radio-option-label">Orizzontale</span>
     </label>
 </div>
 ```
@@ -110,18 +110,18 @@ Radio group orizzontale (`flex-direction: row` inline):
 Gruppo di checkbox (selezione non-esclusiva):
 
 ```html
-<div class="form-field">
-    <div class="label-row">
-        <label class="label-text">Opzioni aggiuntive</label>
+<div class="sp-form-field">
+    <div class="sp-label-row">
+        <label class="sp-label-text">Opzioni aggiuntive</label>
     </div>
-    <div class="radio-group">
-        <label class="radio-option">
+    <div class="sp-radio-group">
+        <label class="sp-radio-option">
             <input type="checkbox" checked>
-            <span class="radio-option-label">Certificazione FSC</span>
+            <span class="sp-radio-option-label">Certificazione FSC</span>
         </label>
-        <label class="radio-option">
+        <label class="sp-radio-option">
             <input type="checkbox">
-            <span class="radio-option-label">Cellophane singolo</span>
+            <span class="sp-radio-option-label">Cellophane singolo</span>
         </label>
     </div>
 </div>
@@ -130,9 +130,9 @@ Gruppo di checkbox (selezione non-esclusiva):
 Opzione disabled (radio o checkbox):
 
 ```html
-<label class="radio-option radio-option--disabled">
+<label class="sp-radio-option sp-radio-option--disabled">
     <input type="radio" name="rileg" value="spirale" disabled>
-    <span class="radio-option-label">Spirale metallica (non disponibile)</span>
+    <span class="sp-radio-option-label">Spirale metallica (non disponibile)</span>
 </label>
 ```
 
@@ -140,7 +140,7 @@ Opzione disabled (radio o checkbox):
 
 - contenuti label, valori `value`, attributi `name`/`id`/`required`/`checked`/`disabled`;
 - group binding via `name` shared (radio mutualmente esclusivi);
-- aggiungere `.radio-option--disabled` sull'`<label>` quando l'opzione non e' disponibile;
+- aggiungere `.sp-radio-option--disabled` sull'`<label>` quando l'opzione non e' disponibile;
 - handler `onchange` (lato consumer/applicativo);
 - layout vertical / horizontal (style inline o classe consumer).
 
@@ -154,11 +154,11 @@ Opzione disabled (radio o checkbox):
 
 ## Composizione con altri pattern
 
-- Per il titolo del gruppo, usare `.form-field > .label-row > .label-text`
+- Per il titolo del gruppo, usare `.sp-form-field > .sp-label-row > .sp-label-text`
   da `FormPrimitives`.
-- Per messaggi inline sotto il gruppo, usare `.error-inline` / `.success-inline`
+- Per messaggi inline sotto il gruppo, usare `.sp-error-inline` / `.sp-success-inline`
   da `FormPrimitives`.
-- `.radio-option-label` (14px) e' diverso da `.label-text` (15px): non sono
+- `.sp-radio-option-label` (14px) e' diverso da `.sp-label-text` (15px): non sono
   intercambiabili, hanno ruoli semantici diversi (label gruppo vs etichetta
   singola opzione).
 
@@ -166,10 +166,10 @@ Opzione disabled (radio o checkbox):
 
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|
-| `.option-disabled` (standalone) | `.radio-option--disabled` (sempre namespacato) |
-| `.radio-option.option-disabled` (compound) | `.radio-option.radio-option--disabled` |
+| `.option-disabled` (standalone) | `.sp-radio-option--disabled` (sempre namespacato) |
+| `.sp-radio-option.option-disabled` (compound) | `.sp-radio-option.sp-radio-option--disabled` |
 
-`.radio-group`, `.radio-option`, `.radio-option-label` e i discendenti `input[type="radio"]`/`input[type="checkbox"]` sono invariati.
+`.sp-radio-group`, `.sp-radio-option`, `.sp-radio-option-label` e i discendenti `input[type="radio"]`/`input[type="checkbox"]` sono invariati.
 
 ## Fuori scope
 

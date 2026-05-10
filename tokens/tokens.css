@@ -214,6 +214,29 @@
     --shell-code-bg: #1E293B;
     --shell-code-color: #E2E8F0;
     --shell-code-success: #4ADE80;             /* Verde successo su sfondo scuro (copy btn) */
+
+    /* === TOKEN SEMANTICI AGGIUNTIVI ===
+       Aggiunti in fase 4-sub (audit production-readiness 2026-05-08, F008).
+       Alias semantici sopra la scala grezza per ridurre hardcoded nei componenti. */
+
+    /** @public */
+    --color-text-meta: var(--color-text-light);            /* metadati neutri (e.g. icone meta dashboard) */
+    /** @public */
+    --color-row-hover: var(--color-bg-gray-50);            /* hover row su tabelle */
+    /** @public */
+    --color-status-warning-soft: #FEF3C7;                  /* amber-100 -- background warning leggero */
+    /** @public */
+    --color-status-danger-soft: #FEE2E2;                   /* red-100 -- background errore leggero */
+    /** @public */
+    --color-status-success-soft: #DBEAFE;                  /* blue-100 -- background info/success leggero */
+    /** @public */
+    --color-dashboard-border: var(--color-border);         /* alias per bordi su layout dashboard */
+    /** @public */
+    --color-error-dark: #B91C1C;                           /* red-700 -- hover/active errore */
+
+    /* Accent badges/banner verified (vedi order-payment-action-box). */
+    /** @public */
+    --color-accent-bg: rgba(28, 114, 100, 0.08);
 }
 
 /* === MOBILE TOKEN OVERRIDES ===

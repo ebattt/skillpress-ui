@@ -49,7 +49,7 @@ Markup verbatim dalla pagina demo `product-page-integration/index.html#L400-L499
 <div id="product-hero" class="product-hero">
     <div class="product-hero__grid">
         <div class="image-gallery">
-            <div class="image-gallery__container product-shadow" data-images='[{"src":"assets/brossura_fresata/brossurafresata2.png","alt":"Brossura fresata vista frontale"}]'>
+            <div class="image-gallery__container product-shadow" data-image-gallery-images='[{"src":"assets/brossura_fresata/brossurafresata2.png","alt":"Brossura fresata vista frontale"}]'>
                 <img id="mainProductImage" src="assets/brossura_fresata/brossurafresata2.png" alt="Brossura fresata vista frontale">
                 <button id="prevImageBtn" class="image-gallery__nav-btn image-gallery__nav-btn--prev" aria-label="Immagine precedente">
                     <svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
@@ -63,9 +63,9 @@ Markup verbatim dalla pagina demo `product-page-integration/index.html#L400-L499
             <h1 class="product-hero__title">Brossura fresata</h1>
             <div class="product-hero__rating">
                 <span class="product-hero__rating-value">4.85</span>
-                <div class="rating">
-                    <div class="rating__empty"><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span></div>
-                    <div class="rating__filled" style="width: 97%;"><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span><span class="rating__star">&#9733;</span></div>
+                <div class="sp-rating">
+                    <div class="sp-rating__empty"><span class="sp-rating__star">&#9733;</span><span class="sp-rating__star">&#9733;</span><span class="sp-rating__star">&#9733;</span><span class="sp-rating__star">&#9733;</span><span class="sp-rating__star">&#9733;</span></div>
+                    <div class="sp-rating__filled" style="width: 97%;"><span class="sp-rating__star">&#9733;</span><span class="sp-rating__star">&#9733;</span><span class="sp-rating__star">&#9733;</span><span class="sp-rating__star">&#9733;</span><span class="sp-rating__star">&#9733;</span></div>
                 </div>
                 <span class="product-hero__review-count">52 recensioni</span>
             </div>
@@ -78,9 +78,9 @@ Markup verbatim dalla pagina demo `product-page-integration/index.html#L400-L499
 </div>
 ```
 
-Inline style data-driven:
-- `style="width: 97%;"` su `.rating__filled` calcolato come `(rating / 5) * 100`.
-- `data-images` su `.image-gallery__container`: array JSON, consumato dal behavior demo, non dalla libreria.
+Inline style data-rating-driven:
+- `style="width: 97%;"` su `.sp-rating__filled` calcolato come `(rating / 5) * 100`.
+- `data-image-gallery-images` su `.image-gallery__container`: array JSON, consumato dal behavior demo, non dalla libreria.
 
 ## API Reference
 
@@ -98,7 +98,7 @@ ProductHero espone le sole classi di sezione. Le classi di galleria, rating e fe
 | `.product-hero__description` | paragrafo descrizione, font-size sm, color text-secondary | yes | — |
 
 Per `.image-gallery`, `.image-gallery__container`, `.product-shadow`, `.image-gallery__nav-btn*` vedi `image-gallery.md`.
-Per `.rating`, `.rating__empty`, `.rating__filled`, `.rating__star` vedi `rating.md`.
+Per `.sp-rating`, `.sp-rating__empty`, `.sp-rating__filled`, `.sp-rating__star` vedi `rating.md`.
 Per `.feature-grid`, `.feature-box*` vedi `feature-box.md`.
 
 Attributi:
@@ -108,8 +108,8 @@ Attributi:
 | `id="product-hero"` | `.product-hero` | no | Ancora di pagina opzionale, preservata dalla demo. |
 | `id="mainProductImage"` | `<img>` | no | Compatibilita' con behavior demo. |
 | `id="prevImageBtn"` / `id="nextImageBtn"` | bottoni nav | no | Compatibilita' con behavior demo. |
-| `data-images` | `.image-gallery__container` | no | Array JSON CMS, non letto dalla libreria. |
-| `style="width: NN%;"` | `.rating__filled` | yes | Percentuale calcolata `(rating / 5) * 100`. |
+| `data-image-gallery-images` | `.image-gallery__container` | no | Array JSON CMS, non letto dalla libreria. |
+| `style="width: NN%;"` | `.sp-rating__filled` | yes | Percentuale calcolata `(rating / 5) * 100`. |
 
 ## Mappatura nomi (demo product-page -> libreria)
 
@@ -168,10 +168,10 @@ Nessun script JS richiesto dalla libreria.
 ## Note CMS
 
 - titolo prodotto: contenuto di `.product-hero__title`.
-- rating: settare `.product-hero__rating-value` (numero), `style="width: NN%;"` su `.rating__filled` e `.product-hero__review-count` (testo).
+- rating: settare `.product-hero__rating-value` (numero), `style="width: NN%;"` su `.sp-rating__filled` e `.product-hero__review-count` (testo).
 - descrizione: contenuto di `.product-hero__description`.
 - feature grid: ripetere `.feature-box` × N dentro `.feature-grid` secondo contratto FeatureBox.
-- immagini: settare `src`/`alt` dell'`<img>` principale e popolare `data-images` con l'array JSON delle immagini disponibili.
+- immagini: settare `src`/`alt` dell'`<img>` principale e popolare `data-image-gallery-images` con l'array JSON delle immagini disponibili.
 - la `.feature-grid` deve restare dentro `.product-hero__info`: e' parte del layout della section.
 
 ## Out of scope

@@ -1,7 +1,21 @@
+/**
+ * SupplierActivityTable -- expandable table rows for supplier activities.
+ *
+ * @public-data data-supplier-activity-table, data-supplier-activity-table-init, data-supplier-activity-table-row, data-supplier-activity-table-toggle
+ * @public-event sp:supplier-activity-table:row-toggle
+ */
 (function () {
     'use strict';
 
     var namespace = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = namespace.helpers || {};
+
+    function dispatch(target, name, detail) {
+        if (typeof helpers.dispatch === 'function') {
+            try { helpers.dispatch(target, name, detail); return; } catch (e) { /* fallthrough */ }
+        }
+        target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
+    }
 
     function getCellCount(row) {
         return row ? row.children.length : 1;
@@ -38,6 +52,8 @@
         if (toggle) {
             toggle.setAttribute('aria-label', willOpen ? 'Nascondi dettagli attività' : 'Mostra dettagli attività');
         }
+
+        dispatch(row, 'sp:supplier-activity-table:row-toggle', { open: willOpen, row: row });
     }
 
     function ensureChevron(table, row) {
@@ -58,7 +74,10 @@
     }
 
     function initTable(table) {
-        if (!table || table.getAttribute('data-supplier-activity-table-init') === '1') return;
+        if (!table || table.__skillpressSupplierActivityTableInitialized) return;
+        table.__skillpressSupplierActivityTableInitialized = true;
+        // deprecated alias, removed in v0.3
+        table.setAttribute('data-supplier-activity-table-init', '1');
 
         table.querySelectorAll('[data-supplier-activity-table-row]').forEach(function (row) {
             var detailId = row.getAttribute('aria-controls');
@@ -93,10 +112,9 @@
             event.preventDefault();
             toggleRow(table, row);
         });
-
-        table.setAttribute('data-supplier-activity-table-init', '1');
     }
 
+    /** @public */
     function init(root) {
         var scope = root || document;
         scope.querySelectorAll('[data-supplier-activity-table]').forEach(initTable);
@@ -105,4 +123,12 @@
     namespace.SupplierActivityTable = {
         init: init
     };
+
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () { init(document); });
+    } else {
+        init(document);
+    }
 })();

@@ -41,26 +41,26 @@ Do not use it for:
         </thead>
         <tbody>
             <tr>
-                <td class="font-semibold td-nowrap">
+                <td class="font-semibold orders-table__cell--nowrap">
                     Giacomo Battiston
                     <span class="billing-table__mobile-address">Viale Trieste 54, Fossalta di Portogruaro (VE)</span>
                 </td>
-                <td class="td-mobile-hide">-</td>
-                <td class="td-nowrap td-mobile-hide">BTTGCM85M01H501Z</td>
-                <td class="td-mobile-hide">Viale Trieste 54, 30025 Fossalta di Portogruaro (VE)</td>
-                <td class="td-mobile-hide">giacomo.battiston@example.com</td>
-                <td class="td-mobile-hide">M5UXCR1</td>
-                <td class="td-mobile-hide">Si</td>
-                <td class="td-mobile-hide">Si</td>
-                <td class="td-text-center billing-table__pref-col">
+                <td class="orders-table__cell--mobile-hide">-</td>
+                <td class="orders-table__cell--nowrap orders-table__cell--mobile-hide">BTTGCM85M01H501Z</td>
+                <td class="orders-table__cell--mobile-hide">Viale Trieste 54, 30025 Fossalta di Portogruaro (VE)</td>
+                <td class="orders-table__cell--mobile-hide">giacomo.battiston@example.com</td>
+                <td class="orders-table__cell--mobile-hide">M5UXCR1</td>
+                <td class="orders-table__cell--mobile-hide">Si</td>
+                <td class="orders-table__cell--mobile-hide">Si</td>
+                <td class="orders-table__cell--text-center billing-table__pref-col">
                     <span class="billing-table__icon billing-table__icon--check" aria-label="Preferito"></span>
                 </td>
-                <td class="td-text-center billing-table__pref-col">
+                <td class="orders-table__cell--text-center billing-table__pref-col">
                     <span class="billing-table__icon billing-table__icon--check" aria-label="Preferito"></span>
                 </td>
-                <td class="td-text-center">
-                    <button class="dash-link--download" type="button" data-action="edit-billing" title="Modifica">
-                        <span class="dash-link--download__icon dash-link--download__icon--edit" aria-hidden="true"></span>
+                <td class="orders-table__cell--text-center">
+                    <button class="dashboard-link--download" type="button" data-orders-table-action="edit-billing" title="Modifica">
+                        <span class="dashboard-link--download__icon dashboard-link--download__icon--edit" aria-hidden="true"></span>
                     </button>
                 </td>
             </tr>

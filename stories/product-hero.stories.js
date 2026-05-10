@@ -59,20 +59,20 @@ const productBoxes = [
 ];
 
 const renderStars = (percent = 97) => `
-    <div class="rating">
-        <div class="rating__empty">
-            <span class="rating__star">&#9733;</span>
-            <span class="rating__star">&#9733;</span>
-            <span class="rating__star">&#9733;</span>
-            <span class="rating__star">&#9733;</span>
-            <span class="rating__star">&#9733;</span>
+    <div class="sp-rating">
+        <div class="sp-rating__empty">
+            <span class="sp-rating__star">&#9733;</span>
+            <span class="sp-rating__star">&#9733;</span>
+            <span class="sp-rating__star">&#9733;</span>
+            <span class="sp-rating__star">&#9733;</span>
+            <span class="sp-rating__star">&#9733;</span>
         </div>
-        <div class="rating__filled" style="width: ${percent}%;">
-            <span class="rating__star">&#9733;</span>
-            <span class="rating__star">&#9733;</span>
-            <span class="rating__star">&#9733;</span>
-            <span class="rating__star">&#9733;</span>
-            <span class="rating__star">&#9733;</span>
+        <div class="sp-rating__filled" style="width: ${percent}%;">
+            <span class="sp-rating__star">&#9733;</span>
+            <span class="sp-rating__star">&#9733;</span>
+            <span class="sp-rating__star">&#9733;</span>
+            <span class="sp-rating__star">&#9733;</span>
+            <span class="sp-rating__star">&#9733;</span>
         </div>
     </div>
 `;
@@ -103,7 +103,7 @@ const renderProductHero = ({
         <div id="product-hero" class="product-hero">
             <div class="product-hero__grid">
                 <div class="image-gallery">
-                    <div class="image-gallery__container product-shadow" data-images='${JSON.stringify(productImages)}'>
+                    <div class="image-gallery__container product-shadow" data-image-gallery-images='${JSON.stringify(productImages)}'>
                         <img id="mainProductImage" src="${imageSrc}" alt="${imageAlt}">
                         <button id="prevImageBtn" class="image-gallery__nav-btn image-gallery__nav-btn--prev" aria-label="Immagine precedente">
                             ${chevronLeft}

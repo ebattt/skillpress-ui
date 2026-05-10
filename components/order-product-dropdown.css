@@ -104,7 +104,7 @@
     margin-top: 0.375rem;
 }
 
-.product-step-card__badges .dash-action-badge__icon {
+.product-step-card__badges .dashboard-action-badge__icon {
     display: none;
 }
 
@@ -160,7 +160,7 @@
     background: var(--color-bg-white);
 }
 
-.product-step-card__actions-bar .dash-link--reorder {
+.product-step-card__actions-bar .dashboard-link--reorder {
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-xs);
@@ -176,7 +176,7 @@
     font-family: inherit;
 }
 
-.product-step-card__actions-bar .dash-link--reorder:hover {
+.product-step-card__actions-bar .dashboard-link--reorder:hover {
     color: var(--color-primary-dark);
 }
 

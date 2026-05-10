@@ -14,7 +14,7 @@ package_path: primitives/option-buttons.css
 
 Gruppo di bottoni inline per selezione esclusiva di un'opzione tra N (formati, grammature, finiture, ecc.). Usato nella modalita' "Veloce" del configuratore. Il CMS/JS consumer gestisce il toggle dei modifier `--selected`/`--default` al click.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Root rinominato da `.option-btns-wrap` -> `.option-buttons`; sub-element `option-btn` -> `option-buttons__btn`. Nessun hook `data-*` (componente CSS-only, toggle consumer-side).
+> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Root rinominato da `.option-btns-wrap` -> `.sp-option-buttons`; sub-element `option-btn` -> `option-buttons__btn`. Nessun hook `data-*` (componente CSS-only, toggle consumer-side).
 
 ## ChoiceGroup
 
@@ -31,9 +31,9 @@ Esempi CMS:
 
 | Dato CMS | Presentation type | Runtime |
 |---|---|---|
-| Grammatura | Choice group | `.option-buttons` |
-| Controllo file | Choice group equal | `.option-buttons.option-buttons--equal` |
-| Copia Green Si/No | Choice group | `.option-buttons` |
+| Grammatura | Choice group | `.sp-option-buttons` |
+| Controllo file | Choice group equal | `.sp-option-buttons.sp-option-buttons--equal` |
+| Copia Green Si/No | Choice group | `.sp-option-buttons` |
 
 Non creare componenti dedicati come `GrammaturaButton` se cambia solo il nome
 della variante CMS.
@@ -55,12 +55,12 @@ OptionButtons equal
 Markup ricostruito da `product-page-integration/js/configurator.js#L687-L693`.
 
 ```html
-<div class="option-buttons">
-    <button class="option-buttons__btn option-buttons__btn--selected">A4</button>
-    <button class="option-buttons__btn option-buttons__btn--default">A5</button>
-    <button class="option-buttons__btn option-buttons__btn--default">A3</button>
-    <button class="option-buttons__btn option-buttons__btn--default">Libro</button>
-    <button class="option-buttons__btn option-buttons__btn--default">Personalizzato</button>
+<div class="sp-option-buttons">
+    <button class="sp-option-buttons__btn sp-option-buttons__btn--selected">A4</button>
+    <button class="sp-option-buttons__btn sp-option-buttons__btn--default">A5</button>
+    <button class="sp-option-buttons__btn sp-option-buttons__btn--default">A3</button>
+    <button class="sp-option-buttons__btn sp-option-buttons__btn--default">Libro</button>
+    <button class="sp-option-buttons__btn sp-option-buttons__btn--default">Personalizzato</button>
 </div>
 ```
 
@@ -69,9 +69,9 @@ modifier di layout. Questo replica il look di `.controllo-btns` senza esporre
 un componente domain-specific:
 
 ```html
-<div class="option-buttons option-buttons--equal" role="group" aria-label="Controllo file">
-    <button class="option-buttons__btn option-buttons__btn--selected">Standard - gratuito</button>
-    <button class="option-buttons__btn option-buttons__btn--default">Plus - 11,90 euro</button>
+<div class="sp-option-buttons sp-option-buttons--equal" role="group" aria-label="Controllo file">
+    <button class="sp-option-buttons__btn sp-option-buttons__btn--selected">Standard - gratuito</button>
+    <button class="sp-option-buttons__btn sp-option-buttons__btn--default">Plus - 11,90 euro</button>
 </div>
 ```
 
@@ -79,18 +79,18 @@ un componente domain-specific:
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.option-buttons` | container del gruppo | yes | `--equal` |
-| `.option-buttons__btn` | singolo bottone opzione | yes | `--default`, `--selected`, `--borderless` |
+| `.sp-option-buttons` | container del gruppo | yes | `--equal` |
+| `.sp-option-buttons__btn` | singolo bottone opzione | yes | `--default`, `--selected`, `--borderless` |
 
 ## Mappatura nomi (demo product-page -> libreria)
 
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|
-| `.option-btns-wrap` | `.option-buttons` |
-| `.option-btn` | `.option-buttons__btn` |
-| `.option-btn--default` | `.option-buttons__btn--default` |
-| `.option-btn--selected` | `.option-buttons__btn--selected` |
-| `.option-btn--borderless` | `.option-buttons__btn--borderless` |
+| `.option-btns-wrap` | `.sp-option-buttons` |
+| `.option-btn` | `.sp-option-buttons__btn` |
+| `.option-btn--default` | `.sp-option-buttons__btn--default` |
+| `.option-btn--selected` | `.sp-option-buttons__btn--selected` |
+| `.option-btn--borderless` | `.sp-option-buttons__btn--borderless` |
 
 ## Installation
 
@@ -115,7 +115,7 @@ Nessun script JS richiesto.
 `--color-primary`, `--color-text`, `--color-bg-gray-200`, `--color-bg-gray-50`, `--radius-sm`, `--font-size-sm`, `--font-weight-medium`, `--transition-fast`.
 
 Valori letterali mantenuti dal catalogo:
-- `#ffffff` su `.option-buttons__btn--default` e `--borderless` (sfondo bianco).
+- `#ffffff` su `.sp-option-buttons__btn--default` e `--borderless` (sfondo bianco).
 - bordo trasparente sui bottoni default/selected: il look della product page
   non mostra un contorno grigio attorno alle opzioni testuali.
 
@@ -131,12 +131,12 @@ Valori letterali mantenuti dal catalogo:
 
 ## Classi pubbliche
 
-- `.option-buttons`
-- `.option-buttons--equal`
-- `.option-buttons__btn`
-- `.option-buttons__btn--default`
-- `.option-buttons__btn--selected`
-- `.option-buttons__btn--borderless`
+- `.sp-option-buttons`
+- `.sp-option-buttons--equal`
+- `.sp-option-buttons__btn`
+- `.sp-option-buttons__btn--default`
+- `.sp-option-buttons__btn--selected`
+- `.sp-option-buttons__btn--borderless`
 
 ## Data hooks
 
@@ -145,10 +145,10 @@ per il configuratore restano consumer/demo.
 
 ## Modifier / stati
 
-- `.option-buttons__btn--selected`: opzione selezionata.
-- `.option-buttons__btn--default`: opzione disponibile non selezionata.
-- `.option-buttons__btn--borderless`: variante visiva senza bordo.
-- `.option-buttons--equal`: layout a colonne uguali per gruppi brevi.
+- `.sp-option-buttons__btn--selected`: opzione selezionata.
+- `.sp-option-buttons__btn--default`: opzione disponibile non selezionata.
+- `.sp-option-buttons__btn--borderless`: variante visiva senza bordo.
+- `.sp-option-buttons--equal`: layout a colonne uguali per gruppi brevi.
 
 ## Backend owns
 

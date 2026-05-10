@@ -22,7 +22,7 @@ const renderGallery = ({ src = imageFront, alt = 'Brossura fresata vista frontal
     root.innerHTML = `
         <div class="image-gallery">
             <div class="image-gallery__container ${withShadow ? 'product-shadow' : ''}"
-                 data-images='${JSON.stringify([
+                 data-image-gallery-images='${JSON.stringify([
                      { src: imageFront, alt: 'Brossura fresata vista frontale' },
                      { src: imageSide, alt: 'Brossura fresata vista laterale' },
                      { src: imageDetail, alt: 'Brossura fresata dettaglio' }
@@ -44,7 +44,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: 'Galleria immagine prodotto: container quadrato con immagine principale e bottoni nav prev/next. Behavior galleria fuori scope (Strategia A static snapshot). Il CMS popola data-images, la pagina demo gestisce il cambio.'
+                component: 'Galleria immagine prodotto: container quadrato con immagine principale e bottoni nav prev/next. Behavior galleria fuori scope (Strategia A static snapshot). Il CMS popola data-image-gallery-images, la pagina demo gestisce il cambio.'
             }
         }
     }
@@ -65,7 +65,7 @@ export const ReferenceFromElementsUI = {
     parameters: {
         docs: {
             description: {
-                story: 'Markup verbatim dalla pagina demo product-page-integration. Tre immagini in data-images, prima visibile, prev/next presenti senza listener.'
+                story: 'Markup verbatim dalla pagina demo product-page-integration. Tre immagini in data-image-gallery-images, prima visibile, prev/next presenti senza listener.'
             }
         }
     }

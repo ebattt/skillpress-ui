@@ -42,11 +42,11 @@ layout helper dedicato.
                 <!-- DashboardOrderSummary -->
             </article>
 
-            <div class="dash-dropdown-box order-detail-grid__payment" data-dashboard-dropdown-box>
+            <div class="dashboard-dropdown-box order-detail-grid__payment" data-dashboard-dropdown-box>
                 <!-- DashboardDropdownBox Pagamento -->
             </div>
 
-            <div class="dash-dropdown-box order-detail-grid__shipping" data-dashboard-dropdown-box>
+            <div class="dashboard-dropdown-box order-detail-grid__shipping" data-dashboard-dropdown-box>
                 <!-- DashboardDropdownBox Spedizione -->
             </div>
         </aside>

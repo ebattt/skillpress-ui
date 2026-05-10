@@ -18,7 +18,7 @@ fornisce solo il layout responsive della lista.
         <p class="article-card__excerpt">Guida pratica per scegliere la soluzione giusta.</p>
         <p class="article-card__meta">12 Settembre 2025</p>
         <div class="article-card__actions">
-            <a class="button button--primary button--sm" href="/blog/rilegatura">Leggi di piu</a>
+            <a class="sp-button sp-button--primary sp-button--sm" href="/blog/rilegatura">Leggi di piu</a>
         </div>
     </div>
 </article>

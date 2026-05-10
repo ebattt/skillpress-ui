@@ -21,7 +21,7 @@ bottoni/card, bottone Anteprima e pannello inline con immagine e testo.
 <div class="preview" data-preview>
     <div class="preview__row">
         <div class="preview__select">
-            <select class="form-select">
+            <select class="sp-form-select">
                 <option data-preview-title="Patinata Opaca"
                         data-preview-description="Descrizione carta dal CMS."
                         data-preview-image="paper.jpg">

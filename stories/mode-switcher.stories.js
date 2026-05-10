@@ -12,12 +12,12 @@ const settingsSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="
 const renderDefault = () => {
     const container = document.createElement('div');
     container.innerHTML = `
-        <div class="mode-switcher" role="group" aria-label="Seleziona modalità di configurazione">
-            <button class="mode-switcher__btn mode-switcher__btn--active" aria-pressed="true">
+        <div class="sp-mode-switcher" role="group" aria-label="Seleziona modalità di configurazione">
+            <button class="sp-mode-switcher__btn sp-mode-switcher__btn--active" aria-pressed="true">
                 ${boltSVG}
                 Veloce
             </button>
-            <button class="mode-switcher__btn mode-switcher__btn--inactive" aria-pressed="false">
+            <button class="sp-mode-switcher__btn sp-mode-switcher__btn--inactive" aria-pressed="false">
                 ${settingsSVG}
                 Avanzata
             </button>
@@ -32,21 +32,21 @@ export const Default = {
         const veloce = canvas.getByRole('button', { name: /Veloce/ });
         const avanzata = canvas.getByRole('button', { name: /Avanzata/ });
         await expect(veloce).toHaveAttribute('aria-pressed', 'true');
-        await expect(veloce).toHaveClass('mode-switcher__btn--active');
+        await expect(veloce).toHaveClass('sp-mode-switcher__btn--active');
         await expect(avanzata).toHaveAttribute('aria-pressed', 'false');
-        await expect(avanzata).toHaveClass('mode-switcher__btn--inactive');
+        await expect(avanzata).toHaveClass('sp-mode-switcher__btn--inactive');
     }
 };
 
 export const SecondActive = () => {
     const container = document.createElement('div');
     container.innerHTML = `
-        <div class="mode-switcher" role="group" aria-label="Seleziona modalità di configurazione">
-            <button class="mode-switcher__btn mode-switcher__btn--inactive" aria-pressed="false">
+        <div class="sp-mode-switcher" role="group" aria-label="Seleziona modalità di configurazione">
+            <button class="sp-mode-switcher__btn sp-mode-switcher__btn--inactive" aria-pressed="false">
                 ${boltSVG}
                 Veloce
             </button>
-            <button class="mode-switcher__btn mode-switcher__btn--active" aria-pressed="true">
+            <button class="sp-mode-switcher__btn sp-mode-switcher__btn--active" aria-pressed="true">
                 ${settingsSVG}
                 Avanzata
             </button>
@@ -58,11 +58,11 @@ export const SecondActive = () => {
 export const WithoutIcons = () => {
     const container = document.createElement('div');
     container.innerHTML = `
-        <div class="mode-switcher" role="group" aria-label="Seleziona modalità">
-            <button class="mode-switcher__btn mode-switcher__btn--active" aria-pressed="true">
+        <div class="sp-mode-switcher" role="group" aria-label="Seleziona modalità">
+            <button class="sp-mode-switcher__btn sp-mode-switcher__btn--active" aria-pressed="true">
                 Singolo
             </button>
-            <button class="mode-switcher__btn mode-switcher__btn--inactive" aria-pressed="false">
+            <button class="sp-mode-switcher__btn sp-mode-switcher__btn--inactive" aria-pressed="false">
                 Multicopia
             </button>
         </div>
@@ -73,14 +73,14 @@ export const WithoutIcons = () => {
 export const ThreeOptions = () => {
     const container = document.createElement('div');
     container.innerHTML = `
-        <div class="mode-switcher" role="group" aria-label="Seleziona vista">
-            <button class="mode-switcher__btn mode-switcher__btn--active" aria-pressed="true">
+        <div class="sp-mode-switcher" role="group" aria-label="Seleziona vista">
+            <button class="sp-mode-switcher__btn sp-mode-switcher__btn--active" aria-pressed="true">
                 Griglia
             </button>
-            <button class="mode-switcher__btn mode-switcher__btn--inactive" aria-pressed="false">
+            <button class="sp-mode-switcher__btn sp-mode-switcher__btn--inactive" aria-pressed="false">
                 Lista
             </button>
-            <button class="mode-switcher__btn mode-switcher__btn--inactive" aria-pressed="false">
+            <button class="sp-mode-switcher__btn sp-mode-switcher__btn--inactive" aria-pressed="false">
                 Compatta
             </button>
         </div>
@@ -91,12 +91,12 @@ export const ThreeOptions = () => {
 export const ReferenceFromElementsUI = () => {
     const container = document.createElement('div');
     container.innerHTML = `
-        <div class="mode-switcher" role="group" aria-label="Seleziona modalità di configurazione">
-            <button id="modeVeloce" class="mode-switcher__btn mode-switcher__btn--active" aria-pressed="true">
+        <div class="sp-mode-switcher" role="group" aria-label="Seleziona modalità di configurazione">
+            <button id="modeVeloce" class="sp-mode-switcher__btn sp-mode-switcher__btn--active" aria-pressed="true">
                 ${boltSVG}
                 Veloce
             </button>
-            <button id="modeAvanzata" class="mode-switcher__btn mode-switcher__btn--inactive" aria-pressed="false">
+            <button id="modeAvanzata" class="sp-mode-switcher__btn sp-mode-switcher__btn--inactive" aria-pressed="false">
                 ${settingsSVG}
                 Avanzata
             </button>

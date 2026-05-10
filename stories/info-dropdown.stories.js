@@ -14,12 +14,12 @@ const renderField = ({
     body,
     open = false
 }) => `
-    <div class="form-field" style="max-width: 480px;">
-        <div class="label-row">
-            <label class="label-text">${label}</label>
+    <div class="sp-form-field" style="max-width: 480px;">
+        <div class="sp-label-row">
+            <label class="sp-label-text">${label}</label>
             <button type="button"
-                    class="info-btn"
-                    data-info-trigger
+                    class="sp-info-btn"
+                    data-info-dropdown-info-trigger
                     aria-controls="${id}"
                     aria-expanded="${open ? 'true' : 'false'}"
                     aria-label="Mostra informazioni"></button>
@@ -45,7 +45,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: 'Disclosure inline per pannelli di aiuto contestuale. Il backend scrive solo il body; titolo, header e close button vengono auto-iniettati dalla libreria al primo init usando il textContent della .label-text adiacente.'
+                component: 'Disclosure inline per pannelli di aiuto contestuale. Il backend scrive solo il body; titolo, header e close button vengono auto-iniettati dalla libreria al primo init usando il textContent della .sp-label-text adiacente.'
             }
         }
     }
@@ -94,8 +94,8 @@ export const WithListAndNote = {
                 <li><strong>A5</strong> (148x210mm) -- Libri tascabili, brochure</li>
                 <li><strong>Libro</strong> (165x235mm) -- Editoriale classico</li>
             </ul>
-            <div class="info-note">
-                <p class="info-note__title">Nota sulle tolleranze (Art. 9.7)</p>
+            <div class="sp-info-note">
+                <p class="sp-info-note__title">Nota sulle tolleranze (Art. 9.7)</p>
                 <p>Per motivi di stampa, rilegatura e rifiniture, ci riserviamo di ridurre il formato del lavoro fino al 99% se necessario. Questo fattore e' da accettare e non soggetto a reclamo.</p>
             </div>
         `

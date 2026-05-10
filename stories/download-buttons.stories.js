@@ -9,12 +9,12 @@ export default {
 const renderDefault = () => {
     const container = document.createElement('div');
     container.innerHTML = `
-        <div class="download-buttons__divider"></div>
-        <div class="download-buttons">
-            <a class="download-buttons__btn" href="#istruzioni-placeholder" target="_blank" rel="noopener">
+        <div class="sp-download-buttons__divider"></div>
+        <div class="sp-download-buttons">
+            <a class="sp-download-buttons__btn" href="#istruzioni-placeholder" target="_blank" rel="noopener">
                 Istruzioni
             </a>
-            <a class="download-buttons__btn" href="#template-placeholder" target="_blank" rel="noopener">
+            <a class="sp-download-buttons__btn" href="#template-placeholder" target="_blank" rel="noopener">
                 Template
             </a>
         </div>
@@ -25,17 +25,17 @@ const renderDefault = () => {
 export const Default = {
     render: renderDefault,
     play: async ({ canvas }) => {
-        await expect(canvas.getByRole('link', { name: /Istruzioni/ })).toHaveClass('download-buttons__btn');
-        await expect(canvas.getByRole('link', { name: /Template/ })).toHaveClass('download-buttons__btn');
+        await expect(canvas.getByRole('link', { name: /Istruzioni/ })).toHaveClass('sp-download-buttons__btn');
+        await expect(canvas.getByRole('link', { name: /Template/ })).toHaveClass('sp-download-buttons__btn');
     }
 };
 
 export const SingleButton = () => {
     const container = document.createElement('div');
     container.innerHTML = `
-        <div class="download-buttons__divider"></div>
-        <div class="download-buttons">
-            <a class="download-buttons__btn" href="#istruzioni-placeholder" target="_blank" rel="noopener">
+        <div class="sp-download-buttons__divider"></div>
+        <div class="sp-download-buttons">
+            <a class="sp-download-buttons__btn" href="#istruzioni-placeholder" target="_blank" rel="noopener">
                 Istruzioni
             </a>
         </div>
@@ -46,15 +46,15 @@ export const SingleButton = () => {
 export const ThreeButtons = () => {
     const container = document.createElement('div');
     container.innerHTML = `
-        <div class="download-buttons__divider"></div>
-        <div class="download-buttons">
-            <a class="download-buttons__btn" href="#" target="_blank" rel="noopener">
+        <div class="sp-download-buttons__divider"></div>
+        <div class="sp-download-buttons">
+            <a class="sp-download-buttons__btn" href="#" target="_blank" rel="noopener">
                 Istruzioni
             </a>
-            <a class="download-buttons__btn" href="#" target="_blank" rel="noopener">
+            <a class="sp-download-buttons__btn" href="#" target="_blank" rel="noopener">
                 Template
             </a>
-            <a class="download-buttons__btn" href="#" target="_blank" rel="noopener">
+            <a class="sp-download-buttons__btn" href="#" target="_blank" rel="noopener">
                 Scheda tecnica
             </a>
         </div>
@@ -65,12 +65,12 @@ export const ThreeButtons = () => {
 export const ReferenceFromElementsUI = () => {
     const container = document.createElement('div');
     container.innerHTML = `
-        <div class="download-buttons__divider"></div>
-        <div class="download-buttons">
-            <a class="download-buttons__btn" href="#istruzioni-placeholder" target="_blank" rel="noopener">
+        <div class="sp-download-buttons__divider"></div>
+        <div class="sp-download-buttons">
+            <a class="sp-download-buttons__btn" href="#istruzioni-placeholder" target="_blank" rel="noopener">
                 Istruzioni
             </a>
-            <a class="download-buttons__btn" href="#template-placeholder" target="_blank" rel="noopener">
+            <a class="sp-download-buttons__btn" href="#template-placeholder" target="_blank" rel="noopener">
                 Template
             </a>
         </div>

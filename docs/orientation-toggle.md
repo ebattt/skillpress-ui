@@ -31,14 +31,14 @@ OrientationToggle
 Markup verbatim da `product-page-integration/js/sections/section-1.js#L158-L173`.
 
 ```html
-<div class="orientation-toggle">
-    <button class="orientation-toggle__btn orientation-toggle__btn--active">
+<div class="sp-orientation-toggle">
+    <button class="sp-orientation-toggle__btn sp-orientation-toggle__btn--active">
         <svg width="10" height="14" viewBox="0 0 10 14" fill="none">
             <rect x="0.5" y="0.5" width="9" height="13" rx="1" stroke-width="1" fill="white"/>
         </svg>
         Verticale
     </button>
-    <button class="orientation-toggle__btn">
+    <button class="sp-orientation-toggle__btn">
         <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
             <rect x="0.5" y="0.5" width="13" height="9" rx="1" stroke-width="1" fill="white"/>
         </svg>
@@ -51,17 +51,17 @@ Markup verbatim da `product-page-integration/js/sections/section-1.js#L158-L173`
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.orientation-toggle` | container compatto con sfondo grigio | yes | — |
-| `.orientation-toggle__btn` | singolo bottone toggle | yes | `--active` |
+| `.sp-orientation-toggle` | container compatto con sfondo grigio | yes | — |
+| `.sp-orientation-toggle__btn` | singolo bottone toggle | yes | `--active` |
 
 ## Mappatura nomi (demo product-page -> libreria)
 
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|
-| `.orientation-btn` | `.orientation-toggle__btn` |
-| `.orientation-btn--active` | `.orientation-toggle__btn--active` |
+| `.orientation-btn` | `.sp-orientation-toggle__btn` |
+| `.orientation-btn--active` | `.sp-orientation-toggle__btn--active` |
 
-`.orientation-toggle` (block root) e' invariato. La interaction `js/interactions/orientation-toggle.js` e' stata aggiornata coerentemente in Wave 1.
+`.sp-orientation-toggle` (block root) e' invariato. La interaction `js/interactions/orientation-toggle.js` e' stata aggiornata coerentemente in Wave 1.
 
 ## Installation
 
@@ -83,18 +83,18 @@ Nessun script JS richiesto.
 `--spacing-xs`, `--spacing-sm`, `--radius-sm`, `--font-size-xs`, `--font-weight-medium`, `--color-text`, `--color-text-light`, `--color-text-secondary`, `--color-bg-white`, `--shadow-sm`, `--transition-fast`.
 
 Valore letterale mantenuto dal catalogo:
-- `rgba(229, 231, 235, 0.6)` su `.orientation-toggle` (sfondo grigio semitrasparente).
+- `rgba(229, 231, 235, 0.6)` su `.sp-orientation-toggle` (sfondo grigio semitrasparente).
 
 ## Note CMS
 
 - esattamente un bottone deve avere `--active` in ogni momento.
-- le SVG inline usano `stroke: currentColor` dalla regola `.orientation-toggle__btn svg`; nella demo il colore e' forzato con `style="stroke: ..."` inline che puo' essere omesso se la regola CSS e' sufficiente.
+- le SVG inline usano `stroke: currentColor` dalla regola `.sp-orientation-toggle__btn svg`; nella demo il colore e' forzato con `style="stroke: ..."` inline che puo' essere omesso se la regola CSS e' sufficiente.
 
 ## Classi pubbliche
 
-- `.orientation-toggle`
-- `.orientation-toggle__btn`
-- `.orientation-toggle__btn--active`
+- `.sp-orientation-toggle`
+- `.sp-orientation-toggle__btn`
+- `.sp-orientation-toggle__btn--active`
 
 ## Data hooks
 
@@ -103,7 +103,7 @@ del consumer restano privati.
 
 ## Modifier / stati
 
-- `.orientation-toggle__btn--active`: orientamento selezionato.
+- `.sp-orientation-toggle__btn--active`: orientamento selezionato.
 - Bottone senza modifier: orientamento disponibile non selezionato.
 
 ## Backend owns

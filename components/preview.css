@@ -204,6 +204,9 @@
     }
 }
 
+/* breakpoint-exception: 768px serve a far crescere l'immagine preview oltre la
+   dimensione tablet-small (640) ma prima del cutoff desktop (1024); senza questo
+   step l'immagine resterebbe 12rem fino a 1024 creando vuoto laterale. */
 @media (min-width: 768px) {
     .preview__image {
         width: 16rem;

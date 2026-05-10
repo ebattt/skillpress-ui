@@ -71,27 +71,27 @@ table for filters and pagination.
                 data-supplier-activity-table-row
                 aria-controls="supplier-detail-47298"
                 aria-expanded="false">
-                <td class="td-id font-semibold text-dark-blue td-nowrap">47298</td>
-                <td class="td-title">
+                <td class="orders-table__cell--id font-semibold text-dark-blue orders-table__cell--nowrap">47298</td>
+                <td class="orders-table__cell--title">
                     <div class="table-title-cell">
                         <span class="table-title-cell__text">Invio Cartonato - Cartonato Brossura Filo Refe</span>
                     </div>
                 </td>
-                <td class="td-mobile-hide">
+                <td class="orders-table__cell--mobile-hide">
                     <span class="supplier-activity-table__activity-label">In attesa</span>
                 </td>
-                <td class="td-mobile-hide">
+                <td class="orders-table__cell--mobile-hide">
                     <span class="supplier-activity-table__message">Verrai notificato appena Skillpress ti invierà il semilavorato</span>
                 </td>
-                <td class="td-mobile-hide">
+                <td class="orders-table__cell--mobile-hide">
                     <div class="supplier-activity-table__company">
                         <strong>SKILLPRESS di Battiston Maurizio e Marco snc</strong>
                         <span>Viale Kennedy 17</span>
                         <span>30025 - Fossalta di Portogruaro (VE) - Italia</span>
                     </div>
                 </td>
-                <td class="td-nowrap td-mobile-hide"><strong>07/05/2021</strong></td>
-                <td class="td-status"><span class="badge badge--info">In lavorazione</span></td>
+                <td class="orders-table__cell--nowrap orders-table__cell--mobile-hide"><strong>07/05/2021</strong></td>
+                <td class="orders-table__cell--status"><span class="sp-badge sp-badge--info">In lavorazione</span></td>
             </tr>
             <tr class="supplier-activity-table__detail-row"
                 id="supplier-detail-47298"

@@ -101,34 +101,34 @@ const renderDetail = (row) => `
 
 const renderRows = () => rows.map((row) => `
     <tr class="supplier-activity-table__row" tabindex="0" data-supplier-activity-table-row aria-controls="supplier-detail-${row.id}" aria-expanded="false">
-        <td class="td-id font-semibold text-dark-blue td-nowrap">${row.id}</td>
-        <td class="td-title">
+        <td class="orders-table__cell--id font-semibold text-dark-blue orders-table__cell--nowrap">${row.id}</td>
+        <td class="orders-table__cell--title">
             <div class="table-title-cell">
                 <span class="table-title-cell__text" title="Invio Cartonato - Cartonato Brossura Filo Refe">Invio Cartonato - Cartonato Brossura Filo Refe</span>
             </div>
         </td>
-        <td class="td-mobile-hide"><span class="supplier-activity-table__activity-label">In attesa</span></td>
-        <td class="td-mobile-hide"><span class="supplier-activity-table__message">Verrai notificato appena Skillpress ti invierà il semilavorato</span></td>
-        <td class="td-mobile-hide">${company}</td>
-        <td class="td-nowrap td-mobile-hide"><strong>${row.date}</strong></td>
-        <td class="td-status"><span class="${row.statusClass}">${row.status}</span></td>
+        <td class="orders-table__cell--mobile-hide"><span class="supplier-activity-table__activity-label">In attesa</span></td>
+        <td class="orders-table__cell--mobile-hide"><span class="supplier-activity-table__message">Verrai notificato appena Skillpress ti invierà il semilavorato</span></td>
+        <td class="orders-table__cell--mobile-hide">${company}</td>
+        <td class="orders-table__cell--nowrap orders-table__cell--mobile-hide"><strong>${row.date}</strong></td>
+        <td class="orders-table__cell--status"><span class="${row.statusClass}">${row.status}</span></td>
     </tr>
     ${renderDetail(row)}
 `).join('');
 
 const renderFilters = () => `
     <div class="supplier-activity-section__filters" aria-label="Filtri attività fornitore">
-        <select class="orders-filter-select" data-filter="activity-status" aria-label="Stato attività">
+        <select class="orders-filter-select" data-search-filter-bar-filter="activity-status" aria-label="Stato attività">
             <option>Attività non completate</option>
         </select>
-        <select class="orders-filter-select" data-filter="order-filter" aria-label="Ordine">
+        <select class="orders-filter-select" data-search-filter-bar-filter="order-filter" aria-label="Ordine">
             <option>Tutti gli ordini aperti</option>
         </select>
-        <select class="orders-filter-select" data-filter="sort-by" aria-label="Ordinamento">
+        <select class="orders-filter-select" data-search-filter-bar-filter="sort-by" aria-label="Ordinamento">
             <option>Prese in carico da</option>
         </select>
-        <input type="text" placeholder="cerca" class="orders-filter-input" data-filter="search" aria-label="Cerca">
-        <button class="orders-filter-btn" type="button" data-action="filter-fornitore">Mostra</button>
+        <input type="text" placeholder="cerca" class="orders-filter-input" data-search-filter-bar-filter="search" aria-label="Cerca">
+        <button class="orders-filter-btn" type="button" data-orders-table-action="filter-fornitore">Mostra</button>
     </div>
 `;
 

@@ -1,5 +1,14 @@
+/**
+ * CatalogStage -- hero/landing slide stage with optional autoplay.
+ *
+ * @public-data data-catalog-stage, data-catalog-stage-init, data-catalog-stage-slide, data-catalog-stage-dot, data-catalog-stage-autoplay, data-catalog-stage-interval
+ * @public-event (none)
+ */
 (function () {
     'use strict';
+
+    var ns = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = ns.helpers || {};
 
     function toArray(value) {
         return Array.prototype.slice.call(value || []);
@@ -38,7 +47,7 @@
     }
 
     function initRoot(root) {
-        if (!root || root.getAttribute('data-catalog-stage-init') === '1') return;
+        if (!root || root.__skillpressCatalogStageInitialized) return;
 
         var slides = toArray(root.querySelectorAll('[data-catalog-stage-slide]'));
         var dots = toArray(root.querySelectorAll('[data-catalog-stage-dot]'));
@@ -58,6 +67,8 @@
             timer: null
         };
 
+        root.__skillpressCatalogStageInitialized = true;
+        // deprecated alias, removed in v0.3
         root.setAttribute('data-catalog-stage-init', '1');
 
         dots.forEach(function (dot, index) {
@@ -76,6 +87,7 @@
         startAutoplay(state);
     }
 
+    /** @public */
     function init(scope) {
         var root = scope || document;
 
@@ -87,12 +99,13 @@
         toArray(root.querySelectorAll('[data-catalog-stage]')).forEach(initRoot);
     }
 
-    if (document.readyState === 'loading') {
+    ns.CatalogStage = { init: init };
+
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function () { init(document); });
     } else {
         init(document);
     }
-
-    window.SkillpressUI = window.SkillpressUI || {};
-    window.SkillpressUI.CatalogStage = { init: init };
 })();

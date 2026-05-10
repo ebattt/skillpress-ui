@@ -41,7 +41,7 @@ non copre il blocco header. `Card` non c'entra: la fonte non ha superficie.
             <span class="order-header__subtitle-line">Consegna prevista <strong class="order-header__subtitle-emphasis">12/03/2026</strong></span>
         </p>
         <div class="order-header__meta">
-            <span class="dash-action-badge" data-dashboard-action-badge>File richiesto</span>
+            <span class="dashboard-action-badge" data-dashboard-action-badge>File richiesto</span>
         </div>
     </header>
 </div>

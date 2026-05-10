@@ -1,0 +1,5172 @@
+/* Product page runtime bundle for backend/CMS integrations. */
+
+/* === inline base/fonts.css === */
+/**
+ * FONTS — Asset tipografici Skillpress UI
+ *
+ * Manrope e il font obbligatorio del design system e viene servito dal package.
+ * Non importare Google Fonts nel runtime consumer.
+ */
+
+@font-face {
+    font-family: "Manrope";
+    src: url("../fonts/manrope/Manrope-Variable.woff2") format("woff2-variations");
+    font-weight: 200 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* === inline tokens/tokens.css === */
+/**
+ * Fonte: elements-ui/css/tokens.css
+ * Data copia: 2026-04-23
+ * Nota: copia esatta.
+ */
+
+/**
+ * ==========================================================================
+ * TOKENS -- Design token per Skillpress UI
+ * ==========================================================================
+ *
+ * SCOPO:
+ *   Fonte unica di verita per tutti i valori di design del sistema Skillpress.
+ *   Questo file definisce colori, spaziature, raggi, ombre, transizioni,
+ *   z-index e tipografia come CSS Custom Properties su :root.
+ *
+ * CONSUMATORI:
+ *   - elements-ui/ (catalogo componenti)
+ *   - product-page-integration/ (pagina prodotto)
+ *   - qualsiasi pagina che importa product-page.css o components.css
+ *
+ * DIPENDENZE:
+ *   Nessuna -- questo file deve essere importato PRIMA di tutti gli altri.
+ *
+ * Elementi HTML: nessuno direttamente; usato da tutti i componenti.
+ * ==========================================================================
+ */
+
+:root {
+    /* === COLORI BRAND === */
+    /* Arancione Skillpress: usato per CTA, selezioni attive, badge */
+    --color-primary: #F08A00;
+    --color-primary-light: #FFB149;
+    --color-primary-dark: #D67800;
+
+    /* Teal/verde: usato per bottoni carrello, prezzi selezionati, accenti */
+    --color-secondary: #1C7264;
+    --color-secondary-light: #298979;
+    --color-secondary-dark: #0F544D;
+
+    /* Blu scuro: usato per elementi premium */
+    --color-dark: #003E51;
+
+    /* === COLORI TESTO === */
+    /* Scala di grigi per gerarchia testuale */
+    --color-text: #111418;                  /* Testo principale (quasi nero) */
+    --color-text-strong: #374151;           /* gray-700 -- testo forte/enfatizzato */
+    --color-text-secondary: #4B5563;        /* gray-600 -- testo secondario */
+    --color-text-light: #6B7280;            /* gray-500 -- testo terziario */
+    --color-text-muted: #9CA3AF;            /* gray-400 -- placeholder, disabilitato */
+
+    /* === COLORI SFONDO === */
+    /* Grigi neutri per sfondi, bordi e separatori */
+    --color-bg-white: #FFFFFF;
+    --color-bg-gray-50: #F9FAFB;            /* Sfondo sezioni, sidebar */
+    --color-bg-gray-75: #f7f7f8;            /* Sfondo bottoni inattivi */
+    --color-bg-gray-100: #F3F4F6;           /* Sfondo hover, bordi leggeri */
+    --color-bg-gray-200: #E5E7EB;           /* Bordi standard */
+    --color-bg-warm-beige: #F5F5F3;         /* Sfondo box totale */
+
+    /* === COLORI SEZIONI ACCORDION === */
+    --section-bg: var(--color-bg-white);
+    --section-bg-expanded: var(--color-bg-gray-50);
+    --section-border: var(--color-bg-gray-200);
+    --section-number-bg: var(--color-primary);
+    --section-number-color: var(--color-bg-white);
+
+    /* === COLORI SELEZIONE === */
+    /* Stati per card e opzioni selezionabili */
+    --selection-active-bg: var(--color-primary);
+    --selection-active-color: var(--color-bg-white);
+    --selection-highlight-bg: #FFF4E6;      /* Sfondo formato/opzione selezionata */
+    --selection-highlight-border: var(--color-primary);
+
+    /* === COLORI PREZZO === */
+    /* Tabella prezzi e indicatori economici */
+    --price-best-bg: #DCFCE7;               /* Verde chiaro miglior prezzo */
+    --price-best-border: #22C55E;           /* Verde bordo */
+    --price-discount-color: #16A34A;        /* Testo sconto/risparmio */
+    --price-iva-badge: #EFF6FF;             /* Badge IVA */
+
+    /* === COLORI STATO === */
+    /* Feedback visivo per errori, successi, warning */
+    --color-error: #DC2626;                 /* Rosso errore */
+    --color-error-light: #EF4444;           /* Rosso errore chiaro */
+    --color-error-bg: #FEF2F2;              /* Sfondo errore */
+    --color-success: #16A34A;               /* Verde successo */
+    --color-success-bg: #F0FDF4;            /* Sfondo successo */
+    --color-info: #3B82F6;                  /* Blu informativo */
+    --color-warning: #EA580C;               /* Arancione warning */
+    --color-warning-bg: #FFF7ED;            /* Sfondo warning */
+    --color-warning-border: #FED7AA;        /* Bordo warning */
+
+    /* === BORDI === */
+    /* Colori bordo standard e focus */
+    --color-border: #D1D5DB;               /* Bordo grigio standard */
+    --color-border-focus: #3B82F6;         /* Bordo focus blu */
+
+    /* === DIMENSIONI LAYOUT === */
+    /* Larghezze e padding principali della pagina */
+    --page-max-width: 1280px;               /* max-w-7xl */
+    --page-padding-x: 1rem;                 /* px-4 */
+    --sidebar-width: 380px;                 /* Larghezza sidebar desktop */
+    --sidebar-top: 250px;                   /* Posizione sticky sidebar */
+
+    /* === DIMENSIONI SEZIONI ACCORDION === */
+    --section-padding: 1rem;                /* Padding interno sezioni */
+    --section-gap: 0.75rem;                 /* Gap tra sezioni */
+    --section-radius: 0.75rem;              /* Border radius sezioni */
+    --section-number-size: 2rem;            /* Dimensione cerchio numero */
+
+    /* === SPAZIATURA === */
+    /* Scala a incrementi basata su 0.25rem (4px) */
+    --spacing-xs: 0.25rem;                  /* 4px */
+    --spacing-sm: 0.5rem;                   /* 8px */
+    --spacing-md: 1rem;                     /* 16px */
+    --spacing-lg: 1.5rem;                   /* 24px */
+    --spacing-xl: 2rem;                     /* 32px */
+
+    /* === RAGGIO BORDI === */
+    /* Scala progressiva per coerenza visiva */
+    --radius-sm: 0.25rem;                   /* 4px -- input, piccoli elementi */
+    --radius-md: 0.375rem;                  /* 6px -- bottoni piccoli */
+    --radius-lg: 0.5rem;                    /* 8px -- card, dropdown */
+    --radius-xl: 0.75rem;                   /* 12px -- sezioni, modal */
+    --radius-full: 9999px;                  /* Cerchio / pill */
+
+    /* === OMBRE === */
+    /* Scala progressiva per gerarchia visiva */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+    /* Ombra specifica per immagini prodotto (effetto libro) */
+    --shadow-product: 1px 1px 2px 0 rgba(255, 255, 255, 0.3) inset,
+                      -1px -1px 2px 0 rgba(230, 230, 230, 0.5) inset,
+                      -5px 5px 10px 0 rgba(230, 230, 230, 0.2),
+                      5px -5px 10px 0 rgba(230, 230, 230, 0.2),
+                      -5px -5px 10px 0 rgba(255, 255, 255, 0.9),
+                      5px 5px 13px 0 rgba(230, 230, 230, 0.9);
+
+    /* === TRANSIZIONI === */
+    /* Tre velocita per coprire tutti i casi d'uso */
+    --transition-fast: 150ms ease;          /* hover/focus immediati */
+    --transition-normal: 200ms ease;        /* dropdown, toggle */
+    --transition-slow: 300ms ease;          /* animazioni piu ampie */
+    --transition-section: 0.4s cubic-bezier(0.4, 0, 0.2, 1);  /* accordion */
+
+    /* === BREAKPOINT CANONICI ===
+       CSS non permette `var()` dentro `@media` queries, quindi i breakpoint
+       sono numeri letterali nei singoli componenti. Per garantire coerenza,
+       usare ESCLUSIVAMENTE questi 4 valori:
+
+         374px   small phones (iPhone SE 1st gen, fix mobile-bar)
+         640px   phones / tablet portrait stretti (mobile cutoff)
+         1024px  tablet landscape / small desktop (desktop cutoff)
+         1280px  wide desktop (= --page-max-width)
+
+       Convenzione `max-width` / `min-width`:
+         (max-width: 639px)   -> mobile (sotto 640)
+         (min-width: 640px)   -> tablet+
+         (max-width: 1023px)  -> mobile + tablet (sotto desktop)
+         (min-width: 1024px)  -> desktop
+         (min-width: 1280px)  -> wide desktop
+
+       Eccezioni storiche: `767px` (accordion touch target, deprecato — da
+       migrare a 640px), `480px` (price-table small refinement, da rivedere).
+       Tutti i nuovi componenti devono usare uno dei 4 canonici. */
+
+    /* === Z-INDEX === */
+    /* Gerarchia ordinata per evitare conflitti di sovrapposizione */
+    --z-base: 1;
+    --z-dropdown: 50;
+    --z-tooltip: 60;
+    --z-sticky: 70;
+    --z-overlay: 80;
+    --z-modal: 100;
+    --z-mobile-bar: 999;                    /* Barra mobile fixed */
+
+    /* === TIPOGRAFIA === */
+    /* Font stack con fallback su font di sistema */
+    --font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Scala dimensioni font — unica per tutte le pagine
+       Body text (xs-lg): fissi, non responsive
+       Heading text (xl-4xl): responsive con clamp() tra 375px e 1280px */
+    --font-size-xs: 0.75rem;                                    /* 12px */
+    --font-size-sm: 0.875rem;                                   /* 14px */
+    --font-size-base: 1rem;                                     /* 16px */
+    --font-size-lg: 1.125rem;                                   /* 18px */
+    --font-size-xl: clamp(1.125rem, 1rem + 0.39vw, 1.25rem);   /* 18px → 20px */
+    --font-size-2xl: clamp(1.25rem, 1rem + 0.78vw, 1.5rem);    /* 20px → 24px */
+    --font-size-3xl: clamp(1.5rem, 1rem + 1.56vw, 2rem);       /* 24px → 32px */
+    --font-size-4xl: clamp(1.75rem, 1.25rem + 1.56vw, 2.5rem); /* 28px → 40px */
+
+    /* Pesi font */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Line-height */
+    --line-height-tight: 1.2;               /* Heading, titoli */
+    --line-height-snug: 1.375;              /* Sottotitoli, card title */
+    --line-height-normal: 1.5;              /* Body text */
+    --line-height-relaxed: 1.625;           /* Contenuto lungo (blog, descrizioni) */
+
+    /* === TOKEN SPECIFICI SHELL === */
+    --shell-header-height: 60px;
+    --shell-sidebar-width: 280px;
+    --shell-sidebar-bg: var(--color-bg-gray-50);
+    --shell-code-bg: #1E293B;
+    --shell-code-color: #E2E8F0;
+    --shell-code-success: #4ADE80;             /* Verde successo su sfondo scuro (copy btn) */
+
+    /* === TOKEN SEMANTICI AGGIUNTIVI ===
+       Aggiunti in fase 4-sub (audit production-readiness 2026-05-08, F008).
+       Alias semantici sopra la scala grezza per ridurre hardcoded nei componenti. */
+
+    /** @public */
+    --color-text-meta: var(--color-text-light);            /* metadati neutri (e.g. icone meta dashboard) */
+    /** @public */
+    --color-row-hover: var(--color-bg-gray-50);            /* hover row su tabelle */
+    /** @public */
+    --color-status-warning-soft: #FEF3C7;                  /* amber-100 -- background warning leggero */
+    /** @public */
+    --color-status-danger-soft: #FEE2E2;                   /* red-100 -- background errore leggero */
+    /** @public */
+    --color-status-success-soft: #DBEAFE;                  /* blue-100 -- background info/success leggero */
+    /** @public */
+    --color-dashboard-border: var(--color-border);         /* alias per bordi su layout dashboard */
+    /** @public */
+    --color-error-dark: #B91C1C;                           /* red-700 -- hover/active errore */
+
+    /* Accent badges/banner verified (vedi order-payment-action-box). */
+    /** @public */
+    --color-accent-bg: rgba(28, 114, 100, 0.08);
+}
+
+/* === MOBILE TOKEN OVERRIDES ===
+   Allineato a Skillpress-frontend/elements-ui/css/components/_layout.css
+   (`@media (max-width: 639px)` riduce padding pagina/sezioni). */
+@media (max-width: 639px) {
+    :root {
+        --page-padding-x: 0.75rem;
+        --section-padding: 0.75rem;
+    }
+}
+
+
+/* === inline base/reset.css === */
+/**
+ * Fonte: elements-ui/css/_base.css
+ * Data copia: 2026-04-23
+ * Nota: copia esatta.
+ */
+
+/**
+ * ==========================================================================
+ * BASE -- CSS Reset e stili fondamentali
+ * ==========================================================================
+ *
+ * SCOPO:
+ *   Reset CSS completo (equivalente Tailwind Preflight) + stili base
+ *   per body, scrollbar e visibilita.
+ *
+ * DIPENDENZE:
+ *   - tokens.css (font-family, colori sfondo e testo)
+ *   Deve essere caricato DOPO tokens.css e PRIMA di components.css.
+ *   L'ordine corretto e' definito in product-page.css:
+ *     1. tokens.css  (design tokens)
+ *     2. _base.css   (questo file)
+ *     3. components.css (componenti)
+ *
+ * CONTENUTO:
+ *   - CSS Reset (Tailwind Preflight equivalent)
+ *   - Body configuration
+ *   - Scrollbar utilities
+ *   - Scroll behavior
+ *
+ * Elementi HTML: *, html, body, .scrollbar-hide, .scroll-smooth
+ * ==========================================================================
+ */
+
+
+/* ====================================================================
+   CSS RESET (Tailwind Preflight equivalent)
+   ==================================================================== */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--color-bg-gray-200);
+}
+
+html, :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+    -webkit-tap-highlight-color: transparent;
+}
+
+hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+}
+
+abbr:where([title]) {
+    text-decoration: underline dotted;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+b, strong {
+    font-weight: bolder;
+}
+
+code, kbd, samp, pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+    font-size: 1em;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+}
+
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+button, select {
+    text-transform: none;
+}
+
+button, input:where([type='button']), input:where([type='reset']), input:where([type='submit']) {
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none;
+}
+
+:-moz-focusring {
+    outline: auto;
+}
+
+:-moz-ui-invalid {
+    box-shadow: none;
+}
+
+progress {
+    vertical-align: baseline;
+}
+
+::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto;
+}
+
+[type='search'] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+}
+
+::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+}
+
+summary {
+    display: list-item;
+}
+
+blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
+    margin: 0;
+}
+
+fieldset {
+    margin: 0;
+    padding: 0;
+}
+
+legend {
+    padding: 0;
+}
+
+ol, ul, menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+dialog {
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input::placeholder, textarea::placeholder {
+    opacity: 1;
+    color: var(--color-text-muted);
+}
+
+button, [role="button"] {
+    cursor: pointer;
+}
+
+:disabled {
+    cursor: default;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+[hidden]:where(:not([hidden='until-found'])) {
+    display: none;
+}
+
+
+/* ====================================================================
+   BODY CONFIGURATION
+   ==================================================================== */
+body {
+    line-height: inherit;
+    font-family: var(--font-family);
+    background: var(--color-bg-white);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+/* ====================================================================
+   SCROLLBAR UTILITIES
+   ==================================================================== */
+.scrollbar-hide {
+    scrollbar-width: none;                    /* Firefox */
+    -ms-overflow-style: none;                 /* IE and Edge */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;                            /* Chrome, Safari, Opera */
+}
+
+
+/* ====================================================================
+   SCROLL BEHAVIOR
+   ==================================================================== */
+.scroll-smooth {
+    scroll-behavior: smooth;
+}
+
+
+/* === inline utilities/utilities.css === */
+/**
+ * Fonte: elements-ui/css/components/_utilities.css
+ * Data copia: 2026-04-23
+ * Nota: copia esatta.
+ */
+
+/**
+ * ==========================================================================
+ * UTILITIES -- Classi utility (ex-Tailwind) e helpers
+ * ==========================================================================
+ *
+ * SCOPO:
+ *   Classi utility atomiche migrate da Tailwind CSS.
+ *   Organizzate per categoria: layout, spacing, typography, colors,
+ *   borders, sizing, position, visibility, interactive, responsive.
+ *
+ * NOTA:
+ *   Queste classi sono usate nell'HTML per styling rapido.
+ *   Per nuovi componenti, preferire classi semantiche nei file dedicati.
+ *
+ * DIPENDENZE:
+ *   - tokens.css (colori, dimensioni)
+ *
+ * Elementi HTML: vari (usati inline nell'HTML)
+ * ==========================================================================
+ */
+
+/* === PADDING === */
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.pb-4 {
+    padding-bottom: 1rem;
+}
+
+.pt-4 {
+    padding-top: 1rem;
+}
+
+.pb-10 {
+    padding-bottom: 2.5rem;
+}
+
+
+/* === MARGIN === */
+.mt-3 {
+    margin-top: 0.75rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mb-3 {
+    margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+    margin-bottom: 0.75rem;
+}
+
+.mb-5 {
+    margin-bottom: 1.25rem;
+}
+
+
+/* === SPACE === */
+.space-y-1 > * + * {
+    margin-top: 0.25rem;
+}
+
+.space-y-1-5 > * + * {
+    margin-top: 0.375rem;
+}
+
+.space-y-2 > * + * {
+    margin-top: 0.5rem;
+}
+
+.space-y-3 > * + * {
+    margin-top: 0.75rem;
+}
+
+.space-y-6 > * + * {
+    margin-top: 1.5rem;
+}
+
+
+/* === GAP === */
+.gap-1 {
+    gap: 0.25rem;
+}
+
+.gap-1-5 {
+    gap: 0.375rem;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.gap-2-5 {
+    gap: 0.625rem;
+}
+
+.gap-3 {
+    gap: 0.75rem;
+}
+
+.gap-6 {
+    gap: 1.5rem;
+}
+
+.gap-8 {
+    gap: 2rem;
+}
+
+
+/* === FLEXBOX === */
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-1 {
+    flex: 1 1 0%;
+}
+
+.flex-shrink-0 {
+    flex-shrink: 0;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.items-start {
+    align-items: flex-start;
+}
+
+.items-baseline {
+    align-items: baseline;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+
+/* === GRID === */
+.grid {
+    display: grid;
+}
+
+.grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+
+/* === TYPOGRAPHY === */
+.text-xs {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-normal);
+}
+
+.text-sm {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+}
+
+.text-base {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+}
+
+.text-lg {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-snug);
+}
+
+.text-xl {
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-snug);
+}
+
+.text-2xl {
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-tight);
+}
+
+.text-3xl {
+    font-size: var(--font-size-3xl);
+    line-height: var(--line-height-tight);
+}
+
+.text-4xl {
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-tight);
+}
+
+.font-medium {
+    font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+    font-weight: var(--font-weight-bold);
+}
+
+.tracking-tight {
+    letter-spacing: -0.025em;
+}
+
+.leading-relaxed {
+    line-height: 1.625;
+}
+
+.leading-snug {
+    line-height: 1.375;
+}
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+
+/* === TEXT COLORS === */
+.text-white {
+    color: #ffffff;
+}
+
+.text-gray-400 {
+    color: var(--color-text-muted);
+}
+
+.text-gray-500 {
+    color: var(--color-text-light);
+}
+
+.text-gray-600 {
+    color: var(--color-text-secondary);
+}
+
+.text-gray-700 {
+    color: var(--color-text-strong);
+}
+
+.text-gray-800 {
+    color: #1f2937;
+}
+
+.text-dark {
+    color: var(--color-text);
+}
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-accent {
+    color: var(--color-secondary);
+}
+
+.text-green-600 {
+    color: var(--color-success);
+}
+
+.text-red-500 {
+    color: var(--color-error-light);
+}
+
+.text-red-600 {
+    color: var(--color-error);
+}
+
+.text-orange-500 {
+    color: var(--color-primary);
+}
+
+.text-orange-600 {
+    color: var(--color-warning);
+}
+
+
+/* === BACKGROUND COLORS === */
+.bg-white {
+    background-color: var(--color-bg-white);
+}
+
+.bg-gray-50 {
+    background-color: var(--color-bg-gray-50);
+}
+
+.bg-gray-75 {
+    background-color: var(--color-bg-gray-75);
+}
+
+.bg-gray-100 {
+    background-color: var(--color-bg-gray-100);
+}
+
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-dark-teal {
+    background-color: var(--color-secondary-dark);
+}
+
+.bg-warm-beige {
+    background-color: var(--color-bg-warm-beige);
+}
+
+.bg-accent-10 {
+    background-color: rgba(28, 114, 100, 0.1);
+}
+
+
+/* === BORDERS === */
+.border {
+    border-width: 1px;
+    border-style: solid;
+}
+
+.border-t {
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+.border-gray-200 {
+    border-color: var(--color-bg-gray-200);
+}
+
+.border-gray-300 {
+    border-color: var(--color-border);
+}
+
+.border-red-500 {
+    border-color: var(--color-error-light);
+}
+
+.border-primary {
+    border-color: var(--color-primary);
+}
+
+
+/* === BORDER RADIUS === */
+.rounded {
+    border-radius: var(--radius-sm);
+}
+
+.rounded-md {
+    border-radius: var(--radius-md);
+}
+
+.rounded-lg {
+    border-radius: var(--radius-lg);
+}
+
+.rounded-xl {
+    border-radius: var(--radius-xl);
+}
+
+.rounded-full {
+    border-radius: var(--radius-full);
+}
+
+
+/* === SHADOWS === */
+.shadow-md {
+    box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow-lg);
+}
+
+
+/* === SIZING === */
+.w-full {
+    width: 100%;
+}
+
+.w-7 {
+    width: 1.75rem;
+}
+
+.w-9 {
+    width: 2.25rem;
+}
+
+.w-10 {
+    width: 2.5rem;
+}
+
+.h-fit {
+    height: fit-content;
+}
+
+.h-7 {
+    height: 1.75rem;
+}
+
+.h-9 {
+    height: 2.25rem;
+}
+
+.h-10 {
+    height: 2.5rem;
+}
+
+.h-px {
+    height: 1px;
+}
+
+.min-w-0 {
+    min-width: 0px;
+}
+
+
+/* === POSITION === */
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.inset-0 {
+    inset: 0;
+}
+
+.top-1-2 {
+    top: 50%;
+}
+
+.left-3 {
+    left: 0.75rem;
+}
+
+.right-3 {
+    right: 0.75rem;
+}
+
+.-translate-y-1-2 {
+    transform: translateY(-50%);
+}
+
+
+/* === INTERACTIVE === */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.transition-colors {
+    transition-property: color, background-color, border-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.hover-scale-110:hover {
+    transform: scale(1.1);
+}
+
+.hover-bg-white:hover {
+    background-color: var(--color-bg-white);
+}
+
+.hover-bg-gray-100:hover {
+    background-color: var(--color-bg-gray-100);
+}
+
+.hover-bg-teal:hover {
+    background-color: var(--color-secondary-light);
+}
+
+.hover-shadow-xl:hover {
+    box-shadow: var(--shadow-xl);
+}
+
+
+/* === FOCUS STATES === */
+.focus-ring:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-primary), 0 0 0 4px rgba(240, 138, 0, 0.2);
+}
+
+.focus-ring-accent:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-secondary);
+}
+
+
+/* === RESPONSIVE VISIBILITY === */
+@media (min-width: 768px) {
+    .md\:hidden {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lg\:hidden {
+        display: none !important;
+    }
+}
+
+
+/* === PREFERS REDUCED MOTION === */
+/* Disabilita tutte le animazioni e transizioni se l'utente lo richiede */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* === inline primitives/button.css === */
+/**
+ * BUTTON — Primitive button styles
+ * Fonte: Skillpress-frontend/elements-ui/css/components/_buttons.css
+ * Data estrazione: 2026-04-25
+ */
+
+/** @public */
+.sp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.5rem;
+    padding: 0.625rem 1rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-full);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-normal);
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        opacity var(--transition-fast);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sp-button:hover {
+    text-decoration: none;
+}
+
+.sp-button:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.sp-button:disabled,
+.sp-button[aria-disabled="true"],
+.sp-button--disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.sp-button--primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-bg-white);
+}
+
+.sp-button--primary:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+}
+
+.sp-button--secondary {
+    background-color: var(--color-secondary-dark);
+    border-color: var(--color-secondary-dark);
+    color: var(--color-bg-white);
+    box-shadow: var(--shadow-lg);
+}
+
+.sp-button--secondary:hover {
+    background-color: var(--color-secondary-light);
+    border-color: var(--color-secondary-light);
+    box-shadow: var(--shadow-xl);
+}
+
+.sp-button--outline {
+    background-color: var(--color-bg-white);
+    border-color: var(--color-bg-gray-200);
+    color: var(--color-text);
+}
+
+.sp-button--outline:hover {
+    background-color: var(--color-bg-gray-50);
+    border-color: var(--color-border);
+}
+
+.sp-button--ghost {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--color-secondary);
+}
+
+.sp-button--ghost:hover {
+    background-color: rgba(28, 114, 100, 0.08);
+    color: var(--color-secondary-dark);
+}
+
+.sp-button--dashboard-link {
+    min-height: auto;
+    padding: 0;
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 0;
+    color: var(--color-primary);
+    box-shadow: none;
+    font-size: 0.9375rem;
+}
+
+.sp-button--dashboard-link:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--color-primary-dark);
+    box-shadow: none;
+}
+
+.sp-button--dashed {
+    width: 100%;
+    min-height: auto;
+    padding: 0.625rem;
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-xl);
+    background: transparent;
+    color: var(--color-text-light);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.25rem;
+    box-shadow: none;
+}
+
+.sp-button--dashed:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background: transparent;
+}
+
+.sp-button--sm {
+    min-height: 2rem;
+    padding: 0.375rem 0.75rem;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-sm);
+}
+
+.sp-button--full {
+    width: 100%;
+}
+
+.sp-button__icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    color: currentColor;
+}
+
+.sp-button__icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    stroke: currentColor;
+}
+
+
+/* === inline primitives/badge.css === */
+/**
+ * BADGE — Dot status badge primitive
+ * Fonte: Skillpress-frontend/dashboard/css/components/_badges.css
+ * Data estrazione: 2026-04-25
+ */
+
+/** @public */
+.sp-badge {
+    --badge-color: var(--color-text-secondary);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--badge-color);
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.sp-badge::before {
+    content: "";
+    width: 0.4375rem;
+    height: 0.4375rem;
+    border-radius: var(--radius-full);
+    background: currentColor;
+    flex: 0 0 auto;
+}
+
+.sp-badge--success {
+    --badge-color: var(--color-success-badge-text, var(--color-success));
+}
+
+.sp-badge--warning {
+    --badge-color: var(--color-warning-badge-text, var(--color-warning));
+}
+
+.sp-badge--error {
+    --badge-color: var(--color-error-badge-text, var(--color-error));
+}
+
+.sp-badge--info {
+    --badge-color: var(--color-info-badge-text, var(--color-info));
+}
+
+.sp-badge--cancelled {
+    --badge-color: var(--color-cancelled-badge-text, var(--color-text-muted));
+}
+
+.sp-badge--neutral {
+    --badge-color: var(--color-text-secondary);
+}
+
+
+/* === inline primitives/card.css === */
+/**
+ * CARD — Generic card surface primitive
+ * Fonte: Skillpress-frontend/elements-ui/css/components/_cards.css
+ * Data estrazione: 2026-04-25
+ */
+
+/** @public */
+.sp-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-bg-gray-200);
+    border-radius: var(--radius-lg);
+    color: var(--color-text);
+    font-family: inherit;
+    overflow: hidden;
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.sp-card__media {
+    display: block;
+    width: 100%;
+    background: var(--color-bg-gray-100);
+    overflow: hidden;
+}
+
+.sp-card__media img,
+.sp-card__media picture {
+    display: block;
+    width: 100%;
+}
+
+.sp-card__media img {
+    height: auto;
+    object-fit: cover;
+}
+
+.sp-card__header,
+.sp-card__body,
+.sp-card__footer {
+    padding: var(--spacing-md);
+}
+
+.sp-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+}
+
+.sp-card__body {
+    flex: 1 1 auto;
+}
+
+.sp-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    border-top: 1px solid var(--color-bg-gray-200);
+}
+
+.sp-card__title {
+    margin: 0;
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-snug);
+}
+
+.sp-card__description {
+    margin: var(--spacing-xs) 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+}
+
+.sp-card__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.sp-card__eyebrow {
+    color: var(--color-text-light);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-normal);
+}
+
+.sp-card--interactive {
+    cursor: pointer;
+}
+
+.sp-card--interactive:hover {
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.sp-card--interactive:focus-within {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.sp-card--selected {
+    background: var(--selection-highlight-bg);
+    border-color: var(--selection-highlight-border);
+    box-shadow: 0 0 0 1px var(--selection-highlight-border);
+}
+
+.sp-card--control-row .sp-card__title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.25rem;
+}
+
+.sp-card--control-row {
+    border-radius: var(--radius-xl);
+}
+
+.sp-card--control-row > .sp-card__header {
+    align-items: center;
+    padding: var(--spacing-md);
+}
+
+.sp-card--control-row > .sp-card__header > *:first-child {
+    min-width: 0;
+}
+
+.sp-card--control-row .sp-toggle-switch {
+    flex: 0 0 auto;
+}
+
+.sp-card--control-row .sp-card__description {
+    margin-top: 0.125rem;
+    color: var(--color-text-light);
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+}
+
+.sp-card--surface-muted {
+    background: var(--color-bg-gray-50);
+    border-color: var(--color-bg-gray-200);
+    border-radius: var(--radius-xl);
+}
+
+.sp-card--surface-muted > .sp-card__header {
+    padding: 1.25rem 1.25rem 0;
+}
+
+.sp-card--surface-muted > .sp-card__body {
+    padding: 1.25rem;
+}
+
+.sp-card--surface-muted .sp-card__title {
+    margin-bottom: var(--spacing-md);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.5rem;
+}
+
+.sp-card--surface-muted > .sp-card__header + .sp-card__body {
+    padding-top: var(--spacing-md);
+}
+
+.sp-card--disabled,
+.sp-card[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.sp-card--interactive.sp-card--disabled:hover,
+.sp-card--interactive[aria-disabled="true"]:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* === inline primitives/accordion.css === */
+/**
+ * ACCORDION — Estratto da elements-ui/css/components/_layout-patterns.css
+ * Data estrazione: 2026-04-23
+ * Fonte canonica: elements-ui
+ */
+
+/** @public */
+.sp-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+}
+
+.sp-accordion__section {
+    display: flex;
+    flex-direction: column;
+    background: var(--section-bg);
+    border: 1px solid var(--section-border);
+    border-radius: var(--section-radius);
+    transition: background var(--transition-fast);
+    scroll-margin-top: 0;
+}
+
+.sp-accordion__section:hover {
+    background: var(--color-bg-gray-50);
+}
+
+/* state: aria-expanded sull'header e' la fonte primaria; .sp-accordion__section--expanded
+   e' alias visivo BEM mantenuto come variante (deprecazione prevista v0.3 -- vedi
+   audit production-readiness 2026-05-08, 03-css-bem-tokens "stati ARIA vs modifier"). */
+.sp-accordion__section--expanded {
+    background: var(--section-bg-expanded);
+}
+
+.sp-accordion--surface-white .sp-accordion__section--expanded {
+    background: var(--color-bg-white);
+}
+
+.sp-accordion--surface-white .sp-accordion__header {
+    padding: var(--spacing-md) 1.25rem;
+}
+
+.sp-accordion--surface-white .sp-accordion__header-left {
+    gap: 0.875rem;
+}
+
+.sp-accordion--surface-white .sp-accordion__title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+}
+
+.sp-accordion__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.sp-accordion__header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-width: 0;
+}
+
+.sp-accordion__badge {
+    width: var(--section-number-size);
+    height: var(--section-number-size);
+    background: var(--section-number-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--section-number-color);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+    flex-shrink: 0;
+}
+
+.sp-accordion__header-icon {
+    width: var(--section-number-size);
+    height: var(--section-number-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    color: var(--color-bg-white);
+}
+
+.sp-accordion__header-icon::before {
+    content: "";
+    width: 1.125rem;
+    height: 1.125rem;
+    display: block;
+    background: currentColor;
+    -webkit-mask: var(--accordion-header-icon-mask) center / contain no-repeat;
+    mask: var(--accordion-header-icon-mask) center / contain no-repeat;
+}
+
+.sp-accordion__header-icon--cart {
+    --accordion-header-icon-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2Zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2ZM7.2 14.5h8.9c.75 0 1.4-.41 1.74-1.03L21 7.2A1 1 0 0 0 20.1 5H6.4L5.7 2.7A1 1 0 0 0 4.75 2H2v2h2l3.6 10.6L6.25 17H19v-2H7.2Z'/%3E%3C/svg%3E");
+}
+
+.sp-accordion__header-icon--shipping {
+    --accordion-header-icon-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2h1.7c.55 0 1.08.23 1.45.64l2.35 2.6c.32.36.5.82.5 1.3V17a2 2 0 0 1-2 2h-.18a3 3 0 0 1-5.64 0H9.82a3 3 0 0 1-5.64 0H4a1 1 0 0 1-1-1V5Zm2 0v11.18A3 3 0 0 1 9.82 17H15V5H5Zm12 4v4h4v-1.46L18.7 9H17Zm-10 9.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm11 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z'/%3E%3C/svg%3E");
+}
+
+.sp-accordion__header-icon--payment {
+    --accordion-header-icon-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v2h16V7H4Zm0 5v5h16v-5H4Zm2 2h5v2H6v-2Z'/%3E%3C/svg%3E");
+}
+
+.sp-accordion__title {
+    font-weight: var(--font-weight-semibold);
+    font-size: 0.9375rem;
+    color: var(--color-text);
+}
+
+.sp-accordion__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: inline-block;
+    position: relative;
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+}
+
+.sp-accordion__icon::before,
+.sp-accordion__icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.875rem;
+    height: 0.125rem;
+    background: currentColor;
+    border-radius: var(--radius-full);
+    transform: translate(-50%, -50%);
+    transition:
+        opacity var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.sp-accordion__icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.sp-accordion__section--expanded .sp-accordion__icon::after {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(90deg) scaleX(0);
+}
+
+.sp-accordion__content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+        max-height var(--transition-section),
+        opacity var(--transition-slow);
+}
+
+.sp-accordion__section--expanded > .sp-accordion__content {
+    max-height: 3000px;
+    opacity: 1;
+    overflow: visible;
+    overflow-x: hidden;
+    transition:
+        max-height var(--transition-section),
+        opacity var(--transition-slow) 0.1s;
+}
+
+.sp-accordion__inner {
+    padding: var(--spacing-md);
+    border-top: 1px solid var(--color-bg-gray-200);
+    background-color: var(--color-bg-gray-50);
+    border-radius: 0 0 var(--section-radius) var(--section-radius);
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+.sp-accordion--surface-white .sp-accordion__inner {
+    background-color: var(--color-bg-white);
+    border-top: 0;
+    padding: 0 1.25rem 1.25rem;
+}
+
+.sp-accordion__inner > * + * {
+    margin-top: 0.875rem;
+}
+
+/* Mobile: header piu' alto per touch target standard e-commerce. */
+@media (max-width: 639px) {
+    .sp-accordion__header {
+        padding: 1rem 0.875rem;
+        min-height: 56px;
+    }
+
+    .sp-accordion__title {
+        font-size: 1rem;
+    }
+}
+
+
+/* === inline primitives/breadcrumb.css === */
+/**
+ * BREADCRUMB — Layout pattern primitive
+ * Fonte: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css (sezione .sp-breadcrumb)
+ * Fonte markup: Skillpress-frontend/elements-ui/js/layout-patterns/breadcrumb.js
+ * Target demo: product-page-integration
+ * Data estrazione: 2026-04-27
+ */
+
+/** @public */
+.sp-breadcrumb {
+    width: 100%;
+}
+
+.sp-breadcrumb__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+}
+
+.sp-breadcrumb__item {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-text-secondary);
+}
+
+.sp-breadcrumb__item:not(:last-child)::after {
+    content: '/';
+    margin-left: var(--spacing-xs);
+    color: var(--color-text-muted);
+}
+
+.sp-breadcrumb__link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.sp-breadcrumb__link:hover {
+    color: var(--color-primary);
+}
+
+.sp-breadcrumb__link:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+.sp-breadcrumb__item--current {
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+}
+
+
+/* === inline primitives/rating.css === */
+/**
+ * RATING - Stars overlay primitive.
+ * Fonte: Skillpress-frontend/elements-ui/css/components/_feedback-status.css righe 220-228
+ * Estratta da components/product-hero.css per riuso (product-page, related products, blog reviews, dashboard).
+ *
+ * Contratto markup verbatim dalla pagina demo:
+ *   <div class="rating">
+ *     <div class="rating__empty">     -> 5 stelle vuote (color gray-200)
+ *       <span class="rating__star">★</span> ...
+ *     </div>
+ *     <div class="rating__filled" style="width: NN%;">  -> overlay clip via width
+ *       <span class="rating__star">★</span> ...
+ *     </div>
+ *   </div>
+ *
+ * La percentuale = (rating / 5) * 100. Inline style sulla larghezza per data-rating-driven CMS.
+ */
+
+/** @public */
+.sp-rating {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+}
+
+.sp-rating__empty {
+    display: flex;
+    gap: 2px;
+    line-height: 1;
+}
+
+.sp-rating__filled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    gap: 2px;
+    overflow: hidden;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.sp-rating__star {
+    display: inline-block;
+    color: var(--color-bg-gray-200);
+    font-size: 16px;
+    line-height: 1;
+}
+
+.sp-rating__filled .sp-rating__star {
+    color: var(--color-primary);
+}
+
+
+/* === inline primitives/info-dropdown.css === */
+/**
+ * INFO DROPDOWN -- Disclosure inline collapsible per pannelli di aiuto contestuale
+ * Fonte CSS:
+ *   - Skillpress-frontend/elements-ui/css/components/_form-inputs.css righe 75-94
+ *     (.sp-info-btn -- bottone info teal accanto al label)
+ *   - Skillpress-frontend/elements-ui/css/components/_layout-patterns.css righe 1278-1399
+ *     (.sp-info-dropdown* + .sp-info-note*)
+ * Fonte markup: product-page-integration/js/sections/section-1.js righe 148-196
+ * Catalogo elemento: elements-ui/js/buttons/button-info.js (Button Info)
+ *
+ * API consumer (semplificata):
+ *   - Il CMS scrive solo body content dentro .sp-info-dropdown.
+ *   - .sp-info-dropdown__header (titolo + close) viene auto-iniettato da js/info-dropdown.js
+ *     al primo init: il titolo si auto-deriva dalla .sp-label-text adiacente nel
+ *     .sp-label-row del trigger.
+ *   - Override esplicito: se il consumer scrive gia' .sp-info-dropdown__header come
+ *     primo figlio, l'auto-injection viene saltata.
+ *
+ * Icone UI: la libreria disegna info e close via CSS. Il consumer non deve
+ * fornire SVG, immagini o testo dentro .sp-info-btn / .sp-info-dropdown__close.
+ *
+ * Dipendenze: .sp-label-row e .sp-label-text sono definite in primitives/form-primitives.css
+ * (consolidamento 2026-04-28). In bundles/demo-minimal.css form-primitives.css deve
+ * precedere info-dropdown.css.
+ */
+
+
+/* ================================================================
+   INFO BTN -- trigger minimale con icona info teal
+   ================================================================ */
+/** @public */
+.sp-info-btn {
+    color: var(--color-secondary);
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    transition: color var(--transition-fast);
+}
+
+.sp-info-btn::before {
+    content: "i";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 0.875rem;
+    height: 0.875rem;
+    border: 1.5px solid currentColor;
+    border-radius: var(--radius-full);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+}
+
+.sp-info-btn:hover {
+    color: var(--color-secondary-dark);
+}
+
+.sp-info-btn:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* ================================================================
+   INFO DROPDOWN -- pannello collapsible inline
+   ================================================================ */
+/** @public */
+.sp-info-dropdown {
+    max-height: 500px;
+    overflow: visible;
+    opacity: 1;
+    background: var(--color-bg-white);
+    border: 1px solid var(--section-border);
+    border-radius: var(--radius-lg);
+    transition:
+        max-height var(--transition-slow),
+        opacity var(--transition-normal),
+        margin-top var(--transition-slow),
+        margin-bottom var(--transition-slow),
+        border-color var(--transition-normal);
+}
+
+.sp-info-dropdown:not(.sp-info-dropdown--hidden) {
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+/* state: l'attributo `hidden` (e/o aria-hidden via JS) e' la fonte primaria;
+   .sp-info-dropdown--hidden e' alias visivo BEM mantenuto per la transizione di
+   collapse (richiede classe per animare max-height/opacity, l'attributo hidden
+   da solo e' instant). Vedi audit production-readiness 2026-05-08. */
+.sp-info-dropdown--hidden {
+    max-height: 0 !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-color: transparent;
+    pointer-events: none;
+}
+
+
+/* ================================================================
+   INFO DROPDOWN HEADER -- titolo + close (auto-iniettato)
+   ================================================================ */
+.sp-info-dropdown__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background-color: rgba(28, 114, 100, 0.1); /* teal 10% */
+    border-top-left-radius: var(--radius-lg);
+    border-top-right-radius: var(--radius-lg);
+}
+
+.sp-info-dropdown__title {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.25;
+}
+
+.sp-info-dropdown__close {
+    position: relative;
+    color: var(--color-text-muted);
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-top: -0.125rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.125rem;
+    height: 1.125rem;
+    transition: color var(--transition-fast);
+}
+
+.sp-info-dropdown__close::before,
+.sp-info-dropdown__close::after {
+    content: "";
+    position: absolute;
+    width: 0.875rem;
+    height: 2px;
+    background: currentColor;
+    border-radius: var(--radius-full);
+}
+
+.sp-info-dropdown__close::before {
+    transform: rotate(45deg);
+}
+
+.sp-info-dropdown__close::after {
+    transform: rotate(-45deg);
+}
+
+.sp-info-dropdown__close:hover {
+    color: var(--color-text-secondary);
+}
+
+.sp-info-dropdown__close:focus-visible {
+    outline: 2px solid var(--color-text-secondary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* ================================================================
+   INFO DROPDOWN BODY -- corpo (auto-wrappato)
+   ================================================================ */
+.sp-info-dropdown__body {
+    padding: 1rem;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-strong);
+    line-height: 1.625;
+}
+
+.sp-info-dropdown__body > * + * {
+    margin-top: var(--spacing-sm);
+}
+
+.sp-info-dropdown__body ul {
+    margin-left: 1rem;
+    list-style-type: disc;
+}
+
+.sp-info-dropdown__body ul > li + li {
+    margin-top: 0.375rem;
+}
+
+
+/* ================================================================
+   INFO NOTE -- callout giallo opzionale dentro il body
+   ================================================================ */
+/** @public */
+.sp-info-note {
+    margin-top: 0.75rem;
+    padding: 0.625rem;
+    background-color: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: var(--radius-sm);
+    color: #92400E;
+}
+
+.sp-info-note__title {
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: 0.25rem;
+}
+
+.sp-info-note__muted {
+    color: var(--color-text-light);
+    margin-top: var(--spacing-sm);
+}
+
+
+/* === inline primitives/form-primitives.css === */
+/**
+ * FORM PRIMITIVES -- contenitore form, label, input testo/numero, select, messaggi
+ *
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
+ *   - .sp-form-field                                  L33-35
+ *   - .sp-label-row + .sp-label-text + .sp-label-hint       L41-69
+ *   - .sp-form-input + textarea.sp-form-input            L99-133
+ *   - .sp-nome-lavoro-input (alias semantico)         L137-168
+ *   - .sp-facciate-row + .sp-spessore-display            L449-487
+ *   - .sp-form-select                                 L190-223
+ *   - .sp-error-msg + .sp-error-inline + .sp-success-inline L292-329
+ *   - .sp-custom-dims + .sp-custom-dims__grid/field/label L776-805
+ *   - .sp-nome-ref-row                                L174-184
+ *
+ * Fonte markup verbatim (template literal):
+ *   - product-page-integration/js/sections/section-1.js L76-103, L280-320, L421-466
+ *   - product-page-integration/js/sections/section-6.js L329-343
+ *
+ * Strategia A (CSS-only). I modifier (--error) sono gestiti consumer-side
+ * dal codice di validazione applicativa.
+ *
+ * Material Symbols (icone error/info/check) sostituiti da SVG inline lato consumer.
+ * La freccia del select e' embedded come data:image/svg+xml nel background-image.
+ */
+
+
+/* ================================================================
+   FORM FIELD -- contenitore generico form-field
+   ================================================================ */
+/** @public */
+.sp-form-field {
+    position: relative;
+}
+
+
+/* ================================================================
+   LABEL ROW -- contenitore inline per label + info-btn + hint
+   ================================================================ */
+/** @public */
+.sp-label-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: 0.375rem;
+}
+
+/** @public */
+.sp-label-text {
+    font-size: 0.9375rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+.sp-label-text__required {
+    color: var(--color-error);
+}
+
+.sp-label-text__optional {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-normal);
+}
+
+/** @public */
+.sp-label-hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+}
+
+
+/* ================================================================
+   FORM INPUT -- text, number, textarea
+   ================================================================ */
+/** @public */
+.sp-form-input {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.375rem 0.625rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-white);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    transition: border-color var(--transition-fast);
+    box-sizing: border-box;
+}
+
+.sp-form-input:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+}
+
+.sp-form-input--error {
+    border-color: var(--color-error-light);
+}
+
+.sp-form-input:disabled {
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+}
+
+textarea.sp-form-input {
+    resize: none;
+}
+
+
+/* ================================================================
+   NOME LAVORO INPUT -- alias semantico di .sp-form-input
+   Stessa resa visiva, classe distinta per la sezione "Nome del lavoro".
+   Fonte catalog: _form-inputs.css L137-L168.
+   ================================================================ */
+/** @public */
+.sp-nome-lavoro-input {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.375rem 0.625rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-white);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    transition: border-color var(--transition-fast);
+    box-sizing: border-box;
+}
+
+.sp-nome-lavoro-input:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+}
+
+.sp-nome-lavoro-input--error {
+    border-color: var(--color-error-light);
+}
+
+
+/* ================================================================
+   FORM SELECT -- dropdown nativo con freccia SVG personalizzata
+   ================================================================ */
+/** @public */
+.sp-form-select {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.375rem 2.25rem 0.375rem 0.625rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-white);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    overflow: hidden;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 12px 8px;
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+    font-family: inherit;
+}
+
+.sp-form-select:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+}
+
+.sp-form-select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--color-bg-gray-100);
+}
+
+
+/* ================================================================
+   MESSAGGI INLINE -- error / error-inline / success-inline
+   ================================================================ */
+/** @public */
+.sp-error-msg {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--color-error);
+    margin-top: var(--spacing-xs);
+}
+
+.sp-error-msg svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+/** @public */
+.sp-error-inline {
+    font-size: var(--font-size-xs);
+    color: var(--color-error);
+    margin-top: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.sp-error-inline svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+/** @public */
+.sp-success-inline {
+    font-size: var(--font-size-xs);
+    color: var(--color-success);
+    font-weight: var(--font-weight-medium);
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+}
+
+.sp-success-inline svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+
+/* ================================================================
+   GRIGLIA CUSTOM DIMENSIONS -- larghezza x altezza
+   ================================================================ */
+/** @public */
+.sp-custom-dims {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.sp-custom-dims__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.625rem;
+}
+
+.sp-custom-dims__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.sp-custom-dims__label {
+    font-size: 0.9375rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+@media (max-width: 639px) {
+    .sp-custom-dims__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ================================================================
+   GRIGLIA NOME + REFERENTE -- 2 input testo affiancati
+   ================================================================ */
+/** @public */
+.sp-nome-ref-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.625rem;
+}
+
+@media (max-width: 639px) {
+    .sp-nome-ref-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ================================================================
+   GRIGLIA QUANTITA + IVA -- layout Step 6 (qty-iva-row)
+   Modificatori --single (1 col) / --double (2 col).
+   --double diventa 1 col sotto 640px.
+   ================================================================ */
+/** @public */
+.sp-qty-iva-row {
+    display: grid;
+    gap: 0.625rem;
+}
+
+.sp-qty-iva-row--single {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.sp-qty-iva-row--double {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 639px) {
+    .sp-qty-iva-row--double {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ================================================================
+   FACCIATE ROW + SPESSORE DISPLAY -- input numerico + callout spessore
+   Fonte catalog: _form-inputs.css L449-L487.
+   Layout flex inline: .sp-facciate-input-wrap (flex 1) + .sp-spessore-display (shrink 0).
+   Material Symbols `vertical_align_center` del catalog -> SVG inline lato consumer.
+   Il selettore catalog `.sp-spessore-display .material-symbols-outlined` viene
+   replicato come `.sp-spessore-display svg` per garantire dimensione/colore.
+   ================================================================ */
+/** @public */
+.sp-facciate-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+}
+
+/** @public */
+.sp-facciate-input-wrap {
+    flex: 1;
+    min-width: 0;
+}
+
+/** @public */
+.sp-spessore-display {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.sp-spessore-display svg {
+    color: var(--color-text);
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+}
+
+/** @public */
+.sp-spessore-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+/** @public */
+.sp-spessore-value {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+}
+
+
+/* === inline primitives/form-controls.css === */
+/**
+ * FORM CONTROLLS -- radio group, radio option, checkbox option, radio-option--disabled
+ *
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
+ *   - .sp-radio-group                                       L491-495
+ *   - .sp-radio-option + .sp-radio-option-label                L497-503, L547-550
+ *   - .sp-radio-option input[type="radio"] + ::after        L505-539
+ *   - .sp-radio-option input[type="checkbox"]               L541-545
+ *   - .sp-radio-option--disabled                            L811-825
+ *
+ * Fonte markup: catalogo elements-ui (radio-group.js + checkbox-option.js).
+ * Nessun utilizzo nelle pagine demo prodotto: la coverage e' giustificata
+ * dall'uso futuro su `checkout` / `dashboard` e dall'estensione opzionale
+ * del configuratore product-page (sostituire alcuni form-select con radio-group).
+ *
+ * Strategia A (CSS-only). :checked e :disabled sono nativi del browser.
+ * .sp-radio-option--disabled e' applicato manualmente sull'<label> quando l'opzione
+ * non e' disponibile (visualmente spenta + click bloccato via pointer-events).
+ *
+ * Niente SVG: il pallino radio e' un pseudo-elemento ::after. Il check del
+ * checkbox e' nativo via accent-color.
+ *
+ * Dipende da form-primitives.css (per .sp-label-row + .sp-label-text). Bundle
+ * ordering: form-controls.css DOPO form-primitives.css.
+ */
+
+
+/* ================================================================
+   RADIO GROUP -- contenitore flex column / row
+   ================================================================ */
+/** @public */
+.sp-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+
+/* ================================================================
+   RADIO OPTION -- label + input + testo
+   ================================================================ */
+/** @public */
+.sp-radio-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    position: relative;
+}
+
+/** @public */
+.sp-radio-option-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+}
+
+
+/* ================================================================
+   INPUT RADIO -- custom CSS appearance + pallino arancione checked
+   ================================================================ */
+.sp-radio-option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--color-bg-gray-200);
+    border-radius: 50%;
+    background: var(--color-bg-white);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+    margin: 0;
+    position: relative;
+}
+
+.sp-radio-option input[type="radio"]::after {
+    content: '';
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform var(--transition-fast);
+}
+
+.sp-radio-option input[type="radio"]:checked {
+    border-color: var(--color-primary);
+}
+
+.sp-radio-option input[type="radio"]:checked::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+/* ================================================================
+   INPUT CHECKBOX -- nativo con accent-color primary
+   ================================================================ */
+.sp-radio-option input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--color-primary);
+}
+
+
+/* ================================================================
+   RADIO OPTION DISABLED -- label spenta + click bloccato
+   ================================================================ */
+.sp-radio-option--disabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+    pointer-events: none;
+    position: relative;
+}
+
+label.sp-radio-option--disabled {
+    color: var(--color-text-muted);
+}
+
+label.sp-radio-option--disabled input[type="radio"] {
+    opacity: 0.5;
+}
+
+
+/* === inline primitives/validation-indicator.css === */
+/**
+ * VALIDATION INDICATOR -- indicatore inline validazione
+ *
+ * Fonte CSS:
+ *   - Skillpress-frontend/elements-ui/css/components/_configurator-patterns.css
+ *     `.multicop-validation`, `.multicop-total`, `.multicop-total-count`
+ *   - Skillpress-frontend/elements-ui/js/components-feedback-status.js
+ *     `feedback-status/validation-indicator`
+ *   - Skillpress-frontend/product-page-integration/js/sections/section-6.js
+ *     output visuale reale Step 6 multicopertina
+ *
+ * Strategia A (CSS-only). Il backend/frontend applicativo decide se mostrare
+ * l'errore, testo e conteggio; la libreria controlla look, spacing e icona.
+ */
+
+/** @public */
+.sp-validation-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.125rem;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    color: var(--color-error-light);
+}
+
+.sp-validation-indicator::before {
+    content: "!";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--font-size-sm);
+    height: var(--font-size-sm);
+    flex-shrink: 0;
+    border: 1.5px solid currentColor;
+    border-radius: var(--radius-full);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+}
+
+/** @public */
+.sp-validation-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.sp-validation-total__count {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+}
+
+.sp-validation-total__count strong {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+
+/* === inline primitives/iva-banner.css === */
+/**
+ * IVA BANNER -- callout informativo warning per IVA 4% (editori con ISBN)
+ *
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
+ *   - .sp-iva-banner            L679-684
+ *   - .sp-iva-banner__content   L686-690
+ *   - .sp-iva-banner__icon      L692-696
+ *   - .sp-iva-banner__text      L698-702
+ *
+ * Fonte markup: product-page-integration/js/sections/section-6.js#L274-L285
+ * (renderizzato condizionalmente quando state.selections.ivaMode === '4').
+ *
+ * Strategia A (CSS-only). La condizione di visibilita' (mostrare/nascondere
+ * il banner in base alla scelta IVA) e' business logic consumer-side.
+ *
+ * Icona info disegnata dalla libreria via CSS dentro .sp-iva-banner__icon.
+ * Il consumer non deve fornire SVG, immagini o testo.
+ *
+ * Pattern callout warning specifico per IVA: se in futuro emergeranno altri
+ * callout simili, valutare promozione a primitiva generica .callout--warning.
+ */
+
+
+/* ================================================================
+   IVA BANNER -- container warning bg + border + radius
+   ================================================================ */
+/** @public */
+.sp-iva-banner {
+    background-color: var(--color-warning-bg);
+    border: 1px solid var(--color-warning-border);
+    border-radius: var(--radius-lg);
+    padding: 0.75rem;
+}
+
+
+/* ================================================================
+   IVA BANNER CONTENT -- flex inline icon + text
+   ================================================================ */
+.sp-iva-banner__content {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+}
+
+
+/* ================================================================
+   IVA BANNER ICON -- icona info, color primary
+   ================================================================ */
+.sp-iva-banner__icon {
+    color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+}
+
+.sp-iva-banner__icon::before {
+    content: "i";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 1rem;
+    height: 1rem;
+    border: 1.5px solid currentColor;
+    border-radius: var(--radius-full);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+}
+
+
+/* ================================================================
+   IVA BANNER TEXT -- testo xs, color text-strong
+   ================================================================ */
+.sp-iva-banner__text {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-strong);
+    line-height: 1.5;
+}
+
+.sp-iva-banner__text > * + * {
+    margin-top: var(--spacing-xs);
+}
+
+
+/* === inline primitives/download-buttons.css === */
+/* ================================================================
+   CONFIG DOWNLOAD BUTTONS (istruzioni + template sotto sidebar total box)
+   Source: elements-ui/css/components/_layout-patterns.css#L2028-L2062
+   ================================================================ */
+.sp-download-buttons__divider {
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--color-bg-gray-200);
+}
+
+/** @public */
+.sp-download-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.sp-download-buttons__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    border: 1.5px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    background-color: rgba(240, 138, 0, 0.1);
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.sp-download-buttons__btn:hover {
+    background-color: rgba(240, 138, 0, 0.1);
+}
+
+
+/* === inline primitives/mode-switcher.css === */
+/* ================================================================
+   MODE SWITCHER (Rapido / Avanzato)
+   Source: elements-ui/css/components/_buttons.css#L90-L127
+   ================================================================ */
+/** @public */
+.sp-mode-switcher {
+    display: flex;
+    gap: 0.625rem;
+    margin-bottom: 1.25rem;
+}
+
+.sp-mode-switcher__btn {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 1.25rem;
+    border-radius: var(--radius-full);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.sp-mode-switcher__btn--active {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+}
+
+.sp-mode-switcher__btn--inactive {
+    background-color: var(--color-bg-gray-75);
+    color: var(--color-text-strong);
+}
+
+.sp-mode-switcher__btn--inactive:hover {
+    background-color: var(--color-bg-gray-100);
+}
+
+.sp-mode-switcher__btn svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+}
+
+
+/* === inline primitives/option-buttons.css === */
+/* ================================================================
+   OPTION BUTTONS (selezione singola nel configuratore)
+   Source: elements-ui/css/components/_buttons.css#L129-L177
+   ================================================================ */
+/** @public */
+.sp-option-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+}
+
+.sp-option-buttons--equal {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.625rem;
+}
+
+.sp-option-buttons__btn {
+    padding: 0.375rem 0.625rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    appearance: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.sp-option-buttons--equal .sp-option-buttons__btn {
+    width: 100%;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+    text-align: center;
+}
+
+.sp-option-buttons__btn--default {
+    background-color: #ffffff;
+    color: var(--color-text);
+    border-color: transparent;
+}
+
+.sp-option-buttons__btn--default:hover {
+    border-color: transparent;
+    background-color: #ffffff;
+}
+
+.sp-option-buttons__btn--selected {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border-color: transparent;
+}
+
+.sp-option-buttons__btn--borderless {
+    background-color: #ffffff;
+    color: var(--color-text);
+    border-color: transparent;
+}
+
+.sp-option-buttons__btn--borderless:hover {
+    background-color: var(--color-bg-gray-50);
+    border-color: transparent;
+}
+
+/* Mobile: touch target standard e-commerce. */
+@media (max-width: 639px) {
+    .sp-option-buttons__btn {
+        min-height: 40px;
+        padding: 0.5rem 0.875rem;
+    }
+}
+
+
+/* === inline primitives/orientation-toggle.css === */
+/* ================================================================
+   ORIENTATION TOGGLE (Verticale / Orizzontale)
+   Source: elements-ui/css/components/_buttons.css#L444-L487
+   ================================================================ */
+/** @public */
+.sp-orientation-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background-color: rgba(229, 231, 235, 0.6);
+    border-radius: var(--radius-sm);
+    padding: 0.125rem;
+    margin-bottom: 0.625rem;
+    width: fit-content;
+}
+
+.sp-orientation-toggle__btn {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    transition: all var(--transition-fast);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-light);
+    font-family: inherit;
+}
+
+.sp-orientation-toggle__btn:hover {
+    color: var(--color-text-secondary);
+}
+
+.sp-orientation-toggle__btn--active {
+    background-color: var(--color-bg-white);
+    box-shadow: var(--shadow-sm);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+}
+
+.sp-orientation-toggle__btn svg {
+    stroke: currentColor;
+}
+
+
+/* === inline components/feature-box.css === */
+/**
+ * FEATURE BOX — Composed component (feature highlights grid)
+ * Fonte: Skillpress-frontend/elements-ui/css/components/_cards.css (sezione .feature-grid / .feature-box)
+ * Fonte markup: Skillpress-frontend/elements-ui/js/cards/card-feature.js
+ * Target demo: product-page-integration
+ * Data estrazione: 2026-04-27
+ *
+ * L'icona e uno slot: la libreria fornisce solo contenitore, dimensione e radius.
+ * Il colore di sfondo dell'icona e il contenuto (SVG/URL) sono forniti dal consumer/CMS.
+ * La libreria non dipende da Material Symbols.
+ */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.feature-box {
+    background: var(--color-bg-gray-50);
+    border-radius: var(--radius-lg);
+    padding: 0.875rem;
+    transition: background-color var(--transition-fast);
+}
+
+.feature-box:hover {
+    background: var(--color-bg-gray-100);
+}
+
+.feature-box__content {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.feature-box__icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    background: var(--color-bg-gray-100);
+}
+
+.feature-box__icon img,
+.feature-box__icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: block;
+}
+
+.feature-box__title {
+    margin: 0 0 0.125rem;
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-snug);
+    overflow-wrap: anywhere;
+    hyphens: auto;
+}
+
+.feature-box__description {
+    margin: 0;
+    color: var(--color-text-light);
+    font-size: var(--font-size-xs);
+    line-height: 1.375;
+    overflow-wrap: anywhere;
+}
+
+/* breakpoint-exception: 480px riduce il padding interno dei feature-box su
+   phones stretti per evitare che parole lunghe (es. "Personalizzabile") rompano
+   il grid 2-col su display 360-479px. */
+@media (max-width: 480px) {
+    .feature-box {
+        padding: 0.625rem;
+    }
+
+    .feature-box__content {
+        gap: 0.5rem;
+    }
+
+    .feature-box__title {
+        font-size: 0.8125rem;
+    }
+}
+
+
+/* === inline components/image-gallery.css === */
+/**
+ * IMAGE GALLERY - Static image container with prev/next nav buttons.
+ * Fonte CSS layout: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css (hero gallery block)
+ * Fonte CSS bottoni: Skillpress-frontend/elements-ui/css/components/_buttons.css (legacy nav-btn)
+ * Estratta da components/product-hero.css.
+ *
+ * BEM standard:
+ *   .image-gallery, .image-gallery__container, .image-gallery__nav-btn(--prev|--next)
+ *
+ * Contratto markup statico (Strategia A: behavior galleria fuori scope):
+ *   <div class="image-gallery">
+ *     <div class="image-gallery__container product-shadow" data-image-gallery-images='[...]'>
+ *       <img ... />
+ *       <button class="image-gallery__nav-btn image-gallery__nav-btn--prev" aria-label="...">
+ *         <svg aria-hidden="true">...</svg>
+ *       </button>
+ *       <button class="image-gallery__nav-btn image-gallery__nav-btn--next" aria-label="...">
+ *         <svg aria-hidden="true">...</svg>
+ *       </button>
+ *     </div>
+ *   </div>
+ */
+
+.image-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .image-gallery {
+        align-items: flex-start;
+    }
+}
+
+.image-gallery__container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    background: var(--color-bg-gray-100);
+}
+
+@media (min-width: 1024px) {
+    .image-gallery__container {
+        margin: 0;
+    }
+}
+
+.image-gallery__container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-shadow {
+    box-shadow: var(--shadow-product);
+}
+
+.image-gallery__nav-btn {
+    position: absolute;
+    top: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: var(--radius-full);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--color-text-strong);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: all var(--transition-fast);
+}
+
+.image-gallery__nav-btn:hover {
+    background-color: var(--color-bg-white);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.image-gallery__nav-btn:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.image-gallery__nav-btn svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: block;
+}
+
+.image-gallery__nav-btn--prev {
+    left: 0.75rem;
+}
+
+.image-gallery__nav-btn--next {
+    right: 0.75rem;
+}
+
+
+/* === inline components/product-hero.css === */
+/**
+ * PRODUCT HERO - Section layout: 2-column grid that composes ImageGallery (left)
+ * with title + Rating + description + FeatureGrid (right).
+ *
+ * Fonte: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css (hero block)
+ * Target demo: product-page-integration
+ *
+ * Dipende da:
+ *   - components/image-gallery.css (.image-gallery, .image-gallery__container, .image-gallery__nav-btn*)
+ *   - primitives/rating.css         (.sp-rating, .sp-rating__empty, .sp-rating__filled, .sp-rating__star)
+ *   - components/feature-box.css    (.feature-grid, .feature-box*)
+ *
+ * Contratto markup statico (Strategia A):
+ *   <div id="product-hero" class="product-hero">
+ *     <div class="product-hero__grid">
+ *       <!-- left slot: ImageGallery markup -->
+ *       <div class="product-hero__info">
+ *         <h1 class="product-hero__title">...</h1>
+ *         <div class="product-hero__rating">
+ *           <span class="product-hero__rating-value">...</span>
+ *           <!-- Rating markup -->
+ *           <span class="product-hero__review-count">...</span>
+ *         </div>
+ *         <p class="product-hero__description">...</p>
+ *         <!-- FeatureGrid markup -->
+ *       </div>
+ *     </div>
+ *   </div>
+ */
+
+.product-hero {
+    max-width: var(--page-max-width);
+    margin: 0 auto;
+    padding: 2rem var(--page-padding-x) 1rem;
+}
+
+/* Mobile: meno bianco sopra/sotto, padding-x = --page-padding-x per i bordi
+   laterali (allineato alla demo che usa .product-hero standalone in <main>). */
+@media (max-width: 639px) {
+    .product-hero {
+        padding: 0.75rem var(--page-padding-x) 0.5rem;
+    }
+}
+
+.product-hero__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 639px) {
+    .product-hero__grid {
+        gap: 0.75rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .product-hero__grid {
+        grid-template-columns: 35fr 65fr;
+    }
+}
+
+.product-hero__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-hero__title {
+    margin: 0 0 0.75rem;
+    color: var(--color-text);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-normal);
+    letter-spacing: 0;
+}
+
+.product-hero__rating {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: 0.75rem;
+}
+
+.product-hero__rating-value {
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+}
+
+.product-hero__review-count {
+    color: var(--color-text-light);
+    font-size: var(--font-size-sm);
+}
+
+.product-hero__description {
+    margin: 0 0 1rem;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.625;
+}
+
+
+/* === inline components/step-indicator.css === */
+/**
+ * STEP INDICATOR — Composed component (numbered horizontal step indicator)
+ * Fonte: Skillpress-frontend/elements-ui/css/components/_cards.css righe 1037-1178
+ * Fonte markup: Skillpress-frontend/product-page-integration/index.html righe 512-564
+ * Target demo: product-page-integration (section-steps)
+ * Data estrazione: 2026-04-27
+ *
+ * CSS-only. Nessun behavior libreria: il CMS sposta i modifier
+ * `--active`, `--inactive`, `--completed` su badge, titolo e status.
+ *
+ * Token usati: `--color-text-strong` (= `#374151`, step-indicator__title--inactive),
+ * `--color-border` (= `#D1D5DB`, steps-line), gradient `--color-primary` ->
+ * `--color-primary-light` (= `#F08A00 -> #FFB149`, step-indicator__badge--active).
+ * Tutti coincidenti con i valori letterali del catalogo elements-ui.
+ *
+ * Mobile-first: 2 colonne sotto 1024px, 4 colonne >= 1024px.
+ * `.steps-line` e' nascosta sotto 1024px e visibile solo da desktop.
+ *
+ * Fuori scope (non implementato qui):
+ * - icona check dentro `.step-indicator__badge--completed`;
+ * - wrapper `.step-card` con hover translateY;
+ * - step verticali, cliccabili, scroll spy, sticky, animazioni sequenziali.
+ */
+
+.step-indicator {
+    max-width: var(--page-max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+    margin-top: 0.75rem;
+}
+
+.step-indicator__wrapper {
+    margin-bottom: 1rem;
+}
+
+.step-indicator__container {
+    position: relative;
+    max-width: 64rem;
+    margin: 0 auto;
+}
+
+.steps-line {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: -2%;
+    right: -2%;
+    height: 1px;
+    background-color: var(--color-border);
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+@media (min-width: 1024px) {
+    .steps-line {
+        display: block;
+    }
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    position: relative;
+    z-index: 10;
+}
+
+@media (min-width: 1024px) {
+    .steps-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+.step-indicator__item {
+    background-color: var(--color-bg-white);
+    border: 1px solid var(--color-bg-gray-200);
+    border-radius: var(--radius-lg);
+    padding: 0.5rem 0.75rem;
+    transition: all var(--transition-slow);
+}
+
+.step-indicator__item:hover {
+    transform: translateY(-2px);
+}
+
+.step-indicator__item--active {
+    border-color: var(--color-primary);
+}
+
+.step-card-content {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.step-indicator__badge {
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-xs);
+}
+
+.step-indicator__badge--active {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    color: var(--color-bg-white);
+}
+
+.step-indicator__badge--inactive {
+    background: var(--color-bg-gray-200);
+    color: var(--color-text-secondary);
+}
+
+.step-indicator__badge--completed {
+    background: var(--color-success);
+    color: var(--color-bg-white);
+}
+
+.step-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.step-indicator__title {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.step-indicator__title--active {
+    color: var(--color-text);
+}
+
+.step-indicator__title--inactive {
+    color: var(--color-text-strong);
+}
+
+.step-indicator__status {
+    font-size: 10px;
+    font-weight: var(--font-weight-medium);
+}
+
+.step-indicator__status--active {
+    color: var(--color-primary);
+}
+
+.step-indicator__status--inactive {
+    color: var(--color-text-light);
+}
+
+
+/* === inline components/format-card.css === */
+/**
+ * FORMAT CARD — Composed component (selection card minima per formato prodotto)
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_cards.css righe 30-191
+ * Fonte markup: Skillpress-frontend/product-page-integration/js/sections/section-1.js righe 199-266
+ * Target demo: product-page-integration (sezione configuratore step 1, formato chiuso)
+ * Data estrazione: 2026-04-28
+ *
+ * CSS-only. Nessun behavior libreria: il CMS sposta il modifier `--selected`
+ * sull'elemento `.format-card`, come per le altre primitive del configuratore
+ * (mode-switcher, option-buttons, orientation-toggle).
+ *
+ * Geometria preview: la pagina demo passa width/height inline su
+ * `.format-card__preview` (e sui sub-element preview-inner / preview-custom) per
+ * riflettere orientamento e proporzioni. La libreria espone solo CSS.
+ *
+ * Material Symbols (icona `aspect_ratio` nella variante Libero) NON inclusi:
+ * il consumer/CMS sostituisce con SVG inline come per ModeSwitcher.
+ *
+ * Hover preview-box / preview-inner usa `var(--color-text-strong)` (= `#374151`,
+ * coincidente con il valore letterale del catalogo elements-ui).
+ *
+ * Fuori scope (non implementato qui):
+ * - varianti scrollable orizzontali (`.format-cards-scroll`, `.format-cards-arrow`);
+ * - espansione (`.format-card--show-more`, `.format-cards-hidden`);
+ * - stato disabilitato condiviso (vedere `.sp-radio-option--disabled` in FormControls);
+ * - famiglia SelectionCard estesa (.paper-card, .visual-card, .effect-card, .angolo-card);
+ * - js/format-card.js (toggle stato consumer-side).
+ */
+
+/* Container griglia formati */
+.format-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+}
+
+/* breakpoint-exception: 479px collassa la grid 4-col -> 2-col su phones stretti
+   prima di raggiungere il default mobile (4-col stava overflow su iPhone SE). */
+@media (max-width: 479px) {
+    .format-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Card singola formato */
+.format-card {
+    min-width: 0;
+    padding: 0.625rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-bg-gray-200);
+    background-color: var(--color-bg-white);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: inherit;
+}
+
+.format-card:hover {
+    border-color: var(--color-border);
+}
+
+.format-card--selected {
+    background-color: var(--selection-highlight-bg);
+    border-color: var(--color-primary);
+}
+
+/* Preview formato (anteprima visiva) */
+.format-card__preview {
+    position: relative;
+    margin: 0 auto var(--spacing-sm);
+    transition: all var(--transition-fast);
+}
+
+.format-card__preview-label {
+    position: absolute;
+    top: 0.125rem;
+    left: var(--spacing-xs);
+    font-size: 7px;
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-bold);
+}
+
+.format-card__preview-label--faded {
+    color: var(--color-border);
+}
+
+/* Box interno preview (sfondo scuro con testo bianco) */
+.format-card__preview-box {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-text);
+}
+
+.format-card--selected .format-card__preview-box {
+    background-color: var(--color-primary);
+}
+
+.format-card:hover .format-card__preview-box {
+    background-color: var(--color-text-strong);
+}
+
+.format-card--selected:hover .format-card__preview-box {
+    background-color: var(--color-primary);
+}
+
+/* Box interno per formati aperti (preview proporzionato dentro dashed) */
+.format-card__preview-inner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 0.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-text);
+}
+
+.format-card--selected .format-card__preview-inner {
+    background-color: var(--color-primary);
+}
+
+.format-card:hover .format-card__preview-inner {
+    background-color: var(--color-text-strong);
+}
+
+.format-card--selected:hover .format-card__preview-inner {
+    background-color: var(--color-primary);
+}
+
+/* Testo dimensioni in preview */
+.format-card__preview-box span,
+.format-card__preview-inner span {
+    color: var(--color-bg-white);
+    font-weight: var(--font-weight-bold);
+    font-size: 11px;
+}
+
+/* Bordo tratteggiato per formato comparativo / libero */
+.format-card__preview-dashed {
+    position: absolute;
+    inset: 0;
+    border: 1px dashed var(--color-border);
+    border-radius: 0.125rem;
+}
+
+/* Preview formato custom */
+.format-card__preview-custom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 0.125rem;
+    border: 1px dashed var(--color-text-muted);
+    background-color: var(--color-bg-gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.format-card--selected .format-card__preview-custom {
+    border-color: var(--color-primary);
+    background-color: rgba(240, 138, 0, 0.2);
+}
+
+.format-card:hover .format-card__preview-custom {
+    background-color: var(--color-bg-gray-200);
+}
+
+.format-card--selected:hover .format-card__preview-custom {
+    background-color: rgba(240, 138, 0, 0.2);
+}
+
+/* Testo card formato */
+.format-card__text {
+    text-align: center;
+}
+
+.format-card__name {
+    color: var(--color-text);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+}
+
+.format-card--selected .format-card__name {
+    color: var(--color-primary);
+}
+
+.format-card__dims {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+    margin-top: 0.125rem;
+}
+
+
+/* === inline components/price-table.css === */
+/**
+ * PRICE TABLE — Composed component (tabella prezzi stile Google Flights)
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css righe 918-1236
+ * Fonte markup: Skillpress-frontend/product-page-integration/js/sections/section-6.js righe 355-442
+ * Catalogo dichiarazione: Skillpress-frontend/elements-ui/js/layout-patterns/price-table.js
+ * Target demo: product-page-integration (configuratore step 6, "Quantita / consegna")
+ * Data estrazione: 2026-04-28
+ *
+ * CSS-only. Nessun behavior libreria: il consumer/CMS applica i modifier
+ * `--selected` (header colonna), `--active` (riga qty), `--selected` /
+ * `--row-active` (cella prezzo) in base a stato applicativo (qty selezionata,
+ * data spedizione selezionata, prezzo cliccato, conversione IVA Lordo/Netto).
+ *
+ * Material Symbols (`keyboard_arrow_up`, `keyboard_arrow_down`) NON inclusi:
+ * il consumer/CMS usa SVG inline. Le regole CSS sulle icone sono tradotte da
+ * `.material-symbols-outlined` a `svg`, mantenendo dimensioni equivalenti
+ * (28px verticale).
+ *
+ * Geometria tabella: la tabella resta leggibile con scrollbar orizzontale nativa
+ * quando esiste overflow. Default `min-width: 500px` (fallback 4 colonne); con `:has()`
+ * i browser moderni riducono automaticamente la min-width per 1/2/3 colonne.
+ * Il consumer wrappa la tabella in `.price-table__section` (overflow-x: auto)
+ * o equivalente.
+ *
+ * Fuori scope (non implementato qui):
+ * - behavior selezione cella / nav verticale
+ *   (vive in `product-page-integration/js/sections/section-6.js`);
+ * - calcolo prezzo IVA, paginazione qty, ricerca `closestDisplayedQty`;
+ * - animazione `@keyframes cellSelect` (usata solo in feedback JS);
+ * - variante `.price-table` doppio-underscore (`__row`, `__cell`, `__discount`)
+ *   citata in `_layout-patterns.css#L1071-L1098` ma non referenziata da nessuna
+ *   pagina demo;
+ * - regola `#priceTableContainer table tbody tr` legata all'id;
+ * - js/price-table.js (Strategia A static snapshot).
+ */
+
+/* ===== Wrapper outer ===== */
+.price-table__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Wrapper compatibile con il vecchio markup che posizionava frecce orizzontali.
+   Le frecce sono deprecate: la scrollbar nativa e' ora l'affordance primaria. */
+.price-table__scroll-wrap {
+    position: relative;
+}
+
+/* Contenitore tabella con scrollbar orizzontale quando esiste overflow.
+   E' piu' chiara delle vecchie frecce overlay e funziona senza JS consumer. */
+.price-table__section {
+    position: relative;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-bg-gray-200) transparent;
+    padding-bottom: 0.25rem;
+}
+
+.price-table__section--scrollable {
+    padding-bottom: 0.875rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.price-table__section--scrollable::-webkit-scrollbar {
+    display: none;
+}
+
+.price-table__section--scrollable::after {
+    content: "";
+    position: sticky;
+    left: 0;
+    bottom: 0.125rem;
+    display: block;
+    width: 100%;
+    height: 0.375rem;
+    border-radius: var(--radius-full);
+    background:
+        linear-gradient(var(--color-text-muted), var(--color-text-muted))
+            var(--price-table-scroll-thumb-left, 0%) center /
+            var(--price-table-scroll-thumb-width, 32%) 100% no-repeat,
+        var(--color-bg-gray-200);
+    pointer-events: none;
+}
+
+.price-table__section::-webkit-scrollbar {
+    height: 8px;
+}
+
+.price-table__section::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.price-table__section::-webkit-scrollbar-thumb {
+    background: var(--color-bg-gray-200);
+    border-radius: var(--radius-full);
+}
+
+.price-table__section::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
+}
+
+/* ===== Tabella ===== */
+.price-table {
+    width: 100%;
+    font-size: var(--font-size-xs);
+    border-collapse: collapse;
+    min-width: 500px;
+}
+
+/* Progressive enhancement: ottimizza lo spazio quando il backend rende meno
+   colonne data. Senza :has() resta il fallback leggibile a 500px. */
+@supports selector(:has(*)) {
+    .price-table:not(:has(.price-table__header-cell--center:nth-of-type(3))) {
+        min-width: min(100%, 18rem);
+    }
+
+    .price-table:has(.price-table__header-cell--center:nth-of-type(3)):not(:has(.price-table__header-cell--center:nth-of-type(4))) {
+        min-width: min(100%, 24rem);
+    }
+
+    .price-table:has(.price-table__header-cell--center:nth-of-type(4)):not(:has(.price-table__header-cell--center:nth-of-type(5))) {
+        min-width: 28rem;
+    }
+}
+
+/* ===== Header cells ===== */
+.price-table__header-cell {
+    padding: 0.5rem;
+    font-weight: var(--font-weight-semibold);
+    border-bottom: 1px solid var(--color-bg-gray-200);
+}
+
+.price-table__header-cell--left {
+    text-align: left;
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text);
+    border-top-left-radius: var(--radius-lg);
+}
+
+.price-table__header-cell--center {
+    text-align: center;
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text);
+}
+
+.price-table__header-cell--selected {
+    background-color: var(--color-secondary);
+    color: var(--color-bg-white);
+}
+
+.price-table__header-cell--corner {
+    border-top-right-radius: var(--radius-lg);
+}
+
+.price-table__header-day {
+    font-size: var(--font-size-xs);
+    line-height: 1.2;
+}
+
+.price-table__header-date {
+    font-size: 10px;
+    color: var(--color-text-light);
+}
+
+.price-table__header-date--light {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== Body rows ===== */
+.price-table__row {
+    transition: background-color var(--transition-fast);
+}
+
+.price-table__row:hover {
+    background-color: var(--color-bg-gray-50);
+}
+
+.price-table__row--active {
+    /* Teal soft locale (no token: usato solo da PriceTable. Promuovere a
+       --color-secondary-soft se emerge un secondo consumer). */
+    background-color: #e8f5f3;
+}
+
+/* ===== Body cells ===== */
+.price-table__cell {
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--color-bg-gray-200);
+}
+
+.price-table__cell--left {
+    text-align: left;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+.price-table__cell--center {
+    padding: 0.375rem;
+    text-align: center;
+}
+
+/* ===== Quantity button (left column) ===== */
+.price-table__qty-btn {
+    width: 100%;
+    padding: 0.25rem 0;
+    text-align: left;
+    transition: all var(--transition-fast);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text);
+}
+
+.price-table__qty-btn--active {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-secondary);
+}
+
+/* ===== Price cell button (intersection cells) ===== */
+.price-table__cell-btn {
+    width: 100%;
+    padding: 0.375rem 0.25rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    transition: all var(--transition-fast);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-normal);
+    cursor: pointer;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.price-table__cell-btn--default {
+    background-color: var(--color-bg-white);
+    color: var(--color-text);
+    border: 1px solid var(--color-bg-gray-200);
+}
+
+.price-table__cell-btn--default:hover {
+    border-color: var(--color-secondary);
+    background-color: var(--color-bg-gray-50);
+}
+
+.price-table__cell-btn--row-active {
+    /* Teal soft locale (no token: usato solo da PriceTable. Promuovere a
+       --color-secondary-soft se emerge un secondo consumer). */
+    background-color: #e8f5f3;
+    color: var(--color-text);
+    border: 1px solid rgba(28, 114, 100, 0.3);
+}
+
+.price-table__cell-btn--row-active:hover {
+    border-color: var(--color-secondary);
+}
+
+.price-table__cell-btn--selected {
+    background-color: var(--color-secondary);
+    color: var(--color-bg-white);
+    border: 1px solid var(--color-secondary);
+    box-shadow: var(--shadow-md);
+}
+
+/* ===== Navigation arrows (vertical) ===== */
+.price-table__nav-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 4px 16px;
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+}
+
+.price-table__nav-arrow svg {
+    width: 28px;
+    height: 28px;
+    color: var(--color-text);
+}
+
+.price-table__nav-arrow:hover:not(.price-table__nav-arrow--disabled) svg {
+    color: var(--color-primary);
+}
+
+.price-table__nav-arrow--disabled {
+    opacity: 0.25;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* ===== Navigation arrows (horizontal / legacy overlay) ===== */
+.price-table__nav-arrow-horizontal {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-bg-gray-200);
+    border-radius: 50%;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    display: none !important;
+}
+
+/* Posizionamento DENTRO il container (le frecce restano fisse rispetto al
+   viewport del container scrollabile, non vengono clippate da parent
+   con overflow-x: hidden come `.sp-accordion__inner`). */
+.price-table__nav-arrow-horizontal--left {
+    left: 4px;
+}
+
+.price-table__nav-arrow-horizontal--right {
+    right: 4px;
+}
+
+.price-table__nav-arrow-horizontal svg {
+    width: 18px;
+    height: 18px;
+}
+
+.price-table__nav-arrow-horizontal:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* ===== Responsive =====
+   Touch targets celle prezzo / qty button portati a 40px+ per standard
+   e-commerce mobile. Lo scroll orizzontale resta nativo e visibile. */
+@media (max-width: 639px) {
+    .price-table__nav-arrow svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .price-table__cell-btn {
+        min-height: 40px;
+        padding: 0.5rem 0.375rem;
+    }
+
+    .price-table__qty-btn {
+        min-height: 40px;
+        padding: 0.5rem 0;
+    }
+}
+
+/* breakpoint-exception: 480px riduce ulteriormente il padding celle su phones
+   stretti (sotto i 480 css px) per evitare overflow orizzontale. */
+@media (max-width: 480px) {
+    .price-table__header-cell,
+    .price-table__cell {
+        padding: 0.375rem;
+    }
+
+    .price-table__cell--center {
+        padding: 0.3125rem;
+    }
+
+    .price-table__cell-btn {
+        padding: 0.5rem 0.25rem;
+    }
+
+    .price-table__header-day {
+        font-size: 0.6875rem;
+    }
+
+    .price-table__header-date {
+        font-size: 0.625rem;
+    }
+}
+
+
+/* === inline components/sidebar-totals.css === */
+/**
+ * SIDEBAR TOTALS — Composed component (sidebar configuratore: totale + promo + riepilogo + carrello)
+ * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css righe 1886-1910
+ *           + righe 189-246, 249-272, 324-341, 344-365, 367-418
+ *           + Skillpress-frontend/elements-ui/css/components/_buttons.css righe 29-55 (.add-to-cart-btn), 261-285 (.sidebar-totals__btn)
+ * Fonte markup: Skillpress-frontend/product-page-integration/index.html righe 202-249
+ * Catalogo dichiarazione: Skillpress-frontend/elements-ui/js/layout-patterns/sidebar-summary.js
+ * Target demo: product-page-integration (sidebar configuratore desktop)
+ * Data estrazione: 2026-04-28
+ *
+ * CSS-only. Nessun behavior libreria.
+ *
+ * Il toggle riepilogo (`.sidebar-totals__btn[aria-expanded]` -> `.sidebar-totals__content` show/hide) e'
+ * consumer-side wire-up: la libreria espone `display: none` di default e lascia al consumer/CMS
+ * lo swap su click. Stessa convenzione di ModeSwitcher / OptionButtons / FormatCard / PriceTable.
+ *
+ * Material Symbols (`list`, `expand_more`, `shopping_cart`) NON inclusi: il consumer/CMS usa
+ * SVG inline 18x18 currentColor. Le regole CSS sulle icone sono tradotte da
+ * `.material-symbols-outlined` a `svg`, mantenendo dimensione 1.125rem.
+ *
+ * Fuori scope (non implementato qui):
+ * - aggiornamento valori `Quantita` / `Miglior prezzo` / `Imposta` / `Totale` (business logic configuratore);
+ * - generazione HTML riepilogo dentro `.sidebar-totals__content`;
+ * - validazione promo / errori `#validationErrors`;
+ * - click bottone carrello;
+ * - variante BEM `.sidebar-box*`, alias `.sidebar-total-price`, `.sidebar-total-iva`,
+ *   `.product-sidebar` (non referenziati dalla pagina demo);
+ * - `.sp-download-buttons__divider` + `.sp-download-buttons` + `.sp-download-buttons__btn`
+ *   (gia' coperti da `primitives/download-buttons.css`).
+ */
+
+/* ================================================================
+   GRIGLIA CONFIGURATORE
+   ================================================================ */
+.configurator-section {
+    max-width: var(--page-max-width);
+    margin: 0 auto;
+    padding: 1rem var(--page-padding-x) 2.5rem;
+}
+
+.configurator-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+}
+
+@media (min-width: 1024px) {
+    .configurator-grid {
+        grid-template-columns: 1fr 380px;
+    }
+}
+
+.config-column {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.config-column > * + * {
+    margin-top: var(--spacing-lg);
+}
+
+.config-section-title {
+    font-size: 1.375rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.025em;
+}
+
+/* ================================================================
+   SIDEBAR CONTAINER (sticky desktop / hidden mobile sotto 1024px)
+   ================================================================ */
+.configurator-sidebar {
+    height: fit-content;
+    align-self: flex-start;
+}
+
+@media (min-width: 1024px) {
+    .configurator-sidebar {
+        position: sticky;
+        top: 250px;
+        margin-top: 100px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .configurator-sidebar {
+        display: none !important;
+    }
+}
+
+/* ================================================================
+   BOX TOTALE
+   ================================================================ */
+.sidebar-total-box {
+    background-color: var(--color-bg-gray-50);
+    border-radius: var(--radius-xl);
+    padding: 1rem;
+}
+
+.sidebar-total-box > * + * {
+    margin-top: 0.75rem;
+}
+
+.sidebar-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.025em;
+}
+
+/* ================================================================
+   RIGHE TOTALE
+   ================================================================ */
+.sidebar-rows {
+    font-size: 0.9375rem;
+}
+
+.sidebar-rows > * + * {
+    margin-top: 0.375rem;
+}
+
+.sidebar-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar-row__label {
+    color: var(--color-text-secondary);
+}
+
+.sidebar-row__value {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+}
+
+.sidebar-row--green {
+    color: var(--color-success);
+}
+
+.sidebar-row--green .sidebar-row__label {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-success);
+}
+
+.sidebar-row--green .sidebar-row__value {
+    color: var(--color-success);
+}
+
+.sidebar-divider {
+    margin: 0.75rem 0;
+    border-top: 1px solid var(--color-border);
+}
+
+/* ================================================================
+   TOTALE EVIDENZIATO
+   ================================================================ */
+.sidebar-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.sidebar-total-label {
+    font-size: 1.0625rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+}
+
+.sidebar-total-value {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+}
+
+/* ================================================================
+   PROMO INPUT
+   ================================================================ */
+.promo-section label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+    margin-bottom: 0.375rem;
+}
+
+.promo-input {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 0.5rem 0.75rem;
+    font-size: var(--font-size-sm);
+    background-color: var(--color-bg-white);
+}
+
+.promo-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-primary);
+    border-color: transparent;
+}
+
+/* ================================================================
+   RIEPILOGO TOGGLE + CONTENT
+   ================================================================ */
+.sidebar-totals__section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.sidebar-totals__section label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+    margin-bottom: 0.375rem;
+}
+
+.sidebar-totals__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.625rem 1rem;
+    background-color: rgba(28, 114, 100, 0.08);
+    color: var(--color-secondary);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+    border-radius: var(--radius-lg);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sidebar-totals__btn:hover {
+    background-color: rgba(28, 114, 100, 0.15);
+}
+
+.sidebar-totals__btn svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+}
+
+.sidebar-totals__content {
+    margin-top: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-strong);
+    background-color: var(--color-bg-gray-75);
+    border-radius: var(--radius-lg);
+    padding: 0.75rem;
+    display: none;
+}
+
+.sidebar-totals__content > * + * {
+    margin-top: 0.5rem;
+}
+
+/* ================================================================
+   RIEPILOGO UTILITY CLASSES (CMS injection helpers)
+   ----------------------------------------------------------------
+   Queste classi sono prodotte dal generatore reale del riepilogo
+   (`product-page-integration/js/riepilogo.js` -> `window.generateRiepilogo`).
+   Il backend/CMS inietta l'HTML risultante dentro `.sidebar-totals__content`
+   (sidebar desktop) o `.mobile-config-content` (mobile bar).
+   ================================================================ */
+.sidebar-totals__container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* `.sidebar-totals__section` standalone (senza `label` figlia, prodotto da
+   `generateRiepilogo`): wrapper di gruppo (Dettagli, Generali, Copertina, ...). */
+
+.sidebar-totals__header {
+    font-weight: var(--font-weight-bold);
+    font-size: 1rem;
+    color: var(--color-text, #111418);
+}
+
+.sidebar-totals__row {
+    padding-left: 0.75rem;
+}
+
+.sidebar-totals__row--indent {
+    padding-left: 1.5rem;
+    color: var(--color-text-secondary);
+}
+
+.sidebar-totals__error {
+    color: var(--color-error-light);
+    font-weight: var(--font-weight-bold);
+}
+
+.sidebar-totals__muted {
+    color: var(--color-text-light);
+}
+
+.sidebar-totals__placeholder {
+    text-align: center;
+    color: var(--color-text-light);
+    padding: 1rem;
+}
+
+.sidebar-totals__empty {
+    text-align: center;
+    color: var(--color-text-light);
+    padding: 1rem;
+}
+
+/* Alias legacy mantenuti per consumer che gia' usano i nomi vecchi.
+   - `.sidebar-totals__indent` -> `.sidebar-totals__row--indent`
+   - `.sidebar-totals__section-header` -> `.sidebar-totals__header`
+   I generatori canonici (`generateRiepilogo` 3.0.0+) usano le forme
+   nuove con doppio dash / nome senza suffisso. */
+.sidebar-totals__indent {
+    padding-left: 1.5rem;
+    color: var(--color-text-secondary);
+}
+
+.sidebar-totals__section-header {
+    font-weight: var(--font-weight-bold);
+    font-size: 1rem;
+    color: var(--color-text, #111418);
+}
+
+/* ================================================================
+   ADD TO CART BUTTON (sidebar desktop)
+   ================================================================ */
+.add-to-cart-btn {
+    width: 100%;
+    background-color: var(--color-secondary-dark);
+    color: var(--color-bg-white);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-lg);
+    border: none;
+    cursor: pointer;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--color-secondary-light);
+    box-shadow: var(--shadow-xl);
+}
+
+.add-to-cart-btn svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+}
+
+
+/* === inline components/related-products.css === */
+/* ============================================================================
+   RELATED PRODUCTS — Griglia prodotti correlati (stile landing page)
+   ============================================================================
+   Fonti:
+   - elements-ui/css/components/_layout-patterns.css#L1804-L1825
+     (.related-products + qualificazione catalog-section-label / catalog-grid--products)
+   - elements-ui/css/components/_cards.css#L1181-L1328
+     (PRODUCT CARD: catalog-section-label / catalog-grid--products /
+      catalog-card--product-equal / catalog-card__title /
+      catalog-card__image-wrap / catalog-card__image--product + responsive)
+   ========================================================================== */
+
+
+/* === inline primitives/catalog-grid.css === */
+/**
+ * Catalog Grid (primitive)
+ *
+ * Estratta da components/catalog-product-grid.css e components/related-products.css
+ * per F012 (leakage condiviso). Definisce il layout CSS Grid usato sia nella
+ * landing-page (catalog-product-grid) che nelle related-products del PDP.
+ *
+ * @public
+ *
+ * Block: .sp-catalog-grid
+ * Element: .sp-catalog-grid__section-label (con modifiers --orange, --teal, --dark)
+ * Modifier: .sp-catalog-grid--products (variante prodotti, 4 col su desktop)
+ */
+
+/** @public */
+.sp-catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 0.85rem;
+}
+
+.sp-catalog-grid__section-label {
+    display: block;
+    padding: 0;
+    margin: 0 0 1.2rem;
+    color: var(--color-text, #111418);
+    font-family: 'Manrope', var(--font-family, sans-serif);
+    font-size: clamp(1.15rem, 2vw, 1.7rem);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: 0;
+    text-transform: none;
+    background: none;
+    border-radius: 0;
+}
+
+.sp-catalog-grid__section-label--orange,
+.sp-catalog-grid__section-label--teal,
+.sp-catalog-grid__section-label--dark {
+    background: none;
+}
+
+.sp-catalog-grid--products {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.45rem 0.95rem;
+}
+
+@media (max-width: 1023px) {
+    .sp-catalog-grid--products {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 639px) {
+    .sp-catalog-grid--products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* breakpoint-exception: 479px riduce il gap su small phones (iPhone SE/mini)
+   senza cambiare il layout 2-col gia' attivo sotto 640. */
+@media (max-width: 479px) {
+    .sp-catalog-grid--products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem 0.6rem;
+    }
+}
+
+
+/* --- Wrapper section --- */
+.related-products {
+    font-family: var(--font-family);
+    background-color: var(--color-bg-white);
+    padding: 0 20px 5px;
+    overflow: visible;
+}
+
+.related-products .sp-catalog-grid__section-label {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+}
+
+.related-products .sp-catalog-grid--products {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+/* --- Product card --- */
+.catalog-card--product-equal {
+    position: relative;
+    grid-column: span 1;
+    min-height: 0;
+    aspect-ratio: 5 / 5.5;
+    padding: 1rem 1rem 0;
+    border-radius: 1rem;
+    text-align: left;
+    align-items: flex-start;
+    background: var(--color-bg-gray-75, #F7F7F8);
+    gap: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-normal);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.catalog-card--product-equal:hover,
+.catalog-card--product-equal:focus-within {
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- Card title --- */
+.sp-catalog-grid--products .catalog-card__title {
+    max-width: none;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+    font-weight: var(--font-weight-bold);
+    text-align: left;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.5rem;
+    color: var(--color-text, #111418);
+    line-height: 1.25;
+}
+
+/* --- Card image --- */
+.catalog-card--product-equal .catalog-card__image-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    width: 100%;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    overflow: visible;
+}
+
+.sp-catalog-grid--products .catalog-card__image {
+    margin-top: 0;
+    max-height: none;
+    flex: none;
+}
+
+.catalog-card__image--product {
+    width: 100%;
+    max-height: none;
+    height: auto;
+    object-fit: contain;
+    transform-origin: center center;
+    transition: transform var(--transition-normal);
+}
+
+.catalog-card--product-equal:hover .catalog-card__image--product,
+.catalog-card--product-equal:focus-within .catalog-card__image--product {
+    transform: scale(1.05);
+}
+/* --- Responsive: Mobile 2 colonne --- */
+@media (max-width: 639px) {
+    .catalog-card--product-equal {
+        grid-column: span 1;
+    }
+
+    .catalog-card__image--product {
+        width: min(100%, 150px);
+        max-height: none;
+    }
+}
+
+
+/* === inline components/mobile-bar.css === */
+/* ============================================================================
+   MOBILE TOTAL BAR — Barra fissa bottom mobile/tablet con totale + carrello
+   ============================================================================
+   Fonti:
+   - elements-ui/css/components/_layout-patterns.css#L490-L758
+     (MOBILE BAR: container, handle, compact, expanded, details, config-toggle,
+      config-content + responsive 374px / 640-1023px).
+   - elements-ui/css/components/_buttons.css#L58-L84
+     (BOTTONE CARRELLO: .mobile-total-bar__cart-btn).
+   - elements-ui/js/layout-patterns/mobile-bar.js (sandbox catalogo).
+
+   Strategia A: static snapshot. Toggle .mobile-total-bar--expanded /
+   .mobile-config-toggle--active / .mobile-config-content--visible sono
+   wire-up consumer-side. Niente JS libreria.
+
+   Material Symbols sostituiti con SVG inline: i selettori che dipendevano da
+   .material-symbols-outlined nel catalogo (.mobile-total-bar__cart-btn,
+   .mobile-config-toggle) sono tradotti con svg. La classe BEM
+   .mobile-total-bar__handle-arrow e l'id #mobile-config-icon sono mantenuti.
+   ========================================================================== */
+
+/* --- Container fixed bottom --- */
+.mobile-total-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-mobile-bar);
+    pointer-events: none;
+}
+
+@media (max-width: 1023px) {
+    .mobile-total-bar {
+        display: block;
+    }
+}
+
+.mobile-total-bar__overlay {
+    display: none;
+}
+
+.mobile-total-bar__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-white);
+    border-top: 1px solid var(--color-bg-gray-200);
+    border-radius: 1rem 1rem 0 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+    padding: var(--spacing-xs) var(--spacing-md) 0.625rem;
+    padding-bottom: calc(0.625rem + env(safe-area-inset-bottom, 0px));
+    pointer-events: auto;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+/* --- Handle (chevron espansione) --- */
+.mobile-total-bar__handle {
+    order: 0;
+    display: flex;
+    justify-content: center;
+    padding: 0.125rem 0 var(--spacing-xs);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-total-bar__handle-arrow {
+    color: var(--color-text-muted);
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform var(--transition-normal);
+    line-height: 1;
+}
+
+.mobile-total-bar--expanded .mobile-total-bar__handle-arrow {
+    transform: rotate(180deg);
+}
+
+/* --- Sezione compatta (sempre visibile) --- */
+.mobile-total-bar__compact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    order: 2;
+}
+
+.mobile-total-bar__price-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+}
+
+.mobile-total-bar__label {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+}
+
+.mobile-total-bar__price {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    line-height: 1;
+}
+
+.mobile-total-bar__iva {
+    font-size: 0.6875rem;
+    color: var(--color-text-muted);
+    line-height: 1;
+}
+
+/* --- Bottone carrello mobile (da _buttons.css) --- */
+.mobile-total-bar__cart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    background: var(--color-secondary-dark);
+    color: white;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    padding: 0.8125rem 1rem;
+    border-radius: 0.625rem;
+    border: none;
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+}
+
+.mobile-total-bar__cart-btn:active {
+    opacity: 0.9;
+}
+
+.mobile-total-bar__cart-btn svg {
+    width: 1.125rem;
+    height: 1.125rem;
+}
+
+/* --- Sezione espansa (visibile solo quando .mobile-total-bar--expanded) --- */
+.mobile-total-bar__expanded-section {
+    order: 1;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height var(--transition-section), opacity var(--transition-slow);
+}
+
+.mobile-total-bar--expanded .mobile-total-bar__expanded-section {
+    max-height: 60vh;
+    opacity: 1;
+    overflow-y: auto;
+    padding-bottom: var(--spacing-xl);
+}
+
+.mobile-total-bar__divider {
+    display: none;
+}
+
+/* --- Righe dettaglio --- */
+.mobile-total-bar__details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.mobile-total-bar__detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size-sm);
+}
+
+.mobile-total-bar__detail-row > span:first-child {
+    color: var(--color-text);
+}
+
+.mobile-total-bar__detail-row > span:last-child {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    font-size: 0.9375rem;
+}
+
+.mobile-total-bar__detail-shipping > span:last-child {
+    color: var(--color-success);
+}
+
+/* --- Toggle riepilogo configurazione --- */
+.mobile-config-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    width: 100%;
+    margin-top: 0.75rem;
+    padding: 0.625rem;
+    background: transparent;
+    color: var(--color-text);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-config-toggle svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+#mobile-config-icon {
+    transition: transform var(--transition-normal);
+}
+
+.mobile-config-toggle--active #mobile-config-icon {
+    transform: rotate(180deg);
+}
+
+/* --- Contenuto riepilogo configurazione --- */
+.mobile-config-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height var(--transition-slow), opacity var(--transition-normal);
+    margin-top: 0;
+}
+
+.mobile-config-content--visible {
+    max-height: 400px;
+    opacity: 1;
+    overflow-y: auto;
+    margin-top: 0.5rem;
+    padding: 1rem;
+    padding-bottom: 6rem;
+    background: var(--color-bg-gray-50);
+    border: 1px solid var(--color-bg-gray-200);
+    border-radius: var(--radius-lg);
+    font-size: 0.8125rem;
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.mobile-config-content--visible > div {
+    padding: 0.25rem 0;
+}
+
+/* NOTE: il generatore reale del riepilogo (`generateRiepilogo`, vedi
+   `js/riepilogo.js` v3.0.0) inietta classi `.sidebar-totals__container`,
+   `.sidebar-totals__section`, `.sidebar-totals__header`, `.sidebar-totals__row`,
+   `.sidebar-totals__row--indent`, `.sidebar-totals__error`, `.sidebar-totals__empty`,
+   `.sidebar-totals__muted`, `.sidebar-totals__placeholder`. Queste utility sono
+   definite in `components/sidebar-totals.css` e si applicano anche
+   dentro `.mobile-config-content--visible` quando il consumer importa
+   entrambi i CSS (cosa che il bundle `demo-minimal.css` fa di default).
+   Le regole legacy `.mobile-config-content--visible .font-bold` /
+   `.font-semibold` del catalogo sono state rimosse: non corrispondono
+   piu' all'output del generatore. */
+
+/* --- Responsive: small phones (<=374px) --- */
+@media (max-width: 374px) {
+    .mobile-total-bar__container {
+        padding: 0.375rem 0.75rem 0.75rem;
+        padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    }
+
+    .mobile-total-bar__cart-btn {
+        padding: 0.75rem 0.875rem;
+        font-size: 0.8125rem;
+    }
+
+    .mobile-total-bar__price {
+        font-size: 1rem;
+    }
+
+    .mobile-total-bar__label {
+        font-size: 1rem;
+    }
+}
+
+/* --- Responsive: tablet (640-1023px) --- */
+@media (min-width: 640px) and (max-width: 1023px) {
+    .mobile-total-bar__container {
+        padding: 0.5rem 1.5rem 1rem;
+        padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    }
+
+    .mobile-total-bar__compact {
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .mobile-total-bar__cart-btn {
+        padding: 0.875rem 1.25rem;
+        font-size: 0.9375rem;
+    }
+
+    .mobile-total-bar__price {
+        font-size: 1.125rem;
+    }
+
+    .mobile-total-bar__details,
+    .mobile-config-toggle,
+    .mobile-config-content--visible {
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+/* === inline components/preview.css === */
+/**
+ * PREVIEW -- controllo selezionabile + trigger + pannello anteprima inline
+ *
+ * Fonte look: product-page-integration/js/sections/helpers.js renderPreview()
+ * e elements-ui/css/components/_buttons.css + _cards.css.
+ * Strategia C: behavior open/close UI puro via js/preview.js.
+ *
+ * Icone UI: la libreria disegna l'occhio del trigger e la X di chiusura via CSS.
+ * Il consumer non deve fornire SVG o immagini dentro .preview__trigger / .preview__close.
+ */
+.preview {
+    position: relative;
+}
+
+.preview__row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+}
+
+.preview__select {
+    flex: 1;
+    min-width: 0;
+}
+
+.preview__trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--color-secondary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    white-space: nowrap;
+    transition: color var(--transition-fast);
+    font-family: inherit;
+    font-size: 0.9375rem;
+    font-weight: var(--font-weight-medium);
+    padding: 0;
+}
+
+.preview__trigger:hover {
+    color: var(--color-secondary-dark);
+}
+
+.preview__trigger::before {
+    content: "";
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.preview__panel {
+    background-color: var(--color-bg-white);
+    border: 1px solid var(--color-bg-gray-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-top: 0.5rem;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height var(--transition-slow), opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.preview--open .preview__panel,
+.preview__panel[aria-hidden="false"] {
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.preview__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.preview__image-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.preview__image {
+    width: 100%;
+    height: 12rem;
+    background-color: var(--color-bg-gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.preview__image img,
+.preview__image-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.preview__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-border);
+}
+
+.preview__placeholder svg {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.preview__info {
+    flex: 1;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.preview__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    margin-bottom: 0.5rem;
+}
+
+.preview__title {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    margin: 0;
+}
+
+.preview__close {
+    position: relative;
+    color: var(--color-text-muted);
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.125rem;
+    height: 1.125rem;
+    line-height: 1;
+    transition: color var(--transition-fast);
+}
+
+.preview__close::before,
+.preview__close::after {
+    content: "";
+    position: absolute;
+    width: 0.875rem;
+    height: 2px;
+    background: currentColor;
+    border-radius: var(--radius-full);
+}
+
+.preview__close::before {
+    transform: rotate(45deg);
+}
+
+.preview__close::after {
+    transform: rotate(-45deg);
+}
+
+.preview__close:hover {
+    color: var(--color-text-secondary);
+}
+
+.preview__close:focus-visible {
+    outline: 2px solid var(--color-text-secondary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+.preview__description {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    line-height: 1.625;
+    margin: 0;
+    flex: 1;
+}
+
+@media (min-width: 640px) {
+    .preview__content {
+        flex-direction: row;
+    }
+
+    .preview__image {
+        width: 12rem;
+        height: 12rem;
+    }
+}
+
+/* breakpoint-exception: 768px serve a far crescere l'immagine preview oltre la
+   dimensione tablet-small (640) ma prima del cutoff desktop (1024); senza questo
+   step l'immagine resterebbe 12rem fino a 1024 creando vuoto laterale. */
+@media (min-width: 768px) {
+    .preview__image {
+        width: 16rem;
+        height: 16rem;
+    }
+}
+
+
+/* === inline components/media-choice-card.css === */
+/**
+ * MEDIA CHOICE CARD -- card selezionabile con immagine/media.
+ *
+ * Fonte look: effect-card / visual-card / angolo-card in elements-ui _cards.css.
+ * Naming generico per presentation type CMS "media-choice".
+ */
+.media-choice-cards {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.media-choice-cards--grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--spacing-sm);
+}
+
+.media-choice-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    width: 6.5rem;
+    min-height: 7.75rem;
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    padding: 0.375rem;
+    background: var(--color-bg-white);
+    color: var(--color-text);
+    cursor: pointer;
+    text-align: center;
+    transition: all var(--transition-fast);
+    font-family: inherit;
+}
+
+.media-choice-card:hover {
+    border-color: var(--color-primary-light);
+    background: var(--selection-highlight-bg);
+}
+
+.media-choice-card:hover .media-choice-card__image-wrap,
+.media-choice-card:hover .media-choice-card__preview {
+    border-color: var(--color-primary-light);
+}
+
+.media-choice-card--selected {
+    border-color: var(--color-primary);
+    background: var(--selection-highlight-bg);
+}
+
+.media-choice-card--selected .media-choice-card__image-wrap,
+.media-choice-card--selected .media-choice-card__preview {
+    border-color: var(--color-primary);
+}
+
+.media-choice-card--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.media-choice-card__image-wrap {
+    width: 5rem;
+    height: 5rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 2px solid var(--color-bg-gray-200);
+    background: var(--color-bg-gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color var(--transition-fast);
+}
+
+.media-choice-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.media-choice-card__preview {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 2px;
+    border-style: solid;
+    background-color: var(--color-bg-white);
+    border-color: var(--color-border);
+    transition: all var(--transition-fast);
+}
+
+.media-choice-card--selected .media-choice-card__preview {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-bg-white);
+}
+
+.media-choice-card__label {
+    width: 100%;
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.2;
+    white-space: normal;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+}
+
+.media-choice-card--selected .media-choice-card__label {
+    color: var(--color-text);
+}
+
+.media-choice-card__meta {
+    max-width: 5.25rem;
+    font-size: 10px;
+    line-height: 1.2;
+    color: var(--color-text-muted);
+}
+
+@media (min-width: 640px) {
+    .media-choice-cards--grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+}
+
+

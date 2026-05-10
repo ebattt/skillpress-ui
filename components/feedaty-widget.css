@@ -71,7 +71,7 @@
     border-radius: 0.75rem;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 639px) {
     .feedaty-widget--inline .feedaty_widget {
         width: calc(100% / 0.92) !important;
         transform: scale(0.92);

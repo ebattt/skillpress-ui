@@ -2,7 +2,8 @@
    ORIENTATION TOGGLE (Verticale / Orizzontale)
    Source: elements-ui/css/components/_buttons.css#L444-L487
    ================================================================ */
-.orientation-toggle {
+/** @public */
+.sp-orientation-toggle {
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
@@ -13,7 +14,7 @@
     width: fit-content;
 }
 
-.orientation-toggle__btn {
+.sp-orientation-toggle__btn {
     display: flex;
     align-items: center;
     gap: 0.375rem;
@@ -28,17 +29,17 @@
     font-family: inherit;
 }
 
-.orientation-toggle__btn:hover {
+.sp-orientation-toggle__btn:hover {
     color: var(--color-text-secondary);
 }
 
-.orientation-toggle__btn--active {
+.sp-orientation-toggle__btn--active {
     background-color: var(--color-bg-white);
     box-shadow: var(--shadow-sm);
     color: var(--color-text);
     font-weight: var(--font-weight-medium);
 }
 
-.orientation-toggle__btn svg {
+.sp-orientation-toggle__btn svg {
     stroke: currentColor;
 }

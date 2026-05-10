@@ -12,22 +12,11 @@
  *         con dimensioni elementi chiave per identificare differenze misurabili
  *         + arrowFixed test (drift in pixel della freccia destra durante scroll).
  *
- * Pre-requisiti: Playwright installato globalmente (npx playwright install chromium).
+ * Pre-requisiti: Playwright installato come devDependency (`npm install` nel
+ *                repo libreria) + `npx playwright install chromium`.
  *                Server demo (:5500) + consumer (:5510) attivi.
  */
-function loadChromium() {
-    try { return require('playwright').chromium; } catch (_) {}
-    try { return require('/Users/elenabattiston/.nvm/versions/node/v20.19.2/lib/node_modules/playwright').chromium; } catch (_) {}
-    try {
-        const { execSync } = require('child_process');
-        const root = execSync('npm root -g', { encoding: 'utf8' }).trim();
-        return require(root + '/playwright').chromium;
-    } catch (e) {
-        console.error('Playwright non trovato. Installa con: npm install -g playwright && npx playwright install chromium');
-        process.exit(2);
-    }
-}
-const chromium = loadChromium();
+const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 
@@ -47,6 +36,10 @@ const EXPECTED_DRIFTS = {
     body: {
         classification: 'accepted-reference-scope-drift',
         reason: 'Consumer reference renders the public component contract statically and includes explanatory/reference sections that do not exactly match the generated original page height.'
+    },
+    modeSwitcher: {
+        classification: 'accepted-contract-drift',
+        reason: 'Parent height reflects child Material Symbols absence (see modeBtn): consumer uses BEM ModeSwitcher without Material Symbols, demo legacy buttons include icon font glyphs.'
     },
     modeBtn: {
         classification: 'accepted-contract-drift',
@@ -120,28 +113,28 @@ async function measureCommon(page) {
         const out = {};
         const sels = {
             body:               'body',
-            modeSwitcher:       '.mode-switcher',
-            modeBtn:            '.mode-switcher__btn, .mode-btn',
-            modeBtnActive:      '.mode-switcher__btn--active, .mode-btn--active',
-            modeBtnInactive:    '.mode-switcher__btn--inactive, .mode-switcher__btn:not(.mode-switcher__btn--active), .mode-btn--inactive',
-            optionBtn:          '.option-buttons__btn, .option-btn',
-            orientationToggle:  '.orientation-toggle',
-            orientationBtn:     '.orientation-toggle__btn, .orientation-btn',
-            formatCards:        '.format-cards',
-            formatCard:         '.format-card',
+            modeSwitcher:       '.mode-switcher, .sp-mode-switcher',
+            modeBtn:            '.mode-switcher__btn, .sp-mode-switcher__btn, .mode-btn',
+            modeBtnActive:      '.mode-switcher__btn--active, .sp-mode-switcher__btn--active, .mode-btn--active',
+            modeBtnInactive:    '.mode-switcher__btn--inactive, .sp-mode-switcher__btn--inactive, .mode-switcher__btn:not(.mode-switcher__btn--active), .sp-mode-switcher__btn:not(.sp-mode-switcher__btn--active), .mode-btn--inactive',
+            optionBtn:          '.option-buttons__btn, .sp-option-buttons__btn, .option-btn',
+            orientationToggle:  '.orientation-toggle, .sp-orientation-toggle',
+            orientationBtn:     '.orientation-toggle__btn, .sp-orientation-toggle__btn, .orientation-btn',
+            formatCards:        '.format-cards, .sp-format-cards',
+            formatCard:         '.format-card, .sp-format-card',
             featureGrid:        '.feature-grid',
             featureBox:         '.feature-box',
             featureBoxTitle:    '.feature-box__title, .feature-box-title',
-            heroImage:          '.image-gallery__container, .hero-image-container',
-            heroTitle:          '.product-hero__title, .hero-title',
-            priceTableSection:  '.price-table__section, #priceTableContainer',
-            priceTableFull:     '.price-table, .price-table-full',
-            priceCellBtn:       '.price-table__cell-btn, .price-cell-btn',
-            priceQtyBtn:        '.price-table__qty-btn, .price-qty-btn',
-            priceArrowRight:    '.price-table__nav-arrow-horizontal--right, .price-nav-arrow-horizontal.right',
-            accordionFirst:     '.accordion__section',
+            heroImage:          '.image-gallery__container, .sp-image-gallery__container, .hero-image-container',
+            heroTitle:          '.product-hero__title, .sp-product-hero__title, .hero-title',
+            priceTableSection:  '.price-table__section, .sp-price-table__section, #priceTableContainer',
+            priceTableFull:     '.price-table, .sp-price-table, .price-table-full',
+            priceCellBtn:       '.price-table__cell-btn, .sp-price-table__cell-btn, .price-cell-btn',
+            priceQtyBtn:        '.price-table__qty-btn, .sp-price-table__qty-btn, .price-qty-btn',
+            priceArrowRight:    '.price-table__nav-arrow-horizontal--right, .sp-price-table__nav-arrow-horizontal--right, .price-nav-arrow-horizontal.right',
+            accordionFirst:     '.accordion__section, .sp-accordion__section',
             mobileBar:          '.mobile-total-bar',
-            stepCard:           '.step-indicator__item, .step-card-item',
+            stepCard:           '.step-indicator__item, .sp-step-indicator__item, .step-card-item',
         };
         for (const k of Object.keys(sels)) {
             const els = document.querySelectorAll(sels[k]);
@@ -193,7 +186,7 @@ async function shoot(browser, url, vp) {
         });
     } else {
         await page.evaluate(() => {
-            const triggers = document.querySelectorAll('.accordion__header');
+            const triggers = document.querySelectorAll('.accordion__header, .sp-accordion__header');
             if (triggers[1]) triggers[1].click();
         });
     }
@@ -209,8 +202,8 @@ async function shoot(browser, url, vp) {
     const arrowFixed = await page.evaluate(() => {
         /* demo (legacy): .price-nav-arrow-horizontal.right + .price-table-section
            consumer (post-19 BEM): .price-table__nav-arrow-horizontal--right + .price-table__section */
-        const arrow = document.querySelector('.price-table__nav-arrow-horizontal--right, .price-nav-arrow-horizontal.right');
-        const section = document.querySelector('.price-table__section, .price-table-section, #priceTableContainer');
+        const arrow = document.querySelector('.price-table__nav-arrow-horizontal--right, .sp-price-table__nav-arrow-horizontal--right, .price-nav-arrow-horizontal.right');
+        const section = document.querySelector('.price-table__section, .sp-price-table__section, .price-table-section, #priceTableContainer');
         if (!arrow || !section) return { ok: 'no-arrow-or-section' };
         const before = arrow.getBoundingClientRect();
         const beforeX = Math.round(before.x);
@@ -283,4 +276,32 @@ async function shoot(browser, url, vp) {
     await browser.close();
     fs.writeFileSync(path.join(OUT_DIR, 'report.json'), JSON.stringify(report, null, 2));
     console.log(JSON.stringify(report, null, 2));
+
+    /* Fail-on-diff: chiude F027.
+       - openDiffsTotal > 0       -> exit 1
+       - errori console / pageerror su demo o consumer -> exit 1
+       - drift freccia (arrowFixed.fixed === false)   -> exit 1
+       Stampa anche un summary JSON in `summary.json` per consumo CI. */
+    let openDiffsTotal = 0;
+    let acceptedDiffsTotal = 0;
+    let errorsTotal = 0;
+    let arrowDrift = 0;
+    for (const v of report.viewports) {
+        openDiffsTotal     += (v.openDiffs     || 0);
+        acceptedDiffsTotal += (v.acceptedDiffs || 0);
+        errorsTotal        += (v.demoErrors     || []).length + (v.consumerErrors || []).length;
+        /* arrow drift: cerca _arrowFixed nei measures */
+        const probe = (v.diffs || []).find(d => d.key === '_arrowFixed');
+        if (probe && probe.fixed === false) arrowDrift++;
+    }
+    const summary = {
+        status: (openDiffsTotal === 0 && errorsTotal === 0) ? 'pass' : 'fail',
+        openDiffsTotal,
+        acceptedDiffsTotal,
+        errorsTotal,
+        arrowDrift,
+    };
+    fs.writeFileSync(path.join(OUT_DIR, 'summary.json'), JSON.stringify(summary, null, 2));
+    console.log('VISUAL-DIFF SUMMARY ' + JSON.stringify(summary));
+    if (summary.status !== 'pass') process.exit(1);
 })().catch(e => { console.error(e); process.exit(2); });

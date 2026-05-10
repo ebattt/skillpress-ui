@@ -75,8 +75,8 @@
     border-radius: 0.625rem 0.625rem 0 0;
 }
 
-.dashboard-shell__nav-item--profile:not(:has(.dashboard-nav-icon))::before,
-.dashboard-shell__nav-item--logout:not(:has(.dashboard-nav-icon))::before,
+.dashboard-shell__nav-item--profile:not(:has(.sp-dashboard-nav-icon))::before,
+.dashboard-shell__nav-item--logout:not(:has(.sp-dashboard-nav-icon))::before,
 .dashboard-shell__mobile-back::before {
     content: "";
     flex: 0 0 auto;
@@ -91,7 +91,7 @@
     mask-size: contain;
 }
 
-.dashboard-shell__nav-item--profile:not(:has(.dashboard-nav-icon))::before {
+.dashboard-shell__nav-item--profile:not(:has(.sp-dashboard-nav-icon))::before {
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 21a8 8 0 0 0-16 0'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 21a8 8 0 0 0-16 0'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
 }
@@ -104,7 +104,7 @@
     color: var(--color-text-meta, #637488);
 }
 
-.dashboard-shell__nav-item--logout:not(:has(.dashboard-nav-icon))::before {
+.dashboard-shell__nav-item--logout:not(:has(.sp-dashboard-nav-icon))::before {
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4'/%3E%3Cpath d='m16 17 5-5-5-5'/%3E%3Cpath d='M21 12H9'/%3E%3C/svg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4'/%3E%3Cpath d='m16 17 5-5-5-5'/%3E%3Cpath d='M21 12H9'/%3E%3C/svg%3E");
 }
@@ -206,6 +206,9 @@
     line-height: 1.55;
 }
 
+/* breakpoint-exception: 1201px e' la soglia oltre la quale la sidebar dashboard
+   smette di forzare il main verso bordo schermo; sotto 1280 (canon wide) il main
+   ha gia' padding ridotto, sopra 1200 deve dare aria al sidebar fisso. */
 @media (min-width: 1201px) {
     .dashboard-shell__main {
         padding-left: 2.5rem;

@@ -16,11 +16,11 @@ const renderRoot = (html) => {
 
 const splitMarkup = `
     <section class="catalog-interstitial" data-catalog-interstitial aria-label="Approfondimento catalogo">
-        <div class="catalog-interstitial__card catalog-interstitial__card--photo" data-catalog-interstitial-card data-card-link="#prodotti" data-card-link-label="Vai alla sezione prodotti">
+        <div class="catalog-interstitial__card catalog-interstitial__card--photo" data-catalog-interstitial-card data-catalog-interstitial-link="#prodotti" data-catalog-interstitial-link-label="Vai alla sezione prodotti">
             <img src="${PHOTO}" alt="Stampa di qualita">
             <span class="catalog-interstitial__label">Scopri le nostre rilegature</span>
         </div>
-        <div class="catalog-interstitial__card catalog-interstitial__card--text" data-catalog-interstitial-card data-card-link="#" data-card-link-label="Apri la pagina prodotto Skillpress">
+        <div class="catalog-interstitial__card catalog-interstitial__card--text" data-catalog-interstitial-card data-catalog-interstitial-link="#" data-catalog-interstitial-link-label="Apri la pagina prodotto Skillpress">
             <h3 class="catalog-interstitial__heading">Qualita professionale,<br>prezzi accessibili</h3>
             <p class="catalog-interstitial__text">Carta certificata, colori fedeli e finiture curate in ogni dettaglio. Dal file alla consegna.</p>
         </div>
@@ -29,7 +29,7 @@ const splitMarkup = `
 
 const wideMarkup = `
     <section class="catalog-interstitial catalog-interstitial--full" data-catalog-interstitial aria-label="Stampa personalizzata">
-        <div class="catalog-interstitial__card catalog-interstitial__card--wide" data-catalog-interstitial-card data-card-link="#" data-card-link-label="Apri la pagina prodotto Skillpress">
+        <div class="catalog-interstitial__card catalog-interstitial__card--wide" data-catalog-interstitial-card data-catalog-interstitial-link="#" data-catalog-interstitial-link-label="Apri la pagina prodotto Skillpress">
             <img src="${WIDE}" alt="Quaderno Skillpress">
             <div class="catalog-interstitial__overlay-content">
                 <h3 class="catalog-interstitial__heading catalog-interstitial__heading--light">Stampa che racconta<br>la tua identita</h3>
@@ -41,19 +41,19 @@ const wideMarkup = `
 
 const trioMarkup = `
     <section class="catalog-interstitial catalog-interstitial--trio" data-catalog-interstitial aria-label="Categorie in evidenza">
-        <div class="catalog-interstitial__card catalog-interstitial__card--feature" data-catalog-interstitial-card data-card-link="#" data-card-link-label="Apri la pagina prodotto Finiture speciali">
+        <div class="catalog-interstitial__card catalog-interstitial__card--feature" data-catalog-interstitial-card data-catalog-interstitial-link="#" data-catalog-interstitial-link-label="Apri la pagina prodotto Finiture speciali">
             <img src="${FEATURE}" alt="Punto metallico">
             <div class="catalog-interstitial__overlay-content">
                 <span class="catalog-interstitial__label">Finiture speciali</span>
             </div>
         </div>
-        <div class="catalog-interstitial__card catalog-interstitial__card--feature" data-catalog-interstitial-card data-card-link="#" data-card-link-label="Apri la pagina prodotto Copertina rigida">
+        <div class="catalog-interstitial__card catalog-interstitial__card--feature" data-catalog-interstitial-card data-catalog-interstitial-link="#" data-catalog-interstitial-link-label="Apri la pagina prodotto Copertina rigida">
             <img class="catalog-interstitial__image--contained" src="${FEATURE}" alt="Cartonato">
             <div class="catalog-interstitial__overlay-content">
                 <span class="catalog-interstitial__label">Copertina rigida</span>
             </div>
         </div>
-        <div class="catalog-interstitial__card catalog-interstitial__card--feature" data-catalog-interstitial-card data-card-link="#" data-card-link-label="Apri la pagina prodotto Prodotti creativi">
+        <div class="catalog-interstitial__card catalog-interstitial__card--feature" data-catalog-interstitial-card data-catalog-interstitial-link="#" data-catalog-interstitial-link-label="Apri la pagina prodotto Prodotti creativi">
             <img class="catalog-interstitial__image--contained" src="${FEATURE}" alt="Carte da gioco">
             <div class="catalog-interstitial__overlay-content">
                 <span class="catalog-interstitial__label">Prodotti creativi</span>

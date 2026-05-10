@@ -32,8 +32,8 @@ const renderGrid = ({ label = 'Prodotti', modifier = 'catalog-section-label--ora
     const id = `catalog-grid-${Math.random().toString(36).slice(2)}`;
     return `
         <section class="catalog-product-grid" data-catalog-product-grid aria-label="${label}">
-            <h2 class="catalog-section-label ${modifier}">${label}</h2>
-            <div class="catalog-grid catalog-grid--products" id="${id}" data-catalog-product-grid-items data-initial-rows="2">
+            <h2 class="sp-catalog-grid__section-label ${modifier}">${label}</h2>
+            <div class="sp-catalog-grid sp-catalog-grid--products" id="${id}" data-catalog-product-grid-items data-catalog-product-grid-initial-rows="2">
                 ${products.slice(0, count).map(renderCard).join('')}
             </div>
             ${toggle ? `

@@ -21,34 +21,34 @@ Contenitore espandibile per sezioni di configurazione o contenuto strutturato. L
 
 ```text
 Accordion
-└── .accordion   [data-accordion]
-    └── .accordion__section   [data-accordion-section] [.accordion__section--expanded]
-        ├── .accordion__header   [data-accordion-trigger] [aria-expanded]
-        │   ├── .accordion__header-left
-        │   │   ├── .accordion__badge       (opzionale, numero step)
-        │   │   ├── .accordion__header-icon (opzionale, set chiuso: cart/shipping/payment)
-        │   │   └── .accordion__title
-        │   └── .accordion__icon         (icona +/- decorativa, aria-hidden)
-        └── .accordion__content
-            └── .accordion__inner        (slot consumer)
+└── .sp-accordion   [data-accordion]
+    └── .sp-accordion__section   [data-accordion-section] [.sp-accordion__section--expanded]
+        ├── .sp-accordion__header   [data-accordion-trigger] [aria-expanded]
+        │   ├── .sp-accordion__header-left
+        │   │   ├── .sp-accordion__badge       (opzionale, numero step)
+        │   │   ├── .sp-accordion__header-icon (opzionale, set chiuso: cart/shipping/payment)
+        │   │   └── .sp-accordion__title
+        │   └── .sp-accordion__icon         (icona +/- decorativa, aria-hidden)
+        └── .sp-accordion__content
+            └── .sp-accordion__inner        (slot consumer)
 ```
 
-Default state: `collapsed`. Stato `expanded` aggiunge la classe `accordion__section--expanded` su `.accordion__section` e flippa `aria-expanded="true"` sul trigger.
+Default state: `collapsed`. Stato `expanded` aggiunge la classe `accordion__section--expanded` su `.sp-accordion__section` e flippa `aria-expanded="true"` sul trigger.
 
 ## Markup contract
 
 ```html
-<div class="accordion" data-accordion>
-  <section class="accordion__section" data-accordion-section>
-    <button class="accordion__header" type="button" data-accordion-trigger aria-expanded="false">
-      <span class="accordion__header-left">
-        <span class="accordion__badge">1</span>
-        <span class="accordion__title">Formato e supporto</span>
+<div class="sp-accordion" data-accordion>
+  <section class="sp-accordion__section" data-accordion-section>
+    <button class="sp-accordion__header" type="button" data-accordion-trigger aria-expanded="false">
+      <span class="sp-accordion__header-left">
+        <span class="sp-accordion__badge">1</span>
+        <span class="sp-accordion__title">Formato e supporto</span>
       </span>
-      <span class="accordion__icon" aria-hidden="true"></span>
+      <span class="sp-accordion__icon" aria-hidden="true"></span>
     </button>
-    <div class="accordion__content">
-      <div class="accordion__inner">
+    <div class="sp-accordion__content">
+      <div class="sp-accordion__inner">
         <p>Contenuto della sezione.</p>
       </div>
     </div>
@@ -59,12 +59,12 @@ Default state: `collapsed`. Stato `expanded` aggiunge la classe `accordion__sect
 Markup con icona chrome library-owned, usato per la shell checkout:
 
 ```html
-<button class="accordion__header" type="button" data-accordion-trigger aria-expanded="false">
-  <span class="accordion__header-left">
-    <span class="accordion__header-icon accordion__header-icon--cart" aria-hidden="true"></span>
-    <span class="accordion__title">Carrello</span>
+<button class="sp-accordion__header" type="button" data-accordion-trigger aria-expanded="false">
+  <span class="sp-accordion__header-left">
+    <span class="sp-accordion__header-icon sp-accordion__header-icon--cart" aria-hidden="true"></span>
+    <span class="sp-accordion__title">Carrello</span>
   </span>
-  <span class="accordion__icon" aria-hidden="true"></span>
+  <span class="sp-accordion__icon" aria-hidden="true"></span>
 </button>
 ```
 
@@ -72,37 +72,37 @@ Markup con icona chrome library-owned, usato per la shell checkout:
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.accordion` | container, `data-accordion` per auto-init | yes | — |
-| `.accordion--surface-white` | root modifier checkout-like: sezione aperta e inner restano bianchi, header piu' ampio, contenuto senza divisore superiore | no | — |
-| `.accordion__section` | sezione singola, ripetibile | yes | `--expanded` |
-| `.accordion__header` | trigger cliccabile (`<button>`) | yes | — |
-| `.accordion__header-left` | wrapper flex per badge + title | yes | — |
-| `.accordion__badge` | badge numerato opzionale | no | — |
-| `.accordion__header-icon` | icona chrome opzionale, disegnata dalla libreria | no | `--cart`, `--shipping`, `--payment` |
-| `.accordion__title` | titolo della sezione | yes | — |
-| `.accordion__icon` | icona +/- decorativa (CSS pseudo-elements) | yes | — |
-| `.accordion__content` | wrapper collassato (max-height/opacity) | yes | — |
-| `.accordion__inner` | slot consumer con padding e border-top | yes | — |
+| `.sp-accordion` | container, `data-accordion` per auto-init | yes | — |
+| `.sp-accordion--surface-white` | root modifier checkout-like: sezione aperta e inner restano bianchi, header piu' ampio, contenuto senza divisore superiore | no | — |
+| `.sp-accordion__section` | sezione singola, ripetibile | yes | `--expanded` |
+| `.sp-accordion__header` | trigger cliccabile (`<button>`) | yes | — |
+| `.sp-accordion__header-left` | wrapper flex per badge + title | yes | — |
+| `.sp-accordion__badge` | badge numerato opzionale | no | — |
+| `.sp-accordion__header-icon` | icona chrome opzionale, disegnata dalla libreria | no | `--cart`, `--shipping`, `--payment` |
+| `.sp-accordion__title` | titolo della sezione | yes | — |
+| `.sp-accordion__icon` | icona +/- decorativa (CSS pseudo-elements) | yes | — |
+| `.sp-accordion__content` | wrapper collassato (max-height/opacity) | yes | — |
+| `.sp-accordion__inner` | slot consumer con padding e border-top | yes | — |
 
 Attributi:
 
 | Attribute | Element | Required | Note |
 |---|---|---|---|
-| `data-accordion` | `.accordion` | yes | Marker per auto-init su `DOMContentLoaded`. |
-| `data-accordion-section` | `.accordion__section` | yes | Marker della sezione. |
-| `data-accordion-trigger` | `.accordion__header` | yes | Marker del trigger cliccabile. |
-| `aria-expanded` | `.accordion__header` | yes | Sincronizzato dal JS (`true` / `false`). |
-| `type="button"` | `.accordion__header` | yes | Necessario perche' il trigger e' un `<button>`. |
-| `aria-hidden="true"` | `.accordion__icon` | yes | L'icona e' decorativa. |
-| `aria-hidden="true"` | `.accordion__header-icon` | yes, se presente | Le icone header sono chrome decorativo. |
+| `data-accordion` | `.sp-accordion` | yes | Marker per auto-init su `DOMContentLoaded`. |
+| `data-accordion-section` | `.sp-accordion__section` | yes | Marker della sezione. |
+| `data-accordion-trigger` | `.sp-accordion__header` | yes | Marker del trigger cliccabile. |
+| `aria-expanded` | `.sp-accordion__header` | yes | Sincronizzato dal JS (`true` / `false`). |
+| `type="button"` | `.sp-accordion__header` | yes | Necessario perche' il trigger e' un `<button>`. |
+| `aria-hidden="true"` | `.sp-accordion__icon` | yes | L'icona e' decorativa. |
+| `aria-hidden="true"` | `.sp-accordion__header-icon` | yes, se presente | Le icone header sono chrome decorativo. |
 
 ## Hook data-*
 
 | Hook | Element | Role | Esposto al consumer |
 |---|---|---|---|
-| `data-accordion` | `.accordion` | Entry point: attiva l'auto-init del container. Unico hook che il backend deve scrivere per abilitare la primitiva. | si |
-| `data-accordion-section` | `.accordion__section` | Sotto-ruolo: marca le sezioni gestite dal toggle. Stabile (parte del contratto markup). | si (markup) |
-| `data-accordion-trigger` | `.accordion__header` | Sotto-ruolo: marca il pulsante che apre/chiude la sezione. | si (markup) |
+| `data-accordion` | `.sp-accordion` | Entry point: attiva l'auto-init del container. Unico hook che il backend deve scrivere per abilitare la primitiva. | si |
+| `data-accordion-section` | `.sp-accordion__section` | Sotto-ruolo: marca le sezioni gestite dal toggle. Stabile (parte del contratto markup). | si (markup) |
+| `data-accordion-trigger` | `.sp-accordion__header` | Sotto-ruolo: marca il pulsante che apre/chiude la sezione. | si (markup) |
 
 Solo `[data-accordion]` e' un hook funzionale di init. `[data-accordion-section]` e `[data-accordion-trigger]` sono sotto-ruoli interni del contratto markup: vanno scritti come da template, ma non vengono interrogati esternamente. La classe modifier `accordion__section--expanded` viene gestita dal JS (toggle automatico) — il backend la imposta solo per dichiarare lo stato iniziale.
 
@@ -112,10 +112,10 @@ La demo originale (`product-page-integration`) usava il modifier non-BEM `expand
 
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|
-| `.accordion__section.expanded` (compound) | `.accordion__section.accordion__section--expanded` |
-| `.expanded` (standalone) | `.accordion__section--expanded` |
+| `.sp-accordion__section.expanded` (compound) | `.sp-accordion__section.sp-accordion__section--expanded` |
+| `.expanded` (standalone) | `.sp-accordion__section--expanded` |
 
-Tutto il resto del contratto (`.accordion`, `.accordion__section`, `.accordion__header`, `.accordion__header-left`, `.accordion__badge`, `.accordion__title`, `.accordion__icon`, `.accordion__content`, `.accordion__inner`) era gia' BEM strict prima del prompt 19: nessuna divergenza.
+Tutto il resto del contratto (`.sp-accordion`, `.sp-accordion__section`, `.sp-accordion__header`, `.sp-accordion__header-left`, `.sp-accordion__badge`, `.sp-accordion__title`, `.sp-accordion__icon`, `.sp-accordion__content`, `.sp-accordion__inner`) era gia' BEM strict prima del prompt 19: nessuna divergenza.
 
 ## Installation
 
@@ -147,7 +147,7 @@ Cosa NON fa:
   - non persiste lo stato aperto fra refresh o navigazioni
 ```
 
-Comportamento: click su `[data-accordion-trigger]` apre o chiude la sezione associata. Quando una sezione si apre, il JS apre subito la sezione cliccata e chiude le altre sezioni dello stesso container al frame successivo (single-open), evitando un movimento brusco close-then-open. Durante la transizione il JS misura l'altezza reale di `.accordion__content`; a fine apertura rimuove il vincolo inline (`max-height: none`) per non tagliare contenuti dinamici. Il JS aggiorna `aria-expanded` e la classe `accordion__section--expanded`; l'icona `+/-` reagisce via CSS.
+Comportamento: click su `[data-accordion-trigger]` apre o chiude la sezione associata. Quando una sezione si apre, il JS apre subito la sezione cliccata e chiude le altre sezioni dello stesso container al frame successivo (single-open), evitando un movimento brusco close-then-open. Durante la transizione il JS misura l'altezza reale di `.sp-accordion__content`; a fine apertura rimuove il vincolo inline (`max-height: none`) per non tagliare contenuti dinamici. Il JS aggiorna `aria-expanded` e la classe `accordion__section--expanded`; l'icona `+/-` reagisce via CSS.
 
 Namespace globale: `window.SkillpressUI.Accordion`.
 
@@ -162,14 +162,14 @@ Namespace globale: `window.SkillpressUI.Accordion`.
 
 ## Varianti Surface
 
-Default accordion usa `--section-bg-expanded` e `.accordion__inner` grigio,
+Default accordion usa `--section-bg-expanded` e `.sp-accordion__inner` grigio,
 come nel configuratore product page. Per contesti in cui il pannello aperto deve
-restare bianco, usare il modifier root `.accordion--surface-white`. Questa
+restare bianco, usare il modifier root `.sp-accordion--surface-white`. Questa
 variante segue il pattern checkout `checkout-section / section-header /
 section-content`: header piu' ampio e contenuto senza linea divisoria superiore.
 
 ```html
-<div class="accordion accordion--surface-white" data-accordion>
+<div class="sp-accordion sp-accordion--surface-white" data-accordion>
     ...
 </div>
 ```
@@ -188,28 +188,28 @@ visiva di sezione aperta, header e contenuto.
 - decide se una sezione parte `collapsed` o `expanded` (classe `accordion__section--expanded` + `aria-expanded` coerenti).
 - decide se mostrare o omettere il badge numerato.
 - puo' scegliere un'icona header solo dal set chiuso documentato:
-  `.accordion__header-icon--cart`, `.accordion__header-icon--shipping`,
-  `.accordion__header-icon--payment`.
+  `.sp-accordion__header-icon--cart`, `.sp-accordion__header-icon--shipping`,
+  `.sp-accordion__header-icon--payment`.
 - non deve cambiare il markup interno della sezione, ne' aggiungere classi custom fuori contratto, ne' duplicare il behavior JS.
 - non deve fornire SVG, immagini, Material Symbols o altri asset per le icone chrome dell'header.
 
 ## Classi pubbliche
 
-- `.accordion`
-- `.accordion--surface-white`
-- `.accordion__section`
-- `.accordion__section--expanded`
-- `.accordion__header`
-- `.accordion__header-left`
-- `.accordion__badge`
-- `.accordion__header-icon`
-- `.accordion__header-icon--cart`
-- `.accordion__header-icon--shipping`
-- `.accordion__header-icon--payment`
-- `.accordion__title`
-- `.accordion__icon`
-- `.accordion__content`
-- `.accordion__inner`
+- `.sp-accordion`
+- `.sp-accordion--surface-white`
+- `.sp-accordion__section`
+- `.sp-accordion__section--expanded`
+- `.sp-accordion__header`
+- `.sp-accordion__header-left`
+- `.sp-accordion__badge`
+- `.sp-accordion__header-icon`
+- `.sp-accordion__header-icon--cart`
+- `.sp-accordion__header-icon--shipping`
+- `.sp-accordion__header-icon--payment`
+- `.sp-accordion__title`
+- `.sp-accordion__icon`
+- `.sp-accordion__content`
+- `.sp-accordion__inner`
 
 ## Data hooks
 
@@ -219,9 +219,9 @@ visiva di sezione aperta, header e contenuto.
 
 ## Modifier / stati
 
-- `.accordion__section--expanded` + `aria-expanded="true"`: sezione aperta.
+- `.sp-accordion__section--expanded` + `aria-expanded="true"`: sezione aperta.
 - Sezione senza modifier + `aria-expanded="false"`: sezione chiusa.
-- `.accordion--surface-white`: variante di superficie checkout-like.
+- `.sp-accordion--surface-white`: variante di superficie checkout-like.
 
 ## Backend owns
 

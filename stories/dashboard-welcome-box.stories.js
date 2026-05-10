@@ -10,9 +10,9 @@ const renderDashboardWelcomeBox = ({
     root.style.maxWidth = '52rem';
 
     root.innerHTML = `
-        <div class="dash-greeting-banner" data-dashboard-welcome-box>
-            <h1 class="dash-greeting-banner__title">Ciao ${splitUserName ? `<span class="user-name">${userName}</span>` : userName}</h1>
-            <p class="dash-greeting-banner__subtitle">${subtitle}</p>
+        <div class="dashboard-greeting-banner" data-dashboard-welcome-box>
+            <h1 class="dashboard-greeting-banner__title">Ciao ${splitUserName ? `<span class="user-name">${userName}</span>` : userName}</h1>
+            <p class="dashboard-greeting-banner__subtitle">${subtitle}</p>
         </div>
     `;
 

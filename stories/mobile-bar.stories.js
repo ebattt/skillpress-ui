@@ -181,19 +181,19 @@ export const ExpandedWithConfig = {
         subtotal: '325,53 euro',
         iva: '71,62 euro',
         configContent: `
-            <div class="riepilogo-container">
-                <div class="riepilogo-section">
-                    <div class="riepilogo-header">Dettagli</div>
-                    <div class="riepilogo-row">Nome del lavoro: <span class="riepilogo-error">Non valido</span></div>
+            <div class="sidebar-totals__container">
+                <div class="sidebar-totals__section">
+                    <div class="sidebar-totals__header">Dettagli</div>
+                    <div class="sidebar-totals__row">Nome del lavoro: <span class="sidebar-totals__error">Non valido</span></div>
                 </div>
-                <div class="riepilogo-section">
-                    <div class="riepilogo-header">1. Generali</div>
-                    <div class="riepilogo-row">Formato: A4</div>
-                    <div class="riepilogo-row">Dimensioni: 210 × 297 mm</div>
-                    <div class="riepilogo-row">Orientamento: Verticale</div>
-                    <div class="riepilogo-row">Facciate: 100</div>
-                    <div class="riepilogo-row">Carta int.: Patinata Opaca</div>
-                    <div class="riepilogo-row">Grammatura: 115g</div>
+                <div class="sidebar-totals__section">
+                    <div class="sidebar-totals__header">1. Generali</div>
+                    <div class="sidebar-totals__row">Formato: A4</div>
+                    <div class="sidebar-totals__row">Dimensioni: 210 × 297 mm</div>
+                    <div class="sidebar-totals__row">Orientamento: Verticale</div>
+                    <div class="sidebar-totals__row">Facciate: 100</div>
+                    <div class="sidebar-totals__row">Carta int.: Patinata Opaca</div>
+                    <div class="sidebar-totals__row">Grammatura: 115g</div>
                 </div>
             </div>
         `
@@ -201,7 +201,7 @@ export const ExpandedWithConfig = {
     parameters: {
         docs: {
             description: {
-                story: 'Barra espansa + config-toggle attivo (`.mobile-config-toggle--active`) + content visibile (`.mobile-config-content--visible`). Chevron config ruotato 180deg, content gray-50 con border + radius lg. Riepilogo iniettato dal CMS con classi `.riepilogo-container`/`.riepilogo-section`/`.riepilogo-header`/`.riepilogo-row`/`.riepilogo-error`: lo stesso markup prodotto da `generateRiepilogo` v3.0.0 della demo. Le regole sono definite in `components/sidebar-totals.css` (importato dalla story).'
+                story: 'Barra espansa + config-toggle attivo (`.mobile-config-toggle--active`) + content visibile (`.mobile-config-content--visible`). Chevron config ruotato 180deg, content gray-50 con border + radius lg. Riepilogo iniettato dal CMS con classi `.sidebar-totals__container`/`.sidebar-totals__section`/`.sidebar-totals__header`/`.sidebar-totals__row`/`.sidebar-totals__error`: lo stesso markup prodotto da `generateRiepilogo` v3.0.0 della demo. Le regole sono definite in `components/sidebar-totals.css` (importato dalla story).'
             }
         }
     }

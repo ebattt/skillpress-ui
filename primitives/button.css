@@ -4,7 +4,8 @@
  * Data estrazione: 2026-04-25
  */
 
-.button {
+/** @public */
+.sp-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -30,70 +31,70 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-.button:hover {
+.sp-button:hover {
     text-decoration: none;
 }
 
-.button:focus-visible {
+.sp-button:focus-visible {
     outline: 2px solid var(--color-border-focus);
     outline-offset: 2px;
 }
 
-.button:disabled,
-.button[aria-disabled="true"],
-.button--disabled {
+.sp-button:disabled,
+.sp-button[aria-disabled="true"],
+.sp-button--disabled {
     opacity: 0.55;
     cursor: not-allowed;
     pointer-events: none;
 }
 
-.button--primary {
+.sp-button--primary {
     background-color: var(--color-primary);
     border-color: var(--color-primary);
     color: var(--color-bg-white);
 }
 
-.button--primary:hover {
+.sp-button--primary:hover {
     background-color: var(--color-primary-dark);
     border-color: var(--color-primary-dark);
 }
 
-.button--secondary {
+.sp-button--secondary {
     background-color: var(--color-secondary-dark);
     border-color: var(--color-secondary-dark);
     color: var(--color-bg-white);
     box-shadow: var(--shadow-lg);
 }
 
-.button--secondary:hover {
+.sp-button--secondary:hover {
     background-color: var(--color-secondary-light);
     border-color: var(--color-secondary-light);
     box-shadow: var(--shadow-xl);
 }
 
-.button--outline {
+.sp-button--outline {
     background-color: var(--color-bg-white);
     border-color: var(--color-bg-gray-200);
     color: var(--color-text);
 }
 
-.button--outline:hover {
+.sp-button--outline:hover {
     background-color: var(--color-bg-gray-50);
     border-color: var(--color-border);
 }
 
-.button--ghost {
+.sp-button--ghost {
     background-color: transparent;
     border-color: transparent;
     color: var(--color-secondary);
 }
 
-.button--ghost:hover {
+.sp-button--ghost:hover {
     background-color: rgba(28, 114, 100, 0.08);
     color: var(--color-secondary-dark);
 }
 
-.button--dashboard-link {
+.sp-button--dashboard-link {
     min-height: auto;
     padding: 0;
     background-color: transparent;
@@ -104,14 +105,14 @@
     font-size: 0.9375rem;
 }
 
-.button--dashboard-link:hover {
+.sp-button--dashboard-link:hover {
     background-color: transparent;
     border-color: transparent;
     color: var(--color-primary-dark);
     box-shadow: none;
 }
 
-.button--dashed {
+.sp-button--dashed {
     width: 100%;
     min-height: auto;
     padding: 0.625rem;
@@ -124,13 +125,13 @@
     box-shadow: none;
 }
 
-.button--dashed:hover {
+.sp-button--dashed:hover {
     border-color: var(--color-primary);
     color: var(--color-primary);
     background: transparent;
 }
 
-.button--sm {
+.sp-button--sm {
     min-height: 2rem;
     padding: 0.375rem 0.75rem;
     font-size: var(--font-size-sm);
@@ -138,11 +139,11 @@
     border-radius: var(--radius-sm);
 }
 
-.button--full {
+.sp-button--full {
     width: 100%;
 }
 
-.button__icon {
+.sp-button__icon {
     width: 1.125rem;
     height: 1.125rem;
     display: inline-flex;
@@ -152,7 +153,7 @@
     color: currentColor;
 }
 
-.button__icon svg {
+.sp-button__icon svg {
     width: 100%;
     height: 100%;
     display: block;

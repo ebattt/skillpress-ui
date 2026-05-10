@@ -1,9 +1,31 @@
+/**
+ * FeedatyWidget -- third-party Feedaty review SDK loader.
+ *
+ * @public-data data-feedaty-widget, data-feedaty-widget-init, data-feedaty-widget-sdk, data-feedaty-widget-sdk-src
+ * @public-event sp:feedaty-widget:error
+ */
 (function () {
     'use strict';
 
     var SDK_SRC = 'https://widget.feedaty.com/v3.0.0/js/2021/10214496/feedaty.min.js';
     var SDK_SELECTOR = 'script.feedaty_sdk, script[src*="feedaty.min.js"]';
     var sdkPromise = null;
+
+    var ns = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = ns.helpers || {};
+
+    function dispatch(target, name, detail) {
+        if (typeof helpers.dispatch === 'function') {
+            try { helpers.dispatch(target, name, detail); return; } catch (e) { /* fallthrough */ }
+        }
+        target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
+    }
+
+    function emitWithLegacyAlias(target, normalized, legacy, detail) {
+        dispatch(target, normalized, detail);
+        // deprecated alias, removed in v0.3
+        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
+    }
 
     function toArray(value) {
         return Array.prototype.slice.call(value || []);
@@ -37,24 +59,24 @@
         var widget;
         var sdkSrc;
 
-        if (!root || root.getAttribute('data-feedaty-widget-init') === '1') return;
+        if (!root || root.__skillpressFeedatyWidgetInitialized) return;
 
         widget = root.querySelector('.feedaty_widget');
         if (!widget) return;
 
+        root.__skillpressFeedatyWidgetInitialized = true;
+        // deprecated alias, removed in v0.3
         root.setAttribute('data-feedaty-widget-init', '1');
 
         if (root.getAttribute('data-feedaty-widget-sdk') === 'false') return;
 
         sdkSrc = root.getAttribute('data-feedaty-widget-sdk-src') || SDK_SRC;
         ensureSdk(sdkSrc).catch(function (error) {
-            root.dispatchEvent(new CustomEvent('sp:feedaty-widget-error', {
-                bubbles: true,
-                detail: { error: error }
-            }));
+            emitWithLegacyAlias(root, 'sp:feedaty-widget:error', 'sp:feedaty-widget-error', { error: error });
         });
     }
 
+    /** @public */
     function init(scope) {
         var root = scope || document;
 
@@ -66,15 +88,16 @@
         toArray(root.querySelectorAll('[data-feedaty-widget]')).forEach(initRoot);
     }
 
-    if (document.readyState === 'loading') {
+    ns.FeedatyWidget = {
+        init: init,
+        ensureSdk: ensureSdk
+    };
+
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function () { init(document); });
     } else {
         init(document);
     }
-
-    window.SkillpressUI = window.SkillpressUI || {};
-    window.SkillpressUI.FeedatyWidget = {
-        init: init,
-        ensureSdk: ensureSdk
-    };
 })();

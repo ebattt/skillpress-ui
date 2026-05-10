@@ -13,28 +13,28 @@ const renderDashboardShell = () => {
         <div class="dashboard-shell" data-dashboard-shell data-dashboard-shell-initial-view="dashboard">
             <aside class="dashboard-shell__sidebar" aria-label="Navigazione dashboard">
                 <nav class="dashboard-shell__nav" data-dashboard-shell-nav aria-label="Viste dashboard">
-                    <button class="dashboard-shell__nav-item dashboard-shell__nav-item--profile" type="button" data-dashboard-shell-nav-item="account" aria-current="false"><span class="dashboard-nav-icon dashboard-nav-icon--account" aria-hidden="true"></span><span>Profilo</span></button>
-                    <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="dashboard" aria-current="page"><span class="dashboard-nav-icon dashboard-nav-icon--dashboard" aria-hidden="true"></span><span>Dashboard</span></button>
-                    <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="orders" aria-current="false"><span class="dashboard-nav-icon dashboard-nav-icon--orders" aria-hidden="true"></span><span>Ordini</span></button>
-                    <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="billing" aria-current="false"><span class="dashboard-nav-icon dashboard-nav-icon--billing" aria-hidden="true"></span><span>Fatturazione</span></button>
-                    <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="quotes" aria-current="false"><span class="dashboard-nav-icon dashboard-nav-icon--quotes" aria-hidden="true"></span><span>Preventivi</span></button>
-                    <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="fornitore" aria-current="false"><span class="dashboard-nav-icon dashboard-nav-icon--supplier" aria-hidden="true"></span><span>Fornitore</span></button>
-                    <button class="dashboard-shell__nav-item dashboard-shell__nav-item--logout" type="button" data-dashboard-shell-nav-item="logout" aria-current="false"><span class="dashboard-nav-icon dashboard-nav-icon--logout" aria-hidden="true"></span><span>Esci</span></button>
+                    <button class="dashboard-shell__nav-item dashboard-shell__nav-item--profile" type="button" data-dashboard-shell-nav-item="account" aria-current="false"><span class="sp-dashboard-nav-icon sp-dashboard-nav-icon--account" aria-hidden="true"></span><span>Profilo</span></button>
+                    <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="dashboard" aria-current="page"><span class="sp-dashboard-nav-icon sp-dashboard-nav-icon--dashboard" aria-hidden="true"></span><span>Dashboard</span></button>
+                    <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="orders" aria-current="false"><span class="sp-dashboard-nav-icon sp-dashboard-nav-icon--orders" aria-hidden="true"></span><span>Ordini</span></button>
+                    <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="billing" aria-current="false"><span class="sp-dashboard-nav-icon sp-dashboard-nav-icon--billing" aria-hidden="true"></span><span>Fatturazione</span></button>
+                    <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="quotes" aria-current="false"><span class="sp-dashboard-nav-icon sp-dashboard-nav-icon--quotes" aria-hidden="true"></span><span>Preventivi</span></button>
+                    <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="fornitore" aria-current="false"><span class="sp-dashboard-nav-icon sp-dashboard-nav-icon--supplier" aria-hidden="true"></span><span>Fornitore</span></button>
+                    <button class="dashboard-shell__nav-item dashboard-shell__nav-item--logout" type="button" data-dashboard-shell-nav-item="logout" aria-current="false"><span class="sp-dashboard-nav-icon sp-dashboard-nav-icon--logout" aria-hidden="true"></span><span>Esci</span></button>
                 </nav>
             </aside>
             <main class="dashboard-shell__main">
                 <section class="dashboard-shell__mobile-menu" data-dashboard-shell-mobile-menu hidden aria-label="Menu dashboard mobile">
                     <nav class="dashboard-shell__mobile-nav" data-dashboard-shell-nav aria-label="Viste dashboard mobile">
-                        <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="dashboard" aria-current="page"><span class="dashboard-nav-icon dashboard-nav-icon--dashboard" aria-hidden="true"></span><span>Dashboard</span></button>
-                        <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="orders" aria-current="false"><span class="dashboard-nav-icon dashboard-nav-icon--orders" aria-hidden="true"></span><span>Ordini</span></button>
-                        <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="quotes" aria-current="false"><span class="dashboard-nav-icon dashboard-nav-icon--quotes" aria-hidden="true"></span><span>Preventivi</span></button>
+                        <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="dashboard" aria-current="page"><span class="sp-dashboard-nav-icon sp-dashboard-nav-icon--dashboard" aria-hidden="true"></span><span>Dashboard</span></button>
+                        <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="orders" aria-current="false"><span class="sp-dashboard-nav-icon sp-dashboard-nav-icon--orders" aria-hidden="true"></span><span>Ordini</span></button>
+                        <button class="dashboard-shell__nav-item" type="button" data-dashboard-shell-nav-item="quotes" aria-current="false"><span class="sp-dashboard-nav-icon sp-dashboard-nav-icon--quotes" aria-hidden="true"></span><span>Preventivi</span></button>
                     </nav>
                 </section>
                 <button class="dashboard-shell__mobile-back" type="button" data-dashboard-shell-back hidden>Menu</button>
                 <div class="dashboard-shell__views">
                     <section class="dashboard-shell__view dashboard-shell__section" data-dashboard-shell-view="dashboard">
                         <h1 class="dashboard-shell__page-title">Dashboard</h1>
-                        <button class="button button--dashboard-link" type="button" data-dashboard-shell-navigate="order-detail">Apri dettaglio ordine</button>
+                        <button class="sp-button sp-button--dashboard-link" type="button" data-dashboard-shell-navigate="order-detail">Apri dettaglio ordine</button>
                         <article tabindex="0" role="button" data-dashboard-shell-navigate="order-detail" data-dashboard-shell-navigate-disabled-mobile>Riga tabella con opt-out mobile</article>
                     </section>
                     <section class="dashboard-shell__view dashboard-shell__section" data-dashboard-shell-view="orders" hidden>

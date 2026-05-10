@@ -105,13 +105,13 @@ Utility classes per il content iniettato dal CMS:
 
 Il backend chiama `generateRiepilogo()` (vedi `product-page-integration/js/riepilogo.js` v3.0.0) e inietta l'HTML risultante dentro `.mobile-config-content`. Le classi prodotte sono:
 
-- `.riepilogo-container` — wrapper flex column gap 0.75rem.
-- `.riepilogo-section` — gruppo (Dettagli, Generali, ...): flex column gap 0.25rem.
-- `.riepilogo-header` — titolo gruppo bold (`Dettagli`, `1. Generali`, ...).
-- `.riepilogo-row` — riga "label: value" con `padding-left: 0.75rem`.
-- `.riepilogo-row--indent` — riga indentata `padding-left: 1.5rem`.
-- `.riepilogo-error` — valore in rosso (`#ef4444`) per errori (es. "Non valido").
-- `.riepilogo-empty` / `.riepilogo-placeholder` / `.riepilogo-muted` — stati vuoti.
+- `.sidebar-totals__container` — wrapper flex column gap 0.75rem.
+- `.sidebar-totals__section` — gruppo (Dettagli, Generali, ...): flex column gap 0.25rem.
+- `.sidebar-totals__header` — titolo gruppo bold (`Dettagli`, `1. Generali`, ...).
+- `.sidebar-totals__row` — riga "label: value" con `padding-left: 0.75rem`.
+- `.sidebar-totals__row--indent` — riga indentata `padding-left: 1.5rem`.
+- `.sidebar-totals__error` — valore in rosso (`#ef4444`) per errori (es. "Non valido").
+- `.sidebar-totals__empty` / `.sidebar-totals__placeholder` / `.sidebar-totals__muted` — stati vuoti.
 
 Queste classi sono **definite in `components/sidebar-totals.css`** e si applicano automaticamente quando il consumer importa entrambi i CSS. Il bundle `bundles/demo-minimal.css` lo fa di default.
 

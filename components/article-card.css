@@ -166,7 +166,7 @@
     margin-top: 1.25rem;
 }
 
-.article-card--featured .article-card__actions .button {
+.article-card--featured .article-card__actions .sp-button {
     min-height: 2.5rem;
     padding: 0.5rem 1.375rem;
 }

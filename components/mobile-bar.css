@@ -247,10 +247,10 @@
 }
 
 /* NOTE: il generatore reale del riepilogo (`generateRiepilogo`, vedi
-   `js/riepilogo.js` v3.0.0) inietta classi `.riepilogo-container`,
-   `.riepilogo-section`, `.riepilogo-header`, `.riepilogo-row`,
-   `.riepilogo-row--indent`, `.riepilogo-error`, `.riepilogo-empty`,
-   `.riepilogo-muted`, `.riepilogo-placeholder`. Queste utility sono
+   `js/riepilogo.js` v3.0.0) inietta classi `.sidebar-totals__container`,
+   `.sidebar-totals__section`, `.sidebar-totals__header`, `.sidebar-totals__row`,
+   `.sidebar-totals__row--indent`, `.sidebar-totals__error`, `.sidebar-totals__empty`,
+   `.sidebar-totals__muted`, `.sidebar-totals__placeholder`. Queste utility sono
    definite in `components/sidebar-totals.css` e si applicano anche
    dentro `.mobile-config-content--visible` quando il consumer importa
    entrambi i CSS (cosa che il bundle `demo-minimal.css` fa di default).

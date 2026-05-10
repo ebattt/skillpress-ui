@@ -10,17 +10,17 @@ import { expect, within } from 'storybook/test';
 
 const renderStepper = () => `
     <div class="product-stepper" data-order-status-steps>
-        <button class="product-stepper__step product-stepper__step--completed product-stepper__step--selected" type="button" aria-pressed="true" data-order-status-steps-item data-step-id="files">
+        <button class="product-stepper__step product-stepper__step--completed product-stepper__step--selected" type="button" aria-pressed="true" data-order-status-steps-item data-order-status-steps-step-id="files">
             <span class="product-stepper__circle"><span class="product-stepper__icon product-stepper__icon--check" aria-hidden="true"></span></span>
             <span class="product-stepper__label">File</span>
         </button>
         <span class="product-stepper__connector product-stepper__connector--completed" aria-hidden="true"></span>
-        <button class="product-stepper__step product-stepper__step--active" type="button" aria-pressed="false" data-order-status-steps-item data-step-id="check">
+        <button class="product-stepper__step product-stepper__step--active" type="button" aria-pressed="false" data-order-status-steps-item data-order-status-steps-step-id="check">
             <span class="product-stepper__circle"><span class="product-stepper__num">2</span></span>
             <span class="product-stepper__label">Controllo</span>
         </button>
         <span class="product-stepper__connector" aria-hidden="true"></span>
-        <button class="product-stepper__step product-stepper__step--pending" type="button" aria-pressed="false" data-order-status-steps-item data-step-id="production">
+        <button class="product-stepper__step product-stepper__step--pending" type="button" aria-pressed="false" data-order-status-steps-item data-order-status-steps-step-id="production">
             <span class="product-stepper__circle"><span class="product-stepper__num">3</span></span>
             <span class="product-stepper__label">Produzione</span>
         </button>
@@ -84,7 +84,7 @@ const renderRoot = () => {
     root.setAttribute('data-order-step-detail', '');
     root.innerHTML = `
         ${renderStepper()}
-        <div class="product-step-detail" data-order-step-detail-panel data-step-id="files">
+        <div class="product-step-detail" data-order-step-detail-panel data-order-status-steps-step-id="files">
             <div class="step-status-banner step-status-banner--warning">
                 <div class="step-status-banner__body">
                     <p class="step-status-banner__title">1/3 file caricati <span class="step-status-banner__text">Mancano 2 file per procedere.</span></p>
@@ -92,7 +92,7 @@ const renderRoot = () => {
             </div>
             ${renderFileGroup()}
         </div>
-        <div class="product-step-detail" data-order-step-detail-panel data-step-id="check" hidden>
+        <div class="product-step-detail" data-order-step-detail-panel data-order-status-steps-step-id="check" hidden>
             <div class="step-status-banner step-status-banner--info">
                 <div class="step-status-banner__body">
                     <p class="step-status-banner__title">Verifica in corso <span class="step-status-banner__text">Sarai notificato al completamento.</span></p>
@@ -100,7 +100,7 @@ const renderRoot = () => {
             </div>
             ${renderFileGroup()}
         </div>
-        <div class="product-step-detail" data-order-step-detail-panel data-step-id="production" hidden>
+        <div class="product-step-detail" data-order-step-detail-panel data-order-status-steps-step-id="production" hidden>
             <div class="step-status-banner step-status-banner--locked">
                 <div class="step-status-banner__body">
                     <p class="step-status-banner__title">In attesa dello step precedente</p>

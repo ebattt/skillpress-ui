@@ -34,23 +34,23 @@ Non viene creato `BillingForm`: il pattern e' un helper generico di layout form.
 ## Markup
 
 ```html
-<div class="form-layout form-layout--compact" data-form-layout>
-    <div class="form-layout__copy-row">
-        <button class="button button--ghost button--sm" type="button">
+<div class="sp-form-layout sp-form-layout--compact" data-form-layout>
+    <div class="sp-form-layout__copy-row">
+        <button class="sp-button sp-button--ghost sp-button--sm" type="button">
             Copia dati dalla spedizione
         </button>
     </div>
 
-    <div class="form-layout__row form-layout__row--2">
-        <div class="form-field">
-            <label class="label-text" for="billing-type">Tipologia</label>
-            <select class="form-select" id="billing-type" name="billingType">
+    <div class="sp-form-layout__row sp-form-layout__row--2">
+        <div class="sp-form-field">
+            <label class="sp-label-text" for="billing-type">Tipologia</label>
+            <select class="sp-form-select" id="billing-type" name="billingType">
                 <option>Persona fisica</option>
             </select>
         </div>
-        <div class="form-field">
-            <label class="label-text" for="billing-name">Nome</label>
-            <input class="form-input" id="billing-name" type="text">
+        <div class="sp-form-field">
+            <label class="sp-label-text" for="billing-name">Nome</label>
+            <input class="sp-form-input" id="billing-name" type="text">
         </div>
     </div>
 </div>
@@ -58,15 +58,15 @@ Non viene creato `BillingForm`: il pattern e' un helper generico di layout form.
 
 ## Classi
 
-- `.form-layout`
-- `.form-layout--compact`
-- `.form-layout__row`
-- `.form-layout__row--2`
-- `.form-layout__row--3`
-- `.form-layout__copy-row` per azione opzionale sopra i campi, senza divisore
+- `.sp-form-layout`
+- `.sp-form-layout--compact`
+- `.sp-form-layout__row`
+- `.sp-form-layout__row--2`
+- `.sp-form-layout__row--3`
+- `.sp-form-layout__copy-row` per azione opzionale sopra i campi, senza divisore
   interno.
-- `.form-layout__actions`
-- `.form-layout__actions--end`
+- `.sp-form-layout__actions`
+- `.sp-form-layout__actions--end`
 
 `form-layout--compact` riduce le label interne a 14px/1.25rem per i form
 checkout densi. Non cambia `FormPrimitives` globalmente, quindi la product page

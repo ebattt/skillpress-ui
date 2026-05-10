@@ -45,17 +45,17 @@ const orders = [
 ];
 
 const renderCard = (order) => `
-    <article class="dash-order-card" data-recent-order-card data-order-id="${order.id}">
-        <div class="dash-order-card__header-row">
-            <span class="dash-order-card__number">${order.number}</span>
-            <span class="dash-order-card__status dash-order-card__status--${order.status}">${order.statusLabel}</span>
+    <article class="dashboard-order-card" data-recent-order-card data-recent-order-card-order-id="${order.id}">
+        <div class="dashboard-order-card__header-row">
+            <span class="dashboard-order-card__number">${order.number}</span>
+            <span class="dashboard-order-card__status dashboard-order-card__status--${order.status}">${order.statusLabel}</span>
         </div>
-        <div class="dash-order-card__title dash-order-card__title--clamp">${order.title}</div>
-        <div class="dash-order-card__info">Spedizione <strong>${order.shipping}</strong></div>
-        <div class="dash-order-card__actions-wrap">${order.actionAlert ? `<span class="dash-order-card__action-alert">${order.actionAlert}</span>` : ''}</div>
-        <div class="dash-order-card__footer">
-            <span class="dash-order-card__date">Totale</span>
-            <span class="dash-order-card__total">${order.total}</span>
+        <div class="dashboard-order-card__title dashboard-order-card__title--clamp">${order.title}</div>
+        <div class="dashboard-order-card__info">Spedizione <strong>${order.shipping}</strong></div>
+        <div class="dashboard-order-card__actions-wrap">${order.actionAlert ? `<span class="dashboard-order-card__action-alert">${order.actionAlert}</span>` : ''}</div>
+        <div class="dashboard-order-card__footer">
+            <span class="dashboard-order-card__date">Totale</span>
+            <span class="dashboard-order-card__total">${order.total}</span>
         </div>
     </article>
 `;
@@ -63,7 +63,7 @@ const renderCard = (order) => `
 const renderGrid = (items = orders) => {
     const root = document.createElement('div');
     root.innerHTML = `
-        <div class="dash-recent-orders-grid" data-recent-order-card-list>
+        <div class="dashboard-recent-orders-grid" data-recent-order-card-list>
             ${items.map(renderCard).join('')}
         </div>
     `;

@@ -1,16 +1,17 @@
 /**
  * BREADCRUMB — Layout pattern primitive
- * Fonte: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css (sezione .breadcrumb)
+ * Fonte: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css (sezione .sp-breadcrumb)
  * Fonte markup: Skillpress-frontend/elements-ui/js/layout-patterns/breadcrumb.js
  * Target demo: product-page-integration
  * Data estrazione: 2026-04-27
  */
 
-.breadcrumb {
+/** @public */
+.sp-breadcrumb {
     width: 100%;
 }
 
-.breadcrumb__list {
+.sp-breadcrumb__list {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -23,35 +24,35 @@
     line-height: var(--line-height-normal);
 }
 
-.breadcrumb__item {
+.sp-breadcrumb__item {
     display: inline-flex;
     align-items: center;
     color: var(--color-text-secondary);
 }
 
-.breadcrumb__item:not(:last-child)::after {
+.sp-breadcrumb__item:not(:last-child)::after {
     content: '/';
     margin-left: var(--spacing-xs);
     color: var(--color-text-muted);
 }
 
-.breadcrumb__link {
+.sp-breadcrumb__link {
     color: var(--color-text-secondary);
     text-decoration: none;
     transition: color var(--transition-fast);
 }
 
-.breadcrumb__link:hover {
+.sp-breadcrumb__link:hover {
     color: var(--color-primary);
 }
 
-.breadcrumb__link:focus-visible {
+.sp-breadcrumb__link:focus-visible {
     outline: 2px solid var(--color-border-focus);
     outline-offset: 2px;
     border-radius: var(--radius-sm);
 }
 
-.breadcrumb__item--current {
+.sp-breadcrumb__item--current {
     color: var(--color-text);
     font-weight: var(--font-weight-medium);
 }

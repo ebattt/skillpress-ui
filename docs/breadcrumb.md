@@ -19,10 +19,10 @@ Navigazione gerarchica statica con separatore `/` generato via `::after`. La lib
 
 ```text
 Breadcrumb
-└── nav.breadcrumb   [aria-label="Breadcrumb"]
-    └── ol.breadcrumb__list   (Schema.org BreadcrumbList)
-        └── li.breadcrumb__item × N   [--current sull'ultima voce]
-            ├── a.breadcrumb__link   (omessa sulla voce corrente)
+└── nav.sp-breadcrumb   [aria-label="Breadcrumb"]
+    └── ol.sp-breadcrumb__list   (Schema.org BreadcrumbList)
+        └── li.sp-breadcrumb__item × N   [--current sull'ultima voce]
+            ├── a.sp-breadcrumb__link   (omessa sulla voce corrente)
             │   └── <span itemprop="name">
             └── <meta itemprop="position" content="N">
 ```
@@ -30,15 +30,15 @@ Breadcrumb
 ## Markup contract
 
 ```html
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <ol class="breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
-    <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a class="breadcrumb__link" itemprop="item" href="/homepage">
+<nav class="sp-breadcrumb" aria-label="Breadcrumb">
+  <ol class="sp-breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li class="sp-breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a class="sp-breadcrumb__link" itemprop="item" href="/homepage">
         <span itemprop="name">Homepage</span>
       </a>
       <meta itemprop="position" content="1"/>
     </li>
-    <li class="breadcrumb__item breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <li class="sp-breadcrumb__item sp-breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
       <span itemprop="name">Pagina corrente</span>
       <meta itemprop="position" content="2"/>
     </li>
@@ -50,19 +50,19 @@ Breadcrumb
 
 | Class | Role | Required | Modifiers |
 |---|---|---|---|
-| `.breadcrumb` | wrapper `<nav>` con `aria-label` | yes | — |
-| `.breadcrumb__list` | `<ol>` flex wrap, container Schema.org | yes | — |
-| `.breadcrumb__item` | `<li>` voce, separatore `/` via `::after` (tranne ultima) | yes | `--current` |
-| `.breadcrumb__link` | `<a>` link delle voci non correnti | no | — |
+| `.sp-breadcrumb` | wrapper `<nav>` con `aria-label` | yes | — |
+| `.sp-breadcrumb__list` | `<ol>` flex wrap, container Schema.org | yes | — |
+| `.sp-breadcrumb__item` | `<li>` voce, separatore `/` via `::after` (tranne ultima) | yes | `--current` |
+| `.sp-breadcrumb__link` | `<a>` link delle voci non correnti | no | — |
 
 Attributi:
 
 | Attribute | Element | Required | Note |
 |---|---|---|---|
 | `aria-label="Breadcrumb"` | `<nav>` | yes | Etichetta accessibile della navigazione. |
-| `itemscope` + `itemtype="https://schema.org/BreadcrumbList"` | `.breadcrumb__list` | yes | Schema.org root. |
-| `itemprop="itemListElement"` + `itemscope` + `itemtype="https://schema.org/ListItem"` | `.breadcrumb__item` | yes | Schema.org item. |
-| `itemprop="item"` | `.breadcrumb__link` | yes | Schema.org link target. |
+| `itemscope` + `itemtype="https://schema.org/BreadcrumbList"` | `.sp-breadcrumb__list` | yes | Schema.org root. |
+| `itemprop="itemListElement"` + `itemscope` + `itemtype="https://schema.org/ListItem"` | `.sp-breadcrumb__item` | yes | Schema.org item. |
+| `itemprop="item"` | `.sp-breadcrumb__link` | yes | Schema.org link target. |
 | `itemprop="name"` | `<span>` interno | yes | Testo della voce. |
 | `itemprop="position"` + `content="N"` | `<meta>` | yes | Posizione numerica (1-based). |
 
@@ -102,7 +102,7 @@ Nessun script JS richiesto.
 
 ## Classi pubbliche
 
-`.breadcrumb`, `.breadcrumb__list`, `.breadcrumb__item`, `.breadcrumb__item--current`, `.breadcrumb__link`.
+`.sp-breadcrumb`, `.sp-breadcrumb__list`, `.sp-breadcrumb__item`, `.sp-breadcrumb__item--current`, `.sp-breadcrumb__link`.
 
 ## Data hooks
 
@@ -110,7 +110,7 @@ Nessun hook `data-*` pubblico. `Breadcrumb` e' CSS-only.
 
 ## Modifier / stati
 
-Voce corrente tramite `.breadcrumb__item--current` e omissione del link. Non ci sono stati runtime.
+Voce corrente tramite `.sp-breadcrumb__item--current` e omissione del link. Non ci sono stati runtime.
 
 ## Backend owns
 

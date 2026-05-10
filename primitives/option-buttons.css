@@ -2,19 +2,20 @@
    OPTION BUTTONS (selezione singola nel configuratore)
    Source: elements-ui/css/components/_buttons.css#L129-L177
    ================================================================ */
-.option-buttons {
+/** @public */
+.sp-option-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 0.375rem;
 }
 
-.option-buttons--equal {
+.sp-option-buttons--equal {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.625rem;
 }
 
-.option-buttons__btn {
+.sp-option-buttons__btn {
     padding: 0.375rem 0.625rem;
     border-radius: var(--radius-sm);
     border: 1px solid transparent;
@@ -27,44 +28,44 @@
     transition: all var(--transition-fast);
 }
 
-.option-buttons--equal .option-buttons__btn {
+.sp-option-buttons--equal .sp-option-buttons__btn {
     width: 100%;
     padding-right: 0.75rem;
     padding-left: 0.75rem;
     text-align: center;
 }
 
-.option-buttons__btn--default {
+.sp-option-buttons__btn--default {
     background-color: #ffffff;
     color: var(--color-text);
     border-color: transparent;
 }
 
-.option-buttons__btn--default:hover {
+.sp-option-buttons__btn--default:hover {
     border-color: transparent;
     background-color: #ffffff;
 }
 
-.option-buttons__btn--selected {
+.sp-option-buttons__btn--selected {
     background-color: var(--color-primary);
     color: #ffffff;
     border-color: transparent;
 }
 
-.option-buttons__btn--borderless {
+.sp-option-buttons__btn--borderless {
     background-color: #ffffff;
     color: var(--color-text);
     border-color: transparent;
 }
 
-.option-buttons__btn--borderless:hover {
+.sp-option-buttons__btn--borderless:hover {
     background-color: var(--color-bg-gray-50);
     border-color: transparent;
 }
 
 /* Mobile: touch target standard e-commerce. */
-@media (max-width: 767px) {
-    .option-buttons__btn {
+@media (max-width: 639px) {
+    .sp-option-buttons__btn {
         min-height: 40px;
         padding: 0.5rem 0.875rem;
     }
