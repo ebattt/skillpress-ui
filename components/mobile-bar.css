@@ -47,7 +47,7 @@
     background: var(--color-bg-white);
     border-top: 1px solid var(--color-bg-gray-200);
     border-radius: 1rem 1rem 0 0;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 -2px 10px var(--color-black-alpha-06);
     padding: var(--spacing-xs) var(--spacing-md) 0.625rem;
     padding-bottom: calc(0.625rem + env(safe-area-inset-bottom, 0px));
     pointer-events: auto;
@@ -258,7 +258,9 @@
    `.font-semibold` del catalogo sono state rimosse: non corrispondono
    piu' all'output del generatore. */
 
-/* --- Responsive: small phones (<=374px) --- */
+/* --- Responsive: small phones (<=374px) ---
+   breakpoint-exception: 374px matches the smallest supported phone width and
+   keeps the fixed mobile total bar usable without shrinking normal mobile UI. */
 @media (max-width: 374px) {
     .mobile-total-bar__container {
         padding: 0.375rem 0.75rem 0.75rem;

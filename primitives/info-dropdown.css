@@ -115,7 +115,7 @@
     align-items: flex-start;
     justify-content: space-between;
     padding: 0.75rem;
-    background-color: rgba(28, 114, 100, 0.1); /* teal 10% */
+    background-color: var(--color-secondary-alpha-10); /* teal 10% */
     border-top-left-radius: var(--radius-lg);
     border-top-right-radius: var(--radius-lg);
 }
@@ -203,10 +203,10 @@
 .sp-info-note {
     margin-top: 0.75rem;
     padding: 0.625rem;
-    background-color: #FFFBEB;
-    border: 1px solid #FDE68A;
+    background-color: var(--color-warning-note-bg);
+    border: 1px solid var(--color-warning-note-border);
     border-radius: var(--radius-sm);
-    color: #92400E;
+    color: var(--color-warning-note-text);
 }
 
 .sp-info-note__title {

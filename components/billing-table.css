@@ -100,7 +100,7 @@
     padding-left: 0.125rem !important;
 }
 
-.billing-table tbody tr[aria-expanded="true"] .td-mobile-chevron__icon {
+.billing-table tbody tr[aria-expanded="true"] .orders-table__mobile-toggle-icon {
     background-color: var(--color-primary);
     transform: rotate(180deg);
 }

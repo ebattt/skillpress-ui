@@ -534,6 +534,8 @@
 
 
 /* === RESPONSIVE VISIBILITY === */
+/* breakpoint-exception: 768px preserves the existing Tailwind-compatible `md:`
+   utility contract while component breakpoints use the canonical 640/1024 scale. */
 @media (min-width: 768px) {
     .md\:hidden {
         display: none !important;

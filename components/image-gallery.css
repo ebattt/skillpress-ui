@@ -71,7 +71,7 @@
     justify-content: center;
     border: 0;
     border-radius: var(--radius-full);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--color-white-alpha-80);
     color: var(--color-text-strong);
     box-shadow: var(--shadow-md);
     cursor: pointer;

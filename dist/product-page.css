@@ -76,6 +76,7 @@
     --color-bg-gray-75: #f7f7f8;            /* Sfondo bottoni inattivi */
     --color-bg-gray-100: #F3F4F6;           /* Sfondo hover, bordi leggeri */
     --color-bg-gray-200: #E5E7EB;           /* Bordi standard */
+    --color-bg-gray-300: #D1D5DB;           /* Separatore/icone secondarie */
     --color-bg-warm-beige: #F5F5F3;         /* Sfondo box totale */
 
     /* === COLORI SEZIONI ACCORDION === */
@@ -110,6 +111,105 @@
     --color-warning: #EA580C;               /* Arancione warning */
     --color-warning-bg: #FFF7ED;            /* Sfondo warning */
     --color-warning-border: #FED7AA;        /* Bordo warning */
+
+    /* Badge/status */
+    --color-success-badge-bg: var(--color-success-bg);
+    --color-success-badge-text: var(--color-success);
+    --color-warning-badge-bg: var(--color-warning-bg);
+    --color-warning-badge-text: var(--color-warning);
+    --color-error-badge-bg: var(--color-error-bg);
+    --color-error-badge-text: var(--color-error);
+    --color-info-badge-bg: #EFF6FF;
+    --color-info-badge-text: var(--color-info);
+    --color-cancelled-badge-bg: var(--color-bg-gray-100);
+    --color-cancelled-badge-text: var(--color-text-secondary);
+    --color-alloc-badge-warning-bg: var(--color-warning-bg);
+    --color-alloc-badge-warning-text: var(--color-warning);
+
+    /* Color aliases for component parity. These preserve current visuals while
+       removing hardcoded component values from the public CSS surface. */
+    --color-bg-gray-25: #FBFCFE;
+    --color-bg-gray-30: #FAFBFC;
+    --color-bg-gray-150: #EEF2F6;
+    --color-bg-gray-175: #E5EAF0;
+    --color-bg-blue-50: #EFF6FF;
+    --color-bg-blue-gray-50: #F8FAFC;
+    --color-bg-blue-gray-60: #F7FAFC;
+    --color-bg-blue-gray-75: #F3F6F9;
+    --color-bg-blue-gray-90: #F5F8FB;
+    --color-border-blue-gray-100: #DBE4EC;
+    --color-border-blue-gray-125: #DBE3EC;
+    --color-border-blue-gray-150: #D8E0E8;
+    --color-border-blue-gray-175: #D6E0EA;
+    --color-border-blue-gray-200: #CFD7E0;
+    --color-border-blue-gray-300: #CBD5DF;
+    --color-text-blue-gray-400: #A1AFBD;
+    --color-text-blue-gray-450: #9AA8B6;
+    --color-text-blue-gray-500: #9AA7B5;
+    --color-text-blue-gray-550: #8A9BAE;
+    --color-text-blue-gray-600: #8A98A8;
+    --color-text-blue-gray-650: #7E8D9D;
+    --color-text-blue-gray-675: #7A8796;
+    --color-text-blue-gray-700: #697789;
+    --color-text-blue-gray-725: #637488;
+    --color-text-blue-gray-750: #5B6878;
+    --color-text-blue-gray-800: #526476;
+    --color-dark-deep: #00293A;
+    --color-info-dark: #2563EB;
+    --color-indigo: #4F46E5;
+    --color-danger-dark: #B91C1C;
+    --color-warning-dark: #C2410C;
+    --color-warning-light: #FDBA74;
+    --color-warning-border-strong: #FCA5A5;
+    --color-warning-note-text: #92400E;
+    --color-warning-note-bg: #FFFBEB;
+    --color-warning-note-border: #FDE68A;
+    --color-warm-bg-25: #FFFAF3;
+    --color-warm-bg-30: #FFFBF5;
+    --color-warm-bg-50: #FFF8EF;
+    --color-warm-bg-75: #FFF6EA;
+    --color-warm-bg-100: #FFF3DF;
+    --color-danger-bg-25: #FFF7F7;
+    --color-danger-bg-50: #FFF5F5;
+    --color-danger-bg-75: #FFF1F1;
+    --color-success-soft: #F4FBF8;
+    --color-secondary-soft: #E8F5F3;
+    --color-tile-bg: #F5F5F5;
+    --color-primary-alpha-06: rgba(240, 138, 0, 0.06);
+    --color-primary-alpha-10: rgba(240, 138, 0, 0.1);
+    --color-primary-alpha-12: rgba(240, 138, 0, 0.12);
+    --color-primary-alpha-20: rgba(240, 138, 0, 0.2);
+    --color-primary-alpha-28: rgba(240, 138, 0, 0.28);
+    --color-secondary-alpha-08: rgba(28, 114, 100, 0.08);
+    --color-secondary-alpha-10: rgba(28, 114, 100, 0.1);
+    --color-secondary-alpha-15: rgba(28, 114, 100, 0.15);
+    --color-secondary-alpha-18: rgba(28, 114, 100, 0.18);
+    --color-secondary-alpha-22: rgba(28, 114, 100, 0.22);
+    --color-secondary-alpha-24: rgba(28, 114, 100, 0.24);
+    --color-secondary-alpha-25: rgba(28, 114, 100, 0.25);
+    --color-secondary-alpha-30: rgba(28, 114, 100, 0.3);
+    --color-danger-alpha-34: rgba(220, 38, 38, 0.34);
+    --color-warning-alpha-22: rgba(234, 88, 12, 0.22);
+    --color-dark-alpha-03: rgba(0, 62, 81, 0.03);
+    --color-dark-alpha-30: rgba(0, 62, 81, 0.3);
+    --color-text-alpha-06: rgba(17, 20, 24, 0.06);
+    --color-text-alpha-08: rgba(17, 20, 24, 0.08);
+    --color-text-alpha-10: rgba(17, 20, 24, 0.1);
+    --color-text-alpha-28: rgba(17, 20, 24, 0.28);
+    --color-black-alpha-05: rgb(0 0 0 / 0.05);
+    --color-black-alpha-06: rgba(0, 0, 0, 0.06);
+    --color-black-alpha-08: rgba(0, 0, 0, 0.08);
+    --color-black-alpha-50: rgba(0, 0, 0, 0.5);
+    --color-border-alpha-60: rgba(229, 231, 235, 0.6);
+    --color-white-alpha-55: rgba(255, 255, 255, 0.55);
+    --color-white-alpha-60: rgba(255, 255, 255, 0.6);
+    --color-white-alpha-65: rgba(255, 255, 255, 0.65);
+    --color-white-alpha-80: rgba(255, 255, 255, 0.8);
+    --color-white-alpha-88: rgba(255, 255, 255, 0.88);
+    --color-white-alpha-92: rgba(255, 255, 255, 0.92);
+    --color-warning-bg-alpha-30: rgba(254, 242, 242, 0.3);
+    --color-warning-bg-alpha-50: rgba(255, 247, 237, 0.5);
+    --color-hero-overlay: rgba(10, 12, 18, 0.55);
 
     /* === BORDI === */
     /* Colori bordo standard e focus */
@@ -1067,6 +1167,8 @@ body {
 
 
 /* === RESPONSIVE VISIBILITY === */
+/* breakpoint-exception: 768px preserves the existing Tailwind-compatible `md:`
+   utility contract while component breakpoints use the canonical 640/1024 scale. */
 @media (min-width: 768px) {
     .md\:hidden {
         display: none !important;
@@ -1187,7 +1289,7 @@ body {
 }
 
 .sp-button--ghost:hover {
-    background-color: rgba(28, 114, 100, 0.08);
+    background-color: var(--color-secondary-alpha-08);
     color: var(--color-secondary-dark);
 }
 
@@ -1951,7 +2053,7 @@ body {
     align-items: flex-start;
     justify-content: space-between;
     padding: 0.75rem;
-    background-color: rgba(28, 114, 100, 0.1); /* teal 10% */
+    background-color: var(--color-secondary-alpha-10); /* teal 10% */
     border-top-left-radius: var(--radius-lg);
     border-top-right-radius: var(--radius-lg);
 }
@@ -2039,10 +2141,10 @@ body {
 .sp-info-note {
     margin-top: 0.75rem;
     padding: 0.625rem;
-    background-color: #FFFBEB;
-    border: 1px solid #FDE68A;
+    background-color: var(--color-warning-note-bg);
+    border: 1px solid var(--color-warning-note-border);
     border-radius: var(--radius-sm);
-    color: #92400E;
+    color: var(--color-warning-note-text);
 }
 
 .sp-info-note__title {
@@ -2726,7 +2828,7 @@ label.sp-radio-option--disabled input[type="radio"] {
     padding: 0.625rem 1.25rem;
     border: 1.5px solid var(--color-primary);
     border-radius: var(--radius-lg);
-    background-color: rgba(240, 138, 0, 0.1);
+    background-color: var(--color-primary-alpha-10);
     color: var(--color-primary);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
@@ -2736,7 +2838,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 }
 
 .sp-download-buttons__btn:hover {
-    background-color: rgba(240, 138, 0, 0.1);
+    background-color: var(--color-primary-alpha-10);
 }
 
 
@@ -2826,24 +2928,24 @@ label.sp-radio-option--disabled input[type="radio"] {
 }
 
 .sp-option-buttons__btn--default {
-    background-color: #ffffff;
+    background-color: var(--color-bg-white);
     color: var(--color-text);
     border-color: transparent;
 }
 
 .sp-option-buttons__btn--default:hover {
     border-color: transparent;
-    background-color: #ffffff;
+    background-color: var(--color-bg-white);
 }
 
 .sp-option-buttons__btn--selected {
     background-color: var(--color-primary);
-    color: #ffffff;
+    color: var(--color-bg-white);
     border-color: transparent;
 }
 
 .sp-option-buttons__btn--borderless {
-    background-color: #ffffff;
+    background-color: var(--color-bg-white);
     color: var(--color-text);
     border-color: transparent;
 }
@@ -2872,7 +2974,7 @@ label.sp-radio-option--disabled input[type="radio"] {
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
-    background-color: rgba(229, 231, 235, 0.6);
+    background-color: var(--color-border-alpha-60);
     border-radius: var(--radius-sm);
     padding: 0.125rem;
     margin-bottom: 0.625rem;
@@ -3076,7 +3178,7 @@ label.sp-radio-option--disabled input[type="radio"] {
     justify-content: center;
     border: 0;
     border-radius: var(--radius-full);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--color-white-alpha-80);
     color: var(--color-text-strong);
     box-shadow: var(--shadow-md);
     cursor: pointer;
@@ -3223,9 +3325,9 @@ label.sp-radio-option--disabled input[type="radio"] {
  * CSS-only. Nessun behavior libreria: il CMS sposta i modifier
  * `--active`, `--inactive`, `--completed` su badge, titolo e status.
  *
- * Token usati: `--color-text-strong` (= `#374151`, step-indicator__title--inactive),
- * `--color-border` (= `#D1D5DB`, steps-line), gradient `--color-primary` ->
- * `--color-primary-light` (= `#F08A00 -> #FFB149`, step-indicator__badge--active).
+ * Token usati: `--color-text-strong` (= `var(--color-text-strong)`, step-indicator__title--inactive),
+ * `--color-border` (= `var(--color-bg-gray-300)`, steps-line), gradient `--color-primary` ->
+ * `--color-primary-light` (= `var(--color-primary) -> var(--color-primary-light)`, step-indicator__badge--active).
  * Tutti coincidenti con i valori letterali del catalogo elements-ui.
  *
  * Mobile-first: 2 colonne sotto 1024px, 4 colonne >= 1024px.
@@ -3389,7 +3491,7 @@ label.sp-radio-option--disabled input[type="radio"] {
  * Material Symbols (icona `aspect_ratio` nella variante Libero) NON inclusi:
  * il consumer/CMS sostituisce con SVG inline come per ModeSwitcher.
  *
- * Hover preview-box / preview-inner usa `var(--color-text-strong)` (= `#374151`,
+ * Hover preview-box / preview-inner usa `var(--color-text-strong)` (= `var(--color-text-strong)`,
  * coincidente con il valore letterale del catalogo elements-ui).
  *
  * Fuori scope (non implementato qui):
@@ -3534,7 +3636,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 
 .format-card--selected .format-card__preview-custom {
     border-color: var(--color-primary);
-    background-color: rgba(240, 138, 0, 0.2);
+    background-color: var(--color-primary-alpha-20);
 }
 
 .format-card:hover .format-card__preview-custom {
@@ -3542,7 +3644,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 }
 
 .format-card--selected:hover .format-card__preview-custom {
-    background-color: rgba(240, 138, 0, 0.2);
+    background-color: var(--color-primary-alpha-20);
 }
 
 /* Testo card formato */
@@ -3738,7 +3840,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 }
 
 .price-table__header-date--light {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-white-alpha-80);
 }
 
 /* ===== Body rows ===== */
@@ -3753,7 +3855,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 .price-table__row--active {
     /* Teal soft locale (no token: usato solo da PriceTable. Promuovere a
        --color-secondary-soft se emerge un secondo consumer). */
-    background-color: #e8f5f3;
+    background-color: var(--color-secondary-soft);
 }
 
 /* ===== Body cells ===== */
@@ -3819,9 +3921,9 @@ label.sp-radio-option--disabled input[type="radio"] {
 .price-table__cell-btn--row-active {
     /* Teal soft locale (no token: usato solo da PriceTable. Promuovere a
        --color-secondary-soft se emerge un secondo consumer). */
-    background-color: #e8f5f3;
+    background-color: var(--color-secondary-soft);
     color: var(--color-text);
-    border: 1px solid rgba(28, 114, 100, 0.3);
+    border: 1px solid var(--color-secondary-alpha-30);
 }
 
 .price-table__cell-btn--row-active:hover {
@@ -3880,7 +3982,7 @@ label.sp-radio-option--disabled input[type="radio"] {
     color: var(--color-text-secondary);
     cursor: pointer;
     transition: all var(--transition-fast);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 3px var(--color-black-alpha-08);
     display: none !important;
 }
 
@@ -4179,7 +4281,7 @@ label.sp-radio-option--disabled input[type="radio"] {
     gap: 0.5rem;
     width: 100%;
     padding: 0.625rem 1rem;
-    background-color: rgba(28, 114, 100, 0.08);
+    background-color: var(--color-secondary-alpha-08);
     color: var(--color-secondary);
     font-weight: var(--font-weight-semibold);
     font-size: var(--font-size-sm);
@@ -4191,7 +4293,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 }
 
 .sidebar-totals__btn:hover {
-    background-color: rgba(28, 114, 100, 0.15);
+    background-color: var(--color-secondary-alpha-15);
 }
 
 .sidebar-totals__btn svg {
@@ -4236,7 +4338,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 .sidebar-totals__header {
     font-weight: var(--font-weight-bold);
     font-size: 1rem;
-    color: var(--color-text, #111418);
+    color: var(--color-text);
 }
 
 .sidebar-totals__row {
@@ -4282,7 +4384,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 .sidebar-totals__section-header {
     font-weight: var(--font-weight-bold);
     font-size: 1rem;
-    color: var(--color-text, #111418);
+    color: var(--color-text);
 }
 
 /* ================================================================
@@ -4358,7 +4460,7 @@ label.sp-radio-option--disabled input[type="radio"] {
     display: block;
     padding: 0;
     margin: 0 0 1.2rem;
-    color: var(--color-text, #111418);
+    color: var(--color-text);
     font-family: 'Manrope', var(--font-family, sans-serif);
     font-size: clamp(1.15rem, 2vw, 1.7rem);
     font-weight: 800;
@@ -4458,7 +4560,7 @@ label.sp-radio-option--disabled input[type="radio"] {
     border-radius: 1rem;
     text-align: left;
     align-items: flex-start;
-    background: var(--color-bg-gray-75, #F7F7F8);
+    background: var(--color-bg-gray-75);
     gap: 0;
     overflow: hidden;
     display: flex;
@@ -4484,7 +4586,7 @@ label.sp-radio-option--disabled input[type="radio"] {
     text-transform: none;
     letter-spacing: -0.01em;
     margin: 0 0 0.5rem;
-    color: var(--color-text, #111418);
+    color: var(--color-text);
     line-height: 1.25;
 }
 
@@ -4594,7 +4696,7 @@ label.sp-radio-option--disabled input[type="radio"] {
     background: var(--color-bg-white);
     border-top: 1px solid var(--color-bg-gray-200);
     border-radius: 1rem 1rem 0 0;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 -2px 10px var(--color-black-alpha-06);
     padding: var(--spacing-xs) var(--spacing-md) 0.625rem;
     padding-bottom: calc(0.625rem + env(safe-area-inset-bottom, 0px));
     pointer-events: auto;
@@ -4805,7 +4907,9 @@ label.sp-radio-option--disabled input[type="radio"] {
    `.font-semibold` del catalogo sono state rimosse: non corrispondono
    piu' all'output del generatore. */
 
-/* --- Responsive: small phones (<=374px) --- */
+/* --- Responsive: small phones (<=374px) ---
+   breakpoint-exception: 374px matches the smallest supported phone width and
+   keeps the fixed mobile total bar usable without shrinking normal mobile UI. */
 @media (max-width: 374px) {
     .mobile-total-bar__container {
         padding: 0.375rem 0.75rem 0.75rem;

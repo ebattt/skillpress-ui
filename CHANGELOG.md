@@ -23,8 +23,8 @@ in `dist/public-api.json`.
   `sp:toggle-switch:change`. Per la transizione gli alias legacy senza
   prefisso `sp:` sono **deprecati e rimossi in v0.3**.
 - Classi legacy `cz-*`, `dash-*` (eccetto `dashboard-*`), `td-*` rimosse o
-  rinominate. Tolleranza residua documentata: 7 occorrenze
-  `td-mobile-chevron` (rimozione prevista in v0.4).
+  rinominate. La cella mobile tabella usa ora
+  `.orders-table__cell--mobile-chevron` e relativi elementi BEM.
 
 ### Visual change
 
@@ -54,6 +54,9 @@ in `dist/public-api.json`.
   rimozioni di voci pubbliche siano accompagnate da bump major.
 - `npm run check` aggregato (naming + legacy + data-attrs + init-contract +
   colori + css-vars + breakpoints + build:dist + pack:check).
+- I gate `check:legacy`, `check:hardcoded-colors`, `check:css-vars`,
+  `check:breakpoints` e consumer shell leakage girano senza soglie nel percorso
+  standard.
 - `prepublishOnly` hook: `check` + `build:public-api` + `check:contract`.
 - `.npmignore` complementare a `package.json#files` (defense in depth).
 - `package.json`: `license: UNLICENSED`, `engines.node >=18`,

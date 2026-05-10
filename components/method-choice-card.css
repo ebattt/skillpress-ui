@@ -54,8 +54,8 @@
 }
 
 .method-choice-card:hover {
-    background: #fff7ed;
-    border-color: #fed7aa;
+    background: var(--color-warning-bg);
+    border-color: var(--color-warning-border);
     box-shadow: var(--shadow-sm);
 }
 
@@ -79,7 +79,7 @@
 
 .method-choice-card--selected,
 .method-choice-card[aria-pressed="true"] {
-    background: #fff4e6;
+    background: var(--selection-highlight-bg);
     border-color: var(--color-primary);
     box-shadow: 0 0 0 1px var(--color-primary);
 }
@@ -112,7 +112,7 @@
 }
 
 .method-choice-card__icon--paypal {
-    color: #4f46e5;
+    color: var(--color-indigo);
     --method-choice-card-icon: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 20h5'/%3E%3Cpath d='M9 20V9'/%3E%3Cpath d='M7 9h7a4 4 0 0 1 0 8H9'/%3E%3Cpath d='M8 4h8a4 4 0 0 1 0 8H9'/%3E%3C/g%3E%3C/svg%3E");
 }
 

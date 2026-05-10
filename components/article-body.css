@@ -9,7 +9,7 @@
     max-width: 720px;
     margin: 0 auto;
     padding: 0 clamp(1rem, 3vw, 1.5rem);
-    color: var(--color-text-strong, #374151);
+    color: var(--color-text-strong);
     font-size: var(--font-size-sm, 0.875rem);
     line-height: 1.7;
 }
@@ -20,7 +20,7 @@
 
 .article-body h2 {
     margin: 2rem 0 0.85rem;
-    color: var(--color-text, #111418);
+    color: var(--color-text);
     font-size: clamp(1.1rem, 1.6vw, 1.35rem);
     font-weight: 700;
     line-height: 1.2;
@@ -51,12 +51,12 @@
 }
 
 .article-body strong {
-    color: var(--color-text, #111418);
+    color: var(--color-text);
     font-weight: 700;
 }
 
 .article-body a {
-    color: var(--color-primary-dark, #d67800);
+    color: var(--color-primary-dark);
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 0.18em;

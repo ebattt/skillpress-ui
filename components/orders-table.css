@@ -251,7 +251,7 @@
 
 /* F015: outline visibile quando la row e' keyboard-focused (tabindex=0). */
 .orders-table tbody tr[data-orders-table-row]:focus-visible {
-    outline: 2px solid var(--color-focus-ring, var(--color-border-focus, #2563EB));
+    outline: 2px solid var(--color-focus-ring, var(--color-border-focus, var(--color-info-dark)));
     outline-offset: -2px;
 }
 
@@ -265,7 +265,7 @@
     max-width: 2.5rem;
     padding: 0.5rem 0 !important;
     background: var(--color-bg-white);
-    box-shadow: -10px 0 12px -14px rgba(17, 20, 24, 0.28);
+    box-shadow: -10px 0 12px -14px var(--color-text-alpha-28);
     color: var(--color-text-muted);
     text-align: center;
 }
@@ -280,10 +280,10 @@
     max-width: 2.5rem;
     padding: 0 !important;
     background: var(--color-bg-gray-50);
-    box-shadow: -10px 0 12px -14px rgba(17, 20, 24, 0.28);
+    box-shadow: -10px 0 12px -14px var(--color-text-alpha-28);
 }
 
-.td-mobile-chevron__button {
+.orders-table__mobile-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -298,12 +298,12 @@
     font: inherit;
 }
 
-.td-mobile-chevron__button:focus-visible {
+.orders-table__mobile-toggle:focus-visible {
     outline: 2px solid var(--color-border-focus);
     outline-offset: 2px;
 }
 
-.td-mobile-chevron__icon {
+.orders-table__mobile-toggle-icon {
     display: block;
     width: 1.5rem;
     height: 1.5rem;
@@ -317,7 +317,7 @@
         transform var(--transition-normal);
 }
 
-.orders-table tbody tr[aria-expanded="true"] .td-mobile-chevron__icon {
+.orders-table tbody tr[aria-expanded="true"] .orders-table__mobile-toggle-icon {
     background-color: var(--color-primary);
     transform: rotate(180deg);
 }
@@ -526,11 +526,11 @@
     }
 
     .orders-table tbody tr[data-orders-table-row]:has(.dashboard-action-badge) {
-        background-color: #fff7f7;
+        background-color: var(--color-danger-bg-25);
     }
 
     .orders-table tbody tr[data-orders-table-row]:has(.dashboard-action-badge):hover {
-        background-color: #fff1f1;
+        background-color: var(--color-danger-bg-75);
     }
 
     .orders-table tbody tr[data-orders-table-row] {
@@ -642,12 +642,12 @@
         box-shadow: none;
     }
 
-    .td-mobile-chevron__button {
+    .orders-table__mobile-toggle {
         width: 1.25rem;
         height: 1.25rem;
     }
 
-    .td-mobile-chevron__icon {
+    .orders-table__mobile-toggle-icon {
         width: 1.125rem;
         height: 1.125rem;
     }

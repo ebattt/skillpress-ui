@@ -8,9 +8,9 @@
  * CSS-only. Nessun behavior libreria: il CMS sposta i modifier
  * `--active`, `--inactive`, `--completed` su badge, titolo e status.
  *
- * Token usati: `--color-text-strong` (= `#374151`, step-indicator__title--inactive),
- * `--color-border` (= `#D1D5DB`, steps-line), gradient `--color-primary` ->
- * `--color-primary-light` (= `#F08A00 -> #FFB149`, step-indicator__badge--active).
+ * Token usati: `--color-text-strong` (= `var(--color-text-strong)`, step-indicator__title--inactive),
+ * `--color-border` (= `var(--color-bg-gray-300)`, steps-line), gradient `--color-primary` ->
+ * `--color-primary-light` (= `var(--color-primary) -> var(--color-primary-light)`, step-indicator__badge--active).
  * Tutti coincidenti con i valori letterali del catalogo elements-ui.
  *
  * Mobile-first: 2 colonne sotto 1024px, 4 colonne >= 1024px.

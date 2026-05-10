@@ -28,7 +28,7 @@
 
 .dashboard-action-badge:hover,
 .dashboard-action-badge--error:hover {
-    background-color: #b91c1c;
+    background-color: var(--color-danger-dark);
 }
 
 .dashboard-action-badge:focus-visible {

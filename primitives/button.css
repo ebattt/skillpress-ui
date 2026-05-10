@@ -90,7 +90,7 @@
 }
 
 .sp-button--ghost:hover {
-    background-color: rgba(28, 114, 100, 0.08);
+    background-color: var(--color-secondary-alpha-08);
     color: var(--color-secondary-dark);
 }
 

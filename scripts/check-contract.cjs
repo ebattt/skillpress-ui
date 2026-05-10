@@ -203,8 +203,7 @@ function main() {
 
     // ---- 3. Classi legacy residue ----
     // Allineato con `check-legacy.cjs` (tolleranza max via CHECK_LEGACY_MAX,
-    // default 0). I 7 hit noti `td-mobile-chevron` sono documentati nel
-    // rename-map come deletable in fase successiva.
+    // default 0). Nessuna classe legacy deve essere presente nei bundle.
     const legacyMax = Number.isFinite(Number(process.env.CHECK_LEGACY_MAX))
         ? Number(process.env.CHECK_LEGACY_MAX)
         : 0;

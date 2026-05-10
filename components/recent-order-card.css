@@ -140,7 +140,7 @@
     align-items: center;
     gap: 0.3rem;
     padding: 0.063rem 0.5rem;
-    background: var(--color-error, #dc2626);
+    background: var(--color-error);
     border: none;
     border-radius: var(--radius-full);
     color: var(--color-bg-white);

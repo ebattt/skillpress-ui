@@ -16,7 +16,7 @@
  * Material Symbols (icona `aspect_ratio` nella variante Libero) NON inclusi:
  * il consumer/CMS sostituisce con SVG inline come per ModeSwitcher.
  *
- * Hover preview-box / preview-inner usa `var(--color-text-strong)` (= `#374151`,
+ * Hover preview-box / preview-inner usa `var(--color-text-strong)` (= `var(--color-text-strong)`,
  * coincidente con il valore letterale del catalogo elements-ui).
  *
  * Fuori scope (non implementato qui):
@@ -161,7 +161,7 @@
 
 .format-card--selected .format-card__preview-custom {
     border-color: var(--color-primary);
-    background-color: rgba(240, 138, 0, 0.2);
+    background-color: var(--color-primary-alpha-20);
 }
 
 .format-card:hover .format-card__preview-custom {
@@ -169,7 +169,7 @@
 }
 
 .format-card--selected:hover .format-card__preview-custom {
-    background-color: rgba(240, 138, 0, 0.2);
+    background-color: var(--color-primary-alpha-20);
 }
 
 /* Testo card formato */

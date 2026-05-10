@@ -9,7 +9,7 @@
 
 .catalog-intro {
     padding: 0.2rem 0 0.95rem;
-    background: #FFFFFF;
+    background: var(--color-bg-white);
 }
 
 .catalog-stage {
@@ -43,7 +43,7 @@
     inset: 0;
     pointer-events: none;
     content: '';
-    background: linear-gradient(180deg, rgba(10, 12, 18, 0) 30%, rgba(10, 12, 18, 0.55) 100%);
+    background: linear-gradient(180deg, rgba(10, 12, 18, 0) 30%, var(--color-hero-overlay) 100%);
 }
 
 .catalog-stage__slide {
@@ -89,7 +89,7 @@
     padding: 0;
     appearance: none;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.55);
+    background: var(--color-white-alpha-55);
     border: 0;
     border-radius: 999px;
     transition: width 180ms ease, background-color 180ms ease;
@@ -97,11 +97,11 @@
 
 .catalog-stage__dot--active {
     width: 1.35rem;
-    background: #FFFFFF;
+    background: var(--color-bg-white);
 }
 
 .catalog-stage__dot:focus-visible {
-    outline: 2px solid #FFFFFF;
+    outline: 2px solid var(--color-bg-white);
     outline-offset: 3px;
 }
 
@@ -112,13 +112,13 @@
     left: clamp(1.5rem, 3.5vw, 3.25rem);
     z-index: 2;
     max-width: min(52ch, 62%);
-    color: #FFFFFF;
+    color: var(--color-bg-white);
     pointer-events: none;
 }
 
 .catalog-stage__overlay-title {
     margin: 0 0 1.1rem;
-    color: #FFFFFF;
+    color: var(--color-bg-white);
     font-family: 'Manrope', var(--font-family, sans-serif);
     font-size: clamp(1.5rem, 2.7vw, 2.6rem);
     font-weight: 500;
@@ -129,7 +129,7 @@
 .catalog-stage__overlay-text {
     max-width: 48ch;
     margin: 0;
-    color: rgba(255, 255, 255, 0.88);
+    color: var(--color-white-alpha-88);
     font-size: clamp(0.95rem, 1vw, 1.08rem);
     line-height: 1.6;
 }
@@ -143,24 +143,24 @@
     align-items: center;
     justify-content: center;
     padding: 0.7rem 1.6rem;
-    color: #FFFFFF;
+    color: var(--color-bg-white);
     font-size: 0.9rem;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
     text-decoration: none;
-    background: var(--color-dark, #003E51);
+    background: var(--color-dark);
     border-radius: 999px;
     transition: transform var(--transition-normal, 200ms ease), background-color var(--transition-normal, 200ms ease);
 }
 
 .catalog-stage__image-button:hover {
-    background: #00293A;
+    background: var(--color-dark-deep);
     transform: translateY(-1px);
 }
 
 .catalog-stage__image-button:focus-visible {
-    outline: 2px solid #FFFFFF;
+    outline: 2px solid var(--color-bg-white);
     outline-offset: 2px;
 }
 

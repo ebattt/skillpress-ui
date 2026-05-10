@@ -36,24 +36,24 @@
 }
 
 .sp-option-buttons__btn--default {
-    background-color: #ffffff;
+    background-color: var(--color-bg-white);
     color: var(--color-text);
     border-color: transparent;
 }
 
 .sp-option-buttons__btn--default:hover {
     border-color: transparent;
-    background-color: #ffffff;
+    background-color: var(--color-bg-white);
 }
 
 .sp-option-buttons__btn--selected {
     background-color: var(--color-primary);
-    color: #ffffff;
+    color: var(--color-bg-white);
     border-color: transparent;
 }
 
 .sp-option-buttons__btn--borderless {
-    background-color: #ffffff;
+    background-color: var(--color-bg-white);
     color: var(--color-text);
     border-color: transparent;
 }

@@ -50,7 +50,7 @@
 .orders-filter-select:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(240, 138, 0, 0.12);
+    box-shadow: 0 0 0 3px var(--color-primary-alpha-12);
 }
 
 .orders-filter-input {
@@ -76,7 +76,7 @@
 .orders-filter-input:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(240, 138, 0, 0.12);
+    box-shadow: 0 0 0 3px var(--color-primary-alpha-12);
 }
 
 .orders-filter-btn {

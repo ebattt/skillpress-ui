@@ -166,8 +166,8 @@
             if (row.querySelector('.orders-table__cell--mobile-chevron')) return;
 
             var td = document.createElement('td');
-            td.className = 'td-mobile-chevron';
-            td.innerHTML = '<button class="td-mobile-chevron__button" type="button" aria-label="Mostra dettagli riga" data-orders-table-toggle><span class="td-mobile-chevron__icon" aria-hidden="true"></span></button>'; // safe: stringa statica di markup, nessun input variabile
+            td.className = 'orders-table__cell--mobile-chevron';
+            td.innerHTML = '<button class="orders-table__mobile-toggle" type="button" aria-label="Mostra dettagli riga" data-orders-table-toggle><span class="orders-table__mobile-toggle-icon" aria-hidden="true"></span></button>'; // safe: stringa statica di markup, nessun input variabile
             row.appendChild(td);
         });
 

@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--color-black-alpha-50);
 }
 
 .file-modal__overlay[hidden],
@@ -141,12 +141,12 @@
 }
 
 .file-modal__warning--replace {
-    background: linear-gradient(180deg, #fff7ed 0%, #fffbf5 100%);
-    border-color: #fdba74;
+    background: linear-gradient(180deg, var(--color-warning-bg) 0%, var(--color-warm-bg-30) 100%);
+    border-color: var(--color-warning-light);
 }
 
 .file-modal__warning--replace strong {
-    color: #c2410c;
+    color: var(--color-warning-dark);
 }
 
 .file-modal__error {
@@ -175,7 +175,7 @@
 
 .file-modal__dropzone:hover,
 .file-modal-dropzone--dragover {
-    background-color: rgba(255, 247, 237, 0.5);
+    background-color: var(--color-warning-bg-alpha-50);
     border-color: var(--color-primary);
 }
 
@@ -282,7 +282,7 @@
 
 .file-modal-status--warning {
     color: var(--color-primary);
-    background: rgba(240, 138, 0, 0.1);
+    background: var(--color-primary-alpha-10);
 }
 
 .file-modal-status--error {
@@ -292,7 +292,7 @@
 
 .file-modal-status--success {
     color: var(--color-secondary);
-    background: rgba(28, 114, 100, 0.08);
+    background: var(--color-secondary-alpha-08);
 }
 
 .file-modal__footer {
@@ -322,13 +322,13 @@
 }
 
 .file-modal__submit:disabled {
-    color: rgba(255, 255, 255, 0.92);
+    color: var(--color-white-alpha-92);
     cursor: not-allowed;
-    background-color: #cbd5df;
+    background-color: var(--color-border-blue-gray-300);
 }
 
 .file-modal__submit:disabled:hover {
-    background-color: #cbd5df;
+    background-color: var(--color-border-blue-gray-300);
 }
 
 .file-modal__download {

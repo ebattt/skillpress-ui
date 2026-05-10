@@ -23,7 +23,7 @@
     padding: 0.625rem 1.25rem;
     border: 1.5px solid var(--color-primary);
     border-radius: var(--radius-lg);
-    background-color: rgba(240, 138, 0, 0.1);
+    background-color: var(--color-primary-alpha-10);
     color: var(--color-primary);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
@@ -33,5 +33,5 @@
 }
 
 .sp-download-buttons__btn:hover {
-    background-color: rgba(240, 138, 0, 0.1);
+    background-color: var(--color-primary-alpha-10);
 }

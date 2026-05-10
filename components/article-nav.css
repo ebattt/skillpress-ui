@@ -27,8 +27,8 @@
     gap: 0.35rem;
     min-height: 2rem;
     padding: 0.45rem 0.9rem;
-    color: var(--color-bg-white, #fff);
-    background: var(--color-primary, #f08a00);
+    color: var(--color-bg-white);
+    background: var(--color-primary);
     border-radius: var(--radius-full, 9999px);
     font-size: var(--font-size-xs, 0.75rem);
     font-weight: 700;
@@ -39,11 +39,11 @@
 
 .article-nav__link:hover,
 .article-nav__link:focus-visible {
-    background: var(--color-primary-dark, #d67800);
+    background: var(--color-primary-dark);
 }
 
 .article-nav__link:focus-visible {
-    outline: 2px solid var(--color-border-focus, #3b82f6);
+    outline: 2px solid var(--color-border-focus, var(--color-info));
     outline-offset: 2px;
 }
 
@@ -60,6 +60,8 @@
     margin-left: auto;
 }
 
+/* breakpoint-exception: 374px targets very small phones where prev/next labels
+   cannot fit side by side without wrapping into an awkward two-column row. */
 @media (max-width: 374px) {
     .article-nav__list {
         align-items: stretch;

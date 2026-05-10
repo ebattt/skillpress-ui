@@ -225,7 +225,7 @@
     gap: 0.5rem;
     width: 100%;
     padding: 0.625rem 1rem;
-    background-color: rgba(28, 114, 100, 0.08);
+    background-color: var(--color-secondary-alpha-08);
     color: var(--color-secondary);
     font-weight: var(--font-weight-semibold);
     font-size: var(--font-size-sm);
@@ -237,7 +237,7 @@
 }
 
 .sidebar-totals__btn:hover {
-    background-color: rgba(28, 114, 100, 0.15);
+    background-color: var(--color-secondary-alpha-15);
 }
 
 .sidebar-totals__btn svg {
@@ -282,7 +282,7 @@
 .sidebar-totals__header {
     font-weight: var(--font-weight-bold);
     font-size: 1rem;
-    color: var(--color-text, #111418);
+    color: var(--color-text);
 }
 
 .sidebar-totals__row {
@@ -328,7 +328,7 @@
 .sidebar-totals__section-header {
     font-weight: var(--font-weight-bold);
     font-size: 1rem;
-    color: var(--color-text, #111418);
+    color: var(--color-text);
 }
 
 /* ================================================================

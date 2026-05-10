@@ -6,8 +6,8 @@
 }
 
 .dashboard-dropdown-box--alert {
-    background: rgba(254, 242, 242, 0.3);
-    border-color: #fca5a5;
+    background: var(--color-warning-bg-alpha-30);
+    border-color: var(--color-warning-border-strong);
     border-width: 2px;
 }
 

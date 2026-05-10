@@ -27,9 +27,9 @@
     justify-content: center;
     min-height: 2rem;
     padding: 0.5rem 1rem;
-    color: var(--color-text-secondary, #4b5563);
-    background: var(--color-bg-white, #fff);
-    border: 1.5px solid rgba(17, 20, 24, 0.1);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-white);
+    border: 1.5px solid var(--color-text-alpha-10);
     border-radius: var(--radius-full, 9999px);
     font-size: var(--font-size-xs, 0.75rem);
     font-weight: 600;
@@ -48,14 +48,14 @@
 .topic-nav__link:focus-visible,
 .topic-nav__link--active,
 .topic-nav__link[aria-current="true"] {
-    color: var(--color-primary-dark, #d67800);
-    background: rgba(240, 138, 0, 0.06);
-    border-color: var(--color-primary, #f08a00);
-    box-shadow: 0 2px 8px rgba(240, 138, 0, 0.1);
+    color: var(--color-primary-dark);
+    background: var(--color-primary-alpha-06);
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 8px var(--color-primary-alpha-10);
 }
 
 .topic-nav__link:focus-visible {
-    outline: 2px solid var(--color-border-focus, #3b82f6);
+    outline: 2px solid var(--color-border-focus, var(--color-info));
     outline-offset: 2px;
 }
 

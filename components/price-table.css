@@ -168,7 +168,7 @@
 }
 
 .price-table__header-date--light {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-white-alpha-80);
 }
 
 /* ===== Body rows ===== */
@@ -183,7 +183,7 @@
 .price-table__row--active {
     /* Teal soft locale (no token: usato solo da PriceTable. Promuovere a
        --color-secondary-soft se emerge un secondo consumer). */
-    background-color: #e8f5f3;
+    background-color: var(--color-secondary-soft);
 }
 
 /* ===== Body cells ===== */
@@ -249,9 +249,9 @@
 .price-table__cell-btn--row-active {
     /* Teal soft locale (no token: usato solo da PriceTable. Promuovere a
        --color-secondary-soft se emerge un secondo consumer). */
-    background-color: #e8f5f3;
+    background-color: var(--color-secondary-soft);
     color: var(--color-text);
-    border: 1px solid rgba(28, 114, 100, 0.3);
+    border: 1px solid var(--color-secondary-alpha-30);
 }
 
 .price-table__cell-btn--row-active:hover {
@@ -310,7 +310,7 @@
     color: var(--color-text-secondary);
     cursor: pointer;
     transition: all var(--transition-fast);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 3px var(--color-black-alpha-08);
     display: none !important;
 }
 
