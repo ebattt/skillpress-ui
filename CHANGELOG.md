@@ -4,11 +4,12 @@ Tutte le modifiche degne di nota sono documentate in questo file. Il formato
 distingue **contract change** (breaking, richiede coordinamento backend) da
 **visual change** (look-only, sicuro). Vedi `README.md` -> Versioning policy.
 
-## 0.3.0-beta.1 -- 2026-05-08
+## 0.3.0-beta.1 -- 2026-05-10
 
-Prima versione beta consolidata: chiude la roadmap "production readiness"
-2026-05-08 (10 prompt), prepara handoff backend, blocca il contratto pubblico
-in `dist/public-api.json`.
+Prima versione beta consolidata: chiude la roadmap "production readiness",
+prepara handoff backend, blocca il contratto pubblico in
+`dist/public-api.json` e mantiene gli shell di pagina nel consumer come
+scaffold/reference, non come componenti libreria.
 
 ### Contract change (breaking)
 
