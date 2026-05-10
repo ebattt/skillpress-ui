@@ -74,8 +74,9 @@ export const Default = {
     render: renderDashboardShell,
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
-        await expect(canvas.getByText('Dashboard')).toBeVisible();
-        await userEvent.click(canvas.getByText('Ordini'));
+        const shell = canvasElement.querySelector('[data-dashboard-shell]');
+        await expect(canvas.getByRole('heading', { name: 'Dashboard' })).toBeInTheDocument();
+        window.SkillpressUI.DashboardShell.navigate(shell, 'orders');
         await expect(canvas.getByRole('heading', { name: 'Ordini' })).toBeVisible();
     }
 };

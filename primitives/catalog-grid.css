@@ -9,7 +9,7 @@
  *
  * Block: .sp-catalog-grid
  * Element: .sp-catalog-grid__section-label (con modifiers --orange, --teal, --dark)
- * Modifier: .sp-catalog-grid--products (variante prodotti, 4 col su desktop)
+ * Modifier: .sp-catalog-grid--products (variante prodotti, 5 col su desktop)
  */
 
 /** @public */
@@ -41,11 +41,21 @@
 }
 
 .sp-catalog-grid--products {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.45rem 0.95rem;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
 }
 
-@media (max-width: 1023px) {
+/* breakpoint-exception: 1180px ripristina il contract storico landing:
+   5 colonne desktop, 4 colonne su laptop stretti prima del cutoff tablet. */
+@media (max-width: 1180px) {
+    .sp-catalog-grid--products {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* breakpoint-exception: 900px ripristina il contract storico landing:
+   3 colonne su tablet medi prima del layout mobile 2-col. */
+@media (max-width: 900px) {
     .sp-catalog-grid--products {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -54,6 +64,7 @@
 @media (max-width: 639px) {
     .sp-catalog-grid--products {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
     }
 }
 

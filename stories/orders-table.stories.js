@@ -133,7 +133,7 @@ export const Default = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
         await expect(canvas.getByText('110456')).toBeInTheDocument();
-        await expect(canvas.getByText('In lavorazione')).toHaveClass('sp-badge', 'sp-badge--info');
+        await expect(canvas.getAllByText('In lavorazione')[0]).toHaveClass('sp-badge', 'sp-badge--info');
     }
 };
 

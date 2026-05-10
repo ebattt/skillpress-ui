@@ -6,7 +6,7 @@ const renderBadge = ({
 } = {}) => {
     const root = document.createElement('div');
 
-    root.innerHTML = `<span class="sp-badge badge--${variant}">${label}</span>`;
+    root.innerHTML = `<span class="sp-badge sp-badge--${variant}">${label}</span>`;
 
     return root;
 };

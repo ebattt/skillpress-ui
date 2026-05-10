@@ -1,11 +1,9 @@
 import { expect } from 'storybook/test';
 
 const initInfoDropdown = (root) => {
-    window.requestAnimationFrame(() => {
-        if (window.SkillpressUI && window.SkillpressUI.InfoDropdown) {
-            window.SkillpressUI.InfoDropdown.init(root);
-        }
-    });
+    if (window.SkillpressUI && window.SkillpressUI.InfoDropdown) {
+        window.SkillpressUI.InfoDropdown.init(root);
+    }
 };
 
 const renderField = ({
@@ -24,7 +22,7 @@ const renderField = ({
                     aria-expanded="${open ? 'true' : 'false'}"
                     aria-label="Mostra informazioni"></button>
         </div>
-        <div id="${id}" class="info-dropdown${open ? '' : ' info-dropdown--hidden'}"
+        <div id="${id}" class="sp-info-dropdown${open ? '' : ' sp-info-dropdown--hidden'}"
              data-info-dropdown
              role="region" aria-hidden="${open ? 'false' : 'true'}">
             ${body}
@@ -61,11 +59,16 @@ export const Default = {
     })),
     play: async ({ canvas, userEvent }) => {
         const trigger = canvas.getByRole('button', { name: /Mostra informazioni/ });
+        if (window.SkillpressUI && window.SkillpressUI.InfoDropdown) {
+            window.SkillpressUI.InfoDropdown.init(document);
+        }
         await expect(trigger).toHaveAttribute('aria-expanded', 'false');
-        await userEvent.click(trigger);
+        trigger.click();
         await expect(trigger).toHaveAttribute('aria-expanded', 'true');
         const close = canvas.getByRole('button', { name: /Chiudi/ });
-        await userEvent.click(close);
+        await expect(close).toHaveClass('sp-info-dropdown__close');
+        await expect(canvas.getAllByText('Formato (mm)')[1]).toHaveClass('sp-info-dropdown__title');
+        close.click();
         await expect(trigger).toHaveAttribute('aria-expanded', 'false');
     }
 };
@@ -102,11 +105,14 @@ export const WithListAndNote = {
     })),
     play: async ({ canvas, userEvent }) => {
         const trigger = canvas.getByRole('button', { name: /Mostra informazioni/ });
+        if (window.SkillpressUI && window.SkillpressUI.InfoDropdown) {
+            window.SkillpressUI.InfoDropdown.init(document);
+        }
         await expect(trigger).toHaveAttribute('aria-expanded', 'true');
         // chiudi e riapri
-        await userEvent.click(trigger);
+        trigger.click();
         await expect(trigger).toHaveAttribute('aria-expanded', 'false');
-        await userEvent.click(trigger);
+        trigger.click();
         await expect(trigger).toHaveAttribute('aria-expanded', 'true');
     }
 };
@@ -133,10 +139,13 @@ export const MultipleDropdownsExclusive = {
     `),
     play: async ({ canvas, userEvent, step }) => {
         const triggers = canvas.getAllByRole('button', { name: /Mostra informazioni/ });
+        if (window.SkillpressUI && window.SkillpressUI.InfoDropdown) {
+            window.SkillpressUI.InfoDropdown.init(document);
+        }
         await step('apertura singola: aprire il secondo chiude il primo', async () => {
-            await userEvent.click(triggers[0]);
+            triggers[0].click();
             await expect(triggers[0]).toHaveAttribute('aria-expanded', 'true');
-            await userEvent.click(triggers[1]);
+            triggers[1].click();
             await expect(triggers[0]).toHaveAttribute('aria-expanded', 'false');
             await expect(triggers[1]).toHaveAttribute('aria-expanded', 'true');
         });

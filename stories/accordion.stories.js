@@ -22,11 +22,11 @@ const createSection = ({
     icon = '',
     content = createContent()
 }) => `
-    <section class="accordion__section${expanded ? ' accordion__section--expanded' : ''}" data-accordion-section>
+    <section class="sp-accordion__section${expanded ? ' sp-accordion__section--expanded' : ''}" data-accordion-section>
         <button class="sp-accordion__header" type="button" data-accordion-trigger aria-expanded="${expanded ? 'true' : 'false'}">
             <span class="sp-accordion__header-left">
                 ${withBadge ? `<span class="sp-accordion__badge">${number}</span>` : ''}
-                ${icon ? `<span class="sp-accordion__header-icon accordion__header-icon--${icon}" aria-hidden="true"></span>` : ''}
+                ${icon ? `<span class="sp-accordion__header-icon sp-accordion__header-icon--${icon}" aria-hidden="true"></span>` : ''}
                 <span class="sp-accordion__title">${title}</span>
             </span>
             <span class="sp-accordion__icon" aria-hidden="true"></span>
@@ -39,7 +39,7 @@ const createSection = ({
     </section>
 `;
 
-const renderAccordion = (sections, className = 'accordion') => {
+const renderAccordion = (sections, className = 'sp-accordion') => {
     const root = document.createElement('div');
 
     root.innerHTML = `
@@ -89,7 +89,7 @@ export const Expanded = {
         createSection({
             title: 'Accordion Section',
             expanded: true,
-            content: createContent('Questa sezione parte aperta tramite classe accordion__section--expanded e aria-expanded true.')
+            content: createContent('Questa sezione parte aperta tramite classe sp-accordion__section--expanded e aria-expanded true.')
         })
     ])
 };
@@ -177,7 +177,7 @@ export const SurfaceWhite = {
             withBadge: false,
             content: createContent('Secondo pannello checkout.')
         })
-    ], 'accordion accordion--surface-white'),
+    ], 'sp-accordion sp-accordion--surface-white'),
     parameters: {
         docs: {
             description: {

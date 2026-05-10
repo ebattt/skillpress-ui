@@ -4344,7 +4344,7 @@ label.sp-radio-option--disabled input[type="radio"] {
  *
  * Block: .sp-catalog-grid
  * Element: .sp-catalog-grid__section-label (con modifiers --orange, --teal, --dark)
- * Modifier: .sp-catalog-grid--products (variante prodotti, 4 col su desktop)
+ * Modifier: .sp-catalog-grid--products (variante prodotti, 5 col su desktop)
  */
 
 /** @public */
@@ -4376,11 +4376,21 @@ label.sp-radio-option--disabled input[type="radio"] {
 }
 
 .sp-catalog-grid--products {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.45rem 0.95rem;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
 }
 
-@media (max-width: 1023px) {
+/* breakpoint-exception: 1180px ripristina il contract storico landing:
+   5 colonne desktop, 4 colonne su laptop stretti prima del cutoff tablet. */
+@media (max-width: 1180px) {
+    .sp-catalog-grid--products {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* breakpoint-exception: 900px ripristina il contract storico landing:
+   3 colonne su tablet medi prima del layout mobile 2-col. */
+@media (max-width: 900px) {
     .sp-catalog-grid--products {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -4389,6 +4399,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 @media (max-width: 639px) {
     .sp-catalog-grid--products {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
     }
 }
 
@@ -4421,6 +4432,21 @@ label.sp-radio-option--disabled input[type="radio"] {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 16px;
+}
+
+/* breakpoint-exception: 1024px ripristina il contract storico PDP:
+   related products passano direttamente da 5 a 3 colonne su tablet. */
+@media (max-width: 1024px) {
+    .related-products .sp-catalog-grid--products {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 639px) {
+    .related-products .sp-catalog-grid--products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
 }
 /* --- Product card --- */
 .catalog-card--product-equal {
@@ -4503,6 +4529,17 @@ label.sp-radio-option--disabled input[type="radio"] {
     .catalog-card__image--product {
         width: min(100%, 150px);
         max-height: none;
+    }
+
+    .related-products .catalog-card--product-equal .catalog-card__image-wrap {
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .related-products .catalog-card__image--product {
+        width: auto;
+        max-width: 100%;
+        max-height: clamp(5rem, 24vw, 6.5rem);
     }
 }
 

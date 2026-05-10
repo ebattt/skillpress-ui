@@ -7,7 +7,7 @@ const renderCard = ({
     disabled = false
 } = {}) => {
     const root = document.createElement('div');
-    const classes = ['card', variantClasses, disabled ? 'card--disabled' : ''].filter(Boolean).join(' ');
+    const classes = ['sp-card', variantClasses, disabled ? 'sp-card--disabled' : ''].filter(Boolean).join(' ');
     const disabledAttr = disabled ? ' aria-disabled="true"' : '';
 
     root.innerHTML = `
@@ -67,17 +67,17 @@ export const InteractiveStates = {
         {
             title: 'Interattiva',
             description: 'Stato tecnico per componenti futuri.',
-            variantClasses: 'card--interactive'
+            variantClasses: 'sp-card--interactive'
         },
         {
             title: 'Selezionata',
             description: 'Stato tecnico, non UI finale.',
-            variantClasses: 'card--selected'
+            variantClasses: 'sp-card--selected'
         },
         {
             title: 'Non disponibile',
             description: 'Stato tecnico senza logica JS.',
-            variantClasses: 'card--interactive',
+            variantClasses: 'sp-card--interactive',
             disabled: true
         }
     ])
@@ -90,7 +90,7 @@ export const SurfaceMuted = {
         root.innerHTML = renderCard({
             title: 'Box checkout',
             description: 'Superficie grigia per raggruppare form, preview indirizzo e scelte metodo nel checkout.',
-            variantClasses: 'card--surface-muted'
+            variantClasses: 'sp-card--surface-muted'
         }).innerHTML;
         return root;
     },

@@ -60,7 +60,13 @@
     function getDropdown(trigger) {
         var id = trigger.getAttribute('aria-controls');
         if (!id) return null;
-        return document.getElementById(id);
+        var dropdown = document.getElementById(id);
+        if (dropdown) return dropdown;
+        var root = trigger.getRootNode && trigger.getRootNode();
+        if (root && root.querySelector) {
+            return root.querySelector('#' + id);
+        }
+        return null;
     }
 
     function getAssociatedLabelText(trigger) {
@@ -74,8 +80,8 @@
     function ensureChrome(dropdown, trigger) {
         if (dropdown[DROPDOWN_INIT_FLAG]) return;
 
-        var existingHeader = dropdown.querySelector(':scope > .sp-info-dropdown__header');
-        var existingBody = dropdown.querySelector(':scope > .sp-info-dropdown__body');
+        var existingHeader = dropdown.querySelector(':scope > .sp-info-dropdown__header, :scope > .info-dropdown__header');
+        var existingBody = dropdown.querySelector(':scope > .sp-info-dropdown__body, :scope > .info-dropdown__body');
 
         // Step 1: snapshot dei figli che dovranno finire dentro il body wrapper.
         // Tutto cio' che non e' gia' header/body finisce wrappato.
@@ -91,17 +97,17 @@
         // Step 2: se header mancante, costruiscilo.
         if (!existingHeader) {
             var header = document.createElement('div');
-            header.className = 'info-dropdown__header';
+            header.className = 'sp-info-dropdown__header';
 
             var titleText = getAssociatedLabelText(trigger);
             var title = document.createElement('h4');
-            title.className = 'info-dropdown__title';
+            title.className = 'sp-info-dropdown__title';
             title.textContent = titleText;
             header.appendChild(title);
 
             var close = document.createElement('button');
             close.type = 'button';
-            close.className = 'info-dropdown__close';
+            close.className = 'sp-info-dropdown__close';
             close.setAttribute('aria-label', 'Chiudi');
             header.appendChild(close);
 
@@ -116,7 +122,7 @@
         // Step 3: se body mancante, wrappa i nodi snapshot.
         if (!existingBody && bodyNodes.length > 0) {
             var body = document.createElement('div');
-            body.className = 'info-dropdown__body';
+            body.className = 'sp-info-dropdown__body';
             bodyNodes.forEach(function(node) {
                 body.appendChild(node);
             });

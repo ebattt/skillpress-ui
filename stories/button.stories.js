@@ -19,16 +19,16 @@ const renderButton = ({
 } = {}) => {
     const root = document.createElement('div');
     const classes = [
-        'button',
-        `button--${variant}`,
-        size ? `button--${size}` : '',
-        full ? 'button--full' : ''
+        'sp-button',
+        `sp-button--${variant}`,
+        size ? `sp-button--${size}` : '',
+        full ? 'sp-button--full' : ''
     ].filter(Boolean).join(' ');
     const disabledAttrs = disabled ? ' disabled' : '';
     const content = `${icon ? plusIcon : ''}${label}`;
 
     root.innerHTML = tag === 'a'
-        ? `<a class="${classes}${disabled ? ' button--disabled' : ''}" href="#"${disabled ? ' aria-disabled="true"' : ''}>${content}</a>`
+        ? `<a class="${classes}${disabled ? ' sp-button--disabled' : ''}" href="#"${disabled ? ' aria-disabled="true"' : ''}>${content}</a>`
         : `<button class="${classes}" type="button"${disabledAttrs}>${content}</button>`;
 
     return root;
