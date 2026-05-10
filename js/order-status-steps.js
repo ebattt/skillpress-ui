@@ -18,12 +18,6 @@
         target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
     }
 
-    function emitWithLegacyAlias(target, normalized, legacy, detail) {
-        dispatch(target, normalized, detail);
-        // deprecated alias, removed in v0.3
-        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
-    }
-
     function getStepId(item) {
         return item.getAttribute('data-order-status-steps-step-id') || '';
     }
@@ -37,7 +31,7 @@
             candidate.setAttribute('aria-pressed', selected ? 'true' : 'false');
         });
 
-        emitWithLegacyAlias(root, 'sp:order-status-steps:change', 'sp:order-status-steps-change', {
+        dispatch(root, 'sp:order-status-steps:change', {
             stepId: getStepId(item),
             item: item
         });
@@ -46,8 +40,6 @@
     function initRoot(root) {
         if (!root || root.__skillpressOrderStatusStepsInitialized) return;
         root.__skillpressOrderStatusStepsInitialized = true;
-        // deprecated alias, removed in v0.3
-        root.__orderStatusStepsInitialized = true;
 
         var items = Array.prototype.slice.call(root.querySelectorAll('[data-order-status-steps-item]'));
         var selected = items.filter(function (item) {

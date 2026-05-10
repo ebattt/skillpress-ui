@@ -17,12 +17,6 @@
         target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
     }
 
-    function emitWithLegacyAlias(target, normalized, legacy, detail) {
-        dispatch(target, normalized, detail);
-        // deprecated alias, removed in v0.3
-        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
-    }
-
     function findRoots(context) {
         var scope = context || document;
         var roots = [];
@@ -91,10 +85,9 @@
         }
 
         var detail = { section: sectionId, restored: !!restoreValues };
-        emitWithLegacyAlias(
+        dispatch(
             root,
             editing ? 'sp:dashboard-settings-form:edit' : 'sp:dashboard-settings-form:close',
-            editing ? 'sp:dashboard-settings-form-edit' : 'sp:dashboard-settings-form-close',
             detail
         );
         return true;
@@ -118,10 +111,9 @@
             edit.hidden = false;
         }
 
-        emitWithLegacyAlias(
+        dispatch(
             root,
             'sp:dashboard-settings-form:save',
-            'sp:dashboard-settings-form-save',
             { section: sectionId }
         );
         return true;
@@ -154,8 +146,6 @@
         findRoots(context).forEach(function (root) {
             if (root.__skillpressDashboardSettingsFormInitialized) return;
             root.__skillpressDashboardSettingsFormInitialized = true;
-            // deprecated alias, removed in v0.3
-            root.dataset.dashboardSettingsFormInitialized = 'true';
             root.addEventListener('click', function (event) {
                 handleClick(root, event);
             });

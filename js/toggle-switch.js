@@ -45,18 +45,10 @@
         return false;
     }
 
-    // deprecated alias, removed in v0.3
-    var LEGACY_CHANGE_EVENT = 'toggle-switch:change';
-
     function setChecked(el, checked) {
         el.classList.toggle('sp-toggle-switch--checked', checked);
         el.setAttribute('aria-checked', checked ? 'true' : 'false');
         dispatch(el, 'sp:toggle-switch:change', { checked: checked });
-        // deprecated alias, removed in v0.3
-        el.dispatchEvent(new CustomEvent(LEGACY_CHANGE_EVENT, {
-            bubbles: true,
-            detail: { checked: checked }
-        }));
     }
 
     function toggle(el) {

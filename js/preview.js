@@ -242,8 +242,6 @@
         sync(root);
         setOpen(root, root.classList.contains('preview--open'));
         root[INIT_FLAG] = true;
-        // deprecated alias, removed in v0.3
-        root.__skillpressPreviewInit = true;
         return root;
     }
 

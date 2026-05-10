@@ -6,7 +6,7 @@ strategy: css-js
 sources:
   demo_js: dashboard/js/order-products.js#L471-L513
   demo_css: dashboard/css/components/_order-detail.css#L252-L386
-status: local-link-dev
+status: beta-contract
 package_path: components/order-status-steps.css
 js_path: js/order-status-steps.js
 ---
@@ -92,7 +92,7 @@ modo idempotente. Al click:
 
 - imposta `.product-stepper__step--selected` sullo step scelto;
 - sincronizza `aria-pressed`;
-- emette `sp:order-status-steps-change` con `{ stepId, item }`.
+- emette `sp:order-status-steps:change` con `{ stepId, item }`.
 
 La libreria non apre pannelli e non decide l'avanzamento reale.
 

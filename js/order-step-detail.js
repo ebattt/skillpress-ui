@@ -19,12 +19,6 @@
         target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
     }
 
-    function emitWithLegacyAlias(target, normalized, legacy, detail) {
-        dispatch(target, normalized, detail);
-        // deprecated alias, removed in v0.3
-        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
-    }
-
     function getStepId(element) {
         return element ? element.getAttribute('data-order-status-steps-step-id') || '' : '';
     }
@@ -44,7 +38,7 @@
             setPanel(panel, selected);
         });
 
-        emitWithLegacyAlias(root, 'sp:order-step-detail:change', 'sp:order-step-detail-change', {
+        dispatch(root, 'sp:order-step-detail:change', {
             stepId: stepId,
             panel: selectedPanel
         });
@@ -64,8 +58,6 @@
     function initRoot(root) {
         if (!root || root.__skillpressOrderStepDetailInitialized) return;
         root.__skillpressOrderStepDetailInitialized = true;
-        // deprecated alias, removed in v0.3
-        root.__orderStepDetailInitialized = true;
 
         var initialStepId = getInitialStepId(root);
         if (initialStepId) selectPanel(root, initialStepId);
@@ -74,9 +66,7 @@
             var detail = event.detail || {};
             if (detail.stepId) selectPanel(root, detail.stepId);
         }
-        // Ascolta sia evento normalizzato che legacy alias (compat consumer).
         root.addEventListener('sp:order-status-steps:change', onStatusChange);
-        root.addEventListener('sp:order-status-steps-change', onStatusChange);
     }
 
     /** @public */

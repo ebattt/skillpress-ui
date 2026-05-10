@@ -6,7 +6,7 @@ strategy: css-js
 sources:
   demo_js: dashboard/js/order-products.js
   demo_css: dashboard/css/components/_order-detail.css
-status: local-link-dev-dashboard-2026-05-05
+status: beta-contract
 package_path: components/order-product-dropdown.css
 js_path: js/order-product-dropdown.js
 ---

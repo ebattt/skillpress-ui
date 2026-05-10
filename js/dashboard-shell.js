@@ -18,11 +18,6 @@
         target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
     }
 
-    function emitWithLegacyAlias(target, normalized, legacy, detail) {
-        dispatch(target, normalized, detail);
-        // deprecated alias, removed in v0.3
-        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
-    }
     var parentNavMap = {
         'order-detail': 'orders',
         'quote-request': 'quotes'
@@ -68,7 +63,7 @@
     }
 
     function dispatchChange(root, viewName) {
-        emitWithLegacyAlias(root, 'sp:dashboard-shell:change', 'sp:dashboard-shell-change', {
+        dispatch(root, 'sp:dashboard-shell:change', {
             view: viewName,
             nav: getNavForView(root, viewName)
         });
@@ -159,8 +154,6 @@
     function initRoot(root) {
         if (!root || root.__skillpressDashboardShellInitialized) return;
         root.__skillpressDashboardShellInitialized = true;
-        // deprecated alias, removed in v0.3
-        root.dataset.dashboardShellInit = 'true';
 
         root.addEventListener('click', function (event) {
             handleClick(root, event);

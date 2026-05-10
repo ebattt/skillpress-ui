@@ -209,4 +209,4 @@ senza bump major (vedi `scripts/check-contract.cjs`).
 
 ## Nota
 
-Questa versione deve restare volutamente piccola. Nuovi componenti vanno aggiunti solo dopo aver validato il flusso GitHub Packages con questa alpha tecnica.
+Questa beta deve restare focalizzata sul contratto pubblico esistente. Nuovi componenti o cambi di markup backend-owned vanno aggiunti solo con aggiornamento di docs, Storybook e public-api.

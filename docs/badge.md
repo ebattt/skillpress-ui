@@ -6,7 +6,7 @@ strategy: css-only
 sources:
   catalog_css: elements-ui/css/components/_badges.css
   demo: dashboard/index.html
-status: published-alpha-3
+status: beta-contract
 package_path: primitives/badge.css
 ---
 

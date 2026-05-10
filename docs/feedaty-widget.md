@@ -53,7 +53,7 @@ Carousel:
 
 - Wrapper, sizing, overflow e responsive dei due widget landing.
 - Loader SDK idempotente `window.SkillpressUI.FeedatyWidget.init(root)`.
-- Evento `sp:feedaty-widget-error` in caso di errore caricamento SDK.
+- Evento `sp:feedaty-widget:error` in caso di errore caricamento SDK.
 
 ## Demo-only
 

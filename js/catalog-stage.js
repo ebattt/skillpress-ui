@@ -68,7 +68,6 @@
         };
 
         root.__skillpressCatalogStageInitialized = true;
-        // deprecated alias, removed in v0.3
         root.setAttribute('data-catalog-stage-init', '1');
 
         dots.forEach(function (dot, index) {

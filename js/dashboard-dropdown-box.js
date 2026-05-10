@@ -17,12 +17,6 @@
         target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
     }
 
-    function emitWithLegacyAlias(target, normalized, legacy, detail) {
-        dispatch(target, normalized, detail);
-        // deprecated alias, removed in v0.3
-        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
-    }
-
     function getTrigger(root) {
         return root.querySelector('[data-dashboard-dropdown-box-trigger]');
     }
@@ -38,18 +32,15 @@
 
         trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         content.hidden = !expanded;
-        emitWithLegacyAlias(
+        dispatch(
             root,
-            expanded ? 'sp:dashboard-dropdown-box:open' : 'sp:dashboard-dropdown-box:close',
-            expanded ? 'sp:dashboard-dropdown-box-open' : 'sp:dashboard-dropdown-box-close'
+            expanded ? 'sp:dashboard-dropdown-box:open' : 'sp:dashboard-dropdown-box:close'
         );
     }
 
     function initRoot(root) {
         if (!root || root.__skillpressDashboardDropdownBoxInitialized) return;
         root.__skillpressDashboardDropdownBoxInitialized = true;
-        // deprecated alias, removed in v0.3
-        root.__dashboardDropdownBoxInitialized = true;
 
         var trigger = getTrigger(root);
         var content = getContent(root);

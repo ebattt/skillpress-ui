@@ -21,12 +21,6 @@
         target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
     }
 
-    function emitWithLegacyAlias(target, normalized, legacy, detail) {
-        dispatch(target, normalized, detail);
-        // deprecated alias, removed in v0.3
-        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
-    }
-
     function toArray(value) {
         return Array.prototype.slice.call(value || []);
     }
@@ -65,14 +59,13 @@
         if (!widget) return;
 
         root.__skillpressFeedatyWidgetInitialized = true;
-        // deprecated alias, removed in v0.3
         root.setAttribute('data-feedaty-widget-init', '1');
 
         if (root.getAttribute('data-feedaty-widget-sdk') === 'false') return;
 
         sdkSrc = root.getAttribute('data-feedaty-widget-sdk-src') || SDK_SRC;
         ensureSdk(sdkSrc).catch(function (error) {
-            emitWithLegacyAlias(root, 'sp:feedaty-widget:error', 'sp:feedaty-widget-error', { error: error });
+            dispatch(root, 'sp:feedaty-widget:error', { error: error });
         });
     }
 

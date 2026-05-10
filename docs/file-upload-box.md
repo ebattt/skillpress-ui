@@ -7,7 +7,7 @@ sources:
   demo_html: dashboard/index.html#file-upload-modal
   demo_css: dashboard/css/components/_modals.css
   demo_js: dashboard/js/file-upload.js
-status: local-link-dev-dashboard-2026-05-05
+status: beta-contract
 package_path: components/file-upload-box.css
 js_path: js/file-upload-box.js
 ---
@@ -154,9 +154,9 @@ Eventi:
 
 | Evento | Detail | Note |
 |---|---|---|
-| `sp:file-upload-box-open` | none | emesso su root |
-| `sp:file-upload-box-close` | none | emesso su root |
-| `sp:file-upload-box-submit` | `{ file, fileName }` | emesso su root; nessun upload reale |
+| `sp:file-upload-box:open` | none | emesso su root |
+| `sp:file-upload-box:close` | none | emesso su root |
+| `sp:file-upload-box:submit` | `{ file, fileName }` | emesso su root; nessun upload reale |
 
 ## Cosa decide il CMS/backend
 

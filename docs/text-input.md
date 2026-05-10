@@ -6,7 +6,7 @@ strategy: css-only
 sources:
   catalog_css: elements-ui/css/components/_form-inputs.css
   catalog_preview: elements-ui/js/components-form-inputs.js (text-input panel, righe 1-127)
-status: implemented-local
+status: beta-contract
 package_path: primitives/form-primitives.css
 ---
 

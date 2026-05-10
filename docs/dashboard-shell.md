@@ -86,7 +86,7 @@ scoprire root iniziali.
 Ogni navigazione emette:
 
 ```text
-sp:dashboard-shell-change
+sp:dashboard-shell:change
 detail: { view, nav }
 ```
 

@@ -7,7 +7,7 @@ sources:
   catalog_css: elements-ui/css/components/_layout-patterns.css#L1989-L2025
   catalog_js: elements-ui/js/layout-patterns/breadcrumb.js
   demo: product-page-integration/index.html
-status: published-0.2.0-alpha.0
+status: beta-contract
 package_path: primitives/breadcrumb.css
 ---
 

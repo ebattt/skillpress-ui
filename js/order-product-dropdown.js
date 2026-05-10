@@ -17,12 +17,6 @@
         target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
     }
 
-    function emitWithLegacyAlias(target, normalized, legacy, detail) {
-        dispatch(target, normalized, detail);
-        // deprecated alias, removed in v0.3
-        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
-    }
-
     function getRoot(element) {
         return element.closest('[data-order-product-dropdown]');
     }
@@ -33,10 +27,9 @@
         if (!trigger || !content) return;
         trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         content.hidden = !expanded;
-        emitWithLegacyAlias(
+        dispatch(
             root,
-            expanded ? 'sp:order-product-dropdown:open' : 'sp:order-product-dropdown:close',
-            expanded ? 'sp:order-product-dropdown-open' : 'sp:order-product-dropdown-close'
+            expanded ? 'sp:order-product-dropdown:open' : 'sp:order-product-dropdown:close'
         );
     }
 
@@ -51,8 +44,6 @@
     function initRoot(root) {
         if (!root || root.__skillpressOrderProductDropdownInitialized) return;
         root.__skillpressOrderProductDropdownInitialized = true;
-        // deprecated alias, removed in v0.3
-        root.__orderProductDropdownInitialized = true;
 
         var trigger = root.querySelector('[data-order-product-dropdown-trigger]');
         var content = root.querySelector('[data-order-product-dropdown-content]');

@@ -6,7 +6,7 @@ strategy: css-js
 sources:
   demo: product-page-integration/js/sections/section-1.js, js/sections/helpers.js
   catalog_css: elements-ui/css/components/_buttons.css, _cards.css
-status: local
+status: beta-contract
 package_path: components/preview.css
 ---
 

@@ -61,8 +61,6 @@
         });
 
         root.__skillpressCartProductCardInitialized = true;
-        // deprecated alias, removed in v0.3
-        root.dataset.cartProductCardInitialized = 'true';
     }
 
     /** @public */

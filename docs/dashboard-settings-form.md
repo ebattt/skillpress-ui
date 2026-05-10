@@ -115,10 +115,10 @@ and the edit/cancel/save UI behavior.
 The runtime enables fields for an edited section, stores a value snapshot,
 shows the action row and hides the edit trigger. Cancel restores the snapshot
 and disables fields. Save disables fields and emits
-`sp:dashboard-settings-form-save`.
+`sp:dashboard-settings-form:save`.
 
-It also emits `sp:dashboard-settings-form-edit` and
-`sp:dashboard-settings-form-close`.
+It also emits `sp:dashboard-settings-form:edit` and
+`sp:dashboard-settings-form:close`.
 
 ## Backend/App Owns
 

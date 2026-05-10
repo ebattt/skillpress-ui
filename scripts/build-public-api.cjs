@@ -20,8 +20,7 @@
  * Output: dist/public-api.json (format documentato in
  * `prompts-production-readiness-2026-05-08/10-public-api-freeze.md` sezione B).
  *
- * Idempotente: due esecuzioni su sorgenti invariati producono lo stesso JSON
- * (eccetto il campo `generatedAt`).
+ * Idempotente: due esecuzioni su sorgenti invariati producono lo stesso JSON.
  *
  * Exit 0 sempre (errore solo se qualche file e' illeggibile).
  */
@@ -178,7 +177,6 @@ function main() {
 
     const apiSorted = {
         version: version,
-        generatedAt: new Date().toISOString(),
         css: {
             primitives: Array.from(new Set(primitives)).sort(),
             components: components.sort()

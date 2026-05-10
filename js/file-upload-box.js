@@ -28,12 +28,6 @@
         target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
     }
 
-    function emitWithLegacyAlias(target, normalized, legacy, detail) {
-        dispatch(target, normalized, detail);
-        // deprecated alias, removed in v0.3
-        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
-    }
-
     function truncateFileName(name) {
         var value = String(name || '');
         if (value.length <= 34) return value;
@@ -116,7 +110,7 @@
         var dialog = root.querySelector('.file-modal__content');
         if (dialog) dialog.focus();
         syncSubmit(root);
-        emitWithLegacyAlias(root, 'sp:file-upload-box:open', 'sp:file-upload-box-open');
+        dispatch(root, 'sp:file-upload-box:open');
     }
 
     function close(root) {
@@ -129,7 +123,7 @@
             try { root.__lastTrigger.focus(); } catch (e) { /* noop */ }
         }
         root.__lastTrigger = null;
-        emitWithLegacyAlias(root, 'sp:file-upload-box:close', 'sp:file-upload-box-close');
+        dispatch(root, 'sp:file-upload-box:close');
     }
 
     function removeFile(root) {
@@ -146,15 +140,13 @@
             file: root.__fileUploadBoxPendingFile,
             fileName: root.__fileUploadBoxPendingFile.name
         };
-        emitWithLegacyAlias(root, 'sp:file-upload-box:submit', 'sp:file-upload-box-submit', detail);
+        dispatch(root, 'sp:file-upload-box:submit', detail);
         close(root);
     }
 
     function initRoot(root) {
         if (!root || root.__skillpressFileUploadBoxInitialized) return;
         root.__skillpressFileUploadBoxInitialized = true;
-        // deprecated alias, removed in v0.3
-        root.__fileUploadBoxInitialized = true;
 
         var dropzone = getRole(root, 'dropzone');
         var input = getRole(root, 'input');

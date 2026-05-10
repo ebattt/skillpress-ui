@@ -68,7 +68,7 @@ Griglia catalogo prodotti per landing page: titolo sezione, card prodotto titolo
 - Aspect ratio, background, radius e hover image scale delle card.
 - Stile del toggle catalogo.
 - Runtime idempotente `window.SkillpressUI.CatalogProductGrid.init(root)`.
-- Evento `sp:catalog-product-grid-toggle` con `expanded` e `visibleCount`.
+- Evento `sp:catalog-product-grid:toggle` con `expanded` e `visibleCount`.
 
 ## Demo-only
 

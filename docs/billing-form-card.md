@@ -99,8 +99,8 @@ Opening removes `hidden`, applies `.billing-form-card--active`, sets
 `aria-hidden="false"` and updates create/edit labels. Closing restores
 `hidden` and `aria-hidden="true"`.
 
-The runtime emits `sp:billing-form-card-open` and
-`sp:billing-form-card-close`. It does not save data, validate fields, populate
+The runtime emits `sp:billing-form-card:open` and
+`sp:billing-form-card:close`. It does not save data, validate fields, populate
 edit values, call APIs or decide preferred billing/shipping state.
 
 ## Backend/App Owns

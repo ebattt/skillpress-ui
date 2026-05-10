@@ -17,12 +17,6 @@
         target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
     }
 
-    function emitWithLegacyAlias(target, normalized, legacy, detail) {
-        dispatch(target, normalized, detail);
-        // deprecated alias, removed in v0.3
-        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
-    }
-
     function getRootByTrigger(trigger) {
         var targetId = trigger.getAttribute('data-billing-form-card-target');
         if (targetId) return document.getElementById(targetId);
@@ -60,7 +54,7 @@
                 var form = root.querySelector('form');
                 if (form && typeof form.reset === 'function') form.reset();
             }
-            emitWithLegacyAlias(root, 'sp:billing-form-card:open', 'sp:billing-form-card-open', {
+            dispatch(root, 'sp:billing-form-card:open', {
                 mode: root.dataset.billingFormCardMode,
                 recordId: root.dataset.billingFormCardRecordId || ''
             });
@@ -70,15 +64,13 @@
             }
         } else {
             delete root.dataset.billingFormCardRecordId;
-            emitWithLegacyAlias(root, 'sp:billing-form-card:close', 'sp:billing-form-card-close');
+            dispatch(root, 'sp:billing-form-card:close');
         }
     }
 
     function initRoot(root) {
         if (!root || root.__skillpressBillingFormCardInitialized) return;
         root.__skillpressBillingFormCardInitialized = true;
-        // deprecated alias, removed in v0.3
-        root.__billingFormCardInitialized = true;
         root.setAttribute('aria-hidden', root.hidden ? 'true' : 'false');
 
         root.addEventListener('click', function (event) {
@@ -95,8 +87,6 @@
         triggers.forEach(function (trigger) {
             if (trigger.__skillpressBillingFormCardOpenInitialized) return;
             trigger.__skillpressBillingFormCardOpenInitialized = true;
-            // deprecated alias, removed in v0.3
-            trigger.__billingFormCardOpenInitialized = true;
             trigger.addEventListener('click', function (event) {
                 var root = getRootByTrigger(trigger);
                 if (!root) return;

@@ -54,7 +54,6 @@
     function initRoot(root) {
         if (!root || root.__skillpressCatalogInterstitialInitialized) return;
         root.__skillpressCatalogInterstitialInitialized = true;
-        // deprecated alias, removed in v0.3
         root.setAttribute('data-catalog-interstitial-init', '1');
 
         toArray(root.querySelectorAll('[data-catalog-interstitial-card]')).forEach(appendOverlayLink);

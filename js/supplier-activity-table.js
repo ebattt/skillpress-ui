@@ -76,7 +76,6 @@
     function initTable(table) {
         if (!table || table.__skillpressSupplierActivityTableInitialized) return;
         table.__skillpressSupplierActivityTableInitialized = true;
-        // deprecated alias, removed in v0.3
         table.setAttribute('data-supplier-activity-table-init', '1');
 
         table.querySelectorAll('[data-supplier-activity-table-row]').forEach(function (row) {

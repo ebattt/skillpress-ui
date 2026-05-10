@@ -137,8 +137,6 @@
 
         container.addEventListener('click', onClick);
         container.__skillpressAccordionInitialized = true;
-        // deprecated alias, removed in v0.3
-        container.__skillpressAccordionInit = true;
 
         getSections(container).forEach(function(section) {
             syncSection(section, section.classList.contains('sp-accordion__section--expanded'), false);

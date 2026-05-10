@@ -21,8 +21,9 @@ scaffold/reference, non come componenti libreria.
   `data-cart-product-card-toggle`, etc.
 - Custom events normalizzati a `sp:{component}:{action}` (29 eventi pubblici).
   Esempi: `sp:accordion:open`, `sp:orders-table:row-toggle`,
-  `sp:toggle-switch:change`. Per la transizione gli alias legacy senza
-  prefisso `sp:` sono **deprecati e rimossi in v0.3**.
+  `sp:toggle-switch:change`. Gli alias legacy pre-beta con trattino
+  (`sp:file-upload-box-open`) o senza formato `sp:{component}:{action}`
+  (`toggle-switch:change`) sono rimossi.
 - Classi legacy `cz-*`, `dash-*` (eccetto `dashboard-*`), `td-*` rimosse o
   rinominate. La cella mobile tabella usa ora
   `.orders-table__cell--mobile-chevron` e relativi elementi BEM.

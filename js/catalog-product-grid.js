@@ -22,12 +22,6 @@
         target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
     }
 
-    function emitWithLegacyAlias(target, normalized, legacy, detail) {
-        dispatch(target, normalized, detail);
-        // deprecated alias, removed in v0.3
-        target.dispatchEvent(new CustomEvent(legacy, { bubbles: true, detail: detail }));
-    }
-
     function toArray(value) {
         return Array.prototype.slice.call(value || []);
     }
@@ -100,7 +94,6 @@
         };
 
         root.__skillpressCatalogProductGridInitialized = true;
-        // deprecated alias, removed in v0.3
         root.setAttribute('data-catalog-product-grid-init', '1');
         refresh(state);
 
@@ -108,7 +101,7 @@
             state.expanded = !state.expanded;
             state.visibleCount = state.expanded ? state.cards.length : state.collapsedCount;
             sync(state);
-            emitWithLegacyAlias(root, 'sp:catalog-product-grid:toggle', 'sp:catalog-product-grid-toggle', {
+            dispatch(root, 'sp:catalog-product-grid:toggle', {
                 expanded: state.expanded,
                 visibleCount: state.visibleCount
             });

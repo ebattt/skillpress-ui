@@ -7,7 +7,7 @@ sources:
   demo_html: dashboard/index.html#L421-L423
   demo_js: dashboard/js/order-detail.js#L374-L470
   demo_css: dashboard/css/components/_order-detail.css#L676-L887
-status: local-link-dev
+status: beta-contract
 package_path: components/order-payment-action-box.css
 ---
 

@@ -7,7 +7,7 @@ sources:
   catalog_css: elements-ui/css/components/_configurator-patterns.css
   catalog_js: elements-ui/js/components-feedback-status.js
   demo: product-page-integration/js/sections/section-6.js
-status: local-unpublished
+status: beta-contract
 package_path: primitives/validation-indicator.css
 ---
 

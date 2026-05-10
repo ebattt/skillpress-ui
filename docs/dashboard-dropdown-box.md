@@ -6,7 +6,7 @@ strategy: css-js
 sources:
   demo_html: dashboard/index.html#view-order-detail
   demo_css: dashboard/css/components/_cards.css
-status: local-link-dev-dashboard-2026-05-05
+status: beta-contract
 package_path: components/dashboard-dropdown-box.css
 js_path: js/dashboard-dropdown-box.js
 ---
@@ -86,8 +86,8 @@ Eventi pubblici:
 
 | Evento | Note |
 |---|---|
-| `sp:dashboard-dropdown-box-open` | emesso su root |
-| `sp:dashboard-dropdown-box-close` | emesso su root |
+| `sp:dashboard-dropdown-box:open` | emesso su root |
+| `sp:dashboard-dropdown-box:close` | emesso su root |
 
 ## Backend owns
 

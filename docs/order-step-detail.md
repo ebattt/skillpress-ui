@@ -96,7 +96,7 @@ window.SkillpressUI.OrderStepDetail.init(root);
 - layout, spacing, responsive e stati visuali;
 - icone chrome via CSS;
 - show/hide pannelli con `hidden` e `aria-hidden`;
-- evento `sp:order-step-detail-change`.
+- evento `sp:order-step-detail:change`.
 
 ## Demo-only
 

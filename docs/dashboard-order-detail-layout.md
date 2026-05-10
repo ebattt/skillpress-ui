@@ -6,7 +6,7 @@ strategy: css-only
 sources:
   demo_html: dashboard/index.html#L409-L477
   demo_css: dashboard/css/components/_order-detail.css#L1542-L1609
-status: local-link-dev
+status: beta-contract
 package_path: components/dashboard-order-detail-layout.css
 ---
 
