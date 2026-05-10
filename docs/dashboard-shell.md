@@ -108,6 +108,14 @@ Usare `data-dashboard-shell-navigate-disabled-mobile` su trigger che devono
 navigare su desktop ma delegare un altro behavior su mobile, ad esempio una
 riga `OrdersTable` che su mobile espande i dettagli riga.
 
+## Custom properties
+
+- `--dashboard-shell-max-width`: larghezza massima shell. Fallback: `1600px`.
+- `--dashboard-shell-content-padding`: padding orizzontale/verticale del layout.
+  Fallback: `1.5rem`.
+- `--dashboard-shell-sidebar-width`: larghezza sidebar desktop. Fallback:
+  `190px`.
+
 ## Icone nav
 
 Le icone della navigazione sono classi pubbliche library-owned, renderizzate via

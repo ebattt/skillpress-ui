@@ -113,11 +113,15 @@ sopra e sotto la tabella.
 
 `SkillpressUI.OrdersTable.init()`:
 
-- aggiunge `.th-mobile-chevron` e `.orders-table__cell--mobile-chevron`;
+- aggiunge `.orders-table__cell--mobile-chevron`;
 - marca le righe con `[data-orders-table-row]`;
 - genera una riga `.tr-mobile-details[hidden][data-orders-table-detail]`;
 - sincronizza `aria-expanded` e `hidden`;
 - non aggiunge CTA di routing o dettaglio ordine.
+
+## Token
+
+- `--color-focus-ring`: colore outline keyboard focus delle righe interattive.
 
 ## Fuori Scope
 

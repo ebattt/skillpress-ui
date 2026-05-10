@@ -8,9 +8,9 @@
 .dashboard-shell {
     display: flex;
     min-height: 100vh;
-    max-width: var(--dash-max-width, 1600px);
+    max-width: var(--dashboard-shell-max-width, 1600px);
     margin: 0 auto;
-    padding: 1rem var(--dash-content-padding, 1.5rem) 0;
+    padding: 1rem var(--dashboard-shell-content-padding, 1.5rem) 0;
     color: var(--color-text);
     background: var(--color-bg-white);
 }
@@ -19,12 +19,12 @@
     position: sticky;
     top: 1rem;
     z-index: 30;
-    flex: 0 0 var(--dash-sidebar-width, 190px);
+    flex: 0 0 var(--dashboard-shell-sidebar-width, 190px);
     align-self: flex-start;
-    width: var(--dash-sidebar-width, 190px);
+    width: var(--dashboard-shell-sidebar-width, 190px);
     max-height: calc(100vh - 2rem);
     overflow-y: auto;
-    padding: var(--dash-content-padding, 1.5rem) 0;
+    padding: var(--dashboard-shell-content-padding, 1.5rem) 0;
     background: var(--color-bg-white);
     border-right: 0;
 }
@@ -117,7 +117,7 @@
 .dashboard-shell__main {
     flex: 1 1 auto;
     min-width: 0;
-    padding: var(--dash-content-padding, 1.5rem) 0 2rem 2rem;
+    padding: var(--dashboard-shell-content-padding, 1.5rem) 0 2rem 2rem;
     overflow-x: hidden;
 }
 

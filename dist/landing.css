@@ -92,6 +92,7 @@
     --selection-active-color: var(--color-bg-white);
     --selection-highlight-bg: #FFF4E6;      /* Sfondo formato/opzione selezionata */
     --selection-highlight-border: var(--color-primary);
+    --color-focus-ring: var(--color-border-focus); /* Focus ring cross-component */
 
     /* === COLORI PREZZO === */
     /* Tabella prezzi e indicatori economici */
@@ -1569,7 +1570,7 @@ body {
     overflow: hidden;
     color: inherit;
     text-decoration: none;
-    background: var(--tile-bg, var(--color-tile-bg));
+    background: var(--catalog-card-bg, var(--color-tile-bg));
     border-radius: 0.75rem;
     cursor: pointer;
     transition: transform var(--transition-normal, 200ms ease), box-shadow var(--transition-normal, 200ms ease);

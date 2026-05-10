@@ -48,6 +48,11 @@ Griglia catalogo prodotti per landing page: titolo sezione, card prodotto titolo
 - `aria-expanded="true|false"` su `[data-catalog-product-grid-toggle]`.
 - `hidden` su `.catalog-products-toggle` quando non ci sono card extra.
 
+## Custom properties
+
+- `--catalog-card-bg`: override opzionale dello sfondo delle card catalogo.
+  Fallback: `--color-tile-bg`.
+
 ## Backend owns
 
 - Numero e ordine prodotti.

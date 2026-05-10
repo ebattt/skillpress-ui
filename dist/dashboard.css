@@ -92,6 +92,7 @@
     --selection-active-color: var(--color-bg-white);
     --selection-highlight-bg: #FFF4E6;      /* Sfondo formato/opzione selezionata */
     --selection-highlight-border: var(--color-primary);
+    --color-focus-ring: var(--color-border-focus); /* Focus ring cross-component */
 
     /* === COLORI PREZZO === */
     /* Tabella prezzi e indicatori economici */
@@ -2436,9 +2437,9 @@ label.sp-radio-option--disabled input[type="radio"] {
 .dashboard-shell {
     display: flex;
     min-height: 100vh;
-    max-width: var(--dash-max-width, 1600px);
+    max-width: var(--dashboard-shell-max-width, 1600px);
     margin: 0 auto;
-    padding: 1rem var(--dash-content-padding, 1.5rem) 0;
+    padding: 1rem var(--dashboard-shell-content-padding, 1.5rem) 0;
     color: var(--color-text);
     background: var(--color-bg-white);
 }
@@ -2447,12 +2448,12 @@ label.sp-radio-option--disabled input[type="radio"] {
     position: sticky;
     top: 1rem;
     z-index: 30;
-    flex: 0 0 var(--dash-sidebar-width, 190px);
+    flex: 0 0 var(--dashboard-shell-sidebar-width, 190px);
     align-self: flex-start;
-    width: var(--dash-sidebar-width, 190px);
+    width: var(--dashboard-shell-sidebar-width, 190px);
     max-height: calc(100vh - 2rem);
     overflow-y: auto;
-    padding: var(--dash-content-padding, 1.5rem) 0;
+    padding: var(--dashboard-shell-content-padding, 1.5rem) 0;
     background: var(--color-bg-white);
     border-right: 0;
 }
@@ -2545,7 +2546,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 .dashboard-shell__main {
     flex: 1 1 auto;
     min-width: 0;
-    padding: var(--dash-content-padding, 1.5rem) 0 2rem 2rem;
+    padding: var(--dashboard-shell-content-padding, 1.5rem) 0 2rem 2rem;
     overflow-x: hidden;
 }
 
@@ -3026,7 +3027,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 
 /* F015: outline visibile quando la row e' keyboard-focused (tabindex=0). */
 .orders-table tbody tr[data-orders-table-row]:focus-visible {
-    outline: 2px solid var(--color-focus-ring, var(--color-border-focus, var(--color-info-dark)));
+    outline: 2px solid var(--color-focus-ring);
     outline-offset: -2px;
 }
 

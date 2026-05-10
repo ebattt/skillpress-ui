@@ -251,7 +251,7 @@
 
 /* F015: outline visibile quando la row e' keyboard-focused (tabindex=0). */
 .orders-table tbody tr[data-orders-table-row]:focus-visible {
-    outline: 2px solid var(--color-focus-ring, var(--color-border-focus, var(--color-info-dark)));
+    outline: 2px solid var(--color-focus-ring);
     outline-offset: -2px;
 }
 

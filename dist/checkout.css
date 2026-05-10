@@ -92,6 +92,7 @@
     --selection-active-color: var(--color-bg-white);
     --selection-highlight-bg: #FFF4E6;      /* Sfondo formato/opzione selezionata */
     --selection-highlight-border: var(--color-primary);
+    --color-focus-ring: var(--color-border-focus); /* Focus ring cross-component */
 
     /* === COLORI PREZZO === */
     /* Tabella prezzi e indicatori economici */
