@@ -27,7 +27,9 @@ Accordion
         │   ├── .sp-accordion__header-left
         │   │   ├── .sp-accordion__badge       (opzionale, numero step)
         │   │   ├── .sp-accordion__header-icon (opzionale, set chiuso: cart/shipping/payment)
-        │   │   └── .sp-accordion__title
+        │   │   └── .sp-accordion__header-text (opzionale, quando serve subtitle)
+        │   │       ├── .sp-accordion__title
+        │   │       └── .sp-accordion__subtitle
         │   └── .sp-accordion__icon         (icona +/- decorativa, aria-hidden)
         └── .sp-accordion__content
             └── .sp-accordion__inner        (slot consumer)
@@ -62,10 +64,25 @@ Markup con icona chrome library-owned, usato per la shell checkout:
 <button class="sp-accordion__header" type="button" data-accordion-trigger aria-expanded="false">
   <span class="sp-accordion__header-left">
     <span class="sp-accordion__header-icon sp-accordion__header-icon--cart" aria-hidden="true"></span>
-    <span class="sp-accordion__title">Carrello</span>
+    <span class="sp-accordion__header-text">
+      <span class="sp-accordion__title">Carrello</span>
+      <span class="sp-accordion__subtitle">Libri brossura fresata, Libro con copertina rigida</span>
+    </span>
   </span>
   <span class="sp-accordion__icon" aria-hidden="true"></span>
 </button>
+```
+
+Markup con sottotitolo senza icona:
+
+```html
+<span class="sp-accordion__header-left">
+  <span class="sp-accordion__badge">2</span>
+  <span class="sp-accordion__header-text">
+    <span class="sp-accordion__title">Spedizione</span>
+    <span class="sp-accordion__subtitle">Inserisci indirizzo di consegna</span>
+  </span>
+</span>
 ```
 
 ## API Reference
@@ -79,7 +96,9 @@ Markup con icona chrome library-owned, usato per la shell checkout:
 | `.sp-accordion__header-left` | wrapper flex per badge + title | yes | — |
 | `.sp-accordion__badge` | badge numerato opzionale | no | — |
 | `.sp-accordion__header-icon` | icona chrome opzionale, disegnata dalla libreria | no | `--cart`, `--shipping`, `--payment` |
+| `.sp-accordion__header-text` | wrapper opzionale per title + subtitle | no | — |
 | `.sp-accordion__title` | titolo della sezione | yes | — |
+| `.sp-accordion__subtitle` | sottotitolo opzionale di stato/azione, una riga con ellipsis | no | — |
 | `.sp-accordion__icon` | icona +/- decorativa (CSS pseudo-elements) | yes | — |
 | `.sp-accordion__content` | wrapper collassato (max-height/opacity) | yes | — |
 | `.sp-accordion__inner` | slot consumer con padding e border-top | yes | — |
@@ -158,6 +177,7 @@ Namespace globale: `window.SkillpressUI.Accordion`.
 - `MultipleSections` → `primitives-accordion--multiple-sections`
 - `WithoutBadge` → `primitives-accordion--without-badge`
 - `SurfaceWhite` → `primitives-accordion--surface-white`
+- `WithSubtitle` → `primitives-accordion--with-subtitle`
 - `PopulatedContentSlot` → `primitives-accordion--populated-content-slot`
 
 ## Varianti Surface
@@ -187,6 +207,10 @@ visiva di sezione aperta, header e contenuto.
 - decide il contenuto degli slot `header` e `content`.
 - decide se una sezione parte `collapsed` o `expanded` (classe `accordion__section--expanded` + `aria-expanded` coerenti).
 - decide se mostrare o omettere il badge numerato.
+- decide se mostrare o omettere `.sp-accordion__subtitle` e il testo corrente.
+  Nel checkout il sottotitolo deve riassumere lo stato, non duplicare istruzioni
+  lunghe: esempi `Inserisci indirizzo di consegna`,
+  `2 destinazioni · 600 copie totali`, `Mario Rossi · Carta di credito`.
 - puo' scegliere un'icona header solo dal set chiuso documentato:
   `.sp-accordion__header-icon--cart`, `.sp-accordion__header-icon--shipping`,
   `.sp-accordion__header-icon--payment`.
@@ -206,7 +230,9 @@ visiva di sezione aperta, header e contenuto.
 - `.sp-accordion__header-icon--cart`
 - `.sp-accordion__header-icon--shipping`
 - `.sp-accordion__header-icon--payment`
+- `.sp-accordion__header-text`
 - `.sp-accordion__title`
+- `.sp-accordion__subtitle`
 - `.sp-accordion__icon`
 - `.sp-accordion__content`
 - `.sp-accordion__inner`
@@ -225,7 +251,7 @@ visiva di sezione aperta, header e contenuto.
 
 ## Backend owns
 
-- Numero sezioni, titoli, contenuti slot e stato iniziale aperto/chiuso.
+- Numero sezioni, titoli, sottotitoli, contenuti slot e stato iniziale aperto/chiuso.
 - Scelta di badge e icona header tra quelle documentate.
 - Logica business tra sezioni, persistenza e dipendenze form.
 
@@ -234,6 +260,7 @@ visiva di sezione aperta, header e contenuto.
 - Toggle locale single-open, sync `aria-expanded`, altezza pannello e eventi
   `sp:accordion:open|close`.
 - Icone chrome CSS `cart|shipping|payment`, spacing, superfici e transizioni.
+- Tipografia e truncation del sottotitolo.
 
 ## Demo-only
 

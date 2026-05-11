@@ -25,6 +25,7 @@
         'CatalogInterstitial',
         'CatalogProductGrid',
         'CatalogStage',
+        'ConfirmDialog',
         'DashboardDropdownBox',
         'DashboardSettingsForm',
         'DashboardShell',

@@ -71,6 +71,13 @@
     min-width: 0;
 }
 
+.sp-accordion__header-text {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
 .sp-accordion__badge {
     width: var(--section-number-size);
     height: var(--section-number-size);
@@ -123,6 +130,18 @@
     font-weight: var(--font-weight-semibold);
     font-size: 0.9375rem;
     color: var(--color-text);
+    line-height: 1.2;
+}
+
+.sp-accordion__subtitle {
+    min-width: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+    font-weight: var(--font-weight-medium);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .sp-accordion__icon {

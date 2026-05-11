@@ -58,6 +58,7 @@ window.SkillpressUI.OrderStepDetail.init(root);
 - `.product-file-box--uploaded`
 - `.product-file-box--error`
 - `.product-file-box--locked`
+- `.product-file-box--payment-locked`
 - `.product-file-box--selected`
 - `.product-file-box--readonly`
 - `.product-file-box--annotated`
@@ -69,6 +70,17 @@ window.SkillpressUI.OrderStepDetail.init(root);
 - `.product-file-box__state--success`
 - `.product-file-box__state--warning`
 - `.product-file-box__state--muted`
+- `.product-file-status-badge`
+- `.product-file-status-badge--confirmed`
+- `.product-file-status-badge--replaced`
+- `.product-file-status-badge--tochange`
+- `.product-file-status-badge--neutral`
+- `.product-file-actions`
+- `.product-file-actions--stack`
+- `.product-file-action-btn`
+- `.product-file-action-btn--confirm`
+- `.product-file-action-btn--change`
+- `.product-file-action-btn--upload`
 
 ## Data hooks
 
@@ -81,9 +93,27 @@ window.SkillpressUI.OrderStepDetail.init(root);
 ## Modifier / stati
 
 - Banner: `.step-status-banner--info|neutral|success|warning|error|locked`
-- File box: `.product-file-box--empty|ready|uploaded|error|locked|selected|readonly`
-- Copia zero: `.product-file-box--annotated|--confirmed|--replaced|--tochange|--removed|--neutral`
+- File box: `.product-file-box--empty|ready|uploaded|error|locked|payment-locked|selected|readonly`
+- Copia zero:
+  - file da valutare: `.product-file-box--annotated.product-file-box--neutral` con badge `.product-file-status-badge--neutral` e azioni;
+  - file confermato dal cliente: `.product-file-box--locked`;
+  - file definitivo approvato: `.product-file-box--annotated.product-file-box--confirmed`;
+  - file da sostituire: `.product-file-box--annotated.product-file-box--tochange`;
+  - sostitutivo caricato/in verifica: usare `.product-file-box--ready` e `.product-file-box__state--warning`, come per i file caricati in attesa di verifica.
 - File state: `.product-file-box__state--success|warning|muted`
+
+## Stato file consigliato
+
+| Stato applicativo | Classi principali | Testo stato |
+|---|---|---|
+| file mancante caricabile | `.product-file-box--empty` | `Carica` |
+| file bloccato da contabile | `.product-file-box--payment-locked` | nessuna azione |
+| file caricato, in verifica | `.product-file-box--ready` | `Da verificare` |
+| file approvato | `.product-file-box--uploaded` | `Approvato` |
+| file non conforme | `.product-file-box--error` | `Ricarica` |
+| copia zero da decidere | `.product-file-box--annotated.product-file-box--neutral` | `Conferma file` / `Sostituisci` |
+| copia zero sostituita, in verifica | `.product-file-box--ready` | `Da verificare` |
+| copia zero confermata | `.product-file-box--locked` | nessuna azione |
 
 ## Backend owns
 

@@ -17,6 +17,7 @@ const createContent = (label = 'Contenuto della sezione') => `
 const createSection = ({
     number = '1',
     title,
+    subtitle = '',
     expanded = false,
     withBadge = true,
     icon = '',
@@ -27,7 +28,12 @@ const createSection = ({
             <span class="sp-accordion__header-left">
                 ${withBadge ? `<span class="sp-accordion__badge">${number}</span>` : ''}
                 ${icon ? `<span class="sp-accordion__header-icon sp-accordion__header-icon--${icon}" aria-hidden="true"></span>` : ''}
-                <span class="sp-accordion__title">${title}</span>
+                ${subtitle ? `
+                    <span class="sp-accordion__header-text">
+                        <span class="sp-accordion__title">${title}</span>
+                        <span class="sp-accordion__subtitle">${subtitle}</span>
+                    </span>
+                ` : `<span class="sp-accordion__title">${title}</span>`}
             </span>
             <span class="sp-accordion__icon" aria-hidden="true"></span>
         </button>
@@ -142,6 +148,7 @@ export const WithHeaderIcons = {
     render: () => renderAccordion([
         createSection({
             title: 'Carrello',
+            subtitle: 'Libri brossura fresata, Libro con copertina rigida',
             icon: 'cart',
             withBadge: false,
             expanded: true,
@@ -149,17 +156,46 @@ export const WithHeaderIcons = {
         }),
         createSection({
             title: 'Spedizione',
+            subtitle: 'Inserisci indirizzo di consegna',
             icon: 'shipping',
             withBadge: false,
             content: createContent('Slot spedizione.')
         }),
         createSection({
             title: 'Pagamento',
+            subtitle: 'Dati fatturazione e metodo pagamento',
             icon: 'payment',
             withBadge: false,
             content: createContent('Slot pagamento.')
         })
     ])
+};
+
+export const WithSubtitle = {
+    render: () => renderAccordion([
+        createSection({
+            title: 'Spedizione',
+            subtitle: '2 destinazioni · 600 copie totali',
+            icon: 'shipping',
+            withBadge: false,
+            expanded: true,
+            content: createContent('Il sottotitolo e contenuto consumer: puo descrivere stato, selezioni o azione mancante.')
+        }),
+        createSection({
+            title: 'Pagamento',
+            subtitle: 'Mario Rossi · Carta di credito',
+            icon: 'payment',
+            withBadge: false,
+            content: createContent('Seconda sezione con sottotitolo dinamico.')
+        })
+    ], 'sp-accordion sp-accordion--surface-white'),
+    parameters: {
+        docs: {
+            description: {
+                story: 'Header con wrapper testuale opzionale. Utile nel checkout per mostrare stati sintetici aggiornati dal consumer o dal backend.'
+            }
+        }
+    }
 };
 
 export const SurfaceWhite = {

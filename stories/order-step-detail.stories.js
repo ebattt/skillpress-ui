@@ -58,6 +58,14 @@ const renderFileGroup = () => `
                         </span>
                         <span class="product-file-box__action-label">Carica</span>
                     </button>
+                    <button class="product-file-box product-file-box--ready" type="button">
+                        <span class="product-file-box__icon product-file-box__icon--ready product-file-box__icon--file" aria-hidden="true"></span>
+                        <span class="product-file-box__body">
+                            <span class="product-file-box__title">Retro</span>
+                            <span class="product-file-box__meta">copertina_retro_sostituita.pdf</span>
+                        </span>
+                        <span class="product-file-box__state product-file-box__state--warning">Da verificare</span>
+                    </button>
                 </div>
             </div>
             <div class="product-file-group">
@@ -73,6 +81,18 @@ const renderFileGroup = () => `
                         </span>
                         <span class="product-file-box__action-label product-file-box__action-label--error">Ricarica</span>
                     </button>
+                    <div class="product-file-box product-file-box--annotated product-file-box--neutral">
+                        <span class="product-file-box__icon product-file-box__icon--neutral product-file-box__icon--draft" aria-hidden="true"></span>
+                        <span class="product-file-box__body">
+                            <span class="product-file-box__title">Copia zero</span>
+                            <span class="product-file-box__meta">copia_zero.pdf</span>
+                        </span>
+                        <span class="product-file-status-badge product-file-status-badge--neutral">Da verificare</span>
+                        <div class="product-file-actions">
+                            <button class="product-file-action-btn product-file-action-btn--confirm" type="button">Conferma file</button>
+                            <button class="product-file-action-btn product-file-action-btn--change" type="button">Sostituisci</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -2234,6 +2234,13 @@ label.sp-radio-option--disabled input[type="radio"] {
     min-width: 0;
 }
 
+.sp-accordion__header-text {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
 .sp-accordion__badge {
     width: var(--section-number-size);
     height: var(--section-number-size);
@@ -2286,6 +2293,18 @@ label.sp-radio-option--disabled input[type="radio"] {
     font-weight: var(--font-weight-semibold);
     font-size: 0.9375rem;
     color: var(--color-text);
+    line-height: 1.2;
+}
+
+.sp-accordion__subtitle {
+    min-width: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+    font-weight: var(--font-weight-medium);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .sp-accordion__icon {
@@ -3159,6 +3178,13 @@ label.sp-radio-option--disabled input[type="radio"] {
 
 .method-choice-card--selected,
 .method-choice-card[aria-pressed="true"] {
+    background: var(--selection-highlight-bg);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.method-choice-card--selected:hover,
+.method-choice-card[aria-pressed="true"]:hover {
     background: var(--selection-highlight-bg);
     border-color: var(--color-primary);
     box-shadow: 0 0 0 1px var(--color-primary);

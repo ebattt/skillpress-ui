@@ -84,6 +84,13 @@
     box-shadow: 0 0 0 1px var(--color-primary);
 }
 
+.method-choice-card--selected:hover,
+.method-choice-card[aria-pressed="true"]:hover {
+    background: var(--selection-highlight-bg);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+}
+
 .method-choice-card__icon {
     width: 1.125rem;
     height: 1.125rem;
