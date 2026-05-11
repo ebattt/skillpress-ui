@@ -7,3 +7,5 @@ scripts/visual-diff-out/
 *.swp
 *.swo
 *~
+
+scripts/inventory-out/
