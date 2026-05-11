@@ -19,11 +19,12 @@ package.
 ## Installazione Backend
 
 ```bash
-npm install @ebattt/skillpress-ui
+npm install @ebattt/skillpress-ui@beta
 ```
 
-Usare una versione pin nel consumer/app backend. Evitare `file:`, `link:`,
-path assoluti locali e modifiche a `node_modules`.
+La release pubblicata corrente vive sul dist-tag `beta`. Usare una versione pin
+nel consumer/app backend. Evitare `file:`, `link:`, path assoluti locali e
+modifiche a `node_modules`.
 
 ## CSS Da Caricare
 

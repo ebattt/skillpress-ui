@@ -4,7 +4,7 @@ const renderBreadcrumb = (items = []) => {
     const root = document.createElement('div');
     const list = items.map((item, index) => {
         const isCurrent = item.current === true;
-        const itemClass = `breadcrumb__item${isCurrent ? ' breadcrumb__item--current' : ''}`;
+        const itemClass = `sp-breadcrumb__item${isCurrent ? ' sp-breadcrumb__item--current' : ''}`;
         const inner = isCurrent
             ? `<span itemprop="name">${item.label}</span>`
             : `<a class="sp-breadcrumb__link" itemprop="item" href="${item.href || '#'}"><span itemprop="name">${item.label}</span></a>`;

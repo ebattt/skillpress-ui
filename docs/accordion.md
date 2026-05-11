@@ -29,7 +29,7 @@ Accordion
             └── .sp-accordion__inner        (slot consumer)
 ```
 
-Default state: `collapsed`. Stato `expanded` aggiunge la classe `accordion__section--expanded` su `.sp-accordion__section` e flippa `aria-expanded="true"` sul trigger.
+Default state: `collapsed`. Stato `expanded` aggiunge la classe `.sp-accordion__section--expanded` su `.sp-accordion__section` e flippa `aria-expanded="true"` sul trigger.
 
 ## Markup contract
 
@@ -117,7 +117,7 @@ Attributi:
 | `data-accordion-section` | `.sp-accordion__section` | Sotto-ruolo: marca le sezioni gestite dal toggle. Stabile (parte del contratto markup). | si (markup) |
 | `data-accordion-trigger` | `.sp-accordion__header` | Sotto-ruolo: marca il pulsante che apre/chiude la sezione. | si (markup) |
 
-Solo `[data-accordion]` e' un hook funzionale di init. `[data-accordion-section]` e `[data-accordion-trigger]` sono sotto-ruoli interni del contratto markup: vanno scritti come da template, ma non vengono interrogati esternamente. La classe modifier `accordion__section--expanded` viene gestita dal JS (toggle automatico) — il backend la imposta solo per dichiarare lo stato iniziale.
+Solo `[data-accordion]` e' un hook funzionale di init. `[data-accordion-section]` e `[data-accordion-trigger]` sono sotto-ruoli interni del contratto markup: vanno scritti come da template, ma non vengono interrogati esternamente. La classe modifier `.sp-accordion__section--expanded` viene gestita dal JS (toggle automatico) — il backend la imposta solo per dichiarare lo stato iniziale.
 
 ## Mappatura nomi (demo product-page -> libreria)
 
@@ -156,7 +156,7 @@ Cosa NON fa:
   - non persiste lo stato aperto fra refresh o navigazioni
 ```
 
-Comportamento: click su `[data-accordion-trigger]` apre o chiude la sezione associata. Quando una sezione si apre, il JS apre subito la sezione cliccata e chiude le altre sezioni dello stesso container al frame successivo (single-open), evitando un movimento brusco close-then-open. Durante la transizione il JS misura l'altezza reale di `.sp-accordion__content`; a fine apertura rimuove il vincolo inline (`max-height: none`) per non tagliare contenuti dinamici. Il JS aggiorna `aria-expanded` e la classe `accordion__section--expanded`; l'icona `+/-` reagisce via CSS.
+Comportamento: click su `[data-accordion-trigger]` apre o chiude la sezione associata. Quando una sezione si apre, il JS apre subito la sezione cliccata e chiude le altre sezioni dello stesso container al frame successivo (single-open), evitando un movimento brusco close-then-open. Durante la transizione il JS misura l'altezza reale di `.sp-accordion__content`; a fine apertura rimuove il vincolo inline (`max-height: none`) per non tagliare contenuti dinamici. Il JS aggiorna `aria-expanded` e la classe `.sp-accordion__section--expanded`; l'icona `+/-` reagisce via CSS.
 
 Namespace globale: `window.SkillpressUI.Accordion`.
 
@@ -195,7 +195,7 @@ visiva di sezione aperta, header e contenuto.
 
 - decide quali sezioni rendere visibili.
 - decide il contenuto degli slot `header` e `content`.
-- decide se una sezione parte `collapsed` o `expanded` (classe `accordion__section--expanded` + `aria-expanded` coerenti).
+- decide se una sezione parte `collapsed` o `expanded` (classe `.sp-accordion__section--expanded` + `aria-expanded` coerenti).
 - decide se mostrare o omettere il badge numerato.
 - decide se mostrare o omettere `.sp-accordion__subtitle` e il testo corrente.
   Nel checkout il sottotitolo deve riassumere lo stato, non duplicare istruzioni
