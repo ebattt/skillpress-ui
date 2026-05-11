@@ -14,8 +14,6 @@ package_path: primitives/button.css
 
 Primitiva di comandi cliccabili: dimensioni, colori, stati hover/focus/disabled, varianti visive e allineamento testo + icona opzionale. Nessun behavior JS della libreria; il consumer gestisce click, submit, navigazione e loading state.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Modifier `is-disabled` standalone -> `button--disabled` (BEM strict). Nessun hook `data-*` (componente CSS-only).
-
 ## Anatomy
 
 ```text

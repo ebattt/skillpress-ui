@@ -3,7 +3,7 @@ title: ConfirmDialog
 description: Dialog modale di conferma per azioni distruttive o cambi di stato con perdita di impostazioni.
 layer: primitives
 strategy: css-js
-status: beta
+status: public-contract
 package_path: primitives/sp-confirm-dialog.css
 ---
 

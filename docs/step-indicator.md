@@ -15,8 +15,6 @@ package_path: components/step-indicator.css
 
 Tracker orizzontale di step con badge numerati e linea di connessione orizzontale visibile da desktop. Lo stato di avanzamento e' controllato dal CMS spostando i modifier `--active` / `--inactive` / `--completed` sui sub-element. Nessun behavior JS della libreria: il rendering riflette quel che il backend imposta in HTML.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Refactor large: root `.steps-section` -> `.step-indicator`; sub-element `.step-card-item/.step-badge/.step-title/.step-status` -> `.step-indicator__item/__badge/__title/__status`. Nessun hook `data-*` (componente CSS-only). Utility legacy `.step-card`, `.step-card-content`, `.step-info`, `.steps-grid`, `.steps-line` mantenute (helper di layout interno).
-
 ## Anatomy
 
 ```text

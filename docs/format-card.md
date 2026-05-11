@@ -15,8 +15,6 @@ package_path: components/format-card.css
 
 Selection card per scegliere il formato del prodotto. Card a 1 colonna su mobile (sotto 480px) e 4 colonne da 480px in su, dentro un container `.format-cards`. CSS-only: lo stato selezionato e' applicato dal CMS aggiungendo `.format-card--selected` alla card scelta. Coerente con le altre primitive del configuratore (mode-switcher, option-buttons, orientation-toggle): la libreria fornisce solo markup + look, il toggle e' consumer-side.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element di `.format-card` rinominati con doppio underscore (`format-card-preview` -> `format-card__preview`, ecc.). Nessun hook `data-*` (componente CSS-only, toggle consumer-side).
-
 Implementazione minima della famiglia SelectionCard: solo `.format-card*`. Le varianti `paper-card`, `visual-card`, `effect-card`, `angolo-card` restano fuori scope finche' non vengono richieste sulla pagina demo.
 
 ## Anatomy

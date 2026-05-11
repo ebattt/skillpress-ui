@@ -16,8 +16,6 @@ js_path: js/toggle-switch.js
 
 Primitiva form per switch binario on/off. Track + thumb CSS-only, behavior JS minimo che flippa la classe `toggle-switch--checked` e l'attributo `aria-checked` ed emette `toggle-switch:change`. Lo stato iniziale (on/off, disabled) e' impostato dal CMS nel markup; la libreria non gestisce persistenza ne' logica di business.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Modifier `is-checked`/`active` standalone -> `toggle-switch--checked` (BEM strict). Hook entry semplificato: `[data-skillpress-toggle-switch]` -> `[data-toggle-switch]`.
-
 ## Anatomy
 
 ```text

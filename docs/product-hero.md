@@ -14,8 +14,6 @@ package_path: components/product-hero.css
 
 Section hero del prodotto: layout 2 colonne (35/65 da 1024px) che compone ImageGallery a sinistra e a destra titolo, Rating, descrizione e FeatureGrid. Strategia A: static snapshot — la libreria non implementa il cambio immagine, non calcola il rating e non emette eventi. I bottoni `prev`/`next` restano nel markup per visual parity.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element `hero-*` rinominati con prefisso `product-hero__*`. Le foglie composte (ImageGallery, Rating, FeatureBox) hanno propria mappatura nei rispettivi docs. Nessun hook `data-*` (componente CSS-only).
-
 ## Strategia JS demo
 
 Strategia A — static snapshot. Il behavior galleria vive in `product-page-integration/js/page-init.js#L54-L86` (lato consumer). La libreria fornisce solo CSS di layout. Per l'eventuale modulo `js/product-hero.js` (Strategia C) sara' valutata una futura iterazione.

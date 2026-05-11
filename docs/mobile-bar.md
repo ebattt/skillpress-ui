@@ -2,8 +2,6 @@
 
 Barra fixed in basso visibile su mobile/tablet (`<=1023px`). Mostra prezzo totale + CTA carrello in compact + sezione espandibile con dettagli + toggle riepilogo configurazione. Componente CSS-only senza behavior libreria.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element `mobile-bar-*` rinominati con prefisso `mobile-total-bar__*`; modifier `expanded`/`active`/`visible` standalone -> `mobile-total-bar--expanded`, `mobile-config-toggle--active`, `mobile-config-content--visible` (BEM strict). Nessun hook `data-*` (componente CSS-only).
-
 - Fonti:
   - `elements-ui/css/components/_layout-patterns.css#L490-L758` (MOBILE BAR section: container fixed, handle, compact, expanded, details, config-toggle, config-content + responsive 374px / 640-1023px).
   - `elements-ui/css/components/_buttons.css#L58-L84` (`.mobile-total-bar__cart-btn` definito separatamente).

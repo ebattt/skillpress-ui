@@ -1,78 +1,113 @@
 # @ebattt/skillpress-ui
 
-Skillpress UI e la libreria UI interna per token, reset, utility e componenti riusabili del sistema Skillpress.
-Fornisce markup, classi, stati e behavior riusabili senza imporre modelli dati CMS.
+Libreria UI Skillpress per pagine renderizzate dal backend/CMS.
 
-Manrope e servito dal package. Material Symbols non e una dipendenza runtime globale: le icone funzionali dei componenti sono gestite dalla libreria con CSS/SVG dedicati.
+Il backend non deve ricostruire stili o behavior: genera markup HTML con le
+classi pubbliche e gli hook `data-*` documentati, poi carica CSS e JS dal
+package.
 
-## Stato
+## Cosa Contiene
 
-Versione corrente: `0.3.0-beta.3`.
+- `tokens/`, `base/`, `utilities/`: fondazioni CSS.
+- `primitives/`: primitive riusabili prefissate `sp-*`.
+- `components/`: componenti di pagina e dashboard.
+- `js/`: behavior progressivo per componenti interattivi.
+- `bundles/`: entrypoint CSS modulari con `@import`.
+- `dist/`: CSS flatten e `public-api.json`.
+- `stories/` e `docs/`: riferimenti tecnici per sviluppo e review.
 
-Perimetro attuale:
-- Manrope self-hosted nel package
-- token
-- reset/base
-- utility
-- primitive CSS/JS: Button, Badge, Card, Accordion, Breadcrumb, Rating,
-  ToggleSwitch, DownloadButtons, ModeSwitcher, OptionButtons,
-  OrientationToggle, FormPrimitives, FormControls, ValidationIndicator,
-  IvaBanner, InfoDropdown
-- componenti composti: FeatureBox, ImageGallery, ProductHero, StepIndicator,
-  FormatCard, Preview, MediaChoiceCard, PriceTable, SidebarTotals,
-  RelatedProducts, MobileTotalBar, runtime dashboard inclusi nella versione corrente
-  incluso `BillingFormCard`, runtime dashboard shell `DashboardShell`
-- bundle runtime production `bundles/product-page.css`, `bundles/checkout.css`,
-  `bundles/dashboard.css`, `bundles/landing.css`, `bundles/blog.css`;
-  `bundles/demo-minimal.css` resta disponibile per compatibilita' lab/demo
-- Storybook nel repository per visualizzazione e documentazione tecnica
+## Installazione Backend
 
-Fuori dal perimetro attuale:
-- product-card
-- ContentTabs / schede editoriali "Descrizione / Info tecniche"
-- demo ricche con contenuti applicativi
-
-## Backend/CMS contract
-
-La libreria non legge JSON direttamente. Il backend/CMS deve renderizzare HTML
-con classi pubbliche e hook `data-*` documentati.
-
-```text
-dati CMS -> presentation type -> markup skillpress-ui
+```bash
+npm install @ebattt/skillpress-ui
 ```
 
-Esempi:
+Usare una versione pin nel consumer/app backend. Evitare `file:`, `link:`,
+path assoluti locali e modifiche a `node_modules`.
 
-| Presentation type | Componente |
-|---|---|
-| `select` | `FormPrimitives` / `.sp-form-select` |
-| `choice-group` | `OptionButtons` |
-| `preview` | `Preview` |
-| `dependent-select` | `Preview` + `.sp-form-select` + `.sp-form-select`/`OptionButtons` |
-| `media-choice` | `MediaChoiceCard` |
-| `format-choice` | `FormatCard` + `OrientationToggle` |
-| `validation-indicator` | `ValidationIndicator` |
+## CSS Da Caricare
 
-Demo consumer utile per il team backend:
+Usare il bundle della pagina o area applicativa:
+
+```html
+<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/bundles/product-page.css">
+<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/bundles/checkout.css">
+<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/bundles/dashboard.css">
+<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/bundles/landing.css">
+<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/bundles/blog.css">
+```
+
+Se il backend preferisce un singolo CSS senza `@import`, usare `dist/`:
+
+```html
+<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/dist/product-page.css">
+```
+
+Non mischiare `bundles/<area>.css` e `dist/<area>.css` nella stessa pagina.
+
+## JS Da Caricare
+
+Per inizializzare tutti i componenti JS pubblici:
+
+```html
+<script src="/node_modules/@ebattt/skillpress-ui/js/index.js"></script>
+<script>
+  window.SkillpressUI?.init(document);
+</script>
+```
+
+Dopo render parziali, Ajax, HTMX o aggiornamenti DOM:
+
+```js
+window.SkillpressUI?.init(container);
+```
+
+Ogni init deve essere idempotente: il backend puo' richiamarlo dopo ogni
+render senza duplicare listener.
+
+## Contract Markup
+
+Il contract pubblico vive in:
 
 ```text
-Skillpress-frontend/consumer-libreria/demo-pages/backend-contract/
+dist/public-api.json
 ```
+
+Contiene:
+
+- classi CSS pubbliche;
+- attributi `data-*` letti dalla libreria;
+- eventi custom `sp:{component}:{action}`;
+- moduli disponibili in `window.SkillpressUI`.
+
+Le pagine backend devono usare solo nomi presenti nel contract o documentati in
+`docs/`. Classi interne, helper di Storybook e markup demo non sono API.
+
+## Responsabilita Backend
+
+Il backend possiede:
+
+- dati, testi, prezzi, date e formattazione locale;
+- URL, `href`, `src`, `alt`, id e attributi applicativi;
+- stato iniziale (`aria-*`, selected/active, disabled, expanded);
+- submit, persistenza, validazione business e analytics;
+- autorizzazioni e visibilita' dei blocchi.
+
+La libreria possiede:
+
+- layout, token, spacing, colori e tipografia;
+- stati visuali pubblici;
+- behavior UI locale documentato;
+- eventi `sp:*` emessi dai componenti JS.
 
 ## Storybook
 
-Storybook e incluso solo nel repository, non nel package pubblicato.
-Serve per visualizzare componenti, stati, varianti e markup ufficiale.
+Storybook serve per vedere componenti, varianti e markup supportato. Non entra
+nel package npm.
 
 ```bash
 npm install
 npm run storybook
-```
-
-URL locale:
-
-```text
-http://localhost:6006
 ```
 
 Build statica:
@@ -81,132 +116,20 @@ Build statica:
 npm run build-storybook
 ```
 
-Dettagli: [`docs/storybook.md`](https://github.com/ebattt/skillpress-ui/blob/main/docs/storybook.md).
-
-## Installazione
+## Check Prima Di Consegnare
 
 ```bash
-npm install @ebattt/skillpress-ui
+npm run prepublishOnly
 ```
 
-## Import
+Questo esegue check di naming, legacy leakage, data attrs, init contract,
+colori, CSS variables, breakpoint, build CSS, pack check e contract check.
 
-```css
-@import '@ebattt/skillpress-ui/bundles/product-page.css';
-@import '@ebattt/skillpress-ui/bundles/checkout.css';
-@import '@ebattt/skillpress-ui/bundles/dashboard.css';
-@import '@ebattt/skillpress-ui/bundles/landing.css';
-```
+## Regole Per Nuovi Cambiamenti
 
-```html
-<script src="node_modules/@ebattt/skillpress-ui/js/accordion.js"></script>
-```
-
-## Markup minimo
-
-Button:
-
-```html
-<button class="sp-button sp-button--primary" type="button">
-  Aggiungi al carrello
-</button>
-```
-
-Badge:
-
-```html
-<span class="sp-badge sp-badge--success">Consegnato</span>
-```
-
-Card:
-
-```html
-<article class="sp-card">
-  <div class="sp-card__body">
-    <h3 class="sp-card__title">Card base</h3>
-    <p class="sp-card__description">Contenuto sintetico popolato dal consumer.</p>
-  </div>
-</article>
-```
-
-Breadcrumb:
-
-```html
-<nav class="sp-breadcrumb" aria-label="Breadcrumb">
-  <ol class="sp-breadcrumb__list">
-    <li class="sp-breadcrumb__item">
-      <a class="sp-breadcrumb__link" href="/">Homepage</a>
-    </li>
-    <li class="sp-breadcrumb__item sp-breadcrumb__item--current">Pagina corrente</li>
-  </ol>
-</nav>
-```
-
-Feature Box:
-
-```html
-<div class="feature-grid">
-  <div class="feature-box">
-    <div class="feature-box__content">
-      <div class="feature-box__icon" style="background:#E8F5F3;">
-        <img src="/assets/icons/fast.svg" alt="" />
-      </div>
-      <div class="feature-box__text">
-        <h3 class="feature-box__title">Veloce</h3>
-        <p class="feature-box__description">Stampa rapida</p>
-      </div>
-    </div>
-  </div>
-</div>
-```
-
-Accordion:
-
-```html
-<div class="sp-accordion" data-accordion>
-  <section class="sp-accordion__section" data-accordion-section>
-    <button class="sp-accordion__header" type="button" data-accordion-trigger aria-expanded="false">
-      <span class="sp-accordion__header-left">
-        <span class="sp-accordion__badge">1</span>
-        <span class="sp-accordion__title">Accordion Section</span>
-      </span>
-      <span class="sp-accordion__icon" aria-hidden="true"></span>
-    </button>
-
-    <div class="sp-accordion__content">
-      <div class="sp-accordion__inner"></div>
-    </div>
-  </section>
-</div>
-```
-
-## Versioning policy
-
-L'API pubblica della libreria e' descritta in `dist/public-api.json` ed e'
-derivata dalle annotazioni `@public` nei sorgenti (script
-`scripts/build-public-api.cjs`). Il file `public-api.json` contiene quattro
-sezioni:
-
-- `css.primitives` -- classi BEM primitive prefissate `sp-*` (block + element + modifier).
-- `css.components` -- nomi dei componenti CSS domain-scoped.
-- `data` -- attributi `data-*` letti dal runtime JS pubblico.
-- `events` -- custom events emessi (`sp:{component}:{action}`).
-- `js` -- moduli esposti su `window.SkillpressUI.<Component>`.
-
-| Tipo modifica | Bump |
-|---|---|
-| Look (colori, spaziature, tipografia, transizioni) | patch / minor |
-| Aggiunta classe/variante `@public` | minor |
-| Rimozione/rename classe `@public`, `data-*`, evento `sp:*` | major |
-| Modifica markup minimo richiesto al backend | major |
-
-Il `CHANGELOG.md` distingue **visual change** (look-only, sicuro) da
-**contract change** (breaking, richiede coordinamento backend).
-
-Lo script `npm run check:contract` confronta `dist/public-api.json` con la
-versione precedente committata e fallisce se vengono rimosse voci pubbliche
-senza bump major (vedi `scripts/check-contract.cjs`).
-
-## Nota
-
-Questa beta deve restare focalizzata sul contratto pubblico esistente. Nuovi componenti o cambi di markup backend-owned vanno aggiunti solo con aggiornamento di docs, Storybook e public-api.
+- Aggiungere o cambiare markup pubblico richiede aggiornamento di CSS/JS, docs,
+  Storybook e `dist/public-api.json`.
+- Rimuovere o rinominare classi, `data-*`, eventi o moduli pubblici e' breaking
+  per il backend.
+- Non pubblicare senza passare `npm run prepublishOnly`.
+- Non usare asset o path locali del consumer dentro la libreria.

@@ -14,8 +14,6 @@ package_path: primitives/mode-switcher.css
 
 Gruppo di bottoni pill per selezione esclusiva tra due o piu' modalita'. Il CMS/JS consumer gestisce il toggle dei modifier `--active`/`--inactive` e l'attributo `aria-pressed`. La libreria fornisce solo lo stile visivo.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element `mode-btn` rinominato con prefisso `mode-switcher__btn`. Nessun hook `data-*` (componente CSS-only, toggle consumer-side).
-
 ## Anatomy
 
 ```text

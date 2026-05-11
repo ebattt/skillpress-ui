@@ -15,8 +15,6 @@ js_path: js/accordion.js
 
 Contenitore espandibile per sezioni di configurazione o contenuto strutturato. La libreria controlla markup interno, stati visuali, aria e toggle locale del pannello (single-open per container). L'icona `+/-` e le icone chrome opzionali di header sono disegnate dal CSS e non richiedono Material Symbols.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Modifier `expanded` standalone -> `accordion__section--expanded` (BEM strict). Vedi `iterations/bem-standardization/accordion/CHANGELOG.md`.
-
 ## Anatomy
 
 ```text
@@ -133,8 +131,6 @@ La demo originale (`product-page-integration`) usava il modifier non-BEM `expand
 |----------------------|--------------------|
 | `.sp-accordion__section.expanded` (compound) | `.sp-accordion__section.sp-accordion__section--expanded` |
 | `.expanded` (standalone) | `.sp-accordion__section--expanded` |
-
-Tutto il resto del contratto (`.sp-accordion`, `.sp-accordion__section`, `.sp-accordion__header`, `.sp-accordion__header-left`, `.sp-accordion__badge`, `.sp-accordion__title`, `.sp-accordion__icon`, `.sp-accordion__content`, `.sp-accordion__inner`) era gia' BEM strict prima del prompt 19: nessuna divergenza.
 
 ## Installation
 

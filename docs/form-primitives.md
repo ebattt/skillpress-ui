@@ -21,8 +21,6 @@ helper specifiche del configuratore (`.sp-custom-dims` + `.sp-custom-dims__grid/
 Strategia A (CSS-only). Validazione, swap modifier `--error`, render messaggi
 sono responsabilita' del consumer / backend.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element di `.sp-custom-dims` rinominati con doppio underscore. Eccezioni italiane (`.sp-facciate-row`, `.sp-spessore-display`, `.sp-qty-iva-row`, `.sp-nome-lavoro-input`, `.sp-nome-ref-row`) mantenute come block name. Nessun hook `data-*` (componente CSS-only).
-
 ## Classi pubbliche
 
 ### Container

@@ -6,7 +6,7 @@ strategy: css-only
 sources:
   checkout_js: checkout/js/sections/shipping-section.js
   checkout_css: checkout/css/components/_shipping.css
-status: beta-contract
+status: public-contract
 package_path: components/allocation-rows.css
 ---
 

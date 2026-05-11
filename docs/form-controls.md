@@ -16,8 +16,6 @@ package_path: primitives/form-controls.css
 Pattern radio + checkbox riusabili. La famiglia condivide il container
 `.sp-radio-group` e l'item `.sp-radio-option`: cambia solo il tipo di `<input>` interno.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Modifier `option-disabled` standalone -> `radio-option--disabled` (BEM strict). Nessun hook `data-*` (componente CSS-only).
-
 `:checked` e `:disabled` sono nativi del browser. La libreria fornisce solo
 lo styling (custom radio con pallino animato, accent-color checkbox, stato
 spento via `.sp-radio-option--disabled`).

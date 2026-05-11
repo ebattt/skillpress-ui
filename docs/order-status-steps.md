@@ -6,7 +6,7 @@ strategy: css-js
 sources:
   demo_js: dashboard/js/order-products.js#L471-L513
   demo_css: dashboard/css/components/_order-detail.css#L252-L386
-status: beta-contract
+status: public-contract
 package_path: components/order-status-steps.css
 js_path: js/order-status-steps.js
 ---

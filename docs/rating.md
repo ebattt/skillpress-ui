@@ -6,7 +6,7 @@ strategy: css-only
 sources:
   catalog_css: elements-ui/css/components/_feedback-status.css#L220-L228
   demo: product-page-integration/index.html#L408-L418
-status: beta-contract
+status: public-contract
 package_path: primitives/rating.css
 ---
 

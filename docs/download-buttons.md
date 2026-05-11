@@ -14,8 +14,6 @@ package_path: primitives/download-buttons.css
 
 Bottoni outline arancioni per scaricare documenti associati al prodotto (istruzioni, template, schede tecniche). Posizionati tipicamente sotto il total box della sidebar configuratore, separati da un divider orizzontale. Il CMS decide quanti bottoni rendere e con quali `href`.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Root rinominato da `.config-download-btns` -> `.sp-download-buttons`. Nessun hook `data-*` (componente CSS-only).
-
 ## Anatomy
 
 ```text

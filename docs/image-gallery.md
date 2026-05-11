@@ -15,8 +15,6 @@ package_path: components/image-gallery.css
 
 Galleria immagine prodotto: container quadrato 1:1 con immagine principale `object-fit: cover` e due bottoni nav `prev`/`next` posizionati assoluti su `top: 50%`. Il behavior prev/next non e' implementato in libreria (Strategia A): la pagina demo legge `data-image-gallery-images` e ruota le immagini lato consumer.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Root rinominato da `.hero-image-gallery` -> `.image-gallery` (riusabile fuori dall'hero). Nessun hook `data-*` di libreria (`data-image-gallery-images` resta payload consumer).
-
 ## Strategia JS demo
 
 Strategia A — static snapshot. La libreria fornisce solo CSS. La pagina demo (`product-page-integration/js/page-init.js#L54-L86`) implementa il behavior prev/next leggendo l'attributo `data-image-gallery-images`. Il consumer monta lo stato iniziale statico con i bottoni visibili ma senza listener.

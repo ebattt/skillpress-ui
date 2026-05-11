@@ -2,8 +2,6 @@
 
 Sezione "Potrebbe piacerti anche": griglia di card prodotto correlato (stile landing page) con titolo in alto e immagine sotto. Pattern CSS-only, niente JS libreria.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Root rinominato da `.related-section` -> `.related-products` (block name allineato al componente). Le classi `.catalog-card*` / `.sp-catalog-grid*` sono vendor esterno (gia' BEM, invariate). Nessun hook `data-*` (componente CSS-only).
-
 - Fonti:
   - `elements-ui/css/components/_layout-patterns.css#L1804-L1825` (`.related-products` wrapper + qualificazioni 1280px max-width).
   - `Skillpress-frontend/landing-page/css/components/_products.css` (PRODUCT CARD section aggiornata: section-label, grid responsive 5/3/2 colonne, card minimal con aspect-ratio + hover image scale).

@@ -15,8 +15,6 @@ package_path: components/feature-box.css
 
 Griglia di feature box a 2 colonne, ciascuna con contenitore icona, titolo e descrizione. La libreria controlla layout, padding e tipografia; l'icona e' uno slot editoriale (SVG inline o `<img>` da URL CMS) e il colore di sfondo dell'icona si imposta inline dal consumer.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element rinominati con doppio underscore (`feature-box-content` -> `feature-box__content`, ecc.). Nessun hook `data-*` (componente CSS-only).
-
 ## Anatomy
 
 ```text

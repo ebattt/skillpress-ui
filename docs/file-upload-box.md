@@ -7,7 +7,7 @@ sources:
   demo_html: dashboard/index.html#file-upload-modal
   demo_css: dashboard/css/components/_modals.css
   demo_js: dashboard/js/file-upload.js
-status: beta-contract
+status: public-contract
 package_path: components/file-upload-box.css
 js_path: js/file-upload-box.js
 ---

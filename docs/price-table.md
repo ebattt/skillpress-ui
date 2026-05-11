@@ -2,8 +2,6 @@
 
 Tabella prezzi stile Google Flights: header data spedizione, righe quantita, intersezione = prezzo. Componente CSS-only senza behavior libreria.
 
-> Aggiornato 2026-05-05: responsive production pass. La tabella usa scrollbar orizzontale nativa visibile quando il contenuto eccede il contenitore; le vecchie frecce orizzontali overlay sono legacy e nascoste dal CSS.
-
 - Fonte: `elements-ui/css/components/_layout-patterns.css#L918-L1236`, `elements-ui/js/layout-patterns/price-table.js`, `product-page-integration/js/sections/section-6.js#L355-L442`.
 - Cartella: `components/` (composto: wrapper > nav arrows + table > thead/tbody con sub-element specializzati).
 - Strategia JS demo: A — static snapshot. La libreria non aggiunge listener.

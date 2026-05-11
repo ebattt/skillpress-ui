@@ -19,8 +19,6 @@ Disclosure inline per pannelli di aiuto contestuale: un bottone con icona `info`
 
 Contratto **semplificato**: il CMS scrive **solo il body**. La libreria auto-deriva il titolo dalla `.sp-label-text` adiacente e auto-inietta header (titolo + close) e wrapper body al primo init.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element rinominati con doppio underscore (`info-dropdown-header` -> `info-dropdown__header`, ecc.); modifier `hidden` standalone -> `info-dropdown--hidden`; aggiunti hook `[data-info-dropdown-info-trigger]` + `[data-info-dropdown]` come entry point JS.
-
 ## Anatomy
 
 ```text

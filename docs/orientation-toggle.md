@@ -14,8 +14,6 @@ package_path: primitives/orientation-toggle.css
 
 Toggle compatto a due stati (Verticale/Orizzontale) con icona SVG che mostra la preview del formato. Il container ha sfondo grigio semitrasparente; il bottone attivo ha sfondo bianco con ombra. Il CMS/JS consumer gestisce il toggle del modifier `--active`.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element `orientation-btn` -> `orientation-toggle__btn`. Nessun hook `data-*` (componente CSS-only, toggle consumer-side).
-
 ## Anatomy
 
 ```text

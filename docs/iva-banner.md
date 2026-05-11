@@ -19,8 +19,6 @@ l'utente che e' richiesta la compilazione di una dichiarazione sostitutiva.
 Strategia A (CSS-only). La condizione di visibilita' (mostrare/nascondere il
 banner) e' business logic del consumer.
 
-> Aggiornato 2026-04-29 post BEM standardization (prompt 19 Phase B). Sub-element rinominati con doppio underscore (`iva-banner-content` -> `iva-banner__content`, ecc.). Nessun hook `data-*` (componente CSS-only).
-
 ## Classi pubbliche
 
 | Classe | Note |

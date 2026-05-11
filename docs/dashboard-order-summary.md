@@ -7,7 +7,7 @@ sources:
   demo_html: dashboard/index.html#L428-L450
   demo_js: dashboard/js/order-detail.js#L292-L307
   demo_css: dashboard/css/components/_order-detail.css#L562-L670
-status: beta-contract
+status: public-contract
 package_path: components/dashboard-order-summary.css
 ---
 
