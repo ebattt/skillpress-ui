@@ -2,7 +2,7 @@
  * inventory-data-attrs.cjs
  *
  * Cerca occorrenze di `data-*` nei sorgenti `js/`, `primitives/`,
- * `components/`, `stories/`, `demo-pages/` e produce una mappa di rename
+ * `components/`, `stories/` e produce una mappa di rename
  * (vedi audit 04-js-runtime-accessibility.md sezione "Tabella rename
  * data-* generici").
  *
@@ -17,7 +17,7 @@
  *     files: ["..."],
  *     componentScoped: bool,        // inizia con il nome di un block
  *     thirdParty: bool,             // whitelist Feedaty in contesto widget
- *     demoOnly: bool,               // appare solo in demo-pages/
+ *     demoOnly: bool,               // appare solo in stories/demo runtime
  *     owner: "<component>" | null,
  *     new: "data-..." | null,
  *     context: "..." | null,
@@ -33,7 +33,7 @@ const REPO_ROOT = path.resolve(__dirname, '..');
 const OUT_DIR = path.join(__dirname, 'inventory-out');
 const OUT_FILE = path.join(OUT_DIR, 'data-attrs.json');
 
-const SCAN_DIRS = ['js', 'primitives', 'components', 'stories', 'demo-pages'];
+const SCAN_DIRS = ['js', 'primitives', 'components', 'stories'];
 const SCAN_EXTS = new Set(['.js', '.cjs', '.mjs', '.ts', '.html', '.css']);
 
 // Whitelist Feedaty: nomi attributo 3rd party.
@@ -224,7 +224,7 @@ function feedatyContext(filePaths) {
 function isDemoOnly(filePaths) {
     if (filePaths.length === 0) return false;
     return filePaths.every(function (p) {
-        return p.indexOf('/demo-pages/') !== -1 || p.startsWith('demo-pages/');
+        return p.indexOf('/stories/') !== -1 || p.startsWith('stories/');
     });
 }
 

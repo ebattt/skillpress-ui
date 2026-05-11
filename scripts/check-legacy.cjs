@@ -27,7 +27,7 @@ const path = require('path');
 const REPO_ROOT = path.resolve(__dirname, '..');
 const SCAN_DIRS = [
     'primitives', 'components', 'utilities', 'base', 'tokens', 'bundles',
-    'js', 'stories', 'demo-pages',
+    'js', 'stories',
 ];
 const CSS_DIRS = ['primitives', 'components', 'utilities', 'base', 'tokens', 'bundles'];
 const ALL_EXTS = new Set(['.css', '.js', '.cjs', '.mjs', '.ts', '.html', '.md']);

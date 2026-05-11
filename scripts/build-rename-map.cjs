@@ -350,7 +350,7 @@ function buildRiepilogoRename(rawRiep) {
 }
 
 // cz-* — verifica usage reale; audit confermato che non sono usate fuori
-// dal CSS sorgente (ricerca grep in demo-pages/, lab/, stories/, js/,
+// dal CSS sorgente (ricerca grep in lab/, stories/, js/,
 // components/ ha 0 match per ognuna). Verifica double-check al runtime.
 function searchClassUsage(className, scopeDirs) {
   // Ricerca semplice: leggi tutti i file di testo nei dir e cerca la
@@ -402,7 +402,6 @@ function searchClassUsage(className, scopeDirs) {
 function buildCzRename(rawCz) {
   // scope di ricerca usage (esclude il CSS sorgente in components/order-step-detail.css)
   const SCOPES = [
-    path.join(ROOT, 'demo-pages'),
     path.join(ROOT, 'stories'),
     path.join(ROOT, 'js'),
     path.join(ROOT, 'components'),

@@ -1,102 +1,114 @@
 {
-  "generatedAt": "2026-05-08T19:46:21.727Z",
-  "sourceVersion": "0.2.0-alpha.21",
+  "generatedAt": "2026-05-11T13:15:47.512Z",
+  "sourceVersion": "0.3.0-beta.3",
   "primitives": [
     {
-      "old": ".accordion",
-      "new": ".sp-accordion",
-      "file": "primitives/accordion.css",
-      "type": "block"
-    },
-    {
-      "old": ".accordion--surface-white",
-      "new": ".sp-accordion--surface-white",
-      "file": "primitives/accordion.css",
-      "type": "modifier"
-    },
-    {
-      "old": ".accordion__badge",
-      "new": ".sp-accordion__badge",
-      "file": "primitives/accordion.css",
-      "type": "element"
-    },
-    {
-      "old": ".accordion__content",
-      "new": ".sp-accordion__content",
-      "file": "primitives/accordion.css",
-      "type": "element"
-    },
-    {
-      "old": ".accordion__header",
-      "new": ".sp-accordion__header",
-      "file": "primitives/accordion.css",
-      "type": "element"
-    },
-    {
-      "old": ".accordion__header-icon",
-      "new": ".sp-accordion__header-icon",
-      "file": "primitives/accordion.css",
-      "type": "element"
-    },
-    {
-      "old": ".accordion__header-icon--cart",
-      "new": ".sp-accordion__header-icon--cart",
-      "file": "primitives/accordion.css",
-      "type": "element-modifier"
-    },
-    {
-      "old": ".accordion__header-icon--payment",
-      "new": ".sp-accordion__header-icon--payment",
-      "file": "primitives/accordion.css",
-      "type": "element-modifier"
-    },
-    {
-      "old": ".accordion__header-icon--shipping",
-      "new": ".sp-accordion__header-icon--shipping",
-      "file": "primitives/accordion.css",
-      "type": "element-modifier"
-    },
-    {
-      "old": ".accordion__header-left",
-      "new": ".sp-accordion__header-left",
-      "file": "primitives/accordion.css",
-      "type": "element"
-    },
-    {
-      "old": ".accordion__icon",
-      "new": ".sp-accordion__icon",
-      "file": "primitives/accordion.css",
-      "type": "element"
-    },
-    {
-      "old": ".accordion__inner",
-      "new": ".sp-accordion__inner",
-      "file": "primitives/accordion.css",
-      "type": "element"
-    },
-    {
-      "old": ".accordion__section",
-      "new": ".sp-accordion__section",
-      "file": "primitives/accordion.css",
-      "type": "element"
-    },
-    {
-      "old": ".accordion__section--expanded",
-      "new": ".sp-accordion__section--expanded",
-      "file": "primitives/accordion.css",
-      "type": "element-modifier"
-    },
-    {
-      "old": ".accordion__title",
-      "new": ".sp-accordion__title",
-      "file": "primitives/accordion.css",
-      "type": "element"
-    },
-    {
       "old": ".org",
       "new": ".sp-org",
       "file": "primitives/accordion.css",
       "type": "block"
+    },
+    {
+      "old": ".sp-accordion",
+      "new": ".sp-sp-accordion",
+      "file": "primitives/accordion.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-accordion--surface-white",
+      "new": ".sp-sp-accordion--surface-white",
+      "file": "primitives/accordion.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".sp-accordion__badge",
+      "new": ".sp-sp-accordion__badge",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-accordion__content",
+      "new": ".sp-sp-accordion__content",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-accordion__header",
+      "new": ".sp-sp-accordion__header",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-accordion__header-icon",
+      "new": ".sp-sp-accordion__header-icon",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-accordion__header-icon--cart",
+      "new": ".sp-sp-accordion__header-icon--cart",
+      "file": "primitives/accordion.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".sp-accordion__header-icon--payment",
+      "new": ".sp-sp-accordion__header-icon--payment",
+      "file": "primitives/accordion.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".sp-accordion__header-icon--shipping",
+      "new": ".sp-sp-accordion__header-icon--shipping",
+      "file": "primitives/accordion.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".sp-accordion__header-left",
+      "new": ".sp-sp-accordion__header-left",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-accordion__header-text",
+      "new": ".sp-sp-accordion__header-text",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-accordion__icon",
+      "new": ".sp-sp-accordion__icon",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-accordion__inner",
+      "new": ".sp-sp-accordion__inner",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-accordion__section",
+      "new": ".sp-sp-accordion__section",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-accordion__section--expanded",
+      "new": ".sp-sp-accordion__section--expanded",
+      "file": "primitives/accordion.css",
+      "type": "element-modifier"
+    },
+    {
+      "old": ".sp-accordion__subtitle",
+      "new": ".sp-sp-accordion__subtitle",
+      "file": "primitives/accordion.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-accordion__title",
+      "new": ".sp-sp-accordion__title",
+      "file": "primitives/accordion.css",
+      "type": "element"
     },
     {
       "old": ".w3",
@@ -105,280 +117,268 @@
       "type": "block"
     },
     {
-      "old": ".badge",
-      "new": ".sp-badge",
+      "old": ".sp-badge",
+      "new": ".sp-sp-badge",
       "file": "primitives/badge.css",
       "type": "block"
     },
     {
-      "old": ".badge--cancelled",
-      "new": ".sp-badge--cancelled",
+      "old": ".sp-badge--cancelled",
+      "new": ".sp-sp-badge--cancelled",
       "file": "primitives/badge.css",
       "type": "modifier"
     },
     {
-      "old": ".badge--error",
-      "new": ".sp-badge--error",
+      "old": ".sp-badge--error",
+      "new": ".sp-sp-badge--error",
       "file": "primitives/badge.css",
       "type": "modifier"
     },
     {
-      "old": ".badge--info",
-      "new": ".sp-badge--info",
+      "old": ".sp-badge--info",
+      "new": ".sp-sp-badge--info",
       "file": "primitives/badge.css",
       "type": "modifier"
     },
     {
-      "old": ".badge--neutral",
-      "new": ".sp-badge--neutral",
+      "old": ".sp-badge--neutral",
+      "new": ".sp-sp-badge--neutral",
       "file": "primitives/badge.css",
       "type": "modifier"
     },
     {
-      "old": ".badge--success",
-      "new": ".sp-badge--success",
+      "old": ".sp-badge--success",
+      "new": ".sp-sp-badge--success",
       "file": "primitives/badge.css",
       "type": "modifier"
     },
     {
-      "old": ".badge--warning",
-      "new": ".sp-badge--warning",
+      "old": ".sp-badge--warning",
+      "new": ".sp-sp-badge--warning",
       "file": "primitives/badge.css",
       "type": "modifier"
     },
     {
-      "old": ".breadcrumb",
-      "new": ".sp-breadcrumb",
+      "old": ".sp-breadcrumb",
+      "new": ".sp-sp-breadcrumb",
       "file": "primitives/breadcrumb.css",
       "type": "block"
     },
     {
-      "old": ".breadcrumb__item",
-      "new": ".sp-breadcrumb__item",
+      "old": ".sp-breadcrumb__item",
+      "new": ".sp-sp-breadcrumb__item",
       "file": "primitives/breadcrumb.css",
       "type": "element"
     },
     {
-      "old": ".breadcrumb__item--current",
-      "new": ".sp-breadcrumb__item--current",
+      "old": ".sp-breadcrumb__item--current",
+      "new": ".sp-sp-breadcrumb__item--current",
       "file": "primitives/breadcrumb.css",
       "type": "element-modifier"
     },
     {
-      "old": ".breadcrumb__link",
-      "new": ".sp-breadcrumb__link",
+      "old": ".sp-breadcrumb__link",
+      "new": ".sp-sp-breadcrumb__link",
       "file": "primitives/breadcrumb.css",
       "type": "element"
     },
     {
-      "old": ".breadcrumb__list",
-      "new": ".sp-breadcrumb__list",
+      "old": ".sp-breadcrumb__list",
+      "new": ".sp-sp-breadcrumb__list",
       "file": "primitives/breadcrumb.css",
       "type": "element"
     },
     {
-      "old": ".button",
-      "new": ".sp-button",
+      "old": ".sp-button",
+      "new": ".sp-sp-button",
       "file": "primitives/button.css",
       "type": "block"
     },
     {
-      "old": ".button--dashboard-link",
-      "new": ".sp-button--dashboard-link",
+      "old": ".sp-button--dashboard-link",
+      "new": ".sp-sp-button--dashboard-link",
       "file": "primitives/button.css",
       "type": "modifier"
     },
     {
-      "old": ".button--dashed",
-      "new": ".sp-button--dashed",
+      "old": ".sp-button--dashed",
+      "new": ".sp-sp-button--dashed",
       "file": "primitives/button.css",
       "type": "modifier"
     },
     {
-      "old": ".button--disabled",
-      "new": ".sp-button--disabled",
+      "old": ".sp-button--disabled",
+      "new": ".sp-sp-button--disabled",
       "file": "primitives/button.css",
       "type": "modifier"
     },
     {
-      "old": ".button--full",
-      "new": ".sp-button--full",
+      "old": ".sp-button--full",
+      "new": ".sp-sp-button--full",
       "file": "primitives/button.css",
       "type": "modifier"
     },
     {
-      "old": ".button--ghost",
-      "new": ".sp-button--ghost",
+      "old": ".sp-button--ghost",
+      "new": ".sp-sp-button--ghost",
       "file": "primitives/button.css",
       "type": "modifier"
     },
     {
-      "old": ".button--outline",
-      "new": ".sp-button--outline",
+      "old": ".sp-button--outline",
+      "new": ".sp-sp-button--outline",
       "file": "primitives/button.css",
       "type": "modifier"
     },
     {
-      "old": ".button--primary",
-      "new": ".sp-button--primary",
+      "old": ".sp-button--primary",
+      "new": ".sp-sp-button--primary",
       "file": "primitives/button.css",
       "type": "modifier"
     },
     {
-      "old": ".button--secondary",
-      "new": ".sp-button--secondary",
+      "old": ".sp-button--secondary",
+      "new": ".sp-sp-button--secondary",
       "file": "primitives/button.css",
       "type": "modifier"
     },
     {
-      "old": ".button--sm",
-      "new": ".sp-button--sm",
+      "old": ".sp-button--sm",
+      "new": ".sp-sp-button--sm",
       "file": "primitives/button.css",
       "type": "modifier"
     },
     {
-      "old": ".button__icon",
-      "new": ".sp-button__icon",
+      "old": ".sp-button__icon",
+      "new": ".sp-sp-button__icon",
       "file": "primitives/button.css",
       "type": "element"
     },
     {
-      "old": ".card",
-      "new": ".sp-card",
+      "old": ".sp-card",
+      "new": ".sp-sp-card",
       "file": "primitives/card.css",
       "type": "block"
     },
     {
-      "old": ".card--control-row",
-      "new": ".sp-card--control-row",
+      "old": ".sp-card--control-row",
+      "new": ".sp-sp-card--control-row",
       "file": "primitives/card.css",
       "type": "modifier"
     },
     {
-      "old": ".card--disabled",
-      "new": ".sp-card--disabled",
+      "old": ".sp-card--disabled",
+      "new": ".sp-sp-card--disabled",
       "file": "primitives/card.css",
       "type": "modifier"
     },
     {
-      "old": ".card--interactive",
-      "new": ".sp-card--interactive",
+      "old": ".sp-card--interactive",
+      "new": ".sp-sp-card--interactive",
       "file": "primitives/card.css",
       "type": "modifier"
     },
     {
-      "old": ".card--selected",
-      "new": ".sp-card--selected",
+      "old": ".sp-card--selected",
+      "new": ".sp-sp-card--selected",
       "file": "primitives/card.css",
       "type": "modifier"
     },
     {
-      "old": ".card--surface-muted",
-      "new": ".sp-card--surface-muted",
+      "old": ".sp-card--surface-muted",
+      "new": ".sp-sp-card--surface-muted",
       "file": "primitives/card.css",
       "type": "modifier"
     },
     {
-      "old": ".card__actions",
-      "new": ".sp-card__actions",
+      "old": ".sp-card__actions",
+      "new": ".sp-sp-card__actions",
       "file": "primitives/card.css",
       "type": "element"
     },
     {
-      "old": ".card__body",
-      "new": ".sp-card__body",
+      "old": ".sp-card__body",
+      "new": ".sp-sp-card__body",
       "file": "primitives/card.css",
       "type": "element"
     },
     {
-      "old": ".card__description",
-      "new": ".sp-card__description",
+      "old": ".sp-card__description",
+      "new": ".sp-sp-card__description",
       "file": "primitives/card.css",
       "type": "element"
     },
     {
-      "old": ".card__eyebrow",
-      "new": ".sp-card__eyebrow",
+      "old": ".sp-card__eyebrow",
+      "new": ".sp-sp-card__eyebrow",
       "file": "primitives/card.css",
       "type": "element"
     },
     {
-      "old": ".card__footer",
-      "new": ".sp-card__footer",
+      "old": ".sp-card__footer",
+      "new": ".sp-sp-card__footer",
       "file": "primitives/card.css",
       "type": "element"
     },
     {
-      "old": ".card__header",
-      "new": ".sp-card__header",
+      "old": ".sp-card__header",
+      "new": ".sp-sp-card__header",
       "file": "primitives/card.css",
       "type": "element"
     },
     {
-      "old": ".card__media",
-      "new": ".sp-card__media",
+      "old": ".sp-card__media",
+      "new": ".sp-sp-card__media",
       "file": "primitives/card.css",
       "type": "element"
     },
     {
-      "old": ".card__title",
-      "new": ".sp-card__title",
+      "old": ".sp-card__title",
+      "new": ".sp-sp-card__title",
       "file": "primitives/card.css",
       "type": "element"
     },
     {
-      "old": ".toggle-switch",
-      "new": ".sp-toggle-switch",
+      "old": ".sp-toggle-switch",
+      "new": ".sp-sp-toggle-switch",
       "file": "primitives/card.css",
       "type": "block"
     },
     {
-      "old": ".dashboard-nav-icon",
-      "new": ".sp-dashboard-nav-icon",
-      "file": "primitives/dashboard-nav-icons.css",
+      "old": ".sp-catalog-grid",
+      "new": ".sp-sp-catalog-grid",
+      "file": "primitives/catalog-grid.css",
       "type": "block"
     },
     {
-      "old": ".dashboard-nav-icon--account",
-      "new": ".sp-dashboard-nav-icon--account",
-      "file": "primitives/dashboard-nav-icons.css",
+      "old": ".sp-catalog-grid--products",
+      "new": ".sp-sp-catalog-grid--products",
+      "file": "primitives/catalog-grid.css",
       "type": "modifier"
     },
     {
-      "old": ".dashboard-nav-icon--billing",
-      "new": ".sp-dashboard-nav-icon--billing",
-      "file": "primitives/dashboard-nav-icons.css",
-      "type": "modifier"
+      "old": ".sp-catalog-grid__section-label",
+      "new": ".sp-sp-catalog-grid__section-label",
+      "file": "primitives/catalog-grid.css",
+      "type": "element"
     },
     {
-      "old": ".dashboard-nav-icon--dashboard",
-      "new": ".sp-dashboard-nav-icon--dashboard",
-      "file": "primitives/dashboard-nav-icons.css",
-      "type": "modifier"
+      "old": ".sp-catalog-grid__section-label--dark",
+      "new": ".sp-sp-catalog-grid__section-label--dark",
+      "file": "primitives/catalog-grid.css",
+      "type": "element-modifier"
     },
     {
-      "old": ".dashboard-nav-icon--logout",
-      "new": ".sp-dashboard-nav-icon--logout",
-      "file": "primitives/dashboard-nav-icons.css",
-      "type": "modifier"
+      "old": ".sp-catalog-grid__section-label--orange",
+      "new": ".sp-sp-catalog-grid__section-label--orange",
+      "file": "primitives/catalog-grid.css",
+      "type": "element-modifier"
     },
     {
-      "old": ".dashboard-nav-icon--orders",
-      "new": ".sp-dashboard-nav-icon--orders",
-      "file": "primitives/dashboard-nav-icons.css",
-      "type": "modifier"
-    },
-    {
-      "old": ".dashboard-nav-icon--quotes",
-      "new": ".sp-dashboard-nav-icon--quotes",
-      "file": "primitives/dashboard-nav-icons.css",
-      "type": "modifier"
-    },
-    {
-      "old": ".dashboard-nav-icon--supplier",
-      "new": ".sp-dashboard-nav-icon--supplier",
-      "file": "primitives/dashboard-nav-icons.css",
-      "type": "modifier"
+      "old": ".sp-catalog-grid__section-label--teal",
+      "new": ".sp-sp-catalog-grid__section-label--teal",
+      "file": "primitives/catalog-grid.css",
+      "type": "element-modifier"
     },
     {
       "old": ".org",
@@ -387,225 +387,153 @@
       "type": "block"
     },
     {
+      "old": ".sp-dashboard-nav-icon",
+      "new": ".sp-sp-dashboard-nav-icon",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-dashboard-nav-icon--account",
+      "new": ".sp-sp-dashboard-nav-icon--account",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".sp-dashboard-nav-icon--billing",
+      "new": ".sp-sp-dashboard-nav-icon--billing",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".sp-dashboard-nav-icon--dashboard",
+      "new": ".sp-sp-dashboard-nav-icon--dashboard",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".sp-dashboard-nav-icon--logout",
+      "new": ".sp-sp-dashboard-nav-icon--logout",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".sp-dashboard-nav-icon--orders",
+      "new": ".sp-sp-dashboard-nav-icon--orders",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".sp-dashboard-nav-icon--quotes",
+      "new": ".sp-sp-dashboard-nav-icon--quotes",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".sp-dashboard-nav-icon--supplier",
+      "new": ".sp-sp-dashboard-nav-icon--supplier",
+      "file": "primitives/dashboard-nav-icons.css",
+      "type": "modifier"
+    },
+    {
       "old": ".w3",
       "new": ".sp-w3",
       "file": "primitives/dashboard-nav-icons.css",
       "type": "block"
     },
     {
-      "old": ".download-buttons",
-      "new": ".sp-download-buttons",
+      "old": ".sp-download-buttons",
+      "new": ".sp-sp-download-buttons",
       "file": "primitives/download-buttons.css",
       "type": "block"
     },
     {
-      "old": ".download-buttons__btn",
-      "new": ".sp-download-buttons__btn",
+      "old": ".sp-download-buttons__btn",
+      "new": ".sp-sp-download-buttons__btn",
       "file": "primitives/download-buttons.css",
       "type": "element"
     },
     {
-      "old": ".download-buttons__divider",
-      "new": ".sp-download-buttons__divider",
+      "old": ".sp-download-buttons__divider",
+      "new": ".sp-sp-download-buttons__divider",
       "file": "primitives/download-buttons.css",
       "type": "element"
     },
     {
-      "old": ".radio-group",
-      "new": ".sp-radio-group",
+      "old": ".sp-radio-group",
+      "new": ".sp-sp-radio-group",
       "file": "primitives/form-controls.css",
       "type": "block"
     },
     {
-      "old": ".radio-option",
-      "new": ".sp-radio-option",
+      "old": ".sp-radio-option",
+      "new": ".sp-sp-radio-option",
       "file": "primitives/form-controls.css",
       "type": "block"
     },
     {
-      "old": ".radio-option--disabled",
-      "new": ".sp-radio-option--disabled",
+      "old": ".sp-radio-option--disabled",
+      "new": ".sp-sp-radio-option--disabled",
       "file": "primitives/form-controls.css",
       "type": "modifier"
     },
     {
-      "old": ".radio-option-label",
-      "new": ".sp-radio-option-label",
+      "old": ".sp-radio-option-label",
+      "new": ".sp-sp-radio-option-label",
       "file": "primitives/form-controls.css",
       "type": "block"
     },
     {
-      "old": ".form-layout",
-      "new": ".sp-form-layout",
+      "old": ".sp-form-layout",
+      "new": ".sp-sp-form-layout",
       "file": "primitives/form-layout.css",
       "type": "block"
     },
     {
-      "old": ".form-layout--compact",
-      "new": ".sp-form-layout--compact",
+      "old": ".sp-form-layout--compact",
+      "new": ".sp-sp-form-layout--compact",
       "file": "primitives/form-layout.css",
       "type": "modifier"
     },
     {
-      "old": ".form-layout__actions",
-      "new": ".sp-form-layout__actions",
+      "old": ".sp-form-layout__actions",
+      "new": ".sp-sp-form-layout__actions",
       "file": "primitives/form-layout.css",
       "type": "element"
     },
     {
-      "old": ".form-layout__actions--end",
-      "new": ".sp-form-layout__actions--end",
+      "old": ".sp-form-layout__actions--end",
+      "new": ".sp-sp-form-layout__actions--end",
       "file": "primitives/form-layout.css",
       "type": "element-modifier"
     },
     {
-      "old": ".form-layout__copy-row",
-      "new": ".sp-form-layout__copy-row",
+      "old": ".sp-form-layout__copy-row",
+      "new": ".sp-sp-form-layout__copy-row",
       "file": "primitives/form-layout.css",
       "type": "element"
     },
     {
-      "old": ".form-layout__row",
-      "new": ".sp-form-layout__row",
+      "old": ".sp-form-layout__row",
+      "new": ".sp-sp-form-layout__row",
       "file": "primitives/form-layout.css",
       "type": "element"
     },
     {
-      "old": ".form-layout__row--2",
-      "new": ".sp-form-layout__row--2",
-      "file": "primitives/form-layout.css",
-      "type": "element-modifier"
-    },
-    {
-      "old": ".form-layout__row--3",
-      "new": ".sp-form-layout__row--3",
+      "old": ".sp-form-layout__row--2",
+      "new": ".sp-sp-form-layout__row--2",
       "file": "primitives/form-layout.css",
       "type": "element-modifier"
     },
     {
-      "old": ".label-text",
-      "new": ".sp-label-text",
+      "old": ".sp-form-layout__row--3",
+      "new": ".sp-sp-form-layout__row--3",
       "file": "primitives/form-layout.css",
-      "type": "block"
+      "type": "element-modifier"
     },
     {
-      "old": ".custom-dims",
-      "new": ".sp-custom-dims",
-      "file": "primitives/form-primitives.css",
-      "type": "block"
-    },
-    {
-      "old": ".custom-dims__field",
-      "new": ".sp-custom-dims__field",
-      "file": "primitives/form-primitives.css",
-      "type": "element"
-    },
-    {
-      "old": ".custom-dims__grid",
-      "new": ".sp-custom-dims__grid",
-      "file": "primitives/form-primitives.css",
-      "type": "element"
-    },
-    {
-      "old": ".custom-dims__label",
-      "new": ".sp-custom-dims__label",
-      "file": "primitives/form-primitives.css",
-      "type": "element"
-    },
-    {
-      "old": ".error-inline",
-      "new": ".sp-error-inline",
-      "file": "primitives/form-primitives.css",
-      "type": "block"
-    },
-    {
-      "old": ".error-msg",
-      "new": ".sp-error-msg",
-      "file": "primitives/form-primitives.css",
-      "type": "block"
-    },
-    {
-      "old": ".facciate-input-wrap",
-      "new": ".sp-facciate-input-wrap",
-      "file": "primitives/form-primitives.css",
-      "type": "block"
-    },
-    {
-      "old": ".facciate-row",
-      "new": ".sp-facciate-row",
-      "file": "primitives/form-primitives.css",
-      "type": "block"
-    },
-    {
-      "old": ".form-field",
-      "new": ".sp-form-field",
-      "file": "primitives/form-primitives.css",
-      "type": "block"
-    },
-    {
-      "old": ".form-input",
-      "new": ".sp-form-input",
-      "file": "primitives/form-primitives.css",
-      "type": "block"
-    },
-    {
-      "old": ".form-input--error",
-      "new": ".sp-form-input--error",
-      "file": "primitives/form-primitives.css",
-      "type": "modifier"
-    },
-    {
-      "old": ".form-select",
-      "new": ".sp-form-select",
-      "file": "primitives/form-primitives.css",
-      "type": "block"
-    },
-    {
-      "old": ".label-hint",
-      "new": ".sp-label-hint",
-      "file": "primitives/form-primitives.css",
-      "type": "block"
-    },
-    {
-      "old": ".label-row",
-      "new": ".sp-label-row",
-      "file": "primitives/form-primitives.css",
-      "type": "block"
-    },
-    {
-      "old": ".label-text",
-      "new": ".sp-label-text",
-      "file": "primitives/form-primitives.css",
-      "type": "block"
-    },
-    {
-      "old": ".label-text__optional",
-      "new": ".sp-label-text__optional",
-      "file": "primitives/form-primitives.css",
-      "type": "element"
-    },
-    {
-      "old": ".label-text__required",
-      "new": ".sp-label-text__required",
-      "file": "primitives/form-primitives.css",
-      "type": "element"
-    },
-    {
-      "old": ".nome-lavoro-input",
-      "new": ".sp-nome-lavoro-input",
-      "file": "primitives/form-primitives.css",
-      "type": "block"
-    },
-    {
-      "old": ".nome-lavoro-input--error",
-      "new": ".sp-nome-lavoro-input--error",
-      "file": "primitives/form-primitives.css",
-      "type": "modifier"
-    },
-    {
-      "old": ".nome-ref-row",
-      "new": ".sp-nome-ref-row",
-      "file": "primitives/form-primitives.css",
+      "old": ".sp-label-text",
+      "new": ".sp-sp-label-text",
+      "file": "primitives/form-layout.css",
       "type": "block"
     },
     {
@@ -615,44 +543,164 @@
       "type": "block"
     },
     {
-      "old": ".qty-iva-row",
-      "new": ".sp-qty-iva-row",
+      "old": ".sp-custom-dims",
+      "new": ".sp-sp-custom-dims",
       "file": "primitives/form-primitives.css",
       "type": "block"
     },
     {
-      "old": ".qty-iva-row--double",
-      "new": ".sp-qty-iva-row--double",
+      "old": ".sp-custom-dims__field",
+      "new": ".sp-sp-custom-dims__field",
+      "file": "primitives/form-primitives.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-custom-dims__grid",
+      "new": ".sp-sp-custom-dims__grid",
+      "file": "primitives/form-primitives.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-custom-dims__label",
+      "new": ".sp-sp-custom-dims__label",
+      "file": "primitives/form-primitives.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-error-inline",
+      "new": ".sp-sp-error-inline",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-error-msg",
+      "new": ".sp-sp-error-msg",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-facciate-input-wrap",
+      "new": ".sp-sp-facciate-input-wrap",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-facciate-row",
+      "new": ".sp-sp-facciate-row",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-form-field",
+      "new": ".sp-sp-form-field",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-form-input",
+      "new": ".sp-sp-form-input",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-form-input--error",
+      "new": ".sp-sp-form-input--error",
       "file": "primitives/form-primitives.css",
       "type": "modifier"
     },
     {
-      "old": ".qty-iva-row--single",
-      "new": ".sp-qty-iva-row--single",
+      "old": ".sp-form-select",
+      "new": ".sp-sp-form-select",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-label-hint",
+      "new": ".sp-sp-label-hint",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-label-row",
+      "new": ".sp-sp-label-row",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-label-text",
+      "new": ".sp-sp-label-text",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-label-text__optional",
+      "new": ".sp-sp-label-text__optional",
+      "file": "primitives/form-primitives.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-label-text__required",
+      "new": ".sp-sp-label-text__required",
+      "file": "primitives/form-primitives.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-nome-lavoro-input",
+      "new": ".sp-sp-nome-lavoro-input",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-nome-lavoro-input--error",
+      "new": ".sp-sp-nome-lavoro-input--error",
       "file": "primitives/form-primitives.css",
       "type": "modifier"
     },
     {
-      "old": ".spessore-display",
-      "new": ".sp-spessore-display",
+      "old": ".sp-nome-ref-row",
+      "new": ".sp-sp-nome-ref-row",
       "file": "primitives/form-primitives.css",
       "type": "block"
     },
     {
-      "old": ".spessore-label",
-      "new": ".sp-spessore-label",
+      "old": ".sp-qty-iva-row",
+      "new": ".sp-sp-qty-iva-row",
       "file": "primitives/form-primitives.css",
       "type": "block"
     },
     {
-      "old": ".spessore-value",
-      "new": ".sp-spessore-value",
+      "old": ".sp-qty-iva-row--double",
+      "new": ".sp-sp-qty-iva-row--double",
+      "file": "primitives/form-primitives.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".sp-qty-iva-row--single",
+      "new": ".sp-sp-qty-iva-row--single",
+      "file": "primitives/form-primitives.css",
+      "type": "modifier"
+    },
+    {
+      "old": ".sp-spessore-display",
+      "new": ".sp-sp-spessore-display",
       "file": "primitives/form-primitives.css",
       "type": "block"
     },
     {
-      "old": ".success-inline",
-      "new": ".sp-success-inline",
+      "old": ".sp-spessore-label",
+      "new": ".sp-sp-spessore-label",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-spessore-value",
+      "new": ".sp-sp-spessore-value",
+      "file": "primitives/form-primitives.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-success-inline",
+      "new": ".sp-sp-success-inline",
       "file": "primitives/form-primitives.css",
       "type": "block"
     },
@@ -663,242 +711,320 @@
       "type": "block"
     },
     {
-      "old": ".info-btn",
-      "new": ".sp-info-btn",
+      "old": ".sp-info-btn",
+      "new": ".sp-sp-info-btn",
       "file": "primitives/info-dropdown.css",
       "type": "block"
     },
     {
-      "old": ".info-dropdown",
-      "new": ".sp-info-dropdown",
+      "old": ".sp-info-dropdown",
+      "new": ".sp-sp-info-dropdown",
       "file": "primitives/info-dropdown.css",
       "type": "block"
     },
     {
-      "old": ".info-dropdown--hidden",
-      "new": ".sp-info-dropdown--hidden",
+      "old": ".sp-info-dropdown--hidden",
+      "new": ".sp-sp-info-dropdown--hidden",
       "file": "primitives/info-dropdown.css",
       "type": "modifier"
     },
     {
-      "old": ".info-dropdown__body",
-      "new": ".sp-info-dropdown__body",
+      "old": ".sp-info-dropdown__body",
+      "new": ".sp-sp-info-dropdown__body",
       "file": "primitives/info-dropdown.css",
       "type": "element"
     },
     {
-      "old": ".info-dropdown__close",
-      "new": ".sp-info-dropdown__close",
+      "old": ".sp-info-dropdown__close",
+      "new": ".sp-sp-info-dropdown__close",
       "file": "primitives/info-dropdown.css",
       "type": "element"
     },
     {
-      "old": ".info-dropdown__header",
-      "new": ".sp-info-dropdown__header",
+      "old": ".sp-info-dropdown__header",
+      "new": ".sp-sp-info-dropdown__header",
       "file": "primitives/info-dropdown.css",
       "type": "element"
     },
     {
-      "old": ".info-dropdown__title",
-      "new": ".sp-info-dropdown__title",
+      "old": ".sp-info-dropdown__title",
+      "new": ".sp-sp-info-dropdown__title",
       "file": "primitives/info-dropdown.css",
       "type": "element"
     },
     {
-      "old": ".info-note",
-      "new": ".sp-info-note",
+      "old": ".sp-info-note",
+      "new": ".sp-sp-info-note",
       "file": "primitives/info-dropdown.css",
       "type": "block"
     },
     {
-      "old": ".info-note__muted",
-      "new": ".sp-info-note__muted",
+      "old": ".sp-info-note__muted",
+      "new": ".sp-sp-info-note__muted",
       "file": "primitives/info-dropdown.css",
       "type": "element"
     },
     {
-      "old": ".info-note__title",
-      "new": ".sp-info-note__title",
+      "old": ".sp-info-note__title",
+      "new": ".sp-sp-info-note__title",
       "file": "primitives/info-dropdown.css",
       "type": "element"
     },
     {
-      "old": ".iva-banner",
-      "new": ".sp-iva-banner",
+      "old": ".sp-iva-banner",
+      "new": ".sp-sp-iva-banner",
       "file": "primitives/iva-banner.css",
       "type": "block"
     },
     {
-      "old": ".iva-banner__content",
-      "new": ".sp-iva-banner__content",
+      "old": ".sp-iva-banner__content",
+      "new": ".sp-sp-iva-banner__content",
       "file": "primitives/iva-banner.css",
       "type": "element"
     },
     {
-      "old": ".iva-banner__icon",
-      "new": ".sp-iva-banner__icon",
+      "old": ".sp-iva-banner__icon",
+      "new": ".sp-sp-iva-banner__icon",
       "file": "primitives/iva-banner.css",
       "type": "element"
     },
     {
-      "old": ".iva-banner__text",
-      "new": ".sp-iva-banner__text",
+      "old": ".sp-iva-banner__text",
+      "new": ".sp-sp-iva-banner__text",
       "file": "primitives/iva-banner.css",
       "type": "element"
     },
     {
-      "old": ".mode-switcher",
-      "new": ".sp-mode-switcher",
+      "old": ".sp-mode-switcher",
+      "new": ".sp-sp-mode-switcher",
       "file": "primitives/mode-switcher.css",
       "type": "block"
     },
     {
-      "old": ".mode-switcher__btn",
-      "new": ".sp-mode-switcher__btn",
+      "old": ".sp-mode-switcher__btn",
+      "new": ".sp-sp-mode-switcher__btn",
       "file": "primitives/mode-switcher.css",
       "type": "element"
     },
     {
-      "old": ".mode-switcher__btn--active",
-      "new": ".sp-mode-switcher__btn--active",
+      "old": ".sp-mode-switcher__btn--active",
+      "new": ".sp-sp-mode-switcher__btn--active",
       "file": "primitives/mode-switcher.css",
       "type": "element-modifier"
     },
     {
-      "old": ".mode-switcher__btn--inactive",
-      "new": ".sp-mode-switcher__btn--inactive",
+      "old": ".sp-mode-switcher__btn--inactive",
+      "new": ".sp-sp-mode-switcher__btn--inactive",
       "file": "primitives/mode-switcher.css",
       "type": "element-modifier"
     },
     {
-      "old": ".option-buttons",
-      "new": ".sp-option-buttons",
+      "old": ".sp-option-buttons",
+      "new": ".sp-sp-option-buttons",
       "file": "primitives/option-buttons.css",
       "type": "block"
     },
     {
-      "old": ".option-buttons--equal",
-      "new": ".sp-option-buttons--equal",
+      "old": ".sp-option-buttons--equal",
+      "new": ".sp-sp-option-buttons--equal",
       "file": "primitives/option-buttons.css",
       "type": "modifier"
     },
     {
-      "old": ".option-buttons__btn",
-      "new": ".sp-option-buttons__btn",
+      "old": ".sp-option-buttons__btn",
+      "new": ".sp-sp-option-buttons__btn",
       "file": "primitives/option-buttons.css",
       "type": "element"
     },
     {
-      "old": ".option-buttons__btn--borderless",
-      "new": ".sp-option-buttons__btn--borderless",
+      "old": ".sp-option-buttons__btn--borderless",
+      "new": ".sp-sp-option-buttons__btn--borderless",
       "file": "primitives/option-buttons.css",
       "type": "element-modifier"
     },
     {
-      "old": ".option-buttons__btn--default",
-      "new": ".sp-option-buttons__btn--default",
+      "old": ".sp-option-buttons__btn--default",
+      "new": ".sp-sp-option-buttons__btn--default",
       "file": "primitives/option-buttons.css",
       "type": "element-modifier"
     },
     {
-      "old": ".option-buttons__btn--selected",
-      "new": ".sp-option-buttons__btn--selected",
+      "old": ".sp-option-buttons__btn--selected",
+      "new": ".sp-sp-option-buttons__btn--selected",
       "file": "primitives/option-buttons.css",
       "type": "element-modifier"
     },
     {
-      "old": ".orientation-toggle",
-      "new": ".sp-orientation-toggle",
+      "old": ".sp-orientation-toggle",
+      "new": ".sp-sp-orientation-toggle",
       "file": "primitives/orientation-toggle.css",
       "type": "block"
     },
     {
-      "old": ".orientation-toggle__btn",
-      "new": ".sp-orientation-toggle__btn",
+      "old": ".sp-orientation-toggle__btn",
+      "new": ".sp-sp-orientation-toggle__btn",
       "file": "primitives/orientation-toggle.css",
       "type": "element"
     },
     {
-      "old": ".orientation-toggle__btn--active",
-      "new": ".sp-orientation-toggle__btn--active",
+      "old": ".sp-orientation-toggle__btn--active",
+      "new": ".sp-sp-orientation-toggle__btn--active",
       "file": "primitives/orientation-toggle.css",
       "type": "element-modifier"
     },
     {
-      "old": ".rating",
-      "new": ".sp-rating",
+      "old": ".sp-rating",
+      "new": ".sp-sp-rating",
       "file": "primitives/rating.css",
       "type": "block"
     },
     {
-      "old": ".rating__empty",
-      "new": ".sp-rating__empty",
+      "old": ".sp-rating__empty",
+      "new": ".sp-sp-rating__empty",
       "file": "primitives/rating.css",
       "type": "element"
     },
     {
-      "old": ".rating__filled",
-      "new": ".sp-rating__filled",
+      "old": ".sp-rating__filled",
+      "new": ".sp-sp-rating__filled",
       "file": "primitives/rating.css",
       "type": "element"
     },
     {
-      "old": ".rating__star",
-      "new": ".sp-rating__star",
+      "old": ".sp-rating__star",
+      "new": ".sp-sp-rating__star",
       "file": "primitives/rating.css",
       "type": "element"
     },
     {
-      "old": ".toggle-switch",
-      "new": ".sp-toggle-switch",
+      "old": ".org",
+      "new": ".sp-org",
+      "file": "primitives/sp-confirm-dialog.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-button",
+      "new": ".sp-sp-button",
+      "file": "primitives/sp-confirm-dialog.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-confirm-dialog",
+      "new": ".sp-sp-confirm-dialog",
+      "file": "primitives/sp-confirm-dialog.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-confirm-dialog__actions",
+      "new": ".sp-sp-confirm-dialog__actions",
+      "file": "primitives/sp-confirm-dialog.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-confirm-dialog__body",
+      "new": ".sp-sp-confirm-dialog__body",
+      "file": "primitives/sp-confirm-dialog.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-confirm-dialog__close",
+      "new": ".sp-sp-confirm-dialog__close",
+      "file": "primitives/sp-confirm-dialog.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-confirm-dialog__header",
+      "new": ".sp-sp-confirm-dialog__header",
+      "file": "primitives/sp-confirm-dialog.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-confirm-dialog__heading",
+      "new": ".sp-sp-confirm-dialog__heading",
+      "file": "primitives/sp-confirm-dialog.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-confirm-dialog__icon",
+      "new": ".sp-sp-confirm-dialog__icon",
+      "file": "primitives/sp-confirm-dialog.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-confirm-dialog__panel",
+      "new": ".sp-sp-confirm-dialog__panel",
+      "file": "primitives/sp-confirm-dialog.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-confirm-dialog__text",
+      "new": ".sp-sp-confirm-dialog__text",
+      "file": "primitives/sp-confirm-dialog.css",
+      "type": "element"
+    },
+    {
+      "old": ".sp-confirm-dialog__title",
+      "new": ".sp-sp-confirm-dialog__title",
+      "file": "primitives/sp-confirm-dialog.css",
+      "type": "element"
+    },
+    {
+      "old": ".w3",
+      "new": ".sp-w3",
+      "file": "primitives/sp-confirm-dialog.css",
+      "type": "block"
+    },
+    {
+      "old": ".sp-toggle-switch",
+      "new": ".sp-sp-toggle-switch",
       "file": "primitives/toggle-switch.css",
       "type": "block"
     },
     {
-      "old": ".toggle-switch--checked",
-      "new": ".sp-toggle-switch--checked",
+      "old": ".sp-toggle-switch--checked",
+      "new": ".sp-sp-toggle-switch--checked",
       "file": "primitives/toggle-switch.css",
       "type": "modifier"
     },
     {
-      "old": ".toggle-switch-field",
-      "new": ".sp-toggle-switch-field",
+      "old": ".sp-toggle-switch-field",
+      "new": ".sp-sp-toggle-switch-field",
       "file": "primitives/toggle-switch.css",
       "type": "block"
     },
     {
-      "old": ".toggle-switch__label",
-      "new": ".sp-toggle-switch__label",
+      "old": ".sp-toggle-switch__label",
+      "new": ".sp-sp-toggle-switch__label",
       "file": "primitives/toggle-switch.css",
       "type": "element"
     },
     {
-      "old": ".toggle-switch__thumb",
-      "new": ".sp-toggle-switch__thumb",
+      "old": ".sp-toggle-switch__thumb",
+      "new": ".sp-sp-toggle-switch__thumb",
       "file": "primitives/toggle-switch.css",
       "type": "element"
     },
     {
-      "old": ".validation-indicator",
-      "new": ".sp-validation-indicator",
+      "old": ".sp-validation-indicator",
+      "new": ".sp-sp-validation-indicator",
       "file": "primitives/validation-indicator.css",
       "type": "block"
     },
     {
-      "old": ".validation-total",
-      "new": ".sp-validation-total",
+      "old": ".sp-validation-total",
+      "new": ".sp-sp-validation-total",
       "file": "primitives/validation-indicator.css",
       "type": "block"
     },
     {
-      "old": ".validation-total__count",
-      "new": ".sp-validation-total__count",
+      "old": ".sp-validation-total__count",
+      "new": ".sp-sp-validation-total__count",
       "file": "primitives/validation-indicator.css",
       "type": "element"
     }
   ],
   "stats": {
-    "totalFiles": 18,
-    "totalClasses": 149
+    "totalFiles": 20,
+    "totalClasses": 170
   }
 }

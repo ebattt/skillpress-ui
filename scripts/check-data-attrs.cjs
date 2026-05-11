@@ -11,8 +11,8 @@
  *      Ammessi quando la riga (o entro 6 righe) referenzia un block Feedaty
  *      (`feedaty_widget`, `feedaty-widget`).
  *   3. demo-only: data-section, data-consumer-page, data-page-init,
- *      data-order-detail-demo-controls. Ammessi solo in `demo-pages/` o
- *      `stories/`. Nessun primitive/component/js puo' usarli.
+ *      data-order-detail-demo-controls. Ammessi solo in `stories/`.
+ *      Nessun primitive/component/js puo' usarli.
  *
  * Lo script:
  *   - rimuove block comments `/ * ... * /` e line comments `//` prima dello scan
@@ -226,7 +226,7 @@ function main() {
             if (usedInLibrary.length > 0) {
                 violations.push({
                     name: name,
-                    reason: 'demo-only attribute usato fuori da demo-pages/stories',
+                    reason: 'demo-only attribute usato fuori da stories',
                     records: usedInLibrary,
                 });
             }

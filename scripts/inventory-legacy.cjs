@@ -24,7 +24,7 @@ const REPO_ROOT = path.resolve(__dirname, '..');
 const OUT_DIR = path.join(__dirname, 'inventory-out');
 const OUT_FILE = path.join(OUT_DIR, 'legacy.json');
 
-const SCAN_DIRS = ['js', 'primitives', 'components', 'stories', 'demo-pages',
+const SCAN_DIRS = ['js', 'primitives', 'components', 'stories',
     'base', 'utilities', 'tokens', 'bundles', 'docs'];
 const SCAN_EXTS = new Set(['.js', '.cjs', '.mjs', '.ts', '.html', '.css', '.md', '.json']);
 
