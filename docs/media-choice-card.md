@@ -3,9 +3,6 @@ title: MediaChoiceCard
 description: Card generica selezionabile con immagine per presentation type CMS "media choice".
 layer: components
 strategy: css-only
-sources:
-  demo: product-page-integration/js/sections/section-2.js, section-3.js, section-4.js
-  catalog_css: elements-ui/css/components/_cards.css
 status: public-contract
 package_path: components/media-choice-card.css
 ---

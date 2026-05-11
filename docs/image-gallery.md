@@ -3,23 +3,18 @@ title: ImageGallery
 description: Container immagine prodotto 1:1 con bottoni nav prev/next assoluti (snapshot statico).
 layer: components
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_layout-patterns.css
-  catalog_js: elements-ui/js/page-init.js
-  demo: product-page-integration/index.html
-status: post-bem-2026-04-29
 package_path: components/image-gallery.css
 ---
 
 # ImageGallery
 
-Galleria immagine prodotto: container quadrato 1:1 con immagine principale `object-fit: cover` e due bottoni nav `prev`/`next` posizionati assoluti su `top: 50%`. Il behavior prev/next non e' implementato in libreria (Strategia A): la pagina demo legge `data-image-gallery-images` e ruota le immagini lato consumer.
+Galleria immagine prodotto: container quadrato 1:1 con immagine principale `object-fit: cover` e due bottoni nav `prev`/`next` posizionati assoluti su `top: 50%`. Il behavior prev/next non e' implementato in libreria (CSS-only snapshot): la consumer legge `data-image-gallery-images` e ruota le immagini lato consumer.
 
 ## Strategia JS demo
 
-Strategia A — static snapshot. La libreria fornisce solo CSS. La pagina demo (`product-page-integration/js/page-init.js#L54-L86`) implementa il behavior prev/next leggendo l'attributo `data-image-gallery-images`. Il consumer monta lo stato iniziale statico con i bottoni visibili ma senza listener.
+La libreria fornisce solo CSS. La consumer (`product-page-integration/js/page-init.js#L54-L86`) implementa il behavior prev/next leggendo l'attributo `data-image-gallery-images`. Il consumer monta lo stato iniziale statico con i bottoni visibili ma senza listener.
 
-Una eventuale versione `js/image-gallery.js` (Strategia C) potra' arrivare in futuro con lo stesso pattern di `accordion.js` / `toggle-switch.js`.
+Una eventuale versione `js/image-gallery.js` (runtime JS) potra' arrivare in futuro con lo stesso pattern di `accordion.js` / `toggle-switch.js`.
 
 ## Anatomy
 
@@ -36,7 +31,7 @@ ImageGallery
 
 ## Markup contract
 
-Markup verbatim dalla pagina demo `product-page-integration` (sezione hero).
+Markup contract corrente.
 
 ```html
 <div class="image-gallery">
@@ -86,8 +81,6 @@ Attributi:
 
 ## Mappatura nomi (demo product-page -> libreria)
 
-La demo originale (`product-page-integration`) usava i prefissi `hero-*` perche' la galleria viveva solo dentro il ProductHero. La libreria post-prompt-19 promuove la galleria a componente standalone con prefisso `image-gallery`.
-
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|
 | `.hero-image-gallery` | `.image-gallery` |
@@ -112,12 +105,12 @@ Oppure via bundle (gia' include `image-gallery.css`):
       href="../node_modules/@ebattt/skillpress-ui/bundles/demo-minimal.css" />
 ```
 
-Nessun script JS richiesto dalla libreria. Il behavior prev/next va implementato dal consumer (vedi Strategia JS demo).
+Nessun script JS richiesto dalla libreria. Il behavior prev/next va implementato dal consumer .
 
 ## Examples
 
 - `Default` → `components-imagegallery--default`
-- `ReferenceFromElementsUI` → `components-imagegallery--reference-from-elements-ui`
+- `Reference` → `components-imagegallery--reference-from-elements-ui`
 - `WithoutShadow` → `components-imagegallery--without-shadow`
 - `WithoutNav` → `components-imagegallery--without-nav`
 
@@ -129,7 +122,7 @@ Valori letterali: max-width 400px del container, dimensione bottone 2.5rem, offs
 
 ## Note CMS
 
-- `data-image-gallery-images`: array JSON con `src`/`alt` di ogni immagine. La libreria non lo legge; il consumer (pagina demo) lo usa per il cambio.
+- `data-image-gallery-images`: array JSON con `src`/`alt` di ogni immagine. La libreria non lo legge; il consumer (consumer) lo usa per il cambio.
 - `<img>` principale: `src`/`alt` per l'immagine inizialmente visibile.
 - frecce: SVG inline `aria-hidden="true"`. Nessuna dipendenza Material Symbols.
 - variante senza shadow: rimuovere il modifier `.product-shadow`.
@@ -137,7 +130,7 @@ Valori letterali: max-width 400px del container, dimensione bottone 2.5rem, offs
 
 ## Out of scope
 
-- behavior prev/next (vedi Strategia A).
+- behavior prev/next (vedi CSS-only snapshot).
 - thumbnail bar, zoom, lazy loading, carousel.
 - indicatori (dot pagination).
 - varianti carousel landing / blog.

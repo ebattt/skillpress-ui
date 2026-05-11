@@ -3,9 +3,6 @@ title: Rating
 description: Rating a stelle CSS-only con overlay clip data-rating-driven via width inline.
 layer: primitives
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_feedback-status.css#L220-L228
-  demo: product-page-integration/index.html#L408-L418
 status: public-contract
 package_path: primitives/rating.css
 ---
@@ -29,7 +26,7 @@ Le due righe contengono lo stesso numero di `.sp-rating__star` (5). La `.sp-rati
 
 ## Markup contract
 
-Markup verbatim dalla pagina demo `product-page-integration/index.html#L408-L418` (hero prodotto, `4.85 / 5 = 97%`).
+Markup contract corrente.html#L408-L418` (hero prodotto, `4.85 / 5 = 97%`).
 
 ```html
 <div class="sp-rating">

@@ -1,13 +1,3 @@
-/* Product page runtime bundle for backend/CMS integrations. */
-
-/* === inline base/fonts.css === */
-/**
- * FONTS — Asset tipografici Skillpress UI
- *
- * Manrope e il font obbligatorio del design system e viene servito dal package.
- * Non importare Google Fonts nel runtime consumer.
- */
-
 @font-face {
     font-family: "Manrope";
     src: url("../fonts/manrope/Manrope-Variable.woff2") format("woff2-variations");
@@ -16,104 +6,59 @@
     font-display: swap;
 }
 
-
-/* === inline tokens/tokens.css === */
-/**
- * Fonte: elements-ui/css/tokens.css
- * Data copia: 2026-04-23
- * Nota: copia esatta.
- */
-
-/**
- * ==========================================================================
- * TOKENS -- Design token per Skillpress UI
- * ==========================================================================
- *
- * SCOPO:
- *   Fonte unica di verita per tutti i valori di design del sistema Skillpress.
- *   Questo file definisce colori, spaziature, raggi, ombre, transizioni,
- *   z-index e tipografia come CSS Custom Properties su :root.
- *
- * CONSUMATORI:
- *   - elements-ui/ (catalogo componenti)
- *   - product-page-integration/ (pagina prodotto)
- *   - qualsiasi pagina che importa product-page.css o components.css
- *
- * DIPENDENZE:
- *   Nessuna -- questo file deve essere importato PRIMA di tutti gli altri.
- *
- * Elementi HTML: nessuno direttamente; usato da tutti i componenti.
- * ==========================================================================
- */
-
 :root {
-    /* === COLORI BRAND === */
-    /* Arancione Skillpress: usato per CTA, selezioni attive, badge */
+
     --color-primary: #F08A00;
     --color-primary-light: #FFB149;
     --color-primary-dark: #D67800;
 
-    /* Teal/verde: usato per bottoni carrello, prezzi selezionati, accenti */
     --color-secondary: #1C7264;
     --color-secondary-light: #298979;
     --color-secondary-dark: #0F544D;
 
-    /* Blu scuro: usato per elementi premium */
     --color-dark: #003E51;
 
-    /* === COLORI TESTO === */
-    /* Scala di grigi per gerarchia testuale */
-    --color-text: #111418;                  /* Testo principale (quasi nero) */
-    --color-text-strong: #374151;           /* gray-700 -- testo forte/enfatizzato */
-    --color-text-secondary: #4B5563;        /* gray-600 -- testo secondario */
-    --color-text-light: #6B7280;            /* gray-500 -- testo terziario */
-    --color-text-muted: #9CA3AF;            /* gray-400 -- placeholder, disabilitato */
+    --color-text: #111418;
+    --color-text-strong: #374151;
+    --color-text-secondary: #4B5563;
+    --color-text-light: #6B7280;
+    --color-text-muted: #9CA3AF;
 
-    /* === COLORI SFONDO === */
-    /* Grigi neutri per sfondi, bordi e separatori */
     --color-bg-white: #FFFFFF;
-    --color-bg-gray-50: #F9FAFB;            /* Sfondo sezioni, sidebar */
-    --color-bg-gray-75: #f7f7f8;            /* Sfondo bottoni inattivi */
-    --color-bg-gray-100: #F3F4F6;           /* Sfondo hover, bordi leggeri */
-    --color-bg-gray-200: #E5E7EB;           /* Bordi standard */
-    --color-bg-gray-300: #D1D5DB;           /* Separatore/icone secondarie */
-    --color-bg-warm-beige: #F5F5F3;         /* Sfondo box totale */
+    --color-bg-gray-50: #F9FAFB;
+    --color-bg-gray-75: #f7f7f8;
+    --color-bg-gray-100: #F3F4F6;
+    --color-bg-gray-200: #E5E7EB;
+    --color-bg-gray-300: #D1D5DB;
+    --color-bg-warm-beige: #F5F5F3;
 
-    /* === COLORI SEZIONI ACCORDION === */
     --section-bg: var(--color-bg-white);
     --section-bg-expanded: var(--color-bg-gray-50);
     --section-border: var(--color-bg-gray-200);
     --section-number-bg: var(--color-primary);
     --section-number-color: var(--color-bg-white);
 
-    /* === COLORI SELEZIONE === */
-    /* Stati per card e opzioni selezionabili */
     --selection-active-bg: var(--color-primary);
     --selection-active-color: var(--color-bg-white);
-    --selection-highlight-bg: #FFF4E6;      /* Sfondo formato/opzione selezionata */
+    --selection-highlight-bg: #FFF4E6;
     --selection-highlight-border: var(--color-primary);
-    --color-focus-ring: var(--color-border-focus); /* Focus ring cross-component */
+    --color-focus-ring: var(--color-border-focus);
 
-    /* === COLORI PREZZO === */
-    /* Tabella prezzi e indicatori economici */
-    --price-best-bg: #DCFCE7;               /* Verde chiaro miglior prezzo */
-    --price-best-border: #22C55E;           /* Verde bordo */
-    --price-discount-color: #16A34A;        /* Testo sconto/risparmio */
-    --price-iva-badge: #EFF6FF;             /* Badge IVA */
+    --price-best-bg: #DCFCE7;
+    --price-best-border: #22C55E;
+    --price-discount-color: #16A34A;
+    --price-iva-badge: #EFF6FF;
 
-    /* === COLORI STATO === */
-    /* Feedback visivo per errori, successi, warning */
-    --color-error: #DC2626;                 /* Rosso errore */
-    --color-error-light: #EF4444;           /* Rosso errore chiaro */
-    --color-error-bg: #FEF2F2;              /* Sfondo errore */
-    --color-success: #16A34A;               /* Verde successo */
-    --color-success-bg: #F0FDF4;            /* Sfondo successo */
-    --color-info: #3B82F6;                  /* Blu informativo */
-    --color-warning: #EA580C;               /* Arancione warning */
-    --color-warning-bg: #FFF7ED;            /* Sfondo warning */
-    --color-warning-border: #FED7AA;        /* Bordo warning */
+    --color-error: #DC2626;
+    --color-error-light: #EF4444;
+    --color-error-bg: #FEF2F2;
+    --color-success: #16A34A;
+    --color-success-bg: #F0FDF4;
+    --color-info: #3B82F6;
+    --color-warning: #EA580C;
+    --color-warning-bg: #FFF7ED;
+    --color-warning-border: #FED7AA;
 
-    /* Badge/status */
     --color-success-badge-bg: var(--color-success-bg);
     --color-success-badge-text: var(--color-success);
     --color-warning-badge-bg: var(--color-warning-bg);
@@ -127,8 +72,6 @@
     --color-alloc-badge-warning-bg: var(--color-warning-bg);
     --color-alloc-badge-warning-text: var(--color-warning);
 
-    /* Color aliases for component parity. These preserve current visuals while
-       removing hardcoded component values from the public CSS surface. */
     --color-bg-gray-25: #FBFCFE;
     --color-bg-gray-30: #FAFBFC;
     --color-bg-gray-150: #EEF2F6;
@@ -213,49 +156,37 @@
     --color-warning-bg-alpha-50: rgba(255, 247, 237, 0.5);
     --color-hero-overlay: rgba(10, 12, 18, 0.55);
 
-    /* === BORDI === */
-    /* Colori bordo standard e focus */
-    --color-border: #D1D5DB;               /* Bordo grigio standard */
-    --color-border-focus: #3B82F6;         /* Bordo focus blu */
+    --color-border: #D1D5DB;
+    --color-border-focus: #3B82F6;
 
-    /* === DIMENSIONI LAYOUT === */
-    /* Larghezze e padding principali della pagina */
-    --page-max-width: 1280px;               /* max-w-7xl */
-    --page-padding-x: 1rem;                 /* px-4 */
-    --sidebar-width: 380px;                 /* Larghezza sidebar desktop */
-    --sidebar-top: 250px;                   /* Posizione sticky sidebar */
+    --page-max-width: 1280px;
+    --page-padding-x: 1rem;
+    --sidebar-width: 380px;
+    --sidebar-top: 250px;
 
-    /* === DIMENSIONI SEZIONI ACCORDION === */
-    --section-padding: 1rem;                /* Padding interno sezioni */
-    --section-gap: 0.75rem;                 /* Gap tra sezioni */
-    --section-radius: 0.75rem;              /* Border radius sezioni */
-    --section-number-size: 2rem;            /* Dimensione cerchio numero */
+    --section-padding: 1rem;
+    --section-gap: 0.75rem;
+    --section-radius: 0.75rem;
+    --section-number-size: 2rem;
 
-    /* === SPAZIATURA === */
-    /* Scala a incrementi basata su 0.25rem (4px) */
-    --spacing-xs: 0.25rem;                  /* 4px */
-    --spacing-sm: 0.5rem;                   /* 8px */
-    --spacing-md: 1rem;                     /* 16px */
-    --spacing-lg: 1.5rem;                   /* 24px */
-    --spacing-xl: 2rem;                     /* 32px */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
 
-    /* === RAGGIO BORDI === */
-    /* Scala progressiva per coerenza visiva */
-    --radius-sm: 0.25rem;                   /* 4px -- input, piccoli elementi */
-    --radius-md: 0.375rem;                  /* 6px -- bottoni piccoli */
-    --radius-lg: 0.5rem;                    /* 8px -- card, dropdown */
-    --radius-xl: 0.75rem;                   /* 12px -- sezioni, modal */
-    --radius-full: 9999px;                  /* Cerchio / pill */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-full: 9999px;
 
-    /* === OMBRE === */
-    /* Scala progressiva per gerarchia visiva */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 
-    /* Ombra specifica per immagini prodotto (effetto libro) */
     --shadow-product: 1px 1px 2px 0 rgba(255, 255, 255, 0.3) inset,
                       -1px -1px 2px 0 rgba(230, 230, 230, 0.5) inset,
                       -5px 5px 10px 0 rgba(230, 230, 230, 0.2),
@@ -263,153 +194,70 @@
                       -5px -5px 10px 0 rgba(255, 255, 255, 0.9),
                       5px 5px 13px 0 rgba(230, 230, 230, 0.9);
 
-    /* === TRANSIZIONI === */
-    /* Tre velocita per coprire tutti i casi d'uso */
-    --transition-fast: 150ms ease;          /* hover/focus immediati */
-    --transition-normal: 200ms ease;        /* dropdown, toggle */
-    --transition-slow: 300ms ease;          /* animazioni piu ampie */
-    --transition-section: 0.4s cubic-bezier(0.4, 0, 0.2, 1);  /* accordion */
+    --transition-fast: 150ms ease;
+    --transition-normal: 200ms ease;
+    --transition-slow: 300ms ease;
+    --transition-section: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-    /* === BREAKPOINT CANONICI ===
-       CSS non permette `var()` dentro `@media` queries, quindi i breakpoint
-       sono numeri letterali nei singoli componenti. Per garantire coerenza,
-       usare ESCLUSIVAMENTE questi 4 valori:
-
-         374px   small phones (iPhone SE 1st gen, fix mobile-bar)
-         640px   phones / tablet portrait stretti (mobile cutoff)
-         1024px  tablet landscape / small desktop (desktop cutoff)
-         1280px  wide desktop (= --page-max-width)
-
-       Convenzione `max-width` / `min-width`:
-         (max-width: 639px)   -> mobile (sotto 640)
-         (min-width: 640px)   -> tablet+
-         (max-width: 1023px)  -> mobile + tablet (sotto desktop)
-         (min-width: 1024px)  -> desktop
-         (min-width: 1280px)  -> wide desktop
-
-       Eccezioni storiche: `767px` (accordion touch target, deprecato — da
-       migrare a 640px), `480px` (price-table small refinement, da rivedere).
-       Tutti i nuovi componenti devono usare uno dei 4 canonici. */
-
-    /* === Z-INDEX === */
-    /* Gerarchia ordinata per evitare conflitti di sovrapposizione */
     --z-base: 1;
     --z-dropdown: 50;
     --z-tooltip: 60;
     --z-sticky: 70;
     --z-overlay: 80;
-    --z-mobile-bar: 999;                    /* Barra mobile fixed */
-    --z-modal: 1100;                        /* Dialog/modal sopra fixed mobile UI */
+    --z-mobile-bar: 999;
+    --z-modal: 1100;
 
-    /* === TIPOGRAFIA === */
-    /* Font stack con fallback su font di sistema */
     --font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-    /* Scala dimensioni font — unica per tutte le pagine
-       Body text (xs-lg): fissi, non responsive
-       Heading text (xl-4xl): responsive con clamp() tra 375px e 1280px */
-    --font-size-xs: 0.75rem;                                    /* 12px */
-    --font-size-sm: 0.875rem;                                   /* 14px */
-    --font-size-base: 1rem;                                     /* 16px */
-    --font-size-lg: 1.125rem;                                   /* 18px */
-    --font-size-xl: clamp(1.125rem, 1rem + 0.39vw, 1.25rem);   /* 18px → 20px */
-    --font-size-2xl: clamp(1.25rem, 1rem + 0.78vw, 1.5rem);    /* 20px → 24px */
-    --font-size-3xl: clamp(1.5rem, 1rem + 1.56vw, 2rem);       /* 24px → 32px */
-    --font-size-4xl: clamp(1.75rem, 1.25rem + 1.56vw, 2.5rem); /* 28px → 40px */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: clamp(1.125rem, 1rem + 0.39vw, 1.25rem);
+    --font-size-2xl: clamp(1.25rem, 1rem + 0.78vw, 1.5rem);
+    --font-size-3xl: clamp(1.5rem, 1rem + 1.56vw, 2rem);
+    --font-size-4xl: clamp(1.75rem, 1.25rem + 1.56vw, 2.5rem);
 
-    /* Pesi font */
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
 
-    /* Line-height */
-    --line-height-tight: 1.2;               /* Heading, titoli */
-    --line-height-snug: 1.375;              /* Sottotitoli, card title */
-    --line-height-normal: 1.5;              /* Body text */
-    --line-height-relaxed: 1.625;           /* Contenuto lungo (blog, descrizioni) */
+    --line-height-tight: 1.2;
+    --line-height-snug: 1.375;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.625;
 
-    /* === TOKEN SPECIFICI SHELL === */
     --shell-header-height: 60px;
     --shell-sidebar-width: 280px;
     --shell-sidebar-bg: var(--color-bg-gray-50);
     --shell-code-bg: #1E293B;
     --shell-code-color: #E2E8F0;
-    --shell-code-success: #4ADE80;             /* Verde successo su sfondo scuro (copy btn) */
+    --shell-code-success: #4ADE80;
 
-    /* === TOKEN SEMANTICI AGGIUNTIVI ===
-       Aggiunti in fase 4-sub (audit production-readiness 2026-05-08, F008).
-       Alias semantici sopra la scala grezza per ridurre hardcoded nei componenti. */
+    --color-text-meta: var(--color-text-light);
 
-    /** @public */
-    --color-text-meta: var(--color-text-light);            /* metadati neutri (e.g. icone meta dashboard) */
-    /** @public */
-    --color-row-hover: var(--color-bg-gray-50);            /* hover row su tabelle */
-    /** @public */
-    --color-status-warning-soft: #FEF3C7;                  /* amber-100 -- background warning leggero */
-    /** @public */
-    --color-status-danger-soft: #FEE2E2;                   /* red-100 -- background errore leggero */
-    /** @public */
-    --color-status-success-soft: #DBEAFE;                  /* blue-100 -- background info/success leggero */
-    /** @public */
-    --color-dashboard-border: var(--color-border);         /* alias per bordi su layout dashboard */
-    /** @public */
-    --color-error-dark: #B91C1C;                           /* red-700 -- hover/active errore */
+    --color-row-hover: var(--color-bg-gray-50);
 
-    /* Accent badges/banner verified (vedi order-payment-action-box). */
-    /** @public */
+    --color-status-warning-soft: #FEF3C7;
+
+    --color-status-danger-soft: #FEE2E2;
+
+    --color-status-success-soft: #DBEAFE;
+
+    --color-dashboard-border: var(--color-border);
+
+    --color-error-dark: #B91C1C;
+
     --color-accent-bg: rgba(28, 114, 100, 0.08);
 }
 
-/* === MOBILE TOKEN OVERRIDES ===
-   Allineato a Skillpress-frontend/elements-ui/css/components/_layout.css
-   (`@media (max-width: 639px)` riduce padding pagina/sezioni). */
 @media (max-width: 639px) {
     :root {
         --page-padding-x: 0.75rem;
         --section-padding: 0.75rem;
     }
 }
-
-
-/* === inline base/reset.css === */
-/**
- * Fonte: elements-ui/css/_base.css
- * Data copia: 2026-04-23
- * Nota: copia esatta.
- */
-
-/**
- * ==========================================================================
- * BASE -- CSS Reset e stili fondamentali
- * ==========================================================================
- *
- * SCOPO:
- *   Reset CSS completo (equivalente Tailwind Preflight) + stili base
- *   per body, scrollbar e visibilita.
- *
- * DIPENDENZE:
- *   - tokens.css (font-family, colori sfondo e testo)
- *   Deve essere caricato DOPO tokens.css e PRIMA di components.css.
- *   L'ordine corretto e' definito in product-page.css:
- *     1. tokens.css  (design tokens)
- *     2. _base.css   (questo file)
- *     3. components.css (componenti)
- *
- * CONTENUTO:
- *   - CSS Reset (Tailwind Preflight equivalent)
- *   - Body configuration
- *   - Scrollbar utilities
- *   - Scroll behavior
- *
- * Elementi HTML: *, html, body, .scrollbar-hide, .scroll-smooth
- * ==========================================================================
- */
-
-
-/* ====================================================================
-   CSS RESET (Tailwind Preflight equivalent)
-   ==================================================================== */
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -597,10 +445,6 @@ img, video {
     display: none;
 }
 
-
-/* ====================================================================
-   BODY CONFIGURATION
-   ==================================================================== */
 body {
     line-height: inherit;
     font-family: var(--font-family);
@@ -611,57 +455,19 @@ body {
     overflow-x: hidden;
 }
 
-
-/* ====================================================================
-   SCROLLBAR UTILITIES
-   ==================================================================== */
 .scrollbar-hide {
-    scrollbar-width: none;                    /* Firefox */
-    -ms-overflow-style: none;                 /* IE and Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-    display: none;                            /* Chrome, Safari, Opera */
+    display: none;
 }
 
-
-/* ====================================================================
-   SCROLL BEHAVIOR
-   ==================================================================== */
 .scroll-smooth {
     scroll-behavior: smooth;
 }
 
-
-/* === inline utilities/utilities.css === */
-/**
- * Fonte: elements-ui/css/components/_utilities.css
- * Data copia: 2026-04-23
- * Nota: copia esatta.
- */
-
-/**
- * ==========================================================================
- * UTILITIES -- Classi utility (ex-Tailwind) e helpers
- * ==========================================================================
- *
- * SCOPO:
- *   Classi utility atomiche migrate da Tailwind CSS.
- *   Organizzate per categoria: layout, spacing, typography, colors,
- *   borders, sizing, position, visibility, interactive, responsive.
- *
- * NOTA:
- *   Queste classi sono usate nell'HTML per styling rapido.
- *   Per nuovi componenti, preferire classi semantiche nei file dedicati.
- *
- * DIPENDENZE:
- *   - tokens.css (colori, dimensioni)
- *
- * Elementi HTML: vari (usati inline nell'HTML)
- * ==========================================================================
- */
-
-/* === PADDING === */
 .px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -684,8 +490,6 @@ body {
     padding-bottom: 2.5rem;
 }
 
-
-/* === MARGIN === */
 .mt-3 {
     margin-top: 0.75rem;
 }
@@ -706,8 +510,6 @@ body {
     margin-bottom: 1.25rem;
 }
 
-
-/* === SPACE === */
 .space-y-1 > * + * {
     margin-top: 0.25rem;
 }
@@ -728,8 +530,6 @@ body {
     margin-top: 1.5rem;
 }
 
-
-/* === GAP === */
 .gap-1 {
     gap: 0.25rem;
 }
@@ -758,8 +558,6 @@ body {
     gap: 2rem;
 }
 
-
-/* === FLEXBOX === */
 .flex {
     display: flex;
 }
@@ -796,8 +594,6 @@ body {
     justify-content: space-between;
 }
 
-
-/* === GRID === */
 .grid {
     display: grid;
 }
@@ -810,8 +606,6 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-
-/* === TYPOGRAPHY === */
 .text-xs {
     font-size: var(--font-size-xs);
     line-height: var(--line-height-normal);
@@ -894,8 +688,6 @@ body {
     text-align: right;
 }
 
-
-/* === TEXT COLORS === */
 .text-white {
     color: #ffffff;
 }
@@ -952,8 +744,6 @@ body {
     color: var(--color-warning);
 }
 
-
-/* === BACKGROUND COLORS === */
 .bg-white {
     background-color: var(--color-bg-white);
 }
@@ -986,8 +776,6 @@ body {
     background-color: rgba(28, 114, 100, 0.1);
 }
 
-
-/* === BORDERS === */
 .border {
     border-width: 1px;
     border-style: solid;
@@ -1014,8 +802,6 @@ body {
     border-color: var(--color-primary);
 }
 
-
-/* === BORDER RADIUS === */
 .rounded {
     border-radius: var(--radius-sm);
 }
@@ -1036,8 +822,6 @@ body {
     border-radius: var(--radius-full);
 }
 
-
-/* === SHADOWS === */
 .shadow-md {
     box-shadow: var(--shadow-md);
 }
@@ -1046,8 +830,6 @@ body {
     box-shadow: var(--shadow-lg);
 }
 
-
-/* === SIZING === */
 .w-full {
     width: 100%;
 }
@@ -1088,8 +870,6 @@ body {
     min-width: 0px;
 }
 
-
-/* === POSITION === */
 .relative {
     position: relative;
 }
@@ -1118,8 +898,6 @@ body {
     transform: translateY(-50%);
 }
 
-
-/* === INTERACTIVE === */
 .cursor-pointer {
     cursor: pointer;
 }
@@ -1156,8 +934,6 @@ body {
     box-shadow: var(--shadow-xl);
 }
 
-
-/* === FOCUS STATES === */
 .focus-ring:focus {
     outline: none;
     box-shadow: 0 0 0 2px var(--color-primary), 0 0 0 4px rgba(240, 138, 0, 0.2);
@@ -1168,10 +944,6 @@ body {
     box-shadow: 0 0 0 2px var(--color-secondary);
 }
 
-
-/* === RESPONSIVE VISIBILITY === */
-/* breakpoint-exception: 768px preserves the existing Tailwind-compatible `md:`
-   utility contract while component breakpoints use the canonical 640/1024 scale. */
 @media (min-width: 768px) {
     .md\:hidden {
         display: none !important;
@@ -1184,9 +956,6 @@ body {
     }
 }
 
-
-/* === PREFERS REDUCED MOTION === */
-/* Disabilita tutte le animazioni e transizioni se l'utente lo richiede */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -1198,15 +967,6 @@ body {
     }
 }
 
-
-/* === inline primitives/button.css === */
-/**
- * BUTTON — Primitive button styles
- * Fonte: Skillpress-frontend/elements-ui/css/components/_buttons.css
- * Data estrazione: 2026-04-25
- */
-
-/** @public */
 .sp-button {
     display: inline-flex;
     align-items: center;
@@ -1362,15 +1122,6 @@ body {
     stroke: currentColor;
 }
 
-
-/* === inline primitives/badge.css === */
-/**
- * BADGE — Dot status badge primitive
- * Fonte: Skillpress-frontend/dashboard/css/components/_badges.css
- * Data estrazione: 2026-04-25
- */
-
-/** @public */
 .sp-badge {
     --badge-color: var(--color-text-secondary);
 
@@ -1423,15 +1174,6 @@ body {
     --badge-color: var(--color-text-secondary);
 }
 
-
-/* === inline primitives/card.css === */
-/**
- * CARD — Generic card surface primitive
- * Fonte: Skillpress-frontend/elements-ui/css/components/_cards.css
- * Data estrazione: 2026-04-25
- */
-
-/** @public */
 .sp-card {
     display: flex;
     flex-direction: column;
@@ -1608,15 +1350,6 @@ body {
     box-shadow: none;
 }
 
-
-/* === inline primitives/accordion.css === */
-/**
- * ACCORDION — Estratto da elements-ui/css/components/_layout-patterns.css
- * Data estrazione: 2026-04-23
- * Fonte canonica: elements-ui
- */
-
-/** @public */
 .sp-accordion {
     display: flex;
     flex-direction: column;
@@ -1637,9 +1370,6 @@ body {
     background: var(--color-bg-gray-50);
 }
 
-/* state: aria-expanded sull'header e' la fonte primaria; .sp-accordion__section--expanded
-   e' alias visivo BEM mantenuto come variante (deprecazione prevista v0.3 -- vedi
-   audit production-readiness 2026-05-08, 03-css-bem-tokens "stati ARIA vs modifier"). */
 .sp-accordion__section--expanded {
     background: var(--section-bg-expanded);
 }
@@ -1828,7 +1558,6 @@ body {
     margin-top: 0.875rem;
 }
 
-/* Mobile: header piu' alto per touch target standard e-commerce. */
 @media (max-width: 639px) {
     .sp-accordion__header {
         padding: 1rem 0.875rem;
@@ -1840,17 +1569,6 @@ body {
     }
 }
 
-
-/* === inline primitives/breadcrumb.css === */
-/**
- * BREADCRUMB — Layout pattern primitive
- * Fonte: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css (sezione .sp-breadcrumb)
- * Fonte markup: Skillpress-frontend/elements-ui/js/layout-patterns/breadcrumb.js
- * Target demo: product-page-integration
- * Data estrazione: 2026-04-27
- */
-
-/** @public */
 .sp-breadcrumb {
     width: 100%;
 }
@@ -1901,27 +1619,6 @@ body {
     font-weight: var(--font-weight-medium);
 }
 
-
-/* === inline primitives/rating.css === */
-/**
- * RATING - Stars overlay primitive.
- * Fonte: Skillpress-frontend/elements-ui/css/components/_feedback-status.css righe 220-228
- * Estratta da components/product-hero.css per riuso (product-page, related products, blog reviews, dashboard).
- *
- * Contratto markup verbatim dalla pagina demo:
- *   <div class="rating">
- *     <div class="rating__empty">     -> 5 stelle vuote (color gray-200)
- *       <span class="rating__star">★</span> ...
- *     </div>
- *     <div class="rating__filled" style="width: NN%;">  -> overlay clip via width
- *       <span class="rating__star">★</span> ...
- *     </div>
- *   </div>
- *
- * La percentuale = (rating / 5) * 100. Inline style sulla larghezza per data-rating-driven CMS.
- */
-
-/** @public */
 .sp-rating {
     position: relative;
     display: inline-block;
@@ -1956,39 +1653,6 @@ body {
     color: var(--color-primary);
 }
 
-
-/* === inline primitives/info-dropdown.css === */
-/**
- * INFO DROPDOWN -- Disclosure inline collapsible per pannelli di aiuto contestuale
- * Fonte CSS:
- *   - Skillpress-frontend/elements-ui/css/components/_form-inputs.css righe 75-94
- *     (.sp-info-btn -- bottone info teal accanto al label)
- *   - Skillpress-frontend/elements-ui/css/components/_layout-patterns.css righe 1278-1399
- *     (.sp-info-dropdown* + .sp-info-note*)
- * Fonte markup: product-page-integration/js/sections/section-1.js righe 148-196
- * Catalogo elemento: elements-ui/js/buttons/button-info.js (Button Info)
- *
- * API consumer (semplificata):
- *   - Il CMS scrive solo body content dentro .sp-info-dropdown.
- *   - .sp-info-dropdown__header (titolo + close) viene auto-iniettato da js/info-dropdown.js
- *     al primo init: il titolo si auto-deriva dalla .sp-label-text adiacente nel
- *     .sp-label-row del trigger.
- *   - Override esplicito: se il consumer scrive gia' .sp-info-dropdown__header come
- *     primo figlio, l'auto-injection viene saltata.
- *
- * Icone UI: la libreria disegna info e close via CSS. Il consumer non deve
- * fornire SVG, immagini o testo dentro .sp-info-btn / .sp-info-dropdown__close.
- *
- * Dipendenze: .sp-label-row e .sp-label-text sono definite in primitives/form-primitives.css
- * (consolidamento 2026-04-28). In bundles/demo-minimal.css form-primitives.css deve
- * precedere info-dropdown.css.
- */
-
-
-/* ================================================================
-   INFO BTN -- trigger minimale con icona info teal
-   ================================================================ */
-/** @public */
 .sp-info-btn {
     color: var(--color-secondary);
     background: transparent;
@@ -2028,10 +1692,6 @@ body {
     border-radius: var(--radius-sm);
 }
 
-/* ================================================================
-   INFO DROPDOWN -- pannello collapsible inline
-   ================================================================ */
-/** @public */
 .sp-info-dropdown {
     max-height: 500px;
     overflow: visible;
@@ -2052,10 +1712,6 @@ body {
     margin-bottom: var(--spacing-md);
 }
 
-/* state: l'attributo `hidden` (e/o aria-hidden via JS) e' la fonte primaria;
-   .sp-info-dropdown--hidden e' alias visivo BEM mantenuto per la transizione di
-   collapse (richiede classe per animare max-height/opacity, l'attributo hidden
-   da solo e' instant). Vedi audit production-readiness 2026-05-08. */
 .sp-info-dropdown--hidden {
     max-height: 0 !important;
     opacity: 0 !important;
@@ -2066,16 +1722,12 @@ body {
     pointer-events: none;
 }
 
-
-/* ================================================================
-   INFO DROPDOWN HEADER -- titolo + close (auto-iniettato)
-   ================================================================ */
 .sp-info-dropdown__header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     padding: 0.75rem;
-    background-color: var(--color-secondary-alpha-10); /* teal 10% */
+    background-color: var(--color-secondary-alpha-10);
     border-top-left-radius: var(--radius-lg);
     border-top-right-radius: var(--radius-lg);
 }
@@ -2132,9 +1784,6 @@ body {
     border-radius: var(--radius-sm);
 }
 
-/* ================================================================
-   INFO DROPDOWN BODY -- corpo (auto-wrappato)
-   ================================================================ */
 .sp-info-dropdown__body {
     padding: 1rem;
     font-size: var(--font-size-xs);
@@ -2155,11 +1804,6 @@ body {
     margin-top: 0.375rem;
 }
 
-
-/* ================================================================
-   INFO NOTE -- callout giallo opzionale dentro il body
-   ================================================================ */
-/** @public */
 .sp-info-note {
     margin-top: 0.75rem;
     padding: 0.625rem;
@@ -2179,47 +1823,10 @@ body {
     margin-top: var(--spacing-sm);
 }
 
-
-/* === inline primitives/form-primitives.css === */
-/**
- * FORM PRIMITIVES -- contenitore form, label, input testo/numero, select, messaggi
- *
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
- *   - .sp-form-field                                  L33-35
- *   - .sp-label-row + .sp-label-text + .sp-label-hint       L41-69
- *   - .sp-form-input + textarea.sp-form-input            L99-133
- *   - .sp-nome-lavoro-input (alias semantico)         L137-168
- *   - .sp-facciate-row + .sp-spessore-display            L449-487
- *   - .sp-form-select                                 L190-223
- *   - .sp-error-msg + .sp-error-inline + .sp-success-inline L292-329
- *   - .sp-custom-dims + .sp-custom-dims__grid/field/label L776-805
- *   - .sp-nome-ref-row                                L174-184
- *
- * Fonte markup verbatim (template literal):
- *   - product-page-integration/js/sections/section-1.js L76-103, L280-320, L421-466
- *   - product-page-integration/js/sections/section-6.js L329-343
- *
- * Strategia A (CSS-only). I modifier (--error) sono gestiti consumer-side
- * dal codice di validazione applicativa.
- *
- * Material Symbols (icone error/info/check) sostituiti da SVG inline lato consumer.
- * La freccia del select e' embedded come data:image/svg+xml nel background-image.
- */
-
-
-/* ================================================================
-   FORM FIELD -- contenitore generico form-field
-   ================================================================ */
-/** @public */
 .sp-form-field {
     position: relative;
 }
 
-
-/* ================================================================
-   LABEL ROW -- contenitore inline per label + info-btn + hint
-   ================================================================ */
-/** @public */
 .sp-label-row {
     display: flex;
     align-items: center;
@@ -2227,7 +1834,6 @@ body {
     margin-bottom: 0.375rem;
 }
 
-/** @public */
 .sp-label-text {
     font-size: 0.9375rem;
     font-weight: var(--font-weight-medium);
@@ -2244,17 +1850,11 @@ body {
     font-weight: var(--font-weight-normal);
 }
 
-/** @public */
 .sp-label-hint {
     font-size: var(--font-size-xs);
     color: var(--color-text-light);
 }
 
-
-/* ================================================================
-   FORM INPUT -- text, number, textarea
-   ================================================================ */
-/** @public */
 .sp-form-input {
     width: 100%;
     max-width: 100%;
@@ -2290,13 +1890,6 @@ textarea.sp-form-input {
     resize: none;
 }
 
-
-/* ================================================================
-   NOME LAVORO INPUT -- alias semantico di .sp-form-input
-   Stessa resa visiva, classe distinta per la sezione "Nome del lavoro".
-   Fonte catalog: _form-inputs.css L137-L168.
-   ================================================================ */
-/** @public */
 .sp-nome-lavoro-input {
     width: 100%;
     max-width: 100%;
@@ -2322,11 +1915,6 @@ textarea.sp-form-input {
     border-color: var(--color-error-light);
 }
 
-
-/* ================================================================
-   FORM SELECT -- dropdown nativo con freccia SVG personalizzata
-   ================================================================ */
-/** @public */
 .sp-form-select {
     width: 100%;
     max-width: 100%;
@@ -2361,11 +1949,6 @@ textarea.sp-form-input {
     background-color: var(--color-bg-gray-100);
 }
 
-
-/* ================================================================
-   MESSAGGI INLINE -- error / error-inline / success-inline
-   ================================================================ */
-/** @public */
 .sp-error-msg {
     display: flex;
     align-items: center;
@@ -2381,7 +1964,6 @@ textarea.sp-form-input {
     flex-shrink: 0;
 }
 
-/** @public */
 .sp-error-inline {
     font-size: var(--font-size-xs);
     color: var(--color-error);
@@ -2397,7 +1979,6 @@ textarea.sp-form-input {
     flex-shrink: 0;
 }
 
-/** @public */
 .sp-success-inline {
     font-size: var(--font-size-xs);
     color: var(--color-success);
@@ -2413,11 +1994,6 @@ textarea.sp-form-input {
     flex-shrink: 0;
 }
 
-
-/* ================================================================
-   GRIGLIA CUSTOM DIMENSIONS -- larghezza x altezza
-   ================================================================ */
-/** @public */
 .sp-custom-dims {
     display: flex;
     flex-direction: column;
@@ -2448,11 +2024,6 @@ textarea.sp-form-input {
     }
 }
 
-
-/* ================================================================
-   GRIGLIA NOME + REFERENTE -- 2 input testo affiancati
-   ================================================================ */
-/** @public */
 .sp-nome-ref-row {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2465,13 +2036,6 @@ textarea.sp-form-input {
     }
 }
 
-
-/* ================================================================
-   GRIGLIA QUANTITA + IVA -- layout Step 6 (qty-iva-row)
-   Modificatori --single (1 col) / --double (2 col).
-   --double diventa 1 col sotto 640px.
-   ================================================================ */
-/** @public */
 .sp-qty-iva-row {
     display: grid;
     gap: 0.625rem;
@@ -2491,16 +2055,6 @@ textarea.sp-form-input {
     }
 }
 
-
-/* ================================================================
-   FACCIATE ROW + SPESSORE DISPLAY -- input numerico + callout spessore
-   Fonte catalog: _form-inputs.css L449-L487.
-   Layout flex inline: .sp-facciate-input-wrap (flex 1) + .sp-spessore-display (shrink 0).
-   Material Symbols `vertical_align_center` del catalog -> SVG inline lato consumer.
-   Il selettore catalog `.sp-spessore-display .material-symbols-outlined` viene
-   replicato come `.sp-spessore-display svg` per garantire dimensione/colore.
-   ================================================================ */
-/** @public */
 .sp-facciate-row {
     display: flex;
     align-items: center;
@@ -2508,13 +2062,11 @@ textarea.sp-form-input {
     min-width: 0;
 }
 
-/** @public */
 .sp-facciate-input-wrap {
     flex: 1;
     min-width: 0;
 }
 
-/** @public */
 .sp-spessore-display {
     display: flex;
     align-items: center;
@@ -2530,64 +2082,24 @@ textarea.sp-form-input {
     flex-shrink: 0;
 }
 
-/** @public */
 .sp-spessore-label {
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     color: var(--color-text);
 }
 
-/** @public */
 .sp-spessore-value {
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-bold);
     color: var(--color-text);
 }
 
-
-/* === inline primitives/form-controls.css === */
-/**
- * FORM CONTROLLS -- radio group, radio option, checkbox option, radio-option--disabled
- *
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
- *   - .sp-radio-group                                       L491-495
- *   - .sp-radio-option + .sp-radio-option-label                L497-503, L547-550
- *   - .sp-radio-option input[type="radio"] + ::after        L505-539
- *   - .sp-radio-option input[type="checkbox"]               L541-545
- *   - .sp-radio-option--disabled                            L811-825
- *
- * Fonte markup: catalogo elements-ui (radio-group.js + checkbox-option.js).
- * Nessun utilizzo nelle pagine demo prodotto: la coverage e' giustificata
- * dall'uso futuro su `checkout` / `dashboard` e dall'estensione opzionale
- * del configuratore product-page (sostituire alcuni form-select con radio-group).
- *
- * Strategia A (CSS-only). :checked e :disabled sono nativi del browser.
- * .sp-radio-option--disabled e' applicato manualmente sull'<label> quando l'opzione
- * non e' disponibile (visualmente spenta + click bloccato via pointer-events).
- *
- * Niente SVG: il pallino radio e' un pseudo-elemento ::after. Il check del
- * checkbox e' nativo via accent-color.
- *
- * Dipende da form-primitives.css (per .sp-label-row + .sp-label-text). Bundle
- * ordering: form-controls.css DOPO form-primitives.css.
- */
-
-
-/* ================================================================
-   RADIO GROUP -- contenitore flex column / row
-   ================================================================ */
-/** @public */
 .sp-radio-group {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
 }
 
-
-/* ================================================================
-   RADIO OPTION -- label + input + testo
-   ================================================================ */
-/** @public */
 .sp-radio-option {
     display: flex;
     align-items: center;
@@ -2596,16 +2108,11 @@ textarea.sp-form-input {
     position: relative;
 }
 
-/** @public */
 .sp-radio-option-label {
     font-size: var(--font-size-sm);
     color: var(--color-text);
 }
 
-
-/* ================================================================
-   INPUT RADIO -- custom CSS appearance + pallino arancione checked
-   ================================================================ */
 .sp-radio-option input[type="radio"] {
     appearance: none;
     -webkit-appearance: none;
@@ -2642,20 +2149,12 @@ textarea.sp-form-input {
     transform: translate(-50%, -50%) scale(1);
 }
 
-
-/* ================================================================
-   INPUT CHECKBOX -- nativo con accent-color primary
-   ================================================================ */
 .sp-radio-option input[type="checkbox"] {
     width: 1rem;
     height: 1rem;
     accent-color: var(--color-primary);
 }
 
-
-/* ================================================================
-   RADIO OPTION DISABLED -- label spenta + click bloccato
-   ================================================================ */
 .sp-radio-option--disabled {
     opacity: 0.5;
     cursor: not-allowed !important;
@@ -2671,24 +2170,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     opacity: 0.5;
 }
 
-
-/* === inline primitives/validation-indicator.css === */
-/**
- * VALIDATION INDICATOR -- indicatore inline validazione
- *
- * Fonte CSS:
- *   - Skillpress-frontend/elements-ui/css/components/_configurator-patterns.css
- *     `.multicop-validation`, `.multicop-total`, `.multicop-total-count`
- *   - Skillpress-frontend/elements-ui/js/components-feedback-status.js
- *     `feedback-status/validation-indicator`
- *   - Skillpress-frontend/product-page-integration/js/sections/section-6.js
- *     output visuale reale Step 6 multicopertina
- *
- * Strategia A (CSS-only). Il backend/frontend applicativo decide se mostrare
- * l'errore, testo e conteggio; la libreria controlla look, spacing e icona.
- */
-
-/** @public */
 .sp-validation-indicator {
     display: inline-flex;
     align-items: center;
@@ -2714,7 +2195,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     line-height: 1;
 }
 
-/** @public */
 .sp-validation-total {
     display: flex;
     align-items: center;
@@ -2734,35 +2214,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     color: var(--color-text);
 }
 
-
-/* === inline primitives/iva-banner.css === */
-/**
- * IVA BANNER -- callout informativo warning per IVA 4% (editori con ISBN)
- *
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
- *   - .sp-iva-banner            L679-684
- *   - .sp-iva-banner__content   L686-690
- *   - .sp-iva-banner__icon      L692-696
- *   - .sp-iva-banner__text      L698-702
- *
- * Fonte markup: product-page-integration/js/sections/section-6.js#L274-L285
- * (renderizzato condizionalmente quando state.selections.ivaMode === '4').
- *
- * Strategia A (CSS-only). La condizione di visibilita' (mostrare/nascondere
- * il banner in base alla scelta IVA) e' business logic consumer-side.
- *
- * Icona info disegnata dalla libreria via CSS dentro .sp-iva-banner__icon.
- * Il consumer non deve fornire SVG, immagini o testo.
- *
- * Pattern callout warning specifico per IVA: se in futuro emergeranno altri
- * callout simili, valutare promozione a primitiva generica .callout--warning.
- */
-
-
-/* ================================================================
-   IVA BANNER -- container warning bg + border + radius
-   ================================================================ */
-/** @public */
 .sp-iva-banner {
     background-color: var(--color-warning-bg);
     border: 1px solid var(--color-warning-border);
@@ -2770,20 +2221,12 @@ label.sp-radio-option--disabled input[type="radio"] {
     padding: 0.75rem;
 }
 
-
-/* ================================================================
-   IVA BANNER CONTENT -- flex inline icon + text
-   ================================================================ */
 .sp-iva-banner__content {
     display: flex;
     align-items: flex-start;
     gap: var(--spacing-sm);
 }
 
-
-/* ================================================================
-   IVA BANNER ICON -- icona info, color primary
-   ================================================================ */
 .sp-iva-banner__icon {
     color: var(--color-primary);
     display: inline-flex;
@@ -2809,10 +2252,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     line-height: 1;
 }
 
-
-/* ================================================================
-   IVA BANNER TEXT -- testo xs, color text-strong
-   ================================================================ */
 .sp-iva-banner__text {
     font-size: var(--font-size-xs);
     color: var(--color-text-strong);
@@ -2823,18 +2262,11 @@ label.sp-radio-option--disabled input[type="radio"] {
     margin-top: var(--spacing-xs);
 }
 
-
-/* === inline primitives/download-buttons.css === */
-/* ================================================================
-   CONFIG DOWNLOAD BUTTONS (istruzioni + template sotto sidebar total box)
-   Source: elements-ui/css/components/_layout-patterns.css#L2028-L2062
-   ================================================================ */
 .sp-download-buttons__divider {
     margin-top: 1.5rem;
     border-top: 1px solid var(--color-bg-gray-200);
 }
 
-/** @public */
 .sp-download-buttons {
     display: flex;
     justify-content: flex-start;
@@ -2863,13 +2295,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     background-color: var(--color-primary-alpha-10);
 }
 
-
-/* === inline primitives/mode-switcher.css === */
-/* ================================================================
-   MODE SWITCHER (Rapido / Avanzato)
-   Source: elements-ui/css/components/_buttons.css#L90-L127
-   ================================================================ */
-/** @public */
 .sp-mode-switcher {
     display: flex;
     gap: 0.625rem;
@@ -2910,13 +2335,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     flex-shrink: 0;
 }
 
-
-/* === inline primitives/sp-confirm-dialog.css === */
-/**
- * CONFIRM DIALOG -- Primitive modal confirmation dialog
- */
-
-/** @public */
 .sp-confirm-dialog {
     position: fixed;
     inset: 0;
@@ -3083,13 +2501,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-
-/* === inline primitives/option-buttons.css === */
-/* ================================================================
-   OPTION BUTTONS (selezione singola nel configuratore)
-   Source: elements-ui/css/components/_buttons.css#L129-L177
-   ================================================================ */
-/** @public */
 .sp-option-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -3150,7 +2561,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     border-color: transparent;
 }
 
-/* Mobile: touch target standard e-commerce. */
 @media (max-width: 639px) {
     .sp-option-buttons__btn {
         min-height: 40px;
@@ -3158,13 +2568,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-
-/* === inline primitives/orientation-toggle.css === */
-/* ================================================================
-   ORIENTATION TOGGLE (Verticale / Orizzontale)
-   Source: elements-ui/css/components/_buttons.css#L444-L487
-   ================================================================ */
-/** @public */
 .sp-orientation-toggle {
     display: flex;
     align-items: center;
@@ -3205,20 +2608,6 @@ label.sp-radio-option--disabled input[type="radio"] {
 .sp-orientation-toggle__btn svg {
     stroke: currentColor;
 }
-
-
-/* === inline components/feature-box.css === */
-/**
- * FEATURE BOX — Composed component (feature highlights grid)
- * Fonte: Skillpress-frontend/elements-ui/css/components/_cards.css (sezione .feature-grid / .feature-box)
- * Fonte markup: Skillpress-frontend/elements-ui/js/cards/card-feature.js
- * Target demo: product-page-integration
- * Data estrazione: 2026-04-27
- *
- * L'icona e uno slot: la libreria fornisce solo contenitore, dimensione e radius.
- * Il colore di sfondo dell'icona e il contenuto (SVG/URL) sono forniti dal consumer/CMS.
- * La libreria non dipende da Material Symbols.
- */
 
 .feature-grid {
     display: grid;
@@ -3281,9 +2670,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     overflow-wrap: anywhere;
 }
 
-/* breakpoint-exception: 480px riduce il padding interno dei feature-box su
-   phones stretti per evitare che parole lunghe (es. "Personalizzabile") rompano
-   il grid 2-col su display 360-479px. */
 @media (max-width: 480px) {
     .feature-box {
         padding: 0.625rem;
@@ -3297,31 +2683,6 @@ label.sp-radio-option--disabled input[type="radio"] {
         font-size: 0.8125rem;
     }
 }
-
-
-/* === inline components/image-gallery.css === */
-/**
- * IMAGE GALLERY - Static image container with prev/next nav buttons.
- * Fonte CSS layout: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css (hero gallery block)
- * Fonte CSS bottoni: Skillpress-frontend/elements-ui/css/components/_buttons.css (legacy nav-btn)
- * Estratta da components/product-hero.css.
- *
- * BEM standard:
- *   .image-gallery, .image-gallery__container, .image-gallery__nav-btn(--prev|--next)
- *
- * Contratto markup statico (Strategia A: behavior galleria fuori scope):
- *   <div class="image-gallery">
- *     <div class="image-gallery__container product-shadow" data-image-gallery-images='[...]'>
- *       <img ... />
- *       <button class="image-gallery__nav-btn image-gallery__nav-btn--prev" aria-label="...">
- *         <svg aria-hidden="true">...</svg>
- *       </button>
- *       <button class="image-gallery__nav-btn image-gallery__nav-btn--next" aria-label="...">
- *         <svg aria-hidden="true">...</svg>
- *       </button>
- *     </div>
- *   </div>
- */
 
 .image-gallery {
     display: flex;
@@ -3405,46 +2766,12 @@ label.sp-radio-option--disabled input[type="radio"] {
     right: 0.75rem;
 }
 
-
-/* === inline components/product-hero.css === */
-/**
- * PRODUCT HERO - Section layout: 2-column grid that composes ImageGallery (left)
- * with title + Rating + description + FeatureGrid (right).
- *
- * Fonte: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css (hero block)
- * Target demo: product-page-integration
- *
- * Dipende da:
- *   - components/image-gallery.css (.image-gallery, .image-gallery__container, .image-gallery__nav-btn*)
- *   - primitives/rating.css         (.sp-rating, .sp-rating__empty, .sp-rating__filled, .sp-rating__star)
- *   - components/feature-box.css    (.feature-grid, .feature-box*)
- *
- * Contratto markup statico (Strategia A):
- *   <div id="product-hero" class="product-hero">
- *     <div class="product-hero__grid">
- *       <!-- left slot: ImageGallery markup -->
- *       <div class="product-hero__info">
- *         <h1 class="product-hero__title">...</h1>
- *         <div class="product-hero__rating">
- *           <span class="product-hero__rating-value">...</span>
- *           <!-- Rating markup -->
- *           <span class="product-hero__review-count">...</span>
- *         </div>
- *         <p class="product-hero__description">...</p>
- *         <!-- FeatureGrid markup -->
- *       </div>
- *     </div>
- *   </div>
- */
-
 .product-hero {
     max-width: var(--page-max-width);
     margin: 0 auto;
     padding: 2rem var(--page-padding-x) 1rem;
 }
 
-/* Mobile: meno bianco sopra/sotto, padding-x = --page-padding-x per i bordi
-   laterali (allineato alla demo che usa .product-hero standalone in <main>). */
 @media (max-width: 639px) {
     .product-hero {
         padding: 0.75rem var(--page-padding-x) 0.5rem;
@@ -3507,32 +2834,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     font-size: var(--font-size-sm);
     line-height: 1.625;
 }
-
-
-/* === inline components/step-indicator.css === */
-/**
- * STEP INDICATOR — Composed component (numbered horizontal step indicator)
- * Fonte: Skillpress-frontend/elements-ui/css/components/_cards.css righe 1037-1178
- * Fonte markup: Skillpress-frontend/product-page-integration/index.html righe 512-564
- * Target demo: product-page-integration (section-steps)
- * Data estrazione: 2026-04-27
- *
- * CSS-only. Nessun behavior libreria: il CMS sposta i modifier
- * `--active`, `--inactive`, `--completed` su badge, titolo e status.
- *
- * Token usati: `--color-text-strong` (= `var(--color-text-strong)`, step-indicator__title--inactive),
- * `--color-border` (= `var(--color-bg-gray-300)`, steps-line), gradient `--color-primary` ->
- * `--color-primary-light` (= `var(--color-primary) -> var(--color-primary-light)`, step-indicator__badge--active).
- * Tutti coincidenti con i valori letterali del catalogo elements-ui.
- *
- * Mobile-first: 2 colonne sotto 1024px, 4 colonne >= 1024px.
- * `.steps-line` e' nascosta sotto 1024px e visibile solo da desktop.
- *
- * Fuori scope (non implementato qui):
- * - icona check dentro `.step-indicator__badge--completed`;
- * - wrapper `.step-card` con hover translateY;
- * - step verticali, cliccabili, scroll spy, sticky, animazioni sequenziali.
- */
 
 .step-indicator {
     max-width: var(--page-max-width);
@@ -3666,53 +2967,18 @@ label.sp-radio-option--disabled input[type="radio"] {
     color: var(--color-text-light);
 }
 
-
-/* === inline components/format-card.css === */
-/**
- * FORMAT CARD — Composed component (selection card minima per formato prodotto)
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_cards.css righe 30-191
- * Fonte markup: Skillpress-frontend/product-page-integration/js/sections/section-1.js righe 199-266
- * Target demo: product-page-integration (sezione configuratore step 1, formato chiuso)
- * Data estrazione: 2026-04-28
- *
- * CSS-only. Nessun behavior libreria: il CMS sposta il modifier `--selected`
- * sull'elemento `.format-card`, come per le altre primitive del configuratore
- * (mode-switcher, option-buttons, orientation-toggle).
- *
- * Geometria preview: la pagina demo passa width/height inline su
- * `.format-card__preview` (e sui sub-element preview-inner / preview-custom) per
- * riflettere orientamento e proporzioni. La libreria espone solo CSS.
- *
- * Material Symbols (icona `aspect_ratio` nella variante Libero) NON inclusi:
- * il consumer/CMS sostituisce con SVG inline come per ModeSwitcher.
- *
- * Hover preview-box / preview-inner usa `var(--color-text-strong)` (= `var(--color-text-strong)`,
- * coincidente con il valore letterale del catalogo elements-ui).
- *
- * Fuori scope (non implementato qui):
- * - varianti scrollable orizzontali (`.format-cards-scroll`, `.format-cards-arrow`);
- * - espansione (`.format-card--show-more`, `.format-cards-hidden`);
- * - stato disabilitato condiviso (vedere `.sp-radio-option--disabled` in FormControls);
- * - famiglia SelectionCard estesa (.paper-card, .visual-card, .effect-card, .angolo-card);
- * - js/format-card.js (toggle stato consumer-side).
- */
-
-/* Container griglia formati */
 .format-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-sm);
 }
 
-/* breakpoint-exception: 479px collassa la grid 4-col -> 2-col su phones stretti
-   prima di raggiungere il default mobile (4-col stava overflow su iPhone SE). */
 @media (max-width: 479px) {
     .format-cards {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Card singola formato */
 .format-card {
     min-width: 0;
     padding: 0.625rem;
@@ -3733,7 +2999,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     border-color: var(--color-primary);
 }
 
-/* Preview formato (anteprima visiva) */
 .format-card__preview {
     position: relative;
     margin: 0 auto var(--spacing-sm);
@@ -3753,7 +3018,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     color: var(--color-border);
 }
 
-/* Box interno preview (sfondo scuro con testo bianco) */
 .format-card__preview-box {
     position: absolute;
     inset: 0;
@@ -3776,7 +3040,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     background-color: var(--color-primary);
 }
 
-/* Box interno per formati aperti (preview proporzionato dentro dashed) */
 .format-card__preview-inner {
     position: absolute;
     bottom: 0;
@@ -3800,7 +3063,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     background-color: var(--color-primary);
 }
 
-/* Testo dimensioni in preview */
 .format-card__preview-box span,
 .format-card__preview-inner span {
     color: var(--color-bg-white);
@@ -3808,7 +3070,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     font-size: 11px;
 }
 
-/* Bordo tratteggiato per formato comparativo / libero */
 .format-card__preview-dashed {
     position: absolute;
     inset: 0;
@@ -3816,7 +3077,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     border-radius: 0.125rem;
 }
 
-/* Preview formato custom */
 .format-card__preview-custom {
     position: absolute;
     bottom: 0;
@@ -3842,7 +3102,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     background-color: var(--color-primary-alpha-20);
 }
 
-/* Testo card formato */
 .format-card__text {
     text-align: center;
 }
@@ -3863,59 +3122,16 @@ label.sp-radio-option--disabled input[type="radio"] {
     margin-top: 0.125rem;
 }
 
-
-/* === inline components/price-table.css === */
-/**
- * PRICE TABLE — Composed component (tabella prezzi stile Google Flights)
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css righe 918-1236
- * Fonte markup: Skillpress-frontend/product-page-integration/js/sections/section-6.js righe 355-442
- * Catalogo dichiarazione: Skillpress-frontend/elements-ui/js/layout-patterns/price-table.js
- * Target demo: product-page-integration (configuratore step 6, "Quantita / consegna")
- * Data estrazione: 2026-04-28
- *
- * CSS-only. Nessun behavior libreria: il consumer/CMS applica i modifier
- * `--selected` (header colonna), `--active` (riga qty), `--selected` /
- * `--row-active` (cella prezzo) in base a stato applicativo (qty selezionata,
- * data spedizione selezionata, prezzo cliccato, conversione IVA Lordo/Netto).
- *
- * Material Symbols (`keyboard_arrow_up`, `keyboard_arrow_down`) NON inclusi:
- * il consumer/CMS usa SVG inline. Le regole CSS sulle icone sono tradotte da
- * `.material-symbols-outlined` a `svg`, mantenendo dimensioni equivalenti
- * (28px verticale).
- *
- * Geometria tabella: la tabella resta leggibile con scrollbar orizzontale nativa
- * quando esiste overflow. Default `min-width: 500px` (fallback 4 colonne); con `:has()`
- * i browser moderni riducono automaticamente la min-width per 1/2/3 colonne.
- * Il consumer wrappa la tabella in `.price-table__section` (overflow-x: auto)
- * o equivalente.
- *
- * Fuori scope (non implementato qui):
- * - behavior selezione cella / nav verticale
- *   (vive in `product-page-integration/js/sections/section-6.js`);
- * - calcolo prezzo IVA, paginazione qty, ricerca `closestDisplayedQty`;
- * - animazione `@keyframes cellSelect` (usata solo in feedback JS);
- * - variante `.price-table` doppio-underscore (`__row`, `__cell`, `__discount`)
- *   citata in `_layout-patterns.css#L1071-L1098` ma non referenziata da nessuna
- *   pagina demo;
- * - regola `#priceTableContainer table tbody tr` legata all'id;
- * - js/price-table.js (Strategia A static snapshot).
- */
-
-/* ===== Wrapper outer ===== */
 .price-table__wrapper {
     display: flex;
     flex-direction: column;
     gap: 0;
 }
 
-/* Wrapper compatibile con il vecchio markup che posizionava frecce orizzontali.
-   Le frecce sono deprecate: la scrollbar nativa e' ora l'affordance primaria. */
 .price-table__scroll-wrap {
     position: relative;
 }
 
-/* Contenitore tabella con scrollbar orizzontale quando esiste overflow.
-   E' piu' chiara delle vecchie frecce overlay e funziona senza JS consumer. */
 .price-table__section {
     position: relative;
     overflow-x: auto;
@@ -3971,7 +3187,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     background: var(--color-text-muted);
 }
 
-/* ===== Tabella ===== */
 .price-table {
     width: 100%;
     font-size: var(--font-size-xs);
@@ -3979,8 +3194,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     min-width: 500px;
 }
 
-/* Progressive enhancement: ottimizza lo spazio quando il backend rende meno
-   colonne data. Senza :has() resta il fallback leggibile a 500px. */
 @supports selector(:has(*)) {
     .price-table:not(:has(.price-table__header-cell--center:nth-of-type(3))) {
         min-width: min(100%, 18rem);
@@ -3995,7 +3208,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-/* ===== Header cells ===== */
 .price-table__header-cell {
     padding: 0.5rem;
     font-weight: var(--font-weight-semibold);
@@ -4038,7 +3250,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     color: var(--color-white-alpha-80);
 }
 
-/* ===== Body rows ===== */
 .price-table__row {
     transition: background-color var(--transition-fast);
 }
@@ -4048,12 +3259,10 @@ label.sp-radio-option--disabled input[type="radio"] {
 }
 
 .price-table__row--active {
-    /* Teal soft locale (no token: usato solo da PriceTable. Promuovere a
-       --color-secondary-soft se emerge un secondo consumer). */
+
     background-color: var(--color-secondary-soft);
 }
 
-/* ===== Body cells ===== */
 .price-table__cell {
     padding: 0.5rem;
     border-bottom: 1px solid var(--color-bg-gray-200);
@@ -4070,7 +3279,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     text-align: center;
 }
 
-/* ===== Quantity button (left column) ===== */
 .price-table__qty-btn {
     width: 100%;
     padding: 0.25rem 0;
@@ -4087,7 +3295,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     color: var(--color-secondary);
 }
 
-/* ===== Price cell button (intersection cells) ===== */
 .price-table__cell-btn {
     width: 100%;
     padding: 0.375rem 0.25rem;
@@ -4114,8 +3321,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 }
 
 .price-table__cell-btn--row-active {
-    /* Teal soft locale (no token: usato solo da PriceTable. Promuovere a
-       --color-secondary-soft se emerge un secondo consumer). */
+
     background-color: var(--color-secondary-soft);
     color: var(--color-text);
     border: 1px solid var(--color-secondary-alpha-30);
@@ -4132,7 +3338,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     box-shadow: var(--shadow-md);
 }
 
-/* ===== Navigation arrows (vertical) ===== */
 .price-table__nav-arrow {
     display: inline-flex;
     align-items: center;
@@ -4160,7 +3365,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     pointer-events: none;
 }
 
-/* ===== Navigation arrows (horizontal / legacy overlay) ===== */
 .price-table__nav-arrow-horizontal {
     position: absolute;
     top: 50%;
@@ -4181,9 +3385,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     display: none !important;
 }
 
-/* Posizionamento DENTRO il container (le frecce restano fisse rispetto al
-   viewport del container scrollabile, non vengono clippate da parent
-   con overflow-x: hidden come `.sp-accordion__inner`). */
 .price-table__nav-arrow-horizontal--left {
     left: 4px;
 }
@@ -4202,9 +3403,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     border-color: var(--color-primary);
 }
 
-/* ===== Responsive =====
-   Touch targets celle prezzo / qty button portati a 40px+ per standard
-   e-commerce mobile. Lo scroll orizzontale resta nativo e visibile. */
 @media (max-width: 639px) {
     .price-table__nav-arrow svg {
         width: 24px;
@@ -4222,8 +3420,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-/* breakpoint-exception: 480px riduce ulteriormente il padding celle su phones
-   stretti (sotto i 480 css px) per evitare overflow orizzontale. */
 @media (max-width: 480px) {
     .price-table__header-cell,
     .price-table__cell {
@@ -4247,42 +3443,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-
-/* === inline components/sidebar-totals.css === */
-/**
- * SIDEBAR TOTALS — Composed component (sidebar configuratore: totale + promo + riepilogo + carrello)
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css righe 1886-1910
- *           + righe 189-246, 249-272, 324-341, 344-365, 367-418
- *           + Skillpress-frontend/elements-ui/css/components/_buttons.css righe 29-55 (.add-to-cart-btn), 261-285 (.sidebar-totals__btn)
- * Fonte markup: Skillpress-frontend/product-page-integration/index.html righe 202-249
- * Catalogo dichiarazione: Skillpress-frontend/elements-ui/js/layout-patterns/sidebar-summary.js
- * Target demo: product-page-integration (sidebar configuratore desktop)
- * Data estrazione: 2026-04-28
- *
- * CSS-only. Nessun behavior libreria.
- *
- * Il toggle riepilogo (`.sidebar-totals__btn[aria-expanded]` -> `.sidebar-totals__content` show/hide) e'
- * consumer-side wire-up: la libreria espone `display: none` di default e lascia al consumer/CMS
- * lo swap su click. Stessa convenzione di ModeSwitcher / OptionButtons / FormatCard / PriceTable.
- *
- * Material Symbols (`list`, `expand_more`, `shopping_cart`) NON inclusi: il consumer/CMS usa
- * SVG inline 18x18 currentColor. Le regole CSS sulle icone sono tradotte da
- * `.material-symbols-outlined` a `svg`, mantenendo dimensione 1.125rem.
- *
- * Fuori scope (non implementato qui):
- * - aggiornamento valori `Quantita` / `Miglior prezzo` / `Imposta` / `Totale` (business logic configuratore);
- * - generazione HTML riepilogo dentro `.sidebar-totals__content`;
- * - validazione promo / errori `#validationErrors`;
- * - click bottone carrello;
- * - variante BEM `.sidebar-box*`, alias `.sidebar-total-price`, `.sidebar-total-iva`,
- *   `.product-sidebar` (non referenziati dalla pagina demo);
- * - `.sp-download-buttons__divider` + `.sp-download-buttons` + `.sp-download-buttons__btn`
- *   (gia' coperti da `primitives/download-buttons.css`).
- */
-
-/* ================================================================
-   GRIGLIA CONFIGURATORE
-   ================================================================ */
 .configurator-section {
     max-width: var(--page-max-width);
     margin: 0 auto;
@@ -4319,9 +3479,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     letter-spacing: -0.025em;
 }
 
-/* ================================================================
-   SIDEBAR CONTAINER (sticky desktop / hidden mobile sotto 1024px)
-   ================================================================ */
 .configurator-sidebar {
     height: fit-content;
     align-self: flex-start;
@@ -4341,9 +3498,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-/* ================================================================
-   BOX TOTALE
-   ================================================================ */
 .sidebar-total-box {
     background-color: var(--color-bg-gray-50);
     border-radius: var(--radius-xl);
@@ -4362,9 +3516,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     letter-spacing: -0.025em;
 }
 
-/* ================================================================
-   RIGHE TOTALE
-   ================================================================ */
 .sidebar-rows {
     font-size: 0.9375rem;
 }
@@ -4409,9 +3560,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     border-top: 1px solid var(--color-border);
 }
 
-/* ================================================================
-   TOTALE EVIDENZIATO
-   ================================================================ */
 .sidebar-total-row {
     display: flex;
     justify-content: space-between;
@@ -4430,9 +3578,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     color: var(--color-primary);
 }
 
-/* ================================================================
-   PROMO INPUT
-   ================================================================ */
 .promo-section label {
     display: block;
     font-size: var(--font-size-sm);
@@ -4456,9 +3601,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     border-color: transparent;
 }
 
-/* ================================================================
-   RIEPILOGO TOGGLE + CONTENT
-   ================================================================ */
 .sidebar-totals__section {
     display: flex;
     flex-direction: column;
@@ -4517,22 +3659,11 @@ label.sp-radio-option--disabled input[type="radio"] {
     margin-top: 0.5rem;
 }
 
-/* ================================================================
-   RIEPILOGO UTILITY CLASSES (CMS injection helpers)
-   ----------------------------------------------------------------
-   Queste classi sono prodotte dal generatore reale del riepilogo
-   (`product-page-integration/js/riepilogo.js` -> `window.generateRiepilogo`).
-   Il backend/CMS inietta l'HTML risultante dentro `.sidebar-totals__content`
-   (sidebar desktop) o `.mobile-config-content` (mobile bar).
-   ================================================================ */
 .sidebar-totals__container {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
 }
-
-/* `.sidebar-totals__section` standalone (senza `label` figlia, prodotto da
-   `generateRiepilogo`): wrapper di gruppo (Dettagli, Generali, Copertina, ...). */
 
 .sidebar-totals__header {
     font-weight: var(--font-weight-bold);
@@ -4570,11 +3701,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     padding: 1rem;
 }
 
-/* Alias legacy mantenuti per consumer che gia' usano i nomi vecchi.
-   - `.sidebar-totals__indent` -> `.sidebar-totals__row--indent`
-   - `.sidebar-totals__section-header` -> `.sidebar-totals__header`
-   I generatori canonici (`generateRiepilogo` 3.0.0+) usano le forme
-   nuove con doppio dash / nome senza suffisso. */
 .sidebar-totals__indent {
     padding-left: 1.5rem;
     color: var(--color-text-secondary);
@@ -4586,9 +3712,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     color: var(--color-text);
 }
 
-/* ================================================================
-   ADD TO CART BUTTON (sidebar desktop)
-   ================================================================ */
 .add-to-cart-btn {
     width: 100%;
     background-color: var(--color-secondary-dark);
@@ -4618,37 +3741,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     flex-shrink: 0;
 }
 
-
-/* === inline components/related-products.css === */
-/* ============================================================================
-   RELATED PRODUCTS — Griglia prodotti correlati (stile landing page)
-   ============================================================================
-   Fonti:
-   - elements-ui/css/components/_layout-patterns.css#L1804-L1825
-     (.related-products + qualificazione catalog-section-label / catalog-grid--products)
-   - elements-ui/css/components/_cards.css#L1181-L1328
-     (PRODUCT CARD: catalog-section-label / catalog-grid--products /
-      catalog-card--product-equal / catalog-card__title /
-      catalog-card__image-wrap / catalog-card__image--product + responsive)
-   ========================================================================== */
-
-
-/* === inline primitives/catalog-grid.css === */
-/**
- * Catalog Grid (primitive)
- *
- * Estratta da components/catalog-product-grid.css e components/related-products.css
- * per F012 (leakage condiviso). Definisce il layout CSS Grid usato sia nella
- * landing-page (catalog-product-grid) che nelle related-products del PDP.
- *
- * @public
- *
- * Block: .sp-catalog-grid
- * Element: .sp-catalog-grid__section-label (con modifiers --orange, --teal, --dark)
- * Modifier: .sp-catalog-grid--products (variante prodotti, 5 col su desktop)
- */
-
-/** @public */
 .sp-catalog-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -4681,16 +3773,12 @@ label.sp-radio-option--disabled input[type="radio"] {
     gap: 1rem;
 }
 
-/* breakpoint-exception: 1180px ripristina il contract storico landing:
-   5 colonne desktop, 4 colonne su laptop stretti prima del cutoff tablet. */
 @media (max-width: 1180px) {
     .sp-catalog-grid--products {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
 
-/* breakpoint-exception: 900px ripristina il contract storico landing:
-   3 colonne su tablet medi prima del layout mobile 2-col. */
 @media (max-width: 900px) {
     .sp-catalog-grid--products {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -4704,8 +3792,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-/* breakpoint-exception: 479px riduce il gap su small phones (iPhone SE/mini)
-   senza cambiare il layout 2-col gia' attivo sotto 640. */
 @media (max-width: 479px) {
     .sp-catalog-grid--products {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4713,8 +3799,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-
-/* --- Wrapper section --- */
 .related-products {
     font-family: var(--font-family);
     background-color: var(--color-bg-white);
@@ -4735,8 +3819,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     padding: 0 16px;
 }
 
-/* breakpoint-exception: 1024px ripristina il contract storico PDP:
-   related products passano direttamente da 5 a 3 colonne su tablet. */
 @media (max-width: 1024px) {
     .related-products .sp-catalog-grid--products {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -4749,7 +3831,7 @@ label.sp-radio-option--disabled input[type="radio"] {
         gap: 0.75rem;
     }
 }
-/* --- Product card --- */
+
 .catalog-card--product-equal {
     position: relative;
     grid-column: span 1;
@@ -4775,7 +3857,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     box-shadow: none;
 }
 
-/* --- Card title --- */
 .sp-catalog-grid--products .catalog-card__title {
     max-width: none;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -4789,7 +3870,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     line-height: 1.25;
 }
 
-/* --- Card image --- */
 .catalog-card--product-equal .catalog-card__image-wrap {
     display: flex;
     align-items: center;
@@ -4821,7 +3901,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 .catalog-card--product-equal:focus-within .catalog-card__image--product {
     transform: scale(1.05);
 }
-/* --- Responsive: Mobile 2 colonne --- */
+
 @media (max-width: 639px) {
     .catalog-card--product-equal {
         grid-column: span 1;
@@ -4844,30 +3924,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-
-/* === inline components/mobile-bar.css === */
-/* ============================================================================
-   MOBILE TOTAL BAR — Barra fissa bottom mobile/tablet con totale + carrello
-   ============================================================================
-   Fonti:
-   - elements-ui/css/components/_layout-patterns.css#L490-L758
-     (MOBILE BAR: container, handle, compact, expanded, details, config-toggle,
-      config-content + responsive 374px / 640-1023px).
-   - elements-ui/css/components/_buttons.css#L58-L84
-     (BOTTONE CARRELLO: .mobile-total-bar__cart-btn).
-   - elements-ui/js/layout-patterns/mobile-bar.js (sandbox catalogo).
-
-   Strategia A: static snapshot. Toggle .mobile-total-bar--expanded /
-   .mobile-config-toggle--active / .mobile-config-content--visible sono
-   wire-up consumer-side. Niente JS libreria.
-
-   Material Symbols sostituiti con SVG inline: i selettori che dipendevano da
-   .material-symbols-outlined nel catalogo (.mobile-total-bar__cart-btn,
-   .mobile-config-toggle) sono tradotti con svg. La classe BEM
-   .mobile-total-bar__handle-arrow e l'id #mobile-config-icon sono mantenuti.
-   ========================================================================== */
-
-/* --- Container fixed bottom --- */
 .mobile-total-bar {
     display: none;
     position: fixed;
@@ -4903,7 +3959,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     overflow-y: auto;
 }
 
-/* --- Handle (chevron espansione) --- */
 .mobile-total-bar__handle {
     order: 0;
     display: flex;
@@ -4925,7 +3980,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     transform: rotate(180deg);
 }
 
-/* --- Sezione compatta (sempre visibile) --- */
 .mobile-total-bar__compact {
     display: flex;
     flex-direction: column;
@@ -4959,7 +4013,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     line-height: 1;
 }
 
-/* --- Bottone carrello mobile (da _buttons.css) --- */
 .mobile-total-bar__cart-btn {
     display: flex;
     align-items: center;
@@ -4986,7 +4039,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     height: 1.125rem;
 }
 
-/* --- Sezione espansa (visibile solo quando .mobile-total-bar--expanded) --- */
 .mobile-total-bar__expanded-section {
     order: 1;
     max-height: 0;
@@ -5006,7 +4058,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     display: none;
 }
 
-/* --- Righe dettaglio --- */
 .mobile-total-bar__details {
     display: flex;
     flex-direction: column;
@@ -5034,7 +4085,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     color: var(--color-success);
 }
 
-/* --- Toggle riepilogo configurazione --- */
 .mobile-config-toggle {
     display: flex;
     align-items: center;
@@ -5066,7 +4116,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     transform: rotate(180deg);
 }
 
-/* --- Contenuto riepilogo configurazione --- */
 .mobile-config-content {
     max-height: 0;
     overflow: hidden;
@@ -5094,21 +4143,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     padding: 0.25rem 0;
 }
 
-/* NOTE: il generatore reale del riepilogo (`generateRiepilogo`, vedi
-   `js/riepilogo.js` v3.0.0) inietta classi `.sidebar-totals__container`,
-   `.sidebar-totals__section`, `.sidebar-totals__header`, `.sidebar-totals__row`,
-   `.sidebar-totals__row--indent`, `.sidebar-totals__error`, `.sidebar-totals__empty`,
-   `.sidebar-totals__muted`, `.sidebar-totals__placeholder`. Queste utility sono
-   definite in `components/sidebar-totals.css` e si applicano anche
-   dentro `.mobile-config-content--visible` quando il consumer importa
-   entrambi i CSS (cosa che il bundle `demo-minimal.css` fa di default).
-   Le regole legacy `.mobile-config-content--visible .font-bold` /
-   `.font-semibold` del catalogo sono state rimosse: non corrispondono
-   piu' all'output del generatore. */
-
-/* --- Responsive: small phones (<=374px) ---
-   breakpoint-exception: 374px matches the smallest supported phone width and
-   keeps the fixed mobile total bar usable without shrinking normal mobile UI. */
 @media (max-width: 374px) {
     .mobile-total-bar__container {
         padding: 0.375rem 0.75rem 0.75rem;
@@ -5129,7 +4163,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-/* --- Responsive: tablet (640-1023px) --- */
 @media (min-width: 640px) and (max-width: 1023px) {
     .mobile-total-bar__container {
         padding: 0.5rem 1.5rem 1rem;
@@ -5160,18 +4193,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-
-/* === inline components/preview.css === */
-/**
- * PREVIEW -- controllo selezionabile + trigger + pannello anteprima inline
- *
- * Fonte look: product-page-integration/js/sections/helpers.js renderPreview()
- * e elements-ui/css/components/_buttons.css + _cards.css.
- * Strategia C: behavior open/close UI puro via js/preview.js.
- *
- * Icone UI: la libreria disegna l'occhio del trigger e la X di chiusura via CSS.
- * Il consumer non deve fornire SVG o immagini dentro .preview__trigger / .preview__close.
- */
 .preview {
     position: relative;
 }
@@ -5368,9 +4389,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-/* breakpoint-exception: 768px serve a far crescere l'immagine preview oltre la
-   dimensione tablet-small (640) ma prima del cutoff desktop (1024); senza questo
-   step l'immagine resterebbe 12rem fino a 1024 creando vuoto laterale. */
 @media (min-width: 768px) {
     .preview__image {
         width: 16rem;
@@ -5378,14 +4396,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-
-/* === inline components/media-choice-card.css === */
-/**
- * MEDIA CHOICE CARD -- card selezionabile con immagine/media.
- *
- * Fonte look: effect-card / visual-card / angolo-card in elements-ui _cards.css.
- * Naming generico per presentation type CMS "media-choice".
- */
 .media-choice-cards {
     display: flex;
     gap: 0.75rem;
@@ -5508,5 +4518,3 @@ label.sp-radio-option--disabled input[type="radio"] {
         grid-template-columns: repeat(6, minmax(0, 1fr));
     }
 }
-
-

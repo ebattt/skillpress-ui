@@ -1,28 +1,3 @@
-/**
- * FORM CONTROLLS -- radio group, radio option, checkbox option, radio-option--disabled
- *
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
- *   - .sp-radio-group                                       L491-495
- *   - .sp-radio-option + .sp-radio-option-label                L497-503, L547-550
- *   - .sp-radio-option input[type="radio"] + ::after        L505-539
- *   - .sp-radio-option input[type="checkbox"]               L541-545
- *   - .sp-radio-option--disabled                            L811-825
- *
- * Fonte markup: catalogo elements-ui (radio-group.js + checkbox-option.js).
- * Nessun utilizzo nelle pagine demo prodotto: la coverage e' giustificata
- * dall'uso futuro su `checkout` / `dashboard` e dall'estensione opzionale
- * del configuratore product-page (sostituire alcuni form-select con radio-group).
- *
- * Strategia A (CSS-only). :checked e :disabled sono nativi del browser.
- * .sp-radio-option--disabled e' applicato manualmente sull'<label> quando l'opzione
- * non e' disponibile (visualmente spenta + click bloccato via pointer-events).
- *
- * Niente SVG: il pallino radio e' un pseudo-elemento ::after. Il check del
- * checkbox e' nativo via accent-color.
- *
- * Dipende da form-primitives.css (per .sp-label-row + .sp-label-text). Bundle
- * ordering: form-controls.css DOPO form-primitives.css.
- */
 
 
 /* ================================================================
@@ -34,7 +9,6 @@
     flex-direction: column;
     gap: var(--spacing-sm);
 }
-
 
 /* ================================================================
    RADIO OPTION -- label + input + testo
@@ -53,7 +27,6 @@
     font-size: var(--font-size-sm);
     color: var(--color-text);
 }
-
 
 /* ================================================================
    INPUT RADIO -- custom CSS appearance + pallino arancione checked
@@ -94,7 +67,6 @@
     transform: translate(-50%, -50%) scale(1);
 }
 
-
 /* ================================================================
    INPUT CHECKBOX -- nativo con accent-color primary
    ================================================================ */
@@ -103,7 +75,6 @@
     height: 1rem;
     accent-color: var(--color-primary);
 }
-
 
 /* ================================================================
    RADIO OPTION DISABLED -- label spenta + click bloccato

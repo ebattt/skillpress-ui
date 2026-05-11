@@ -1,13 +1,4 @@
-/**
- * PREVIEW -- controllo selezionabile + trigger + pannello anteprima inline
- *
- * Fonte look: product-page-integration/js/sections/helpers.js renderPreview()
- * e elements-ui/css/components/_buttons.css + _cards.css.
- * Strategia C: behavior open/close UI puro via js/preview.js.
- *
- * Icone UI: la libreria disegna l'occhio del trigger e la X di chiusura via CSS.
- * Il consumer non deve fornire SVG o immagini dentro .preview__trigger / .preview__close.
- */
+
 .preview {
     position: relative;
 }

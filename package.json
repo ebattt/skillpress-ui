@@ -13,14 +13,6 @@
     "storybook": "STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006",
     "build-storybook": "STORYBOOK_DISABLE_TELEMETRY=1 storybook build",
     "pack:check": "npm pack --dry-run --cache /tmp/skillpress-npm-cache",
-    "visual-diff": "node scripts/visual-diff.cjs",
-    "inventory:primitives": "node scripts/inventory-primitives.cjs",
-    "inventory:data-attrs": "node scripts/inventory-data-attrs.cjs",
-    "inventory:legacy": "node scripts/inventory-legacy.cjs",
-    "inventory:all": "npm run inventory:primitives && npm run inventory:data-attrs && npm run inventory:legacy",
-    "rename-map:build": "node scripts/build-rename-map.cjs",
-    "rename-map:validate": "node scripts/validate-rename-map.cjs",
-    "rename-map:all": "npm run rename-map:build && npm run rename-map:validate",
     "check:naming": "node scripts/check-naming.cjs",
     "check:legacy": "node scripts/check-legacy.cjs",
     "check:data-attrs": "node scripts/check-data-attrs.cjs",
@@ -52,7 +44,6 @@
   "sideEffects": true,
   "devDependencies": {
     "@storybook/html-vite": "^10.3.5",
-    "playwright": "^1.59.1",
     "storybook": "^10.3.5",
     "vite": "^8.0.10"
   }

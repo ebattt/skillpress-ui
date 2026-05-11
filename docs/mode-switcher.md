@@ -3,10 +3,6 @@ title: ModeSwitcher
 description: Gruppo di bottoni pill per selezione esclusiva tra modalita' (es. Veloce/Avanzata).
 layer: primitives
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_buttons.css#L90-L127
-  demo: product-page-integration/index.html#L184-L193
-status: post-bem-2026-04-29
 package_path: primitives/mode-switcher.css
 ---
 
@@ -26,7 +22,7 @@ ModeSwitcher
 
 ## Markup contract
 
-Markup verbatim da `product-page-integration/index.html#L184-L193`, con Material Symbols sostituiti da SVG inline.
+Markup contract corrente.html#L184-L193`, con Material Symbols sostituiti da SVG inline.
 
 ```html
 <div class="sp-mode-switcher" role="group" aria-label="Seleziona modalità di configurazione">
@@ -88,7 +84,7 @@ Nessun script JS richiesto. Il toggle `--active`/`--inactive` + `aria-pressed` e
 - `SecondActive` (Avanzata attivo) → `primitives-modeswitcher--second-active`
 - `WithoutIcons` (Singolo/Multicopia senza icone) → `primitives-modeswitcher--without-icons`
 - `ThreeOptions` (3 opzioni) → `primitives-modeswitcher--three-options`
-- `ReferenceFromElementsUI` (markup verbatim demo) → `primitives-modeswitcher--reference-from-elements-ui`
+- `Reference` (markup verbatim demo) → `primitives-modeswitcher--reference-from-elements-ui`
 
 ## Token usati
 

@@ -161,8 +161,6 @@ Queste classi sono **definite in `components/sidebar-totals.css`** e si applican
 
 ## Mappatura nomi (demo product-page -> libreria)
 
-La demo originale usava prefisso `mobile-bar-*` con modifier standalone (`expanded`, `active`, `visible`). La libreria post-prompt-19 usa BEM strict.
-
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|
 | `.mobile-total-bar.expanded` (compound) | `.mobile-total-bar.mobile-total-bar--expanded` |

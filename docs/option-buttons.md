@@ -3,10 +3,6 @@ title: OptionButtons
 description: Gruppo di bottoni per selezione singola nel configuratore (formati, grammature, finiture).
 layer: primitives
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_buttons.css#L129-L177
-  demo: product-page-integration/js/configurator.js#L687-L693
-status: post-bem-2026-04-29
 package_path: primitives/option-buttons.css
 ---
 
@@ -106,7 +102,7 @@ Nessun script JS richiesto.
 - `ManyOptions` (5 opzioni, terza selezionata) → `primitives-optionbuttons--many-options`
 - `EqualColumns` (2 opzioni a larghezza piena) → `primitives-optionbuttons--equal-columns`
 - `Borderless` (variante senza bordo) → `primitives-optionbuttons--borderless`
-- `ReferenceFromElementsUI` (markup verbatim demo) → `primitives-optionbuttons--reference-from-elements-ui`
+- `Reference` (markup verbatim demo) → `primitives-optionbuttons--reference-from-elements-ui`
 
 ## Token usati
 

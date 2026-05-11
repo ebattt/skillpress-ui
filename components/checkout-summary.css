@@ -1,11 +1,4 @@
-/**
- * CHECKOUT SUMMARY -- Checkout order summary sidebar.
- * Fonte markup: Skillpress-frontend/checkout/js/sections/sidebar-section.js righe 30-88
- * Fonte CSS: Skillpress-frontend/checkout/css/components/_sidebar.css righe 29-247
- * Target demo: checkout
- *
- * CSS-only. Prices, CTA navigation, cart state and checkout validation stay outside.
- */
+
 
 .checkout-summary {
     height: fit-content;

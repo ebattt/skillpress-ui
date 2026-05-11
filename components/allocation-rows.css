@@ -1,11 +1,4 @@
-/**
- * ALLOCATION ROWS -- checkout copy allocation rows and status badges.
- * Fonte: Skillpress-frontend/checkout/js/sections/shipping-section.js righe 273-437
- * CSS fonte: checkout/css/components/_shipping.css righe 324-465,
- * checkout/css/components/_feedback-status.css righe 27-49
- *
- * CSS-only. Allocation totals, validation and destination management stay outside.
- */
+
 
 .allocation-summary-box {
     background: var(--color-bg-gray-50);

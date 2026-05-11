@@ -3,9 +3,6 @@ title: Badge
 description: Badge di stato minimale con dot colorato e testo, sei varianti semantiche.
 layer: primitives
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_badges.css
-  demo: dashboard/index.html
 status: public-contract
 package_path: primitives/badge.css
 ---

@@ -3,9 +3,6 @@ title: Preview
 description: Controllo selezionabile + trigger anteprima + pannello inline per dati CMS.
 layer: components
 strategy: css-js
-sources:
-  demo: product-page-integration/js/sections/section-1.js, js/sections/helpers.js
-  catalog_css: elements-ui/css/components/_buttons.css, _cards.css
 status: public-contract
 package_path: components/preview.css
 ---

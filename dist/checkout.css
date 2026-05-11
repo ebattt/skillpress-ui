@@ -1,13 +1,3 @@
-/* Checkout runtime bundle for backend/CMS integrations. */
-
-/* === inline base/fonts.css === */
-/**
- * FONTS — Asset tipografici Skillpress UI
- *
- * Manrope e il font obbligatorio del design system e viene servito dal package.
- * Non importare Google Fonts nel runtime consumer.
- */
-
 @font-face {
     font-family: "Manrope";
     src: url("../fonts/manrope/Manrope-Variable.woff2") format("woff2-variations");
@@ -16,104 +6,59 @@
     font-display: swap;
 }
 
-
-/* === inline tokens/tokens.css === */
-/**
- * Fonte: elements-ui/css/tokens.css
- * Data copia: 2026-04-23
- * Nota: copia esatta.
- */
-
-/**
- * ==========================================================================
- * TOKENS -- Design token per Skillpress UI
- * ==========================================================================
- *
- * SCOPO:
- *   Fonte unica di verita per tutti i valori di design del sistema Skillpress.
- *   Questo file definisce colori, spaziature, raggi, ombre, transizioni,
- *   z-index e tipografia come CSS Custom Properties su :root.
- *
- * CONSUMATORI:
- *   - elements-ui/ (catalogo componenti)
- *   - product-page-integration/ (pagina prodotto)
- *   - qualsiasi pagina che importa product-page.css o components.css
- *
- * DIPENDENZE:
- *   Nessuna -- questo file deve essere importato PRIMA di tutti gli altri.
- *
- * Elementi HTML: nessuno direttamente; usato da tutti i componenti.
- * ==========================================================================
- */
-
 :root {
-    /* === COLORI BRAND === */
-    /* Arancione Skillpress: usato per CTA, selezioni attive, badge */
+
     --color-primary: #F08A00;
     --color-primary-light: #FFB149;
     --color-primary-dark: #D67800;
 
-    /* Teal/verde: usato per bottoni carrello, prezzi selezionati, accenti */
     --color-secondary: #1C7264;
     --color-secondary-light: #298979;
     --color-secondary-dark: #0F544D;
 
-    /* Blu scuro: usato per elementi premium */
     --color-dark: #003E51;
 
-    /* === COLORI TESTO === */
-    /* Scala di grigi per gerarchia testuale */
-    --color-text: #111418;                  /* Testo principale (quasi nero) */
-    --color-text-strong: #374151;           /* gray-700 -- testo forte/enfatizzato */
-    --color-text-secondary: #4B5563;        /* gray-600 -- testo secondario */
-    --color-text-light: #6B7280;            /* gray-500 -- testo terziario */
-    --color-text-muted: #9CA3AF;            /* gray-400 -- placeholder, disabilitato */
+    --color-text: #111418;
+    --color-text-strong: #374151;
+    --color-text-secondary: #4B5563;
+    --color-text-light: #6B7280;
+    --color-text-muted: #9CA3AF;
 
-    /* === COLORI SFONDO === */
-    /* Grigi neutri per sfondi, bordi e separatori */
     --color-bg-white: #FFFFFF;
-    --color-bg-gray-50: #F9FAFB;            /* Sfondo sezioni, sidebar */
-    --color-bg-gray-75: #f7f7f8;            /* Sfondo bottoni inattivi */
-    --color-bg-gray-100: #F3F4F6;           /* Sfondo hover, bordi leggeri */
-    --color-bg-gray-200: #E5E7EB;           /* Bordi standard */
-    --color-bg-gray-300: #D1D5DB;           /* Separatore/icone secondarie */
-    --color-bg-warm-beige: #F5F5F3;         /* Sfondo box totale */
+    --color-bg-gray-50: #F9FAFB;
+    --color-bg-gray-75: #f7f7f8;
+    --color-bg-gray-100: #F3F4F6;
+    --color-bg-gray-200: #E5E7EB;
+    --color-bg-gray-300: #D1D5DB;
+    --color-bg-warm-beige: #F5F5F3;
 
-    /* === COLORI SEZIONI ACCORDION === */
     --section-bg: var(--color-bg-white);
     --section-bg-expanded: var(--color-bg-gray-50);
     --section-border: var(--color-bg-gray-200);
     --section-number-bg: var(--color-primary);
     --section-number-color: var(--color-bg-white);
 
-    /* === COLORI SELEZIONE === */
-    /* Stati per card e opzioni selezionabili */
     --selection-active-bg: var(--color-primary);
     --selection-active-color: var(--color-bg-white);
-    --selection-highlight-bg: #FFF4E6;      /* Sfondo formato/opzione selezionata */
+    --selection-highlight-bg: #FFF4E6;
     --selection-highlight-border: var(--color-primary);
-    --color-focus-ring: var(--color-border-focus); /* Focus ring cross-component */
+    --color-focus-ring: var(--color-border-focus);
 
-    /* === COLORI PREZZO === */
-    /* Tabella prezzi e indicatori economici */
-    --price-best-bg: #DCFCE7;               /* Verde chiaro miglior prezzo */
-    --price-best-border: #22C55E;           /* Verde bordo */
-    --price-discount-color: #16A34A;        /* Testo sconto/risparmio */
-    --price-iva-badge: #EFF6FF;             /* Badge IVA */
+    --price-best-bg: #DCFCE7;
+    --price-best-border: #22C55E;
+    --price-discount-color: #16A34A;
+    --price-iva-badge: #EFF6FF;
 
-    /* === COLORI STATO === */
-    /* Feedback visivo per errori, successi, warning */
-    --color-error: #DC2626;                 /* Rosso errore */
-    --color-error-light: #EF4444;           /* Rosso errore chiaro */
-    --color-error-bg: #FEF2F2;              /* Sfondo errore */
-    --color-success: #16A34A;               /* Verde successo */
-    --color-success-bg: #F0FDF4;            /* Sfondo successo */
-    --color-info: #3B82F6;                  /* Blu informativo */
-    --color-warning: #EA580C;               /* Arancione warning */
-    --color-warning-bg: #FFF7ED;            /* Sfondo warning */
-    --color-warning-border: #FED7AA;        /* Bordo warning */
+    --color-error: #DC2626;
+    --color-error-light: #EF4444;
+    --color-error-bg: #FEF2F2;
+    --color-success: #16A34A;
+    --color-success-bg: #F0FDF4;
+    --color-info: #3B82F6;
+    --color-warning: #EA580C;
+    --color-warning-bg: #FFF7ED;
+    --color-warning-border: #FED7AA;
 
-    /* Badge/status */
     --color-success-badge-bg: var(--color-success-bg);
     --color-success-badge-text: var(--color-success);
     --color-warning-badge-bg: var(--color-warning-bg);
@@ -127,8 +72,6 @@
     --color-alloc-badge-warning-bg: var(--color-warning-bg);
     --color-alloc-badge-warning-text: var(--color-warning);
 
-    /* Color aliases for component parity. These preserve current visuals while
-       removing hardcoded component values from the public CSS surface. */
     --color-bg-gray-25: #FBFCFE;
     --color-bg-gray-30: #FAFBFC;
     --color-bg-gray-150: #EEF2F6;
@@ -213,49 +156,37 @@
     --color-warning-bg-alpha-50: rgba(255, 247, 237, 0.5);
     --color-hero-overlay: rgba(10, 12, 18, 0.55);
 
-    /* === BORDI === */
-    /* Colori bordo standard e focus */
-    --color-border: #D1D5DB;               /* Bordo grigio standard */
-    --color-border-focus: #3B82F6;         /* Bordo focus blu */
+    --color-border: #D1D5DB;
+    --color-border-focus: #3B82F6;
 
-    /* === DIMENSIONI LAYOUT === */
-    /* Larghezze e padding principali della pagina */
-    --page-max-width: 1280px;               /* max-w-7xl */
-    --page-padding-x: 1rem;                 /* px-4 */
-    --sidebar-width: 380px;                 /* Larghezza sidebar desktop */
-    --sidebar-top: 250px;                   /* Posizione sticky sidebar */
+    --page-max-width: 1280px;
+    --page-padding-x: 1rem;
+    --sidebar-width: 380px;
+    --sidebar-top: 250px;
 
-    /* === DIMENSIONI SEZIONI ACCORDION === */
-    --section-padding: 1rem;                /* Padding interno sezioni */
-    --section-gap: 0.75rem;                 /* Gap tra sezioni */
-    --section-radius: 0.75rem;              /* Border radius sezioni */
-    --section-number-size: 2rem;            /* Dimensione cerchio numero */
+    --section-padding: 1rem;
+    --section-gap: 0.75rem;
+    --section-radius: 0.75rem;
+    --section-number-size: 2rem;
 
-    /* === SPAZIATURA === */
-    /* Scala a incrementi basata su 0.25rem (4px) */
-    --spacing-xs: 0.25rem;                  /* 4px */
-    --spacing-sm: 0.5rem;                   /* 8px */
-    --spacing-md: 1rem;                     /* 16px */
-    --spacing-lg: 1.5rem;                   /* 24px */
-    --spacing-xl: 2rem;                     /* 32px */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
 
-    /* === RAGGIO BORDI === */
-    /* Scala progressiva per coerenza visiva */
-    --radius-sm: 0.25rem;                   /* 4px -- input, piccoli elementi */
-    --radius-md: 0.375rem;                  /* 6px -- bottoni piccoli */
-    --radius-lg: 0.5rem;                    /* 8px -- card, dropdown */
-    --radius-xl: 0.75rem;                   /* 12px -- sezioni, modal */
-    --radius-full: 9999px;                  /* Cerchio / pill */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-full: 9999px;
 
-    /* === OMBRE === */
-    /* Scala progressiva per gerarchia visiva */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 
-    /* Ombra specifica per immagini prodotto (effetto libro) */
     --shadow-product: 1px 1px 2px 0 rgba(255, 255, 255, 0.3) inset,
                       -1px -1px 2px 0 rgba(230, 230, 230, 0.5) inset,
                       -5px 5px 10px 0 rgba(230, 230, 230, 0.2),
@@ -263,153 +194,70 @@
                       -5px -5px 10px 0 rgba(255, 255, 255, 0.9),
                       5px 5px 13px 0 rgba(230, 230, 230, 0.9);
 
-    /* === TRANSIZIONI === */
-    /* Tre velocita per coprire tutti i casi d'uso */
-    --transition-fast: 150ms ease;          /* hover/focus immediati */
-    --transition-normal: 200ms ease;        /* dropdown, toggle */
-    --transition-slow: 300ms ease;          /* animazioni piu ampie */
-    --transition-section: 0.4s cubic-bezier(0.4, 0, 0.2, 1);  /* accordion */
+    --transition-fast: 150ms ease;
+    --transition-normal: 200ms ease;
+    --transition-slow: 300ms ease;
+    --transition-section: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-    /* === BREAKPOINT CANONICI ===
-       CSS non permette `var()` dentro `@media` queries, quindi i breakpoint
-       sono numeri letterali nei singoli componenti. Per garantire coerenza,
-       usare ESCLUSIVAMENTE questi 4 valori:
-
-         374px   small phones (iPhone SE 1st gen, fix mobile-bar)
-         640px   phones / tablet portrait stretti (mobile cutoff)
-         1024px  tablet landscape / small desktop (desktop cutoff)
-         1280px  wide desktop (= --page-max-width)
-
-       Convenzione `max-width` / `min-width`:
-         (max-width: 639px)   -> mobile (sotto 640)
-         (min-width: 640px)   -> tablet+
-         (max-width: 1023px)  -> mobile + tablet (sotto desktop)
-         (min-width: 1024px)  -> desktop
-         (min-width: 1280px)  -> wide desktop
-
-       Eccezioni storiche: `767px` (accordion touch target, deprecato — da
-       migrare a 640px), `480px` (price-table small refinement, da rivedere).
-       Tutti i nuovi componenti devono usare uno dei 4 canonici. */
-
-    /* === Z-INDEX === */
-    /* Gerarchia ordinata per evitare conflitti di sovrapposizione */
     --z-base: 1;
     --z-dropdown: 50;
     --z-tooltip: 60;
     --z-sticky: 70;
     --z-overlay: 80;
-    --z-mobile-bar: 999;                    /* Barra mobile fixed */
-    --z-modal: 1100;                        /* Dialog/modal sopra fixed mobile UI */
+    --z-mobile-bar: 999;
+    --z-modal: 1100;
 
-    /* === TIPOGRAFIA === */
-    /* Font stack con fallback su font di sistema */
     --font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-    /* Scala dimensioni font — unica per tutte le pagine
-       Body text (xs-lg): fissi, non responsive
-       Heading text (xl-4xl): responsive con clamp() tra 375px e 1280px */
-    --font-size-xs: 0.75rem;                                    /* 12px */
-    --font-size-sm: 0.875rem;                                   /* 14px */
-    --font-size-base: 1rem;                                     /* 16px */
-    --font-size-lg: 1.125rem;                                   /* 18px */
-    --font-size-xl: clamp(1.125rem, 1rem + 0.39vw, 1.25rem);   /* 18px → 20px */
-    --font-size-2xl: clamp(1.25rem, 1rem + 0.78vw, 1.5rem);    /* 20px → 24px */
-    --font-size-3xl: clamp(1.5rem, 1rem + 1.56vw, 2rem);       /* 24px → 32px */
-    --font-size-4xl: clamp(1.75rem, 1.25rem + 1.56vw, 2.5rem); /* 28px → 40px */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: clamp(1.125rem, 1rem + 0.39vw, 1.25rem);
+    --font-size-2xl: clamp(1.25rem, 1rem + 0.78vw, 1.5rem);
+    --font-size-3xl: clamp(1.5rem, 1rem + 1.56vw, 2rem);
+    --font-size-4xl: clamp(1.75rem, 1.25rem + 1.56vw, 2.5rem);
 
-    /* Pesi font */
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
 
-    /* Line-height */
-    --line-height-tight: 1.2;               /* Heading, titoli */
-    --line-height-snug: 1.375;              /* Sottotitoli, card title */
-    --line-height-normal: 1.5;              /* Body text */
-    --line-height-relaxed: 1.625;           /* Contenuto lungo (blog, descrizioni) */
+    --line-height-tight: 1.2;
+    --line-height-snug: 1.375;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.625;
 
-    /* === TOKEN SPECIFICI SHELL === */
     --shell-header-height: 60px;
     --shell-sidebar-width: 280px;
     --shell-sidebar-bg: var(--color-bg-gray-50);
     --shell-code-bg: #1E293B;
     --shell-code-color: #E2E8F0;
-    --shell-code-success: #4ADE80;             /* Verde successo su sfondo scuro (copy btn) */
+    --shell-code-success: #4ADE80;
 
-    /* === TOKEN SEMANTICI AGGIUNTIVI ===
-       Aggiunti in fase 4-sub (audit production-readiness 2026-05-08, F008).
-       Alias semantici sopra la scala grezza per ridurre hardcoded nei componenti. */
+    --color-text-meta: var(--color-text-light);
 
-    /** @public */
-    --color-text-meta: var(--color-text-light);            /* metadati neutri (e.g. icone meta dashboard) */
-    /** @public */
-    --color-row-hover: var(--color-bg-gray-50);            /* hover row su tabelle */
-    /** @public */
-    --color-status-warning-soft: #FEF3C7;                  /* amber-100 -- background warning leggero */
-    /** @public */
-    --color-status-danger-soft: #FEE2E2;                   /* red-100 -- background errore leggero */
-    /** @public */
-    --color-status-success-soft: #DBEAFE;                  /* blue-100 -- background info/success leggero */
-    /** @public */
-    --color-dashboard-border: var(--color-border);         /* alias per bordi su layout dashboard */
-    /** @public */
-    --color-error-dark: #B91C1C;                           /* red-700 -- hover/active errore */
+    --color-row-hover: var(--color-bg-gray-50);
 
-    /* Accent badges/banner verified (vedi order-payment-action-box). */
-    /** @public */
+    --color-status-warning-soft: #FEF3C7;
+
+    --color-status-danger-soft: #FEE2E2;
+
+    --color-status-success-soft: #DBEAFE;
+
+    --color-dashboard-border: var(--color-border);
+
+    --color-error-dark: #B91C1C;
+
     --color-accent-bg: rgba(28, 114, 100, 0.08);
 }
 
-/* === MOBILE TOKEN OVERRIDES ===
-   Allineato a Skillpress-frontend/elements-ui/css/components/_layout.css
-   (`@media (max-width: 639px)` riduce padding pagina/sezioni). */
 @media (max-width: 639px) {
     :root {
         --page-padding-x: 0.75rem;
         --section-padding: 0.75rem;
     }
 }
-
-
-/* === inline base/reset.css === */
-/**
- * Fonte: elements-ui/css/_base.css
- * Data copia: 2026-04-23
- * Nota: copia esatta.
- */
-
-/**
- * ==========================================================================
- * BASE -- CSS Reset e stili fondamentali
- * ==========================================================================
- *
- * SCOPO:
- *   Reset CSS completo (equivalente Tailwind Preflight) + stili base
- *   per body, scrollbar e visibilita.
- *
- * DIPENDENZE:
- *   - tokens.css (font-family, colori sfondo e testo)
- *   Deve essere caricato DOPO tokens.css e PRIMA di components.css.
- *   L'ordine corretto e' definito in product-page.css:
- *     1. tokens.css  (design tokens)
- *     2. _base.css   (questo file)
- *     3. components.css (componenti)
- *
- * CONTENUTO:
- *   - CSS Reset (Tailwind Preflight equivalent)
- *   - Body configuration
- *   - Scrollbar utilities
- *   - Scroll behavior
- *
- * Elementi HTML: *, html, body, .scrollbar-hide, .scroll-smooth
- * ==========================================================================
- */
-
-
-/* ====================================================================
-   CSS RESET (Tailwind Preflight equivalent)
-   ==================================================================== */
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -597,10 +445,6 @@ img, video {
     display: none;
 }
 
-
-/* ====================================================================
-   BODY CONFIGURATION
-   ==================================================================== */
 body {
     line-height: inherit;
     font-family: var(--font-family);
@@ -611,57 +455,19 @@ body {
     overflow-x: hidden;
 }
 
-
-/* ====================================================================
-   SCROLLBAR UTILITIES
-   ==================================================================== */
 .scrollbar-hide {
-    scrollbar-width: none;                    /* Firefox */
-    -ms-overflow-style: none;                 /* IE and Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-    display: none;                            /* Chrome, Safari, Opera */
+    display: none;
 }
 
-
-/* ====================================================================
-   SCROLL BEHAVIOR
-   ==================================================================== */
 .scroll-smooth {
     scroll-behavior: smooth;
 }
 
-
-/* === inline utilities/utilities.css === */
-/**
- * Fonte: elements-ui/css/components/_utilities.css
- * Data copia: 2026-04-23
- * Nota: copia esatta.
- */
-
-/**
- * ==========================================================================
- * UTILITIES -- Classi utility (ex-Tailwind) e helpers
- * ==========================================================================
- *
- * SCOPO:
- *   Classi utility atomiche migrate da Tailwind CSS.
- *   Organizzate per categoria: layout, spacing, typography, colors,
- *   borders, sizing, position, visibility, interactive, responsive.
- *
- * NOTA:
- *   Queste classi sono usate nell'HTML per styling rapido.
- *   Per nuovi componenti, preferire classi semantiche nei file dedicati.
- *
- * DIPENDENZE:
- *   - tokens.css (colori, dimensioni)
- *
- * Elementi HTML: vari (usati inline nell'HTML)
- * ==========================================================================
- */
-
-/* === PADDING === */
 .px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -684,8 +490,6 @@ body {
     padding-bottom: 2.5rem;
 }
 
-
-/* === MARGIN === */
 .mt-3 {
     margin-top: 0.75rem;
 }
@@ -706,8 +510,6 @@ body {
     margin-bottom: 1.25rem;
 }
 
-
-/* === SPACE === */
 .space-y-1 > * + * {
     margin-top: 0.25rem;
 }
@@ -728,8 +530,6 @@ body {
     margin-top: 1.5rem;
 }
 
-
-/* === GAP === */
 .gap-1 {
     gap: 0.25rem;
 }
@@ -758,8 +558,6 @@ body {
     gap: 2rem;
 }
 
-
-/* === FLEXBOX === */
 .flex {
     display: flex;
 }
@@ -796,8 +594,6 @@ body {
     justify-content: space-between;
 }
 
-
-/* === GRID === */
 .grid {
     display: grid;
 }
@@ -810,8 +606,6 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-
-/* === TYPOGRAPHY === */
 .text-xs {
     font-size: var(--font-size-xs);
     line-height: var(--line-height-normal);
@@ -894,8 +688,6 @@ body {
     text-align: right;
 }
 
-
-/* === TEXT COLORS === */
 .text-white {
     color: #ffffff;
 }
@@ -952,8 +744,6 @@ body {
     color: var(--color-warning);
 }
 
-
-/* === BACKGROUND COLORS === */
 .bg-white {
     background-color: var(--color-bg-white);
 }
@@ -986,8 +776,6 @@ body {
     background-color: rgba(28, 114, 100, 0.1);
 }
 
-
-/* === BORDERS === */
 .border {
     border-width: 1px;
     border-style: solid;
@@ -1014,8 +802,6 @@ body {
     border-color: var(--color-primary);
 }
 
-
-/* === BORDER RADIUS === */
 .rounded {
     border-radius: var(--radius-sm);
 }
@@ -1036,8 +822,6 @@ body {
     border-radius: var(--radius-full);
 }
 
-
-/* === SHADOWS === */
 .shadow-md {
     box-shadow: var(--shadow-md);
 }
@@ -1046,8 +830,6 @@ body {
     box-shadow: var(--shadow-lg);
 }
 
-
-/* === SIZING === */
 .w-full {
     width: 100%;
 }
@@ -1088,8 +870,6 @@ body {
     min-width: 0px;
 }
 
-
-/* === POSITION === */
 .relative {
     position: relative;
 }
@@ -1118,8 +898,6 @@ body {
     transform: translateY(-50%);
 }
 
-
-/* === INTERACTIVE === */
 .cursor-pointer {
     cursor: pointer;
 }
@@ -1156,8 +934,6 @@ body {
     box-shadow: var(--shadow-xl);
 }
 
-
-/* === FOCUS STATES === */
 .focus-ring:focus {
     outline: none;
     box-shadow: 0 0 0 2px var(--color-primary), 0 0 0 4px rgba(240, 138, 0, 0.2);
@@ -1168,10 +944,6 @@ body {
     box-shadow: 0 0 0 2px var(--color-secondary);
 }
 
-
-/* === RESPONSIVE VISIBILITY === */
-/* breakpoint-exception: 768px preserves the existing Tailwind-compatible `md:`
-   utility contract while component breakpoints use the canonical 640/1024 scale. */
 @media (min-width: 768px) {
     .md\:hidden {
         display: none !important;
@@ -1184,9 +956,6 @@ body {
     }
 }
 
-
-/* === PREFERS REDUCED MOTION === */
-/* Disabilita tutte le animazioni e transizioni se l'utente lo richiede */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -1198,15 +967,6 @@ body {
     }
 }
 
-
-/* === inline primitives/button.css === */
-/**
- * BUTTON — Primitive button styles
- * Fonte: Skillpress-frontend/elements-ui/css/components/_buttons.css
- * Data estrazione: 2026-04-25
- */
-
-/** @public */
 .sp-button {
     display: inline-flex;
     align-items: center;
@@ -1362,15 +1122,6 @@ body {
     stroke: currentColor;
 }
 
-
-/* === inline primitives/badge.css === */
-/**
- * BADGE — Dot status badge primitive
- * Fonte: Skillpress-frontend/dashboard/css/components/_badges.css
- * Data estrazione: 2026-04-25
- */
-
-/** @public */
 .sp-badge {
     --badge-color: var(--color-text-secondary);
 
@@ -1423,15 +1174,6 @@ body {
     --badge-color: var(--color-text-secondary);
 }
 
-
-/* === inline primitives/card.css === */
-/**
- * CARD — Generic card surface primitive
- * Fonte: Skillpress-frontend/elements-ui/css/components/_cards.css
- * Data estrazione: 2026-04-25
- */
-
-/** @public */
 .sp-card {
     display: flex;
     flex-direction: column;
@@ -1608,47 +1350,10 @@ body {
     box-shadow: none;
 }
 
-
-/* === inline primitives/form-primitives.css === */
-/**
- * FORM PRIMITIVES -- contenitore form, label, input testo/numero, select, messaggi
- *
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
- *   - .sp-form-field                                  L33-35
- *   - .sp-label-row + .sp-label-text + .sp-label-hint       L41-69
- *   - .sp-form-input + textarea.sp-form-input            L99-133
- *   - .sp-nome-lavoro-input (alias semantico)         L137-168
- *   - .sp-facciate-row + .sp-spessore-display            L449-487
- *   - .sp-form-select                                 L190-223
- *   - .sp-error-msg + .sp-error-inline + .sp-success-inline L292-329
- *   - .sp-custom-dims + .sp-custom-dims__grid/field/label L776-805
- *   - .sp-nome-ref-row                                L174-184
- *
- * Fonte markup verbatim (template literal):
- *   - product-page-integration/js/sections/section-1.js L76-103, L280-320, L421-466
- *   - product-page-integration/js/sections/section-6.js L329-343
- *
- * Strategia A (CSS-only). I modifier (--error) sono gestiti consumer-side
- * dal codice di validazione applicativa.
- *
- * Material Symbols (icone error/info/check) sostituiti da SVG inline lato consumer.
- * La freccia del select e' embedded come data:image/svg+xml nel background-image.
- */
-
-
-/* ================================================================
-   FORM FIELD -- contenitore generico form-field
-   ================================================================ */
-/** @public */
 .sp-form-field {
     position: relative;
 }
 
-
-/* ================================================================
-   LABEL ROW -- contenitore inline per label + info-btn + hint
-   ================================================================ */
-/** @public */
 .sp-label-row {
     display: flex;
     align-items: center;
@@ -1656,7 +1361,6 @@ body {
     margin-bottom: 0.375rem;
 }
 
-/** @public */
 .sp-label-text {
     font-size: 0.9375rem;
     font-weight: var(--font-weight-medium);
@@ -1673,17 +1377,11 @@ body {
     font-weight: var(--font-weight-normal);
 }
 
-/** @public */
 .sp-label-hint {
     font-size: var(--font-size-xs);
     color: var(--color-text-light);
 }
 
-
-/* ================================================================
-   FORM INPUT -- text, number, textarea
-   ================================================================ */
-/** @public */
 .sp-form-input {
     width: 100%;
     max-width: 100%;
@@ -1719,13 +1417,6 @@ textarea.sp-form-input {
     resize: none;
 }
 
-
-/* ================================================================
-   NOME LAVORO INPUT -- alias semantico di .sp-form-input
-   Stessa resa visiva, classe distinta per la sezione "Nome del lavoro".
-   Fonte catalog: _form-inputs.css L137-L168.
-   ================================================================ */
-/** @public */
 .sp-nome-lavoro-input {
     width: 100%;
     max-width: 100%;
@@ -1751,11 +1442,6 @@ textarea.sp-form-input {
     border-color: var(--color-error-light);
 }
 
-
-/* ================================================================
-   FORM SELECT -- dropdown nativo con freccia SVG personalizzata
-   ================================================================ */
-/** @public */
 .sp-form-select {
     width: 100%;
     max-width: 100%;
@@ -1790,11 +1476,6 @@ textarea.sp-form-input {
     background-color: var(--color-bg-gray-100);
 }
 
-
-/* ================================================================
-   MESSAGGI INLINE -- error / error-inline / success-inline
-   ================================================================ */
-/** @public */
 .sp-error-msg {
     display: flex;
     align-items: center;
@@ -1810,7 +1491,6 @@ textarea.sp-form-input {
     flex-shrink: 0;
 }
 
-/** @public */
 .sp-error-inline {
     font-size: var(--font-size-xs);
     color: var(--color-error);
@@ -1826,7 +1506,6 @@ textarea.sp-form-input {
     flex-shrink: 0;
 }
 
-/** @public */
 .sp-success-inline {
     font-size: var(--font-size-xs);
     color: var(--color-success);
@@ -1842,11 +1521,6 @@ textarea.sp-form-input {
     flex-shrink: 0;
 }
 
-
-/* ================================================================
-   GRIGLIA CUSTOM DIMENSIONS -- larghezza x altezza
-   ================================================================ */
-/** @public */
 .sp-custom-dims {
     display: flex;
     flex-direction: column;
@@ -1877,11 +1551,6 @@ textarea.sp-form-input {
     }
 }
 
-
-/* ================================================================
-   GRIGLIA NOME + REFERENTE -- 2 input testo affiancati
-   ================================================================ */
-/** @public */
 .sp-nome-ref-row {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1894,13 +1563,6 @@ textarea.sp-form-input {
     }
 }
 
-
-/* ================================================================
-   GRIGLIA QUANTITA + IVA -- layout Step 6 (qty-iva-row)
-   Modificatori --single (1 col) / --double (2 col).
-   --double diventa 1 col sotto 640px.
-   ================================================================ */
-/** @public */
 .sp-qty-iva-row {
     display: grid;
     gap: 0.625rem;
@@ -1920,16 +1582,6 @@ textarea.sp-form-input {
     }
 }
 
-
-/* ================================================================
-   FACCIATE ROW + SPESSORE DISPLAY -- input numerico + callout spessore
-   Fonte catalog: _form-inputs.css L449-L487.
-   Layout flex inline: .sp-facciate-input-wrap (flex 1) + .sp-spessore-display (shrink 0).
-   Material Symbols `vertical_align_center` del catalog -> SVG inline lato consumer.
-   Il selettore catalog `.sp-spessore-display .material-symbols-outlined` viene
-   replicato come `.sp-spessore-display svg` per garantire dimensione/colore.
-   ================================================================ */
-/** @public */
 .sp-facciate-row {
     display: flex;
     align-items: center;
@@ -1937,13 +1589,11 @@ textarea.sp-form-input {
     min-width: 0;
 }
 
-/** @public */
 .sp-facciate-input-wrap {
     flex: 1;
     min-width: 0;
 }
 
-/** @public */
 .sp-spessore-display {
     display: flex;
     align-items: center;
@@ -1959,64 +1609,24 @@ textarea.sp-form-input {
     flex-shrink: 0;
 }
 
-/** @public */
 .sp-spessore-label {
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     color: var(--color-text);
 }
 
-/** @public */
 .sp-spessore-value {
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-bold);
     color: var(--color-text);
 }
 
-
-/* === inline primitives/form-controls.css === */
-/**
- * FORM CONTROLLS -- radio group, radio option, checkbox option, radio-option--disabled
- *
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
- *   - .sp-radio-group                                       L491-495
- *   - .sp-radio-option + .sp-radio-option-label                L497-503, L547-550
- *   - .sp-radio-option input[type="radio"] + ::after        L505-539
- *   - .sp-radio-option input[type="checkbox"]               L541-545
- *   - .sp-radio-option--disabled                            L811-825
- *
- * Fonte markup: catalogo elements-ui (radio-group.js + checkbox-option.js).
- * Nessun utilizzo nelle pagine demo prodotto: la coverage e' giustificata
- * dall'uso futuro su `checkout` / `dashboard` e dall'estensione opzionale
- * del configuratore product-page (sostituire alcuni form-select con radio-group).
- *
- * Strategia A (CSS-only). :checked e :disabled sono nativi del browser.
- * .sp-radio-option--disabled e' applicato manualmente sull'<label> quando l'opzione
- * non e' disponibile (visualmente spenta + click bloccato via pointer-events).
- *
- * Niente SVG: il pallino radio e' un pseudo-elemento ::after. Il check del
- * checkbox e' nativo via accent-color.
- *
- * Dipende da form-primitives.css (per .sp-label-row + .sp-label-text). Bundle
- * ordering: form-controls.css DOPO form-primitives.css.
- */
-
-
-/* ================================================================
-   RADIO GROUP -- contenitore flex column / row
-   ================================================================ */
-/** @public */
 .sp-radio-group {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
 }
 
-
-/* ================================================================
-   RADIO OPTION -- label + input + testo
-   ================================================================ */
-/** @public */
 .sp-radio-option {
     display: flex;
     align-items: center;
@@ -2025,16 +1635,11 @@ textarea.sp-form-input {
     position: relative;
 }
 
-/** @public */
 .sp-radio-option-label {
     font-size: var(--font-size-sm);
     color: var(--color-text);
 }
 
-
-/* ================================================================
-   INPUT RADIO -- custom CSS appearance + pallino arancione checked
-   ================================================================ */
 .sp-radio-option input[type="radio"] {
     appearance: none;
     -webkit-appearance: none;
@@ -2071,20 +1676,12 @@ textarea.sp-form-input {
     transform: translate(-50%, -50%) scale(1);
 }
 
-
-/* ================================================================
-   INPUT CHECKBOX -- nativo con accent-color primary
-   ================================================================ */
 .sp-radio-option input[type="checkbox"] {
     width: 1rem;
     height: 1rem;
     accent-color: var(--color-primary);
 }
 
-
-/* ================================================================
-   RADIO OPTION DISABLED -- label spenta + click bloccato
-   ================================================================ */
 .sp-radio-option--disabled {
     opacity: 0.5;
     cursor: not-allowed !important;
@@ -2100,18 +1697,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     opacity: 0.5;
 }
 
-
-/* === inline primitives/form-layout.css === */
-/**
- * FORM LAYOUT -- Small form grid/layout helpers.
- * Fonte markup: Skillpress-frontend/checkout/js/sections/payment-section.js righe 109-181
- * Fonte CSS: Skillpress-frontend/checkout/css/components/_payment.css righe 90-127
- * Target demo: checkout
- *
- * CSS-only. Fields come from FormPrimitives, actions from Button.
- */
-
-/** @public */
 .sp-form-layout {
     margin-top: var(--spacing-sm);
 }
@@ -2161,15 +1746,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-
-/* === inline primitives/accordion.css === */
-/**
- * ACCORDION — Estratto da elements-ui/css/components/_layout-patterns.css
- * Data estrazione: 2026-04-23
- * Fonte canonica: elements-ui
- */
-
-/** @public */
 .sp-accordion {
     display: flex;
     flex-direction: column;
@@ -2190,9 +1766,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     background: var(--color-bg-gray-50);
 }
 
-/* state: aria-expanded sull'header e' la fonte primaria; .sp-accordion__section--expanded
-   e' alias visivo BEM mantenuto come variante (deprecazione prevista v0.3 -- vedi
-   audit production-readiness 2026-05-08, 03-css-bem-tokens "stati ARIA vs modifier"). */
 .sp-accordion__section--expanded {
     background: var(--section-bg-expanded);
 }
@@ -2381,7 +1954,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     margin-top: 0.875rem;
 }
 
-/* Mobile: header piu' alto per touch target standard e-commerce. */
 @media (max-width: 639px) {
     .sp-accordion__header {
         padding: 1rem 0.875rem;
@@ -2393,45 +1965,17 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-
-/* === inline primitives/toggle-switch.css === */
-/**
- * TOGGLE SWITCH -- Binary on/off switch primitive
- * Fonte CSS:
- *   - Skillpress-frontend/elements-ui/css/components/_form-inputs.css
- *     (sezione "TOGGLE SWITCH (multicopertina on/off)" -- .multicop-switch / .multicop-switch-knob)
- * Fonte markup:
- *   - Skillpress-frontend/elements-ui/js/buttons/toggle-switch.js
- *     (variante multicop -- div + classi --active)
- *   - Skillpress-frontend/elements-ui/js/checkout/checkout-toggle-switch.js
- *     (variante checkout -- button[role=switch][aria-checked] + .sp-toggle-switch.active)
- * Target demo:
- *   - product-page-integration (multicopertina nella sidebar config)
- *   - checkout (multispedizione)
- * Data estrazione: 2026-04-27
- *
- * Convergenza:
- *   I due sorgenti hanno geometrie equivalenti (track ~44x24, thumb ~20x20).
- *   La libreria adotta il pattern button[role=switch] (checkout) come piu
- *   accessibile, e ne deriva un'API BEM unica: .sp-toggle-switch (track) +
- *   .sp-toggle-switch__thumb (knob) + opzionale .sp-toggle-switch__label (testo).
- */
-
-/* Wrapper opzionale: label + switch su una riga */
-/** @public */
 .sp-toggle-switch-field {
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-sm);
 }
 
-/* Track (e' il <button> stesso) */
-/** @public */
 .sp-toggle-switch {
     position: relative;
     display: inline-block;
-    width: 2.75rem;          /* 44px */
-    height: 1.5rem;          /* 24px */
+    width: 2.75rem;
+    height: 1.5rem;
     flex-shrink: 0;
     padding: 0;
     border: none;
@@ -2453,9 +1997,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     outline-offset: 2px;
 }
 
-/* state: aria-checked="true|false" e' la fonte primaria di stato.
-   .sp-toggle-switch--checked e' alias visivo BEM (deprecazione prevista v0.3 --
-   vedi audit production-readiness 2026-05-08, sezione "stati ARIA vs modifier"). */
 .sp-toggle-switch--checked,
 .sp-toggle-switch[aria-checked="true"] {
     background-color: var(--color-primary);
@@ -2466,13 +2007,12 @@ label.sp-radio-option--disabled input[type="radio"] {
     background-color: var(--color-primary-dark);
 }
 
-/* Thumb (knob) */
 .sp-toggle-switch__thumb {
     position: absolute;
-    top: 0.125rem;           /* 2px */
-    left: 0.125rem;          /* 2px */
-    width: 1.25rem;          /* 20px */
-    height: 1.25rem;         /* 20px */
+    top: 0.125rem;
+    left: 0.125rem;
+    width: 1.25rem;
+    height: 1.25rem;
     border-radius: var(--radius-full);
     background-color: var(--color-bg-white);
     box-shadow: var(--shadow-sm);
@@ -2482,10 +2022,9 @@ label.sp-radio-option--disabled input[type="radio"] {
 
 .sp-toggle-switch--checked .sp-toggle-switch__thumb,
 .sp-toggle-switch[aria-checked="true"] .sp-toggle-switch__thumb {
-    transform: translateX(1.25rem);  /* 20px = 44 - 4 - 20 */
+    transform: translateX(1.25rem);
 }
 
-/* Label esterna (slot consumer): non controlla testo, solo tipografia base */
 .sp-toggle-switch__label {
     font-family: inherit;
     font-size: var(--font-size-sm);
@@ -2495,7 +2034,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     user-select: none;
 }
 
-/* Stato disabled */
 .sp-toggle-switch:disabled,
 .sp-toggle-switch[aria-disabled="true"] {
     cursor: not-allowed;
@@ -2504,7 +2042,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 
 .sp-toggle-switch:disabled:hover,
 .sp-toggle-switch[aria-disabled="true"]:hover {
-    /* annulla hover quando disabled */
+
     background-color: var(--color-bg-gray-200);
 }
 
@@ -2520,18 +2058,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     cursor: not-allowed;
     opacity: 0.7;
 }
-
-
-/* === inline components/cart-product-card.css === */
-/**
- * CART PRODUCT CARD -- Checkout cart item with expandable details.
- * Fonte markup: Skillpress-frontend/checkout/js/sections/cart-section.js righe 46-118
- * Fonte CSS: Skillpress-frontend/checkout/css/components/_cart.css righe 25-223, 379-404
- * Target demo: checkout
- *
- * CSS + optional JS (`js/cart-product-card.js`) for details disclosure.
- * Business logic for prices, cart mutations and product data stays outside the library.
- */
 
 .cart-list > * + * {
     margin-top: var(--spacing-md);
@@ -2772,17 +2298,6 @@ label.sp-radio-option--disabled input[type="radio"] {
         gap: var(--spacing-md);
     }
 }
-
-
-/* === inline components/checkout-summary.css === */
-/**
- * CHECKOUT SUMMARY -- Checkout order summary sidebar.
- * Fonte markup: Skillpress-frontend/checkout/js/sections/sidebar-section.js righe 30-88
- * Fonte CSS: Skillpress-frontend/checkout/css/components/_sidebar.css righe 29-247
- * Target demo: checkout
- *
- * CSS-only. Prices, CTA navigation, cart state and checkout validation stay outside.
- */
 
 .checkout-summary {
     height: fit-content;
@@ -3036,15 +2551,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     color: var(--color-primary-light);
 }
 
-
-/* === inline components/checkout-mobile-summary.css === */
-/**
- * CHECKOUT MOBILE SUMMARY -- Fixed bottom order summary for checkout.
- *
- * CSS-only visuals. Toggle state is driven by checkout-mobile-summary.js via
- * `.checkout-mobile-summary--expanded` and `aria-expanded`.
- */
-
 .checkout-mobile-summary {
     display: none;
 }
@@ -3279,7 +2785,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     font-weight: var(--font-weight-semibold);
 }
 
-/* breakpoint-exception: 374px matches the smallest supported phone width. */
 @media (max-width: 374px) {
     .checkout-mobile-summary__container {
         padding-right: 0.75rem;
@@ -3312,18 +2817,6 @@ label.sp-radio-option--disabled input[type="radio"] {
         margin-left: auto;
     }
 }
-
-
-/* === inline components/address-preview.css === */
-/**
- * ADDRESS PREVIEW -- Compact checkout address/billing profile display.
- * Fonte markup: Skillpress-frontend/checkout/js/sections/shipping-section.js righe 88-102
- * Fonte CSS: Skillpress-frontend/checkout/css/components/_shipping.css righe 87-118
- * Fonte correlata: checkout/js/sections/payment-section.js righe 91-105
- * Target demo: checkout
- *
- * CSS-only. Address selection, edit/create flows and validation stay outside.
- */
 
 .address-preview {
     display: flex;
@@ -3383,19 +2876,6 @@ label.sp-radio-option--disabled input[type="radio"] {
 .address-preview__secondary {
     color: var(--color-text-muted);
 }
-
-
-/* === inline components/method-choice-card.css === */
-/**
- * METHOD CHOICE CARD -- Selectable checkout method tiles.
- * Fonte shipping: Skillpress-frontend/checkout/js/sections/shipping-section.js righe 209-247
- * Fonte payment: Skillpress-frontend/checkout/js/sections/payment-section.js righe 320-353
- * CSS fonte: checkout/css/components/_shipping.css righe 120-185,
- * checkout/css/components/_payment.css righe 190-250
- * Target demo: checkout
- *
- * CSS-only. Selection state, validation, prices and checkout logic stay outside.
- */
 
 .method-choice {
     margin-top: var(--spacing-md);
@@ -3562,17 +3042,6 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
-
-/* === inline components/allocation-rows.css === */
-/**
- * ALLOCATION ROWS -- checkout copy allocation rows and status badges.
- * Fonte: Skillpress-frontend/checkout/js/sections/shipping-section.js righe 273-437
- * CSS fonte: checkout/css/components/_shipping.css righe 324-465,
- * checkout/css/components/_feedback-status.css righe 27-49
- *
- * CSS-only. Allocation totals, validation and destination management stay outside.
- */
-
 .allocation-summary-box {
     background: var(--color-bg-gray-50);
     border-radius: var(--radius-xl);
@@ -3723,5 +3192,3 @@ label.sp-radio-option--disabled input[type="radio"] {
         margin-left: 0;
     }
 }
-
-

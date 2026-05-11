@@ -3,9 +3,6 @@ title: AllocationRows
 description: Righe checkout per allocare copie/prodotti su destinazioni multiple.
 layer: components
 strategy: css-only
-sources:
-  checkout_js: checkout/js/sections/shipping-section.js
-  checkout_css: checkout/css/components/_shipping.css
 status: public-contract
 package_path: components/allocation-rows.css
 ---

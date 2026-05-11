@@ -1,25 +1,4 @@
-/**
- * IMAGE GALLERY - Static image container with prev/next nav buttons.
- * Fonte CSS layout: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css (hero gallery block)
- * Fonte CSS bottoni: Skillpress-frontend/elements-ui/css/components/_buttons.css (legacy nav-btn)
- * Estratta da components/product-hero.css.
- *
- * BEM standard:
- *   .image-gallery, .image-gallery__container, .image-gallery__nav-btn(--prev|--next)
- *
- * Contratto markup statico (Strategia A: behavior galleria fuori scope):
- *   <div class="image-gallery">
- *     <div class="image-gallery__container product-shadow" data-image-gallery-images='[...]'>
- *       <img ... />
- *       <button class="image-gallery__nav-btn image-gallery__nav-btn--prev" aria-label="...">
- *         <svg aria-hidden="true">...</svg>
- *       </button>
- *       <button class="image-gallery__nav-btn image-gallery__nav-btn--next" aria-label="...">
- *         <svg aria-hidden="true">...</svg>
- *       </button>
- *     </div>
- *   </div>
- */
+
 
 .image-gallery {
     display: flex;

@@ -1,33 +1,4 @@
-/**
- * SIDEBAR TOTALS — Composed component (sidebar configuratore: totale + promo + riepilogo + carrello)
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css righe 1886-1910
- *           + righe 189-246, 249-272, 324-341, 344-365, 367-418
- *           + Skillpress-frontend/elements-ui/css/components/_buttons.css righe 29-55 (.add-to-cart-btn), 261-285 (.sidebar-totals__btn)
- * Fonte markup: Skillpress-frontend/product-page-integration/index.html righe 202-249
- * Catalogo dichiarazione: Skillpress-frontend/elements-ui/js/layout-patterns/sidebar-summary.js
- * Target demo: product-page-integration (sidebar configuratore desktop)
- * Data estrazione: 2026-04-28
- *
- * CSS-only. Nessun behavior libreria.
- *
- * Il toggle riepilogo (`.sidebar-totals__btn[aria-expanded]` -> `.sidebar-totals__content` show/hide) e'
- * consumer-side wire-up: la libreria espone `display: none` di default e lascia al consumer/CMS
- * lo swap su click. Stessa convenzione di ModeSwitcher / OptionButtons / FormatCard / PriceTable.
- *
- * Material Symbols (`list`, `expand_more`, `shopping_cart`) NON inclusi: il consumer/CMS usa
- * SVG inline 18x18 currentColor. Le regole CSS sulle icone sono tradotte da
- * `.material-symbols-outlined` a `svg`, mantenendo dimensione 1.125rem.
- *
- * Fuori scope (non implementato qui):
- * - aggiornamento valori `Quantita` / `Miglior prezzo` / `Imposta` / `Totale` (business logic configuratore);
- * - generazione HTML riepilogo dentro `.sidebar-totals__content`;
- * - validazione promo / errori `#validationErrors`;
- * - click bottone carrello;
- * - variante BEM `.sidebar-box*`, alias `.sidebar-total-price`, `.sidebar-total-iva`,
- *   `.product-sidebar` (non referenziati dalla pagina demo);
- * - `.sp-download-buttons__divider` + `.sp-download-buttons` + `.sp-download-buttons__btn`
- *   (gia' coperti da `primitives/download-buttons.css`).
- */
+
 
 /* ================================================================
    GRIGLIA CONFIGURATORE
@@ -266,14 +237,6 @@
     margin-top: 0.5rem;
 }
 
-/* ================================================================
-   RIEPILOGO UTILITY CLASSES (CMS injection helpers)
-   ----------------------------------------------------------------
-   Queste classi sono prodotte dal generatore reale del riepilogo
-   (`product-page-integration/js/riepilogo.js` -> `window.generateRiepilogo`).
-   Il backend/CMS inietta l'HTML risultante dentro `.sidebar-totals__content`
-   (sidebar desktop) o `.mobile-config-content` (mobile bar).
-   ================================================================ */
 .sidebar-totals__container {
     display: flex;
     flex-direction: column;

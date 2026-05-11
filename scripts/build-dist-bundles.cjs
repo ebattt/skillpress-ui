@@ -113,6 +113,14 @@ async function maybeMinify(css) {
     }
 }
 
+function stripNonLicenseComments(css) {
+    return css
+        .replace(/\/\*(?!\!)[\s\S]*?\*\//g, '')
+        .replace(/[ \t]+$/gm, '')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+}
+
 async function buildOne(bundleName) {
     const src = path.join(BUNDLES_DIR, bundleName);
     if (!fs.existsSync(src)) {
@@ -121,7 +129,7 @@ async function buildOne(bundleName) {
     VISITED.clear();
     const flat = flatten(src);
     const out = path.join(DIST_DIR, bundleName);
-    let final = flat;
+    let final = stripNonLicenseComments(flat);
     let minified = false;
     const m = await maybeMinify(flat);
     if (m) { final = m; minified = true; }

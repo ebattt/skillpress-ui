@@ -3,12 +3,6 @@ title: InfoDropdown
 description: Pannello collapsible inline per aiuto contestuale accanto a una label, con titolo auto-derivato e behavior toggle standard.
 layer: primitives
 strategy: css+js
-sources:
-  catalog_css_btn: elements-ui/css/components/_form-inputs.css
-  catalog_css_dropdown: elements-ui/css/components/_layout-patterns.css
-  catalog_js: elements-ui/js/buttons/button-info.js
-  demo: product-page-integration/js/sections/section-1.js
-status: post-bem-2026-04-29
 package_path: primitives/info-dropdown.css
 js_path: js/info-dropdown.js
 ---
@@ -149,8 +143,6 @@ Esempio (no auto-derive):
 - Focus trap / focus restore (over-engineering per disclosure inline; ESC + click outside bastano).
 
 ## Mappatura nomi (demo product-page -> libreria)
-
-La demo originale usava classi `info-dropdown-*` con singolo dash e modifier `hidden` standalone. La libreria post-prompt-19 usa BEM strict + hook `data-*`.
 
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|

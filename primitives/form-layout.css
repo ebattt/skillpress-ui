@@ -1,11 +1,4 @@
-/**
- * FORM LAYOUT -- Small form grid/layout helpers.
- * Fonte markup: Skillpress-frontend/checkout/js/sections/payment-section.js righe 109-181
- * Fonte CSS: Skillpress-frontend/checkout/css/components/_payment.css righe 90-127
- * Target demo: checkout
- *
- * CSS-only. Fields come from FormPrimitives, actions from Button.
- */
+
 
 /** @public */
 .sp-form-layout {

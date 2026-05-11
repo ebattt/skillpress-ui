@@ -3,10 +3,6 @@ title: DownloadButtons
 description: Coppia di bottoni outline arancioni per download istruzioni e template prodotto.
 layer: primitives
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_layout-patterns.css#L2028-L2062
-  demo: product-page-integration/index.html#L250-L260
-status: post-bem-2026-04-29
 package_path: primitives/download-buttons.css
 ---
 
@@ -25,7 +21,7 @@ DownloadButtons
 
 ## Markup contract
 
-Markup verbatim da `product-page-integration/index.html#L250-L260`.
+Markup contract corrente.html#L250-L260`.
 
 ```html
 <!-- NOTA CMS: Link download per istruzioni e template del prodotto.
@@ -80,7 +76,7 @@ Nessun script JS richiesto.
 - `Default` → `primitives-downloadbuttons--default`
 - `SingleButton` (variante CMS con un solo download) → `primitives-downloadbuttons--single-button`
 - `ThreeButtons` (variante CMS con tre download) → `primitives-downloadbuttons--three-buttons`
-- `ReferenceFromElementsUI` (markup verbatim demo) → `primitives-downloadbuttons--reference-from-elements-ui`
+- `Reference` (markup verbatim demo) → `primitives-downloadbuttons--reference-from-elements-ui`
 
 ## Token usati
 

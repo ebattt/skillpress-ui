@@ -1,7 +1,4 @@
-/* ================================================================
-   ORIENTATION TOGGLE (Verticale / Orizzontale)
-   Source: elements-ui/css/components/_buttons.css#L444-L487
-   ================================================================ */
+
 /** @public */
 .sp-orientation-toggle {
     display: flex;

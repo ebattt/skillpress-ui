@@ -1,9 +1,4 @@
-/**
- * MEDIA CHOICE CARD -- card selezionabile con immagine/media.
- *
- * Fonte look: effect-card / visual-card / angolo-card in elements-ui _cards.css.
- * Naming generico per presentation type CMS "media-choice".
- */
+
 .media-choice-cards {
     display: flex;
     gap: 0.75rem;

@@ -50,22 +50,10 @@ npm run pack:check
 
 ## Regola package
 
-Il package pubblicato resta limitato dal campo `files` in `package.json`:
-
-```json
-"files": [
-  "tokens/",
-  "base/",
-  "utilities/",
-  "primitives/",
-  "js/",
-  "bundles/"
-]
-```
-
-Quindi Storybook, stories e documentazione estesa restano nel repository ma
-non entrano nel tarball npm. Output generati come `storybook-static/` e
-`scripts/visual-diff-out/` sono ignorati e vanno rigenerati quando servono.
+Il package pubblicato resta limitato dal campo `files` in `package.json`.
+Storybook, stories e documentazione estesa restano nel repository ma non
+entrano nel tarball npm. Output generati come `storybook-static/` sono ignorati
+e vanno rigenerati quando servono.
 
 ## Flusso per backend
 
@@ -87,10 +75,10 @@ Accordion:
 - `WithoutBadge`
 - `PopulatedContentSlot`
 
-## Checklist Manuale Alpha
+## Checklist Manuale
 
-Prima di chiudere la alpha, verificare in Storybook gli stati critici che
-coprono i principali edge case pubblici:
+Prima di consegnare cambiamenti UI, verificare in Storybook gli stati critici
+che coprono i principali edge case pubblici:
 
 - `ProductHero`: titolo, gallery, info prodotto e CTA leggibili su mobile e
   tablet, senza overlap o dipendenza da Material Symbols.

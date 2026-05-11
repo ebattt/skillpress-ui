@@ -47,14 +47,22 @@ Non mischiare `bundles/<area>.css` e `dist/<area>.css` nella stessa pagina.
 
 ## JS Da Caricare
 
-Per inizializzare tutti i componenti JS pubblici:
+Per inizializzare tutti i componenti JS pubblici, caricare prima gli helper,
+poi i moduli componente necessari e infine l'aggregator:
 
 ```html
+<script src="/node_modules/@ebattt/skillpress-ui/js/_helpers.js"></script>
+<script src="/node_modules/@ebattt/skillpress-ui/js/accordion.js"></script>
+<script src="/node_modules/@ebattt/skillpress-ui/js/checkout-mobile-summary.js"></script>
+<script src="/node_modules/@ebattt/skillpress-ui/js/confirm-dialog.js"></script>
 <script src="/node_modules/@ebattt/skillpress-ui/js/index.js"></script>
 <script>
   window.SkillpressUI?.init(document);
 </script>
 ```
+
+Caricare solo i moduli usati dalla pagina. `js/index.js` non contiene i
+componenti: invoca gli `init()` dei moduli gia' presenti in `window.SkillpressUI`.
 
 Dopo render parziali, Ajax, HTMX o aggiornamenti DOM:
 

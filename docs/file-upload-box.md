@@ -3,10 +3,6 @@ title: FileUploadBox
 description: Dashboard upload modal shell con dropzone, tabella file, stati e behavior UI standalone.
 layer: components
 strategy: css-js
-sources:
-  demo_html: dashboard/index.html#file-upload-modal
-  demo_css: dashboard/css/components/_modals.css
-  demo_js: dashboard/js/file-upload.js
 status: public-contract
 package_path: components/file-upload-box.css
 js_path: js/file-upload-box.js
@@ -18,7 +14,7 @@ js_path: js/file-upload-box.js
 header, warning/error banner, dropzone, input file nascosto, tabella file,
 status badge, delete preview e CTA submit.
 
-Strategia C: la libreria gestisce solo behavior UI riusabile. Upload reale,
+runtime JS: la libreria gestisce solo behavior UI riusabile. Upload reale,
 validazione server, regole formato/peso, stato ordine/prodotto e persistenza
 restano applicazione/backend.
 

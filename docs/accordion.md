@@ -3,10 +3,6 @@ title: Accordion
 description: Contenitore espandibile con badge numerato opzionale e toggle locale single-open.
 layer: primitives
 strategy: css+js
-sources:
-  catalog_css: elements-ui/css/components/_layout-patterns.css
-  demo: product-page-integration/index.html
-status: post-bem-2026-04-29
 package_path: primitives/accordion.css
 js_path: js/accordion.js
 ---
@@ -124,8 +120,6 @@ Attributi:
 Solo `[data-accordion]` e' un hook funzionale di init. `[data-accordion-section]` e `[data-accordion-trigger]` sono sotto-ruoli interni del contratto markup: vanno scritti come da template, ma non vengono interrogati esternamente. La classe modifier `accordion__section--expanded` viene gestita dal JS (toggle automatico) — il backend la imposta solo per dichiarare lo stato iniziale.
 
 ## Mappatura nomi (demo product-page -> libreria)
-
-La demo originale (`product-page-integration`) usava il modifier non-BEM `expanded` come classe standalone. La libreria post-prompt-19 usa solo il modifier BEM completo. Il backend deve usare i nomi LIBRERIA, non quelli demo.
 
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|

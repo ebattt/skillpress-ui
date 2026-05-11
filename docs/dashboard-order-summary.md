@@ -3,10 +3,6 @@ title: DashboardOrderSummary
 description: Riepilogo ordine post-acquisto nella sidebar dashboard.
 layer: components
 strategy: css-only
-sources:
-  demo_html: dashboard/index.html#L428-L450
-  demo_js: dashboard/js/order-detail.js#L292-L307
-  demo_css: dashboard/css/components/_order-detail.css#L562-L670
 status: public-contract
 package_path: components/dashboard-order-summary.css
 ---

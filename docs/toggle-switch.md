@@ -3,11 +3,6 @@ title: ToggleSwitch
 description: Switch binario on/off con track 44x24 e thumb animato, accessibile via role="switch".
 layer: primitives
 strategy: css+js
-sources:
-  catalog_css: elements-ui/css/components/_form-inputs.css
-  catalog_js: elements-ui/js/buttons/toggle-switch.js
-  demo: product-page-integration/index.html
-status: post-bem-2026-04-29
 package_path: primitives/toggle-switch.css
 js_path: js/toggle-switch.js
 ---
@@ -30,7 +25,7 @@ Lo switch standalone (senza wrapper field) e' valido: `.sp-toggle-switch-field` 
 
 ## Markup contract
 
-Markup verbatim dalla pagina demo `product-page-integration` (sidebar configuratore, toggle multicopertina). Il consumer monta `aria-checked` iniziale; `init()` sincronizza la classe `.sp-toggle-switch--checked` di conseguenza.
+Markup contract corrente. Il consumer monta `aria-checked` iniziale; `init()` sincronizza la classe `.sp-toggle-switch--checked` di conseguenza.
 
 ```html
 <button
@@ -158,7 +153,7 @@ Oppure via bundle (gia' include `toggle-switch.css`):
 - `Checked` → `primitives-toggleswitch--checked`
 - `Disabled` → `primitives-toggleswitch--disabled`
 - `WithLabel` → `primitives-toggleswitch--with-label`
-- `ReferenceFromElementsUI` → `primitives-toggleswitch--reference-from-elements-ui`
+- `Reference` → `primitives-toggleswitch--reference-from-elements-ui`
 
 ## Token usati
 
@@ -182,8 +177,6 @@ Oppure via bundle (gia' include `toggle-switch.css`):
 - ricalcolo prezzi / abilitazione altri campi: sono logica consumer, non libreria.
 
 ## Mappatura nomi (demo product-page -> libreria)
-
-La demo originale usava modifier `is-checked` (alias `active`) come classe standalone e attributo entry `data-skillpress-toggle-switch`. La libreria post-prompt-19 usa BEM strict + hook semplificato.
 
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|

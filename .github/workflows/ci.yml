@@ -15,8 +15,6 @@ jobs:
           cache: npm
       - name: install
         run: npm ci
-      - name: install playwright chromium (for visual-diff devDep)
-        run: npx playwright install --with-deps chromium
       - name: aggregate check
         run: npm run check
       - name: build storybook (smoke)

@@ -3,11 +3,6 @@ title: StepIndicator
 description: Tracker orizzontale di step con badge numerati e linea di connessione.
 layer: components
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_cards.css#L1037-L1178
-  catalog_js: elements-ui/js/cards/card-step.js
-  demo: product-page-integration/index.html#L512-L564
-status: post-bem-2026-04-29
 package_path: components/step-indicator.css
 ---
 
@@ -37,7 +32,7 @@ Cardinalita' tipica: 2 / 3 / 4 step. La grid resta `repeat(4, 1fr)` da 1024px an
 
 ## Markup contract
 
-Markup verbatim dalla pagina demo `product-page-integration/index.html#L512-L564`. Step 1 attivo, step 2-4 inattivi.
+Markup contract corrente.html#L512-L564`. Step 1 attivo, step 2-4 inattivi.
 
 ```html
 <div id="step-cards" class="step-indicator">
@@ -103,8 +98,6 @@ Attributi:
 
 ## Mappatura nomi (demo product-page -> libreria)
 
-La demo originale usava prefisso `step-*` con root `.steps-section`. La libreria post-prompt-19 usa BEM strict `.step-indicator__*`.
-
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|
 | `.steps-section` | `.step-indicator` |
@@ -142,7 +135,7 @@ Nessun script JS richiesto.
 ## Examples
 
 - `Default` → `components-stepindicator--default`
-- `ReferenceFromElementsUI` (markup verbatim demo) → `components-stepindicator--reference-from-elements-ui`
+- `Reference` (markup verbatim demo) → `components-stepindicator--reference-from-elements-ui`
 - `MidProgress` (mostra `--completed` verde) → `components-stepindicator--mid-progress`
 - `ThreeSteps` (variante CMS a 3 step) → `components-stepindicator--three-steps`
 - `Mobile` (viewport 390, grid a 2 colonne) → `components-stepindicator--mobile`
@@ -189,7 +182,7 @@ Titoli degli step configuratore prodotto e progressione statica usata nelle stor
 ## Out of scope
 
 - icona check dentro `.step-indicator__badge--completed` (resta solo numero).
-- wrapper `.step-card` con hover translateY (la pagina demo non lo usa).
+- wrapper `.step-card` con hover translateY (la consumer non lo usa).
 - step verticali.
 - step cliccabili (resta `<div>`).
 - animazioni sequenziali sul badge.

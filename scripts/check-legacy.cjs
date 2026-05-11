@@ -46,7 +46,6 @@ function listFilesRecursive(dir, extSet) {
             const full = path.join(cur, ent.name);
             if (ent.isDirectory()) {
                 if (ent.name === 'node_modules' || ent.name.startsWith('.')) continue;
-                if (ent.name === 'inventory-out' || ent.name === 'visual-diff-out') continue;
                 if (ent.name === 'storybook-static') continue;
                 stack.push(full);
             } else if (ent.isFile()) {

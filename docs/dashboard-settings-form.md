@@ -138,6 +138,6 @@ It also emits `sp:dashboard-settings-form:edit` and
 `Card` is too generic and would need consumer CSS for header/actions and field
 scale. `FormPrimitives` covers generic product form fields, not the dashboard
 settings contract. `FormLayout` is checkout-oriented. `Button` covers generic
-actions but not the compact dashboard action buttons and edit link. 
+actions but not the compact dashboard action buttons and edit link.
 `BillingFormCard` is intentionally billing-specific: its open/close behavior
 and `.billing-form__*` classes should not be reused for account/profile views.

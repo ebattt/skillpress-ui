@@ -3,9 +3,6 @@ title: Card
 description: Superficie contenitore generica con slot media/header/body/footer, niente card CMS specifiche.
 layer: primitives
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_cards.css
-  demo: product-page-integration/index.html
 status: public-contract
 package_path: primitives/card.css
 ---
@@ -112,7 +109,7 @@ Nessun script JS richiesto.
 - `InteractiveStates` → `primitives-card--interactive-states`
 - `SurfaceMuted` → `primitives-card--surface-muted`
 - `ControlRow` → `primitives-card--control-row`
-- `ReferenceFromElementsUI` → `primitives-card--reference-from-elements-ui`
+- `Reference` → `primitives-card--reference-from-elements-ui`
 
 ## Token usati
 

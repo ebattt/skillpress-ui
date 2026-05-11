@@ -1,14 +1,4 @@
-/**
- * FEATURE BOX — Composed component (feature highlights grid)
- * Fonte: Skillpress-frontend/elements-ui/css/components/_cards.css (sezione .feature-grid / .feature-box)
- * Fonte markup: Skillpress-frontend/elements-ui/js/cards/card-feature.js
- * Target demo: product-page-integration
- * Data estrazione: 2026-04-27
- *
- * L'icona e uno slot: la libreria fornisce solo contenitore, dimensione e radius.
- * Il colore di sfondo dell'icona e il contenuto (SVG/URL) sono forniti dal consumer/CMS.
- * La libreria non dipende da Material Symbols.
- */
+
 
 .feature-grid {
     display: grid;

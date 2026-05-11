@@ -3,10 +3,6 @@ title: Breadcrumb
 description: Navigazione gerarchica statica con markup Schema.org BreadcrumbList.
 layer: primitives
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_layout-patterns.css#L1989-L2025
-  catalog_js: elements-ui/js/layout-patterns/breadcrumb.js
-  demo: product-page-integration/index.html
 status: public-contract
 package_path: primitives/breadcrumb.css
 ---
@@ -86,7 +82,7 @@ Nessun script JS richiesto.
 
 - `Default` → `primitives-breadcrumb--default`
 - `TwoLevels` → `primitives-breadcrumb--two-levels`
-- `ReferenceFromElementsUI` → `primitives-breadcrumb--reference-from-elements-ui`
+- `Reference` → `primitives-breadcrumb--reference-from-elements-ui`
 
 ## Token usati
 

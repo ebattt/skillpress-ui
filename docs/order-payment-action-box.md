@@ -3,10 +3,6 @@ title: OrderPaymentActionBox
 description: Banner azione pagamento nella vista dettaglio ordine dashboard.
 layer: components
 strategy: css-only
-sources:
-  demo_html: dashboard/index.html#L421-L423
-  demo_js: dashboard/js/order-detail.js#L374-L470
-  demo_css: dashboard/css/components/_order-detail.css#L676-L887
 status: public-contract
 package_path: components/order-payment-action-box.css
 ---

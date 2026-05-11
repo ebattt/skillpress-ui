@@ -1,30 +1,4 @@
-/**
- * Fonte: elements-ui/css/tokens.css
- * Data copia: 2026-04-23
- * Nota: copia esatta.
- */
 
-/**
- * ==========================================================================
- * TOKENS -- Design token per Skillpress UI
- * ==========================================================================
- *
- * SCOPO:
- *   Fonte unica di verita per tutti i valori di design del sistema Skillpress.
- *   Questo file definisce colori, spaziature, raggi, ombre, transizioni,
- *   z-index e tipografia come CSS Custom Properties su :root.
- *
- * CONSUMATORI:
- *   - elements-ui/ (catalogo componenti)
- *   - product-page-integration/ (pagina prodotto)
- *   - qualsiasi pagina che importa product-page.css o components.css
- *
- * DIPENDENZE:
- *   Nessuna -- questo file deve essere importato PRIMA di tutti gli altri.
- *
- * Elementi HTML: nessuno direttamente; usato da tutti i componenti.
- * ==========================================================================
- */
 
 :root {
     /* === COLORI BRAND === */
@@ -250,26 +224,7 @@
     --transition-slow: 300ms ease;          /* animazioni piu ampie */
     --transition-section: 0.4s cubic-bezier(0.4, 0, 0.2, 1);  /* accordion */
 
-    /* === BREAKPOINT CANONICI ===
-       CSS non permette `var()` dentro `@media` queries, quindi i breakpoint
-       sono numeri letterali nei singoli componenti. Per garantire coerenza,
-       usare ESCLUSIVAMENTE questi 4 valori:
 
-         374px   small phones (iPhone SE 1st gen, fix mobile-bar)
-         640px   phones / tablet portrait stretti (mobile cutoff)
-         1024px  tablet landscape / small desktop (desktop cutoff)
-         1280px  wide desktop (= --page-max-width)
-
-       Convenzione `max-width` / `min-width`:
-         (max-width: 639px)   -> mobile (sotto 640)
-         (min-width: 640px)   -> tablet+
-         (max-width: 1023px)  -> mobile + tablet (sotto desktop)
-         (min-width: 1024px)  -> desktop
-         (min-width: 1280px)  -> wide desktop
-
-       Eccezioni storiche: `767px` (accordion touch target, deprecato — da
-       migrare a 640px), `480px` (price-table small refinement, da rivedere).
-       Tutti i nuovi componenti devono usare uno dei 4 canonici. */
 
     /* === Z-INDEX === */
     /* Gerarchia ordinata per evitare conflitti di sovrapposizione */
@@ -317,9 +272,7 @@
     --shell-code-color: #E2E8F0;
     --shell-code-success: #4ADE80;             /* Verde successo su sfondo scuro (copy btn) */
 
-    /* === TOKEN SEMANTICI AGGIUNTIVI ===
-       Aggiunti in fase 4-sub (audit production-readiness 2026-05-08, F008).
-       Alias semantici sopra la scala grezza per ridurre hardcoded nei componenti. */
+
 
     /** @public */
     --color-text-meta: var(--color-text-light);            /* metadati neutri (e.g. icone meta dashboard) */
@@ -341,9 +294,6 @@
     --color-accent-bg: rgba(28, 114, 100, 0.08);
 }
 
-/* === MOBILE TOKEN OVERRIDES ===
-   Allineato a Skillpress-frontend/elements-ui/css/components/_layout.css
-   (`@media (max-width: 639px)` riduce padding pagina/sezioni). */
 @media (max-width: 639px) {
     :root {
         --page-padding-x: 0.75rem;

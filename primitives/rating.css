@@ -1,20 +1,4 @@
-/**
- * RATING - Stars overlay primitive.
- * Fonte: Skillpress-frontend/elements-ui/css/components/_feedback-status.css righe 220-228
- * Estratta da components/product-hero.css per riuso (product-page, related products, blog reviews, dashboard).
- *
- * Contratto markup verbatim dalla pagina demo:
- *   <div class="rating">
- *     <div class="rating__empty">     -> 5 stelle vuote (color gray-200)
- *       <span class="rating__star">★</span> ...
- *     </div>
- *     <div class="rating__filled" style="width: NN%;">  -> overlay clip via width
- *       <span class="rating__star">★</span> ...
- *     </div>
- *   </div>
- *
- * La percentuale = (rating / 5) * 100. Inline style sulla larghezza per data-rating-driven CMS.
- */
+
 
 /** @public */
 .sp-rating {

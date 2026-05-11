@@ -1,14 +1,4 @@
-/* ============================================================================
-   RELATED PRODUCTS — Griglia prodotti correlati (stile landing page)
-   ============================================================================
-   Fonti:
-   - elements-ui/css/components/_layout-patterns.css#L1804-L1825
-     (.related-products + qualificazione catalog-section-label / catalog-grid--products)
-   - elements-ui/css/components/_cards.css#L1181-L1328
-     (PRODUCT CARD: catalog-section-label / catalog-grid--products /
-      catalog-card--product-equal / catalog-card__title /
-      catalog-card__image-wrap / catalog-card__image--product + responsive)
-   ========================================================================== */
+
 
 @import "../primitives/catalog-grid.css";
 

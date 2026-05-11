@@ -1,38 +1,4 @@
-/**
- * PRICE TABLE — Composed component (tabella prezzi stile Google Flights)
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_layout-patterns.css righe 918-1236
- * Fonte markup: Skillpress-frontend/product-page-integration/js/sections/section-6.js righe 355-442
- * Catalogo dichiarazione: Skillpress-frontend/elements-ui/js/layout-patterns/price-table.js
- * Target demo: product-page-integration (configuratore step 6, "Quantita / consegna")
- * Data estrazione: 2026-04-28
- *
- * CSS-only. Nessun behavior libreria: il consumer/CMS applica i modifier
- * `--selected` (header colonna), `--active` (riga qty), `--selected` /
- * `--row-active` (cella prezzo) in base a stato applicativo (qty selezionata,
- * data spedizione selezionata, prezzo cliccato, conversione IVA Lordo/Netto).
- *
- * Material Symbols (`keyboard_arrow_up`, `keyboard_arrow_down`) NON inclusi:
- * il consumer/CMS usa SVG inline. Le regole CSS sulle icone sono tradotte da
- * `.material-symbols-outlined` a `svg`, mantenendo dimensioni equivalenti
- * (28px verticale).
- *
- * Geometria tabella: la tabella resta leggibile con scrollbar orizzontale nativa
- * quando esiste overflow. Default `min-width: 500px` (fallback 4 colonne); con `:has()`
- * i browser moderni riducono automaticamente la min-width per 1/2/3 colonne.
- * Il consumer wrappa la tabella in `.price-table__section` (overflow-x: auto)
- * o equivalente.
- *
- * Fuori scope (non implementato qui):
- * - behavior selezione cella / nav verticale
- *   (vive in `product-page-integration/js/sections/section-6.js`);
- * - calcolo prezzo IVA, paginazione qty, ricerca `closestDisplayedQty`;
- * - animazione `@keyframes cellSelect` (usata solo in feedback JS);
- * - variante `.price-table` doppio-underscore (`__row`, `__cell`, `__discount`)
- *   citata in `_layout-patterns.css#L1071-L1098` ma non referenziata da nessuna
- *   pagina demo;
- * - regola `#priceTableContainer table tbody tr` legata all'id;
- * - js/price-table.js (Strategia A static snapshot).
- */
+
 
 /* ===== Wrapper outer ===== */
 .price-table__wrapper {

@@ -3,11 +3,6 @@ title: FormControls
 description: Primitive CSS-only per radio group, radio option, checkbox option e stato disabled (radio-option--disabled).
 layer: primitives
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_form-inputs.css (L491-550, L811-825)
-  catalog_radio: elements-ui/js/buttons/radio-group.js
-  catalog_checkbox: elements-ui/js/buttons/checkbox-option.js
-status: post-bem-2026-04-29
 package_path: primitives/form-controls.css
 ---
 
@@ -24,7 +19,7 @@ spento via `.sp-radio-option--disabled`).
 
 Questi pattern **non compaiono** nelle pagine demo (`product-page-integration`
 usa `form-select` per Si/No anche dove un radio sarebbe ovvio). La fonte
-canonica e' SOLO il catalogo `elements-ui` (preview pages
+canonica e' SOLO il catalogo interno (preview pages
 `buttons/radio-group.js` + `buttons/checkbox-option.js`).
 
 Coperti per uso futuro: `checkout` (filtri, opzioni cart), `dashboard`

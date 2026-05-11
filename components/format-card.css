@@ -1,31 +1,4 @@
-/**
- * FORMAT CARD — Composed component (selection card minima per formato prodotto)
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_cards.css righe 30-191
- * Fonte markup: Skillpress-frontend/product-page-integration/js/sections/section-1.js righe 199-266
- * Target demo: product-page-integration (sezione configuratore step 1, formato chiuso)
- * Data estrazione: 2026-04-28
- *
- * CSS-only. Nessun behavior libreria: il CMS sposta il modifier `--selected`
- * sull'elemento `.format-card`, come per le altre primitive del configuratore
- * (mode-switcher, option-buttons, orientation-toggle).
- *
- * Geometria preview: la pagina demo passa width/height inline su
- * `.format-card__preview` (e sui sub-element preview-inner / preview-custom) per
- * riflettere orientamento e proporzioni. La libreria espone solo CSS.
- *
- * Material Symbols (icona `aspect_ratio` nella variante Libero) NON inclusi:
- * il consumer/CMS sostituisce con SVG inline come per ModeSwitcher.
- *
- * Hover preview-box / preview-inner usa `var(--color-text-strong)` (= `var(--color-text-strong)`,
- * coincidente con il valore letterale del catalogo elements-ui).
- *
- * Fuori scope (non implementato qui):
- * - varianti scrollable orizzontali (`.format-cards-scroll`, `.format-cards-arrow`);
- * - espansione (`.format-card--show-more`, `.format-cards-hidden`);
- * - stato disabilitato condiviso (vedere `.sp-radio-option--disabled` in FormControls);
- * - famiglia SelectionCard estesa (.paper-card, .visual-card, .effect-card, .angolo-card);
- * - js/format-card.js (toggle stato consumer-side).
- */
+
 
 /* Container griglia formati */
 .format-cards {

@@ -3,10 +3,6 @@ title: Button
 description: Primitiva clic Skillpress con varianti, dimensioni e slot icona opzionale.
 layer: primitives
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_buttons.css
-  demo: product-page-integration/index.html
-status: post-bem-2026-04-29
 package_path: primitives/button.css
 ---
 

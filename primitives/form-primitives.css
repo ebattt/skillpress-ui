@@ -1,27 +1,3 @@
-/**
- * FORM PRIMITIVES -- contenitore form, label, input testo/numero, select, messaggi
- *
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
- *   - .sp-form-field                                  L33-35
- *   - .sp-label-row + .sp-label-text + .sp-label-hint       L41-69
- *   - .sp-form-input + textarea.sp-form-input            L99-133
- *   - .sp-nome-lavoro-input (alias semantico)         L137-168
- *   - .sp-facciate-row + .sp-spessore-display            L449-487
- *   - .sp-form-select                                 L190-223
- *   - .sp-error-msg + .sp-error-inline + .sp-success-inline L292-329
- *   - .sp-custom-dims + .sp-custom-dims__grid/field/label L776-805
- *   - .sp-nome-ref-row                                L174-184
- *
- * Fonte markup verbatim (template literal):
- *   - product-page-integration/js/sections/section-1.js L76-103, L280-320, L421-466
- *   - product-page-integration/js/sections/section-6.js L329-343
- *
- * Strategia A (CSS-only). I modifier (--error) sono gestiti consumer-side
- * dal codice di validazione applicativa.
- *
- * Material Symbols (icone error/info/check) sostituiti da SVG inline lato consumer.
- * La freccia del select e' embedded come data:image/svg+xml nel background-image.
- */
 
 
 /* ================================================================
@@ -31,7 +7,6 @@
 .sp-form-field {
     position: relative;
 }
-
 
 /* ================================================================
    LABEL ROW -- contenitore inline per label + info-btn + hint
@@ -66,7 +41,6 @@
     font-size: var(--font-size-xs);
     color: var(--color-text-light);
 }
-
 
 /* ================================================================
    FORM INPUT -- text, number, textarea
@@ -107,12 +81,6 @@ textarea.sp-form-input {
     resize: none;
 }
 
-
-/* ================================================================
-   NOME LAVORO INPUT -- alias semantico di .sp-form-input
-   Stessa resa visiva, classe distinta per la sezione "Nome del lavoro".
-   Fonte catalog: _form-inputs.css L137-L168.
-   ================================================================ */
 /** @public */
 .sp-nome-lavoro-input {
     width: 100%;
@@ -138,7 +106,6 @@ textarea.sp-form-input {
 .sp-nome-lavoro-input--error {
     border-color: var(--color-error-light);
 }
-
 
 /* ================================================================
    FORM SELECT -- dropdown nativo con freccia SVG personalizzata
@@ -177,7 +144,6 @@ textarea.sp-form-input {
     cursor: not-allowed;
     background-color: var(--color-bg-gray-100);
 }
-
 
 /* ================================================================
    MESSAGGI INLINE -- error / error-inline / success-inline
@@ -230,7 +196,6 @@ textarea.sp-form-input {
     flex-shrink: 0;
 }
 
-
 /* ================================================================
    GRIGLIA CUSTOM DIMENSIONS -- larghezza x altezza
    ================================================================ */
@@ -265,7 +230,6 @@ textarea.sp-form-input {
     }
 }
 
-
 /* ================================================================
    GRIGLIA NOME + REFERENTE -- 2 input testo affiancati
    ================================================================ */
@@ -282,12 +246,6 @@ textarea.sp-form-input {
     }
 }
 
-
-/* ================================================================
-   GRIGLIA QUANTITA + IVA -- layout Step 6 (qty-iva-row)
-   Modificatori --single (1 col) / --double (2 col).
-   --double diventa 1 col sotto 640px.
-   ================================================================ */
 /** @public */
 .sp-qty-iva-row {
     display: grid;
@@ -308,15 +266,6 @@ textarea.sp-form-input {
     }
 }
 
-
-/* ================================================================
-   FACCIATE ROW + SPESSORE DISPLAY -- input numerico + callout spessore
-   Fonte catalog: _form-inputs.css L449-L487.
-   Layout flex inline: .sp-facciate-input-wrap (flex 1) + .sp-spessore-display (shrink 0).
-   Material Symbols `vertical_align_center` del catalog -> SVG inline lato consumer.
-   Il selettore catalog `.sp-spessore-display .material-symbols-outlined` viene
-   replicato come `.sp-spessore-display svg` per garantire dimensione/colore.
-   ================================================================ */
 /** @public */
 .sp-facciate-row {
     display: flex;

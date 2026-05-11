@@ -1,24 +1,4 @@
-/**
- * TOGGLE SWITCH -- Binary on/off switch primitive
- * Fonte CSS:
- *   - Skillpress-frontend/elements-ui/css/components/_form-inputs.css
- *     (sezione "TOGGLE SWITCH (multicopertina on/off)" -- .multicop-switch / .multicop-switch-knob)
- * Fonte markup:
- *   - Skillpress-frontend/elements-ui/js/buttons/toggle-switch.js
- *     (variante multicop -- div + classi --active)
- *   - Skillpress-frontend/elements-ui/js/checkout/checkout-toggle-switch.js
- *     (variante checkout -- button[role=switch][aria-checked] + .sp-toggle-switch.active)
- * Target demo:
- *   - product-page-integration (multicopertina nella sidebar config)
- *   - checkout (multispedizione)
- * Data estrazione: 2026-04-27
- *
- * Convergenza:
- *   I due sorgenti hanno geometrie equivalenti (track ~44x24, thumb ~20x20).
- *   La libreria adotta il pattern button[role=switch] (checkout) come piu
- *   accessibile, e ne deriva un'API BEM unica: .sp-toggle-switch (track) +
- *   .sp-toggle-switch__thumb (knob) + opzionale .sp-toggle-switch__label (testo).
- */
+
 
 /* Wrapper opzionale: label + switch su una riga */
 /** @public */
@@ -56,9 +36,6 @@
     outline-offset: 2px;
 }
 
-/* state: aria-checked="true|false" e' la fonte primaria di stato.
-   .sp-toggle-switch--checked e' alias visivo BEM (deprecazione prevista v0.3 --
-   vedi audit production-readiness 2026-05-08, sezione "stati ARIA vs modifier"). */
 .sp-toggle-switch--checked,
 .sp-toggle-switch[aria-checked="true"] {
     background-color: var(--color-primary);

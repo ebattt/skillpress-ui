@@ -3,10 +3,6 @@ title: IvaBanner
 description: Callout warning informativo per la dichiarazione IVA 4% (editori con ISBN). Pattern usato nello Step 6 del configuratore quando l'utente seleziona aliquota agevolata.
 layer: primitives
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_form-inputs.css (L679-702)
-  demo: product-page-integration/js/sections/section-6.js (L274-285)
-status: post-bem-2026-04-29
 package_path: primitives/iva-banner.css
 ---
 
@@ -16,7 +12,7 @@ Callout informativo arancione/warning che appare in Step 6 del configuratore
 quando viene selezionata l'aliquota IVA 4% (editori con ISBN). Avvisa
 l'utente che e' richiesta la compilazione di una dichiarazione sostitutiva.
 
-Strategia A (CSS-only). La condizione di visibilita' (mostrare/nascondere il
+CSS-only. La condizione di visibilita' (mostrare/nascondere il
 banner) e' business logic del consumer.
 
 ## Classi pubbliche

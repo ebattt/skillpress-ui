@@ -1,13 +1,4 @@
-/**
- * METHOD CHOICE CARD -- Selectable checkout method tiles.
- * Fonte shipping: Skillpress-frontend/checkout/js/sections/shipping-section.js righe 209-247
- * Fonte payment: Skillpress-frontend/checkout/js/sections/payment-section.js righe 320-353
- * CSS fonte: checkout/css/components/_shipping.css righe 120-185,
- * checkout/css/components/_payment.css righe 190-250
- * Target demo: checkout
- *
- * CSS-only. Selection state, validation, prices and checkout logic stay outside.
- */
+
 
 .method-choice {
     margin-top: var(--spacing-md);

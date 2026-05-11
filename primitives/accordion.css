@@ -1,8 +1,4 @@
-/**
- * ACCORDION — Estratto da elements-ui/css/components/_layout-patterns.css
- * Data estrazione: 2026-04-23
- * Fonte canonica: elements-ui
- */
+
 
 /** @public */
 .sp-accordion {
@@ -25,9 +21,6 @@
     background: var(--color-bg-gray-50);
 }
 
-/* state: aria-expanded sull'header e' la fonte primaria; .sp-accordion__section--expanded
-   e' alias visivo BEM mantenuto come variante (deprecazione prevista v0.3 -- vedi
-   audit production-readiness 2026-05-08, 03-css-bem-tokens "stati ARIA vs modifier"). */
 .sp-accordion__section--expanded {
     background: var(--section-bg-expanded);
 }

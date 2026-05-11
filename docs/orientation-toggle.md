@@ -3,10 +3,6 @@ title: OrientationToggle
 description: Toggle compatto Verticale/Orizzontale con icona preview formato.
 layer: primitives
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_buttons.css#L444-L487
-  demo: product-page-integration/js/sections/section-1.js#L158-L173
-status: post-bem-2026-04-29
 package_path: primitives/orientation-toggle.css
 ---
 
@@ -26,7 +22,7 @@ OrientationToggle
 
 ## Markup contract
 
-Markup verbatim da `product-page-integration/js/sections/section-1.js#L158-L173`.
+Markup contract corrente.js#L158-L173`.
 
 ```html
 <div class="sp-orientation-toggle">
@@ -74,7 +70,7 @@ Nessun script JS richiesto.
 
 - `Default` (Verticale attivo) → `primitives-orientationtoggle--default`
 - `HorizontalActive` (Orizzontale attivo) → `primitives-orientationtoggle--horizontal-active`
-- `ReferenceFromElementsUI` (markup verbatim demo) → `primitives-orientationtoggle--reference-from-elements-ui`
+- `Reference` (markup verbatim demo) → `primitives-orientationtoggle--reference-from-elements-ui`
 
 ## Token usati
 

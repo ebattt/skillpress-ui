@@ -3,11 +3,6 @@ title: FeatureBox
 description: Griglia 2 colonne di feature highlight con icona slot, titolo e descrizione.
 layer: components
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_cards.css#L982-L1030
-  catalog_js: elements-ui/js/cards/card-feature.js
-  demo: product-page-integration/index.html
-status: post-bem-2026-04-29
 package_path: components/feature-box.css
 ---
 
@@ -32,7 +27,7 @@ Cardinalita' tipica nella demo: 4 feature box (2 righe × 2 col).
 
 ## Markup contract
 
-Markup verbatim dalla pagina demo `product-page-integration` (dentro `.product-hero__info` del ProductHero). Una feature box; ripetere `.feature-box` × N dentro `.feature-grid`.
+Markup contract corrente.product-hero__info` del ProductHero). Una feature box; ripetere `.feature-box` × N dentro `.feature-grid`.
 
 ```html
 <div class="feature-grid">
@@ -103,7 +98,7 @@ Nessun script JS richiesto.
 ## Examples
 
 - `Default` → `components-featurebox--default`
-- `ReferenceFromElementsUI` → `components-featurebox--reference-from-elements-ui`
+- `Reference` → `components-featurebox--reference-from-elements-ui`
 - `ComposedForCMS` → `components-featurebox--composed-for-cms`
 
 ## Token usati

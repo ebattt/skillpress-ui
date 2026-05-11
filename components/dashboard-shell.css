@@ -1,9 +1,4 @@
-/**
- * DASHBOARD SHELL -- Dashboard application shell / navigation layout
- * Fonte: Skillpress-frontend/dashboard/index.html L25-L90
- * Fonte CSS: Skillpress-frontend/dashboard/css/components/_layout.css
- * Fonte CSS: Skillpress-frontend/dashboard/css/components/_navigation.css
- */
+
 
 .dashboard-shell {
     display: flex;

@@ -3,20 +3,16 @@ title: ProductHero
 description: Hero prodotto a 2 colonne con galleria immagine, titolo, rating, descrizione e feature grid.
 layer: sections
 strategy: static-snapshot-A
-sources:
-  catalog_css: elements-ui/css/components/_layout-patterns.css#L764-L888
-  demo: product-page-integration/index.html#L400-L499
-status: post-bem-2026-04-29
 package_path: components/product-hero.css
 ---
 
 # ProductHero
 
-Section hero del prodotto: layout 2 colonne (35/65 da 1024px) che compone ImageGallery a sinistra e a destra titolo, Rating, descrizione e FeatureGrid. Strategia A: static snapshot — la libreria non implementa il cambio immagine, non calcola il rating e non emette eventi. I bottoni `prev`/`next` restano nel markup per visual parity.
+Section hero del prodotto: layout 2 colonne (35/65 da 1024px) che compone ImageGallery a sinistra e a destra titolo, Rating, descrizione e FeatureGrid. CSS-only snapshot: static snapshot — la libreria non implementa il cambio immagine, non calcola il rating e non emette eventi. I bottoni `prev`/`next` restano nel markup per visual parity.
 
 ## Strategia JS demo
 
-Strategia A — static snapshot. Il behavior galleria vive in `product-page-integration/js/page-init.js#L54-L86` (lato consumer). La libreria fornisce solo CSS di layout. Per l'eventuale modulo `js/product-hero.js` (Strategia C) sara' valutata una futura iterazione.
+Il behavior galleria vive in `product-page-integration/js/page-init.js#L54-L86` (lato consumer). La libreria fornisce solo CSS di layout. Per l'eventuale modulo `js/product-hero.js` (runtime JS) sara' valutata una futura iterazione.
 
 ## Anatomy
 
@@ -41,7 +37,7 @@ ProductHero
 
 ## Markup contract
 
-Markup verbatim dalla pagina demo `product-page-integration/index.html#L400-L499` (sezione hero).
+Markup contract corrente.html#L400-L499` (sezione hero).
 
 ```html
 <div id="product-hero" class="product-hero">
@@ -111,8 +107,6 @@ Attributi:
 
 ## Mappatura nomi (demo product-page -> libreria)
 
-La demo originale usava prefissi `hero-*` per tutti i sub-element del ProductHero. La libreria post-prompt-19 usa il prefisso BEM `product-hero__*`.
-
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|
 | `.hero-grid` | `.product-hero__grid` |
@@ -155,7 +149,7 @@ Nessun script JS richiesto dalla libreria.
 ## Examples
 
 - `Default` → `sections-producthero--default`
-- `ReferenceFromElementsUI` → `sections-producthero--reference-from-elements-ui`
+- `Reference` → `sections-producthero--reference-from-elements-ui`
 - `ComposedForCMS` → `sections-producthero--composed-for-cms`
 - `Anatomy` → `sections-producthero--anatomy`
 
@@ -174,7 +168,7 @@ Nessun script JS richiesto dalla libreria.
 
 ## Out of scope
 
-- nessun cambio immagine prev/next (Strategia A).
+- nessun cambio immagine prev/next (CSS-only snapshot).
 - nessuna thumbnail gallery, zoom, lazy loading.
 - nessuna variante marketing / landing.
 - nessun calcolo automatico della percentuale stelle.

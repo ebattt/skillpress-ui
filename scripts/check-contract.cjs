@@ -233,7 +233,7 @@ function main() {
         );
     } else if (legacyCount > 0) {
         warnings.push(
-            'Classi legacy tollerate (' + legacyCount + '/' + legacyMax + '): documentate nel rename-map.'
+            'Classi legacy tollerate (' + legacyCount + '/' + legacyMax + '): verificare compatibilita pubblica.'
         );
     }
 

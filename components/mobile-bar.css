@@ -1,23 +1,4 @@
-/* ============================================================================
-   MOBILE TOTAL BAR — Barra fissa bottom mobile/tablet con totale + carrello
-   ============================================================================
-   Fonti:
-   - elements-ui/css/components/_layout-patterns.css#L490-L758
-     (MOBILE BAR: container, handle, compact, expanded, details, config-toggle,
-      config-content + responsive 374px / 640-1023px).
-   - elements-ui/css/components/_buttons.css#L58-L84
-     (BOTTONE CARRELLO: .mobile-total-bar__cart-btn).
-   - elements-ui/js/layout-patterns/mobile-bar.js (sandbox catalogo).
 
-   Strategia A: static snapshot. Toggle .mobile-total-bar--expanded /
-   .mobile-config-toggle--active / .mobile-config-content--visible sono
-   wire-up consumer-side. Niente JS libreria.
-
-   Material Symbols sostituiti con SVG inline: i selettori che dipendevano da
-   .material-symbols-outlined nel catalogo (.mobile-total-bar__cart-btn,
-   .mobile-config-toggle) sono tradotti con svg. La classe BEM
-   .mobile-total-bar__handle-arrow e l'id #mobile-config-icon sono mantenuti.
-   ========================================================================== */
 
 /* --- Container fixed bottom --- */
 .mobile-total-bar {

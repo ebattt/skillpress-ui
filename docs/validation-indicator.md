@@ -3,10 +3,6 @@ title: ValidationIndicator
 description: Indicatore inline per errori di validazione e riga totale con conteggio.
 layer: primitives
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_configurator-patterns.css
-  catalog_js: elements-ui/js/components-feedback-status.js
-  demo: product-page-integration/js/sections/section-6.js
 status: public-contract
 package_path: primitives/validation-indicator.css
 ---
@@ -14,7 +10,7 @@ package_path: primitives/validation-indicator.css
 # ValidationIndicator
 
 Primitiva CSS-only per messaggi di validazione compatti. Nasce dal pattern
-`Validation Indicator` del catalogo `elements-ui` e dall'output reale
+`Validation Indicator` del catalogo interno e dall'output reale
 multicopertina in `product-page-integration`.
 
 Il contratto e' volutamente minimo: quando l'azione dell'utente e' accettata

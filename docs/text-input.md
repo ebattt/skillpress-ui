@@ -3,9 +3,6 @@ title: TextInput
 description: Showcase delle 7 varianti del catalog Text Input (Skillpress UI). Composizione di selettori gia' presenti in FormPrimitives + alias .sp-nome-lavoro-input.
 layer: primitives
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_form-inputs.css
-  catalog_preview: elements-ui/js/components-form-inputs.js (text-input panel, righe 1-127)
 status: public-contract
 package_path: primitives/form-primitives.css
 ---
@@ -13,7 +10,7 @@ package_path: primitives/form-primitives.css
 # TextInput
 
 `TextInput` non e' un nuovo componente: e' la **vista showcase** delle 7 varianti
-di campo testo descritte dal catalog `elements-ui` (preview "Text Input"), tutte
+di campo testo descritte dal catalog interno (preview "Text Input"), tutte
 ottenibili componendo selettori gia' presenti in [FormPrimitives](./form-primitives.md).
 
 Lo scopo di questa pagina e' fornire al backend un riferimento puntuale alle
@@ -46,7 +43,7 @@ modificare il contratto base di `.sp-form-input`.
 
 `.sp-nome-lavoro-input--error` e' il modifier d'errore parallelo a `.sp-form-input--error`.
 
-## Markup verbatim
+## Markup contract
 
 ### Variante 1 — Default
 
@@ -138,7 +135,7 @@ business logic consumer-side.
 | `NomeLavoroInput` | variante 6 + play test classe |
 | `TwoColumnLayout` | variante 7 |
 | `AllVariants` | le 7 varianti in colonna |
-| `ReferenceFromElementsUI` | replica selezionata dal preview catalog |
+| `Reference` | replica selezionata dal preview catalog |
 
 ## Fonte
 

@@ -3,9 +3,6 @@ title: DashboardOrderDetailLayout
 description: Layout responsive della vista dettaglio ordine dashboard.
 layer: components
 strategy: css-only
-sources:
-  demo_html: dashboard/index.html#L409-L477
-  demo_css: dashboard/css/components/_order-detail.css#L1542-L1609
 status: public-contract
 package_path: components/dashboard-order-detail-layout.css
 ---

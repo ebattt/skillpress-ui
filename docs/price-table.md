@@ -8,7 +8,7 @@ Tabella prezzi stile Google Flights: header data spedizione, righe quantita, int
 
 ## Contratto data-rating-driven
 
-Il backend dichiara `N` colonne data (date di consegna). **Range raccomandato: 1..4 colonne** (`deliveryBaseDays = [2, 4, 6, 10]` nella pagina demo = 4 colonne, sconti progressivi 5%/30%/55%/79%). La libreria si adatta automaticamente: la tabella usa `display: table` e distribuisce le colonne via CSS senza modifier specifici per il numero.
+Il backend dichiara `N` colonne data (date di consegna). **Range raccomandato: 1..4 colonne** (`deliveryBaseDays = [2, 4, 6, 10]` nella consumer = 4 colonne, sconti progressivi 5%/30%/55%/79%). La libreria si adatta automaticamente: la tabella usa `display: table` e distribuisce le colonne via CSS senza modifier specifici per il numero.
 
 | N colonne | Quando | Note |
 |---|---|---|
@@ -229,12 +229,10 @@ selezione prezzo, tracking o analytics restano consumer/backend.
 - calcolo prezzo IVA (`displayPrice = price.value * ivaRate`);
 - paginazione qty (`vStart`, `vCount`), ricerca `closestDisplayedQty`;
 - animazione `@keyframes cellSelect` (esiste in catalogo ma usata solo da JS feedback);
-- variante doppio-underscore legacy `.price-table` / `.price-table__row` / `.price-table__cell` (non referenziata da nessuna pagina demo);
+- variante doppio-underscore legacy `.price-table` / `.price-table__row` / `.price-table__cell` (non referenziata da nessuna consumer);
 - regola `#priceTableContainer table tbody tr { transition }` legata all'id (duplicato della transition di `.price-table__row`).
 
 ## Mappatura nomi (demo product-page -> libreria)
-
-La demo originale usava prefissi non-BEM (`.price-th`, `.price-td`, `.price-tr`, `.price-cell-btn`, ecc.) con modifier come classi separate (`.disabled`, `.left`, `.right`). La libreria post-prompt-19 usa BEM strict.
 
 | Demo / catalog (old) | Libreria (current) |
 |----------------------|--------------------|

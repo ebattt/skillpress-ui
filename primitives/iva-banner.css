@@ -1,24 +1,3 @@
-/**
- * IVA BANNER -- callout informativo warning per IVA 4% (editori con ISBN)
- *
- * Fonte CSS: Skillpress-frontend/elements-ui/css/components/_form-inputs.css
- *   - .sp-iva-banner            L679-684
- *   - .sp-iva-banner__content   L686-690
- *   - .sp-iva-banner__icon      L692-696
- *   - .sp-iva-banner__text      L698-702
- *
- * Fonte markup: product-page-integration/js/sections/section-6.js#L274-L285
- * (renderizzato condizionalmente quando state.selections.ivaMode === '4').
- *
- * Strategia A (CSS-only). La condizione di visibilita' (mostrare/nascondere
- * il banner in base alla scelta IVA) e' business logic consumer-side.
- *
- * Icona info disegnata dalla libreria via CSS dentro .sp-iva-banner__icon.
- * Il consumer non deve fornire SVG, immagini o testo.
- *
- * Pattern callout warning specifico per IVA: se in futuro emergeranno altri
- * callout simili, valutare promozione a primitiva generica .callout--warning.
- */
 
 
 /* ================================================================
@@ -32,7 +11,6 @@
     padding: 0.75rem;
 }
 
-
 /* ================================================================
    IVA BANNER CONTENT -- flex inline icon + text
    ================================================================ */
@@ -41,7 +19,6 @@
     align-items: flex-start;
     gap: var(--spacing-sm);
 }
-
 
 /* ================================================================
    IVA BANNER ICON -- icona info, color primary
@@ -70,7 +47,6 @@
     font-weight: var(--font-weight-bold);
     line-height: 1;
 }
-
 
 /* ================================================================
    IVA BANNER TEXT -- testo xs, color text-strong

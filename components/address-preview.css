@@ -1,12 +1,4 @@
-/**
- * ADDRESS PREVIEW -- Compact checkout address/billing profile display.
- * Fonte markup: Skillpress-frontend/checkout/js/sections/shipping-section.js righe 88-102
- * Fonte CSS: Skillpress-frontend/checkout/css/components/_shipping.css righe 87-118
- * Fonte correlata: checkout/js/sections/payment-section.js righe 91-105
- * Target demo: checkout
- *
- * CSS-only. Address selection, edit/create flows and validation stay outside.
- */
+
 
 .address-preview {
     display: flex;

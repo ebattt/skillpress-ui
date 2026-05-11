@@ -1,17 +1,4 @@
-/**
- * VALIDATION INDICATOR -- indicatore inline validazione
- *
- * Fonte CSS:
- *   - Skillpress-frontend/elements-ui/css/components/_configurator-patterns.css
- *     `.multicop-validation`, `.multicop-total`, `.multicop-total-count`
- *   - Skillpress-frontend/elements-ui/js/components-feedback-status.js
- *     `feedback-status/validation-indicator`
- *   - Skillpress-frontend/product-page-integration/js/sections/section-6.js
- *     output visuale reale Step 6 multicopertina
- *
- * Strategia A (CSS-only). Il backend/frontend applicativo decide se mostrare
- * l'errore, testo e conteggio; la libreria controlla look, spacing e icona.
- */
+
 
 /** @public */
 .sp-validation-indicator {

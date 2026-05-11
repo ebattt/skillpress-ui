@@ -3,10 +3,6 @@ title: FormPrimitives
 description: Primitive CSS-only per form-field, label, input testo/numero, select, messaggi inline + griglie helper (custom-dims, nome-ref-row).
 layer: primitives
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_form-inputs.css
-  demo: product-page-integration/js/sections/section-1.js, section-6.js
-status: post-bem-2026-04-29
 package_path: primitives/form-primitives.css
 ---
 
@@ -18,7 +14,7 @@ Set di primitive form fondamentali: contenitore `.sp-form-field`, label (con var
 messaggi inline (`.sp-error-msg`, `.sp-error-inline`, `.sp-success-inline`) e due griglie
 helper specifiche del configuratore (`.sp-custom-dims` + `.sp-custom-dims__grid/field/label`, `.sp-nome-ref-row`).
 
-Strategia A (CSS-only). Validazione, swap modifier `--error`, render messaggi
+CSS-only. Validazione, swap modifier `--error`, render messaggi
 sono responsabilita' del consumer / backend.
 
 ## Classi pubbliche

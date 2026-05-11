@@ -3,11 +3,6 @@ title: FormatCard
 description: Selection card per formati prodotto con preview proporzionata.
 layer: components
 strategy: css-only
-sources:
-  catalog_css: elements-ui/css/components/_cards.css#L30-L191
-  catalog_js: elements-ui/js/cards/card-dimension.js, elements-ui/js/cards/card-selection.js
-  demo: product-page-integration/js/sections/section-1.js#L199-L266
-status: post-bem-2026-04-29
 package_path: components/format-card.css
 ---
 
@@ -15,7 +10,7 @@ package_path: components/format-card.css
 
 Selection card per scegliere il formato del prodotto. Card a 1 colonna su mobile (sotto 480px) e 4 colonne da 480px in su, dentro un container `.format-cards`. CSS-only: lo stato selezionato e' applicato dal CMS aggiungendo `.format-card--selected` alla card scelta. Coerente con le altre primitive del configuratore (mode-switcher, option-buttons, orientation-toggle): la libreria fornisce solo markup + look, il toggle e' consumer-side.
 
-Implementazione minima della famiglia SelectionCard: solo `.format-card*`. Le varianti `paper-card`, `visual-card`, `effect-card`, `angolo-card` restano fuori scope finche' non vengono richieste sulla pagina demo.
+Implementazione minima della famiglia SelectionCard: solo `.format-card*`. Le varianti `paper-card`, `visual-card`, `effect-card`, `angolo-card` restano fuori scope finche' non vengono richieste sulla consumer.
 
 ## Anatomy
 
@@ -36,7 +31,7 @@ Implementazione minima della famiglia SelectionCard: solo `.format-card*`. Le va
 
 ## Markup contract
 
-Markup verbatim derivato da `product-page-integration/js/sections/section-1.js#L199-L266` con `state.orientation === 'vertical'` (preview 56x79).
+Markup contract corrente.js#L199-L266` con `state.orientation === 'vertical'` (preview 56x79).
 
 ### Variante "stesso formato" (es. A4)
 
@@ -203,7 +198,7 @@ Nessun script JS richiesto.
 ## Examples (Storybook)
 
 - `Default` → `components-formatcard--default` (4 card vertical, A4 selezionata).
-- `ReferenceFromElementsUI` → `components-formatcard--reference-from-elements-ui` (markup verbatim demo).
+- `Reference` → `components-formatcard--reference-from-elements-ui` (markup verbatim demo).
 - `Horizontal` → `components-formatcard--horizontal` (orientamento orizzontale 79x56).
 - `LiberoSelected` → `components-formatcard--libero-selected` (variante custom con stato selected).
 - `SinglePreviewBox` → `components-formatcard--single-preview-box` (preview-box senza dashed).

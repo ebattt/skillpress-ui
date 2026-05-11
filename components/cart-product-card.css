@@ -1,12 +1,4 @@
-/**
- * CART PRODUCT CARD -- Checkout cart item with expandable details.
- * Fonte markup: Skillpress-frontend/checkout/js/sections/cart-section.js righe 46-118
- * Fonte CSS: Skillpress-frontend/checkout/css/components/_cart.css righe 25-223, 379-404
- * Target demo: checkout
- *
- * CSS + optional JS (`js/cart-product-card.js`) for details disclosure.
- * Business logic for prices, cart mutations and product data stays outside the library.
- */
+
 
 .cart-list > * + * {
     margin-top: var(--spacing-md);
