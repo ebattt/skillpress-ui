@@ -7,7 +7,7 @@ Manrope e servito dal package. Material Symbols non e una dipendenza runtime glo
 
 ## Stato
 
-Versione corrente: `0.3.0-beta.1`.
+Versione corrente: `0.3.0-beta.3`.
 
 Perimetro attuale:
 - Manrope self-hosted nel package

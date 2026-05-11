@@ -140,6 +140,7 @@
         }
     }
 
+    /** @public */
     ns.ConfirmDialog = {
         init: init,
         open: open,

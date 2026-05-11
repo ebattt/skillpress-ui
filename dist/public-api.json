@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0-beta.1",
+  "version": "0.3.0-beta.3",
   "css": {
     "primitives": [
       ".sp-accordion",
@@ -254,6 +254,9 @@
     "data-checkout-mobile-summary",
     "data-checkout-mobile-summary-overlay",
     "data-checkout-mobile-summary-toggle",
+    "data-confirm-dialog",
+    "data-confirm-dialog-open",
+    "data-confirm-dialog-role",
     "data-dashboard-dropdown-box",
     "data-dashboard-dropdown-box-content",
     "data-dashboard-dropdown-box-trigger",
@@ -322,6 +325,10 @@
     "sp:catalog-product-grid:toggle",
     "sp:checkout-mobile-summary:close",
     "sp:checkout-mobile-summary:open",
+    "sp:confirm-dialog:cancel",
+    "sp:confirm-dialog:close",
+    "sp:confirm-dialog:confirm",
+    "sp:confirm-dialog:open",
     "sp:dashboard-dropdown-box:close",
     "sp:dashboard-dropdown-box:open",
     "sp:dashboard-settings-form:close",
@@ -353,6 +360,7 @@
     "CatalogProductGrid",
     "CatalogStage",
     "CheckoutMobileSummary",
+    "ConfirmDialog",
     "DashboardDropdownBox",
     "DashboardSettingsForm",
     "DashboardShell",

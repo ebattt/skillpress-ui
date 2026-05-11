@@ -4,6 +4,22 @@ Tutte le modifiche degne di nota sono documentate in questo file. Il formato
 distingue **contract change** (breaking, richiede coordinamento backend) da
 **visual change** (look-only, sicuro). Vedi `README.md` -> Versioning policy.
 
+## 0.3.0-beta.3 -- 2026-05-11
+
+### Visual change
+
+- `--z-modal` elevato sopra `--z-mobile-bar` per garantire che i dialog
+  intercettino correttamente i click anche con barre mobile fixed.
+- Fix `ConfirmDialog` mobile: i bottoni cancel/confirm/close restano sopra la
+  mobile bar nella product page.
+
+## 0.3.0-beta.2 -- 2026-05-11
+
+### Contract change
+
+- `ConfirmDialog` pubblicato come contract pubblico installabile, con CSS, JS,
+  data hook/eventi e voce in `dist/public-api.json`.
+
 ## 0.3.0-beta.1 -- 2026-05-10
 
 Prima versione beta consolidata: chiude la roadmap "production readiness",

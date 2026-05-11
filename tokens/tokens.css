@@ -278,8 +278,8 @@
     --z-tooltip: 60;
     --z-sticky: 70;
     --z-overlay: 80;
-    --z-modal: 100;
     --z-mobile-bar: 999;                    /* Barra mobile fixed */
+    --z-modal: 1100;                        /* Dialog/modal sopra fixed mobile UI */
 
     /* === TIPOGRAFIA === */
     /* Font stack con fallback su font di sistema */
