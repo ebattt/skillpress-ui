@@ -219,11 +219,13 @@
 }
 
 .orders-table-detail-action {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.375rem;
     margin-top: 0.75rem;
+    width: 100%;
+    min-height: 40px;
     padding: 0.5rem 1rem;
     background-color: var(--color-primary);
     border: none;

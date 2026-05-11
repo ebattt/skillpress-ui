@@ -6,9 +6,10 @@
 
 .supplier-activity-section__title {
     margin: 0 0 2rem;
-    color: var(--color-primary);
+    color: var(--color-text);
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-bold);
+    line-height: 1.25;
 }
 
 .supplier-activity-section__filters {
@@ -252,8 +253,8 @@
 
 @media (max-width: 639px) {
     .supplier-activity-section__title {
-        margin-bottom: 1.25rem;
-        font-size: var(--font-size-xl);
+        margin-bottom: 2rem;
+        font-size: var(--font-size-2xl);
     }
 
     .supplier-activity-section__filters {
