@@ -149,6 +149,10 @@
     color: var(--color-success);
 }
 
+.sidebar-row--success .sidebar-row__value {
+    color: var(--color-success);
+}
+
 .sidebar-divider {
     margin: 0.75rem 0;
     border-top: 1px solid var(--color-border);

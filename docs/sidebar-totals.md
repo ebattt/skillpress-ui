@@ -38,9 +38,9 @@ Sidebar configuratore desktop: box totale (qty, miglior prezzo, imposta, spedizi
                     <span class="sidebar-row__label">Imposta</span>
                     <span class="sidebar-row__value">-</span>
                 </div>
-                <div class="sidebar-row sidebar-row--green">
-                    <span class="sidebar-row__label">Spedizione gratuita *</span>
-                    <span class="sidebar-row__value">-</span>
+                <div class="sidebar-row sidebar-row--success">
+                    <span class="sidebar-row__label">Spedizione</span>
+                    <span class="sidebar-row__value">Gratuita</span>
                 </div>
             </div>
             <div class="sidebar-divider"></div>
@@ -88,7 +88,8 @@ Riepilogo righe totale:
 - `.sidebar-row` — flex space-between.
 - `.sidebar-row__label` — colore `text-secondary`.
 - `.sidebar-row__value` — semibold, colore `text`.
-- `.sidebar-row--green` — modifier per la riga "spedizione gratuita" (override colore `#16A34A` su row, label, value; label diventa medium).
+- `.sidebar-row--green` — modifier legacy per evidenziare tutta la riga spedizione in verde.
+- `.sidebar-row--success` — modifier preferito per evidenziare solo il valore in verde success, usato per `Spedizione: Gratuita`.
 - `.sidebar-divider` — linea `1px solid #D1D5DB`, margin 0.75rem 0.
 
 Totale evidenziato:
@@ -135,7 +136,8 @@ CTA carrello:
 
 ## Stati e modifier
 
-- `.sidebar-row--green` su `.sidebar-row` per evidenziare la riga "spedizione gratuita" (verde success).
+- `.sidebar-row--success` su `.sidebar-row` per evidenziare il valore "Gratuita" in verde success.
+- `.sidebar-row--green` resta supportato come modifier legacy quando serve evidenziare tutta la riga.
 - `.sidebar-totals__btn[aria-expanded="true"]` -> il consumer rende visibile `.sidebar-totals__content` (non c'e' un modifier CSS dichiarato in libreria). Nessun lock visivo del button quando aperto: l'unico cambiamento e' la presenza del content.
 
 Per accessibilita' il consumer DEVE:
@@ -175,7 +177,7 @@ Per accessibilita' il consumer DEVE:
 
 Foglie composte (DownloadButtons): vedi `download-buttons.md` (rename `.config-download-btns/-btn`, `.sidebar-download-divider`).
 
-Eccezioni italiane mantenute (block name singoli, non rinominati): `.configurator-sidebar`, `.sidebar-total-box`, `.sidebar-rows`, `.sidebar-row` (+`--green`), `.sidebar-divider`, `.sidebar-title`, `.sidebar-total-row`, `.sidebar-total-label`, `.sidebar-total-value`, `.promo-section`, `.promo-input`, `.sidebar-totals__section`, `.sidebar-totals__btn`, `.sidebar-totals__content`, `.sidebar-totals__container`, `.sidebar-totals__header`, `.sidebar-totals__row` (+`--indent`), `.sidebar-totals__error`, `.sidebar-totals__muted`, `.sidebar-totals__placeholder`, `.sidebar-totals__empty`, `.sidebar-totals__indent` (alias legacy), `.sidebar-totals__section-header` (alias legacy), `.add-to-cart-btn`.
+Eccezioni italiane mantenute (block name singoli, non rinominati): `.configurator-sidebar`, `.sidebar-total-box`, `.sidebar-rows`, `.sidebar-row` (+`--green`, `--success`), `.sidebar-divider`, `.sidebar-title`, `.sidebar-total-row`, `.sidebar-total-label`, `.sidebar-total-value`, `.promo-section`, `.promo-input`, `.sidebar-totals__section`, `.sidebar-totals__btn`, `.sidebar-totals__content`, `.sidebar-totals__container`, `.sidebar-totals__header`, `.sidebar-totals__row` (+`--indent`), `.sidebar-totals__error`, `.sidebar-totals__muted`, `.sidebar-totals__placeholder`, `.sidebar-totals__empty`, `.sidebar-totals__indent` (alias legacy), `.sidebar-totals__section-header` (alias legacy), `.add-to-cart-btn`.
 
 ## Fuori scope
 

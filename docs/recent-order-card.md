@@ -41,7 +41,7 @@ sono elementi interni della card. Questa iterazione non introduce
     <article class="dashboard-order-card" data-recent-order-card data-recent-order-card-order-id="ORD-001">
         <div class="dashboard-order-card__header-row">
             <span class="dashboard-order-card__number">#110456</span>
-            <span class="dashboard-order-card__status dashboard-order-card__status--info">In lavorazione</span>
+            <span class="dashboard-order-card__status dashboard-order-card__status--info">Aperto</span>
         </div>
         <div class="dashboard-order-card__title dashboard-order-card__title--clamp">Catalogo Primavera Estate 2026</div>
         <div class="dashboard-order-card__info">Spedizione <strong>21/03/2026</strong></div>

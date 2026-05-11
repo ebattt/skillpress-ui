@@ -100,6 +100,14 @@
     background: var(--color-warning-badge-text);
 }
 
+.order-header__badge--info {
+    color: var(--color-info-badge-text, var(--color-info));
+}
+
+.order-header__badge--info::before {
+    background: var(--color-info-badge-text, var(--color-info));
+}
+
 .order-header__badge--success {
     color: var(--color-success-badge-text);
 }

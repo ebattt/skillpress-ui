@@ -96,7 +96,7 @@ const renderMobileBar = ({
                         </div>
                         <div class="mobile-total-bar__detail-row mobile-total-bar__detail-shipping">
                             <span>Spedizione</span>
-                            <span class="text-green-600">Gratuita *</span>
+                            <span>Gratuita</span>
                         </div>
                     </div>
                     <button id="mobile-config-toggle" class="mobile-config-toggle${configActiveClass}"

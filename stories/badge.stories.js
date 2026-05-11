@@ -48,7 +48,7 @@ export const Variants = {
         { label: 'Consegnato', variant: 'success' },
         { label: 'In sospeso', variant: 'warning' },
         { label: 'Scaduto', variant: 'error' },
-        { label: 'In lavorazione', variant: 'info' },
+        { label: 'Aperto', variant: 'info' },
         { label: 'Annullato', variant: 'cancelled' },
         { label: 'Bozza', variant: 'neutral' }
     ])
@@ -56,7 +56,7 @@ export const Variants = {
 
 export const ReferenceFromOriginal = {
     render: () => renderGroup([
-        { label: 'In lavorazione', variant: 'info' },
+        { label: 'Aperto', variant: 'info' },
         { label: 'In sospeso', variant: 'warning' },
         { label: 'Consegnato', variant: 'success' },
         { label: 'Pagato', variant: 'success' },

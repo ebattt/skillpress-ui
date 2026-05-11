@@ -62,7 +62,6 @@ window.SkillpressUI.OrderStepDetail.init(root);
 - `.product-file-box--selected`
 - `.product-file-box--readonly`
 - `.product-file-box--annotated`
-- `.product-file-box--replaced`
 - `.product-file-box--tochange`
 - `.product-file-box--removed`
 - `.product-file-box--neutral`
@@ -70,7 +69,6 @@ window.SkillpressUI.OrderStepDetail.init(root);
 - `.product-file-box__state--warning`
 - `.product-file-box__state--muted`
 - `.product-file-status-badge`
-- `.product-file-status-badge--replaced`
 - `.product-file-status-badge--tochange`
 - `.product-file-status-badge--neutral`
 - `.product-file-actions`

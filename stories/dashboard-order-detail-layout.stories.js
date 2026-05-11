@@ -33,7 +33,7 @@ const renderProduct = () => `
                                 <span class="dashboard-action-badge__icon dashboard-action-badge__icon--upload" aria-hidden="true"></span>
                                 File richiesto
                             </span>
-                            <span class="sp-badge sp-badge--info">In lavorazione</span>
+                            <span class="sp-badge sp-badge--info">Aperto</span>
                         </div>
                     </div>
                     <div class="product-step-card__price-block">
@@ -147,7 +147,7 @@ const renderLayout = () => {
             <header class="order-header">
                 <div class="order-header__top">
                     <h1 class="order-header__title">Ordine #110456</h1>
-                    <span class="order-header__badge order-header__badge--warning">In lavorazione</span>
+                    <span class="order-header__badge order-header__badge--info">Aperto</span>
                 </div>
                 <p class="order-header__subtitle">
                     <span class="order-header__subtitle-line">Catalogo Primavera Estate 2026</span>

@@ -86,7 +86,7 @@ sopra e sotto la tabella.
                 <td class="orders-table__cell--mobile-hide">Lucia Marchetti</td>
                 <td class="orders-table__cell--mobile-hide orders-table__cell--nowrap">05/02/2026</td>
                 <td class="orders-table__cell--mobile-hide"></td>
-                <td class="orders-table__cell--status"><span class="sp-badge sp-badge--info">In lavorazione</span></td>
+                <td class="orders-table__cell--status"><span class="sp-badge sp-badge--info">Aperto</span></td>
                 <td class="orders-table__cell--payment orders-table__cell--mobile-hide th-simplified-show"><span class="sp-badge sp-badge--warning">In sospeso</span></td>
                 <td class="orders-table__cell--spedizione orders-table__cell--mobile-hide">Ritiro in sede<br><strong>12/03/2026</strong></td>
                 <td class="orders-table__cell--total font-semibold orders-table__cell--text-right orders-table__cell--nowrap">&euro; 320,50</td>

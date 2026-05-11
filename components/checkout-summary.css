@@ -15,6 +15,12 @@
     align-self: flex-start;
 }
 
+@media (max-width: 1023px) {
+    .checkout-summary--mobile-hidden {
+        display: none;
+    }
+}
+
 @media (min-width: 1024px) {
     .checkout-summary--sticky {
         position: sticky;
@@ -126,6 +132,10 @@
     color: var(--color-text);
     font-weight: var(--font-weight-semibold);
     text-align: right;
+}
+
+.checkout-summary__total-row--success .checkout-summary__total-value {
+    color: var(--color-success);
 }
 
 .checkout-summary__grand-total {

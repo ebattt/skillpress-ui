@@ -21,7 +21,7 @@ const rows = [
         contact: '-',
         shipped: '-',
         actions: [actionBadge('Carica file', 'upload'), actionBadge('Carica contabile', 'receipt')],
-        status: '<span class="sp-badge sp-badge--info">In lavorazione</span>',
+        status: '<span class="sp-badge sp-badge--info">Aperto</span>',
         payment: '<span class="sp-badge sp-badge--warning">In sospeso</span>',
         delivery: 'Ritiro in sede 16:30<br><strong>12/03/2026</strong>',
         total: '&euro; 320,50'
@@ -49,7 +49,7 @@ const rows = [
         contact: '-',
         shipped: '-',
         actions: [actionBadge('File non conforme', 'error', true)],
-        status: '<span class="sp-badge sp-badge--info">In lavorazione</span>',
+        status: '<span class="sp-badge sp-badge--info">Aperto</span>',
         payment: '<span class="sp-badge sp-badge--warning">In sospeso</span>',
         delivery: 'Standard entro<br><strong>28/03/2026</strong>',
         total: '&euro; 275,00'
@@ -133,7 +133,7 @@ export const Default = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
         await expect(canvas.getByText('110456')).toBeInTheDocument();
-        await expect(canvas.getAllByText('In lavorazione')[0]).toHaveClass('sp-badge', 'sp-badge--info');
+        await expect(canvas.getAllByText('Aperto')[0]).toHaveClass('sp-badge', 'sp-badge--info');
     }
 };
 

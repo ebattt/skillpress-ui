@@ -20,7 +20,7 @@ const rows = [
         paper: 'Patinata Opaca 170g',
         cover: 'Patinata Opaca 170g',
         pages: '116',
-        status: 'In lavorazione',
+        status: 'Aperto',
         statusClass: 'badge badge--info'
     },
     {

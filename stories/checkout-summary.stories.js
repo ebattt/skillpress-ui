@@ -15,8 +15,8 @@ const renderItem = ({
     </div>
 `;
 
-const renderTotalRow = (label, value) => `
-    <div class="checkout-summary__total-row">
+const renderTotalRow = (label, value, modifier = '') => `
+    <div class="checkout-summary__total-row${modifier ? ' ' + modifier : ''}">
         <span class="checkout-summary__total-label">${label}</span>
         <span class="checkout-summary__total-value">${value}</span>
     </div>
@@ -38,7 +38,7 @@ const renderSummary = ({
     totals = [
         renderTotalRow('Subtotale', '2.219,98 &euro;'),
         renderTotalRow('Imposta', '488,40 &euro;'),
-        renderTotalRow('Spedizione', 'Gratuita')
+        renderTotalRow('Spedizione', 'Gratuita', 'checkout-summary__total-row--success')
     ],
     grandTotal = '2.708,38 &euro;'
 } = {}) => {

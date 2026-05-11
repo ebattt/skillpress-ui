@@ -91,7 +91,7 @@ table for filters and pagination.
                     </div>
                 </td>
                 <td class="orders-table__cell--nowrap orders-table__cell--mobile-hide"><strong>07/05/2021</strong></td>
-                <td class="orders-table__cell--status"><span class="sp-badge sp-badge--info">In lavorazione</span></td>
+                <td class="orders-table__cell--status"><span class="sp-badge sp-badge--info">Aperto</span></td>
             </tr>
             <tr class="supplier-activity-table__detail-row"
                 id="supplier-detail-47298"

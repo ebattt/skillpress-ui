@@ -65,8 +65,8 @@ const renderSidebar = ({
                             <span class="sidebar-row__label">Imposta</span>
                             <span class="sidebar-row__value">${imposta}</span>
                         </div>
-                        <div class="sidebar-row sidebar-row--green">
-                            <span class="sidebar-row__label">Spedizione gratuita *</span>
+                        <div class="sidebar-row sidebar-row--success">
+                            <span class="sidebar-row__label">Spedizione</span>
                             <span class="sidebar-row__value">${spedizione}</span>
                         </div>
                     </div>
@@ -124,7 +124,7 @@ export const Default = {
     parameters: {
         docs: {
             description: {
-                story: 'Snapshot iniziale del configuratore: qty 50, valori `-` come prima dell\'elaborazione JS configurator. Riga "Spedizione gratuita" gia\' verde via `.sidebar-row--green`.'
+                story: 'Snapshot iniziale del configuratore: qty 50, valori `-` come prima dell\'elaborazione JS configurator. Quando la spedizione e\' gratuita, il valore usa il verde success via `.sidebar-row--success`.'
             }
         }
     }
@@ -146,13 +146,13 @@ export const FilledTotals = {
         quantita: '50',
         bestPrice: '325,53 euro',
         imposta: '71,62 euro',
-        spedizione: 'Inclusa',
+        spedizione: 'Gratuita',
         totale: '397,15 euro'
     })),
     parameters: {
         docs: {
             description: {
-                story: 'Sidebar dopo che il configuratore ha calcolato i valori: tutte le righe hanno valori reali e il totale evidenziato (`--font-size-2xl`, primary) mostra la somma. Spedizione gratuita resta verde.'
+                story: 'Sidebar dopo che il configuratore ha calcolato i valori: tutte le righe hanno valori reali e il totale evidenziato (`--font-size-2xl`, primary) mostra la somma. Il valore "Gratuita" della spedizione resta verde via `.sidebar-row--success`.'
             }
         }
     }
@@ -163,7 +163,7 @@ export const RiepilogoOpen = {
         quantita: '50',
         bestPrice: '325,53 euro',
         imposta: '71,62 euro',
-        spedizione: 'Inclusa',
+        spedizione: 'Gratuita',
         totale: '397,15 euro',
         riepilogoOpen: true,
         riepilogoContent: `

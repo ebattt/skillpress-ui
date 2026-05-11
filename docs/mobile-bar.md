@@ -49,7 +49,7 @@ Barra fixed in basso visibile su mobile/tablet (`<=1023px`). Mostra prezzo total
                 <div class="mobile-total-bar__detail-row"><span>Subtotale</span><span id="mobile-subtotal">-</span></div>
                 <div class="mobile-total-bar__detail-row"><span>IVA</span><span id="mobile-iva">-</span></div>
                 <div class="mobile-total-bar__detail-row mobile-total-bar__detail-shipping">
-                    <span>Spedizione</span><span class="text-green-600">Gratuita *</span>
+                    <span>Spedizione</span><span>Gratuita</span>
                 </div>
             </div>
             <button id="mobile-config-toggle" class="mobile-config-toggle"

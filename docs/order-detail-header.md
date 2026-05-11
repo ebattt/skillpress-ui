@@ -34,7 +34,7 @@ non copre il blocco header. `Card` non c'entra: la fonte non ha superficie.
     <header class="order-header">
         <div class="order-header__top">
             <h1 class="order-header__title">Ordine #110456</h1>
-            <span class="order-header__badge order-header__badge--warning">In lavorazione</span>
+            <span class="order-header__badge order-header__badge--info">Aperto</span>
         </div>
         <p class="order-header__subtitle">
             <span class="order-header__subtitle-line">Catalogo Primavera Estate 2026</span>
@@ -56,6 +56,7 @@ non copre il blocco header. `Card` non c'entra: la fonte non ha superficie.
 - `.order-header__top`
 - `.order-header__title`
 - `.order-header__badge`
+- `.order-header__badge--info`
 - `.order-header__badge--warning`
 - `.order-header__badge--success`
 - `.order-header__badge--error`
@@ -75,8 +76,8 @@ sono locator/wiring demo/app o hook di componenti figli, non API richiesta da
 
 ## Modifier / stati
 
-Modifier pubblici: `.order-header__badge--warning`, `.order-header__badge--success`,
-`.order-header__badge--error`, `.order-header__badge--neutral`.
+Modifier pubblici: `.order-header__badge--info`, `.order-header__badge--warning`,
+`.order-header__badge--success`, `.order-header__badge--error`, `.order-header__badge--neutral`.
 
 ## Backend owns
 

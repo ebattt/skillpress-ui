@@ -200,6 +200,7 @@
     --color-black-alpha-05: rgb(0 0 0 / 0.05);
     --color-black-alpha-06: rgba(0, 0, 0, 0.06);
     --color-black-alpha-08: rgba(0, 0, 0, 0.08);
+    --color-black-alpha-20: rgba(0, 0, 0, 0.2);
     --color-black-alpha-50: rgba(0, 0, 0, 0.5);
     --color-border-alpha-60: rgba(229, 231, 235, 0.6);
     --color-white-alpha-55: rgba(255, 255, 255, 0.55);
@@ -2791,6 +2792,12 @@ label.sp-radio-option--disabled input[type="radio"] {
     align-self: flex-start;
 }
 
+@media (max-width: 1023px) {
+    .checkout-summary--mobile-hidden {
+        display: none;
+    }
+}
+
 @media (min-width: 1024px) {
     .checkout-summary--sticky {
         position: sticky;
@@ -2902,6 +2909,10 @@ label.sp-radio-option--disabled input[type="radio"] {
     color: var(--color-text);
     font-weight: var(--font-weight-semibold);
     text-align: right;
+}
+
+.checkout-summary__total-row--success .checkout-summary__total-value {
+    color: var(--color-success);
 }
 
 .checkout-summary__grand-total {
@@ -3023,6 +3034,283 @@ label.sp-radio-option--disabled input[type="radio"] {
 
 .checkout-summary__help-link:hover {
     color: var(--color-primary-light);
+}
+
+
+/* === inline components/checkout-mobile-summary.css === */
+/**
+ * CHECKOUT MOBILE SUMMARY -- Fixed bottom order summary for checkout.
+ *
+ * CSS-only visuals. Toggle state is driven by checkout-mobile-summary.js via
+ * `.checkout-mobile-summary--expanded` and `aria-expanded`.
+ */
+
+.checkout-mobile-summary {
+    display: none;
+}
+
+@media (max-width: 1023px) {
+    .checkout-mobile-summary {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: var(--z-mobile-bar);
+        display: block;
+        pointer-events: none;
+    }
+}
+
+.checkout-mobile-summary__overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    background: var(--color-black-alpha-20);
+    pointer-events: auto;
+}
+
+.checkout-mobile-summary--expanded .checkout-mobile-summary__overlay {
+    display: block;
+}
+
+.checkout-mobile-summary__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+    padding: var(--spacing-xs) var(--spacing-md) 0.625rem;
+    padding-bottom: calc(0.625rem + env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    background: var(--color-bg-white);
+    border-top: 1px solid var(--color-bg-gray-200);
+    border-radius: 1rem 1rem 0 0;
+    box-shadow: 0 -2px 10px var(--color-black-alpha-06);
+    pointer-events: auto;
+}
+
+.checkout-mobile-summary__handle {
+    display: flex;
+    min-height: 2rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0 var(--spacing-xs);
+    color: var(--color-text-muted);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.checkout-mobile-summary__handle:focus-visible,
+.checkout-mobile-summary__cta:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.checkout-mobile-summary__handle-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform var(--transition-normal);
+}
+
+.checkout-mobile-summary--expanded .checkout-mobile-summary__handle-icon {
+    transform: rotate(180deg);
+}
+
+.checkout-mobile-summary__compact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    order: 2;
+}
+
+.checkout-mobile-summary__total-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+}
+
+.checkout-mobile-summary__label {
+    color: var(--color-primary);
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    font-weight: var(--font-weight-semibold);
+}
+
+.checkout-mobile-summary__price {
+    min-width: 0;
+    color: var(--color-text);
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    text-align: right;
+}
+
+.checkout-mobile-summary__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 0.5rem;
+    padding: 0.8125rem 1rem;
+    border: 0;
+    border-radius: 0.625rem;
+    background: var(--color-secondary-dark);
+    color: var(--color-bg-white);
+    cursor: pointer;
+    font: inherit;
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+    text-decoration: none;
+    transition: opacity var(--transition-fast), background-color var(--transition-fast);
+}
+
+.checkout-mobile-summary__cta:hover {
+    background: var(--color-secondary-light);
+    text-decoration: none;
+}
+
+.checkout-mobile-summary__cta:active {
+    opacity: 0.9;
+}
+
+.checkout-mobile-summary__cta:disabled,
+.checkout-mobile-summary__cta[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+.checkout-mobile-summary__expanded {
+    order: 1;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height var(--transition-section), opacity var(--transition-slow);
+}
+
+.checkout-mobile-summary--expanded .checkout-mobile-summary__expanded {
+    max-height: 60vh;
+    padding-bottom: var(--spacing-xl);
+    overflow-y: auto;
+    opacity: 1;
+}
+
+.checkout-mobile-summary__details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-md);
+}
+
+.checkout-mobile-summary__detail-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+}
+
+.checkout-mobile-summary__detail-label {
+    color: var(--color-text);
+}
+
+.checkout-mobile-summary__detail-value {
+    color: var(--color-text);
+    font-size: 0.9375rem;
+    font-weight: var(--font-weight-semibold);
+    text-align: right;
+}
+
+.checkout-mobile-summary__detail-row--success .checkout-mobile-summary__detail-value {
+    color: var(--color-success);
+}
+
+.checkout-mobile-summary__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) 0;
+    border-top: 1px solid var(--color-bg-gray-200);
+}
+
+.checkout-mobile-summary__item {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+}
+
+.checkout-mobile-summary__item-info {
+    min-width: 0;
+}
+
+.checkout-mobile-summary__item-name,
+.checkout-mobile-summary__item-qty {
+    margin: 0;
+}
+
+.checkout-mobile-summary__item-name {
+    overflow: hidden;
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+    font-weight: var(--font-weight-medium);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.checkout-mobile-summary__item-qty {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+}
+
+.checkout-mobile-summary__item-price {
+    flex: 0 0 auto;
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+    font-weight: var(--font-weight-semibold);
+}
+
+/* breakpoint-exception: 374px matches the smallest supported phone width. */
+@media (max-width: 374px) {
+    .checkout-mobile-summary__container {
+        padding-right: 0.75rem;
+        padding-left: 0.75rem;
+    }
+
+    .checkout-mobile-summary__label,
+    .checkout-mobile-summary__price {
+        font-size: 1rem;
+    }
+
+    .checkout-mobile-summary__cta {
+        padding: 0.75rem 0.875rem;
+        font-size: 0.8125rem;
+    }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+    .checkout-mobile-summary__container {
+        padding: 0.5rem 1.5rem 1rem;
+        padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    }
+
+    .checkout-mobile-summary__compact,
+    .checkout-mobile-summary__details,
+    .checkout-mobile-summary__items {
+        width: 100%;
+        max-width: 480px;
+        margin-right: auto;
+        margin-left: auto;
+    }
 }
 
 

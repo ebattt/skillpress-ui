@@ -25,6 +25,7 @@
         'CatalogInterstitial',
         'CatalogProductGrid',
         'CatalogStage',
+        'CheckoutMobileSummary',
         'ConfirmDialog',
         'DashboardDropdownBox',
         'DashboardSettingsForm',

@@ -30,7 +30,7 @@ Il backend/CMS decide item, label, importi gia' formattati, CTA `href`/testo, no
 ## Markup contract
 
 ```html
-<aside class="checkout-summary checkout-summary--sticky" aria-labelledby="checkout-summary-title">
+<aside class="checkout-summary checkout-summary--sticky checkout-summary--mobile-hidden" aria-labelledby="checkout-summary-title">
     <div class="checkout-summary__card">
         <div>
             <h3 class="checkout-summary__title" id="checkout-summary-title">Riepilogo ordine</h3>
@@ -45,6 +45,10 @@ Il backend/CMS decide item, label, importi gia' formattati, CTA `href`/testo, no
             </div>
             <hr class="checkout-summary__divider">
             <div class="checkout-summary__totals">
+                <div class="checkout-summary__total-row checkout-summary__total-row--success">
+                    <span class="checkout-summary__total-label">Spedizione</span>
+                    <span class="checkout-summary__total-value">Gratuita</span>
+                </div>
                 <div class="checkout-summary__total-row">
                     <span class="checkout-summary__total-label">Subtotale</span>
                     <span class="checkout-summary__total-value">2.219,98 &euro;</span>
@@ -73,6 +77,7 @@ Il backend/CMS decide item, label, importi gia' formattati, CTA `href`/testo, no
 
 - `.checkout-summary`
 - `.checkout-summary--sticky`
+- `.checkout-summary--mobile-hidden`
 - `.checkout-summary__card`
 - `.checkout-summary__title`
 - `.checkout-summary__items`
@@ -85,6 +90,7 @@ Il backend/CMS decide item, label, importi gia' formattati, CTA `href`/testo, no
 - `.checkout-summary__divider`
 - `.checkout-summary__totals`
 - `.checkout-summary__total-row`
+- `.checkout-summary__total-row--success`
 - `.checkout-summary__total-label`
 - `.checkout-summary__total-value`
 - `.checkout-summary__grand-total`
@@ -106,6 +112,8 @@ CTA restano consumer/backend.
 ## Modifier / stati
 
 - `.checkout-summary--sticky`: sticky desktop/tablet quando il summary vive nella colonna laterale.
+- `.checkout-summary--mobile-hidden`: nasconde la card sidebar sotto `1024px` quando la pagina monta anche `CheckoutMobileSummary` fixed.
+- `.checkout-summary__total-row--success`: evidenzia in verde il valore della riga, usato per `Spedizione: Gratuita`.
 - `.checkout-summary__cta:disabled` o `[aria-disabled="true"]`: stato non cliccabile.
 - `.checkout-summary__empty`: messaggio empty cart nello slot lista articoli.
 

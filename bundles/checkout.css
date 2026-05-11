@@ -13,6 +13,7 @@
 @import '../primitives/toggle-switch.css';
 @import '../components/cart-product-card.css';
 @import '../components/checkout-summary.css';
+@import '../components/checkout-mobile-summary.css';
 @import '../components/address-preview.css';
 @import '../components/method-choice-card.css';
 @import '../components/allocation-rows.css';

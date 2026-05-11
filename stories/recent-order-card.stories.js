@@ -6,7 +6,7 @@ const orders = [
         id: 'ORD-001',
         number: '#110456',
         status: 'info',
-        statusLabel: 'In lavorazione',
+        statusLabel: 'Aperto',
         title: 'Catalogo Primavera Estate 2026 Edizione Speciale · Libro fotografico Neri Collection Limited · Poster evento lancio prodotto internazionale',
         shipping: '21/03/2026',
         actionAlert: 'Azioni richieste',
@@ -36,7 +36,7 @@ const orders = [
         id: 'ORD-004',
         number: '#110198',
         status: 'info',
-        statusLabel: 'In lavorazione',
+        statusLabel: 'Aperto',
         title: 'Menu Ristorante Bellavista',
         shipping: '28/03/2026',
         actionAlert: '',
@@ -88,14 +88,14 @@ export const Default = {
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
         await expect(canvas.getByText('#110456')).toHaveClass('dash-order-card__number');
-        await expect(canvas.getAllByText('In lavorazione')[0]).toHaveClass('dash-order-card__status', 'dash-order-card__status--info');
+        await expect(canvas.getAllByText('Aperto')[0]).toHaveClass('dash-order-card__status', 'dash-order-card__status--info');
         await expect(canvas.getAllByText('Azioni richieste')[0]).toHaveClass('dash-order-card__action-alert');
     }
 };
 
 export const StatusVariants = {
     render: () => renderGrid([
-        { id: 'ORD-500', number: '#110500', status: 'warning', statusLabel: 'Aperto', title: 'Biglietti da visita', shipping: '15/04/2026', actionAlert: '', total: '&euro; 45,00' },
+        { id: 'ORD-500', number: '#110500', status: 'info', statusLabel: 'Aperto', title: 'Biglietti da visita', shipping: '15/04/2026', actionAlert: '', total: '&euro; 45,00' },
         { id: 'ORD-501', number: '#110501', status: 'error', statusLabel: 'Scaduto', title: 'Poster Evento Lancio', shipping: '01/03/2026', actionAlert: 'Azioni richieste', total: '&euro; 220,00' },
         { id: 'ORD-502', number: '#110502', status: 'cancelled', statusLabel: 'Annullato', title: 'Brochure aziendale', shipping: '10/02/2026', actionAlert: '', total: '&euro; 310,00' }
     ])

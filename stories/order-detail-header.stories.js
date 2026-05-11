@@ -2,9 +2,10 @@ import '../components/dashboard-action-badge.css';
 import '../components/order-detail-header.css';
 import { expect, within } from 'storybook/test';
 
-const renderHeader = ({ status = 'warning' } = {}) => {
+const renderHeader = ({ status = 'info' } = {}) => {
     const labels = {
-        warning: 'In lavorazione',
+        info: 'Aperto',
+        warning: 'In produzione',
         success: 'Consegnato',
         error: 'File non conforme',
         neutral: 'Aperto'
