@@ -62,7 +62,6 @@ window.SkillpressUI.OrderStepDetail.init(root);
 - `.product-file-box--selected`
 - `.product-file-box--readonly`
 - `.product-file-box--annotated`
-- `.product-file-box--confirmed`
 - `.product-file-box--replaced`
 - `.product-file-box--tochange`
 - `.product-file-box--removed`
@@ -71,7 +70,6 @@ window.SkillpressUI.OrderStepDetail.init(root);
 - `.product-file-box__state--warning`
 - `.product-file-box__state--muted`
 - `.product-file-status-badge`
-- `.product-file-status-badge--confirmed`
 - `.product-file-status-badge--replaced`
 - `.product-file-status-badge--tochange`
 - `.product-file-status-badge--neutral`
@@ -97,7 +95,7 @@ window.SkillpressUI.OrderStepDetail.init(root);
 - Copia zero:
   - file da valutare: `.product-file-box--annotated.product-file-box--neutral` con badge `.product-file-status-badge--neutral` e azioni;
   - file confermato dal cliente: `.product-file-box--locked`;
-  - file definitivo approvato: `.product-file-box--annotated.product-file-box--confirmed`;
+  - file definitivo approvato: `.product-file-box--locked`;
   - file da sostituire: `.product-file-box--annotated.product-file-box--tochange`;
   - sostitutivo caricato/in verifica: usare `.product-file-box--ready` e `.product-file-box__state--warning`, come per i file caricati in attesa di verifica.
 - File state: `.product-file-box__state--success|warning|muted`
