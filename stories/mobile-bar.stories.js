@@ -142,12 +142,12 @@ export const Default = {
     }
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => renderRoot(renderMobileBar({ totale: '-' })),
     parameters: {
         docs: {
             description: {
-                story: 'Markup verbatim derivato da `product-page-integration/index.html#L293-L356`. Material Symbols `expand_less` (handle), `list` + `expand_more` (config-toggle) sostituiti con SVG inline. Classe BEM `mobile-total-bar__handle-arrow` e id `#mobile-config-icon` per coprire i selettori CSS rinominati.'
+                story: 'Markup contract di riferimento.'
             }
         }
     }

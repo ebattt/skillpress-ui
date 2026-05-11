@@ -178,7 +178,7 @@ export const CheckboxWithDisabled = {
     }
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => mount(`
         <div style="display: flex; flex-direction: column; gap: 1.5rem;">
             <div class="sp-form-field">
@@ -224,7 +224,7 @@ export const ReferenceFromElementsUI = {
     parameters: {
         docs: {
             description: {
-                story: 'Replica le preview del catalogo elements-ui (buttons/radio-group.js + buttons/checkbox-option.js). Versione testuale del delivery-option (la card pattern e fuori scope).'
+                story: 'Varianti contract di riferimento.'
             }
         }
     }

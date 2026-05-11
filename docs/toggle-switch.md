@@ -153,7 +153,7 @@ Oppure via bundle (gia' include `toggle-switch.css`):
 - `Checked` → `primitives-toggleswitch--checked`
 - `Disabled` → `primitives-toggleswitch--disabled`
 - `WithLabel` → `primitives-toggleswitch--with-label`
-- `Reference` → `primitives-toggleswitch--reference-from-elements-ui`
+- `ContractReference` → `primitives-toggleswitch--contract-reference`
 
 ## Token usati
 

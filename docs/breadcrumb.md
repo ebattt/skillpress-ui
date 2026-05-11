@@ -82,7 +82,7 @@ Nessun script JS richiesto.
 
 - `Default` → `primitives-breadcrumb--default`
 - `TwoLevels` → `primitives-breadcrumb--two-levels`
-- `Reference` → `primitives-breadcrumb--reference-from-elements-ui`
+- `ContractReference` → `primitives-breadcrumb--contract-reference`
 
 ## Token usati
 

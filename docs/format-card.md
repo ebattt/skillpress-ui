@@ -198,7 +198,7 @@ Nessun script JS richiesto.
 ## Examples (Storybook)
 
 - `Default` → `components-formatcard--default` (4 card vertical, A4 selezionata).
-- `Reference` → `components-formatcard--reference-from-elements-ui` (markup verbatim demo).
+- `ContractReference` → `components-formatcard--contract-reference` (contract reference).
 - `Horizontal` → `components-formatcard--horizontal` (orientamento orizzontale 79x56).
 - `LiberoSelected` → `components-formatcard--libero-selected` (variante custom con stato selected).
 - `SinglePreviewBox` → `components-formatcard--single-preview-box` (preview-box senza dashed).

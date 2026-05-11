@@ -61,7 +61,7 @@ export const TwoLevels = {
     ])
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => {
         const root = document.createElement('div');
         root.style.maxWidth = '760px';
@@ -69,7 +69,7 @@ export const ReferenceFromElementsUI = {
             <div style="display: grid; gap: 16px;">
                 <div>
                     <p style="margin: 0 0 8px; color: var(--color-text-secondary); font-size: var(--font-size-sm);">
-                        Riferimento <code>elements-ui/js/layout-patterns/breadcrumb.js</code>: 3 livelli.
+                        Contract breadcrumb: 3 livelli.
                     </p>
                     ${renderBreadcrumb([
                         { label: 'Homepage', href: '/homepage' },
@@ -79,7 +79,7 @@ export const ReferenceFromElementsUI = {
                 </div>
                 <div>
                     <p style="margin: 0 0 8px; color: var(--color-text-secondary); font-size: var(--font-size-sm);">
-                        Riferimento <code>elements-ui/js/layout-patterns/breadcrumb.js</code>: 2 livelli.
+                        Contract breadcrumb: 2 livelli.
                     </p>
                     ${renderBreadcrumb([
                         { label: 'Homepage', href: '/homepage' },

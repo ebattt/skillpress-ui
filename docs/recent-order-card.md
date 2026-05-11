@@ -6,7 +6,7 @@
 
 - Markup reale: `Skillpress-frontend/dashboard/index.html`
 - CSS reale: `Skillpress-frontend/dashboard/css/components/_cards.css`
-- Catalogo elements-ui: `Skillpress-frontend/elements-ui/js/dashboard/recent-order-card.js`
+- Fonte catalogo storico: `Skillpress-frontend/elements-ui/js/dashboard/recent-order-card.js`
 - Pagina target: `dashboard`
 
 ## Import

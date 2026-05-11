@@ -43,12 +43,12 @@ export const Default = {
     }
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => renderDashboardWelcomeBox({ splitUserName: false }),
     parameters: {
         docs: {
             description: {
-                story: 'Reference from `elements-ui/js/dashboard/welcome-box.js`: same root/title/subtitle classes with hardcoded demo name. The real dashboard page adds `.user-name` around the injected user name.'
+                story: 'Pattern contract dashboard di riferimento.'
             }
         }
     }

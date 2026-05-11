@@ -8,7 +8,7 @@ dashboard, ad esempio caricare file o contabile.
 - Markup reale: `Skillpress-frontend/dashboard/index.html`
 - CSS reale: `Skillpress-frontend/dashboard/css/components/_buttons.css`
 - Context CSS: `Skillpress-frontend/dashboard/css/components/_tables.css`
-- Catalogo elements-ui: `Skillpress-frontend/elements-ui/js/dashboard/orders-table.js`
+- Fonte catalogo storico: `Skillpress-frontend/elements-ui/js/dashboard/orders-table.js`
 - Pagina target: `dashboard`
 
 ## Import

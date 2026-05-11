@@ -66,12 +66,12 @@ export const Default = {
     }
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => renderRoot(renderSection({ items: FIVE_PRODUCTS })),
     parameters: {
         docs: {
             description: {
-                story: 'Markup verbatim da `product-page-integration/index.html#L590-L624` + qualificazioni `.related-products` da `_layout-patterns.css#L1804-L1825`. Asset placeholder al posto delle immagini demo locali.'
+                story: 'Markup contract di riferimento.'
             }
         }
     }

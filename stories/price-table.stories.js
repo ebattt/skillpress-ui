@@ -178,12 +178,12 @@ export const Default = {
     }
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => renderRoot(renderTable({ activeQty: 50, selectedCol: 0, cols: 4 })),
     parameters: {
         docs: {
             description: {
-                story: 'Markup verbatim derivato da `product-page-integration/js/sections/section-6.js#L389-L394` (`deliveryDates.map`). Stato realistico: 4 date generate da `deliveryBaseDays = [2, 4, 6, 10]`, `closestDisplayedQty === 50`, `selectedDeliveryIndex === 0`. IVA non applicata (consumer responsibility).'
+                story: 'Markup contract di riferimento.'
             }
         }
     }

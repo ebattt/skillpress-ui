@@ -44,7 +44,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: 'Galleria immagine prodotto: container quadrato con immagine principale e bottoni nav prev/next. Behavior galleria fuori scope (Strategia A static snapshot). Il CMS popola data-image-gallery-images, la pagina demo gestisce il cambio.'
+                component: 'Galleria immagine prodotto: container quadrato con immagine principale e bottoni nav prev/next. Behavior galleria fuori scope. Il CMS popola data-image-gallery-images, la pagina demo gestisce il cambio.'
             }
         }
     }
@@ -60,12 +60,12 @@ export const Default = {
     }
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => renderGallery({ src: imageFront, alt: 'Brossura fresata vista frontale' }),
     parameters: {
         docs: {
             description: {
-                story: 'Markup verbatim dalla pagina demo product-page-integration. Tre immagini in data-image-gallery-images, prima visibile, prev/next presenti senza listener.'
+                story: 'Markup contract di riferimento.'
             }
         }
     }

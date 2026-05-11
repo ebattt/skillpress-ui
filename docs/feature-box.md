@@ -98,7 +98,7 @@ Nessun script JS richiesto.
 ## Examples
 
 - `Default` → `components-featurebox--default`
-- `Reference` → `components-featurebox--reference-from-elements-ui`
+- `ContractReference` → `components-featurebox--contract-reference`
 - `ComposedForCMS` → `components-featurebox--composed-for-cms`
 
 ## Token usati

@@ -130,12 +130,12 @@ export const Default = {
     }
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => renderRoot(renderSidebar({ quantita: '50' })),
     parameters: {
         docs: {
             description: {
-                story: 'Markup verbatim derivato da `product-page-integration/index.html#L202-L249`. Stato realistico iniziale: qty 50, valori `-`. Material Symbols (`list`, `expand_more`, `shopping_cart`) sostituiti con SVG inline 1.125rem.'
+                story: 'Markup contract di riferimento.'
             }
         }
     }

@@ -109,7 +109,7 @@ Nessun script JS richiesto.
 - `InteractiveStates` → `primitives-card--interactive-states`
 - `SurfaceMuted` → `primitives-card--surface-muted`
 - `ControlRow` → `primitives-card--control-row`
-- `Reference` → `primitives-card--reference-from-elements-ui`
+- `ContractReference` → `primitives-card--contract-reference`
 
 ## Token usati
 
@@ -156,7 +156,7 @@ Contenuti placeholder, azioni non collegate e composizioni lab usate per mostrar
 - product-card o catalog-card.
 - feature-box, step-card, paper-card o format-card.
 - layout griglia.
-- varianti decorative senza fonte `elements-ui`.
+- varianti decorative senza fonte nel contract pubblico.
 - hover image swap.
 - behavior JS (selezione, routing, tracking).
 - icone Material Symbols.

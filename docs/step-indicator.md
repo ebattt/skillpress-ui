@@ -135,7 +135,7 @@ Nessun script JS richiesto.
 ## Examples
 
 - `Default` → `components-stepindicator--default`
-- `Reference` (markup verbatim demo) → `components-stepindicator--reference-from-elements-ui`
+- `ContractReference` (contract reference) → `components-stepindicator--contract-reference`
 - `MidProgress` (mostra `--completed` verde) → `components-stepindicator--mid-progress`
 - `ThreeSteps` (variante CMS a 3 step) → `components-stepindicator--three-steps`
 - `Mobile` (viewport 390, grid a 2 colonne) → `components-stepindicator--mobile`

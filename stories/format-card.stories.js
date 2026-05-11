@@ -164,12 +164,12 @@ export const Default = {
     }
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => renderRoot(verticalGrid('a4')),
     parameters: {
         docs: {
             description: {
-                story: 'Markup verbatim derivato da `product-page-integration/js/sections/section-1.js#L199-L266` con `state.orientation === "vertical"` e `formatoChiuso === "a4"`. Le 3 varianti di preview (full box, box-inner dentro dashed, custom con icona) sono tutte visibili.'
+                story: 'Markup contract di riferimento.'
             }
         }
     }

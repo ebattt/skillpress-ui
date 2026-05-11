@@ -76,7 +76,7 @@ Nessun script JS richiesto.
 - `Default` → `primitives-downloadbuttons--default`
 - `SingleButton` (variante CMS con un solo download) → `primitives-downloadbuttons--single-button`
 - `ThreeButtons` (variante CMS con tre download) → `primitives-downloadbuttons--three-buttons`
-- `Reference` (markup verbatim demo) → `primitives-downloadbuttons--reference-from-elements-ui`
+- `ContractReference` (contract reference) → `primitives-downloadbuttons--contract-reference`
 
 ## Token usati
 

@@ -135,7 +135,7 @@ business logic consumer-side.
 | `NomeLavoroInput` | variante 6 + play test classe |
 | `TwoColumnLayout` | variante 7 |
 | `AllVariants` | le 7 varianti in colonna |
-| `Reference` | replica selezionata dal preview catalog |
+| `ContractReference` | replica selezionata dal preview catalog |
 
 ## Fonte
 

@@ -121,7 +121,7 @@ export const ControlRow = {
     }
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => {
         const root = document.createElement('div');
         root.style.maxWidth = '760px';

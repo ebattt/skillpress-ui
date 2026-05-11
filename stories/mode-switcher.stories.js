@@ -88,7 +88,7 @@ export const ThreeOptions = () => {
     return container;
 };
 
-export const ReferenceFromElementsUI = () => {
+export const ContractReference = () => {
     const container = document.createElement('div');
     container.innerHTML = `
         <div class="sp-mode-switcher" role="group" aria-label="Seleziona modalità di configurazione">

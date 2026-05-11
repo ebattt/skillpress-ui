@@ -110,7 +110,7 @@ Nessun script JS richiesto dalla libreria. Il behavior prev/next va implementato
 ## Examples
 
 - `Default` → `components-imagegallery--default`
-- `Reference` → `components-imagegallery--reference-from-elements-ui`
+- `ContractReference` → `components-imagegallery--contract-reference`
 - `WithoutShadow` → `components-imagegallery--without-shadow`
 - `WithoutNav` → `components-imagegallery--without-nav`
 

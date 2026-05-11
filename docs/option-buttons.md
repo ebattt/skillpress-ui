@@ -102,7 +102,7 @@ Nessun script JS richiesto.
 - `ManyOptions` (5 opzioni, terza selezionata) → `primitives-optionbuttons--many-options`
 - `EqualColumns` (2 opzioni a larghezza piena) → `primitives-optionbuttons--equal-columns`
 - `Borderless` (variante senza bordo) → `primitives-optionbuttons--borderless`
-- `Reference` (markup verbatim demo) → `primitives-optionbuttons--reference-from-elements-ui`
+- `ContractReference` (contract reference) → `primitives-optionbuttons--contract-reference`
 
 ## Token usati
 

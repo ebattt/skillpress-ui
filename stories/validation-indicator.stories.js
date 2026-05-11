@@ -17,7 +17,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: 'Indicatore inline per errori di validazione estratto da product-page Step 6 multicopertina e elements-ui feedback-status/validation-indicator.'
+                component: 'Indicatore inline per errori di validazione del configuratore.'
             }
         }
     }
@@ -65,7 +65,7 @@ export const InvalidTotal = {
     `)
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => mount(`
         <div style="display: flex; flex-direction: column; gap: 1rem;">
             <div class="sp-validation-total">

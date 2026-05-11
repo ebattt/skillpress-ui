@@ -236,7 +236,7 @@ export const NomeRefRow = {
     `)
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => mount(`
         <div style="display: flex; flex-direction: column; gap: 1.5rem;">
             <div class="sp-form-field">
@@ -269,7 +269,7 @@ export const ReferenceFromElementsUI = {
     parameters: {
         docs: {
             description: {
-                story: 'Replica i blocchi di product-page-integration/js/sections/section-1.js (facciate con error + custom-dims).'
+                story: 'Blocchi contract di riferimento.'
             }
         }
     }

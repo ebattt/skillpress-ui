@@ -70,7 +70,7 @@ Nessun script JS richiesto.
 
 - `Default` (Verticale attivo) → `primitives-orientationtoggle--default`
 - `HorizontalActive` (Orizzontale attivo) → `primitives-orientationtoggle--horizontal-active`
-- `Reference` (markup verbatim demo) → `primitives-orientationtoggle--reference-from-elements-ui`
+- `ContractReference` (contract reference) → `primitives-orientationtoggle--contract-reference`
 
 ## Token usati
 

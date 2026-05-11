@@ -62,7 +62,7 @@ export const ThreeButtons = () => {
     return container;
 };
 
-export const ReferenceFromElementsUI = () => {
+export const ContractReference = () => {
     const container = document.createElement('div');
     container.innerHTML = `
         <div class="sp-download-buttons__divider"></div>

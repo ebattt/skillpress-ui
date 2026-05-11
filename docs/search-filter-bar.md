@@ -7,7 +7,7 @@ input ricerca e bottone azione.
 
 - Markup reale: `Skillpress-frontend/dashboard/index.html`
 - CSS reale: `Skillpress-frontend/dashboard/css/components/_tables.css`
-- Catalogo elements-ui: `Skillpress-frontend/elements-ui/js/dashboard/search-filter-bar.js`
+- Fonte catalogo storico: `Skillpress-frontend/elements-ui/js/dashboard/search-filter-bar.js`
 - Pagina target: `dashboard`
 
 ## Import

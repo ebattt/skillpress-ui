@@ -63,7 +63,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: 'Switch binario on/off accessibile, derivato dai sorgenti elements-ui (multicopertina + checkout multispedizione). La libreria controlla geometria, colori e behavior; il consumer controlla testo della label, stato iniziale e logica di business via evento `toggle-switch:change`.'
+                component: 'Switch binario on/off accessibile. La libreria controlla geometria, colori e behavior; il consumer controlla testo della label, stato iniziale e logica di business via evento `toggle-switch:change`.'
             }
         }
     }
@@ -103,34 +103,15 @@ export const WithLabel = {
     `)
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => {
-        /*
-         * Riferimenti coperti da questa primitiva:
-         *  - elements-ui/css/components/_form-inputs.css
-         *      sezione: "TOGGLE SWITCH (multicopertina on/off)"
-         *      selettori: .multicop-toggle, .multicop-switch,
-         *                 .multicop-switch--active, .multicop-switch-knob,
-         *                 .multicop-label
-         *  - elements-ui/js/buttons/toggle-switch.js
-         *      markup multicop con div + classi --active
-         *  - elements-ui/js/checkout/checkout-toggle-switch.js
-         *      markup checkout con button[role=switch][aria-checked]
-         *      + .sp-toggle-switch + .toggle-switch-handle
-         *  - product-page-integration: toggle multicopertina nella sidebar
-         *  - checkout: toggle multispedizione
-         *
-         * NON coperto: variante "segmented two-label" .iva-toggle / .iva-btn
-         * (Lordo / Netto) presente in _form-inputs.css -- e' un pattern distinto
-         * (segmented control), non un binary switch.
-         */
         const root = document.createElement('div');
         root.style.maxWidth = '500px';
         root.innerHTML = `
             <div style="display: flex; flex-direction: column; gap: 16px;">
                 <div>
                     <p style="margin: 0 0 8px; color: var(--color-text-secondary); font-size: var(--font-size-sm);">
-                        Riferimento <code>elements-ui/js/buttons/toggle-switch.js</code> (multicopertina off / on).
+                        Contract toggle prodotto: off / on.
                     </p>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
                         ${renderField({ checked: false, label: 'Multicopertina', id: 'sp-ref-multicop-off' })}
@@ -140,7 +121,7 @@ export const ReferenceFromElementsUI = {
 
                 <div>
                     <p style="margin: 0 0 8px; color: var(--color-text-secondary); font-size: var(--font-size-sm);">
-                        Riferimento <code>elements-ui/js/checkout/checkout-toggle-switch.js</code> (multispedizione off / on).
+                        Contract toggle checkout: off / on.
                     </p>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
                         <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px; border: 1px solid var(--color-bg-gray-200); border-radius: var(--radius-xl); background: var(--color-bg-white);">

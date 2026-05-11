@@ -84,7 +84,7 @@ Nessun script JS richiesto. Il toggle `--active`/`--inactive` + `aria-pressed` e
 - `SecondActive` (Avanzata attivo) → `primitives-modeswitcher--second-active`
 - `WithoutIcons` (Singolo/Multicopia senza icone) → `primitives-modeswitcher--without-icons`
 - `ThreeOptions` (3 opzioni) → `primitives-modeswitcher--three-options`
-- `Reference` (markup verbatim demo) → `primitives-modeswitcher--reference-from-elements-ui`
+- `ContractReference` (contract reference) → `primitives-modeswitcher--contract-reference`
 
 ## Token usati
 

@@ -88,7 +88,7 @@ export const Default = {
     }
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => {
         const root = document.createElement('div');
         root.style.maxWidth = '760px';

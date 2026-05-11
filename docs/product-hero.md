@@ -149,7 +149,7 @@ Nessun script JS richiesto dalla libreria.
 ## Examples
 
 - `Default` → `sections-producthero--default`
-- `Reference` → `sections-producthero--reference-from-elements-ui`
+- `ContractReference` → `sections-producthero--contract-reference`
 - `ComposedForCMS` → `sections-producthero--composed-for-cms`
 - `Anatomy` → `sections-producthero--anatomy`
 

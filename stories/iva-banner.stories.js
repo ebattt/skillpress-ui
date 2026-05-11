@@ -104,7 +104,7 @@ export const QtyIvaRowSingle = {
     }
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => mount(`
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">
             <div class="sp-qty-iva-row sp-qty-iva-row--double">
@@ -139,7 +139,7 @@ export const ReferenceFromElementsUI = {
     parameters: {
         docs: {
             description: {
-                story: 'Replica esatta del pattern Step 6 (product-page-integration/js/sections/section-6.js#L230-L285) quando IVA = 4%: qty-iva-row--double sopra, iva-banner sotto.'
+                story: 'Stato contract di riferimento.'
             }
         }
     }

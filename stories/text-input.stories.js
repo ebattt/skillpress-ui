@@ -32,7 +32,7 @@ Tutti i selettori provengono dalla primitiva FormPrimitives gia' coperta:
 come alias semantico di \`.sp-form-input\` (CSS identico, classe distinta per la
 sezione "Nome del lavoro").
 
-Strategia A static snapshot: validazione e swap modifier sono business logic
+Validazione e swap dei modifier restano business logic
 consumer-side.`
             }
         }
@@ -213,7 +213,7 @@ export const AllVariants = {
     `)
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => mount(`
         <div style="display: flex; flex-direction: column; gap: 1.5rem;">
             <div class="sp-form-field">
@@ -238,7 +238,7 @@ export const ReferenceFromElementsUI = {
     parameters: {
         docs: {
             description: {
-                story: 'Replica una selezione delle 7 varianti dal preview catalog elements-ui (`elements-ui/js/components-form-inputs.js#L1-L127`). Le icone Info sono disegnate dalla libreria via CSS.'
+                story: 'Varianti contract di riferimento.'
             }
         }
     }

@@ -152,7 +152,7 @@ export const MultipleDropdownsExclusive = {
     }
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => mount(renderField({
         label: 'Facciate',
         id: 'sp-ref-facciate',
@@ -164,7 +164,7 @@ export const ReferenceFromElementsUI = {
     parameters: {
         docs: {
             description: {
-                story: 'Pattern verbatim dal catalogo `elements-ui/js/buttons/button-info.js` (Button Info). icone `info` e `close` disegnate dalla libreria via CSS. Onclick inline sostituito con `aria-controls` + delegated handler della libreria.'
+                story: 'Pattern contract di riferimento.'
             }
         }
     }

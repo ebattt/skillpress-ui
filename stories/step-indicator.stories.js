@@ -75,7 +75,7 @@ export const Default = {
     }
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => {
         const root = document.createElement('div');
         root.style.padding = '1rem 0';
@@ -139,7 +139,7 @@ export const ReferenceFromElementsUI = {
     parameters: {
         docs: {
             description: {
-                story: 'Markup verbatim dalla pagina demo `product-page-integration` (righe 512-564 di `product-page-integration/index.html`).'
+                story: 'Markup contract di riferimento.'
             }
         }
     }

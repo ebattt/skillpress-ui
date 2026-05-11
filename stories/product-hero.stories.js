@@ -211,7 +211,7 @@ export const Default = {
     }
 };
 
-export const ReferenceFromElementsUI = {
+export const ContractReference = {
     render: () => renderProductHero({
         imageSrc: imageFront,
         imageAlt: 'Brossura fresata vista frontale',
