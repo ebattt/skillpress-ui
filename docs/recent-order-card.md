@@ -4,8 +4,8 @@
 
 ## Fonte
 
-- Markup reale: `Skillpress-frontend/dashboard/index.html`
-- CSS reale: `Skillpress-frontend/dashboard/css/components/_cards.css`
+- Markup reale: `Skillpress-frontend/reference-pages/static/dashboard/index.html`
+- CSS reale: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_cards.css`
 - Fonte catalogo storico: `Skillpress-frontend/elements-ui/js/dashboard/recent-order-card.js`
 - Pagina target: `dashboard`
 

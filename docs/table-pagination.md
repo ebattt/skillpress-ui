@@ -5,8 +5,8 @@ dashboard.
 
 ## Fonte
 
-- Markup reale: `Skillpress-frontend/dashboard/index.html`
-- CSS reale: `Skillpress-frontend/dashboard/css/components/_tables.css`
+- Markup reale: `Skillpress-frontend/reference-pages/static/dashboard/index.html`
+- CSS reale: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_tables.css`
 - Fonte catalogo storico: `Skillpress-frontend/elements-ui/js/dashboard/table-pagination.js`
 - Pagina target: `dashboard`
 

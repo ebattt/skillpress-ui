@@ -4,9 +4,9 @@ Dashboard billing create/edit form card for the `Fatturazione` view.
 
 ## Source
 
-- Demo HTML: `Skillpress-frontend/dashboard/index.html` lines 540-656
-- CSS: `Skillpress-frontend/dashboard/css/components/_billing.css` lines 17-174
-- Demo JS behavior: `Skillpress-frontend/dashboard/js/form-handlers.js` lines 35-108
+- Demo HTML: `Skillpress-frontend/reference-pages/static/dashboard/index.html` lines 540-656
+- CSS: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_billing.css` lines 17-174
+- Demo JS behavior: `Skillpress-frontend/reference-pages/static/dashboard/js/form-handlers.js` lines 35-108
 
 ## When To Use
 

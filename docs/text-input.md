@@ -139,8 +139,8 @@ business logic consumer-side.
 
 ## Fonte
 
-- catalog CSS: `elements-ui/css/components/_form-inputs.css#L33-L184` (selettori gia' migrati in `primitives/form-primitives.css`)
-- catalog preview: `elements-ui/js/components-form-inputs.js#L1-L127` (markup HTML delle 7 varianti)
+- catalog CSS: `Skillpress-frontend/elements-ui/css/components/_form-inputs.css#L33-L184` (selettori gia' migrati in `primitives/form-primitives.css`)
+- catalog preview: `Skillpress-frontend/elements-ui/js/components-form-inputs.js#L1-L127` (markup HTML delle 7 varianti)
 
 ## Vedi anche
 

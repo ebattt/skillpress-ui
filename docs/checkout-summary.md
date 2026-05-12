@@ -4,9 +4,9 @@
 
 ## Fonte
 
-- Posizione pagina: `Skillpress-frontend/checkout/index.html`
-- Markup: `Skillpress-frontend/checkout/js/sections/sidebar-section.js`
-- CSS: `Skillpress-frontend/checkout/css/components/_sidebar.css`
+- Posizione pagina: `Skillpress-frontend/reference-pages/static/checkout/index.html`
+- Markup: `Skillpress-frontend/reference-pages/static/checkout/js/sections/sidebar-section.js`
+- CSS: `Skillpress-frontend/reference-pages/static/checkout/css/components/_sidebar.css`
 - Pagina target: `checkout`
 
 ## Import

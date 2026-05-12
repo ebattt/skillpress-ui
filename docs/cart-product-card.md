@@ -4,8 +4,8 @@
 
 ## Fonte
 
-- Markup: `Skillpress-frontend/checkout/js/sections/cart-section.js`
-- CSS: `Skillpress-frontend/checkout/css/components/_cart.css`
+- Markup: `Skillpress-frontend/reference-pages/static/checkout/js/sections/cart-section.js`
+- CSS: `Skillpress-frontend/reference-pages/static/checkout/css/components/_cart.css`
 - Pagina target: `checkout`
 
 ## Import

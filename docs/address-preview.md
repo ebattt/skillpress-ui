@@ -5,9 +5,9 @@ dentro la checkout.
 
 ## Fonte
 
-- Markup shipping: `Skillpress-frontend/checkout/js/sections/shipping-section.js`
-- CSS shipping: `Skillpress-frontend/checkout/css/components/_shipping.css`
-- Markup billing correlato: `Skillpress-frontend/checkout/js/sections/payment-section.js`
+- Markup shipping: `Skillpress-frontend/reference-pages/static/checkout/js/sections/shipping-section.js`
+- CSS shipping: `Skillpress-frontend/reference-pages/static/checkout/css/components/_shipping.css`
+- Markup billing correlato: `Skillpress-frontend/reference-pages/static/checkout/js/sections/payment-section.js`
 - Pagina target: `checkout`
 
 ## Import

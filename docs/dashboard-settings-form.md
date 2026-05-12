@@ -5,11 +5,11 @@ views.
 
 ## Source
 
-- Demo HTML: `Skillpress-frontend/dashboard/index.html` lines 1105-1177
-- CSS: `Skillpress-frontend/dashboard/css/components/_cards.css` lines 219-237
-- CSS: `Skillpress-frontend/dashboard/css/components/_forms.css` lines 15-115
-- CSS: `Skillpress-frontend/dashboard/css/components/_buttons.css` lines 17-61 and 113-134
-- Demo JS behavior: `Skillpress-frontend/dashboard/js/form-handlers.js` lines 114-187
+- Demo HTML: `Skillpress-frontend/reference-pages/static/dashboard/index.html` lines 1105-1177
+- CSS: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_cards.css` lines 219-237
+- CSS: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_forms.css` lines 15-115
+- CSS: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_buttons.css` lines 17-61 and 113-134
+- Demo JS behavior: `Skillpress-frontend/reference-pages/static/dashboard/js/form-handlers.js` lines 114-187
 
 ## When To Use
 

@@ -17,9 +17,9 @@ Do not use it for:
 
 ## Source
 
-- Real markup: `Skillpress-frontend/dashboard/index.html` view `fornitore`
-- Real CSS: `Skillpress-frontend/dashboard/css/components/_fornitore.css`
-- Real JS: `Skillpress-frontend/dashboard/js/order-tables.js`
+- Real markup: `Skillpress-frontend/reference-pages/static/dashboard/index.html` view `fornitore`
+- Real CSS: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_fornitore.css`
+- Real JS: `Skillpress-frontend/reference-pages/static/dashboard/js/order-tables.js`
 - Target page: `dashboard`
 
 ## Import

@@ -3,9 +3,9 @@
 Barra fixed in basso visibile su mobile/tablet (`<=1023px`). Mostra prezzo totale + CTA carrello in compact + sezione espandibile con dettagli + toggle riepilogo configurazione. Componente CSS-only senza behavior libreria.
 
 - Fonti:
-  - `elements-ui/css/components/_layout-patterns.css#L490-L758` (MOBILE BAR section: container fixed, handle, compact, expanded, details, config-toggle, config-content + responsive 374px / 640-1023px).
-  - `elements-ui/css/components/_buttons.css#L58-L84` (`.mobile-total-bar__cart-btn` definito separatamente).
-  - `elements-ui/js/layout-patterns/mobile-bar.js` (catalogo storico con sandbox preview interattiva).
+  - `Skillpress-frontend/elements-ui/css/components/_layout-patterns.css#L490-L758` (MOBILE BAR section: container fixed, handle, compact, expanded, details, config-toggle, config-content + responsive 374px / 640-1023px).
+  - `Skillpress-frontend/elements-ui/css/components/_buttons.css#L58-L84` (`.mobile-total-bar__cart-btn` definito separatamente).
+  - `Skillpress-frontend/elements-ui/js/layout-patterns/mobile-bar.js` (catalogo storico con sandbox preview interattiva).
 - Cartella: `components/` (composto: container fixed > overlay + container > 4 sezioni innestate).
 - Strategia JS demo: A — static snapshot. La libreria non aggiunge listener. Toggle (`.mobile-total-bar--expanded`, `.mobile-config-toggle--active`, `.mobile-config-content--visible`) sono wire-up consumer-side.
 

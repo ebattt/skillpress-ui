@@ -5,8 +5,8 @@ spedizione e pagamento condividono lo stesso presentation type.
 
 ## Fonte
 
-- Shipping: `Skillpress-frontend/checkout/js/sections/shipping-section.js`
-- Payment: `Skillpress-frontend/checkout/js/sections/payment-section.js`
+- Shipping: `Skillpress-frontend/reference-pages/static/checkout/js/sections/shipping-section.js`
+- Payment: `Skillpress-frontend/reference-pages/static/checkout/js/sections/payment-section.js`
 - CSS: `checkout/css/components/_shipping.css` e `_payment.css`
 - Pagina target: `checkout`
 

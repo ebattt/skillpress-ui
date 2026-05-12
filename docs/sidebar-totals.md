@@ -2,7 +2,7 @@
 
 Sidebar configuratore desktop: box totale (qty, miglior prezzo, imposta, spedizione, totale evidenziato), input codice promo, toggle riepilogo configurazione, bottone "Aggiungi al carrello". Componente CSS-only senza behavior libreria.
 
-- Fonte: `elements-ui/css/components/_layout-patterns.css#L189-L246, L249-L272, L324-L341, L344-L365, L367-L418` + `elements-ui/css/components/_buttons.css#L29-L55, L261-L285` + `elements-ui/js/layout-patterns/sidebar-summary.js`.
+- Fonte: `Skillpress-frontend/elements-ui/css/components/_layout-patterns.css#L189-L246, L249-L272, L324-L341, L344-L365, L367-L418` + `Skillpress-frontend/elements-ui/css/components/_buttons.css#L29-L55, L261-L285` + `Skillpress-frontend/elements-ui/js/layout-patterns/sidebar-summary.js`.
 - Cartella: `components/` (composto: container > box gray-50 con righe + divider + totale + input promo + button + content + cart button).
 - Strategia JS demo: A — static snapshot. La libreria non aggiunge listener.
 

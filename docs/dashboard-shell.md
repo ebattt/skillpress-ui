@@ -6,10 +6,10 @@ DOM.
 
 ## Fonte
 
-- `Skillpress-frontend/dashboard/index.html` righe 25-90 circa
-- `Skillpress-frontend/dashboard/css/components/_layout.css`
-- `Skillpress-frontend/dashboard/css/components/_navigation.css`
-- `Skillpress-frontend/dashboard/js/dashboard-shell.js`
+- `Skillpress-frontend/reference-pages/static/dashboard/index.html` righe 25-90 circa
+- `Skillpress-frontend/reference-pages/static/dashboard/css/components/_layout.css`
+- `Skillpress-frontend/reference-pages/static/dashboard/css/components/_navigation.css`
+- `Skillpress-frontend/reference-pages/static/dashboard/js/dashboard-shell.js`
 
 ## Responsabilita
 

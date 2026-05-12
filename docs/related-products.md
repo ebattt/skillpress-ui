@@ -3,9 +3,9 @@
 Sezione "Potrebbe piacerti anche": griglia di card prodotto correlato (stile landing page) con titolo in alto e immagine sotto. Pattern CSS-only, niente JS libreria.
 
 - Fonti:
-  - `elements-ui/css/components/_layout-patterns.css#L1804-L1825` (`.related-products` wrapper + qualificazioni 1280px max-width).
-  - `Skillpress-frontend/landing-page/css/components/_products.css` (PRODUCT CARD section aggiornata: section-label, grid responsive 5/3/2 colonne, card minimal con aspect-ratio + hover image scale).
-  - `elements-ui/js/cards/card-image-text-below.js` (catalogo storico con sandbox preview).
+  - `Skillpress-frontend/elements-ui/css/components/_layout-patterns.css#L1804-L1825` (`.related-products` wrapper + qualificazioni 1280px max-width).
+  - `Skillpress-frontend/reference-pages/static/landing-page/css/components/_products.css` (PRODUCT CARD section aggiornata: section-label, grid responsive 5/3/2 colonne, card minimal con aspect-ratio + hover image scale).
+  - `Skillpress-frontend/elements-ui/js/cards/card-image-text-below.js` (catalogo storico con sandbox preview).
 - Cartella: `components/` (composto: section > h2 + grid > N anchor card).
 - Strategia JS demo: A — static snapshot. La libreria non aggiunge listener. Il pattern e' link statico, hover/focus sono CSS-only.
 

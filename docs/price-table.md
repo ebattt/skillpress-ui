@@ -2,7 +2,7 @@
 
 Tabella prezzi stile Google Flights: header data spedizione, righe quantita, intersezione = prezzo. Componente CSS-only senza behavior libreria.
 
-- Fonte: `elements-ui/css/components/_layout-patterns.css#L918-L1236`, `elements-ui/js/layout-patterns/price-table.js`, `product-page-integration/js/sections/section-6.js#L355-L442`.
+- Fonte: `Skillpress-frontend/elements-ui/css/components/_layout-patterns.css#L918-L1236`, `Skillpress-frontend/elements-ui/js/layout-patterns/price-table.js`, `product-page-integration/js/sections/section-6.js#L355-L442`.
 - Cartella: `components/` (composto: wrapper > nav arrows + table > thead/tbody con sub-element specializzati).
 - Strategia JS demo: A — static snapshot. La libreria non aggiunge listener.
 

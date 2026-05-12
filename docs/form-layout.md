@@ -5,8 +5,8 @@ divider per azioni "copia dati" e area azioni.
 
 ## Fonte
 
-- Markup: `Skillpress-frontend/checkout/js/sections/payment-section.js`
-- CSS: `Skillpress-frontend/checkout/css/components/_payment.css`
+- Markup: `Skillpress-frontend/reference-pages/static/checkout/js/sections/payment-section.js`
+- CSS: `Skillpress-frontend/reference-pages/static/checkout/css/components/_payment.css`
 - Fonte correlata: `checkout/js/sections/shipping-section.js`
 - Pagina target: `checkout`
 
