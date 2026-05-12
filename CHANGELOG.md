@@ -4,6 +4,9 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
 
 ## Corrente
 
+- Hardening: reset CSS e input numerici allineati ai warning editor
+  `appearance` mantenendo i prefissi browser necessari; rimosso
+  `vertical-align` non efficace dai media block-level del reset.
 - Visual change: `OrdersTable` compatta meglio la dashboard mobile/tablet
   nascondendo `Pagamento` e `Totale` dalla riga principale fino a `1023px`;
   i valori restano nella riga dettagli mobile.

@@ -186,6 +186,7 @@
     width: 100%;
     max-width: 5rem;
     -moz-appearance: textfield;
+    appearance: textfield;
     text-align: center;
 }
 
@@ -193,6 +194,7 @@
 .quote-input--qty::-webkit-inner-spin-button {
     margin: 0;
     -webkit-appearance: none;
+    appearance: none;
 }
 
 .quote-footer-cell {

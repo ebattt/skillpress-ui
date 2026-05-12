@@ -353,6 +353,7 @@ button, select {
 
 button, input:where([type='button']), input:where([type='reset']), input:where([type='submit']) {
     -webkit-appearance: button;
+    appearance: button;
     background-color: transparent;
     background-image: none;
 }
@@ -375,15 +376,18 @@ progress {
 
 [type='search'] {
     -webkit-appearance: textfield;
+    appearance: textfield;
     outline-offset: -2px;
 }
 
 ::-webkit-search-decoration {
     -webkit-appearance: none;
+    appearance: none;
 }
 
 ::-webkit-file-upload-button {
     -webkit-appearance: button;
+    appearance: button;
     font: inherit;
 }
 
@@ -433,7 +437,6 @@ button, [role="button"] {
 
 img, svg, video, canvas, audio, iframe, embed, object {
     display: block;
-    vertical-align: middle;
 }
 
 img, video {
@@ -3237,6 +3240,7 @@ label.sp-radio-option--disabled input[type="radio"] {
     width: 100%;
     max-width: 5rem;
     -moz-appearance: textfield;
+    appearance: textfield;
     text-align: center;
 }
 
@@ -3244,6 +3248,7 @@ label.sp-radio-option--disabled input[type="radio"] {
 .quote-input--qty::-webkit-inner-spin-button {
     margin: 0;
     -webkit-appearance: none;
+    appearance: none;
 }
 
 .quote-footer-cell {
@@ -4388,6 +4393,7 @@ label.sp-radio-option--disabled input[type="radio"] {
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
 }
 
 .dashboard-order-card__info {
