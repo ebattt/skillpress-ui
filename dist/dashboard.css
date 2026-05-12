@@ -2792,6 +2792,15 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
+@media (max-width: 1023px) {
+    .orders-table--compact .th-payment,
+    .orders-table--compact .orders-table__cell--payment,
+    .orders-table--compact .th-total,
+    .orders-table--compact .orders-table__cell--total {
+        display: none !important;
+    }
+}
+
 @media (max-width: 980px) {
     .orders-table--compact .th-payment,
     .orders-table--compact .orders-table__cell--payment {
@@ -2914,13 +2923,13 @@ label.sp-radio-option--disabled input[type="radio"] {
     .orders-table--compact .th-title,
     .orders-table--compact .orders-table__cell--title {
         width: clamp(10rem, 46vw, 12.25rem);
-        min-width: 10rem;
+        min-width: 0;
         max-width: 12.25rem;
     }
 
     .table-title-cell {
-        width: min(100%, 12.25rem);
-        min-width: 10rem;
+        width: 100%;
+        min-width: 0;
         max-width: 12.25rem;
         gap: 0.3125rem;
     }
@@ -2998,6 +3007,7 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 
     .tr-mobile-details td {
+        box-sizing: border-box;
         padding: 0.75rem;
         width: 100%;
         max-width: 100%;
@@ -3030,13 +3040,13 @@ label.sp-radio-option--disabled input[type="radio"] {
     .orders-table--compact .th-title,
     .orders-table--compact .orders-table__cell--title {
         width: clamp(9.25rem, 43vw, 11.25rem);
-        min-width: 9.25rem;
+        min-width: 0;
         max-width: 11.25rem;
     }
 
     .table-title-cell {
-        width: min(100%, 11.25rem);
-        min-width: 9.25rem;
+        width: 100%;
+        min-width: 0;
         max-width: 11.25rem;
     }
 }

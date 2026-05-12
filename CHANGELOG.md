@@ -4,6 +4,11 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
 
 ## Corrente
 
+- Visual change: `OrdersTable` compatta meglio la dashboard mobile/tablet
+  nascondendo `Pagamento` e `Totale` dalla riga principale fino a `1023px`;
+  i valori restano nella riga dettagli mobile.
+- Hardening: `OrdersTable` evita min-width rigide del titolo e overflow della
+  riga dettagli sotto `640px`.
 - `ConfirmDialog` pubblicato nel contract pubblico con CSS, JS, hook `data-*`,
   eventi e voce in `dist/public-api.json`.
 - `--z-modal` elevato sopra `--z-mobile-bar` per evitare che barre mobile fixed

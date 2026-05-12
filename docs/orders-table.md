@@ -32,8 +32,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
 La libreria decide wrapper, bordo/radius, colonne compact, ellipsis titolo,
 layout liste prodotto/azioni, responsive statico e, quando inizializzata, la
-riga dettagli mobile generata dalle celle `.orders-table__cell--mobile-hide`. Backend/app
-decidono righe, status, action chip, dati ordine e routing.
+riga dettagli mobile generata dalle celle `.orders-table__cell--mobile-hide`.
+Nella shell dashboard mobile (`<=1023px`) la riga compatta mantiene solo le
+colonne principali e sposta `Pagamento` e `Totale` nella riga dettagli, evitando
+overflow laterale su tablet/mobile larghi. Backend/app decidono righe, status,
+action chip, dati ordine e routing.
 
 ## Reuse Audit
 
@@ -118,6 +121,10 @@ sopra e sotto la tabella.
 - genera una riga `.tr-mobile-details[hidden][data-orders-table-detail]`;
 - sincronizza `aria-expanded` e `hidden`;
 - non aggiunge CTA di routing o dettaglio ordine.
+
+Sotto `1024px`, `Pagamento` e `Totale` non sono visibili nella riga compatta
+di `orders-table--compact`; i valori restano disponibili nella riga dettagli
+generata dal JS a partire dalle celle `.orders-table__cell--mobile-hide`.
 
 ## Token
 
