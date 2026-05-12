@@ -26,6 +26,48 @@ Il dist-tag `latest` punta alla release pubblicata corrente. Usare una versione
 pin nel consumer/app backend quando serve riproducibilita'. Evitare `file:`,
 `link:`, path assoluti locali e modifiche a `node_modules`.
 
+## Accesso Al Package Privato
+
+Il package e' privato su GitHub Packages. Per permettere al backend di
+installarlo:
+
+- invitare lo sviluppatore backend o un account tecnico come collaborator nella
+  repo privata `skillpress-ui`;
+- attendere che l'invito sia accettato;
+- usare un PAT classic creato da quell'account; per installare la libreria basta
+  lo scope `read:packages`;
+- configurare npm con il registry GitHub Packages.
+
+Percorso per creare il token:
+
+```text
+GitHub -> Settings -> Developer settings -> Personal access tokens ->
+Tokens (classic) -> Generate new token (classic)
+```
+
+Impostazioni consigliate:
+
+- `Expiration`: usare una scadenza nota al team;
+- `Scopes`: per il solo download/install basta `read:packages`;
+- `write:packages`, `delete:packages`, `workflow` o scope `admin:*` non sono
+  necessari per usare questa libreria.
+
+Esempio `.npmrc` lato backend:
+
+```ini
+@ebattt:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_TOKEN}
+```
+
+`write:packages`, `delete:packages` o permessi admin non sono necessari per
+leggere la libreria. Se l'installazione fallisce con
+`403 permission_denied: read_package`, l'account del token non ha ancora accesso
+effettivo alla repo/package.
+
+Nota: questa repo e' sotto un account personale. Per le repo private personali,
+GitHub non permette collaborator read-only: un collaborator della repo ha anche
+permesso di push.
+
 ## CSS Da Caricare
 
 Usare il bundle della pagina o area applicativa:
