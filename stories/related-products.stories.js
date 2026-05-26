@@ -14,7 +14,7 @@ const renderCard = ({ href = '#', title = 'Prodotto', src = PLACEHOLDER, alt = '
     <a href="${href}" class="catalog-card catalog-card--product-equal">
         <h3 class="catalog-card__title">${title}</h3>
         <div class="catalog-card__image-wrap">
-            <img class="catalog-card__image catalog-card__image--product" src="${src}" alt="${alt}" loading="lazy">
+            <img class="catalog-card__image catalog-card__image--product" src="${src}" alt="${alt}" loading="lazy" decoding="async">
         </div>
     </a>
 `;
@@ -106,7 +106,7 @@ export const Mobile = {
         viewport: { defaultViewport: 'mobile1' },
         docs: {
             description: {
-                story: 'Viewport mobile (<640px): 2 colonne, gap 0.75rem, immagine `width: min(100%, 150px)`.'
+                story: 'Viewport mobile (<640px): 2 colonne, gap 0.75rem, slot immagine quadrato con `object-fit: contain`.'
             }
         }
     }

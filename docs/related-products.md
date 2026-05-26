@@ -31,7 +31,7 @@ Sezione "Potrebbe piacerti anche": griglia di card prodotto correlato (stile lan
             <h3 class="catalog-card__title">Carte da gioco</h3>
             <div class="catalog-card__image-wrap">
                 <img class="catalog-card__image catalog-card__image--product"
-                     src="img/prodotto.png" alt="Carte da gioco" loading="lazy">
+                     src="img/prodotto.png" alt="Carte da gioco" loading="lazy" decoding="async">
             </div>
         </a>
         <!-- ...altre card... -->
@@ -55,15 +55,15 @@ Card:
 
 - `.catalog-card` — base card (vive solo qualificata via `.catalog-card--product-equal`, inclusa per fedelta').
 - `.catalog-card--product-equal` — card link product:
-  - `display: flex column`, `aspect-ratio: 5/5.5`, sfondo `#F7F7F8`, `border-radius: 1rem`, `padding: 1rem 1rem 0`, `text-decoration: none`;
+  - `display: flex column`, sfondo tokenizzato, `border-radius: 1rem`, `padding: 1rem`, `text-decoration: none`;
   - hover/focus card: nessuna trasformazione/shadow sul wrapper.
 
 Card content:
 
-- `.catalog-card__title` — h3 titolo: Helvetica Neue, `clamp(0.9rem, 1.1vw, 1.1rem)`, weight 700, text-align left, `margin: 0 0 0.5rem`. Qualificato dentro `.sp-catalog-grid--products`.
-- `.catalog-card__image-wrap` — wrapper immagine: `flex: 1`, centrato, sfondo trasparente, padding 0.
+- `.catalog-card__title` — h3 titolo: Helvetica Neue, `clamp(0.9rem, 1.1vw, 1.1rem)`, weight 700, text-align left, `margin: 0 0 0.5rem`, altezza fissa a 2 righe con clamp/ellipsis. Qualificato dentro `.sp-catalog-grid--products`.
+- `.catalog-card__image-wrap` — wrapper immagine: slot `aspect-ratio: 1 / 1`, centrato, sfondo trasparente, padding 0.
 - `.catalog-card__image` — base image (qualificata dentro `.sp-catalog-grid--products`, reset `margin-top: 0`, `flex: none`).
-- `.catalog-card__image--product` — img product: `width: 100%`, `object-fit: contain`. Hover: `transform: scale(1.05)`. Mobile (<640px): `width: min(100%, 150px)`.
+- `.catalog-card__image--product` — img product: `width: 100%`, `height: 100%`, `object-fit: contain`. Hover: `transform: scale(1.05)`.
 
 ## Stati e modifier
 
@@ -77,14 +77,14 @@ Card content:
 - Numero di card (la grid gestisce N item; il README di pagina dice di omettere l'intera `<section class="related-products">` se non ci sono correlati).
 - Ordine prodotti correlati (DB query / regola di business).
 - `href` di ogni `<a>`.
-- `src` + `alt` + `loading="lazy"` di ogni `<img>`.
+- `src` + `alt` + `loading` + `decoding` + eventuale `fetchpriority` di ogni `<img>`.
 - Testo `<h3 class="catalog-card__title">`.
 - Testo `<h2 class="sp-catalog-grid__section-label">` (default "Potrebbe piacerti anche").
 
 ## Cosa decide la libreria
 
 - Layout grid responsive (5/3/2 colonne).
-- `aspect-ratio` card (`5/5.5`) e proporzioni interne.
+- Titolo card a 2 righe e slot immagine `1 / 1`.
 - Sfondo card, border-radius, padding interno.
 - Hover scale image.
 - Tipografia titolo sezione (Manrope) e titolo card (Helvetica Neue).

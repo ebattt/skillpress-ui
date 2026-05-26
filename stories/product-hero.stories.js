@@ -4,8 +4,8 @@ import '../components/feature-box.css';
 import '../components/product-hero.css';
 import { expect } from 'storybook/test';
 
-const imageFront = new URL('../../Skillpress-frontend/product-page-integration/assets/brossura_fresata/brossurafresata2.png', import.meta.url).href;
-const imageSide = new URL('../../Skillpress-frontend/product-page-integration/assets/brossura_fresata/brossurafresata3.png', import.meta.url).href;
+const imageFront = new URL('../../Skillpress-frontend/consumer-libreria/assets/product-page-integration/brossura_fresata/brossurafresata2.png', import.meta.url).href;
+const imageSide = new URL('../../Skillpress-frontend/consumer-libreria/assets/product-page-integration/brossura_fresata/brossurafresata3.png', import.meta.url).href;
 
 const chevronLeft = `
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -46,9 +46,9 @@ const featureIcons = {
 };
 
 const productImages = [
-    { src: 'assets/brossura_fresata/brossurafresata2.png', alt: 'Brossura fresata vista frontale' },
-    { src: 'assets/brossura_fresata/brossurafresata3.png', alt: 'Brossura fresata vista laterale' },
-    { src: 'assets/brossura_fresata/brossuraFresata4.png', alt: 'Brossura fresata dettaglio' }
+    { src: 'assets/brossura_fresata/brossurafresata2.png', alt: 'Brossura fresata vista frontale', width: 1024, height: 1024 },
+    { src: 'assets/brossura_fresata/brossurafresata3.png', alt: 'Brossura fresata vista laterale', width: 1024, height: 1024 },
+    { src: 'assets/brossura_fresata/brossuraFresata4.png', alt: 'Brossura fresata dettaglio', width: 1024, height: 1024 }
 ];
 
 const productBoxes = [
@@ -94,6 +94,8 @@ const renderFeatureBox = ({ title, description, iconBg, iconColor, iconSvg }) =>
 const renderProductHero = ({
     imageSrc = imageFront,
     imageAlt = 'Brossura fresata vista frontale',
+    imageWidth = 1024,
+    imageHeight = 1024,
     rating = '4.85',
     reviewCount = '52 recensioni',
     starsPercent = 97
@@ -103,8 +105,8 @@ const renderProductHero = ({
         <div id="product-hero" class="product-hero">
             <div class="product-hero__grid">
                 <div class="image-gallery">
-                    <div class="image-gallery__container product-shadow" data-image-gallery-images='${JSON.stringify(productImages)}'>
-                        <img id="mainProductImage" src="${imageSrc}" alt="${imageAlt}">
+                    <div class="image-gallery__container product-shadow" style="--image-gallery-aspect-ratio: ${imageWidth} / ${imageHeight};" data-image-gallery-images='${JSON.stringify(productImages)}'>
+                        <img id="mainProductImage" src="${imageSrc}" alt="${imageAlt}" width="${imageWidth}" height="${imageHeight}" fetchpriority="high" decoding="async">
                         <button id="prevImageBtn" class="image-gallery__nav-btn image-gallery__nav-btn--prev" aria-label="Immagine precedente">
                             ${chevronLeft}
                         </button>
@@ -157,7 +159,7 @@ const renderAnatomy = () => {
     galleryNode.innerHTML = `
         <div class="image-gallery">
             <div class="image-gallery__container product-shadow">
-                <img src="${imageFront}" alt="Brossura fresata vista frontale" />
+                <img src="${imageFront}" alt="Brossura fresata vista frontale" width="1024" height="1024" fetchpriority="high" decoding="async" />
                 <button class="image-gallery__nav-btn image-gallery__nav-btn--prev" aria-label="Immagine precedente">${chevronLeft}</button>
                 <button class="image-gallery__nav-btn image-gallery__nav-btn--next" aria-label="Immagine successiva">${chevronRight}</button>
             </div>

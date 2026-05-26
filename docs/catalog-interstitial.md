@@ -7,7 +7,7 @@ Card editoriali intermedie della landing catalogo: split foto/testo, card wide o
 ```html
 <section class="catalog-interstitial" data-catalog-interstitial aria-label="Approfondimento catalogo">
     <div class="catalog-interstitial__card catalog-interstitial__card--photo" data-catalog-interstitial-card data-catalog-interstitial-link="#prodotti" data-catalog-interstitial-link-label="Vai alla sezione prodotti">
-        <img src="/assets/landing/stampa.jpg" alt="Stampa di qualita">
+        <img src="/assets/landing/stampa.jpg" alt="Stampa di qualita" loading="lazy" decoding="async">
         <span class="catalog-interstitial__label">Scopri le nostre rilegature</span>
     </div>
     <div class="catalog-interstitial__card catalog-interstitial__card--text" data-catalog-interstitial-card data-catalog-interstitial-link="/prodotti" data-catalog-interstitial-link-label="Apri la pagina prodotto Skillpress">
@@ -50,7 +50,7 @@ Card editoriali intermedie della landing catalogo: split foto/testo, card wide o
 ## Backend owns
 
 - Numero card, ordine e variante.
-- `src`, `alt`, heading, label e copy.
+- `src`, `alt`, attributi `loading`/`decoding`/`fetchpriority`, heading, label e copy.
 - Href e label accessibile.
 - Routing, analytics e tracking.
 

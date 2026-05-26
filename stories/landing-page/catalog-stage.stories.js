@@ -21,7 +21,7 @@ const renderStage = ({
             <div class="catalog-stage__image-box">
                 ${IMAGES.map((src, index) => `
                 <div class="catalog-stage__slide${index === 0 ? ' catalog-stage__slide--active' : ''}" data-catalog-stage-slide${index > 0 ? ' aria-hidden="true"' : ''}>
-                    <img src="${src}" alt="Stampa Skillpress ${index + 1}">
+                    <img src="${src}" alt="Stampa Skillpress ${index + 1}" decoding="async"${index === 0 ? ' fetchpriority="high"' : ' loading="lazy"'}>
                 </div>`).join('')}
                 <div class="catalog-stage__overlay">
                     <h1 class="catalog-stage__overlay-title">${title}</h1>

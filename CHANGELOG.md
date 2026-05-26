@@ -4,6 +4,16 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
 
 ## Corrente
 
+- Visual change: `CatalogCard--product-equal` usa uno slot immagine
+  `1 / 1` e titolo clampato a 2 righe; l'altezza card deriva da titolo,
+  padding e slot immagine invece che da un ratio fisso della card.
+- Hardening: `ImageGallery` espone il modifier CSS `.image-gallery--single`
+  per nascondere i controlli quando il CMS/consumer ha 0 o 1 immagine.
+- Contract change: `ImageGallery` usa `object-fit: contain` e supporta ratio
+  configurabile via `--image-gallery-aspect-ratio`; il consumer puo' passare
+  `width`/`height` per slide mantenendo fallback 1:1.
+- Contract change: gli attributi immagine backend-owned includono
+  `decoding` e `fetchpriority` accanto a `loading` nei componenti immagine.
 - Hardening: reset CSS e input numerici allineati ai warning editor
   `appearance` mantenendo i prefissi browser necessari; rimosso
   `vertical-align` non efficace dai media block-level del reset.

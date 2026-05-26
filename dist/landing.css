@@ -1324,8 +1324,7 @@ body {
     align-items: flex-start;
     min-width: 0;
     min-height: 0;
-    aspect-ratio: 5 / 5.5;
-    padding: 1rem 1rem 0;
+    padding: 1rem;
     overflow: hidden;
     text-align: left;
     background: var(--color-bg-gray-75);
@@ -1344,10 +1343,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 1;
+    flex: none;
     width: 100%;
+    aspect-ratio: 1 / 1;
     padding: 0;
-    overflow: visible;
+    overflow: hidden;
     background: none;
     border-radius: 0;
 }
@@ -1365,6 +1365,13 @@ body {
     text-align: left;
     text-transform: none;
     overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    height: calc(1.25em * 2);
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .sp-catalog-grid--products .catalog-card__image {
@@ -1374,10 +1381,12 @@ body {
 }
 
 .catalog-card__image--product {
+    display: block;
     width: 100%;
-    height: auto;
-    max-height: none;
+    height: 100%;
+    max-height: 100%;
     object-fit: contain;
+    object-position: center center;
     transform-origin: center center;
     transition: transform var(--transition-normal, 200ms ease);
 }
@@ -1422,11 +1431,6 @@ body {
         width: 100%;
         min-width: 0;
         border-radius: 0.75rem;
-    }
-
-    .catalog-card__image--product {
-        width: min(100%, 150px);
-        max-height: none;
     }
 }
 

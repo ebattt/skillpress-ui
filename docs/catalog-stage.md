@@ -9,10 +9,10 @@ Stage fotografico della landing catalogo: slider immagini editoriale, overlay ti
     <div class="catalog-stage catalog-stage--image-only" id="categorie" data-catalog-stage data-catalog-stage-interval="4500">
         <div class="catalog-stage__image-box">
             <div class="catalog-stage__slide catalog-stage__slide--active" data-catalog-stage-slide>
-                <img src="/assets/landing/stampa-1.jpg" alt="Stampa Skillpress">
+                <img src="/assets/landing/stampa-1.jpg" alt="Stampa Skillpress" fetchpriority="high" decoding="async">
             </div>
             <div class="catalog-stage__slide" data-catalog-stage-slide aria-hidden="true">
-                <img src="/assets/landing/stampa-2.jpg" alt="Dettaglio stampa Skillpress">
+                <img src="/assets/landing/stampa-2.jpg" alt="Dettaglio stampa Skillpress" loading="lazy" decoding="async">
             </div>
             <div class="catalog-stage__overlay">
                 <h1 class="catalog-stage__overlay-title">Stampa la tua idea, con qualità professionale</h1>
@@ -64,7 +64,7 @@ Stage fotografico della landing catalogo: slider immagini editoriale, overlay ti
 
 ## Backend owns
 
-- Immagini `src`/`alt` e numero slide.
+- Immagini `src`/`alt`, attributi `loading`/`decoding`/`fetchpriority` e numero slide.
 - Titolo, testo overlay, CTA `href` e label.
 - ID/anchor.
 - Presenza e contenuto dello slot reviews, inclusi attributi Feedaty.

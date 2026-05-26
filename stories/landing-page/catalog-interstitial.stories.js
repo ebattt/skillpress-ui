@@ -17,7 +17,7 @@ const renderRoot = (html) => {
 const splitMarkup = `
     <section class="catalog-interstitial" data-catalog-interstitial aria-label="Approfondimento catalogo">
         <div class="catalog-interstitial__card catalog-interstitial__card--photo" data-catalog-interstitial-card data-catalog-interstitial-link="#prodotti" data-catalog-interstitial-link-label="Vai alla sezione prodotti">
-            <img src="${PHOTO}" alt="Stampa di qualita">
+            <img src="${PHOTO}" alt="Stampa di qualita" loading="lazy" decoding="async">
             <span class="catalog-interstitial__label">Scopri le nostre rilegature</span>
         </div>
         <div class="catalog-interstitial__card catalog-interstitial__card--text" data-catalog-interstitial-card data-catalog-interstitial-link="#" data-catalog-interstitial-link-label="Apri la pagina prodotto Skillpress">
@@ -30,7 +30,7 @@ const splitMarkup = `
 const wideMarkup = `
     <section class="catalog-interstitial catalog-interstitial--full" data-catalog-interstitial aria-label="Stampa personalizzata">
         <div class="catalog-interstitial__card catalog-interstitial__card--wide" data-catalog-interstitial-card data-catalog-interstitial-link="#" data-catalog-interstitial-link-label="Apri la pagina prodotto Skillpress">
-            <img src="${WIDE}" alt="Quaderno Skillpress">
+            <img src="${WIDE}" alt="Quaderno Skillpress" loading="lazy" decoding="async">
             <div class="catalog-interstitial__overlay-content">
                 <h3 class="catalog-interstitial__heading catalog-interstitial__heading--light">Stampa che racconta<br>la tua identita</h3>
                 <p class="catalog-interstitial__text catalog-interstitial__text--light">Ogni prodotto e personalizzabile al 100%. Il tuo brand, i tuoi colori, la tua storia.</p>
@@ -42,19 +42,19 @@ const wideMarkup = `
 const trioMarkup = `
     <section class="catalog-interstitial catalog-interstitial--trio" data-catalog-interstitial aria-label="Categorie in evidenza">
         <div class="catalog-interstitial__card catalog-interstitial__card--feature" data-catalog-interstitial-card data-catalog-interstitial-link="#" data-catalog-interstitial-link-label="Apri la pagina prodotto Finiture speciali">
-            <img src="${FEATURE}" alt="Punto metallico">
+            <img src="${FEATURE}" alt="Punto metallico" loading="lazy" decoding="async">
             <div class="catalog-interstitial__overlay-content">
                 <span class="catalog-interstitial__label">Finiture speciali</span>
             </div>
         </div>
         <div class="catalog-interstitial__card catalog-interstitial__card--feature" data-catalog-interstitial-card data-catalog-interstitial-link="#" data-catalog-interstitial-link-label="Apri la pagina prodotto Copertina rigida">
-            <img class="catalog-interstitial__image--contained" src="${FEATURE}" alt="Cartonato">
+            <img class="catalog-interstitial__image--contained" src="${FEATURE}" alt="Cartonato" loading="lazy" decoding="async">
             <div class="catalog-interstitial__overlay-content">
                 <span class="catalog-interstitial__label">Copertina rigida</span>
             </div>
         </div>
         <div class="catalog-interstitial__card catalog-interstitial__card--feature" data-catalog-interstitial-card data-catalog-interstitial-link="#" data-catalog-interstitial-link-label="Apri la pagina prodotto Prodotti creativi">
-            <img class="catalog-interstitial__image--contained" src="${FEATURE}" alt="Carte da gioco">
+            <img class="catalog-interstitial__image--contained" src="${FEATURE}" alt="Carte da gioco" loading="lazy" decoding="async">
             <div class="catalog-interstitial__overlay-content">
                 <span class="catalog-interstitial__label">Prodotti creativi</span>
             </div>

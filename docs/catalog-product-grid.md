@@ -11,7 +11,7 @@ Griglia catalogo prodotti per landing page: titolo sezione, card prodotto titolo
         <a class="catalog-card catalog-card--product-equal" href="/prodotti/brossura-fresata" data-catalog-product-grid-card>
             <h3 class="catalog-card__title">Brossura fresata</h3>
             <div class="catalog-card__image-wrap">
-                <img class="catalog-card__image catalog-card__image--product" src="/assets/book.png" alt="Brossura fresata" loading="lazy">
+                <img class="catalog-card__image catalog-card__image--product" src="/assets/book.png" alt="Brossura fresata" loading="lazy" decoding="async">
             </div>
         </a>
     </div>
@@ -53,10 +53,16 @@ Griglia catalogo prodotti per landing page: titolo sezione, card prodotto titolo
 - `--catalog-card-bg`: override opzionale dello sfondo delle card catalogo.
   Fallback: `--color-tile-bg`.
 
+## Comportamento immagini e titolo
+
+- La card non richiede un aspect ratio complessivo fisso: l'altezza deriva da titolo a 2 righe, padding e slot immagine quadrato.
+- `.catalog-card__title` occupa sempre 2 righe; testo piu' lungo viene clampato con ellipsis dove supportato dal browser.
+- `.catalog-card__image-wrap` riserva uno slot `1 / 1`; l'immagine usa `object-fit: contain`, quindi il CMS puo' passare asset quadrati, verticali o orizzontali senza cambiare altezza card.
+
 ## Backend owns
 
 - Numero e ordine prodotti.
-- `href`, titoli, immagini, `alt`, `loading`.
+- `href`, titoli, immagini, `alt`, `loading`, `decoding`, `fetchpriority`.
 - Titolo sezione e modifier colore label.
 - Presenza del toggle e valore `data-catalog-product-grid-initial-rows`.
 - Routing, tracking, analytics e dati reali.
@@ -65,7 +71,7 @@ Griglia catalogo prodotti per landing page: titolo sezione, card prodotto titolo
 
 - Layout della sezione e max-width landing.
 - Grid responsive 5/4/3/2 colonne.
-- Aspect ratio, background, radius e hover image scale delle card.
+- Slot immagine quadrato, titolo a 2 righe, background, radius e hover image scale delle card.
 - Stile del toggle catalogo.
 - Runtime idempotente `window.SkillpressUI.CatalogProductGrid.init(root)`.
 - Evento `sp:catalog-product-grid:toggle` con `expanded` e `visibleCount`.

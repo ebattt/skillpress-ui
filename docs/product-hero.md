@@ -12,7 +12,7 @@ Section hero del prodotto: layout 2 colonne (35/65 da 1024px) che compone ImageG
 
 ## Strategia JS demo
 
-Il behavior galleria vive in `product-page-integration/js/page-init.js#L54-L86` (lato consumer). La libreria fornisce solo CSS di layout. Per l'eventuale modulo `js/product-hero.js` (runtime JS) sara' valutata una futura iterazione.
+Il behavior galleria vive in `product-page-integration/js/interactions/image-gallery.js` (lato consumer). La libreria fornisce solo CSS di layout. Per l'eventuale modulo `js/product-hero.js` (runtime JS) sara' valutata una futura iterazione.
 
 ## Anatomy
 
@@ -43,8 +43,10 @@ Markup contract corrente.html#L400-L499` (sezione hero).
 <div id="product-hero" class="product-hero">
     <div class="product-hero__grid">
         <div class="image-gallery">
-            <div class="image-gallery__container product-shadow" data-image-gallery-images='[{"src":"assets/brossura_fresata/brossurafresata2.png","alt":"Brossura fresata vista frontale"}]'>
-                <img id="mainProductImage" src="assets/brossura_fresata/brossurafresata2.png" alt="Brossura fresata vista frontale">
+            <div class="image-gallery__container product-shadow"
+                 style="--image-gallery-aspect-ratio: 1024 / 1024;"
+                 data-image-gallery-images='[{"src":"assets/brossura_fresata/brossurafresata2.png","alt":"Brossura fresata vista frontale","width":1024,"height":1024}]'>
+                <img id="mainProductImage" src="assets/brossura_fresata/brossurafresata2.png" alt="Brossura fresata vista frontale" width="1024" height="1024" fetchpriority="high" decoding="async">
                 <button id="prevImageBtn" class="image-gallery__nav-btn image-gallery__nav-btn--prev" aria-label="Immagine precedente">
                     <svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </button>
@@ -72,9 +74,10 @@ Markup contract corrente.html#L400-L499` (sezione hero).
 </div>
 ```
 
-Inline style data-rating-driven:
+Inline style data-driven:
 - `style="width: 97%;"` su `.sp-rating__filled` calcolato come `(rating / 5) * 100`.
 - `data-image-gallery-images` su `.image-gallery__container`: array JSON, consumato dal behavior demo, non dalla libreria.
+- `style="--image-gallery-aspect-ratio: W / H;"` su `.image-gallery__container`: opzionale ma consigliato quando la prima immagine non e' 1:1.
 
 ## API Reference
 
@@ -101,8 +104,11 @@ Attributi:
 |---|---|---|---|
 | `id="product-hero"` | `.product-hero` | no | Ancora di pagina opzionale, preservata dalla demo. |
 | `id="mainProductImage"` | `<img>` | no | Compatibilita' con behavior demo. |
+| `width` / `height` | `<img>` | no | Dimensioni intrinseche consigliate per il ratio iniziale e per ridurre layout shift. |
+| `loading` / `decoding` / `fetchpriority` | `<img>` | no | Backend/CMS owned. La prima immagine PDP puo' usare `fetchpriority="high"`; immagini non iniziali possono usare `loading="lazy"`. |
 | `id="prevImageBtn"` / `id="nextImageBtn"` | bottoni nav | no | Compatibilita' con behavior demo. |
-| `data-image-gallery-images` | `.image-gallery__container` | no | Array JSON CMS, non letto dalla libreria. |
+| `data-image-gallery-images` | `.image-gallery__container` | no | Array JSON CMS, non letto dalla libreria. Ogni voce puo' includere `width`/`height` per cambiare ratio slide-by-slide. |
+| `--image-gallery-aspect-ratio` | `.image-gallery__container` | no | Custom property CSS per il ratio iniziale; default 1:1 dal componente ImageGallery. |
 | `style="width: NN%;"` | `.sp-rating__filled` | yes | Percentuale calcolata `(rating / 5) * 100`. |
 
 ## Mappatura nomi (demo product-page -> libreria)
@@ -163,13 +169,15 @@ Nessun script JS richiesto dalla libreria.
 - rating: settare `.product-hero__rating-value` (numero), `style="width: NN%;"` su `.sp-rating__filled` e `.product-hero__review-count` (testo).
 - descrizione: contenuto di `.product-hero__description`.
 - feature grid: ripetere `.feature-box` × N dentro `.feature-grid` secondo contratto FeatureBox.
-- immagini: settare `src`/`alt` dell'`<img>` principale e popolare `data-image-gallery-images` con l'array JSON delle immagini disponibili.
+- immagini: settare `src`/`alt`, `width`/`height`, attributi performance (`loading`, `decoding`, `fetchpriority`) dell'`<img>` principale e popolare `data-image-gallery-images` con l'array JSON delle immagini disponibili.
+- ratio PDP: default 1:1. Per formati diversi, passare `width`/`height` negli item galleria; il consumer aggiorna il ratio del box e le frecce restano centrate sull'altezza attiva.
+- singola immagine: applicare `.image-gallery--single` al root ImageGallery se si mantengono i bottoni nel markup.
 - la `.feature-grid` deve restare dentro `.product-hero__info`: e' parte del layout della section.
 
 ## Out of scope
 
 - nessun cambio immagine prev/next (CSS-only snapshot).
-- nessuna thumbnail gallery, zoom, lazy loading.
+- nessuna thumbnail gallery, zoom, policy automatica di lazy/eager loading.
 - nessuna variante marketing / landing.
 - nessun calcolo automatico della percentuale stelle.
 - nessuna dipendenza Material Symbols / Google Fonts.

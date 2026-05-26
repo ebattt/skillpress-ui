@@ -5,16 +5,16 @@ import { expect } from 'storybook/test';
 const ASSET = 'https://placehold.co/220x180/f7f7f8/111418?text=Prodotto';
 
 const products = [
-    'Brossura fresata',
     'Cartonato',
+    'Brossura fresata',
+    'Brossura fresata premium',
+    'Libro copertina colorata con sovracoperta personalizzata',
+    'Carte',
     'Block notes',
     'Calendario tavolo',
     'Carte da gioco',
     'Punto metallico',
     'Rivista dorso quadro',
-    'Brossura classica',
-    'Punto metallico UV',
-    'Brossura premium',
     'Catalogo spillato',
     'Quaderno'
 ];
@@ -23,12 +23,12 @@ const renderCard = (title) => `
     <a class="catalog-card catalog-card--product-equal" href="#" data-catalog-product-grid-card>
         <h3 class="catalog-card__title">${title}</h3>
         <div class="catalog-card__image-wrap">
-            <img class="catalog-card__image catalog-card__image--product" src="${ASSET}" alt="${title}" loading="lazy">
+            <img class="catalog-card__image catalog-card__image--product" src="${ASSET}" alt="${title}" loading="lazy" decoding="async">
         </div>
     </a>
 `;
 
-const renderGrid = ({ label = 'Prodotti', modifier = 'catalog-section-label--orange', count = 12, toggle = true } = {}) => {
+const renderGrid = ({ label = 'Prodotti', modifier = 'sp-catalog-grid__section-label--orange', count = 12, toggle = true } = {}) => {
     const id = `catalog-grid-${Math.random().toString(36).slice(2)}`;
     return `
         <section class="catalog-product-grid" data-catalog-product-grid aria-label="${label}">
@@ -75,6 +75,29 @@ export const Default = {
     }
 };
 
+export const TitleVariations = {
+    render: () => renderRoot(renderGrid({ count: 5, toggle: false })),
+    play: async ({ canvasElement }) => {
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+
+        const wraps = Array.from(canvasElement.querySelectorAll('.catalog-card__image-wrap'));
+        const heights = wraps.map((wrap) => Math.round(wrap.getBoundingClientRect().height));
+        await expect(new Set(heights).size).toBe(1);
+
+        const longTitle = Array.from(canvasElement.querySelectorAll('.catalog-card__title'))
+            .find((title) => title.textContent.includes('sovracoperta'));
+        await expect(getComputedStyle(longTitle).overflow).toBe('hidden');
+        await expect(longTitle.scrollHeight).toBeGreaterThan(longTitle.clientHeight);
+    },
+    parameters: {
+        docs: {
+            description: {
+                story: 'Titoli da 1, 2 e 3+ righe per verificare slot immagine quadrato e titolo clampato a 2 righe.'
+            }
+        }
+    }
+};
+
 export const ReferenceFromLandingPage = {
     render: () => renderRoot(renderGrid()),
     parameters: {
@@ -87,7 +110,7 @@ export const ReferenceFromLandingPage = {
 };
 
 export const Editoriale = {
-    render: () => renderRoot(renderGrid({ label: 'Editoriale', modifier: 'catalog-section-label--teal', count: 5, toggle: false })),
+    render: () => renderRoot(renderGrid({ label: 'Editoriale', modifier: 'sp-catalog-grid__section-label--teal', count: 5, toggle: false })),
     parameters: {
         docs: {
             description: {
