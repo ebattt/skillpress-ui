@@ -68,6 +68,71 @@ Nota: questa repo e' sotto un account personale. Per le repo private personali,
 GitHub non permette collaborator read-only: un collaborator della repo ha anche
 permesso di push.
 
+## Install Via Git Dependency
+
+In alternativa a GitHub Packages, la libreria puo' essere installata
+direttamente dal repo git, pinnata a un tag. Le due modalita' di distribuzione
+coesistono: lo stesso codice e' pubblicato su Packages e disponibile via git.
+
+Modello: npm clona il repo al tag dichiarato e installa il contenuto come se
+fosse un package del registry. Niente registry-scoped auth, niente `.npmrc`.
+Il rispetto di `.npmignore` e' garantito da npm anche per git install: lo
+sviluppatore consumer riceve solo gli stessi file che riceverebbe via tarball
+(escluso `node_modules/`, `stories/`, `docs/`, `scripts/`, eccetera).
+
+Riga `package.json` lato consumer:
+
+```json
+{
+  "dependencies": {
+    "@ebattt/skillpress-ui": "git+https://github.com/ebattt/skillpress-ui.git#v0.4.0-gitdep.1"
+  }
+}
+```
+
+I path runtime in HTML/CSS/JS sono **identici** a quelli della modalita'
+GitHub Packages: continuano a essere
+`node_modules/@ebattt/skillpress-ui/bundles/...` e
+`node_modules/@ebattt/skillpress-ui/js/...`. Non serve toccare i template.
+
+### Differenza Di Autenticazione
+
+| Modalita' | Cosa serve sul consumer |
+|---|---|
+| GitHub Packages | PAT classic con scope `read:packages` + `.npmrc` registry-scoped |
+| Git dependency | Accesso `git clone` al repo (SSH key GitHub oppure PAT con scope `repo`) |
+
+Il consumer git dep deve essere collaborator del repo `ebattt/skillpress-ui`
+(stesso vincolo di accesso del canale Packages, ma su un canale diverso).
+Non e' necessario nessun token configurato per npm: l'autenticazione la
+gestisce git tramite SSH agent o credential helper.
+
+### Limitazioni Operative
+
+- **Pin esplicito al tag.** Solo `#vX.Y.Z` o `#vX.Y.Z-gitdep.N` (es.
+  `#v0.4.0-gitdep.1`). **Vietati**: `#main`, `#master`, branch mobili,
+  `#semver:^0.4.0`, range npm. Senza un tag immutabile non c'e' garanzia che
+  il consumer riceva sempre lo stesso codice.
+- **Artefatti committati.** `bundles/` e `dist/` devono essere committati nel
+  tag (lo fa `scripts/release.sh`). Con git install npm non rigenera nulla:
+  il consumer riceve esattamente il contenuto del tag.
+- **Nuovo bug = nuovo tag.** I tag rilasciati non si spostano mai. Per un fix
+  serve un nuovo tag patch (`v0.4.0-gitdep.2`).
+- **Niente `prepare` / `postinstall`** nella libreria: girerebbero sulla
+  macchina del consumer e romperebbero install riproducibili.
+
+### Release Da Git Dep
+
+Lo script `scripts/release.sh` automatizza i passaggi:
+
+```bash
+./scripts/release.sh v0.4.0-gitdep.1
+```
+
+Lo script esegue `npm run check`, `npm run build:dist`, `npm run build:public-api`,
+committa `bundles/` e `dist/` aggiornati e crea il tag locale. Il push del
+branch e del tag e' manuale (lo script stampa il comando da eseguire).
+
 ## CSS Da Caricare
 
 Usare il bundle della pagina o area applicativa:
