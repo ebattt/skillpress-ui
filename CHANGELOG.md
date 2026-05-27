@@ -4,6 +4,9 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
 
 ## Corrente
 
+- Contract change: aggiunto `LandingInfoTabs`, componente tab per dividere i
+  testi landing in pannelli CMS (`Presentazione`, `Vision`, `Mission`,
+  `Servizi`, `Consegna`, `Pagamento`) con keyboard navigation.
 - Visual change: `CatalogCard--product-equal` usa uno slot immagine
   `1 / 1` e titolo clampato a 2 righe; l'altezza card deriva da titolo,
   padding e slot immagine invece che da un ratio fisso della card.

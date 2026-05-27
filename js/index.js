@@ -33,6 +33,7 @@
         'FeedatyWidget',
         'FileUploadBox',
         'InfoDropdown',
+        'LandingInfoTabs',
         'OrderProductDropdown',
         'OrderStatusSteps',
         'OrderStepDetail',

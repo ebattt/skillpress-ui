@@ -1,5 +1,5 @@
 {
-  "version": "0.3.3",
+  "version": "0.4.0",
   "css": {
     "primitives": [
       ".sp-accordion",
@@ -190,6 +190,7 @@
       "format-card",
       "image-gallery",
       "invoice-table",
+      "landing-info-tabs",
       "media-choice-card",
       "method-choice-card",
       "mobile-bar",
@@ -285,6 +286,10 @@
     "data-file-upload-box-role",
     "data-info-dropdown",
     "data-info-dropdown-info-trigger",
+    "data-landing-info-tabs",
+    "data-landing-info-tabs-init",
+    "data-landing-info-tabs-panel",
+    "data-landing-info-tabs-tab",
     "data-order-product-dropdown",
     "data-order-product-dropdown-content",
     "data-order-product-dropdown-details",
@@ -367,6 +372,7 @@
     "FeedatyWidget",
     "FileUploadBox",
     "InfoDropdown",
+    "LandingInfoTabs",
     "OrderProductDropdown",
     "OrderStatusSteps",
     "OrderStepDetail",

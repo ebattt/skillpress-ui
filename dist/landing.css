@@ -1712,6 +1712,91 @@ body {
     }
 }
 
+.text-block.landing-info-tabs {
+    padding-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.landing-info-tabs__nav-wrap {
+    margin-bottom: clamp(1.5rem, 2.4vw, 2rem);
+    border-bottom: 1px solid var(--color-bg-gray-200);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.landing-info-tabs__nav {
+    display: flex;
+    min-width: max-content;
+    gap: clamp(0.35rem, 1.1vw, 0.9rem);
+}
+
+.landing-info-tabs__tab {
+    position: relative;
+    flex: none;
+    min-height: 2.85rem;
+    padding: 0.4rem 0.35rem 0.8rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--color-text);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: clamp(1rem, 1.12vw, 1.12rem);
+    font-weight: 800;
+    line-height: 1.35;
+    letter-spacing: 0;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.landing-info-tabs__tab::after {
+    content: "";
+    position: absolute;
+    right: 0.25rem;
+    bottom: -1px;
+    left: 0.25rem;
+    height: 4px;
+    border-radius: var(--radius-full) var(--radius-full) 0 0;
+    background: transparent;
+}
+
+.landing-info-tabs__tab:hover {
+    color: var(--color-text);
+}
+
+.landing-info-tabs__tab:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: -2px;
+}
+
+.landing-info-tabs__tab--active {
+    color: var(--color-primary);
+}
+
+.landing-info-tabs__tab--active::after {
+    background: var(--color-primary);
+}
+
+.landing-info-tabs__panel[hidden] {
+    display: none;
+}
+
+.landing-info-tabs__panel > :last-child {
+    margin-bottom: 0;
+}
+
+@media (min-width: 640px) {
+    .landing-info-tabs__nav {
+        justify-content: flex-start;
+        min-width: 0;
+    }
+
+    .landing-info-tabs__tab {
+        padding-right: clamp(0.75rem, 1.25vw, 1.25rem);
+        padding-left: clamp(0.75rem, 1.25vw, 1.25rem);
+    }
+}
+
 .text-block {
     width: 100%;
     max-width: 1200px;
