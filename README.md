@@ -19,7 +19,7 @@ Due canali equivalenti, stessa codebase. Scegliere uno solo.
 **Git dependency** (consigliato, no PAT npm):
 
 ```json
-"@ebattt/skillpress-ui": "git+https://github.com/ebattt/skillpress-ui.git#v0.4.0-gitdep.1"
+"@ebattt/skillpress-ui": "git+https://github.com/ebattt/skillpress-ui.git#v0.4.1-gitdep.1"
 ```
 
 Pin sempre a un tag esatto (`#vX.Y.Z` o `#vX.Y.Z-gitdep.N`). Niente `#main`,
@@ -86,10 +86,10 @@ Lo script `scripts/release.sh` automatizza check + build + commit artefatti +
 tag locale (push manuale):
 
 ```bash
-./scripts/release.sh v0.4.0-gitdep.2
+./scripts/release.sh v0.4.1-gitdep.1
 ```
 
 Per il canale Packages: `npm publish` (esegue `prepublishOnly`).
 
 Regole tag git: pin immutabile, mai spostare. Nuovo fix = nuovo tag patch
-(`v0.4.0-gitdep.2`). Niente `prepare`/`postinstall` nel package.
+(`v0.4.1-gitdep.1`). Niente `prepare`/`postinstall` nel package.

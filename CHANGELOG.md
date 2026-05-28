@@ -4,6 +4,10 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
 
 ## Corrente
 
+- Hardening: reset globale aggiornato da `body { overflow-x: hidden; }` a
+  `html, body { overflow-x: clip; }` per mantenere lo scroll verticale
+  naturale nelle integrazioni con navbar/footer e prevenire overflow
+  orizzontale senza creare scroll container sul `body`.
 - Contract change: aggiunto `LandingInfoTabs`, componente tab per dividere i
   testi landing in pannelli CMS (`Presentazione`, `Vision`, `Mission`,
   `Servizi`, `Consegna`, `Pagamento`) con keyboard navigation.

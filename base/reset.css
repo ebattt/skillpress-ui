@@ -223,6 +223,11 @@ img, video {
 /* ====================================================================
    BODY CONFIGURATION
    ==================================================================== */
+html,
+body {
+    overflow-x: clip;
+}
+
 body {
     line-height: inherit;
     font-family: var(--font-family);
@@ -230,7 +235,6 @@ body {
     color: var(--color-text);
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
 }
 
 /* ====================================================================
