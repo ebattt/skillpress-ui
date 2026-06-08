@@ -7451,3 +7451,14 @@ label.sp-radio-option--disabled input[type="radio"] {
         align-items: stretch;
     }
 }
+
+.sp-page {
+    width: 100%;
+    max-width: var(--page-max-width, 1280px);
+    margin-inline: auto;
+    padding-block-end: var(--spacing-2xl, 2.5rem);
+}
+
+.sp-page--flush {
+    padding-block-end: 0;
+}

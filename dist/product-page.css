@@ -4526,3 +4526,35 @@ label.sp-radio-option--disabled input[type="radio"] {
         grid-template-columns: repeat(6, minmax(0, 1fr));
     }
 }
+
+.product-config-column {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.product-config-column > * + * {
+    margin-top: var(--spacing-lg, 1.5rem);
+}
+
+.download-buttons-mobile {
+    display: none;
+}
+
+@media (max-width: 1023px) {
+    .download-buttons-mobile {
+        display: block;
+        margin-top: var(--spacing-lg, 1.5rem);
+    }
+}
+
+.sp-page {
+    width: 100%;
+    max-width: var(--page-max-width, 1280px);
+    margin-inline: auto;
+    padding-block-end: var(--spacing-2xl, 2.5rem);
+}
+
+.sp-page--flush {
+    padding-block-end: 0;
+}

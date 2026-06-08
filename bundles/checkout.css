@@ -17,3 +17,5 @@
 @import '../components/address-preview.css';
 @import '../components/method-choice-card.css';
 @import '../components/allocation-rows.css';
+@import '../components/checkout-layout.css';
+@import '../primitives/page.css';

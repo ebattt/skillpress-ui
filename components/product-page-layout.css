@@ -1,0 +1,33 @@
+/**
+ * ==========================================================================
+ * PRODUCT PAGE LAYOUT — colonna configuratore della pagina prodotto
+ * ==========================================================================
+ *
+ * Impila i blocchi della colonna di configurazione (hero info, step, switcher,
+ * accordion, download) con spaziatura coerente, e gestisce la versione mobile
+ * dei bottoni download. Il backend avvolge i blocchi in .product-config-column.
+ *
+ *   <div class="product-config-column"> …blocchi configuratore… </div>
+ */
+
+.product-config-column {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.product-config-column > * + * {
+    margin-top: var(--spacing-lg, 1.5rem);
+}
+
+/* Bottoni download: nascosti su desktop (stanno in sidebar), visibili su mobile. */
+.download-buttons-mobile {
+    display: none;
+}
+
+@media (max-width: 1023px) {
+    .download-buttons-mobile {
+        display: block;
+        margin-top: var(--spacing-lg, 1.5rem);
+    }
+}

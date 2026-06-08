@@ -1,0 +1,65 @@
+/**
+ * ==========================================================================
+ * CHECKOUT LAYOUT — cornice di pagina del checkout (contenuto + sidebar)
+ * ==========================================================================
+ *
+ * Layout a due colonne: contenuto principale a sinistra, riepilogo sticky a
+ * destra. Collassa a una colonna sotto i 1023px. Il backend usa questa cornice
+ * senza scrivere CSS: avvolge le sezioni checkout in .checkout-content/.checkout-grid.
+ *
+ *   <div class="checkout-content">
+ *     <header class="checkout-header">…</header>
+ *     <div class="checkout-grid">
+ *       <div class="checkout-main">…step…</div>
+ *       <aside class="checkout-sidebar">…riepilogo…</aside>
+ *     </div>
+ *   </div>
+ */
+
+.checkout-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-xl, 2rem);
+}
+
+.checkout-header {
+    margin-bottom: var(--spacing-xl, 2rem);
+}
+
+.checkout-header__title {
+    margin: 0;
+    color: var(--color-text);
+    font-size: var(--font-size-3xl, 2rem);
+    line-height: 1.2;
+    font-weight: var(--font-weight-bold, 700);
+}
+
+.checkout-header__subtitle {
+    margin: var(--spacing-sm, 0.5rem) 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base, 1rem);
+    line-height: 1.5rem;
+}
+
+.checkout-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--sidebar-width, 380px);
+    gap: var(--spacing-xl, 2rem);
+    align-items: start;
+}
+
+.checkout-main,
+.checkout-sidebar {
+    min-width: 0;
+}
+
+@media (max-width: 1023px) {
+    .checkout-content {
+        padding: 1rem 1rem calc(7.5rem + env(safe-area-inset-bottom, 0px));
+    }
+
+    .checkout-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg, 1.5rem);
+    }
+}

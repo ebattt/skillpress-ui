@@ -1,0 +1,27 @@
+/**
+ * ==========================================================================
+ * PAGE — contenitore di pagina a larghezza massima, centrato
+ * ==========================================================================
+ *
+ * SCOPO: dare a ogni pagina la larghezza massima e il centraggio del contenuto,
+ * senza che il backend debba scrivere CSS di layout. Avvolge il contenuto
+ * dentro <main>. Additivo a base/page-layout.css (pattern sticky-footer).
+ *
+ *   <main class="sp-page"> ...sezioni... </main>
+ *
+ * Larghezza da token --page-max-width (fallback 1280px). Il padding orizzontale
+ * resta a carico delle singole sezioni (come nelle pagine reali).
+ */
+
+/** @public */
+.sp-page {
+    width: 100%;
+    max-width: var(--page-max-width, 1280px);
+    margin-inline: auto;
+    padding-block-end: var(--spacing-2xl, 2.5rem);
+}
+
+/* Variante senza spazio inferiore (pagine che gestiscono da sé il fondo). */
+.sp-page--flush {
+    padding-block-end: 0;
+}

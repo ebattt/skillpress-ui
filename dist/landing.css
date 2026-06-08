@@ -1845,3 +1845,14 @@ body {
 .text-block li {
     margin-bottom: 0.3rem;
 }
+
+.sp-page {
+    width: 100%;
+    max-width: var(--page-max-width, 1280px);
+    margin-inline: auto;
+    padding-block-end: var(--spacing-2xl, 2.5rem);
+}
+
+.sp-page--flush {
+    padding-block-end: 0;
+}
