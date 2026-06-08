@@ -1,0 +1,501 @@
+/**
+ * ============================================================================
+ * SKILLPRESS - STILI PAGINE AUTENTICAZIONE
+ * ============================================================================
+ * Foglio di stile condiviso per accedi.html e registrati.html.
+ * Usa convenzione BEM e CSS custom properties da _variables.css.
+ * Dipende da: css/_variables.css (caricato tramite navbar.css)
+ *
+ * Struttura:
+ *   1. Base pagina            4. Auth-divider
+ *   2. Auth-page              5. Auth-form
+ *   3. Social-login           6. Varianti per pagina
+ *                             7. Responsive
+ * ============================================================================
+ */
+
+/* ==========================================================================
+   1. BASE PAGINA — Stili body e wrapper principale
+   ========================================================================== */
+.auth-page {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-y: auto;
+    background-color: var(--color-bg-gray-light);
+    font-family: var(--font-family);
+    color: #111418;
+}
+.auth-page__wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+}
+
+/* ==========================================================================
+   2. AUTH-PAGE — Card, header, body, footer
+   ========================================================================== */
+.auth-page__card {
+    max-width: 28rem;
+    width: 100%;
+    background-color: var(--color-bg-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+}
+
+/* Header condiviso */
+.auth-page__header { padding: 1rem; }
+.auth-page__header--login { background: var(--gradient-top-bar); }
+.auth-page__header--register { background: var(--gradient-orange); }
+
+.auth-page__header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+}
+.auth-page__header-icon .material-symbols-outlined {
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+.auth-page__header-title {
+    font-size: var(--font-size-lg);
+    line-height: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+}
+.auth-page__header-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+    text-align: center;
+    margin: 0.125rem 0 0;
+}
+
+/* Variante registrazione: titolo e sottotitolo leggermente diversi */
+.auth-page__header--register .auth-page__header-title {
+    font-size: var(--font-size-base);
+    line-height: 1.5rem;
+}
+.auth-page__header--register .auth-page__header-subtitle {
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+    margin-top: 0.25rem;
+}
+
+/* Body (contenuto form) */
+.auth-page__body { padding: 1rem; }
+
+/* Footer (link registrazione/login) */
+.auth-page__footer {
+    margin-top: 1rem;
+    text-align: center;
+}
+.auth-page__footer-text {
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+    color: #4b5563;
+    margin: 0;
+}
+.auth-page__footer-link {
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    margin-left: 0.25rem;
+    transition: color var(--transition-slow);
+}
+.auth-page__footer-link:hover {
+    color: var(--color-primary-light);
+}
+
+/* ==========================================================================
+   3. SOCIAL-LOGIN — Bottoni login con provider esterni
+   ========================================================================== */
+
+/* Layout a pila verticale (accedi.html) */
+.social-login--stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+/* Layout griglia 3 colonne (registrati.html) */
+.social-login--grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Bottone social condiviso (include alias .social-btn per compatibilita) */
+.social-login__btn,
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 0.75rem;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-bg-gray-dark);
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background-color var(--transition-slow),
+                border-color var(--transition-slow),
+                transform var(--transition-slow);
+    font-family: var(--font-family);
+}
+.social-login__btn:hover,
+.social-btn:hover {
+    background-color: var(--color-bg-gray-light);
+    border-color: #d1d5db;
+    transform: translateY(-1px);
+}
+
+/* Bottone solo icona (registrati.html) */
+.social-login__btn--icon-only {
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+}
+/* Icona SVG e testo etichetta */
+.social-login__icon { width: 1rem; height: 1rem; flex-shrink: 0; }
+.social-login__label { font-size: inherit; }
+
+/* ==========================================================================
+   4. AUTH-DIVIDER — Separatore "oppure"
+   ========================================================================== */
+.auth-divider,
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1rem 0;
+}
+.auth-divider::before, .auth-divider::after,
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--color-bg-gray-dark);
+}
+.auth-divider:not(:empty)::before,
+.divider:not(:empty)::before { margin-right: 1rem; }
+.auth-divider:not(:empty)::after,
+.divider:not(:empty)::after { margin-left: 1rem; }
+
+.auth-divider__text {
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   5. AUTH-FORM — Form, input, select, checkbox, submit
+   ========================================================================== */
+
+/* Contenitore form */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+/* Griglia a 2 colonne (registrati.html) */
+.auth-form__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+/* Etichetta campo */
+.auth-form__label {
+    display: block;
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.25rem;
+}
+/* Wrapper per input con icona o toggle */
+.auth-form__input-wrapper { position: relative; }
+
+/* Input base condiviso tra login e registrazione */
+.auth-form__input,
+.custom-input {
+    width: 100%;
+    padding: 0.625rem 0.75rem;
+    border: 1px solid var(--color-bg-gray-dark);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+    color: inherit;
+    background-color: var(--color-bg-white);
+    outline: none;
+    transition: border-color var(--transition-slow),
+                box-shadow var(--transition-slow);
+    font-family: var(--font-family);
+    box-sizing: border-box;
+}
+.auth-form__input::placeholder,
+.custom-input::placeholder { color: var(--color-text-muted); }
+.auth-form__input:focus,
+.custom-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(240, 138, 0, 0.1);
+}
+
+/* Input con icona a sinistra (accedi.html) */
+.auth-form__input--with-icon {
+    padding-left: 2.25rem;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+}
+
+/* Icona dentro l'input */
+.auth-form__input-icon {
+    position: absolute;
+    left: 0.625rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-base);
+    line-height: 1;
+    pointer-events: none;
+}
+
+/* Bottone toggle visibilita password */
+.auth-form__toggle-btn {
+    position: absolute;
+    right: 0.625rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: color var(--transition-slow);
+}
+.auth-form__toggle-btn:hover { color: #4b5563; }
+.auth-form__toggle-btn .material-symbols-outlined { font-size: var(--font-size-base); }
+
+/* Select (registrati.html) */
+.auth-form__select,
+.custom-select {
+    width: 100%;
+    padding: 0.625rem 0.75rem;
+    border: 1px solid var(--color-bg-gray-dark);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+    color: inherit;
+    background-color: var(--color-bg-white);
+    outline: none;
+    transition: border-color var(--transition-slow),
+                box-shadow var(--transition-slow);
+    font-family: var(--font-family);
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239CA3AF' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2rem;
+}
+.auth-form__select:focus,
+.custom-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(240, 138, 0, 0.1);
+}
+
+/* Riga azioni (ricordami + password dimenticata) */
+.auth-form__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+}
+
+/* Gruppo checkbox */
+.auth-form__checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    cursor: pointer;
+}
+/* Variante allineamento in alto per termini e condizioni (registrati.html) */
+.auth-form__checkbox-group--top {
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+/* Checkbox */
+.auth-form__checkbox {
+    width: 0.875rem;
+    height: 0.875rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid #d1d5db;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+/* Checkbox piu grande per registrazione */
+.auth-form__checkbox--lg {
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.25rem;
+}
+
+/* Testo accanto al checkbox */
+.auth-form__checkbox-text {
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+    color: #4b5563;
+}
+.auth-form__checkbox-text--relaxed { line-height: 1.625; }
+
+/* Link dentro il testo del checkbox */
+.auth-form__checkbox-link {
+    font-weight: 500;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-slow);
+}
+.auth-form__checkbox-link:hover { color: var(--color-primary-light); }
+
+/* Link password dimenticata */
+.auth-form__forgot-link {
+    font-weight: 500;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-slow);
+}
+.auth-form__forgot-link:hover { color: var(--color-primary-light); }
+
+/* Bottone submit (include alias .btn-primary per compatibilita) */
+.auth-form__submit,
+.btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--gradient-orange);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    transition: transform var(--transition-slow),
+                box-shadow var(--transition-slow);
+    font-family: var(--font-family);
+}
+.auth-form__submit:hover,
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(240, 138, 0, 0.3);
+}
+
+/* Bottone secondario (alias legacy) */
+.btn-secondary { transition: background-color var(--transition-slow); }
+.btn-secondary:hover { background-color: #f3f4f6; }
+
+/* ==========================================================================
+   6. VARIANTI PER PAGINA — Override specifici login vs registrazione
+   ========================================================================== */
+
+/* --- Override per pagina login (accedi.html) --- */
+.auth-page--login .auth-page__body { padding: 1.5rem 1rem; }
+.auth-page--login .auth-form__input {
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-sm);
+    line-height: 1.25rem;
+    padding: 0.5rem 0.75rem;
+}
+.auth-page--login .auth-form__input--with-icon { padding-left: 2.25rem; }
+.auth-page--login .auth-form__submit {
+    border-radius: var(--radius-lg);
+    padding: 0.625rem;
+}
+.auth-page--login .auth-page__footer-text {
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+}
+
+/* --- Override per pagina registrazione (registrati.html) --- */
+.auth-page--register .auth-divider,
+.auth-page--register .divider { margin: 0.75rem 0; }
+.auth-page--register .auth-form__submit { margin-top: 0.5rem; }
+.auth-page--register .auth-form__toggle-btn { right: 0.75rem; }
+
+/* ==========================================================================
+   7. RESPONSIVE — Breakpoint sm (min-width: 640px)
+   ========================================================================== */
+@media (min-width: 640px) {
+    /* Header */
+    .auth-page__header { padding: 1rem 1.5rem; }
+    .auth-page__header-icon .material-symbols-outlined { font-size: 1.875rem; }
+    .auth-page__header-title { font-size: var(--font-size-xl); line-height: 1.75rem; }
+    .auth-page__header--register .auth-page__header-title {
+        font-size: var(--font-size-lg);
+        line-height: 1.75rem;
+    }
+
+    /* Body */
+    .auth-page__body { padding: 1rem 1.5rem; }
+    .auth-page--login .auth-page__body { padding: 1.25rem 1.5rem; }
+
+    /* Social button: testo piu grande nella pila */
+    .social-login--stack .social-login__btn {
+        font-size: var(--font-size-sm);
+        line-height: 1.25rem;
+    }
+
+    /* Divider testo piu grande */
+    .auth-divider__text { font-size: var(--font-size-sm); line-height: 1.25rem; }
+
+    /* Input icona e padding-left piu grandi */
+    .auth-form__input-icon { font-size: var(--font-size-lg); }
+    .auth-page--login .auth-form__input--with-icon { padding-left: 2.5rem; }
+    .auth-page--login .auth-form__input {
+        padding-top: 0.625rem;
+        padding-bottom: 0.625rem;
+    }
+
+    /* Toggle password: icona piu grande (login) */
+    .auth-page--login .auth-form__toggle-btn .material-symbols-outlined {
+        font-size: var(--font-size-lg);
+    }
+
+    /* Azioni form: layout orizzontale */
+    .auth-form__actions {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* Submit login: padding e testo piu grandi */
+    .auth-page--login .auth-form__submit {
+        padding: 0.75rem;
+        font-size: var(--font-size-base);
+        line-height: 1.5rem;
+    }
+
+    /* Footer login: testo piu grande su desktop */
+    .auth-page--login .auth-page__footer-text {
+        font-size: var(--font-size-sm);
+        line-height: 1.25rem;
+    }
+}

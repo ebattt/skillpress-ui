@@ -1,0 +1,182 @@
+/**
+ * ==========================================================================
+ * UTILITY CLASSES -- Visibilita, layout, animazioni
+ * ==========================================================================
+ *
+ * Classi utility riutilizzabili in tutta la navbar.
+ * Include classi per nascondere/mostrare elementi a diversi breakpoint,
+ * toggle di opacita/visibilita (usati dal JS per i dropdown),
+ * scrollbar nascosta, safe area e animazioni keyframe.
+ *
+ * Nota: le classi .hidden, .invisible, .opacity-0, .opacity-100, .visible
+ * sono manipolate direttamente dal JavaScript (index.html inline script,
+ * navbar.js e cart.js).
+ * ==========================================================================
+ */
+
+
+/* =========================================================================
+   TOGGLE VISIBILITY (usate dal JS per aprire/chiudere dropdown)
+   ========================================================================= */
+
+.hidden {
+    display: none !important;
+}
+
+/* Usato dal JS per mostrare il user-popup come flex container */
+.flex {
+    display: flex !important;
+}
+
+.invisible {
+    visibility: hidden !important;
+}
+
+.visible {
+    visibility: visible !important;
+}
+
+/* Toggle opacita: il JS alterna .opacity-0 e .opacity-100 sui dropdown */
+.opacity-0 {
+    opacity: 0 !important;
+}
+
+.opacity-100 {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================================================================
+   RESPONSIVE VISIBILITY
+   ========================================================================= */
+
+/* --- Nasconde su mobile (< 768px) ---
+   Non imposta display su desktop: gli elementi usano il display
+   del proprio componente (flex, block, ecc.) */
+@media (max-width: 767px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+/* --- Nasconde su desktop (>= 768px) via display:contents ---
+   Usata per wrapper che devono "scomparire" senza alterare il layout
+   dei figli su mobile (es. mobile-navbar-normal, mobile-navbar-icons) */
+.hide-desktop-flex {
+    display: contents;
+}
+
+@media (min-width: 768px) {
+    .hide-desktop-flex {
+        display: none !important;
+    }
+}
+
+/* --- Nasconde sotto XL (< 1280px) --- */
+.hide-xl-down {
+    display: none;
+}
+
+@media (min-width: 1280px) {
+    .hide-xl-down {
+        display: inline-flex;
+    }
+}
+
+/* --- Nasconde sotto SM (< 640px) --- */
+.hide-sm {
+    display: none;
+}
+
+@media (min-width: 640px) {
+    .hide-sm {
+        display: block;
+    }
+}
+
+
+/* =========================================================================
+   SCROLLBAR E SAFE AREA
+   ========================================================================= */
+
+/* Scrollbar nascosta per contenitori orizzontali */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Safe area per dispositivi con notch */
+.pt-safe {
+    padding-top: env(safe-area-inset-top, 0);
+}
+
+
+/* =========================================================================
+   ANIMAZIONI KEYFRAME
+   ========================================================================= */
+
+/* --- Fade per dropdown --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* --- Slide per mobile menu --- */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+/* --- Rispetto preferenza animazioni ridotte --- */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -1,0 +1,6 @@
+/* Bundle pagine auth (login, registrazione, password dimenticata).
+ *
+ * Shell globale + stili form di autenticazione. Il markup di riferimento e'
+ * nelle pagine accedi/registrati del materiale navbar. */
+@import './shell.css';
+@import '../shell/_auth.css';

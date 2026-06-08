@@ -1,0 +1,251 @@
+/**
+ * ==========================================================================
+ * CATEGORY DROPDOWN -- Dropdown singole categorie nella barra grigia
+ * ==========================================================================
+ *
+ * Dropdown che appaiono al hover sui bottoni delle singole categorie
+ * (Tesi di Laurea, Rilegature, Etichette, ecc.) nella barra grigia.
+ *
+ * DUE VARIANTI DI LAYOUT:
+ *   1. --single: colonna singola (larghezza --dropdown-width-md, 208px)
+ *      Per categorie con pochi prodotti, lista verticale semplice.
+ *   2. --multi:  multi-colonna con griglia CSS (2 o 3 colonne)
+ *      Per categorie con sottocategorie raggruppate (es. Rilegature → Brossura, PUR).
+ *
+ * APERTURA: trigger :hover CSS puro — nessun JS necessario.
+ *
+ * INTERAZIONE CSS-JS (navbar.js → updateDropdownAlignments):
+ *   - Le classi .left-0 / .right-0 vengono aggiunte dinamicamente al
+ *     .dropdown-panel dal JS per allineare il pannello a sinistra o destra
+ *     in base alla posizione del bottone nella viewport.
+ *   - Il ricalcolo avviene su resize e scroll orizzontale della barra.
+ *
+ * DIPENDENZE:
+ *   - _variables.css (colori, ombre, spacing, dimensioni dropdown)
+ *
+ * Elementi HTML: .category-dropdown, .dropdown-wrapper,
+ *   .category-dropdown__trigger, .dropdown-trigger, .dropdown-panel,
+ *   .category-dropdown__panel, .category-dropdown__list,
+ *   .category-dropdown__grid.
+ * ==========================================================================
+ */
+
+/* === CONTAINER E TRIGGER === */
+
+/* Container relativo: ancora per il pannello assoluto.
+   flex-shrink: 0 evita che il bottone si comprima nello scroll della barra. */
+.category-dropdown {
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Bottone trigger — white-space: nowrap impedisce che il nome della
+   categoria vada a capo nello scroll orizzontale della barra grigia. */
+.category-dropdown__trigger {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 8px;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text);
+    white-space: nowrap;
+    transition: color var(--transition-fast),
+                background-color var(--transition-fast);
+}
+
+.category-dropdown__trigger:hover {
+    color: var(--color-primary);
+    background: var(--color-bg-white);
+}
+
+.category-dropdown__trigger .material-symbols-outlined {
+    font-size: 16px;
+}
+
+.category-dropdown__arrow {
+    font-size: var(--font-size-sm);
+}
+
+/* === PANNELLO DROPDOWN (stile base condiviso) === */
+
+/* Animazione simile al mega menu ma piu rapida (200ms vs 300ms)
+   perche il pannello e piu piccolo e l'utente si aspetta risposta immediata.
+   NOTA: manca left/right di default — vengono aggiunti dal JS
+   (.left-0 o .right-0) in base alla posizione del trigger nella viewport. */
+.category-dropdown__panel {
+    position: absolute;
+    top: 100%;
+    margin-top: 4px;
+    background: var(--color-bg-white);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-bg-gray-dark);
+    box-shadow: var(--shadow-xl);
+    z-index: var(--z-dropdown);
+    max-height: 70vh;
+    overflow-y: auto;
+
+    /* Stato nascosto */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: opacity var(--transition-normal),
+                visibility var(--transition-normal),
+                transform var(--transition-normal);
+}
+
+/* --- Wrapper scroll (iniettato dal JS) ---
+   Il pannello diventa flex-column con overflow:hidden.
+   Il contenuto scorre dentro __scroll-content,
+   la freccia resta fissa sotto, fuori dal flusso di scroll. */
+.category-dropdown__panel--has-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.category-dropdown__scroll-content {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.category-dropdown__scroll-hint {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    padding: 4px 0;
+    cursor: pointer;
+}
+
+.category-dropdown__scroll-hint .material-symbols-outlined {
+    font-size: 20px;
+    color: var(--color-text-light);
+}
+
+/* Apertura via CSS :hover puro — nessun JS necessario.
+   --visible disponibile come fallback per apertura programmatica. */
+.category-dropdown:hover .category-dropdown__panel,
+.category-dropdown__panel--visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* === ALLINEAMENTO DINAMICO (gestito da navbar.js) === */
+
+/* Classi statiche per allineamento impostato nell'HTML */
+.category-dropdown__panel--left {
+    left: 0;
+}
+
+.category-dropdown__panel--right {
+    right: 0;
+}
+
+/* Classi utility aggiunte dinamicamente da updateDropdownAlignments()
+   in navbar.js: se il trigger e nella meta destra della viewport, allinea
+   il pannello a destra (right-0) per evitare che fuoriesca dallo schermo. */
+.left-0 { left: 0; }
+.right-0 { right: 0; }
+
+
+/* =========================================================================
+   VARIANTE 1: DROPDOWN SINGOLA COLONNA (senza sottocategorie)
+   Per categorie semplici come "Tesi di Laurea" con lista di prodotti diretta.
+   ========================================================================= */
+
+.category-dropdown__panel--single {
+    width: var(--dropdown-width-md);
+}
+
+.category-dropdown__list {
+    padding: var(--spacing-sm) 0;
+}
+
+.category-dropdown__item {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    transition: color var(--transition-fast),
+                background-color var(--transition-fast);
+}
+
+.category-dropdown__item:hover {
+    background: transparent;
+    color: var(--color-primary);
+}
+
+
+/* =========================================================================
+   VARIANTE 2: DROPDOWN MULTI-COLONNA (con sottocategorie)
+   Per categorie con sotto-gruppi (es. Rilegature → Brossura, PUR, Spirale).
+   Usa CSS Grid per disporre le sottocategorie su 2 o 3 colonne.
+   ========================================================================= */
+
+.category-dropdown__panel--multi {
+    width: var(--dropdown-width-lg);
+    padding: var(--spacing-md);
+}
+
+/* Dimensioni varianti: --lg (320px) e --xl (384px) adattano la larghezza
+   al numero di colonne e contenuto della categoria. */
+.category-dropdown__panel--lg {
+    width: var(--dropdown-width-lg);
+}
+
+.category-dropdown__panel--xl {
+    width: var(--dropdown-width-xl);
+}
+
+/* Grid base per le colonne. I modificatori --2col e --3col
+   definiscono il numero di colonne tramite grid-template-columns. */
+.category-dropdown__grid {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.category-dropdown__grid--2col {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.category-dropdown__grid--3col {
+    grid-template-columns: repeat(3, 1fr);
+    width: var(--dropdown-width-xl);
+}
+
+/* Titolo della sottocategoria (es. "BROSSURA", "SPIRALE") — uppercase
+   e colore teal per coerenza col brand e per distinguerlo dai link prodotto. */
+.category-dropdown__subtitle {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* --- Lista prodotti in sottocategoria --- */
+.category-dropdown__sublist {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.category-dropdown__subitem {
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    transition: color var(--transition-fast);
+}
+
+.category-dropdown__subitem:hover {
+    color: var(--color-primary);
+}
+
+/* Rimuove la linea arancione di focus-visible sui link del dropdown */
+.category-dropdown__item:focus-visible,
+.category-dropdown__subitem:focus-visible {
+    outline: none;
+}

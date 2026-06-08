@@ -1,0 +1,442 @@
+/**
+ * ==========================================================================
+ * CART -- Dropdown desktop + overlay mobile + singoli cart item
+ * ==========================================================================
+ *
+ * Stili per il carrello in tutte le sue forme:
+ * 1. Cart dropdown desktop (pannello che appare sotto il bottone Carrello)
+ * 2. Mobile cart overlay (fullscreen per touch)
+ * 3. Cart item (singola riga prodotto, generata da cart.js)
+ *
+ * RENDERING DINAMICO (cart.js):
+ *   L'HTML dei .cart-item viene generato interamente da cart.js
+ *   (renderDesktop e renderMobile). Questo file definisce solo gli stili.
+ *   - Desktop: #cartItemsList contiene i .cart-item
+ *   - Mobile: #mobileCartItems contiene i .cart-item.cart-item--mobile
+ *
+ * INTERAZIONE CSS-JS (cart.js):
+ *   - .cart-item → generato dinamicamente; layout icona | info | elimina.
+ *   - .cart-item--mobile → modificatore aggiunto solo nella vista mobile.
+ *   - .cart-item__remove--mobile → bottone elimina piu grande per touch.
+ *   - [data-remove-id] → attributo usato dal JS per event delegation.
+ *   - Animazione di rimozione: cart.js imposta opacity:0 e translateX(20px)
+ *     inline prima di rimuovere l'item dopo 300ms.
+ *   - Stato vuoto: cart.js mostra/nasconde #cartEmpty, #cartFooter,
+ *     #mobileCartEmpty, #mobileCartFooter via display e classe .hidden.
+ *   - Badge: #cartBadgeDesktop, #cartBadgeMobile, #mobileCartBadge
+ *     aggiornati da updateBadges() con il conteggio prodotti.
+ *
+ * DIPENDENZE:
+ *   - _variables.css (colori, ombre, radius, z-index, transizioni)
+ *   - cart.js (genera l'HTML dei cart-item)
+ *
+ * Elementi HTML: #carrelloDropdown, .cart-dropdown,
+ *   #mobileCartOverlay, .mobile-cart-overlay,
+ *   .cart-item (generato da JS), .cart-item__icon, .cart-item__info.
+ * ==========================================================================
+ */
+
+
+/* =========================================================================
+   CART DROPDOWN DESKTOP
+   Pannello che appare sotto il bottone "Carrello" nella navbar desktop.
+   Nascosto di default (opacity:0, visibility:hidden); l'apertura avviene
+   via CSS :hover sul wrapper padre (come mega-menu e category-dropdown).
+   ========================================================================= */
+
+.cart-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 0.5rem;
+    width: 24rem;
+    background: var(--color-bg-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-2xl);
+    border: 1px solid var(--color-bg-gray-dark);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-normal),
+                visibility var(--transition-normal);
+    overflow: hidden;
+    z-index: var(--z-modal);
+}
+
+/* Sovrascrittura specifica per #carrelloDropdown: limita la transition a
+   opacity e visibility, escludendo transform che causava artefatti visivi
+   (sfarfallio) durante l'animazione di apertura del dropdown. */
+#carrelloDropdown.cart-dropdown {
+    transition-property: opacity, visibility;
+}
+
+/* --- Header --- */
+.cart-dropdown__header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.cart-dropdown__header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart-dropdown__title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.cart-dropdown__count {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+}
+
+/* Lista items — max-height limita il pannello a circa 4-5 prodotti visibili;
+   il resto e raggiungibile via scroll. Evita che il dropdown cresca troppo. */
+.cart-dropdown__items {
+    max-height: 16rem;
+    overflow-y: auto;
+}
+
+/* Stato vuoto — mostrato/nascosto da updateEmptyState() in cart.js
+   quando cartItems.length === 0. */
+.cart-dropdown__empty {
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.cart-dropdown__empty-icon {
+    color: var(--color-text-muted);
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.cart-dropdown__empty-text {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+}
+
+/* --- Footer con totale e bottoni --- */
+.cart-dropdown__footer {
+    padding: 1rem 1.25rem;
+    background: #f9fafb;
+    border-top: 1px solid #f3f4f6;
+}
+
+.cart-dropdown__total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.cart-dropdown__total-label {
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+.cart-dropdown__total-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.cart-dropdown__btn {
+    display: block;
+    width: 100%;
+    padding: 0.625rem 0;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast),
+                opacity var(--transition-fast);
+}
+
+.cart-dropdown__btn--primary {
+    background: var(--color-primary);
+    color: white;
+}
+
+.cart-dropdown__btn--primary:hover {
+    background: var(--color-primary-dark);
+}
+
+.cart-dropdown__btn--secondary {
+    margin-top: 0.5rem;
+    border: 2px solid var(--color-secondary);
+    color: var(--color-secondary);
+}
+
+.cart-dropdown__btn--secondary:hover {
+    opacity: 0.8;
+}
+
+
+/* =========================================================================
+   CART ITEM (generato da cart.js per desktop e mobile)
+   Layout: icona | testo | bottone elimina
+   ========================================================================= */
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+/* Icona prodotto (quadrato grigio) */
+.cart-item__icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: var(--color-bg-gray);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cart-item__icon .material-symbols-outlined {
+    color: var(--color-text-muted);
+    font-size: 1.5rem;
+}
+
+/* Blocco testo */
+.cart-item__info {
+    flex: 1;
+    min-width: 0;
+}
+
+.cart-item__name {
+    font-size: 1rem;
+    line-height: 1.375rem;
+    font-weight: 600;
+    color: #1f2937;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cart-item__description {
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    color: var(--color-text-light);
+    margin-top: 0.125rem;
+}
+
+.cart-item__price {
+    font-size: 1rem;
+    line-height: 1.375rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-top: 0.25rem;
+}
+
+.cart-item__vat {
+    font-size: 0.6875rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+/* Bottone elimina */
+.cart-item__remove {
+    padding: 0.375rem;
+    color: var(--color-text-muted);
+    border-radius: var(--radius-md);
+    transition: color var(--transition-fast),
+                background-color var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.cart-item__remove:hover {
+    color: #ef4444;
+    background: #fef2f2;
+}
+
+.cart-item__remove .material-symbols-outlined {
+    font-size: 1.125rem;
+}
+
+/* Modificatore mobile: generato da cart.js, predisposto per eventuali
+   regole specifiche del layout touch. Stili ereditati da .cart-item. */
+
+/* --- Variante mobile: bottone piu grande per touch --- */
+.cart-item__remove--mobile {
+    padding: 0.5rem;
+}
+
+.cart-item__remove--mobile .material-symbols-outlined {
+    font-size: 1.25rem;
+}
+
+
+/* =========================================================================
+   MOBILE CART OVERLAY (fullscreen)
+   ========================================================================= */
+
+.mobile-cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--color-bg-white);
+    overflow-y: auto;
+    z-index: var(--z-mobile-menu);
+}
+
+@media (min-width: 1024px) {
+    .mobile-cart-overlay {
+        display: none !important;
+    }
+}
+
+/* --- Header --- */
+.mobile-cart__header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    height: 3.5rem;
+    border-bottom: 1px solid var(--color-bg-gray-dark);
+    background-color: var(--color-primary);
+}
+
+.mobile-cart__header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.mobile-cart__header-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    filter: brightness(0) invert(1);
+}
+
+.mobile-cart__header-title {
+    color: white;
+    font-weight: 600;
+}
+
+.mobile-cart__header-badge {
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: white;
+    background-color: var(--color-secondary);
+}
+
+/* --- Lista items mobile --- */
+.mobile-cart__items {
+    border-bottom: 1px solid var(--color-bg-gray);
+}
+
+/* Separatori tra items */
+.mobile-cart__items > * + * {
+    border-top: 1px solid var(--color-bg-gray);
+}
+
+/* --- Stato vuoto mobile --- */
+.mobile-cart__empty {
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.mobile-cart__empty-icon {
+    color: var(--color-text-muted);
+    font-size: 4rem;
+    margin-bottom: 0.75rem;
+}
+
+.mobile-cart__empty-text {
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+}
+
+.mobile-cart__continue-btn {
+    padding: 0.5rem 1.5rem;
+    background: var(--color-primary);
+    color: white;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    transition: background var(--transition-fast);
+}
+
+.mobile-cart__continue-btn:hover {
+    background: var(--color-primary-dark);
+}
+
+/* --- Footer mobile (fisso in basso) --- */
+.mobile-cart__footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-bg-white);
+    border-top: 1px solid var(--color-bg-gray-dark);
+    padding: 1rem;
+}
+
+@media (min-width: 1024px) {
+    .mobile-cart__footer {
+        display: none;
+    }
+}
+
+.mobile-cart__total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.mobile-cart__total-label {
+    color: var(--color-text-light);
+}
+
+.mobile-cart__total-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-dark);
+}
+
+.mobile-cart__btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    text-align: center;
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    transition: background-color var(--transition-fast),
+                opacity var(--transition-fast);
+}
+
+.mobile-cart__btn--primary {
+    background: var(--color-primary);
+    color: white;
+}
+
+.mobile-cart__btn--primary:hover {
+    background: var(--color-primary-dark);
+}
+
+.mobile-cart__btn--secondary {
+    margin-top: 0.5rem;
+    border: 2px solid var(--color-secondary);
+    color: var(--color-secondary);
+}
+
+.mobile-cart__btn--secondary:hover {
+    opacity: 0.8;
+}
+
+/* Spacer per compensare il footer fixed */
+.mobile-cart__spacer {
+    height: 11rem;
+}

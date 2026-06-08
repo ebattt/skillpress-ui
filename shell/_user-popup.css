@@ -1,0 +1,263 @@
+/**
+ * ==========================================================================
+ * USER POPUP -- Popup login/registrazione + Accedi dropdown desktop
+ * ==========================================================================
+ *
+ * Due componenti di autenticazione:
+ * 1. Accedi dropdown (desktop): piccolo dropdown sotto il bottone "Accedi"
+ *    con link a login e registrazione.
+ * 2. User popup (mobile): modale fullscreen con avatar, titolo e bottoni
+ *    accedi/registrazione. Visibile solo < 1024px.
+ *
+ * Elementi HTML: #accediDropdown, .accedi-dropdown,
+ *   #userLoginPopup, .user-popup, .user-popup__content.
+ * ==========================================================================
+ */
+
+
+/* =========================================================================
+   ACCEDI DROPDOWN (desktop, sotto il bottone Accedi)
+   ========================================================================= */
+
+.accedi-dropdown {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    margin-top: 0.5rem;
+    width: 14rem;
+    background: var(--color-bg-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-2xl);
+    border: 1px solid var(--color-bg-gray-dark);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-normal),
+                visibility var(--transition-normal);
+    overflow: hidden;
+    z-index: var(--z-modal);
+}
+
+.accedi-dropdown__content {
+    padding: 0.5rem;
+}
+
+.accedi-dropdown__item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    transition: background-color var(--transition-fast),
+                color var(--transition-fast);
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* --- Hover states con gradiente --- */
+.accedi-dropdown__item--primary:hover {
+    background: linear-gradient(to right, rgba(240, 138, 0, 0.1), rgba(255, 177, 73, 0.1));
+    color: var(--color-primary);
+}
+
+.accedi-dropdown__item--accent:hover {
+    background: linear-gradient(to right, rgba(28, 114, 100, 0.1), rgba(41, 137, 121, 0.1));
+    color: var(--color-secondary);
+}
+
+/* --- Icone --- */
+.accedi-dropdown__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accedi-dropdown__icon .material-symbols-outlined {
+    font-size: 1.25rem;
+}
+
+.accedi-dropdown__icon--primary {
+    background: rgba(240, 138, 0, 0.1);
+    color: var(--color-primary);
+}
+
+.accedi-dropdown__icon--accent {
+    background: rgba(28, 114, 100, 0.1);
+    color: var(--color-secondary);
+}
+
+/* --- Testo --- */
+.accedi-dropdown__title {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.accedi-dropdown__subtitle {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+}
+
+
+/* =========================================================================
+   USER POPUP (mobile, modale fullscreen)
+   ========================================================================= */
+
+.user-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: var(--z-popover);
+}
+
+@media (min-width: 1024px) {
+    .user-popup {
+        display: none !important;
+    }
+}
+
+.user-popup__content {
+    background: var(--color-bg-white);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-2xl);
+    width: 100%;
+    max-width: 24rem;
+    transform: scale(0.95);
+    opacity: 0;
+    transition: opacity var(--transition-normal),
+                transform var(--transition-normal);
+}
+
+/* --- Bottone chiudi --- */
+.user-popup__close-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.75rem;
+}
+
+.user-popup__close-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition-fast);
+}
+
+.user-popup__close-btn:hover {
+    background: var(--color-bg-gray-dark);
+}
+
+.user-popup__close-icon {
+    color: var(--color-text-light);
+}
+
+/* --- Avatar --- */
+.user-popup__avatar-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+}
+
+.user-popup__avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-popup__avatar-icon {
+    color: white;
+    font-size: 3rem;
+}
+
+/* --- Titolo --- */
+.user-popup__title-section {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.user-popup__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 0.25rem;
+}
+
+.user-popup__subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+}
+
+/* --- Bottoni azione --- */
+.user-popup__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0 1.5rem 1.5rem;
+}
+
+.user-popup__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-xl);
+    color: white;
+    font-weight: 600;
+    transition: transform var(--transition-fast),
+                box-shadow var(--transition-fast);
+}
+
+.user-popup__btn:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-xl);
+}
+
+.user-popup__btn--primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+}
+
+.user-popup__btn--secondary {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
+}
+
+.user-popup__btn-icon {
+    font-size: 1.5rem;
+}
+
+/* --- Footer --- */
+.user-popup__footer {
+    border-top: 1px solid var(--color-bg-gray);
+    padding: 1rem 1.5rem;
+    text-align: center;
+}
+
+.user-popup__footer-text {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+}
+
+.user-popup__link {
+    color: var(--color-primary);
+    font-weight: 500;
+}

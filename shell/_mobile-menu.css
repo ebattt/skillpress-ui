@@ -1,0 +1,342 @@
+/**
+ * ==========================================================================
+ * MOBILE MENU -- Menu mobile fullscreen + overlay prodotti
+ * ==========================================================================
+ *
+ * Menu che appare su mobile (< 768px) quando l'utente preme il bottone
+ * hamburger. Contiene link rapidi (Wiki, Blog), box assistenza e lista
+ * categorie. Include anche l'overlay dei prodotti per categoria e il
+ * pannello "category products" con bottone back.
+ *
+ * STRUTTURA A DUE LIVELLI:
+ *   Livello 1 — .mobile-menu: lista categorie, quick links, assistenza.
+ *   Livello 2 — .category-products-overlay: lista prodotti per categoria
+ *               selezionata, con bottone "back" per tornare al Livello 1.
+ *
+ * INTERAZIONE CSS-JS (navbar.js → initMobileMenu, initMobileCategoryButtons):
+ *   - .hidden → togglata dal JS su #mobileMenu per apertura/chiusura.
+ *     Apertura: click su #mobileMenuBtn (hamburger).
+ *     Chiusura: click su #mobileNavbarCloseBtn, tasto Escape, resize >= 768px.
+ *   - Quando il menu si apre, il JS nasconde la navbar normale
+ *     (#mobileNavbarNormal, #mobileNavbarIcons) e mostra il logo esteso
+ *     (#mobileNavbarMenuOpen) con il bottone X.
+ *   - .hidden → togglata su #categoryProductsOverlay per mostrare/nascondere
+ *     l'overlay prodotti (Livello 2), attivato dal click su .category-nav-btn.
+ *   - document.body.style.overflow = 'hidden' viene impostato dal JS
+ *     per bloccare lo scroll della pagina quando il menu e aperto.
+ *
+ * DIPENDENZE:
+ *   - _variables.css (colori, spacing, radius, z-index, transizioni)
+ *
+ * Elementi HTML: #mobileMenu, .mobile-menu, .mobile-menu__content,
+ *   .mobile-menu__quick-links, .mobile-menu__assistenza,
+ *   .mobile-menu__category-btn, .category-products-overlay,
+ *   .category-products__item.
+ * ==========================================================================
+ */
+
+/* === LIVELLO 1: MENU PRINCIPALE === */
+
+/* Fullscreen fisso sotto la navbar (top calcolato da top-bar + main-navbar).
+   inset: 0 riempie tutto lo schermo; il top lo sposta sotto la navbar
+   cosi il menu non copre il logo e il bottone X.
+   Visibilita gestita dal JS tramite la classe .hidden. */
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    top: var(--navbar-height-main);
+    background: var(--color-bg-white);
+    z-index: var(--z-dropdown);
+    overflow-y: auto;
+}
+
+/* Sicurezza: anche se il JS non lo chiude, su desktop il menu e sempre nascosto.
+   !important necessario per sovrascrivere eventuali display inline dal JS. */
+@media (min-width: 768px) {
+    .mobile-menu {
+        display: none !important;
+    }
+}
+
+.mobile-menu__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem 1rem;
+}
+
+
+/* =========================================================================
+   HEADER SECTION (Wiki, Blog, Assistenza)
+   Zona superiore del menu con accessi rapidi e box assistenza.
+   Separata dalle categorie tramite border-bottom.
+   ========================================================================= */
+
+.mobile-menu__header-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-bg-gray-dark);
+}
+
+/* Quick links a 2 colonne: Wiki (sfondo teal) e Blog (sfondo arancione).
+   Grid 1fr 1fr garantisce bottoni della stessa larghezza indipendentemente
+   dalla lunghezza del testo. */
+.mobile-menu__quick-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.mobile-menu__quick-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0.75rem;
+    border-radius: var(--radius-md);
+    transition: opacity var(--transition-fast);
+}
+
+.mobile-menu__quick-link:hover {
+    opacity: 0.9;
+}
+
+.mobile-menu__quick-link--wiki {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+}
+
+.mobile-menu__quick-link--blog {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+}
+
+.mobile-menu__quick-link-icon {
+    color: white;
+    font-size: 1.25rem;
+}
+
+.mobile-menu__quick-link-text {
+    color: white;
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+}
+
+/* Box Assistenza — sfondo scuro (--color-dark) per contrasto con i link.
+   Contiene header con titolo e azioni (Telefona, Email, Chat).
+   Il bottone Chat attiva window.openChat() tramite #mobileMenuChatBtn in navbar.js. */
+.mobile-menu__assistenza {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background-color: var(--color-dark);
+}
+
+.mobile-menu__assistenza-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+}
+
+.mobile-menu__assistenza-icon {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.mobile-menu__assistenza-text {
+    flex: 1;
+}
+
+.mobile-menu__assistenza-title {
+    color: white;
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+}
+
+.mobile-menu__assistenza-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--font-size-xs);
+}
+
+.mobile-menu__assistenza-actions {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu__assistenza-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.1);
+    transition: background var(--transition-fast);
+}
+
+.mobile-menu__assistenza-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-menu__assistenza-btn-icon {
+    color: white;
+    font-size: 1.25rem;
+}
+
+.mobile-menu__assistenza-btn-text {
+    color: white;
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+}
+
+.mobile-menu__assistenza-btn-copy {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+}
+
+#mobileCopyEmailBtn {
+    position: relative;
+}
+
+
+/* =========================================================================
+   SEZIONI CATEGORIE (TEMI, Prodotti)
+   Lista di bottoni categoria; il click su uno di essi apre il Livello 2
+   (overlay prodotti) tramite initMobileCategoryButtons() in navbar.js.
+   ========================================================================= */
+
+.mobile-menu__section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.mobile-menu__section--products {
+    margin-top: 0.25rem;
+}
+
+.mobile-menu__section-title {
+    padding: 0.5rem 1rem;
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+}
+
+/* Bottone categoria — layout "icona + nome | freccia".
+   INTERAZIONE JS: ha la classe .category-nav-btn (non BEM) usata da
+   initMobileCategoryButtons() per collegare il click all'apertura
+   dell'overlay prodotti con data-category come selettore. */
+.mobile-menu__category-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.625rem 0.75rem;
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast);
+}
+
+.mobile-menu__category-btn:hover {
+    background: var(--color-bg-gray-light);
+}
+
+.mobile-menu__category-left {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.mobile-menu__category-icon {
+    color: var(--color-primary);
+    font-size: 1.125rem;
+}
+
+.mobile-menu__category-name {
+    font-size: var(--font-size-sm);
+    color: var(--color-dark);
+}
+
+.mobile-menu__category-arrow {
+    color: var(--color-text-muted);
+    font-size: 1.125rem;
+}
+
+
+/* =========================================================================
+   LIVELLO 2: OVERLAY PRODOTTI PER CATEGORIA (fullscreen)
+   Mostrato dal JS quando l'utente clicca un bottone categoria nel Livello 1.
+   Contiene la lista prodotti (iniettata come innerHTML dal JS)
+   e un bottone "back" per tornare al Livello 1.
+   ========================================================================= */
+
+/* top: 56px allinea l'overlay sotto la navbar mobile (senza top-bar).
+   Visibilita gestita dalla classe .hidden togglata dal JS. */
+.category-products-overlay {
+    position: fixed;
+    inset: 0;
+    top: 56px;
+    background: var(--color-bg-white);
+    z-index: var(--z-dropdown);
+}
+
+.category-products__scroll {
+    overflow-y: auto;
+    height: 100%;
+}
+
+/* padding-bottom generoso (10rem) per evitare che l'ultimo prodotto
+   sia coperto da elementi fissi in basso (es. footer mobile del carrello). */
+.category-products__list {
+    padding: 1rem;
+    padding-bottom: 10rem;
+}
+
+/* --- Singolo link prodotto --- */
+.category-products__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 0;
+    color: var(--color-dark);
+    transition: color var(--transition-fast);
+}
+
+.category-products__item:hover {
+    color: var(--color-primary);
+}
+
+.category-products__item-icon {
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+/* Bottone "back" — generato dinamicamente dal JS (showCategoryProducts)
+   con ID #backBtnInList e listener click che richiama hideCategoryProducts(). */
+.category-products__back {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-dark);
+    transition: color var(--transition-fast);
+}
+
+.category-products__back:hover {
+    color: var(--color-primary);
+}
+
+.category-products__back-icon {
+    font-size: 1.25rem;
+}
+
+.category-products__back-title {
+    font-weight: 600;
+    font-size: 1rem;
+}

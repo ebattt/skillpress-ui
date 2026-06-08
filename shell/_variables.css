@@ -1,0 +1,149 @@
+/**
+ * ==========================================================================
+ * VARIABILI CSS -- Design tokens e CSS Custom Properties
+ * ==========================================================================
+ *
+ * SCOPO:
+ *   Fonte unica di verita (single source of truth) per tutti i valori
+ *   di design del sistema navbar Skillpress. Ogni sotto-file referenzia
+ *   queste variabili tramite var(--nome), rendendo la personalizzazione
+ *   centralizzata e prevedibile.
+ *
+ * DIPENDENZE:
+ *   Nessuna -- questo file deve essere importato PRIMA di tutti gli altri.
+ *   Viene caricato per primo da navbar.css tramite @import.
+ *
+ * ORGANIZZAZIONE:
+ *   Le variabili sono raggruppate per categoria funzionale
+ *   (colori, dimensioni, spacing, tipografia, ecc.).
+ *
+ * PERSONALIZZAZIONE:
+ *   Per cambiare il tema, sovrascrivere le variabili in un :root successivo.
+ *   Esempio: :root { --color-primary: #E91E63; }
+ *
+ * Elementi HTML: nessuno direttamente; usato da tutti i componenti.
+ * ==========================================================================
+ */
+
+:root {
+    /* === COLORI BRAND === */
+    /* Arancione Skillpress: usato per la navbar principale, CTA e accenti */
+    --color-primary: #F08A00;
+    --color-primary-light: #FFB149;      /* hover e variante chiara */
+    --color-primary-dark: #D67800;       /* active e variante scura */
+
+    /* Teal/verde: usato per la top bar, mega menu trigger, badge carrello */
+    --color-secondary: #1C7264;
+    --color-secondary-light: #298979;
+    --color-secondary-dark: #0F544D;
+
+    /* Blu scuro: usato per il bottone Skillpoints e sfumature top bar */
+    --color-dark: #003E51;
+    --color-dark-light: #0A5A72;
+
+    /* === COLORI TESTO === */
+    /* Scala di grigi con contrasto WCAG AA verificato */
+    --color-text: #374151;               /* gray-700 -- testo principale */
+    --color-text-light: #6B7280;         /* gray-500 -- testo secondario */
+    --color-text-muted: #9CA3AF;         /* gray-400 -- placeholder e disabilitato */
+
+    /* === COLORI SFONDO === */
+    /* Grigi neutri per sfondi, bordi e separatori */
+    --color-bg-white: #FFFFFF;
+    --color-bg-gray: #F5F5F5;           /* sfondo barra categorie */
+    --color-bg-gray-light: #F9FAFB;     /* hover voci dropdown */
+    --color-bg-gray-dark: #E5E7EB;      /* bordi e separatori */
+
+    /* === GRADIENTI === */
+    /* Il gradiente top-bar va da teal a blu scuro per dare profondita alla barra */
+    --gradient-top-bar: linear-gradient(90deg, #1C7264 0%, #0F544D 50%, #003E51 100%);
+    --gradient-orange: linear-gradient(135deg, #F08A00 0%, #FFB149 100%);
+    --gradient-teal: linear-gradient(135deg, #1C7264 0%, #298979 100%);
+
+    /* === DIMENSIONI NAVBAR === */
+    /* Altezze fisse delle tre barre orizzontali che compongono la navbar.
+       Il totale (144px) serve a calcolare l'offset del contenuto pagina
+       e il margin-top dello sticky container. */
+    --navbar-height-top: 36px;           /* barra verde superiore */
+    --navbar-height-main: 64px;          /* barra arancione centrale */
+    --navbar-height-categories: 44px;    /* barra grigia categorie */
+    --navbar-height-total: 144px;        /* somma: 36 + 64 + 44 */
+
+    /* === DIMENSIONI MEGA MENU E DROPDOWN === */
+    /* Il mega menu usa min() per adattarsi a viewport stretti senza media query */
+    --mega-menu-width: min(1000px, 95vw);
+    --mega-menu-height: 420px;
+    --mega-menu-sidebar-width: 260px;
+
+    /* Scala dimensioni dropdown: sm per voci singole, xl per multi-colonna */
+    --dropdown-width-sm: 176px;
+    --dropdown-width-md: 208px;
+    --dropdown-width-lg: 320px;
+    --dropdown-width-xl: 384px;
+
+    /* === SPACING === */
+    /* Scala a incrementi di x2 basata su 0.25rem (4px) */
+    --spacing-xs: 0.25rem;              /* 4px  -- gap minimi, padding icone */
+    --spacing-sm: 0.5rem;               /* 8px  -- gap interni, padding piccoli */
+    --spacing-md: 1rem;                 /* 16px -- gap standard tra elementi */
+    --spacing-lg: 1.5rem;               /* 24px -- padding container */
+    --spacing-xl: 2rem;                 /* 32px -- spaziature ampie */
+
+    /* === BORDER RADIUS === */
+    /* Scala progressiva: sm per input, md per bottoni, lg per card/dropdown,
+       full per pill-button e badge circolari */
+    --radius-sm: 0.375rem;              /* 6px */
+    --radius-md: 0.5rem;                /* 8px */
+    --radius-lg: 0.75rem;               /* 12px */
+    --radius-xl: 1rem;                  /* 16px */
+    --radius-full: 9999px;              /* cerchio perfetto / pill */
+
+    /* === OMBRE === */
+    /* Scala progressiva per gerarchia visiva: spread negativo evita bordi netti.
+       sm = navbar, md = card, lg = search bar, xl = focus search, 2xl = dropdown */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+    /* === TRANSIZIONI === */
+    /* Tre velocita per coprire tutti i casi d'uso:
+       fast = hover/focus immediati, normal = dropdown, slow = scroll/slide */
+    --transition-fast: 150ms ease;
+    --transition-normal: 200ms ease;
+    --transition-slow: 300ms ease;
+
+    /* === SCALA Z-INDEX === */
+    /* Gerarchia ordinata per evitare conflitti di sovrapposizione.
+       Regola: ogni livello e' 10 unita sopra il precedente.
+
+       GERARCHIA (dal basso verso l'alto):
+       base(1) < dropdown(50) < sticky(60) < popover(70) < overlay(80) < modal(90) < mobile-menu(100) < toast(110)
+
+       - dropdown: pannelli categorie e assistenza
+       - sticky: navbar-container che copre la top-bar allo scroll
+       - popover: gradienti fade della barra categorie
+       - overlay: frecce scroll e sfondo semi-trasparente
+       - modal: dropdown assistenza (deve stare sopra la navbar sticky)
+       - mobile-menu: menu mobile fullscreen (sopra tutto tranne toast)
+       - toast: notifiche temporanee (massima priorita visiva) */
+    --z-base: 1;
+    --z-dropdown: 50;
+    --z-sticky: 60;
+    --z-popover: 70;
+    --z-overlay: 80;
+    --z-modal: 90;
+    --z-mobile-menu: 100;
+    --z-toast: 110;
+
+    /* === TIPOGRAFIA === */
+    /* Font stack: Manrope come primario (Google Fonts), con fallback
+       su font di sistema per garantire rendering immediato (FOUT minimizzato) */
+    --font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-size-xs: 0.75rem;            /* 12px -- top bar, badge, note */
+    --font-size-sm: 0.875rem;           /* 14px -- dropdown, categorie */
+    --font-size-base: 1rem;             /* 16px -- testo standard */
+    --font-size-lg: 1.125rem;           /* 18px -- titoli sezione */
+    --font-size-xl: 1.25rem;            /* 20px -- titoli prominenti */
+}

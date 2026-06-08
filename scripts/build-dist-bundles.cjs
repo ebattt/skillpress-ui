@@ -41,6 +41,8 @@ const BUNDLE_NAMES = [
     'dashboard.css',
     'landing.css',
     'product-page.css',
+    'shell.css',
+    'auth.css',
 ];
 
 const VERBOSE = process.env.BUILD_DIST_VERBOSE === '1';

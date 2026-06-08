@@ -1,0 +1,319 @@
+/**
+ * ==========================================================================
+ * MEGA MENU -- Pannello "Tutti i Prodotti"
+ * ==========================================================================
+ *
+ * Pannello grande che appare al hover sul bottone "Tutti i Prodotti"
+ * nella barra categorie. Composto da sidebar sinistra (lista categorie)
+ * e pannello destro (griglia prodotti). La categoria attiva viene
+ * evidenziata tramite JS (classe --active aggiunta da navbar.js).
+ *
+ * LAYOUT:
+ *   .mega-menu__inner usa flexbox orizzontale per creare due zone:
+ *   - Sidebar sinistra (260px fissi, da --mega-menu-sidebar-width)
+ *   - Pannello destro (flex: 1, occupa lo spazio restante)
+ *
+ * INTERAZIONE CSS-JS (navbar.js → initMegaMenuInteractions):
+ *   - .mega-menu__category-item--active → aggiunta al mouseenter su una
+ *     categoria nella sidebar; evidenzia la categoria corrente.
+ *   - .hidden + display:none → applicati dal JS ai pannelli .category-content
+ *     per mostrare/nascondere i prodotti della categoria selezionata.
+ *   - Il mega menu si apre via CSS :hover; il JS gestisce solo il contenuto.
+ *
+ * DIPENDENZE:
+ *   - _variables.css (colori, ombre, transizioni, dimensioni mega menu)
+ *
+ * Elementi HTML: .mega-menu, .mega-menu__trigger, .mega-menu__dropdown,
+ *   .mega-menu__sidebar, .mega-menu__content, .mega-menu__category-item,
+ *   .mega-menu__products, .mega-menu__product-link, .category-content.
+ * ==========================================================================
+ */
+
+/* === CONTAINER E TRIGGER === */
+
+/* Container relativo: ancora di posizionamento per il dropdown assoluto.
+   flex-shrink: 0 impedisce che il bottone si comprima nella barra categorie. */
+.mega-menu {
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Bottone "Tutti i Prodotti" — sfondo teal (--color-secondary) per distinguerlo
+   dalle altre categorie nella barra grigia. Transizione solo su background
+   per un feedback hover leggero. */
+.mega-menu__trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    color: white;
+    font-size: 0.95rem;
+    line-height: 1.5rem;
+    background-color: var(--color-secondary);
+    white-space: nowrap;
+    transition: background var(--transition-fast);
+}
+
+.mega-menu__trigger:hover {
+    background-color: var(--color-secondary-light);
+}
+
+.mega-menu__trigger-icon {
+    font-size: 1rem;
+}
+
+.mega-menu__trigger-arrow {
+    font-size: var(--font-size-sm);
+}
+
+/* === PANNELLO DROPDOWN === */
+
+/* Il pannello usa un'animazione a 3 proprietà (opacity, visibility, transform)
+   per un effetto "scorrimento verso il basso" fluido (300ms).
+   - opacity + visibility lavorano insieme: visibility:hidden rimuove il pannello
+     dal flusso dei click, opacity:0 lo rende trasparente.
+   - transform: translateY(-10px) crea l'effetto di "caduta" all'apertura.
+   - Dimensioni controllate dalle variabili --mega-menu-width e --mega-menu-height. */
+.mega-menu__dropdown {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: var(--spacing-sm);
+    width: var(--mega-menu-width);
+    max-height: var(--mega-menu-height);
+    background: var(--color-bg-white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-bg-gray-dark);
+    box-shadow: var(--shadow-2xl);
+    z-index: var(--z-dropdown);
+    overflow: hidden;
+
+    /* Stato nascosto di default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity var(--transition-slow),
+                visibility var(--transition-slow),
+                transform var(--transition-slow);
+}
+
+/* Stato visibile: attivato dal :hover CSS oppure dalla classe JS
+   --visible (usata come fallback per controllo programmatico). */
+.mega-menu:hover .mega-menu__dropdown,
+.mega-menu__dropdown--visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* === LAYOUT A DUE COLONNE === */
+
+/* Flexbox orizzontale: sidebar (larghezza fissa) + contenuto (flex: 1).
+   max-height uguale al dropdown per far funzionare overflow-y nei figli. */
+.mega-menu__inner {
+    display: flex;
+    height: 100%;
+    max-height: var(--mega-menu-height);
+}
+
+
+/* =========================================================================
+   SIDEBAR (lista categorie a sinistra)
+   ========================================================================= */
+
+/* Larghezza fissa 260px (--mega-menu-sidebar-width). Lo sfondo grigio chiaro
+   distingue visivamente la navigazione dal contenuto.
+   overflow-y: auto abilita lo scroll se le categorie superano l'altezza. */
+.mega-menu__sidebar {
+    width: var(--mega-menu-sidebar-width);
+    background: var(--color-bg-gray-light);
+    border-right: 1px solid var(--color-bg-gray-dark);
+    padding: var(--spacing-md);
+    overflow-y: auto;
+}
+
+.mega-menu__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* Wrapper per la categoria "TEMI" (featured): separata visivamente con
+   bordo inferiore per dare risalto alla sezione tematica rispetto ai prodotti. */
+.mega-menu__category-featured-wrapper {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-bg-gray-dark);
+}
+
+/* Singolo item categoria nella sidebar.
+   INTERAZIONE JS: navbar.js aggiunge/rimuove la classe
+   .mega-menu__category-item--active al mouseenter per evidenziare
+   la categoria corrente (vedi initMegaMenuInteractions). */
+.mega-menu__category-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--color-text);
+    transition: background-color var(--transition-fast),
+                color var(--transition-fast);
+    cursor: pointer;
+}
+
+/* --active viene aggiunta dal JS; l'hover CSS offre feedback istantaneo.
+   Entrambi condividono lo stesso stile per coerenza visiva. */
+.mega-menu__category-item:hover,
+.mega-menu__category-item--active {
+    background: transparent;
+    color: var(--color-primary);
+}
+
+/* Categoria "TEMI" (featured) — sfondo arancione semitrasparente
+   per distinguerla dalle normali categorie prodotto. */
+.mega-menu__category-item--featured {
+    background: rgba(240, 138, 0, 0.1);
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.mega-menu__category-item--featured:hover {
+    background: rgba(240, 138, 0, 0.18);
+}
+
+.mega-menu__category-icon {
+    font-size: 1rem;
+}
+
+.mega-menu__category-name {
+    flex: 1;
+}
+
+.mega-menu__category-arrow {
+    font-size: var(--font-size-sm);
+}
+
+
+/* =========================================================================
+   CONTENUTO (pannello prodotti a destra)
+   ========================================================================= */
+
+/* flex: 1 occupa tutto lo spazio a destra della sidebar.
+   overflow-y: auto abilita lo scroll verticale per categorie con molti prodotti.
+   I pannelli .category-content al suo interno vengono mostrati/nascosti dal JS
+   tramite la coppia .hidden + display:none. */
+.mega-menu__content {
+    flex: 1;
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+}
+
+.mega-menu__content-title {
+    font-size: 1.1875rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Griglia prodotti a 3 colonne: gap verticale ridotto (4px) per compattezza,
+   gap orizzontale maggiore (24px) per leggibilità tra le colonne. */
+.mega-menu__products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xs) var(--spacing-lg);
+}
+
+.mega-menu__product-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--spacing-xs) 0;
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    transition: color var(--transition-fast);
+}
+
+.mega-menu__product-link:hover {
+    color: var(--color-primary);
+}
+
+.mega-menu__product-icon {
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+/* === STATO VUOTO === */
+
+/* Mostrato come fallback se nessun pannello categoria corrisponde
+   (il JS cerca #default-content quando l'ID non viene trovato). */
+.mega-menu__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: var(--color-text-muted);
+}
+
+.mega-menu__empty-icon {
+    font-size: 64px;
+    margin-bottom: var(--spacing-md);
+}
+
+.mega-menu__empty-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+}
+
+.mega-menu__empty-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}
+
+
+/* =========================================================================
+   LAYOUT A GRUPPI (categorie con sottocategorie)
+   Per categorie che contengono sottocategorie + prodotti sfusi.
+   Ogni gruppo è una colonna nella griglia; i prodotti al suo interno
+   sono impilati verticalmente sotto il titolo della sottocategoria.
+   ========================================================================= */
+
+/* Container gruppi: griglia a 3 colonne come .mega-menu__products,
+   ma ogni cella è un gruppo autonomo (sottocategoria + prodotti). */
+.mega-menu__groups {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md) var(--spacing-lg);
+}
+
+/* Singolo gruppo (sottocategoria). Contiene titolo + lista prodotti. */
+.mega-menu__group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Titolo sottocategoria — stile coerente con .category-dropdown__subtitle */
+.mega-menu__group-title {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Lista prodotti dentro un gruppo — verticale */
+.mega-menu__group-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}

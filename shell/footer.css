@@ -1,0 +1,344 @@
+/**
+ * ============================================================================
+ * SKILLPRESS - STILI FOOTER
+ * ============================================================================
+ *
+ * Foglio di stile per il footer e tutti i suoi componenti.
+ * Utilizza CSS Custom Properties (variabili) per facile personalizzazione.
+ *
+ * STRUTTURA FILE:
+ * ---------------
+ * 1. CSS Variables (colori, dimensioni, transizioni)
+ * 2. Footer principale
+ * 3. Colonna Logo e Info
+ * 4. Colonne Link
+ * 5. Colonna Social
+ * 6. Widget Feedaty
+ * 7. Bottom Bar
+ * 8. Responsive
+ * 9. Animazioni
+ *
+ * @author Skillpress Team
+ * @version 1.0.0
+ */
+
+/* ============================================================================
+   1. CSS VARIABLES
+   ============================================================================ */
+
+:root {
+    /* ------------------------------------------
+       COLORI FOOTER
+       ------------------------------------------ */
+    --footer-bg: #1e2a32;                   /* Sfondo principale */
+    --footer-bg-bottom: rgba(255, 255, 255, 0.1); /* Bordo bottom bar */
+
+    /* ------------------------------------------
+       COLORI TESTO FOOTER
+       ------------------------------------------ */
+    --footer-text: rgba(255, 255, 255, 0.8);     /* Testo principale */
+    --footer-text-muted: rgba(255, 255, 255, 0.5); /* Testo secondario */
+    --footer-heading: #FFFFFF;                   /* Titoli sezioni */
+
+    /* ------------------------------------------
+       COLORI BRAND (ereditate da navbar)
+       ------------------------------------------ */
+    --color-primary: #F08A00;               /* Arancione principale */
+    --color-primary-light: #FFB149;         /* Arancione chiaro */
+
+    /* ------------------------------------------
+       DIMENSIONI
+       ------------------------------------------ */
+    --footer-max-width: 1280px;
+    --footer-padding-x: 1.5rem;             /* 24px */
+    --footer-padding-top: 1.5rem;           /* 24px */
+    --footer-padding-bottom: 0.75rem;       /* 12px */
+
+    /* ------------------------------------------
+       SPACING
+       ------------------------------------------ */
+    --footer-gap-x: 3rem;                   /* 48px - gap tra colonne */
+    --footer-gap-y: 2rem;                   /* 32px - gap verticale */
+    --footer-link-gap: 0.625rem;            /* 10px - gap tra link */
+
+    /* ------------------------------------------
+       FONT
+       ------------------------------------------ */
+    --footer-font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --footer-font-size-xs: 0.6875rem;       /* 11px */
+    --footer-font-size-sm: 0.8125rem;       /* 13px */
+    --footer-font-size-base: 0.875rem;      /* 14px */
+
+    /* ------------------------------------------
+       TRANSIZIONI
+       ------------------------------------------ */
+    --footer-transition: 0.2s ease;
+}
+
+
+/* ============================================================================
+   2. FOOTER PRINCIPALE
+   ============================================================================ */
+
+.footer {
+    background-color: var(--footer-bg);
+    font-family: var(--footer-font-family);
+}
+
+.footer__content {
+    max-width: var(--footer-max-width);
+    margin: 0 auto;
+    padding: var(--footer-padding-top) var(--footer-padding-x) var(--footer-padding-bottom);
+}
+
+.footer__grid {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto auto;
+    gap: var(--footer-gap-y) var(--footer-gap-x);
+    align-items: start;
+}
+
+
+/* ============================================================================
+   3. COLONNA LOGO E INFO
+   ============================================================================ */
+
+.footer__brand {
+    padding-right: 2rem;
+}
+
+.footer__logo {
+    height: 1.75rem;                        /* 28px */
+    margin-bottom: 1rem;
+}
+
+.footer__tagline {
+    color: var(--footer-text);
+    font-size: var(--footer-font-size-sm);
+    line-height: 1.6;
+    max-width: 260px;
+    margin-bottom: 1rem;
+}
+
+.footer__email {
+    display: inline-block;
+    color: var(--color-primary);
+    font-size: var(--footer-font-size-base);
+    font-weight: 600;
+    transition: color var(--footer-transition);
+}
+
+.footer__email:hover {
+    color: var(--color-primary-light);
+}
+
+
+/* ============================================================================
+   4. COLONNE LINK
+   ============================================================================ */
+
+.footer__section {
+    min-width: 120px;
+}
+
+.footer__heading {
+    color: var(--footer-heading);
+    font-size: var(--footer-font-size-base);
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.footer__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--footer-link-gap);
+}
+
+.footer__link {
+    color: var(--footer-text);
+    font-size: var(--footer-font-size-base);
+    transition: color var(--footer-transition);
+    text-decoration: none;
+}
+
+.footer__link:hover {
+    color: var(--color-primary);
+}
+
+
+/* ============================================================================
+   5. COLONNA SOCIAL
+   ============================================================================ */
+
+.footer__social {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer__social-icon {
+    color: var(--footer-text);
+    transition: all var(--footer-transition);
+}
+
+.footer__social-icon:hover {
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.footer__social-icon svg {
+    width: 1.25rem;                         /* 20px */
+    height: 1.25rem;
+}
+
+
+/* ============================================================================
+   6. WIDGET FEEDATY
+   ============================================================================ */
+
+.footer__feedaty {
+    min-width: 150px;
+}
+
+
+/* ============================================================================
+   7. BOTTOM BAR
+   ============================================================================ */
+
+.footer__bottom {
+    border-top: 1px solid var(--footer-bg-bottom);
+    margin-top: 0.75rem;
+}
+
+.footer__bottom-content {
+    max-width: var(--footer-max-width);
+    margin: 0 auto;
+    padding: 0.625rem var(--footer-padding-x);
+}
+
+.footer__copyright {
+    color: var(--footer-text-muted);
+    font-size: var(--footer-font-size-xs);
+    text-align: center;
+}
+
+.footer__copyright a {
+    color: var(--footer-text-muted);
+    transition: color var(--footer-transition);
+}
+
+.footer__copyright a:hover {
+    color: var(--footer-text);
+}
+
+@media (min-width: 768px) {
+    .footer__copyright {
+        text-align: left;
+    }
+}
+
+
+/* ============================================================================
+   8. RESPONSIVE
+   ============================================================================ */
+
+/* Tablet (4 colonne) */
+@media (max-width: 1023px) {
+    .footer__grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem 1.5rem;
+    }
+
+    .footer__brand {
+        grid-column: 1 / -1;
+        padding-right: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .footer__section {
+        min-width: unset;
+    }
+
+    .footer__feedaty {
+        min-width: unset;
+    }
+}
+
+/* Small Tablet (2 colonne) */
+@media (max-width: 767px) {
+    .footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem 2rem;
+    }
+
+    .footer__brand {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Mobile (1 colonna) */
+@media (max-width: 639px) {
+    .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .footer__brand {
+        text-align: center;
+    }
+
+    .footer__tagline {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer__section {
+        text-align: center;
+    }
+
+    .footer__heading {
+        display: block;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .footer__links {
+        align-items: center;
+    }
+
+    .footer__social {
+        justify-content: center;
+    }
+
+    .footer__feedaty {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+/* ============================================================================
+   9. ANIMAZIONI
+   ============================================================================ */
+
+@keyframes footerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer--animated {
+    animation: footerFadeIn 0.5s ease-out;
+}

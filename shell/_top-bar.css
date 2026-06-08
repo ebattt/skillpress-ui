@@ -1,0 +1,255 @@
+/**
+ * ==========================================================================
+ * TOP BAR -- Barra verde/blu gradiente (header superiore)
+ * ==========================================================================
+ *
+ * SCOPO:
+ *   Barra superiore con gradiente teal-to-dark. Contiene informazioni
+ *   promozionali ("Spedizione gratuita SEMPRE") e il dropdown Assistenza
+ *   con contatti e link utili.
+ *
+ * DIPENDENZE:
+ *   - _variables.css (colori, gradienti, z-index, spacing, transizioni)
+ *
+ * COMPORTAMENTO RESPONSIVE:
+ *   - Mobile (< 768px): completamente nascosta (display:none)
+ *   - Desktop (>= 768px): fissa in alto (position:fixed via #topBlueBar)
+ *
+ * INTERAZIONE CON LA NAVBAR:
+ *   La top bar e' fixed e la navbar-container ha margin-top:26px per
+ *   compensare. Quando l'utente scrolla, la navbar sticky (z-index:60)
+ *   copre la top bar (z-index:50). Il dropdown assistenza ha z-index:90
+ *   per apparire sopra la navbar sticky.
+ *
+ * Elementi HTML: #topBlueBar, .top-bar, .top-bar__container,
+ *   .assistenza-dropdown, .assistenza-dropdown__item.
+ * ==========================================================================
+ */
+
+/* === CONTENITORE FIXED DELLA TOP BAR === */
+/* L'ID #topBlueBar wrappa la .top-bar ed e' fixed in cima al viewport.
+   Altezza 26px: calcolata per contenere una riga di testo xs + padding.
+   overflow:visible e' necessario per far uscire il dropdown assistenza. */
+#topBlueBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 26px;
+    z-index: var(--z-dropdown);
+    overflow: visible;
+}
+
+/* Il dropdown assistenza ha z-index:modal (90) perche' deve apparire
+   sopra la navbar sticky (z-index:60) quando l'utente ha scrollato */
+#topBlueBar #assistenzaDropdown {
+    z-index: var(--z-modal);
+}
+
+/* === STRUTTURA TOP BAR === */
+/* Nascosta su mobile per risparmiare spazio verticale.
+   Il gradiente va da teal (#1C7264) a blu scuro (#003E51),
+   definito in _variables.css come --gradient-top-bar. */
+.top-bar {
+    display: none;
+    width: 100%;
+    background: var(--gradient-top-bar);
+}
+
+/* Breakpoint principale 768px: la top bar appare solo su desktop */
+@media (min-width: 768px) {
+    .top-bar {
+        display: block;
+    }
+}
+
+/* Container centrato: max-width 1500px coerente con tutte le barre navbar */
+.top-bar__container {
+    max-width: 1500px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.25rem 1.5rem;
+}
+
+.top-bar__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: white;
+    font-size: var(--font-size-xs);
+    line-height: 1rem;
+}
+
+/* --- Lato sinistro: spedizione --- */
+.top-bar__left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+@media (min-width: 768px) {
+    .top-bar__left {
+        gap: var(--spacing-md);
+    }
+}
+
+.top-bar__shipping {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+/* Il filtro brightness(0) invert(1) converte qualsiasi icona in bianco puro,
+   evitando di mantenere varianti bianche separate delle icone SVG */
+.top-bar__icon {
+    width: 1rem;
+    height: 1rem;
+    filter: brightness(0) invert(1);
+}
+
+/* --- Lato destro: assistenza dropdown --- */
+.top-bar__right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.top-bar__dropdown {
+    position: relative;
+}
+
+.top-bar__btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    transition: color var(--transition-fast);
+}
+
+.top-bar__btn:hover {
+    color: var(--color-primary);
+}
+
+.top-bar__icon-arrow {
+    font-size: var(--font-size-xs);
+    transition: transform var(--transition-normal);
+}
+
+
+/* =========================================================================
+   ASSISTENZA DROPDOWN
+   Pannello che appare al click/hover sul bottone "Assistenza".
+   Contiene link a WhatsApp, email, FAQ con icone colorate.
+   ========================================================================= */
+
+/* Nascosto di default con opacity:0 + visibility:hidden per permettere
+   transizioni animate. Il JS togla queste proprieta' per mostrarlo.
+   overflow:hidden taglia gli angoli arrotondati degli item interni. */
+.assistenza-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: var(--spacing-xs);
+    width: 16rem;
+    background: var(--color-bg-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-2xl);
+    border: 1px solid var(--color-bg-gray-dark);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-normal),
+                visibility var(--transition-normal);
+    overflow: hidden;
+    z-index: var(--z-modal);
+}
+
+.assistenza-dropdown__item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: var(--color-text);
+    transition: background var(--transition-fast);
+}
+
+.assistenza-dropdown__item:hover {
+    background: var(--color-bg-gray-light);
+}
+
+.assistenza-dropdown__item--border {
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.assistenza-dropdown__item--full {
+    width: 100%;
+}
+
+/* === ICONE ASSISTENZA === */
+/* Cerchi colorati con sfondo semitrasparente (rgba al 10%): forniscono
+   un indicatore visivo del tipo di contatto senza risultare troppo pesanti */
+.assistenza-dropdown__icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.assistenza-dropdown__icon .material-symbols-outlined {
+    font-size: 1rem;
+}
+
+.assistenza-dropdown__icon--primary {
+    background: rgba(240, 138, 0, 0.1);
+    color: var(--color-primary);
+}
+
+.assistenza-dropdown__icon--accent {
+    background: rgba(28, 114, 100, 0.1);
+    color: var(--color-secondary);
+}
+
+.assistenza-dropdown__icon--green {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+/* --- Testo assistenza --- */
+.assistenza-dropdown__title {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+}
+
+.assistenza-dropdown__subtitle {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+}
+
+.assistenza-dropdown__text-left {
+    text-align: left;
+    flex: 1;
+}
+
+.assistenza-dropdown__copy-icon {
+    margin-left: auto;
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+}
+
+.assistenza-dropdown__item:hover .assistenza-dropdown__copy-icon {
+    color: var(--color-primary);
+}
+
+/* Pallino verde "online": indicatore di stato per il supporto WhatsApp */
+.assistenza-dropdown__status {
+    margin-left: auto;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: #22c55e;
+    border-radius: var(--radius-full);
+}

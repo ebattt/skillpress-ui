@@ -1,0 +1,160 @@
+/**
+ * ==========================================================================
+ * CATEGORIES BAR -- Barra grigia con categorie scrollabili
+ * ==========================================================================
+ *
+ * Barra orizzontale sotto la navbar arancione. Contiene il mega menu
+ * "Tutti i Prodotti", i dropdown delle singole categorie e il bottone
+ * "Risparmia con Skillpoints". Include frecce di scroll e gradienti
+ * fade ai lati quando il contenuto eccede la larghezza visibile.
+ *
+ * Elementi HTML: .categories-bar, .categories-bar__container,
+ *   .categories-bar__scroll-wrapper, .categories-bar__fade,
+ *   .categories-bar__arrow, .categories-bar__inner,
+ *   .skillpoints-btn, #categoryScrollContainer.
+ * ==========================================================================
+ */
+
+.categories-bar {
+    display: none;
+    position: relative;
+    border-top: 1px solid var(--color-bg-gray-dark);
+    background-color: var(--color-bg-gray);
+    z-index: var(--z-sticky);
+}
+
+@media (min-width: 768px) {
+    .categories-bar {
+        display: block;
+    }
+}
+
+.categories-bar__container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.categories-bar__scroll-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    overflow: visible;
+}
+
+@media (min-width: 1280px) {
+    .categories-bar__scroll-wrapper {
+        margin-right: 2rem;
+    }
+}
+
+/* --- Gradienti fade laterali ---
+   pointer-events: auto blocca hover su elementi parzialmente nascosti,
+   evitando che dropdown appaiano tagliati. */
+.categories-bar__fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 7rem;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    pointer-events: auto;
+    z-index: var(--z-popover);
+}
+
+.categories-bar__fade--left {
+    left: -1rem;
+    background: linear-gradient(to right, var(--color-bg-gray) 50%, transparent 100%);
+}
+
+.categories-bar__fade--right {
+    right: 0;
+    width: 4rem;
+    background: linear-gradient(to left, var(--color-bg-gray) 30%, transparent 100%);
+}
+
+/* --- Frecce scroll --- */
+.categories-bar__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-gray);
+    transition: opacity var(--transition-normal),
+                background-color var(--transition-normal);
+    opacity: 0;
+    pointer-events: none;
+    z-index: var(--z-overlay);
+}
+
+.categories-bar__arrow:hover {
+    background: var(--color-bg-gray-dark);
+}
+
+.categories-bar__arrow--left {
+    left: -1rem;
+}
+
+.categories-bar__arrow--right {
+    right: -1rem;
+}
+
+.categories-bar__arrow-icon {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}
+
+/* --- Scroll container ---
+   clip-path: lascia spazio sotto per i dropdown che escono verso il basso */
+.categories-bar__scroll-container {
+    padding: 0.5rem 0;
+    overflow: visible;
+    clip-path: inset(-10px -10px -600px -10px);
+}
+
+/* Assicura che dropdown appaiano sopra il contenuto */
+#categoryScrollContainer {
+    overflow: visible;
+}
+
+.categories-bar__inner {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-wrap: nowrap;
+    transition: transform var(--transition-slow);
+    will-change: transform;
+}
+
+/* --- Bottone Skillpoints (visibile solo >= 1280px) --- */
+.skillpoints-btn {
+    display: none;
+    align-items: center;
+    margin-left: 1rem;
+    padding: 0.25rem 0.75rem;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: white;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+    flex-shrink: 0;
+    background-color: var(--color-dark);
+    transition: opacity var(--transition-fast);
+}
+
+.skillpoints-btn:hover {
+    opacity: 0.9;
+}
+
+@media (min-width: 1280px) {
+    .skillpoints-btn {
+        display: inline-flex;
+    }
+}
