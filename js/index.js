@@ -30,6 +30,7 @@
         'DashboardDropdownBox',
         'DashboardSettingsForm',
         'DashboardShell',
+        'ExpandableTable',
         'FeedatyWidget',
         'FileUploadBox',
         'InfoDropdown',
@@ -37,9 +38,7 @@
         'OrderProductDropdown',
         'OrderStatusSteps',
         'OrderStepDetail',
-        'OrdersTable',
         'Preview',
-        'SupplierActivityTable',
         'ToggleSwitch'
     ];
 

@@ -1,4 +1,4 @@
-import '../components/file-upload-box.css';
+import '../components/file-modal.css';
 import '../js/file-upload-box.js';
 import { expect, within } from 'storybook/test';
 

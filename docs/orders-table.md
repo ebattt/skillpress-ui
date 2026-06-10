@@ -1,5 +1,12 @@
 # OrdersTable
 
+> **0.5.0 — markup-based.** L'espansione riga e' ora gestita dal modulo unico
+> `ExpandableTable` (`js/expandable-table.js`): chevron e detail-row vivono nel
+> MARKUP, il JS fa solo wiring. Hook: `data-expandable-table`,
+> `data-expandable-table-row` (con `aria-controls` -> id detail-row),
+> `data-expandable-table-toggle`. Evento: `sp:expandable-table:row-toggle`.
+> Il vecchio `OrdersTable` / `data-orders-table*` non esiste piu'.
+
 `OrdersTable` mostra la tabella ordini compatta della dashboard.
 
 ## Fonte

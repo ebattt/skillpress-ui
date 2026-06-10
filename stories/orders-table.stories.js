@@ -1,7 +1,7 @@
 import '../primitives/badge.css';
 import '../components/dashboard-action-badge.css';
 import '../components/orders-table.css';
-import '../js/orders-table.js';
+import '../js/expandable-table.js';
 import { expect, within } from 'storybook/test';
 
 const actionBadge = (label, icon = 'upload', error = false) => `
@@ -56,8 +56,31 @@ const rows = [
     }
 ];
 
+// Detail-row markup-based: replica le colonne nascoste su mobile (--mobile-hide)
+// in una riga di dettaglio renderizzata nel markup. ExpandableTable la mostra
+// solo agganciando aria-controls/hidden — NON la genera.
+const detailEntry = (label, value) => value && value !== '-'
+    ? `<div><dt>${label}</dt><dd>${value}</dd></div>` : '';
+
+const renderDetailRow = (row) => `
+    <tr class="tr-mobile-details" id="orders-detail-${row.id}" hidden>
+        <td colspan="12">
+            <dl class="mobile-details-grid">
+                <div><dt>Lavoro</dt><dd>${row.title}</dd></div>
+                ${detailEntry('Prodotti', row.products.join(', '))}
+                ${detailEntry('Pezzi', row.quantities.join(', '))}
+                ${detailEntry('Referente', row.contact)}
+                ${detailEntry('Spedito il', row.shipped)}
+                ${row.actions.length ? `<div><dt>Azioni richieste</dt><dd><div class="table-actions-list">${row.actions.join('')}</div></dd></div>` : ''}
+                ${detailEntry('Pagamento', row.payment)}
+                ${detailEntry('Spedizione', row.delivery)}
+            </dl>
+        </td>
+    </tr>
+`;
+
 const renderRows = (items = rows) => items.map((row) => `
-    <tr data-recent-order-card-order-id="${row.orderId}">
+    <tr data-recent-order-card-order-id="${row.orderId}" data-expandable-table-row aria-controls="orders-detail-${row.id}" aria-expanded="false" tabindex="0">
         <td class="orders-table__cell--id font-semibold text-dark-blue orders-table__cell--nowrap">${row.id}</td>
         <td class="orders-table__cell--title">
             <div class="table-title-cell">
@@ -82,17 +105,23 @@ const renderRows = (items = rows) => items.map((row) => `
         <td class="orders-table__cell--payment orders-table__cell--mobile-hide orders-table__cell--simplified-show">${row.payment}</td>
         <td class="orders-table__cell--spedizione orders-table__cell--mobile-hide">${row.delivery}</td>
         <td class="orders-table__cell--total font-semibold orders-table__cell--text-right orders-table__cell--nowrap">${row.total}</td>
+        <td class="orders-table__cell--mobile-chevron">
+            <button class="orders-table__mobile-toggle" type="button" aria-label="Mostra dettagli riga" data-expandable-table-toggle>
+                <span class="orders-table__mobile-toggle-icon" aria-hidden="true"></span>
+            </button>
+        </td>
     </tr>
+    ${renderDetailRow(row)}
 `).join('');
 
 const renderTable = (items = rows) => {
     const body = items.length
         ? renderRows(items)
-        : '<tr><td class="orders-table__empty" colspan="11">Nessun ordine disponibile</td></tr>';
+        : '<tr><td class="orders-table__empty" colspan="12">Nessun ordine disponibile</td></tr>';
     const root = document.createElement('div');
     root.innerHTML = `
         <div class="table-wrapper table-wrapper--scroll">
-            <table class="orders-table orders-table--compact" data-orders-table>
+            <table class="orders-table orders-table--compact" data-expandable-table data-expandable-table-label-show="Mostra dettagli riga" data-expandable-table-label-hide="Nascondi dettagli riga">
                 <thead>
                     <tr>
                         <th class="th-id">#</th>
@@ -106,6 +135,7 @@ const renderTable = (items = rows) => {
                         <th class="th-mobile-hide th-simplified-show th-payment">Pagamento</th>
                         <th class="th-mobile-hide">Spedizione</th>
                         <th class="th-text-right th-total">Totale</th>
+                        <th class="th-mobile-chevron" aria-hidden="true"></th>
                     </tr>
                 </thead>
                 <tbody>${body}</tbody>
@@ -122,7 +152,7 @@ export default {
         layout: 'padded',
         docs: {
             description: {
-                component: 'Dashboard compact orders table. Compose with Badge, DashboardActionBadge, SearchFilterBar and TablePagination.'
+                component: 'Dashboard compact orders table. Chevron and mobile detail rows live in the markup; ExpandableTable only wires the expand/collapse behavior. Compose with Badge, DashboardActionBadge, SearchFilterBar and TablePagination.'
             }
         }
     }
@@ -166,17 +196,18 @@ export const Empty = {
 export const MobileDetails = {
     render: () => renderTable(rows.slice(0, 2)),
     play: async ({ canvasElement }) => {
-        window.SkillpressUI.OrdersTable.init(canvasElement);
+        window.SkillpressUI.ExpandableTable.init(canvasElement);
         const canvas = within(canvasElement);
         const toggle = canvas.getAllByLabelText('Mostra dettagli riga')[0];
         toggle.click();
-        await expect(canvas.getByText('Prodotti')).toBeInTheDocument();
+        const detailRow = canvasElement.querySelector('#orders-detail-110456');
+        await expect(detailRow).not.toHaveAttribute('hidden');
         await expect(toggle.closest('tr')).toHaveAttribute('aria-expanded', 'true');
     },
     parameters: {
         docs: {
             description: {
-                story: 'Optional JS behavior: hidden mobile columns are rendered into an expandable details row. Routing/detail CTA remains out of scope.'
+                story: 'Hidden mobile columns are duplicated in a markup detail row; ExpandableTable toggles its `hidden` state on tap. Routing/detail CTA stays out of scope.'
             }
         }
     }

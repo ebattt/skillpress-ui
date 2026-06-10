@@ -3,6 +3,11 @@
  *
  * @public-data data-preview, data-preview-trigger, data-preview-panel, data-preview-close, data-preview-option
  * @public-event sp:preview:open, sp:preview:close, sp:preview:sync
+ *
+ * Markup-contract (audit moduli JS 2026-06): violazione FORMALE ma innocua.
+ * Il JS genera/posiziona solo il guscio del popover di anteprima al click;
+ * trigger, opzioni e CONTENUTO della preview sono server-rendered.
+ * Non richiede fix.
  */
 (function() {
     'use strict';

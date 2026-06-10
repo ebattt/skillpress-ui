@@ -31,6 +31,7 @@ const { execSync } = require('child_process');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 const PRIMITIVES_DIR = path.join(REPO_ROOT, 'primitives');
+const PAGE_DIR = path.join(REPO_ROOT, 'page');
 const COMPONENTS_DIR = path.join(REPO_ROOT, 'components');
 const JS_DIR = path.join(REPO_ROOT, 'js');
 const BUNDLES_DIR = path.join(REPO_ROOT, 'bundles');
@@ -110,7 +111,9 @@ function main() {
     const pkg = readJson(path.join(REPO_ROOT, 'package.json'));
 
     // ---- 1. Voci API esistono nei sorgenti ----
-    const primitiveFiles = readAll(listFiles(PRIMITIVES_DIR, '.css'));
+    const primitiveFiles = readAll(
+        listFiles(PRIMITIVES_DIR, '.css').concat(listFiles(PAGE_DIR, '.css'))
+    );
     const componentFiles = readAll(listFiles(COMPONENTS_DIR, '.css'));
     const jsFiles = readAll(listFiles(JS_DIR, '.js'));
 

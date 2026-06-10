@@ -4,7 +4,7 @@ description: Dashboard upload modal shell con dropzone, tabella file, stati e be
 layer: components
 strategy: css-js
 status: public-contract
-package_path: components/file-upload-box.css
+package_path: components/file-modal.css
 js_path: js/file-upload-box.js
 ---
 

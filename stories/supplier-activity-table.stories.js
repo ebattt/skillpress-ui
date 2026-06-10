@@ -7,7 +7,7 @@ import '../components/search-filter-bar.css';
 import '../components/orders-table.css';
 import '../components/table-pagination.css';
 import '../components/supplier-activity-table.css';
-import '../js/supplier-activity-table.js';
+import '../js/expandable-table.js';
 import { expect, within } from 'storybook/test';
 
 const rows = [
@@ -46,7 +46,7 @@ const company = `
 `;
 
 const renderDetail = (row) => `
-    <tr class="supplier-activity-table__detail-row" id="supplier-detail-${row.id}" data-supplier-activity-table-detail hidden>
+    <tr class="supplier-activity-table__detail-row" id="supplier-detail-${row.id}" hidden>
         <td colspan="8">
             <div class="supplier-activity-table__detail">
                 <div class="supplier-activity-table__summary">
@@ -100,7 +100,7 @@ const renderDetail = (row) => `
 `;
 
 const renderRows = () => rows.map((row) => `
-    <tr class="supplier-activity-table__row" tabindex="0" data-supplier-activity-table-row aria-controls="supplier-detail-${row.id}" aria-expanded="false">
+    <tr class="supplier-activity-table__row" tabindex="0" data-expandable-table-row aria-controls="supplier-detail-${row.id}" aria-expanded="false">
         <td class="orders-table__cell--id font-semibold text-dark-blue orders-table__cell--nowrap">${row.id}</td>
         <td class="orders-table__cell--title">
             <div class="table-title-cell">
@@ -112,6 +112,11 @@ const renderRows = () => rows.map((row) => `
         <td class="orders-table__cell--mobile-hide">${company}</td>
         <td class="orders-table__cell--nowrap orders-table__cell--mobile-hide"><strong>${row.date}</strong></td>
         <td class="orders-table__cell--status"><span class="${row.statusClass}">${row.status}</span></td>
+        <td class="supplier-activity-table__chevron-cell">
+            <button class="supplier-activity-table__chevron-button" type="button" aria-label="Mostra dettagli attività" data-expandable-table-toggle>
+                <span class="supplier-activity-table__chevron" aria-hidden="true"></span>
+            </button>
+        </td>
     </tr>
     ${renderDetail(row)}
 `).join('');
@@ -150,7 +155,7 @@ const renderTable = (withComposition = false) => {
         <h1 class="supplier-activity-section__title">Attività fornitore</h1>
         ${withComposition ? renderFilters() : ''}
         <div class="table-wrapper table-wrapper--scroll">
-            <table class="orders-table orders-table--compact supplier-activity-table" data-supplier-activity-table>
+            <table class="orders-table orders-table--compact supplier-activity-table" data-expandable-table data-expandable-table-label-show="Mostra dettagli attività" data-expandable-table-label-hide="Nascondi dettagli attività">
                 <thead>
                     <tr>
                         <th class="th-id">#</th>
@@ -160,6 +165,7 @@ const renderTable = (withComposition = false) => {
                         <th class="th-mobile-hide">Azienda</th>
                         <th class="th-mobile-hide">Data</th>
                         <th class="th-status">Stato</th>
+                        <th class="supplier-activity-table__chevron-heading" aria-hidden="true"></th>
                     </tr>
                 </thead>
                 <tbody>${renderRows()}</tbody>
@@ -168,7 +174,7 @@ const renderTable = (withComposition = false) => {
         ${withComposition ? renderPagination() : ''}
     `;
 
-    window.setTimeout(() => window.SkillpressUI.SupplierActivityTable.init(root), 0);
+    window.setTimeout(() => window.SkillpressUI.ExpandableTable.init(root), 0);
     return root;
 };
 
@@ -179,7 +185,7 @@ export default {
         layout: 'padded',
         docs: {
             description: {
-                component: 'Dashboard supplier activity table with standalone expandable detail rows. Filters, pagination and supplier workflow stay in the consumer/backend.'
+                component: 'Dashboard supplier activity table with markup-based expandable detail rows. Chevron and detail rows live in the markup; ExpandableTable only wires expand/collapse. Filters, pagination and supplier workflow stay in the consumer/backend.'
             }
         }
     }

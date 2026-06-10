@@ -1,6 +1,6 @@
 {
   "name": "@ebattt/skillpress-ui",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Skillpress UI — design system interno",
   "repository": {
     "type": "git",
@@ -20,10 +20,12 @@
     "check:hardcoded-colors": "node scripts/check-hardcoded-colors.cjs",
     "check:css-vars": "node scripts/check-css-vars.cjs",
     "check:breakpoints": "node scripts/check-breakpoints.cjs",
+    "check:shell-isolation": "node scripts/check-shell-isolation.cjs",
     "build:dist": "node scripts/build-dist-bundles.cjs",
     "build:public-api": "node scripts/build-public-api.cjs",
+    "build:public": "node scripts/build-public.cjs",
     "check:contract": "node scripts/check-contract.cjs",
-    "check": "npm run check:naming && npm run check:legacy && npm run check:data-attrs && npm run check:init-contract && npm run check:hardcoded-colors && npm run check:css-vars && npm run check:breakpoints && npm run build:dist && npm run pack:check",
+    "check": "npm run check:naming && npm run check:legacy && npm run check:data-attrs && npm run check:init-contract && npm run check:hardcoded-colors && npm run check:css-vars && npm run check:breakpoints && npm run check:shell-isolation && npm run build:dist && npm run pack:check",
     "prepublishOnly": "npm run check && npm run build:public-api && npm run check:contract"
   },
   "files": [
@@ -32,6 +34,7 @@
     "base/",
     "utilities/",
     "primitives/",
+    "page/",
     "components/",
 
     "shell/",

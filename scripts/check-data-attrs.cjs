@@ -84,6 +84,7 @@ function discoverBlocks() {
         'dashboard-recent-orders-grid', 'dashboard-order-card',
         'dashboard-order-detail-layout', 'dashboard-order-summary',
         'dashboard-settings-form', 'dashboard-shell', 'dashboard-welcome-box',
+        'expandable-table',
         'download-buttons', 'feature-box', 'feature-grid', 'feedaty-widget',
         'file-modal', 'file-upload-box',
         'form-controls', 'form-layout', 'form-primitives', 'format-card',

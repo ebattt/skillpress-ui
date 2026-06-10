@@ -1,4 +1,5 @@
-import '../components/recent-order-card.css';
+import '../components/dashboard-recent-orders-grid.css';
+import '../components/dashboard-order-card.css';
 import { expect, within } from 'storybook/test';
 
 const orders = [

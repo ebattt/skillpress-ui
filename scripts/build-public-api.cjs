@@ -31,6 +31,7 @@ const path = require('path');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 const PRIMITIVES_DIR = path.join(REPO_ROOT, 'primitives');
+const PAGE_DIR = path.join(REPO_ROOT, 'page');
 const COMPONENTS_DIR = path.join(REPO_ROOT, 'components');
 const JS_DIR = path.join(REPO_ROOT, 'js');
 const OUT_DIR = path.join(REPO_ROOT, 'dist');
@@ -142,12 +143,19 @@ function main() {
     const version = readPackageVersion();
 
     // CSS primitives (publicly annotated classes).
+    // `page/` ospita lo scheletro di layout di pagina (sp-page__*): le sue
+    // classi @public sono trattate come primitives a tutti gli effetti.
     const primitives = [];
-    const primitiveFiles = listCssFiles(PRIMITIVES_DIR);
-    for (const file of primitiveFiles) {
-        const content = fs.readFileSync(path.join(PRIMITIVES_DIR, file), 'utf8');
-        const classes = extractPublicCssClasses(content);
-        for (const cls of classes) primitives.push(cls);
+    const primitiveSources = [
+        { dir: PRIMITIVES_DIR, files: listCssFiles(PRIMITIVES_DIR) },
+        { dir: PAGE_DIR, files: listCssFiles(PAGE_DIR) }
+    ];
+    for (const src of primitiveSources) {
+        for (const file of src.files) {
+            const content = fs.readFileSync(path.join(src.dir, file), 'utf8');
+            const classes = extractPublicCssClasses(content);
+            for (const cls of classes) primitives.push(cls);
+        }
     }
 
     // CSS components: domain-scoped, identificati per nome file (senza .css).

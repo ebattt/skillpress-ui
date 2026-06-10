@@ -40,11 +40,9 @@
     --footer-text-muted: rgba(255, 255, 255, 0.5); /* Testo secondario */
     --footer-heading: #FFFFFF;                   /* Titoli sezioni */
 
-    /* ------------------------------------------
-       COLORI BRAND (ereditate da navbar)
-       ------------------------------------------ */
-    --color-primary: #F08A00;               /* Arancione principale */
-    --color-primary-light: #FFB149;         /* Arancione chiaro */
+    /* NB: i colori brand (--color-primary*, arancione) NON sono ridefiniti qui:
+       arrivano da tokens/tokens.css (fonte unica, valori identici). Rimossi per
+       eliminare la doppia fonte di verita' (vedi check-shell-isolation). */
 
     /* ------------------------------------------
        DIMENSIONI

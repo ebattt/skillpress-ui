@@ -1,5 +1,12 @@
 # SupplierActivityTable
 
+> **0.5.0 — markup-based.** L'espansione riga e' ora gestita dal modulo unico
+> `ExpandableTable` (`js/expandable-table.js`), condiviso con OrdersTable.
+> Hook: `data-expandable-table`, `data-expandable-table-row` (con `aria-controls`
+> -> id detail-row), `data-expandable-table-toggle`. Evento:
+> `sp:expandable-table:row-toggle`. Il vecchio `SupplierActivityTable` /
+> `data-supplier-activity-table*` non esiste piu'.
+
 Dashboard supplier activity table with expandable product/detail rows.
 
 ## When To Use

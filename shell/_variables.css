@@ -1,149 +1,91 @@
 /**
  * ==========================================================================
- * VARIABILI CSS -- Design tokens e CSS Custom Properties
+ * VARIABILI SHELL -- Solo token specifici della shell (--shell-*)
  * ==========================================================================
  *
  * SCOPO:
- *   Fonte unica di verita (single source of truth) per tutti i valori
- *   di design del sistema navbar Skillpress. Ogni sotto-file referenzia
- *   queste variabili tramite var(--nome), rendendo la personalizzazione
- *   centralizzata e prevedibile.
+ *   Definisce ESCLUSIVAMENTE i token propri della shell del sito
+ *   (navbar + footer), tutti namespaced `--shell-*`. I token condivisi
+ *   (colori brand, spacing, font-family, ombre/raggi/z comuni) NON vivono
+ *   piu' qui: la fonte unica di verita' e' `tokens/tokens.css`, importato
+ *   da `bundles/shell.css`. Cosi' la shell non ridefinisce piu' alcun nome
+ *   presente nei token di libreria -> zero collisioni di cascade quando
+ *   `shell.css` coesiste con un bundle d'area.
  *
- * DIPENDENZE:
- *   Nessuna -- questo file deve essere importato PRIMA di tutti gli altri.
- *   Viene caricato per primo da navbar.css tramite @import.
+ * DUE CATEGORIE:
+ *   1. CONFLITTI CONSERVATI -- 10 nomi che la shell aveva con valore DIVERSO
+ *      dal token di libreria. Rinominati `--shell-*` mantenendo il valore
+ *      originale della shell: zero cambiamento visivo, conflitto eliminato.
+ *      La "canonizzazione" (convergere shell e token su un valore unico) e'
+ *      una decisione separata, da discutere col backend (vedi guida).
+ *   2. SOLO-SHELL -- 21 nomi che esistono solo nella shell (dimensioni navbar,
+ *      mega menu, dropdown, gradienti, z custom). Rinominati `--shell-*` per
+ *      igiene del namespace.
  *
- * ORGANIZZAZIONE:
- *   Le variabili sono raggruppate per categoria funzionale
- *   (colori, dimensioni, spacing, tipografia, ecc.).
- *
- * PERSONALIZZAZIONE:
- *   Per cambiare il tema, sovrascrivere le variabili in un :root successivo.
- *   Esempio: :root { --color-primary: #E91E63; }
- *
- * Elementi HTML: nessuno direttamente; usato da tutti i componenti.
+ * NB: i token --footer-* del footer vivono in footer.css (gia' namespaced,
+ *     nessuno presente in tokens.css). Per cambiare tema, sovrascrivere i
+ *     token di libreria in tokens.css; per ritoccare la sola shell, questi.
  * ==========================================================================
  */
 
 :root {
-    /* === COLORI BRAND === */
-    /* Arancione Skillpress: usato per la navbar principale, CTA e accenti */
-    --color-primary: #F08A00;
-    --color-primary-light: #FFB149;      /* hover e variante chiara */
-    --color-primary-dark: #D67800;       /* active e variante scura */
+    /* ======================================================================
+       1. CONFLITTI CONSERVATI (shell != token di libreria)
+       Valore = valore storico della shell. Canonizzazione = TODO backend.
+       ====================================================================== */
 
-    /* Teal/verde: usato per la top bar, mega menu trigger, badge carrello */
-    --color-secondary: #1C7264;
-    --color-secondary-light: #298979;
-    --color-secondary-dark: #0F544D;
+    /* Testo principale shell: gray-700. (token di libreria: #111418) */
+    --shell-color-text: #374151;
 
-    /* Blu scuro: usato per il bottone Skillpoints e sfumature top bar */
-    --color-dark: #003E51;
-    --color-dark-light: #0A5A72;
+    /* Scala raggi shell: piu' generosa del token di libreria. */
+    --shell-radius-sm: 0.375rem;       /* 6px  (token: 0.25rem) */
+    --shell-radius-md: 0.5rem;         /* 8px  (token: 0.375rem) */
+    --shell-radius-lg: 0.75rem;        /* 12px (token: 0.5rem) */
+    --shell-radius-xl: 1rem;           /* 16px (token: 0.75rem) */
 
-    /* === COLORI TESTO === */
-    /* Scala di grigi con contrasto WCAG AA verificato */
-    --color-text: #374151;               /* gray-700 -- testo principale */
-    --color-text-light: #6B7280;         /* gray-500 -- testo secondario */
-    --color-text-muted: #9CA3AF;         /* gray-400 -- placeholder e disabilitato */
+    /* Ombre shell: un solo layer (token di libreria ne ha due). */
+    --shell-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shell-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 
-    /* === COLORI SFONDO === */
-    /* Grigi neutri per sfondi, bordi e separatori */
-    --color-bg-white: #FFFFFF;
-    --color-bg-gray: #F5F5F5;           /* sfondo barra categorie */
-    --color-bg-gray-light: #F9FAFB;     /* hover voci dropdown */
-    --color-bg-gray-dark: #E5E7EB;      /* bordi e separatori */
+    /* Z-index shell: scala locale del telaio. (token: --z-sticky 70, --z-modal 1100) */
+    --shell-z-sticky: 60;              /* navbar-container sticky */
+    --shell-z-modal: 90;               /* dropdown assistenza sopra navbar */
 
-    /* === GRADIENTI === */
-    /* Il gradiente top-bar va da teal a blu scuro per dare profondita alla barra */
-    --gradient-top-bar: linear-gradient(90deg, #1C7264 0%, #0F544D 50%, #003E51 100%);
-    --gradient-orange: linear-gradient(135deg, #F08A00 0%, #FFB149 100%);
-    --gradient-teal: linear-gradient(135deg, #1C7264 0%, #298979 100%);
+    /* Titoli prominenti shell: valore fisso (token di libreria: clamp responsive). */
+    --shell-font-size-xl: 1.25rem;     /* 20px */
 
-    /* === DIMENSIONI NAVBAR === */
-    /* Altezze fisse delle tre barre orizzontali che compongono la navbar.
-       Il totale (144px) serve a calcolare l'offset del contenuto pagina
-       e il margin-top dello sticky container. */
-    --navbar-height-top: 36px;           /* barra verde superiore */
-    --navbar-height-main: 64px;          /* barra arancione centrale */
-    --navbar-height-categories: 44px;    /* barra grigia categorie */
-    --navbar-height-total: 144px;        /* somma: 36 + 64 + 44 */
+    /* ======================================================================
+       2. SOLO-SHELL (nessun corrispettivo nei token di libreria)
+       ====================================================================== */
 
-    /* === DIMENSIONI MEGA MENU E DROPDOWN === */
-    /* Il mega menu usa min() per adattarsi a viewport stretti senza media query */
-    --mega-menu-width: min(1000px, 95vw);
-    --mega-menu-height: 420px;
-    --mega-menu-sidebar-width: 260px;
+    /* --- Colori specifici shell --- */
+    --shell-color-dark-light: #0A5A72;       /* sfumatura top bar / skillpoints */
+    --shell-color-bg-gray: #F5F5F5;          /* sfondo barra categorie */
+    --shell-color-bg-gray-light: #F9FAFB;    /* hover voci dropdown */
+    --shell-color-bg-gray-dark: #E5E7EB;     /* bordi e separatori shell */
 
-    /* Scala dimensioni dropdown: sm per voci singole, xl per multi-colonna */
-    --dropdown-width-sm: 176px;
-    --dropdown-width-md: 208px;
-    --dropdown-width-lg: 320px;
-    --dropdown-width-xl: 384px;
+    /* --- Gradienti shell --- */
+    --shell-gradient-top-bar: linear-gradient(90deg, #1C7264 0%, #0F544D 50%, #003E51 100%);
+    --shell-gradient-orange: linear-gradient(135deg, #F08A00 0%, #FFB149 100%);
+    --shell-gradient-teal: linear-gradient(135deg, #1C7264 0%, #298979 100%);
 
-    /* === SPACING === */
-    /* Scala a incrementi di x2 basata su 0.25rem (4px) */
-    --spacing-xs: 0.25rem;              /* 4px  -- gap minimi, padding icone */
-    --spacing-sm: 0.5rem;               /* 8px  -- gap interni, padding piccoli */
-    --spacing-md: 1rem;                 /* 16px -- gap standard tra elementi */
-    --spacing-lg: 1.5rem;               /* 24px -- padding container */
-    --spacing-xl: 2rem;                 /* 32px -- spaziature ampie */
+    /* --- Dimensioni navbar (totale 144px = 36+64+44, offset contenuto pagina) --- */
+    --shell-navbar-height-top: 36px;
+    --shell-navbar-height-main: 64px;
+    --shell-navbar-height-categories: 44px;
+    --shell-navbar-height-total: 144px;
 
-    /* === BORDER RADIUS === */
-    /* Scala progressiva: sm per input, md per bottoni, lg per card/dropdown,
-       full per pill-button e badge circolari */
-    --radius-sm: 0.375rem;              /* 6px */
-    --radius-md: 0.5rem;                /* 8px */
-    --radius-lg: 0.75rem;               /* 12px */
-    --radius-xl: 1rem;                  /* 16px */
-    --radius-full: 9999px;              /* cerchio perfetto / pill */
+    /* --- Mega menu e dropdown --- */
+    --shell-mega-menu-width: min(1000px, 95vw);
+    --shell-mega-menu-height: 420px;
+    --shell-mega-menu-sidebar-width: 260px;
+    --shell-dropdown-width-sm: 176px;
+    --shell-dropdown-width-md: 208px;
+    --shell-dropdown-width-lg: 320px;
+    --shell-dropdown-width-xl: 384px;
 
-    /* === OMBRE === */
-    /* Scala progressiva per gerarchia visiva: spread negativo evita bordi netti.
-       sm = navbar, md = card, lg = search bar, xl = focus search, 2xl = dropdown */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-
-    /* === TRANSIZIONI === */
-    /* Tre velocita per coprire tutti i casi d'uso:
-       fast = hover/focus immediati, normal = dropdown, slow = scroll/slide */
-    --transition-fast: 150ms ease;
-    --transition-normal: 200ms ease;
-    --transition-slow: 300ms ease;
-
-    /* === SCALA Z-INDEX === */
-    /* Gerarchia ordinata per evitare conflitti di sovrapposizione.
-       Regola: ogni livello e' 10 unita sopra il precedente.
-
-       GERARCHIA (dal basso verso l'alto):
-       base(1) < dropdown(50) < sticky(60) < popover(70) < overlay(80) < modal(90) < mobile-menu(100) < toast(110)
-
-       - dropdown: pannelli categorie e assistenza
-       - sticky: navbar-container che copre la top-bar allo scroll
-       - popover: gradienti fade della barra categorie
-       - overlay: frecce scroll e sfondo semi-trasparente
-       - modal: dropdown assistenza (deve stare sopra la navbar sticky)
-       - mobile-menu: menu mobile fullscreen (sopra tutto tranne toast)
-       - toast: notifiche temporanee (massima priorita visiva) */
-    --z-base: 1;
-    --z-dropdown: 50;
-    --z-sticky: 60;
-    --z-popover: 70;
-    --z-overlay: 80;
-    --z-modal: 90;
-    --z-mobile-menu: 100;
-    --z-toast: 110;
-
-    /* === TIPOGRAFIA === */
-    /* Font stack: Manrope come primario (Google Fonts), con fallback
-       su font di sistema per garantire rendering immediato (FOUT minimizzato) */
-    --font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-size-xs: 0.75rem;            /* 12px -- top bar, badge, note */
-    --font-size-sm: 0.875rem;           /* 14px -- dropdown, categorie */
-    --font-size-base: 1rem;             /* 16px -- testo standard */
-    --font-size-lg: 1.125rem;           /* 18px -- titoli sezione */
-    --font-size-xl: 1.25rem;            /* 20px -- titoli prominenti */
+    /* --- Z-index custom shell (sopra/oltre la scala condivisa) --- */
+    --shell-z-popover: 70;             /* gradienti fade barra categorie */
+    --shell-z-mobile-menu: 100;        /* menu mobile fullscreen */
+    --shell-z-toast: 110;              /* notifiche temporanee */
 }

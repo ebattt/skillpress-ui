@@ -22,7 +22,7 @@
     padding: 0;
     min-height: 100vh;
     overflow-y: auto;
-    background-color: var(--color-bg-gray-light);
+    background-color: var(--shell-color-bg-gray-light);
     font-family: var(--font-family);
     color: #111418;
 }
@@ -41,15 +41,15 @@
     max-width: 28rem;
     width: 100%;
     background-color: var(--color-bg-white);
-    border-radius: var(--radius-xl);
+    border-radius: var(--shell-radius-xl);
     box-shadow: var(--shadow-xl);
     overflow: hidden;
 }
 
 /* Header condiviso */
 .auth-page__header { padding: 1rem; }
-.auth-page__header--login { background: var(--gradient-top-bar); }
-.auth-page__header--register { background: var(--gradient-orange); }
+.auth-page__header--login { background: var(--shell-gradient-top-bar); }
+.auth-page__header--register { background: var(--shell-gradient-orange); }
 
 .auth-page__header-icon {
     display: flex;
@@ -141,12 +141,12 @@
     gap: 0.5rem;
     padding: 0.625rem 0.75rem;
     background: var(--color-bg-white);
-    border: 1px solid var(--color-bg-gray-dark);
-    border-radius: var(--radius-lg);
+    border: 1px solid var(--shell-color-bg-gray-dark);
+    border-radius: var(--shell-radius-lg);
     font-weight: 500;
     font-size: var(--font-size-xs);
     line-height: 1rem;
-    color: var(--color-text);
+    color: var(--shell-color-text);
     cursor: pointer;
     transition: background-color var(--transition-slow),
                 border-color var(--transition-slow),
@@ -155,7 +155,7 @@
 }
 .social-login__btn:hover,
 .social-btn:hover {
-    background-color: var(--color-bg-gray-light);
+    background-color: var(--shell-color-bg-gray-light);
     border-color: #d1d5db;
     transform: translateY(-1px);
 }
@@ -163,7 +163,7 @@
 /* Bottone solo icona (registrati.html) */
 .social-login__btn--icon-only {
     padding: 0.75rem;
-    border-radius: var(--radius-md);
+    border-radius: var(--shell-radius-md);
 }
 /* Icona SVG e testo etichetta */
 .social-login__icon { width: 1rem; height: 1rem; flex-shrink: 0; }
@@ -183,7 +183,7 @@
 .divider::before, .divider::after {
     content: '';
     flex: 1;
-    border-bottom: 1px solid var(--color-bg-gray-dark);
+    border-bottom: 1px solid var(--shell-color-bg-gray-dark);
 }
 .auth-divider:not(:empty)::before,
 .divider:not(:empty)::before { margin-right: 1rem; }
@@ -219,7 +219,7 @@
     font-size: var(--font-size-xs);
     line-height: 1rem;
     font-weight: 600;
-    color: var(--color-text);
+    color: var(--shell-color-text);
     margin-bottom: 0.25rem;
 }
 /* Wrapper per input con icona o toggle */
@@ -230,8 +230,8 @@
 .custom-input {
     width: 100%;
     padding: 0.625rem 0.75rem;
-    border: 1px solid var(--color-bg-gray-dark);
-    border-radius: var(--radius-md);
+    border: 1px solid var(--shell-color-bg-gray-dark);
+    border-radius: var(--shell-radius-md);
     font-size: var(--font-size-xs);
     line-height: 1rem;
     color: inherit;
@@ -253,7 +253,7 @@
 /* Input con icona a sinistra (accedi.html) */
 .auth-form__input--with-icon {
     padding-left: 2.25rem;
-    border-radius: var(--radius-lg);
+    border-radius: var(--shell-radius-lg);
     font-size: var(--font-size-sm);
     line-height: 1.25rem;
 }
@@ -293,8 +293,8 @@
 .custom-select {
     width: 100%;
     padding: 0.625rem 0.75rem;
-    border: 1px solid var(--color-bg-gray-dark);
-    border-radius: var(--radius-md);
+    border: 1px solid var(--shell-color-bg-gray-dark);
+    border-radius: var(--shell-radius-md);
     font-size: var(--font-size-xs);
     line-height: 1rem;
     color: inherit;
@@ -345,7 +345,7 @@
 .auth-form__checkbox {
     width: 0.875rem;
     height: 0.875rem;
-    border-radius: var(--radius-sm);
+    border-radius: var(--shell-radius-sm);
     border: 1px solid #d1d5db;
     accent-color: var(--color-primary);
     cursor: pointer;
@@ -389,14 +389,14 @@
 .btn-primary {
     width: 100%;
     padding: 0.75rem;
-    background: var(--gradient-orange);
+    background: var(--shell-gradient-orange);
     color: #ffffff;
     font-weight: 600;
     font-size: var(--font-size-sm);
     line-height: 1.25rem;
     border: none;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
+    border-radius: var(--shell-radius-md);
+    box-shadow: var(--shell-shadow-lg);
     cursor: pointer;
     transition: transform var(--transition-slow),
                 box-shadow var(--transition-slow);
@@ -419,14 +419,14 @@
 /* --- Override per pagina login (accedi.html) --- */
 .auth-page--login .auth-page__body { padding: 1.5rem 1rem; }
 .auth-page--login .auth-form__input {
-    border-radius: var(--radius-lg);
+    border-radius: var(--shell-radius-lg);
     font-size: var(--font-size-sm);
     line-height: 1.25rem;
     padding: 0.5rem 0.75rem;
 }
 .auth-page--login .auth-form__input--with-icon { padding-left: 2.25rem; }
 .auth-page--login .auth-form__submit {
-    border-radius: var(--radius-lg);
+    border-radius: var(--shell-radius-lg);
     padding: 0.625rem;
 }
 .auth-page--login .auth-page__footer-text {
@@ -447,7 +447,7 @@
     /* Header */
     .auth-page__header { padding: 1rem 1.5rem; }
     .auth-page__header-icon .material-symbols-outlined { font-size: 1.875rem; }
-    .auth-page__header-title { font-size: var(--font-size-xl); line-height: 1.75rem; }
+    .auth-page__header-title { font-size: var(--shell-font-size-xl); line-height: 1.75rem; }
     .auth-page__header--register .auth-page__header-title {
         font-size: var(--font-size-lg);
         line-height: 1.75rem;

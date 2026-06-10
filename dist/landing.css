@@ -1,3 +1,81 @@
+.sp-page {
+    box-sizing: border-box;
+}
+
+body.sp-page {
+    margin: 0;
+    padding: 0;
+
+    max-width: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: var(--color-text, #111418);
+    background: var(--color-bg-white, #ffffff);
+}
+
+body.sp-page--checkout .sp-page__main {
+    padding-bottom: calc(7.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 1024px) {
+    body.sp-page--checkout .sp-page__main {
+        padding-bottom: 0;
+    }
+}
+
+.sp-page__header {
+    flex-shrink: 0;
+}
+
+.sp-page__main {
+    flex: 1 0 auto;
+    width: 100%;
+}
+
+.sp-page__footer {
+    flex-shrink: 0;
+}
+
+.sp-page__container {
+    width: 100%;
+    max-width: var(--page-max-width, 1280px);
+    margin-inline: auto;
+    padding-inline: var(--page-padding-x, 0);
+    padding-block: var(--spacing-xl, 2rem);
+}
+
+@media (max-width: 1023px) {
+    .sp-page__container {
+        padding-block: var(--spacing-lg, 1.5rem);
+    }
+}
+
+@media (max-width: 639px) {
+    .sp-page__container {
+        padding-inline: var(--page-padding-x, 0.75rem);
+    }
+}
+
+.sp-page__container--wide {
+    max-width: var(--page-max-width-wide, 1400px);
+}
+
+.sp-page__container--narrow {
+    max-width: var(--page-max-width-narrow, 1120px);
+}
+
+.sp-page__container--flush {
+    padding: 0;
+}
+
+.sp-page__container--bleed {
+    max-width: none;
+    margin-inline: 0;
+    padding: 0;
+}
+
 @font-face {
     font-family: "Manrope";
     src: url("../fonts/manrope/Manrope-Variable.woff2") format("woff2-variations");

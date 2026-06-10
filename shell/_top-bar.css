@@ -44,7 +44,7 @@
 /* Il dropdown assistenza ha z-index:modal (90) perche' deve apparire
    sopra la navbar sticky (z-index:60) quando l'utente ha scrollato */
 #topBlueBar #assistenzaDropdown {
-    z-index: var(--z-modal);
+    z-index: var(--shell-z-modal);
 }
 
 /* === STRUTTURA TOP BAR === */
@@ -54,7 +54,7 @@
 .top-bar {
     display: none;
     width: 100%;
-    background: var(--gradient-top-bar);
+    background: var(--shell-gradient-top-bar);
 }
 
 /* Breakpoint principale 768px: la top bar appare solo su desktop */
@@ -154,15 +154,15 @@
     margin-top: var(--spacing-xs);
     width: 16rem;
     background: var(--color-bg-white);
-    border-radius: var(--radius-lg);
+    border-radius: var(--shell-radius-lg);
     box-shadow: var(--shadow-2xl);
-    border: 1px solid var(--color-bg-gray-dark);
+    border: 1px solid var(--shell-color-bg-gray-dark);
     opacity: 0;
     visibility: hidden;
     transition: opacity var(--transition-normal),
                 visibility var(--transition-normal);
     overflow: hidden;
-    z-index: var(--z-modal);
+    z-index: var(--shell-z-modal);
 }
 
 .assistenza-dropdown__item {
@@ -170,12 +170,12 @@
     align-items: center;
     gap: 0.75rem;
     padding: 0.75rem 1rem;
-    color: var(--color-text);
+    color: var(--shell-color-text);
     transition: background var(--transition-fast);
 }
 
 .assistenza-dropdown__item:hover {
-    background: var(--color-bg-gray-light);
+    background: var(--shell-color-bg-gray-light);
 }
 
 .assistenza-dropdown__item--border {

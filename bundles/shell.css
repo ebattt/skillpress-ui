@@ -5,10 +5,25 @@
  * sticky-footer (base/page-layout.css) che tiene il footer in fondo anche con
  * contenuto corto.
  *
- * I partial in shell/ sono importati verbatim dal materiale navbar/footer
- * gia' in uso, per minimizzare il delta lato consumer. */
+ * DE-CONFLITTO (batch 3):
+ *   - TOKEN UNICI: i token condivisi vengono da tokens/tokens.css (fonte unica).
+ *     shell/_variables.css definisce SOLO --shell-* (conflitti conservati +
+ *     solo-shell): nessun nome collide piu' coi token di libreria.
+ *   - RESET UNICO: il reset e' quello di libreria (base/reset.css). Il vecchio
+ *     shell/_reset.css (secondo reset globale) e' stato eliminato; le sue regole
+ *     specifiche della shell sono scopate ai contenitori in shell/_utilities.css.
+ *   Effetto: caricato DA SOLO, shell.css resta autosufficiente; caricato INSIEME
+ *   a un bundle d'area (che importa gli STESSI tokens.css + reset.css) le
+ *   duplicazioni sono byte-identiche => sovrascritture innocue, zero conflitti.
+ *
+ * Font SELF-HOSTED (nessun Google Fonts, nessuna richiesta esterna):
+ *   - base/fonts.css            -> Manrope (woff2 nel package)
+ *   - shell/_material-symbols.css -> Material Symbols Outlined (subset shell) */
+@import '../base/fonts.css';
+@import '../shell/_material-symbols.css';
+@import '../tokens/tokens.css';
+@import '../base/reset.css';
 @import '../shell/_variables.css';
-@import '../shell/_reset.css';
 @import '../shell/_top-bar.css';
 @import '../shell/_main-navbar.css';
 @import '../shell/_categories-bar.css';

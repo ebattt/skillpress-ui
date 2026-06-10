@@ -243,12 +243,12 @@
     outline-offset: 2px;
 }
 
-.orders-table tbody tr[data-orders-table-row] {
+.orders-table tbody tr[data-expandable-table-row] {
     cursor: pointer;
 }
 
 /* F015: outline visibile quando la row e' keyboard-focused (tabindex=0). */
-.orders-table tbody tr[data-orders-table-row]:focus-visible {
+.orders-table tbody tr[data-expandable-table-row]:focus-visible {
     outline: 2px solid var(--color-focus-ring);
     outline-offset: -2px;
 }
@@ -532,15 +532,15 @@
         display: table-header-group;
     }
 
-    .orders-table tbody tr[data-orders-table-row]:has(.dashboard-action-badge) {
+    .orders-table tbody tr[data-expandable-table-row]:has(.dashboard-action-badge) {
         background-color: var(--color-danger-bg-25);
     }
 
-    .orders-table tbody tr[data-orders-table-row]:has(.dashboard-action-badge):hover {
+    .orders-table tbody tr[data-expandable-table-row]:has(.dashboard-action-badge):hover {
         background-color: var(--color-danger-bg-75);
     }
 
-    .orders-table tbody tr[data-orders-table-row] {
+    .orders-table tbody tr[data-expandable-table-row] {
         display: table-row;
     }
 
@@ -721,5 +721,78 @@
         width: 100%;
         min-width: 0;
         max-width: 11.25rem;
+    }
+}
+
+/* =====================================================================
+   F0a -- Stabilita' del colspan in table-layout:fixed.
+
+   La detail-row espandibile ha un'unica cella con colspan = NUMERO TOTALE di
+   colonne della tabella (12 ordini / 10 preventivi: vedi markup statico). In
+   table-layout:fixed il numero di colonne del grid e' dato dalle celle NON
+   display:none della prima riga. Le colonne nascoste responsive usavano
+   display:none -> sparivano dal grid -> il colspan della detail-row ECCEDEVA le
+   colonne reali -> il browser creava colonne fantasma a destra: header/dati
+   compressi a sinistra con un vuoto bianco a destra (la detail-row invece
+   restava full-width). Si vedeva a riga aperta, peggio ancora zero-JS sulla
+   prima riga espansa di default.
+
+   Fix CSS-only (nessun JS, nessun markup nuovo): le colonne "nascoste" non si
+   tolgono dal grid ma collassano a larghezza 0 restando table-cell. Cosi' il
+   grid ha SEMPRE tutte le colonne, il colspan combacia a ogni breakpoint e la
+   detail-row si espande full-width anche senza JS. La cella resta come
+   segnaposto di colonna (width:0, overflow:hidden); il contenuto e' soppresso
+   (font-size:0 + figli display:none) per non aggiungere ne' larghezza ne'
+   altezza alla riga. Override volutamente in coda al file per vincere sui
+   display:none responsivi piu' in alto.
+   Verificato a 1440/1024/768/390, riga aperta e chiusa (ordini + preventivi).
+   ===================================================================== */
+
+/* Colonne sempre nascoste su desktop (mobile-hide), escluse quelle che il
+   layout "simplified" tiene visibili (es. Pagamento su ordini). */
+.orders-table--compact .orders-table__cell--mobile-hide:not(.orders-table__cell--simplified-show),
+.orders-table--compact .th-mobile-hide:not(.th-simplified-show) {
+    display: table-cell !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+}
+
+.orders-table--compact td.orders-table__cell--mobile-hide:not(.orders-table__cell--simplified-show) > * {
+    display: none !important;
+}
+
+/* Pagamento + Totale: visibili da desktop, collassati (non display:none) sotto
+   il breakpoint, di nuovo per non rompere il colspan della detail-row. */
+@media (max-width: 1023px) {
+    .orders-table--compact .th-payment,
+    .orders-table--compact .orders-table__cell--payment,
+    .orders-table--compact .th-total,
+    .orders-table--compact .orders-table__cell--total {
+        display: table-cell !important;
+        width: 0 !important;
+        min-width: 0 !important;
+        max-width: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        border-left: 0 !important;
+        border-right: 0 !important;
+        overflow: hidden !important;
+        white-space: nowrap !important;
+        font-size: 0 !important;
+        line-height: 0 !important;
+    }
+
+    .orders-table--compact td.orders-table__cell--payment > *,
+    .orders-table--compact td.orders-table__cell--total > * {
+        display: none !important;
     }
 }

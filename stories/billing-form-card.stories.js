@@ -2,6 +2,7 @@ import '../tokens/tokens.css';
 import '../base/reset.css';
 import '../base/fonts.css';
 import '../components/billing-form-card.css';
+import '../components/billing-form.css';
 import '../js/billing-form-card.js';
 import { expect, userEvent, within } from 'storybook/test';
 

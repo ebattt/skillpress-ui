@@ -1,5 +1,6 @@
 node_modules/
 storybook-static/
+public/
 *.tgz
 .DS_Store
 .npmrc

@@ -27,15 +27,15 @@
     margin-top: 0.5rem;
     width: 14rem;
     background: var(--color-bg-white);
-    border-radius: var(--radius-lg);
+    border-radius: var(--shell-radius-lg);
     box-shadow: var(--shadow-2xl);
-    border: 1px solid var(--color-bg-gray-dark);
+    border: 1px solid var(--shell-color-bg-gray-dark);
     opacity: 0;
     visibility: hidden;
     transition: opacity var(--transition-normal),
                 visibility var(--transition-normal);
     overflow: hidden;
-    z-index: var(--z-modal);
+    z-index: var(--shell-z-modal);
 }
 
 .accedi-dropdown__content {
@@ -47,8 +47,8 @@
     align-items: center;
     gap: 0.75rem;
     padding: 0.75rem 1rem;
-    border-radius: var(--radius-md);
-    color: var(--color-text);
+    border-radius: var(--shell-radius-md);
+    color: var(--shell-color-text);
     transition: background-color var(--transition-fast),
                 color var(--transition-fast);
     width: 100%;
@@ -119,7 +119,7 @@
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    z-index: var(--z-popover);
+    z-index: var(--shell-z-popover);
 }
 
 @media (min-width: 1024px) {
@@ -151,7 +151,7 @@
     width: 2.5rem;
     height: 2.5rem;
     border-radius: var(--radius-full);
-    background: var(--color-bg-gray);
+    background: var(--shell-color-bg-gray);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -159,7 +159,7 @@
 }
 
 .user-popup__close-btn:hover {
-    background: var(--color-bg-gray-dark);
+    background: var(--shell-color-bg-gray-dark);
 }
 
 .user-popup__close-icon {
@@ -221,7 +221,7 @@
     justify-content: center;
     gap: 0.75rem;
     padding: 1rem 1.5rem;
-    border-radius: var(--radius-xl);
+    border-radius: var(--shell-radius-xl);
     color: white;
     font-weight: 600;
     transition: transform var(--transition-fast),
@@ -247,7 +247,7 @@
 
 /* --- Footer --- */
 .user-popup__footer {
-    border-top: 1px solid var(--color-bg-gray);
+    border-top: 1px solid var(--shell-color-bg-gray);
     padding: 1rem 1.5rem;
     text-align: center;
 }

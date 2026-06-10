@@ -1,4 +1,5 @@
 /* Blog page runtime bundle for backend/CMS integrations. */
+@import '../page/page-shell.css';
 @import '../base/fonts.css';
 @import '../tokens/tokens.css';
 @import '../base/reset.css';

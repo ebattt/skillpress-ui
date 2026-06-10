@@ -171,6 +171,8 @@
 /* --- Rispetto preferenza animazioni ridotte --- */
 
 @media (prefers-reduced-motion: reduce) {
+    /* shell-isolation: allow-global (a11y prefers-reduced-motion: solo timing
+       di animazioni/transizioni, nessuna proprieta' visiva contaminante). */
     *,
     *::before,
     *::after {
@@ -179,4 +181,42 @@
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+}
+
+
+/* =========================================================================
+   BASE BODY + FOCUS RING (rilocati da shell/_reset.css, ora eliminato)
+   Il reset globale della shell e' stato sostituito dal reset di libreria
+   (base/reset.css), importato da bundles/shell.css. Restano qui le sole
+   regole DAVVERO specifiche della shell, scopate ai suoi contenitori o a
+   una classe -> nessun selettore di elemento globale.
+   ========================================================================= */
+
+/* Classe opzionale per il <body> delle pagine CMS che montano la shell:
+   garantisce font e colore testo corretti anche fuori dai componenti.
+   #111418 coincide col --color-text di libreria applicato da base/reset. */
+.body-base {
+    background: var(--color-bg-white);
+    font-family: var(--font-family);
+    color: #111418;
+}
+
+/* Focus ring WCAG 2.1 AA -- SCOPATO ai contenitori della shell (in passato
+   era un `:focus-visible` globale nel reset). Copre tutti gli interattivi del
+   telaio: i dropdown (cart/user/categorie/assistenza) sono discendenti di
+   .top-bar / .main-navbar. */
+.top-bar :focus-visible,
+.main-navbar :focus-visible,
+.categories-bar :focus-visible,
+.mega-menu :focus-visible,
+.mobile-menu :focus-visible,
+.footer :focus-visible {
+    outline: 2px solid var(--color-primary, #F08A00);
+    outline-offset: 2px;
+}
+
+/* Focus ring bianco sugli sfondi scuri (top bar verde, navbar arancione). */
+.top-bar :focus-visible,
+.main-navbar :focus-visible {
+    outline-color: #fff;
 }

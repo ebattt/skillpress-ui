@@ -1,12 +1,4 @@
 
-
-.dashboard-recent-orders-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1rem;
-    align-items: stretch;
-}
-
 .dashboard-order-card {
     display: flex;
     flex-direction: column;
@@ -178,17 +170,5 @@
 
     .dashboard-order-card__title {
         min-height: 0;
-    }
-}
-
-@media (min-width: 640px) {
-    .dashboard-recent-orders-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (min-width: 1024px) {
-    .dashboard-recent-orders-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
