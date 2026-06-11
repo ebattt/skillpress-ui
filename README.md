@@ -107,7 +107,9 @@ git push origin main
 git push origin v0.5.0-gitdep.1
 ```
 
-Poi nel consumer: aggiorna il pin in `package.json` al nuovo tag e reinstalla.
+Poi nel consumer: aggiorna il pin al nuovo tag → `npm install` →
+`npm run build:static-assets` → `npm run check`.
 
 Regole tag git: pin immutabile, mai spostare. Nuovo fix = nuovo tag patch
-(`vX.Y.Z-gitdep.N`). Niente `prepare`/`postinstall` nel package.
+(`vX.Y.Z-gitdep.N`). Pacchetto `private` (solo git dependency, niente publish su
+registry). Niente `prepare`/`postinstall` nel package.
