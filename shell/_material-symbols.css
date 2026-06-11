@@ -1,19 +1,11 @@
-/* === MATERIAL SYMBOLS OUTLINED — self-hosted ===============================
+/* Material Symbols Outlined — self-hosted, solo bundle shell.
  *
- * Le icone della shell del sito (navbar, mega/mobile menu, cart, user-popup,
- * footer) usano i nomi-icona Material Symbols come ligature (es. <span
- * class="material-symbols-outlined">menu</span> -> glifo menu).
- *
- * Il sito reale carica questo font da fonts.googleapis.com. Qui invece e'
- * SELF-HOSTED nel package (fonts/material-symbols/), un sottoinsieme delle sole
- * icone usate dalla shell (vedi fonts/material-symbols/GLYPHS.txt + LICENSE.txt):
- * cosi' la shell rende le icone con ZERO richieste esterne / zero Google Fonts.
- *
- * @font-face + le regole base di .material-symbols-outlined (replicate dal CSS
- * ufficiale Google) vivono qui, nel bundle shell.css: il resto della libreria
- * (bundle d'area) non carica questo font. _reset.css aggiunge solo i
- * font-variation-settings (no-op sul font gia' instanziato, innocui).
- * ========================================================================== */
+ * Le icone della shell (navbar, mega/mobile menu, cart, user-popup, footer) usano
+ * i nomi-icona come ligature (es. <span class="material-symbols-outlined">menu</span>).
+ * Il font e' un sottoinsieme self-hostato nel package (fonts/material-symbols/,
+ * vedi GLYPHS.txt + LICENSE.txt) delle sole icone usate dalla shell: zero Google
+ * Fonts, zero richieste esterne. Regole base di .material-symbols-outlined
+ * replicate dal CSS ufficiale Google. */
 
 @font-face {
     font-family: 'Material Symbols Outlined';
@@ -38,9 +30,7 @@
     -webkit-font-feature-settings: 'liga';
     font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
-    /* Asse variabile delle Material Symbols: FILL 0 = outline, wght 400 = peso
-       normale, opsz 24 = ottimizzate per 24px. Spostato qui dal vecchio
-       shell/_reset.css (era l'unica regola di quel reset specifica delle icone). */
+    /* Asse variabile: FILL 0 = outline, wght 400 = peso normale, opsz 24. */
     font-variation-settings:
         'FILL' 0,
         'wght' 400,

@@ -1,23 +1,16 @@
 /* Shell globale del sito (navbar + footer) per integrazioni backend/CMS.
  *
- * Telaio condiviso da tutte le pagine: top bar, main navbar, categorie,
- * mega menu, mobile menu, cart popup, user popup e footer. Include il pattern
- * sticky-footer (base/page-layout.css) che tiene il footer in fondo anche con
- * contenuto corto.
+ * Telaio condiviso: top bar, main navbar, categorie, mega menu, mobile menu,
+ * cart popup, user popup e footer. Include il pattern sticky-footer
+ * (base/page-layout.css) che tiene il footer in fondo con contenuto corto.
  *
- * DE-CONFLITTO (batch 3):
- *   - TOKEN UNICI: i token condivisi vengono da tokens/tokens.css (fonte unica).
- *     shell/_variables.css definisce SOLO --shell-* (conflitti conservati +
- *     solo-shell): nessun nome collide piu' coi token di libreria.
- *   - RESET UNICO: il reset e' quello di libreria (base/reset.css). Il vecchio
- *     shell/_reset.css (secondo reset globale) e' stato eliminato; le sue regole
- *     specifiche della shell sono scopate ai contenitori in shell/_utilities.css.
- *   Effetto: caricato DA SOLO, shell.css resta autosufficiente; caricato INSIEME
- *   a un bundle d'area (che importa gli STESSI tokens.css + reset.css) le
- *   duplicazioni sono byte-identiche => sovrascritture innocue, zero conflitti.
+ * Token e reset arrivano dalle fonti condivise con i bundle d'area
+ * (tokens/tokens.css + base/reset.css): caricato insieme a un bundle d'area le
+ * duplicazioni sono byte-identiche. shell/_variables.css definisce solo i
+ * valori specifici della shell (namespace --shell-*).
  *
- * Font SELF-HOSTED (nessun Google Fonts, nessuna richiesta esterna):
- *   - base/fonts.css            -> Manrope (woff2 nel package)
+ * Font self-hostati (nessun Google Fonts, nessuna richiesta esterna):
+ *   - base/fonts.css             -> Manrope
  *   - shell/_material-symbols.css -> Material Symbols Outlined (subset shell) */
 @import '../base/fonts.css';
 @import '../shell/_material-symbols.css';

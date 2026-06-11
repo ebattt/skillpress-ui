@@ -17,8 +17,7 @@
  *     sono lasciati intatti.
  *   - se `cssnano` + `postcss` + `postcss-import` sono disponibili come
  *     devDependencies, esegue minification post-flatten. Altrimenti il
- *     bundle e' "flattened only" (pretty), che e' comunque adatto al
- *     consumer (no decision di minify forzata). Nessun nuovo runtime dep.
+ *     bundle e' "flattened only" (pretty), comunque adatto al consumer.
  *
  * NON modifica i sorgenti. Idempotente.
  *

@@ -4,10 +4,8 @@
  * @public-data data-feedaty-widget, data-feedaty-widget-init, data-feedaty-widget-sdk, data-feedaty-widget-sdk-src
  * @public-event sp:feedaty-widget:error
  *
- * Markup-contract (audit moduli JS 2026-06): violazione FORMALE ma innocua.
  * Il JS inietta solo lo SDK Feedaty di terze parti (lazy-load script) e
- * l host del widget; nessun contenuto applicativo, gestito da SDK/backend.
- * Non richiede fix.
+ * l'host del widget; nessun contenuto applicativo, gestito da SDK/backend.
  */
 (function () {
     'use strict';

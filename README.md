@@ -57,6 +57,40 @@ Un bundle per area di pagina:
 In alternativa `dist/<area>.css` (flatten senza `@import`). Non mischiare le
 due varianti nella stessa pagina.
 
+## Shell Del Sito (navbar + footer)
+
+`bundles/shell.css` (flatten: `dist/shell.css`) è il **telaio condiviso del
+sito**: top-bar, main navbar, barra categorie, mega/mobile menu, carrello,
+popup utente e footer. Sorgente in `shell/` + `footer.css`.
+
+**Fonte canonica.** Il CSS della shell è stato importato in origine *verbatim*
+dal componente navbar/footer del CMS; **da `0.5` la sola sorgente di verità è
+questa libreria**. Il backend **consuma `shell.css` dal package** e **non
+mantiene più una copia locale** (`navbar/css`): ogni modifica al look di
+navbar/footer si fa in `shell/`, non nel backend.
+
+**Confine di ownership:**
+
+| | Possiede | Cosa |
+|---|---|---|
+| **Libreria** | il **CSS** | `shell.css` + font self-hostati |
+| **Backend/CMS** | **markup + JS** | template HTML + `navbar.js` / `cart.js` (comportamento app-owned, NON in libreria) |
+
+Il markup di riferimento della shell (slot `nav.*`/`footer.*` + ITEM ripetibili)
+è la contract page `static-pages/shell/index.html` del consumer.
+
+**Caricamento:** un `<link>` a `shell.css`, in aggiunta (al massimo) al bundle
+d'area della pagina. Nella dashboard la navbar sta SOPRA la sidebar.
+
+**Font:** self-hostati nel package (`fonts/manrope/`, `fonts/material-symbols/`
+= subset delle icone usate dalla shell) — **nessun Google Fonts, nessuna
+richiesta esterna**.
+
+**De-conflitto:** `shell.css` è isolato (token condivisi da `tokens/`, reset
+unico da `base/`, namespace `--shell-*`); caricato insieme a un bundle d'area
+le duplicazioni sono byte-identiche → sovrascritture innocue. Verifica lato
+consumer: `check-shell-leakage` + test di coesistenza.
+
 ## JS Da Caricare
 
 ```html

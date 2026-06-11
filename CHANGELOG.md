@@ -4,6 +4,13 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
 
 ## Corrente
 
+- Contract change: la **shell del sito** (navbar + footer: top-bar, main navbar,
+  categorie, mega/mobile menu, cart, footer) è ora un bundle di libreria
+  (`bundles/shell.css` → `dist/shell.css`), **fonte canonica** del CSS del telaio:
+  il backend lo consuma dal package e droppa la copia locale. Font self-hostati
+  (Manrope + subset Material Symbols, nessun Google Fonts). De-conflittato per
+  coesistere con i bundle d'area (token/reset da una sola fonte, namespace
+  `--shell-*`). Vedi sezione "Shell Del Sito" del README.
 - Hardening: reset globale aggiornato da `body { overflow-x: hidden; }` a
   `html, body { overflow-x: clip; }` per mantenere lo scroll verticale
   naturale nelle integrazioni con navbar/footer e prevenire overflow

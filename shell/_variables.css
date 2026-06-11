@@ -1,38 +1,16 @@
 /**
- * ==========================================================================
- * VARIABILI SHELL -- Solo token specifici della shell (--shell-*)
- * ==========================================================================
+ * Variabili shell -- solo token specifici della shell del sito (--shell-*).
  *
- * SCOPO:
- *   Definisce ESCLUSIVAMENTE i token propri della shell del sito
- *   (navbar + footer), tutti namespaced `--shell-*`. I token condivisi
- *   (colori brand, spacing, font-family, ombre/raggi/z comuni) NON vivono
- *   piu' qui: la fonte unica di verita' e' `tokens/tokens.css`, importato
- *   da `bundles/shell.css`. Cosi' la shell non ridefinisce piu' alcun nome
- *   presente nei token di libreria -> zero collisioni di cascade quando
- *   `shell.css` coesiste con un bundle d'area.
- *
- * DUE CATEGORIE:
- *   1. CONFLITTI CONSERVATI -- 10 nomi che la shell aveva con valore DIVERSO
- *      dal token di libreria. Rinominati `--shell-*` mantenendo il valore
- *      originale della shell: zero cambiamento visivo, conflitto eliminato.
- *      La "canonizzazione" (convergere shell e token su un valore unico) e'
- *      una decisione separata, da discutere col backend (vedi guida).
- *   2. SOLO-SHELL -- 21 nomi che esistono solo nella shell (dimensioni navbar,
- *      mega menu, dropdown, gradienti, z custom). Rinominati `--shell-*` per
- *      igiene del namespace.
- *
- * NB: i token --footer-* del footer vivono in footer.css (gia' namespaced,
- *     nessuno presente in tokens.css). Per cambiare tema, sovrascrivere i
- *     token di libreria in tokens.css; per ritoccare la sola shell, questi.
- * ==========================================================================
+ * I token condivisi (colori brand, spacing, font-family, ombre/raggi/z comuni)
+ * vivono in tokens/tokens.css (fonte unica, importata da bundles/shell.css). Qui
+ * stanno solo i valori propri della shell (navbar + footer), tutti namespaced
+ * --shell-* per evitare collisioni quando shell.css coesiste con un bundle
+ * d'area. I token --footer-* del footer vivono in footer.css.
+ * Per ritoccare il tema della sola shell, sovrascrivere i --shell-*.
  */
 
 :root {
-    /* ======================================================================
-       1. CONFLITTI CONSERVATI (shell != token di libreria)
-       Valore = valore storico della shell. Canonizzazione = TODO backend.
-       ====================================================================== */
+    /* Token shell con valore proprio (omonimo a un token di libreria ma diverso). */
 
     /* Testo principale shell: gray-700. (token di libreria: #111418) */
     --shell-color-text: #374151;
@@ -54,9 +32,7 @@
     /* Titoli prominenti shell: valore fisso (token di libreria: clamp responsive). */
     --shell-font-size-xl: 1.25rem;     /* 20px */
 
-    /* ======================================================================
-       2. SOLO-SHELL (nessun corrispettivo nei token di libreria)
-       ====================================================================== */
+    /* Token solo-shell (dimensioni navbar, mega menu, dropdown, gradienti, z). */
 
     /* --- Colori specifici shell --- */
     --shell-color-dark-light: #0A5A72;       /* sfumatura top bar / skillpoints */

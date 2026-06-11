@@ -7,8 +7,8 @@
     gap: 0;
 }
 
-/* Wrapper compatibile con il vecchio markup che posizionava frecce orizzontali.
-   Le frecce sono deprecate: la scrollbar nativa e' ora l'affordance primaria. */
+/* Wrapper del layout a frecce orizzontali (deprecate): la scrollbar nativa e'
+   l'affordance primaria. */
 .price-table__scroll-wrap {
     position: relative;
 }

@@ -4,10 +4,9 @@
  * @public-data data-file-upload-box, data-file-upload-box-open, data-file-upload-box-role
  * @public-event sp:file-upload-box:open, sp:file-upload-box:close, sp:file-upload-box:submit
  *
- * Markup-contract (audit moduli JS 2026-06): violazione FORMALE ma innocua.
- * Il JS scrive innerHTML SOLO in risposta ad azioni utente (lista dei file
- * scelti, stati di upload). Guscio del modale, dropzone e form sono
- * server-rendered. Non richiede fix.
+ * Il JS scrive innerHTML solo in risposta ad azioni utente (lista dei file
+ * scelti, stati di upload); guscio del modale, dropzone e form sono
+ * server-rendered.
  */
 (function () {
     'use strict';

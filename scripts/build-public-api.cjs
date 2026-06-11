@@ -17,8 +17,7 @@
  *                             Il modulo JS pubblico e' rilevato dal nome
  *                             dell'export `(ns|namespace).<Component> = ...`.
  *
- * Output: dist/public-api.json (format documentato in
- * `prompts-production-readiness-2026-05-08/10-public-api-freeze.md` sezione B).
+ * Output: dist/public-api.json.
  *
  * Idempotente: due esecuzioni su sorgenti invariati producono lo stesso JSON.
  *

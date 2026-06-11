@@ -383,8 +383,7 @@
 
 /* breakpoint-exception: 1440px / 1120px / 980px / 480px sono soglie misurate
    sulla larghezza effettiva delle colonne della tabella ordini compatta;
-   la canonizzazione 1280/1024/640 produrrebbe overflow o troncamento del titolo
-   (vedi audit production-readiness 2026-05-08, 03-css-bem-tokens). */
+   la canonizzazione 1280/1024/640 produrrebbe overflow o troncamento del titolo. */
 @media (max-width: 1440px) {
     .orders-table--compact .th-id,
     .orders-table--compact .orders-table__cell--id {
@@ -725,27 +724,20 @@
 }
 
 /* =====================================================================
-   F0a -- Stabilita' del colspan in table-layout:fixed.
+   Stabilita' del colspan in table-layout:fixed.
 
-   La detail-row espandibile ha un'unica cella con colspan = NUMERO TOTALE di
-   colonne della tabella (12 ordini / 10 preventivi: vedi markup statico). In
-   table-layout:fixed il numero di colonne del grid e' dato dalle celle NON
-   display:none della prima riga. Le colonne nascoste responsive usavano
-   display:none -> sparivano dal grid -> il colspan della detail-row ECCEDEVA le
-   colonne reali -> il browser creava colonne fantasma a destra: header/dati
-   compressi a sinistra con un vuoto bianco a destra (la detail-row invece
-   restava full-width). Si vedeva a riga aperta, peggio ancora zero-JS sulla
-   prima riga espansa di default.
-
-   Fix CSS-only (nessun JS, nessun markup nuovo): le colonne "nascoste" non si
-   tolgono dal grid ma collassano a larghezza 0 restando table-cell. Cosi' il
-   grid ha SEMPRE tutte le colonne, il colspan combacia a ogni breakpoint e la
-   detail-row si espande full-width anche senza JS. La cella resta come
-   segnaposto di colonna (width:0, overflow:hidden); il contenuto e' soppresso
-   (font-size:0 + figli display:none) per non aggiungere ne' larghezza ne'
-   altezza alla riga. Override volutamente in coda al file per vincere sui
-   display:none responsivi piu' in alto.
-   Verificato a 1440/1024/768/390, riga aperta e chiusa (ordini + preventivi).
+   La detail-row espandibile ha un'unica cella con colspan = numero totale di
+   colonne (12 ordini / 10 preventivi). In table-layout:fixed il numero di colonne
+   del grid e' dato dalle celle NON display:none della prima riga: se le colonne
+   nascoste responsive usassero display:none, il colspan eccederebbe le colonne
+   reali e il browser creerebbe colonne fantasma (header/dati compressi a sinistra,
+   vuoto a destra). Per questo le colonne "nascoste" collassano a larghezza 0
+   restando table-cell: il grid mantiene SEMPRE tutte le colonne, il colspan
+   combacia a ogni breakpoint e la detail-row resta full-width anche senza JS. La
+   cella resta segnaposto di colonna (width:0, overflow:hidden); il contenuto e'
+   soppresso (font-size:0 + figli display:none) per non aggiungere larghezza ne'
+   altezza. Override in coda al file per vincere sui display:none responsivi piu'
+   in alto.
    ===================================================================== */
 
 /* Colonne sempre nascoste su desktop (mobile-hide), escluse quelle che il

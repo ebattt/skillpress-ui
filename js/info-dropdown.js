@@ -10,10 +10,9 @@
  * @public-data data-info-dropdown, data-info-dropdown-info-trigger
  * @public-event sp:info-dropdown:open, sp:info-dropdown:close
  *
- * Markup-contract (audit moduli JS 2026-06): violazione FORMALE ma innocua.
  * Il JS genera solo il guscio del popup di aiuto e ne fa il toggle
- * (aria-expanded <-> hidden); trigger, pannello e CONTENUTO sono
- * server-rendered. Non richiede fix.
+ * (aria-expanded <-> hidden); trigger, pannello e contenuto sono
+ * server-rendered.
  *
  * Contratto markup atteso:
  *   <div class="sp-label-row">
