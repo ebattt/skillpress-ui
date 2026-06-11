@@ -1,16 +1,20 @@
 {
   "name": "@ebattt/skillpress-ui",
   "version": "0.5.0",
-  "description": "Skillpress UI — design system interno",
-  "private": true,
+  "description": "Skillpress UI design system",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ebattt/skillpress-ui.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "storybook": "STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006",
     "build-storybook": "STORYBOOK_DISABLE_TELEMETRY=1 storybook build",
     "pack:check": "npm pack --dry-run --cache /tmp/skillpress-npm-cache",
+    "prepublishOnly": "npm run check",
     "check:naming": "node scripts/check-naming.cjs",
     "check:legacy": "node scripts/check-legacy.cjs",
     "check:data-attrs": "node scripts/check-data-attrs.cjs",

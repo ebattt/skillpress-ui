@@ -14,15 +14,12 @@ carica CSS e JS dal package.
 
 ## Install
 
-**Git dependency** — pin a un tag esatto in `package.json`:
-
-```json
-"@ebattt/skillpress-ui": "git+https://github.com/ebattt/skillpress-ui.git#v0.5.0-gitdep.1"
+```bash
+npm install --save-exact @ebattt/skillpress-ui@0.5.0
 ```
 
-Sempre un tag esatto (`#vX.Y.Z-gitdep.N`), mai `#main` o range mobili. Auth:
-collaborator del repo `ebattt/skillpress-ui` + SSH key o PAT con scope `repo`.
-Nessun registry npm, nessun `.npmrc`.
+Il package è pubblico sul registry npm e non richiede credenziali per
+l'installazione.
 
 ## CSS Da Caricare
 
@@ -98,18 +95,12 @@ nomi sono API: classi interne, Storybook e markup demo non lo sono.
 
 ## Release
 
-Lo script `scripts/release.sh` automatizza check + build + commit artefatti +
-tag locale (push manuale):
+La versione in `package.json` deve essere nuova e seguire semantic versioning.
 
 ```bash
-./scripts/release.sh v0.5.0-gitdep.1
-git push origin main
-git push origin v0.5.0-gitdep.1
+npm run check
+npm publish
 ```
 
-Poi nel consumer: aggiorna il pin al nuovo tag → `npm install` →
-`npm run build:static-assets` → `npm run check`.
-
-Regole tag git: pin immutabile, mai spostare. Nuovo fix = nuovo tag patch
-(`vX.Y.Z-gitdep.N`). Pacchetto `private` (solo git dependency, niente publish su
-registry). Niente `prepare`/`postinstall` nel package.
+`prepublishOnly` ripete i controlli prima della pubblicazione. `publishConfig`
+forza registry npm pubblico e accesso pubblico.
