@@ -2,7 +2,7 @@ import '../bundles/demo-minimal.css';
 import '../js/accordion.js';
 import '../js/dashboard-shell.js';
 import '../js/info-dropdown.js';
-import '../js/orders-table.js';
+import '../js/expandable-table.js';
 import '../js/preview.js';
 
 export const parameters = {

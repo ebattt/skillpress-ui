@@ -14,33 +14,15 @@ carica CSS e JS dal package.
 
 ## Install
 
-Due canali equivalenti, stessa codebase. Scegliere uno solo.
-
-**Git dependency** (consigliato, no PAT npm):
+**Git dependency** — pin a un tag esatto in `package.json`:
 
 ```json
-"@ebattt/skillpress-ui": "git+https://github.com/ebattt/skillpress-ui.git#v0.4.1-gitdep.1"
+"@ebattt/skillpress-ui": "git+https://github.com/ebattt/skillpress-ui.git#v0.5.0-gitdep.1"
 ```
 
-Pin sempre a un tag esatto (`#vX.Y.Z` o `#vX.Y.Z-gitdep.N`). Niente `#main`,
-niente range mobili. Auth: collaborator del repo + SSH key o PAT con scope
-`repo`.
-
-**GitHub Packages** (canale storico):
-
-```bash
-npm install @ebattt/skillpress-ui
-```
-
-`.npmrc`:
-
-```ini
-@ebattt:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_TOKEN}
-```
-
-PAT classic con scope `read:packages`. L'invito alla repo deve essere
-accettato prima.
+Sempre un tag esatto (`#vX.Y.Z-gitdep.N`), mai `#main` o range mobili. Auth:
+collaborator del repo `ebattt/skillpress-ui` + SSH key o PAT con scope `repo`.
+Nessun registry npm, nessun `.npmrc`.
 
 ## CSS Da Caricare
 
@@ -120,10 +102,12 @@ Lo script `scripts/release.sh` automatizza check + build + commit artefatti +
 tag locale (push manuale):
 
 ```bash
-./scripts/release.sh v0.4.1-gitdep.1
+./scripts/release.sh v0.5.0-gitdep.1
+git push origin main
+git push origin v0.5.0-gitdep.1
 ```
 
-Per il canale Packages: `npm publish` (esegue `prepublishOnly`).
+Poi nel consumer: aggiorna il pin in `package.json` al nuovo tag e reinstalla.
 
 Regole tag git: pin immutabile, mai spostare. Nuovo fix = nuovo tag patch
-(`v0.4.1-gitdep.1`). Niente `prepare`/`postinstall` nel package.
+(`vX.Y.Z-gitdep.N`). Niente `prepare`/`postinstall` nel package.
