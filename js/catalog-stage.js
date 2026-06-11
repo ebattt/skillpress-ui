@@ -1,6 +1,7 @@
 /**
  * CatalogStage -- hero/landing slide stage with optional autoplay.
  *
+ * @public-component catalog-stage
  * @public-data data-catalog-stage, data-catalog-stage-init, data-catalog-stage-slide, data-catalog-stage-dot, data-catalog-stage-autoplay, data-catalog-stage-interval
  * @public-event (none)
  */

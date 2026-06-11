@@ -145,9 +145,24 @@ function main() {
     const componentNamesInDir = new Set(
         listFiles(COMPONENTS_DIR, '.css').map((p) => path.basename(p, '.css'))
     );
+    const componentClassesByFile = {};
+    for (const cf of componentFiles) {
+        componentClassesByFile[path.basename(cf.file, '.css')] = classesInContent(cf.content);
+    }
     for (const c of api.css.components) {
         if (!componentNamesInDir.has(c)) {
             errors.push('Component nel public-api ma assente in components/: ' + c);
+        }
+    }
+    for (const [component, classes] of Object.entries(api.css.componentClasses || {})) {
+        if (!componentNamesInDir.has(component)) {
+            errors.push('Class map nel public-api per component assente: ' + component);
+            continue;
+        }
+        for (const cls of classes) {
+            if (!componentClassesByFile[component].has(cls)) {
+                errors.push('Class map ' + component + ' contiene classe assente: .' + cls);
+            }
         }
     }
     for (const a of api.data) {
@@ -165,14 +180,36 @@ function main() {
             errors.push('JS module nel public-api ma assente nei sorgenti: ' + j);
         }
     }
+    for (const [file, runtime] of Object.entries(api.runtime || {})) {
+        if (!fs.existsSync(path.join(JS_DIR, file))) {
+            errors.push('Runtime nel public-api ma file assente: ' + file);
+        }
+        if (!allJsExports.has(runtime.module)) {
+            errors.push('Runtime nel public-api con modulo assente: ' + file + ' -> ' + runtime.module);
+        }
+        for (const component of runtime.components || []) {
+            const isPrimitive = component.indexOf('sp-') === 0;
+            if (isPrimitive && !allCssClasses.has(component)) {
+                errors.push('Runtime ' + file + ' punta a primitive assente: ' + component);
+            }
+            if (!isPrimitive && !componentNamesInDir.has(component)) {
+                errors.push('Runtime ' + file + ' punta a component assente: ' + component);
+            }
+        }
+    }
+    for (const [bundle, contract] of Object.entries(api.bundles || {})) {
+        if (!fs.existsSync(path.join(BUNDLES_DIR, bundle))) {
+            errors.push('Bundle nel public-api ma file assente: ' + bundle);
+        }
+        for (const component of contract.components || []) {
+            if (!componentNamesInDir.has(component)) {
+                errors.push('Bundle ' + bundle + ' punta a component assente: ' + component);
+            }
+        }
+    }
 
     // ---- 2. Bundles non leakano classi sp-* non-pubbliche ----
     const publicCssSet = new Set(api.css.primitives.map((c) => c.replace(/^\./, '')));
-    const componentClassesByFile = {};
-    for (const cf of componentFiles) {
-        componentClassesByFile[path.basename(cf.file, '.css')] = classesInContent(cf.content);
-    }
-
     const bundleFiles = readAll(listFiles(BUNDLES_DIR, '.css'));
     for (const bundle of bundleFiles) {
         const bundleName = path.basename(bundle.file);

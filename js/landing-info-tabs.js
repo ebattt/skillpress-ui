@@ -1,6 +1,7 @@
 /**
  * LandingInfoTabs -- tab navigation for landing text sections.
  *
+ * @public-component landing-info-tabs
  * @public-data data-landing-info-tabs, data-landing-info-tabs-init, data-landing-info-tabs-tab, data-landing-info-tabs-panel
  * @public-event (none)
  */

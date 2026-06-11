@@ -1,6 +1,7 @@
 /**
  * Accordion -- collapsible sections with single-open behavior.
  *
+ * @public-component sp-accordion
  * @public-data data-accordion, data-accordion-section, data-accordion-trigger
  * @public-event sp:accordion:open, sp:accordion:close
  */

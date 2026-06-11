@@ -1,6 +1,7 @@
 /**
  * DashboardSettingsForm -- inline edit/save settings form section.
  *
+ * @public-component dashboard-settings-form
  * @public-data data-dashboard-settings-form, data-dashboard-settings-form-section, data-dashboard-settings-form-actions, data-dashboard-settings-form-edit, data-dashboard-settings-form-save, data-dashboard-settings-form-cancel, data-dashboard-settings-form-field
  * @public-event sp:dashboard-settings-form:edit, sp:dashboard-settings-form:save, sp:dashboard-settings-form:close
  */

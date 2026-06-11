@@ -1,6 +1,7 @@
 /**
  * CatalogInterstitial -- card-grid interstitial promo block.
  *
+ * @public-component catalog-interstitial
  * @public-data data-catalog-interstitial, data-catalog-interstitial-init, data-catalog-interstitial-card, data-catalog-interstitial-link, data-catalog-interstitial-link-label
  * @public-event (none)
  */

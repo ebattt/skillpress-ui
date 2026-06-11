@@ -1,6 +1,7 @@
 /**
  * BillingFormCard -- inline card form for billing record create/edit.
  *
+ * @public-component billing-form-card
  * @public-data data-billing-form-card, data-billing-form-card-open, data-billing-form-card-close, data-billing-form-card-target, data-billing-form-card-mode, data-billing-form-card-record-id, data-billing-form-card-title, data-billing-form-card-submit, data-billing-form-card-create-label, data-billing-form-card-edit-label, data-billing-form-card-focus
  * @public-event sp:billing-form-card:open, sp:billing-form-card:close
  */

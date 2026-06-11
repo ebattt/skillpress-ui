@@ -1,6 +1,7 @@
 /**
  * DashboardDropdownBox -- collapsible dashboard module box.
  *
+ * @public-component dashboard-dropdown-box
  * @public-data data-dashboard-dropdown-box, data-dashboard-dropdown-box-trigger, data-dashboard-dropdown-box-content
  * @public-event sp:dashboard-dropdown-box:open, sp:dashboard-dropdown-box:close
  */

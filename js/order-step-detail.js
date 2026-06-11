@@ -3,6 +3,7 @@
  *
  * Listens to OrderStatusSteps to switch active panel.
  *
+ * @public-component order-step-detail
  * @public-data data-order-step-detail, data-order-step-detail-panel
  * @public-event sp:order-step-detail:change
  */

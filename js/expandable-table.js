@@ -1,8 +1,7 @@
 /**
  * ExpandableTable -- wiring per tabelle con righe espandibili (markup-based).
  *
- * Sostituisce orders-table.js e supplier-activity-table.js: un'unica
- * implementazione dell'espansione riga. Il modulo NON genera markup: chevron e
+ * Implementazione condivisa dell'espansione riga. Il modulo NON genera markup: chevron e
  * detail-row sono renderizzati dal backend. Il JS si limita ad agganciare il
  * comportamento (click/tastiera, sync aria-expanded <-> hidden, una riga aperta
  * alla volta, evento custom). Le classi CSS restano per-componente
@@ -19,6 +18,7 @@
  *   - label aria opzionali sul root: data-expandable-table-label-show /
  *     data-expandable-table-label-hide (default "Mostra/Nascondi dettagli").
  *
+ * @public-component orders-table, billing-table, supplier-activity-table
  * @public-data data-expandable-table, data-expandable-table-init, data-expandable-table-row, data-expandable-table-toggle, data-expandable-table-label-show, data-expandable-table-label-hide
  * @public-event sp:expandable-table:row-toggle
  */

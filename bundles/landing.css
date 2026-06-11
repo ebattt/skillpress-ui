@@ -4,6 +4,7 @@
 @import '../tokens/tokens.css';
 @import '../base/reset.css';
 @import '../utilities/utilities.css';
+@import '../primitives/catalog-grid.css';
 @import '../components/catalog-stage.css';
 @import '../components/catalog-product-grid.css';
 @import '../components/catalog-interstitial.css';

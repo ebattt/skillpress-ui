@@ -1,6 +1,7 @@
 /**
  * ConfirmDialog -- accessible confirmation dialog shell.
  *
+ * @public-component sp-confirm-dialog
  * @public-data data-confirm-dialog, data-confirm-dialog-open, data-confirm-dialog-role
  * @public-event sp:confirm-dialog:open, sp:confirm-dialog:close, sp:confirm-dialog:confirm, sp:confirm-dialog:cancel
  */

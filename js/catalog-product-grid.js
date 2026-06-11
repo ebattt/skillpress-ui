@@ -1,6 +1,7 @@
 /**
  * CatalogProductGrid -- product grid with expand/collapse toggle.
  *
+ * @public-component catalog-product-grid
  * @public-data data-catalog-product-grid, data-catalog-product-grid-init, data-catalog-product-grid-card, data-catalog-product-grid-items, data-catalog-product-grid-toggle, data-catalog-product-grid-initial-rows, data-catalog-product-grid-expand-label, data-catalog-product-grid-collapse-label
  * @public-event sp:catalog-product-grid:toggle
  */

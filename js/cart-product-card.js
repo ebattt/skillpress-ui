@@ -1,6 +1,7 @@
 /**
  * CartProductCard -- expandable cart line item card.
  *
+ * @public-component cart-product-card
  * @public-data data-cart-product-card, data-cart-product-card-toggle, data-cart-product-card-details
  * @public-event sp:cart-product-card:open, sp:cart-product-card:close
  */

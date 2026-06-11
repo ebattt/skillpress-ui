@@ -1,6 +1,7 @@
 /**
  * FeedatyWidget -- third-party Feedaty review SDK loader.
  *
+ * @public-component feedaty-widget
  * @public-data data-feedaty-widget, data-feedaty-widget-init, data-feedaty-widget-sdk, data-feedaty-widget-sdk-src
  * @public-event sp:feedaty-widget:error
  *

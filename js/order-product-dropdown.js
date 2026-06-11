@@ -1,6 +1,7 @@
 /**
  * OrderProductDropdown -- expandable order product detail card.
  *
+ * @public-component order-product-dropdown
  * @public-data data-order-product-dropdown, data-order-product-dropdown-trigger, data-order-product-dropdown-content, data-order-product-dropdown-details, data-order-product-dropdown-details-trigger
  * @public-event sp:order-product-dropdown:open, sp:order-product-dropdown:close
  */

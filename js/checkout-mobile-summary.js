@@ -1,6 +1,7 @@
 /**
  * CHECKOUT MOBILE SUMMARY -- Fixed bottom summary behavior.
  *
+ * @public-component checkout-mobile-summary
  * @public-data data-checkout-mobile-summary, data-checkout-mobile-summary-toggle, data-checkout-mobile-summary-overlay
  * @public-event sp:checkout-mobile-summary:open, sp:checkout-mobile-summary:close
  */

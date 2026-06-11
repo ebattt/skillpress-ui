@@ -1,6 +1,7 @@
 /**
  * Preview -- popover preview panel anchored to a configurator option.
  *
+ * @public-component preview
  * @public-data data-preview, data-preview-trigger, data-preview-panel, data-preview-close, data-preview-option
  * @public-event sp:preview:open, sp:preview:close, sp:preview:sync
  *

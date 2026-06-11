@@ -1,7 +1,6 @@
 /**
  * TOGGLE SWITCH -- Behavior minimo
- * Fonte: Skillpress-frontend/elements-ui/js/checkout/checkout-toggle-switch.js
- *        (toggle .active + setAttribute aria-checked).
+ * Gestisce .active e aria-checked.
  *
  * API:
  *   window.SkillpressUI.ToggleSwitch.init(rootOrSelector?)
@@ -14,6 +13,7 @@
  *   - rispetta disabled / aria-disabled
  *   - NON gestisce stato di business (es. IVA, prezzi)
  *
+ * @public-component sp-toggle-switch
  * @public-data data-toggle-switch
  * @public-event sp:toggle-switch:change
  */

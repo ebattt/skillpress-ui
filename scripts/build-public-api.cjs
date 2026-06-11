@@ -33,6 +33,7 @@ const PRIMITIVES_DIR = path.join(REPO_ROOT, 'primitives');
 const PAGE_DIR = path.join(REPO_ROOT, 'page');
 const COMPONENTS_DIR = path.join(REPO_ROOT, 'components');
 const JS_DIR = path.join(REPO_ROOT, 'js');
+const BUNDLES_DIR = path.join(REPO_ROOT, 'bundles');
 const OUT_DIR = path.join(REPO_ROOT, 'dist');
 const OUT_FILE = path.join(OUT_DIR, 'public-api.json');
 
@@ -136,6 +137,30 @@ function extractJsExportName(content) {
     return m ? m[1] : null;
 }
 
+function extractBundleContract(file) {
+    const content = fs.readFileSync(path.join(BUNDLES_DIR, file), 'utf8');
+    const components = new Set();
+    const primitives = new Set();
+    const importRe = /@import\s+["'][^"']*\/(components|primitives|page)\/([^/"']+)\.css["']/g;
+    let m;
+    while ((m = importRe.exec(content)) !== null) {
+        if (m[1] === 'components') {
+            components.add(m[2]);
+            continue;
+        }
+        const dir = m[1] === 'page' ? PAGE_DIR : PRIMITIVES_DIR;
+        const css = fs.readFileSync(path.join(dir, `${m[2]}.css`), 'utf8');
+        for (const selector of extractPublicCssClasses(css)) {
+            const name = selector.replace(/^\./, '');
+            primitives.add(name.split('__')[0].split('--')[0]);
+        }
+    }
+    return {
+        components: Array.from(components).sort(),
+        primitives: Array.from(primitives).sort()
+    };
+}
+
 function main() {
     if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
 
@@ -158,10 +183,21 @@ function main() {
     }
 
     // CSS components: domain-scoped, identificati per nome file (senza .css).
-    const components = listCssFiles(COMPONENTS_DIR).map((f) => f.replace(/\.css$/, ''));
+    const componentFiles = listCssFiles(COMPONENTS_DIR);
+    const components = componentFiles.map((f) => f.replace(/\.css$/, ''));
+    const componentClasses = {};
+    for (const file of componentFiles) {
+        const content = fs.readFileSync(path.join(COMPONENTS_DIR, file), 'utf8');
+        const classes = new Set();
+        const classRe = /\.([a-zA-Z][a-zA-Z0-9_-]*)/g;
+        let match;
+        while ((match = classRe.exec(content)) !== null) classes.add(match[1]);
+        componentClasses[file.replace(/\.css$/, '')] = [...classes].sort();
+    }
 
     // JS files.
     const jsExports = [];
+    const runtime = {};
     const dataAttrs = new Set();
     const events = new Set();
     const jsFiles = listJsFiles(JS_DIR);
@@ -175,19 +211,37 @@ function main() {
         const exportName = extractJsExportName(content);
         if (exportName) jsExports.push(exportName);
 
+        const fileComponents = extractFromCommentTag(content, 'public-component');
         const fileDataAttrs = extractFromCommentTag(content, 'public-data');
         for (const a of fileDataAttrs) dataAttrs.add(a);
 
         const fileEvents = extractFromCommentTag(content, 'public-event');
         for (const e of fileEvents) events.add(e);
+
+        if (exportName) {
+            runtime[file] = {
+                module: exportName,
+                components: fileComponents,
+                data: fileDataAttrs,
+                events: fileEvents
+            };
+        }
+    }
+
+    const bundles = {};
+    for (const file of listCssFiles(BUNDLES_DIR)) {
+        bundles[file] = extractBundleContract(file);
     }
 
     const apiSorted = {
         version: version,
         css: {
             primitives: Array.from(new Set(primitives)).sort(),
-            components: components.sort()
+            components: components.sort(),
+            componentClasses: componentClasses
         },
+        bundles: bundles,
+        runtime: runtime,
         data: Array.from(dataAttrs).sort(),
         events: Array.from(events).sort(),
         js: jsExports.sort()

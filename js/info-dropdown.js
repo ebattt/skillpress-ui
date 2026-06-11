@@ -1,12 +1,12 @@
 /**
  * INFO DROPDOWN -- Behavior minimo per pannelli di aiuto contestuale
- * Fonte: Skillpress-frontend/elements-ui/js/buttons/button-info.js (Button Info)
- *        + product-page-integration/js/sections/section-1.js (toggleInfoDropdown).
+ * Gestisce apertura, chiusura e attributi ARIA del pannello.
  *
  * API:
  *   window.SkillpressUI.InfoDropdown.init(rootOrSelector?)
  *   Default: scansione di tutto il document.
  *
+ * @public-component sp-info-dropdown
  * @public-data data-info-dropdown, data-info-dropdown-info-trigger
  * @public-event sp:info-dropdown:open, sp:info-dropdown:close
  *

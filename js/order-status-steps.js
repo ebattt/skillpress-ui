@@ -1,6 +1,7 @@
 /**
  * OrderStatusSteps -- horizontal step indicator for order lifecycle.
  *
+ * @public-component order-status-steps
  * @public-data data-order-status-steps, data-order-status-steps-item, data-order-status-steps-step-id
  * @public-event sp:order-status-steps:change
  */

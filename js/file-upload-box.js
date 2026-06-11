@@ -1,6 +1,7 @@
 /**
  * FileUploadBox -- modal/dialog box for file uploads.
  *
+ * @public-component file-modal
  * @public-data data-file-upload-box, data-file-upload-box-open, data-file-upload-box-role
  * @public-event sp:file-upload-box:open, sp:file-upload-box:close, sp:file-upload-box:submit
  *

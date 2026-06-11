@@ -1,6 +1,7 @@
 /**
  * DashboardShell -- dashboard layout with view routing and mobile menu.
  *
+ * @public-component dashboard-shell
  * @public-data data-dashboard-shell, data-dashboard-shell-initial-view, data-dashboard-shell-view, data-dashboard-shell-nav-item, data-dashboard-shell-navigate, data-dashboard-shell-navigate-disabled-mobile, data-dashboard-shell-mobile-menu, data-dashboard-shell-back, data-dashboard-shell-parent
  * @public-event sp:dashboard-shell:change
  */
