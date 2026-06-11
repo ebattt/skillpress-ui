@@ -1,40 +1,18 @@
+---
+title: DashboardWelcomeBox
+description: Banner di saluto iniziale della dashboard cliente.
+layer: components
+strategy: css-only
+package_path: components/dashboard-welcome-box.css
+---
+
 # DashboardWelcomeBox
 
-`DashboardWelcomeBox` mostra il saluto iniziale della dashboard cliente.
+Banner di saluto iniziale della dashboard. La libreria decide spacing,
+tipografia, colori e responsive; il backend decide nome utente, testo e
+localizzazione. CSS-only, nessun JS.
 
-## Fonte
-
-- Markup reale: `Skillpress-frontend/reference-pages/static/dashboard/index.html`
-- CSS reale: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_cards.css`
-- Fonte catalogo storico: `Skillpress-frontend/elements-ui/js/dashboard/welcome-box.js`
-- Pagina target: `dashboard`
-
-## Import
-
-```html
-<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/dashboard-welcome-box.css">
-```
-
-Nessun JS richiesto.
-
-## Responsabilita
-
-La libreria decide spacing, tipografia, colori e responsive del banner. Il
-backend decide nome utente, testo e localizzazione.
-
-## Reuse Audit
-
-`Card` non viene usato perche' il blocco reale non ha superficie, bordo, radius
-o slot card.
-
-`Badge` non viene usato perche' non ci sono stati o dot.
-
-`Button` non viene usato perche' il greeting non contiene CTA o azioni.
-
-Le primitive `tokens`, `fonts` e `reset` restano la base runtime, ma non vengono
-forzate primitive visuali per coprire il banner.
-
-## Markup Minimo
+## Markup minimo
 
 ```html
 <div class="dashboard-greeting-banner" data-dashboard-welcome-box>
@@ -45,27 +23,21 @@ forzate primitive visuali per coprire il banner.
 </div>
 ```
 
-## Classi
+## Classi pubbliche
 
 - `.dashboard-greeting-banner`
 - `.dashboard-greeting-banner__title`
 - `.dashboard-greeting-banner__subtitle`
 - `.user-name`
 
-## Attributi
+## Data hooks
 
-- `[data-dashboard-welcome-box]`: hook semantico opzionale. Non esiste behavior
-  JS di libreria associato.
-
-## Modifier
+- `[data-dashboard-welcome-box]`: hook semantico opzionale. Nessun behavior JS di
+  libreria associato.
 
 Nessun modifier.
 
-## Fuori Scope
+## Fuori scope
 
-- recupero dati utente;
-- routing o navigazione dashboard;
-- card ordini recenti;
-- badge stato ordini;
-- action badge;
-- tabelle, upload e viste dettaglio ordine.
+Recupero dati utente, routing/navigazione, card ordini recenti, badge stato,
+tabelle, upload e viste dettaglio ordine.

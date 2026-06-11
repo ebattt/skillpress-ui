@@ -1,44 +1,16 @@
+---
+title: DashboardActionBadge
+description: Chip rosso per azioni richieste nella dashboard (es. caricare file/contabile).
+layer: components
+strategy: css-only
+package_path: components/dashboard-action-badge.css
+---
+
 # DashboardActionBadge
 
-`DashboardActionBadge` mostra un chip rosso per azioni richieste nella
-dashboard, ad esempio caricare file o contabile.
+Chip uppercase rosso per azioni richieste nella dashboard, usato in tabelle e dettaglio ordine. CSS-only. La libreria possiede sizing, colore, radius, uppercase, hover/focus e icone chrome CSS; il backend possiede testo, visibilità e azione applicativa.
 
-## Fonte
-
-- Markup reale: `Skillpress-frontend/reference-pages/static/dashboard/index.html`
-- CSS reale: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_buttons.css`
-- Context CSS: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_tables.css`
-- Fonte catalogo storico: `Skillpress-frontend/elements-ui/js/dashboard/orders-table.js`
-- Pagina target: `dashboard`
-
-## Import
-
-```html
-<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/dashboard-action-badge.css">
-```
-
-Nessun JS richiesto.
-
-## Responsabilita
-
-La libreria decide sizing, colore, radius, uppercase, hover/focus e icone chrome
-CSS. Il backend decide testo, visibilita' e azione applicativa.
-
-## Reuse Audit
-
-`Badge` non basta perche' e' dot + testo senza background; il pattern reale e'
-una pill rossa uppercase per azione richiesta.
-
-`Button` non basta perche' il chip ha dimensione compatta da cella/card e non
-usa le varianti CTA del bottone.
-
-`Card` non c'entra: non e' una superficie.
-
-`RecentOrderCard` contiene `.dashboard-order-card__action-alert`, che e' un alert
-interno alla card overview, diverso dal chip `.dashboard-action-badge` usato in
-tabelle e dettaglio ordine.
-
-## Markup Minimo
+## Markup contract
 
 ```html
 <span class="dashboard-action-badge" data-dashboard-action-badge>
@@ -47,33 +19,23 @@ tabelle e dettaglio ordine.
 </span>
 ```
 
-La fonte dashboard nasconde `.dashboard-action-badge__icon`; il runtime mantiene lo
-stesso default. Le icone sono CSS library-owned, non Material Symbols.
+L'icona è nascosta di default; le icone sono CSS library-owned.
 
-## Classi
+## Classi pubbliche
 
-- `.dashboard-action-badge`
-- `.dashboard-action-badge--error`
-- `.dashboard-action-badge__icon`
-- `.dashboard-action-badge__icon--upload`
-- `.dashboard-action-badge__icon--receipt`
-- `.dashboard-action-badge__icon--error`
+- `.dashboard-action-badge`, `--error`
+- `.dashboard-action-badge__icon` con `--upload`, `--receipt`, `--error`
 
-## Attributi
+## Data hooks
 
-- `[data-dashboard-action-badge]`: hook semantico opzionale. Non esiste
-  behavior JS di libreria associato.
+- `[data-dashboard-action-badge]`: hook semantico opzionale. Nessun behavior JS associato.
 
 ## Modifier
 
-- `.dashboard-action-badge--error`: variante esplicita errore, oggi visualmente
-  equivalente al default rosso.
+- `.dashboard-action-badge--error`: variante esplicita errore (oggi visualmente equivalente al default rosso).
 
-## Fuori Scope
+## Out of scope
 
-- upload reale;
-- pagamento/contabile reale;
-- validazione file;
+- upload/pagamento reali, validazione file;
 - routing/click handler;
-- table layout;
-- mobile row details.
+- table layout e mobile row details.

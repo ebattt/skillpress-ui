@@ -3,19 +3,17 @@ title: MediaChoiceCard
 description: Card generica selezionabile con immagine per presentation type CMS "media choice".
 layer: components
 strategy: css-only
-status: public-contract
 package_path: components/media-choice-card.css
 ---
 
 # MediaChoiceCard
 
-Card generica per varianti CMS con layout "Immagine": verniciatura,
-laminazione 3D, verniciatura sovracoperta e casi futuri analoghi.
+Card generica per varianti CMS con layout "Immagine" (verniciatura, laminazione
+3D, verniciatura sovracoperta e casi analoghi). CSS-only: lo stato selezionato
+si applica con `.media-choice-card--selected`. Quando cambia solo il contenuto,
+non creare componenti separati come `EffectCard` o `AngoloCard`.
 
-Non creare componenti separati come `EffectCard`, `AletteCard` o `AngoloCard`
-quando cambia solo il contenuto.
-
-## Markup ufficiale
+## Markup contract
 
 ```html
 <div class="media-choice-cards">
@@ -45,20 +43,21 @@ Variante preview non fotografica:
 |---|---|
 | `.media-choice-cards` | wrapper flex |
 | `.media-choice-cards--grid` | wrapper grid 3/6 colonne |
-| `.media-choice-card` | card opzione 6.5rem x min 7.75rem |
+| `.media-choice-card` | card opzione |
 | `.media-choice-card--selected` | stato selezionato |
 | `.media-choice-card--disabled` | stato disabilitato |
-| `.media-choice-card__image-wrap` | cornice immagine 5rem x 5rem |
+| `.media-choice-card__image-wrap` | cornice immagine |
 | `.media-choice-card__image` | immagine |
-| `.media-choice-card__preview` | preview disegnata / geometrica 4rem x 4rem |
+| `.media-choice-card__preview` | preview geometrica |
 | `.media-choice-card__label` | label |
 | `.media-choice-card__meta` | sottotesto/meta |
 
 ## Integrazione CMS
 
 Il backend mappa `Layout = Immagine` a `MediaChoiceCard`. I nomi variante
-(`Verniciatura`, `Laminazione 3D`, `Angoli arrotondati`) restano dati CMS, non
-nomi componente.
+(`Verniciatura`, `Laminazione 3D`, ...) restano dati CMS, non nomi componente.
 
-Fuori scope: prezzi, regole carta compatibile, limitazioni opzioni, anteprima
-ingrandita e scroll/frecce.
+## Fuori scope
+
+Prezzi, regole carta compatibile, limitazioni opzioni, anteprima ingrandita,
+scroll/frecce.

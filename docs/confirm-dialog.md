@@ -3,8 +3,8 @@ title: ConfirmDialog
 description: Dialog modale di conferma per azioni distruttive o cambi di stato con perdita di impostazioni.
 layer: primitives
 strategy: css-js
-status: public-contract
 package_path: primitives/sp-confirm-dialog.css
+js_path: js/confirm-dialog.js
 ---
 
 # ConfirmDialog
@@ -18,12 +18,7 @@ Primitive per conferme bloccanti. La libreria gestisce apertura, chiusura, Escap
     Apri conferma
 </button>
 
-<div id="mode-change-confirm-dialog"
-     class="sp-confirm-dialog"
-     data-confirm-dialog
-     role="presentation"
-     aria-hidden="true"
-     hidden>
+<div id="mode-change-confirm-dialog" class="sp-confirm-dialog" data-confirm-dialog role="presentation" aria-hidden="true" hidden>
     <div class="sp-confirm-dialog__panel" role="dialog" aria-modal="true" aria-labelledby="mode-change-confirm-dialog-title" tabindex="-1">
         <div class="sp-confirm-dialog__header">
             <div class="sp-confirm-dialog__heading">
@@ -43,44 +38,28 @@ Primitive per conferme bloccanti. La libreria gestisce apertura, chiusura, Escap
 </div>
 ```
 
-## API
+## Classi pubbliche
 
-Classi pubbliche:
+`.sp-confirm-dialog`, `__panel`, `__header`, `__heading`, `__icon`, `__title`, `__close`, `__body`, `__text`, `__actions`.
 
-- `.sp-confirm-dialog`
-- `.sp-confirm-dialog__panel`
-- `.sp-confirm-dialog__header`
-- `.sp-confirm-dialog__heading`
-- `.sp-confirm-dialog__icon`
-- `.sp-confirm-dialog__title`
-- `.sp-confirm-dialog__close`
-- `.sp-confirm-dialog__body`
-- `.sp-confirm-dialog__text`
-- `.sp-confirm-dialog__actions`
+## Data hooks
 
-Data hooks:
+- `data-confirm-dialog`: root.
+- `data-confirm-dialog-open="#id"`: opener esterno.
+- `data-confirm-dialog-role="close|cancel|confirm"`: ruolo dei button interni.
 
-- `data-confirm-dialog`
-- `data-confirm-dialog-open="#id"`
-- `data-confirm-dialog-role="close|cancel|confirm"`
+## JS
 
-JS:
+`window.SkillpressUI.ConfirmDialog`:
 
-- `window.SkillpressUI.ConfirmDialog.init(scope)`
-- `window.SkillpressUI.ConfirmDialog.open(root, triggerEl, detail)`
-- `window.SkillpressUI.ConfirmDialog.close(root, detail)`
-- `window.SkillpressUI.ConfirmDialog.confirm(root, detail)`
-- `window.SkillpressUI.ConfirmDialog.cancel(root, detail)`
+- `init(scope)`
+- `open(root, triggerEl, detail)`
+- `close(root, detail)`
+- `confirm(root, detail)`
+- `cancel(root, detail)`
 
-Eventi:
-
-- `sp:confirm-dialog:open`
-- `sp:confirm-dialog:close`
-- `sp:confirm-dialog:confirm`
-- `sp:confirm-dialog:cancel`
+Eventi: `sp:confirm-dialog:open`, `sp:confirm-dialog:close`, `sp:confirm-dialog:confirm`, `sp:confirm-dialog:cancel`.
 
 ## Backend owns
 
-- Titolo, copy e label dei bottoni.
-- Azione da eseguire quando arriva `sp:confirm-dialog:confirm`.
-- Eventuali reset di configurazione o chiamate API.
+Titolo, copy, label dei bottoni e azione da eseguire su `sp:confirm-dialog:confirm` (reset configurazione, chiamate API).

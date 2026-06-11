@@ -1,6 +1,6 @@
 ---
 title: OrderProductDropdown
-description: Dashboard order detail product card con disclosure e dettagli prodotto.
+description: Card prodotto espandibile del dettaglio ordine dashboard, con disclosure e dettagli prodotto.
 layer: components
 strategy: css-js
 status: public-contract
@@ -10,9 +10,9 @@ js_path: js/order-product-dropdown.js
 
 # OrderProductDropdown
 
-`OrderProductDropdown` copre la card prodotto espandibile del dettaglio ordine
-dashboard. La libreria gestisce la shell prodotto e i disclosure UI; stepper,
-upload reale e stato ordine restano fuori scope.
+Card prodotto espandibile del dettaglio ordine dashboard. La libreria gestisce la
+shell prodotto e i disclosure UI; dati prodotto, action slot e stato iniziale
+sono backend/app.
 
 ## Markup contract
 
@@ -92,39 +92,18 @@ upload reale e stato ordine restano fuori scope.
 | `data-order-product-dropdown-details-trigger` | no | trigger dettagli | toggle dettagli prodotto |
 | `data-order-product-dropdown-details` | no | contenuto dettagli | pannello dettagli prodotto |
 
-JS:
+Init: `window.SkillpressUI.OrderProductDropdown.init()`.
 
-```js
-window.SkillpressUI.OrderProductDropdown.init();
-```
+Eventi: `sp:order-product-dropdown:open`, `sp:order-product-dropdown:close`.
 
 ## Modifier / stati
 
 Nessun modifier visuale pubblico richiesto per l'apertura: il JS sincronizza
 `hidden` e `aria-expanded`.
 
-## Backend owns
+## Ownership
 
-- nome, meta, prezzo, immagine;
-- badge e action slot;
-- contenuto dettagli;
-- stato iniziale expanded/collapsed.
-
-## Library owns
-
-- layout card e responsive;
-- disclosure UI e ARIA;
-- hover/focus;
-- chevron CSS.
-
-## Demo-only
-
-Eventuali `data-orders-table-action`, `data-section`, toolbar scenari, renderer didattici e
-fixture appartengono alla demo/app e non sono API pubbliche del componente.
-
-## Out of scope
-
-- stepper tracking;
-- upload reale;
-- calcoli ordine/prodotto;
-- routing e reorder business logic.
+- Backend/app: nome, meta, prezzo, immagine, badge, action slot, contenuto
+  dettagli, stato iniziale expanded/collapsed.
+- Libreria: layout card e responsive, disclosure UI e ARIA, hover/focus,
+  chevron CSS.

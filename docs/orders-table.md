@@ -1,20 +1,20 @@
+---
+title: OrdersTable
+description: Tabella ordini compatta della dashboard, con riga dettagli espandibile.
+layer: components
+strategy: css-js
+status: public-contract
+package_path: components/orders-table.css
+js_path: js/expandable-table.js
+---
+
 # OrdersTable
 
-> **0.5.0 — markup-based.** L'espansione riga e' ora gestita dal modulo unico
-> `ExpandableTable` (`js/expandable-table.js`): chevron e detail-row vivono nel
-> MARKUP, il JS fa solo wiring. Hook: `data-expandable-table`,
-> `data-expandable-table-row` (con `aria-controls` -> id detail-row),
-> `data-expandable-table-toggle`. Evento: `sp:expandable-table:row-toggle`.
-> Il vecchio `OrdersTable` / `data-orders-table*` non esiste piu'.
-
-`OrdersTable` mostra la tabella ordini compatta della dashboard.
-
-## Fonte
-
-- Markup reale: `Skillpress-frontend/reference-pages/static/dashboard/index.html`
-- CSS reale: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_tables.css`
-- Fonte catalogo storico: `Skillpress-frontend/elements-ui/js/dashboard/orders-table.js`
-- Pagina target: `dashboard`
+Tabella ordini compatta della dashboard. La libreria fornisce le classi CSS
+(`orders-table__*`, celle, riga dettagli mobile, chevron). L'espansione riga e'
+gestita dal modulo condiviso `ExpandableTable` (`js/expandable-table.js`):
+chevron e detail-row vivono nel markup, il JS fa solo wiring. Backend/app
+decidono righe, status, action chip, dati ordine e routing.
 
 ## Import
 
@@ -22,48 +22,14 @@
 <link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/primitives/badge.css">
 <link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/dashboard-action-badge.css">
 <link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/orders-table.css">
-<script defer src="/node_modules/@ebattt/skillpress-ui/js/orders-table.js"></script>
+<script defer src="/node_modules/@ebattt/skillpress-ui/js/expandable-table.js"></script>
 ```
 
-Il JS e' opzionale e abilita le righe dettagli mobile:
-
-```html
-<script>
-window.addEventListener('DOMContentLoaded', function () {
-    window.SkillpressUI.OrdersTable.init();
-});
-</script>
-```
-
-## Responsabilita
-
-La libreria decide wrapper, bordo/radius, colonne compact, ellipsis titolo,
-layout liste prodotto/azioni, responsive statico e, quando inizializzata, la
-riga dettagli mobile generata dalle celle `.orders-table__cell--mobile-hide`.
-Nella shell dashboard mobile (`<=1023px`) la riga compatta mantiene solo le
-colonne principali e sposta `Pagamento` e `Totale` nella riga dettagli, evitando
-overflow laterale su tablet/mobile larghi. Backend/app decidono righe, status,
-action chip, dati ordine e routing.
-
-## Reuse Audit
-
-`Badge` copre gli status dot+testo. Usare `.sp-badge badge--*`; non creare
-`DashboardStatusBadge`.
-
-`DashboardActionBadge` copre le azioni richieste dentro la tabella.
-
-`SearchFilterBar` e `TablePagination` sono componenti separati da comporre
-sopra e sotto la tabella.
-
-`PriceTable` non basta: e' tabella pricing/configuratore, non lista ordini.
-
-`Card` e `Button` non coprono semantica e layout tabellare.
-
-## Markup Minimo
+## Markup minimo
 
 ```html
 <div class="table-wrapper table-wrapper--scroll">
-    <table class="orders-table orders-table--compact" data-orders-table>
+    <table class="orders-table orders-table--compact" data-expandable-table>
         <thead>
             <tr>
                 <th class="th-id">#</th>
@@ -72,7 +38,6 @@ sopra e sotto la tabella.
                 <th class="th-text-right th-mobile-hide">Pezzi</th>
                 <th class="th-mobile-hide">Referente</th>
                 <th class="th-mobile-hide">Spedito il</th>
-                <th class="th-mobile-hide">Azioni richieste</th>
                 <th class="th-status">Stato</th>
                 <th class="th-mobile-hide th-simplified-show th-payment">Pagamento</th>
                 <th class="th-mobile-hide">Spedizione</th>
@@ -80,7 +45,7 @@ sopra e sotto la tabella.
             </tr>
         </thead>
         <tbody>
-            <tr data-recent-order-card-order-id="ORD-001">
+            <tr data-expandable-table-row aria-controls="orders-detail-110456" aria-expanded="false" tabindex="0">
                 <td class="orders-table__cell--id font-semibold text-dark-blue orders-table__cell--nowrap">110456</td>
                 <td class="orders-table__cell--title">
                     <div class="table-title-cell">
@@ -88,18 +53,18 @@ sopra e sotto la tabella.
                     </div>
                 </td>
                 <td class="orders-table__cell--prodotti orders-table__cell--mobile-hide">
-                    <div class="product-list">
-                        <span class="product-name">Brossura fresata</span>
-                    </div>
+                    <div class="product-list"><span class="product-name">Brossura fresata</span></div>
                 </td>
                 <td class="orders-table__cell--pezzi orders-table__cell--text-right orders-table__cell--mobile-hide">200</td>
                 <td class="orders-table__cell--mobile-hide">Lucia Marchetti</td>
                 <td class="orders-table__cell--mobile-hide orders-table__cell--nowrap">05/02/2026</td>
-                <td class="orders-table__cell--mobile-hide"></td>
                 <td class="orders-table__cell--status"><span class="sp-badge sp-badge--info">Aperto</span></td>
                 <td class="orders-table__cell--payment orders-table__cell--mobile-hide th-simplified-show"><span class="sp-badge sp-badge--warning">In sospeso</span></td>
                 <td class="orders-table__cell--spedizione orders-table__cell--mobile-hide">Ritiro in sede<br><strong>12/03/2026</strong></td>
                 <td class="orders-table__cell--total font-semibold orders-table__cell--text-right orders-table__cell--nowrap">&euro; 320,50</td>
+            </tr>
+            <tr id="orders-detail-110456" hidden>
+                <td colspan="10"><!-- contenuto dettaglio --></td>
             </tr>
         </tbody>
     </table>
@@ -113,34 +78,29 @@ sopra e sotto la tabella.
 - `.table-title-cell`, `.table-title-cell__text`, `.table-title-cell__actions`
 - `.table-actions-list`
 - `.product-list`, `.product-name`
-- `.orders-table__cell--id`, `.orders-table__cell--title`, `.orders-table__cell--prodotti`, `.orders-table__cell--pezzi`, `.orders-table__cell--status`,
-  `.orders-table__cell--payment`, `.orders-table__cell--spedizione`, `.orders-table__cell--total`
+- `.orders-table__cell--id|title|prodotti|pezzi|status|payment|spedizione|total`
 - `.orders-table__cell--text-right`, `.th-text-right`, `.orders-table__cell--nowrap`
-- `.orders-table__cell--mobile-hide`, `.th-mobile-hide`, `.orders-table__cell--simplified-show`,
-  `.th-simplified-show`
+- `.orders-table__cell--mobile-hide`, `.th-mobile-hide`, `.orders-table__cell--simplified-show`, `.th-simplified-show`
+- `.orders-table__cell--mobile-chevron`, `.tr-mobile-details`, `.mobile-details-grid`
 
-## Mobile Details
+## Data hooks
 
-`SkillpressUI.OrdersTable.init()`:
+L'espansione riga usa i hook di `ExpandableTable`:
 
-- aggiunge `.orders-table__cell--mobile-chevron`;
-- marca le righe con `[data-orders-table-row]`;
-- genera una riga `.tr-mobile-details[hidden][data-orders-table-detail]`;
-- sincronizza `aria-expanded` e `hidden`;
-- non aggiunge CTA di routing o dettaglio ordine.
+| Hook | Elemento | Ruolo |
+|---|---|---|
+| `data-expandable-table` | `<table>` | root da inizializzare |
+| `data-expandable-table-row` | `<tr>` riga | riga espandibile (`aria-controls` -> id detail-row, `aria-expanded`, `tabindex="0"`) |
+| `data-expandable-table-toggle` | `<button>` | chevron toggle dentro la riga |
 
-Sotto `1024px`, `Pagamento` e `Totale` non sono visibili nella riga compatta
-di `orders-table--compact`; i valori restano disponibili nella riga dettagli
-generata dal JS a partire dalle celle `.orders-table__cell--mobile-hide`.
+Evento: `sp:expandable-table:row-toggle`.
 
 ## Token
 
 - `--color-focus-ring`: colore outline keyboard focus delle righe interattive.
 
-## Fuori Scope
+## Fuori scope
 
-- routing/detail ordine;
-- upload o pagamento;
-- filtri reali/API;
-- paginazione;
+- routing/detail ordine, upload, pagamento;
+- filtri reali/API, paginazione;
 - tabelle billing, quotes e fornitore.

@@ -1,20 +1,20 @@
+---
+title: InvoiceTable
+description: Tabella fatture/DDT della dashboard billing con download inline per riga.
+layer: components
+strategy: css-only
+package_path: components/invoice-table.css
+---
+
 # InvoiceTable
 
-Dashboard invoices table for downloadable invoices and DDT documents.
+Tabella per la sezione `Fatture` della dashboard billing: ogni riga contiene
+numero fattura, DDT, data e totale, con azioni di download inline. La libreria
+decide spacing, bordi, tipografia, hover e lo styling dei link download (icona
+CSS). Il backend decide righe, valori, URL download, filtri e paginazione.
+CSS-only.
 
-## When To Use
-
-Use `InvoiceTable` for the dashboard billing `Fatture` table when each row
-contains invoice number, DDT, date and total, with inline download actions.
-
-Do not use it for:
-- billing registry/anagrafiche tables;
-- orders lists;
-- quote request rows;
-- supplier activity rows;
-- real filtering, pagination or PDF download logic.
-
-## Markup Contract
+## Markup contract
 
 ```html
 <section class="invoice-table-section" id="billing-fatture-section">
@@ -22,24 +22,15 @@ Do not use it for:
     <div class="invoice-table-section__filters" aria-label="Filtri fatture">
         <select class="orders-filter-select" data-search-filter-bar-filter="invoice-status">
             <option>Tutte le fatture</option>
-            <option>Pagate</option>
-            <option>In sospeso</option>
         </select>
         <select class="orders-filter-select" data-search-filter-bar-filter="invoice-year">
             <option>2025</option>
-            <option>2024</option>
-            <option>2023</option>
         </select>
     </div>
     <div class="table-wrapper">
         <table class="invoice-table">
             <thead>
-                <tr>
-                    <th>Fattura</th>
-                    <th>DDT</th>
-                    <th>Data</th>
-                    <th>Totale</th>
-                </tr>
+                <tr><th>Fattura</th><th>DDT</th><th>Data</th><th>Totale</th></tr>
             </thead>
             <tbody>
                 <tr>
@@ -49,12 +40,7 @@ Do not use it for:
                             <span class="dashboard-link--download__icon dashboard-link--download__icon--download" aria-hidden="true"></span>
                         </button>
                     </td>
-                    <td>
-                        <button class="dashboard-link--download" type="button">
-                            <span class="font-semibold">1042</span>
-                            <span class="dashboard-link--download__icon dashboard-link--download__icon--download" aria-hidden="true"></span>
-                        </button>
-                    </td>
+                    <td>...</td>
                     <td>10/09/25</td>
                     <td class="font-semibold">&euro; 98,42</td>
                 </tr>
@@ -64,30 +50,25 @@ Do not use it for:
 </section>
 ```
 
-## Composition
+## Classi pubbliche
 
-The invoice filters use the compact `.invoice-table-section__filters` row with
-`SearchFilterBar` select controls. Pagination is covered by `TablePagination`.
-Keep pagination outside `InvoiceTable`.
+- `.invoice-table-section`, `__title`, `__filters`
+- `.table-wrapper`, `.invoice-table`
+- `.dashboard-link--download`, `__icon`, `__icon--download` (definite in
+  `invoice-table.css`)
 
-## Backend/CMS Owns
+`.orders-filter-select` e' definita in `components/search-filter-bar.css`; la
+paginazione e' coperta da `TablePagination` (`components/table-pagination.css`)
+e va tenuta fuori da `InvoiceTable`.
 
-- Invoice rows and formatted values.
-- Download URLs, action attributes and handlers.
-- Status/year filters.
-- Pagination state and routing.
-- PDF availability and permissions.
+## Accessibilita
 
-## Library Owns
+- Usare `<a>` quando l'azione e' una URL documento diretta.
+- Usare `<button type="button">` quando l'app apre/genera il download.
+- Aggiungere `aria-label` quando il numero visibile non basta come contesto,
+  es. `aria-label="Scarica fattura FT-2025-024"`.
 
-- Table spacing, borders, typography and hover.
-- Download link styling inside table cells.
-- CSS-owned download icon replacing Material Symbols.
-- Basic responsive spacing.
+## Fuori scope
 
-## Accessibility
-
-- Use `<a>` when the action is a direct document URL.
-- Use `<button type="button">` when the app opens or generates a download.
-- Add `aria-label` when the visible number is not enough context for screen
-  readers, for example `aria-label="Scarica fattura FT-2025-024"`.
+Righe e valori fattura, URL/handler download, filtri, stato paginazione,
+disponibilita' PDF e permessi.

@@ -1,24 +1,18 @@
+---
+title: OrderStepDetail
+description: Pannelli tracking prodotto per il dettaglio ordine dashboard.
+layer: components
+strategy: css-js
+status: public-contract
+package_path: components/order-step-detail.css
+js_path: js/order-step-detail.js
+---
+
 # OrderStepDetail
 
-Pannelli tracking prodotto per il dettaglio ordine dashboard. Deriva da `dashboard/js/order-products.js` e da `dashboard/css/components/_order-detail.css`.
-
-## Scope
-- mostrare banner stato step, gruppi file e file box;
-- fornire stati visuali per file mancanti, pronti, approvati, errore, locked e copia zero;
-- sincronizzare il pannello visibile con `OrderStatusSteps`.
-
-## Import
-
-```html
-<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/order-step-detail.css">
-<script defer src="/node_modules/@ebattt/skillpress-ui/js/order-step-detail.js"></script>
-```
-
-Se il markup viene iniettato dopo il load:
-
-```js
-window.SkillpressUI.OrderStepDetail.init(root);
-```
+Pannelli tracking prodotto del dettaglio ordine dashboard: banner stato step,
+gruppi file e file box. La libreria sincronizza il pannello visibile con
+`OrderStatusSteps`; upload reale, verifica e avanzamento sono backend/app.
 
 ## Markup contract
 
@@ -39,44 +33,18 @@ window.SkillpressUI.OrderStepDetail.init(root);
 </div>
 ```
 
+Se il markup viene iniettato dopo il load: `window.SkillpressUI.OrderStepDetail.init(root)`.
+
 ## Classi pubbliche
 
 - `.product-step-detail`
-- `.step-status-banner`
-- `.step-status-banner--info`
-- `.step-status-banner--neutral`
-- `.step-status-banner--success`
-- `.step-status-banner--warning`
-- `.step-status-banner--error`
-- `.step-status-banner--locked`
-- `.step-status-banner__body`
-- `.step-status-banner__title`
-- `.step-status-banner__text`
-- `.product-file-box`
-- `.product-file-box--empty`
-- `.product-file-box--ready`
-- `.product-file-box--uploaded`
-- `.product-file-box--error`
-- `.product-file-box--locked`
-- `.product-file-box--payment-locked`
-- `.product-file-box--selected`
-- `.product-file-box--readonly`
-- `.product-file-box--annotated`
-- `.product-file-box--tochange`
-- `.product-file-box--removed`
-- `.product-file-box--neutral`
-- `.product-file-box__state--success`
-- `.product-file-box__state--warning`
-- `.product-file-box__state--muted`
-- `.product-file-status-badge`
-- `.product-file-status-badge--tochange`
-- `.product-file-status-badge--neutral`
-- `.product-file-actions`
-- `.product-file-actions--stack`
-- `.product-file-action-btn`
-- `.product-file-action-btn--confirm`
-- `.product-file-action-btn--change`
-- `.product-file-action-btn--upload`
+- `.step-status-banner` + `--info|neutral|success|warning|error|locked`
+- `.step-status-banner__body`, `.step-status-banner__title`, `.step-status-banner__text`
+- `.product-file-box` + `--empty|ready|uploaded|error|locked|payment-locked|selected|readonly|annotated|tochange|removed|neutral`
+- `.product-file-box__state--success|warning|muted`
+- `.product-file-status-badge` + `--tochange|neutral`
+- `.product-file-actions` + `--stack`
+- `.product-file-action-btn` + `--confirm|change|upload`
 
 ## Data hooks
 
@@ -86,17 +54,7 @@ window.SkillpressUI.OrderStepDetail.init(root);
 | `data-order-step-detail-panel` | si | pannello step | pannello da sincronizzare |
 | `data-order-status-steps-step-id` | si | pannello step | id pannello da abbinare allo step selezionato |
 
-## Modifier / stati
-
-- Banner: `.step-status-banner--info|neutral|success|warning|error|locked`
-- File box: `.product-file-box--empty|ready|uploaded|error|locked|payment-locked|selected|readonly`
-- Copia zero:
-  - file da valutare: `.product-file-box--annotated.product-file-box--neutral` con badge `.product-file-status-badge--neutral` e azioni;
-  - file confermato dal cliente: `.product-file-box--locked`;
-  - file definitivo approvato: `.product-file-box--locked`;
-  - file da sostituire: `.product-file-box--annotated.product-file-box--tochange`;
-  - sostitutivo caricato/in verifica: usare `.product-file-box--ready` e `.product-file-box__state--warning`, come per i file caricati in attesa di verifica.
-- File state: `.product-file-box__state--success|warning|muted`
+Evento: `sp:order-step-detail:change`.
 
 ## Stato file consigliato
 
@@ -111,24 +69,9 @@ window.SkillpressUI.OrderStepDetail.init(root);
 | copia zero sostituita, in verifica | `.product-file-box--ready` | `Da verificare` |
 | copia zero confermata | `.product-file-box--locked` | nessuna azione |
 
-## Backend owns
+## Ownership
 
-- prodotti, step, pannelli renderizzati e stato iniziale;
-- testi, file, URL istruzioni/template/report/tracking;
-- azioni e payload applicativi.
-
-## Library owns
-
-- layout, spacing, responsive e stati visuali;
-- icone chrome via CSS;
-- show/hide pannelli con `hidden` e `aria-hidden`;
-- evento `sp:order-step-detail:change`.
-
-## Demo-only
-
-Eventuali `data-orders-table-action`, `data-section`, toolbar scenari, renderer didattici e
-fixture appartengono alla demo/app e non sono API pubbliche del componente.
-
-## Out of scope
-
-Upload reale, verifica PDF, avanzamento ordine, tracking, validazione, persistenza e chiamate API.
+- Backend/app: prodotti, step, pannelli e stato iniziale; testi, file, URL;
+  azioni e payload applicativi.
+- Libreria: layout, spacing, responsive, stati visuali, icone CSS, show/hide
+  pannelli con `hidden`/`aria-hidden`, evento `sp:order-step-detail:change`.

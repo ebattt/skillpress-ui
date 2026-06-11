@@ -1,21 +1,16 @@
+---
+title: BillingTable
+description: Tabella anagrafiche di fatturazione dashboard con colonne preferenze compatte.
+layer: components
+strategy: css-only
+package_path: components/billing-table.css
+---
+
 # BillingTable
 
-Dashboard billing records table for the `Anagrafiche` area.
+Tabella delle anagrafiche di fatturazione dashboard: colonne preferenze compatte, indirizzo mobile sotto al nome e azioni edit/download. CSS-only. La libreria possiede spacing, bordi, hover, presentazione mobile e icone chrome CSS; il backend possiede righe, valori, stato preferenze e attributi azione.
 
-## When To Use
-
-Use `BillingTable` for the dashboard billing registry table with compact
-preference columns, mobile address text under the name and edit/download action
-links.
-
-Do not use it for:
-- billing forms;
-- invoices table behavior;
-- quote request rows;
-- supplier activity rows;
-- generic data table abstraction.
-
-## Markup Contract
+## Markup contract
 
 ```html
 <div class="table-wrapper table-wrapper--scroll">
@@ -24,12 +19,6 @@ Do not use it for:
             <tr>
                 <th>Nome</th>
                 <th class="th-mobile-hide">P.I.V.A.</th>
-                <th class="th-mobile-hide">Cod. Fiscale</th>
-                <th class="th-mobile-hide">Indirizzo</th>
-                <th class="th-mobile-hide">E-mail</th>
-                <th class="th-mobile-hide">SDI</th>
-                <th class="th-mobile-hide">Preferito per fatturazione</th>
-                <th class="th-mobile-hide">Preferito per spedizione</th>
                 <th class="th-text-center billing-table__pref-col" title="Preferito fatturazione">
                     <span class="billing-table__icon billing-table__icon--receipt" aria-hidden="true"></span>
                 </th>
@@ -46,12 +35,6 @@ Do not use it for:
                     <span class="billing-table__mobile-address">Viale Trieste 54, Fossalta di Portogruaro (VE)</span>
                 </td>
                 <td class="orders-table__cell--mobile-hide">-</td>
-                <td class="orders-table__cell--nowrap orders-table__cell--mobile-hide">BTTGCM85M01H501Z</td>
-                <td class="orders-table__cell--mobile-hide">Viale Trieste 54, 30025 Fossalta di Portogruaro (VE)</td>
-                <td class="orders-table__cell--mobile-hide">giacomo.battiston@example.com</td>
-                <td class="orders-table__cell--mobile-hide">M5UXCR1</td>
-                <td class="orders-table__cell--mobile-hide">Si</td>
-                <td class="orders-table__cell--mobile-hide">Si</td>
                 <td class="orders-table__cell--text-center billing-table__pref-col">
                     <span class="billing-table__icon billing-table__icon--check" aria-label="Preferito"></span>
                 </td>
@@ -69,23 +52,17 @@ Do not use it for:
 </div>
 ```
 
-## Backend/CMS Owns
+## Classi pubbliche
 
-- Rows and column values.
-- Preference state.
-- Action attributes, links and handlers.
-- Download/edit availability.
+- `.billing-table`
+- `.billing-table__pref-col`: colonna preferenze compatta.
+- `.billing-table__mobile-address`: indirizzo mostrato sotto al nome su mobile.
+- `.billing-table__icon` con `--receipt`, `--shipping`, `--check`.
 
-## Library Owns
+Si compone con `.table-wrapper` e gli helper cella `orders-table__cell--*`; l'azione edit usa `.dashboard-link--download`.
 
-- Table spacing, borders and hover.
-- Mobile address presentation.
-- Compact preference columns.
-- CSS-owned chrome icons for receipt, shipping, check, edit and download.
+## Accessibilità
 
-## Accessibility
-
-- Use `title` or `aria-label` on icon-only action buttons.
-- Use `aria-label="Preferito"` on check icons when the icon is meaningful.
-- Keep table headers textual on desktop; compact icon headers are decorative
-  alternates for the dashboard layout.
+- Usare `title` o `aria-label` sui button azione icon-only.
+- Usare `aria-label="Preferito"` sulle icone check quando significative.
+- `data-orders-table-action` è un hook applicativo (demo/app), non API della libreria.

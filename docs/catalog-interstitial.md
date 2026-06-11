@@ -1,35 +1,42 @@
+---
+title: CatalogInterstitial
+description: Card editoriali intermedie della landing catalogo (split foto/testo, wide overlay, trio feature).
+layer: components
+strategy: css-js
+package_path: components/catalog-interstitial.css
+js_path: js/catalog-interstitial.js
+---
+
 # CatalogInterstitial
 
-Card editoriali intermedie della landing catalogo: split foto/testo, card wide overlay e trio di feature card.
+Card editoriali intermedie della landing catalogo: split foto/testo, card wide con overlay e trio di feature card. La libreria possiede max-width, padding, grid responsive, immagini, overlay e tipografia, oltre all'overlay link accessibile generato dal runtime; il backend possiede numero/ordine/varianti card, asset, copy e href.
 
 ## Markup contract
 
 ```html
 <section class="catalog-interstitial" data-catalog-interstitial aria-label="Approfondimento catalogo">
-    <div class="catalog-interstitial__card catalog-interstitial__card--photo" data-catalog-interstitial-card data-catalog-interstitial-link="#prodotti" data-catalog-interstitial-link-label="Vai alla sezione prodotti">
-        <img src="/assets/landing/stampa.jpg" alt="Stampa di qualita" loading="lazy" decoding="async">
+    <div class="catalog-interstitial__card catalog-interstitial__card--photo" data-catalog-interstitial-card
+         data-catalog-interstitial-link="#prodotti" data-catalog-interstitial-link-label="Vai alla sezione prodotti">
+        <img src="/assets/landing/stampa.jpg" alt="Stampa di qualità" loading="lazy" decoding="async">
         <span class="catalog-interstitial__label">Scopri le nostre rilegature</span>
     </div>
-    <div class="catalog-interstitial__card catalog-interstitial__card--text" data-catalog-interstitial-card data-catalog-interstitial-link="/prodotti" data-catalog-interstitial-link-label="Apri la pagina prodotto Skillpress">
-        <h3 class="catalog-interstitial__heading">Qualita professionale,<br>prezzi accessibili</h3>
-        <p class="catalog-interstitial__text">Carta certificata, colori fedeli e finiture curate in ogni dettaglio.</p>
+    <div class="catalog-interstitial__card catalog-interstitial__card--text" data-catalog-interstitial-card>
+        <h3 class="catalog-interstitial__heading">Qualità professionale,<br>prezzi accessibili</h3>
+        <p class="catalog-interstitial__text">Carta certificata, colori fedeli e finiture curate.</p>
     </div>
 </section>
 ```
 
 ## Classi pubbliche
 
-- `.catalog-interstitial`: root max-width, padding sezione compatta e grid responsive.
-- `.catalog-interstitial--full`: variante a una card wide.
-- `.catalog-interstitial--trio`: variante a tre feature card.
-- `.catalog-interstitial__card`: card navigabile.
-- `.catalog-interstitial__card--photo|--text|--text-dark|--wide|--feature`: varianti reali della landing.
-- `.catalog-interstitial__heading`, `.catalog-interstitial__heading--light`.
-- `.catalog-interstitial__text`, `.catalog-interstitial__text--light`.
-- `.catalog-interstitial__label`, `.catalog-interstitial__label--primary|--secondary`.
-- `.catalog-interstitial__overlay-content`.
-- `.catalog-interstitial__image--contained`.
-- `.catalog-overlay-link`, `.catalog-overlay-link__text`: overlay link generato o renderizzabile server-side.
+- `.catalog-interstitial`: root con max-width, padding e grid responsive.
+- `.catalog-interstitial--full`: una card wide. `.catalog-interstitial--trio`: tre feature card.
+- `.catalog-interstitial__card` con varianti `--photo`, `--text`, `--text-dark`, `--wide`, `--feature`.
+- `.catalog-interstitial__heading`, `--light`.
+- `.catalog-interstitial__text`, `--light`.
+- `.catalog-interstitial__label`, `--primary`, `--secondary`.
+- `.catalog-interstitial__overlay-content`, `.catalog-interstitial__image--contained`.
+- `.catalog-overlay-link`, `.catalog-overlay-link__text`: overlay link generato dal runtime.
 
 ## Data hooks
 
@@ -38,35 +45,11 @@ Card editoriali intermedie della landing catalogo: split foto/testo, card wide o
 - `data-catalog-interstitial-link`: href usato per generare l'overlay link.
 - `data-catalog-interstitial-link-label`: label accessibile opzionale.
 
-## Modifier / stati
+## JS
 
-- `.catalog-interstitial--full`: layout 1 colonna.
-- `.catalog-interstitial--trio`: layout 3 colonne, 1 colonna su mobile.
-- `.catalog-interstitial__card--photo|--text|--text-dark|--wide|--feature`: look della card.
-- `.catalog-interstitial__heading--light` e `.catalog-interstitial__text--light`: copy su immagine scura.
-- `.catalog-interstitial__label--primary|--secondary`: label accent opzionali.
-- Focus: `.catalog-overlay-link:focus-visible` disegna l'anello accessibile.
-
-## Backend owns
-
-- Numero card, ordine e variante.
-- `src`, `alt`, attributi `loading`/`decoding`/`fetchpriority`, heading, label e copy.
-- Href e label accessibile.
-- Routing, analytics e tracking.
-
-## Library owns
-
-- Max-width, padding sezione compatta e grid responsive.
-- Immagini full-bleed/contained, overlay, radius, background e tipografia.
-- Runtime idempotente `window.SkillpressUI.CatalogInterstitial.init(root)`.
-- Overlay link accessibile se il backend rende `data-catalog-interstitial-link`.
-
-## Demo-only
-
-- URL asset della landing originale.
-- Valori `data-catalog-interstitial-link` verso le demo locali.
+`window.SkillpressUI.CatalogInterstitial.init(root)`, idempotente. Se il backend rende `data-catalog-interstitial-link`, il runtime genera l'overlay link accessibile (`.catalog-overlay-link`).
 
 ## Out of scope
 
-- CatalogProductGrid, CatalogStage, TextBlock, navbar, footer e Feedaty.
-- Query prodotti, tracking click e routing applicativo.
+- CatalogProductGrid, CatalogStage, TextBlock, navbar, footer, Feedaty;
+- query prodotti, tracking click e routing applicativo.

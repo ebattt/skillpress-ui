@@ -87,7 +87,6 @@ LandingInfoTabs
 | `.landing-info-tabs__nav-wrap` | contenitore con scroll orizzontale mobile e bordo basso | yes | - |
 | `.landing-info-tabs__nav` | riga tab, `role="tablist"` | yes | - |
 | `.landing-info-tabs__tab` | button tab uppercase | yes | `.landing-info-tabs__tab--active` |
-| `.landing-info-tabs__content` | wrapper pannelli | yes | - |
 | `.landing-info-tabs__panel` | pannello contenuto, `role="tabpanel"` | yes | `.landing-info-tabs__panel--active` |
 | `.text-block` | composizione consigliata per mantenere la tipografia landing | yes per landing | - |
 

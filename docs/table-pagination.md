@@ -1,14 +1,16 @@
+---
+title: TablePagination
+description: Controlli di paginazione usati sotto le tabelle dashboard.
+layer: components
+strategy: css-only
+package_path: components/table-pagination.css
+---
+
 # TablePagination
 
-`TablePagination` mostra i controlli di paginazione usati sotto le tabelle
-dashboard.
-
-## Fonte
-
-- Markup reale: `Skillpress-frontend/reference-pages/static/dashboard/index.html`
-- CSS reale: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_tables.css`
-- Fonte catalogo storico: `Skillpress-frontend/elements-ui/js/dashboard/table-pagination.js`
-- Pagina target: `dashboard`
+Controlli di paginazione sotto le tabelle dashboard. CSS-only: la libreria
+possiede layout, bottoni circolari, stati active/disabled/hover/focus e icone
+freccia CSS. Pagina corrente, numero pagine e click sono backend/app.
 
 ## Import
 
@@ -18,22 +20,7 @@ dashboard.
 
 Nessun JS richiesto.
 
-## Responsabilita
-
-La libreria decide layout, bottoni circolari, active/disabled/hover/focus e
-icone freccia CSS. Il backend/app decide pagina corrente, numero pagine e
-behavior click.
-
-## Reuse Audit
-
-`Button` non basta: la fonte usa bottoni circolari da 2rem con active dedicato
-e disabled opacity.
-
-`SearchFilterBar` condivide solo il sizing icona nella fonte, ma non il pattern.
-
-`Badge`, `Card` e `DashboardActionBadge` non c'entrano.
-
-## Markup Minimo
+## Markup minimo
 
 ```html
 <nav class="table-pagination" aria-label="Paginazione ordini" data-table-pagination>
@@ -52,25 +39,17 @@ e disabled opacity.
 
 ## Classi
 
-- `.table-pagination`
-- `.table-pagination__list`
-- `.pagination-btn`
-- `.pagination-btn--active`
-- `.pagination-btn__icon`
-- `.pagination-btn__icon--prev`
-- `.pagination-btn__icon--next`
+- `.table-pagination`, `.table-pagination__list`
+- `.pagination-btn` + `--active`
+- `.pagination-btn__icon` + `--prev|next`
 
-## Attributi
+## Data hooks / attributi
 
-- `[data-table-pagination]`: hook semantico opzionale.
+- `[data-table-pagination]`: hook semantico opzionale (nessun behavior JS di libreria).
 - `aria-current="page"`: raccomandato sul bottone active.
 - `disabled`: stato nativo prev/next quando non disponibili.
 
-## Fuori Scope
+## Fuori scope
 
-- fetch righe;
-- routing;
-- calcolo pagine;
-- OrdersTable;
-- BillingTable;
-- Quotes table.
+- fetch righe, routing, calcolo pagine;
+- OrdersTable, BillingTable, Quotes table.

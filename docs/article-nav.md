@@ -1,6 +1,14 @@
+---
+title: ArticleNav
+description: Navigazione precedente/successivo per pagine articolo.
+layer: components
+strategy: css-only
+package_path: components/article-nav.css
+---
+
 # ArticleNav
 
-Navigazione precedente/successivo per pagine articolo.
+Navigazione precedente/successivo per pagine articolo. CSS-only. La libreria possiede layout, stile CTA, focus, responsive e indicatori direzionali; il backend possiede URL, label e presenza di previous/next.
 
 ## Markup contract
 
@@ -21,29 +29,10 @@ Navigazione precedente/successivo per pagine articolo.
 
 - `.article-nav`: root.
 - `.article-nav__list`: row responsive.
-- `.article-nav__item`, `.article-nav__item--prev`, `.article-nav__item--next`: item semantici.
-- `.article-nav__link`, `.article-nav__link--prev`, `.article-nav__link--next`: link CTA.
+- `.article-nav__item`, `--prev`, `--next`: item semantici.
+- `.article-nav__link`, `--prev`, `--next`: link CTA con indicatore direzionale.
 
-## Data hooks
-
-Nessun hook JS. Il componente e CSS-only.
-
-## Modifier / stati
-
-- `.article-nav__link--prev`: aggiunge indicatore precedente.
-- `.article-nav__link--next`: aggiunge indicatore successivo.
-
-## Backend owns
-
-URL, label, presenza di previous/next e routing.
-
-## Library owns
-
-Layout, stile CTA, focus, responsive e indicatori direzionali CSS.
-
-## Demo-only
-
-URL placeholder della demo.
+Nessun hook JS.
 
 ## Out of scope
 

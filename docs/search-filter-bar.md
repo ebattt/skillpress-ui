@@ -1,14 +1,16 @@
+---
+title: SearchFilterBar
+description: Barra filtri della dashboard con select campo, input ricerca e bottone azione.
+layer: components
+strategy: css-only
+package_path: components/search-filter-bar.css
+---
+
 # SearchFilterBar
 
-`SearchFilterBar` mostra la barra filtri della dashboard con select campo,
-input ricerca e bottone azione.
-
-## Fonte
-
-- Markup reale: `Skillpress-frontend/reference-pages/static/dashboard/index.html`
-- CSS reale: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_tables.css`
-- Fonte catalogo storico: `Skillpress-frontend/elements-ui/js/dashboard/search-filter-bar.js`
-- Pagina target: `dashboard`
+Barra filtri della dashboard: select campo, input ricerca e bottone azione.
+CSS-only: la libreria possiede griglia responsive e stile di select/input/button;
+opzioni, testi, valori iniziali e behavior di filtro sono backend/app.
 
 ## Import
 
@@ -18,44 +20,26 @@ input ricerca e bottone azione.
 
 Nessun JS richiesto.
 
-## Responsabilita
-
-La libreria decide griglia responsive, stile select/input/button, focus e hover.
-Il backend decide opzioni, testi, valori iniziali e behavior di filtro.
-
-## Reuse Audit
-
-`FormPrimitives` non basta per parity: la fonte dashboard usa sizing, radius,
-focus shadow e griglia specifici.
-
-`Button` non basta per parity: il bottone filtro e' compatto, radius lg e
-dimensionato dalla griglia.
-
-`Card`, `Badge`, `DashboardActionBadge` e `RecentOrderCard` non coprono questo
-pattern.
-
-## Markup Minimo
+## Markup minimo
 
 ```html
 <div class="orders-filter-bar orders-filter-bar--orders" data-search-filter-bar>
-    <select class="orders-filter-select" data-search-filter-bar-filter="field">
+    <select class="orders-filter-select">
         <option>Numero</option>
         <option>Lavoro</option>
         <option>Referente</option>
         <option>Stato</option>
     </select>
-    <input type="text" placeholder="cerca" class="orders-filter-input" data-search-filter-bar-filter="search">
-    <button class="orders-filter-btn" type="button" data-orders-table-action="filter-orders">Mostra</button>
+    <input type="text" placeholder="cerca" class="orders-filter-input">
+    <button class="orders-filter-btn" type="button">Mostra</button>
 </div>
 ```
 
-## Variante Quotes
+## Variante quotes
 
 ```html
 <div class="orders-filter-bar orders-filter-bar--quotes" data-search-filter-bar>
-    <select class="orders-filter-select">
-        <option>Numero</option>
-    </select>
+    <select class="orders-filter-select"><option>Numero</option></select>
     <input type="text" placeholder="cerca" class="orders-filter-input">
     <button class="orders-filter-btn" type="button">Mostra</button>
     <button class="orders-filter-btn orders-filter-btn--accent" type="button">
@@ -67,27 +51,17 @@ pattern.
 
 ## Classi
 
-- `.orders-filter-bar`
-- `.orders-filter-bar--orders`
-- `.orders-filter-bar--quotes`
+- `.orders-filter-bar` + `--orders|quotes`
 - `.orders-filter-select`
 - `.orders-filter-input`
-- `.orders-filter-btn`
-- `.orders-filter-btn--accent`
-- `.orders-filter-btn__icon`
-- `.orders-filter-btn__icon--add`
+- `.orders-filter-btn` + `--accent|dashboard-primary`
+- `.orders-filter-btn__icon` + `--add`
 
-## Attributi
+## Data hooks
 
-- `[data-search-filter-bar]`: hook semantico opzionale. Non esiste behavior JS
-  di libreria associato.
+- `[data-search-filter-bar]`: hook semantico opzionale; nessun behavior JS di libreria.
 
-## Fuori Scope
+## Fuori scope
 
-- ricerca reale;
-- API;
-- debounce;
-- routing;
-- OrdersTable;
-- TablePagination;
-- quote creation flow.
+- ricerca reale, API, debounce, routing;
+- OrdersTable, TablePagination, quote creation flow.

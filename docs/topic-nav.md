@@ -1,6 +1,16 @@
+---
+title: TopicNav
+description: Navigazione a pill per categorie, topic o filtri editoriali.
+layer: components
+strategy: css-only
+package_path: components/topic-nav.css
+---
+
 # TopicNav
 
-Navigazione a pill per categorie, topic o filtri editoriali.
+Navigazione a pill per categorie, topic o filtri editoriali. CSS-only: la libreria
+possiede layout pill, wrapping responsive e stati hover/focus; lista topic, label,
+URL e topic attivo sono backend/app.
 
 ## Markup contract
 
@@ -20,26 +30,15 @@ Navigazione a pill per categorie, topic o filtri editoriali.
 - `.topic-nav__link`: pill link.
 - `.topic-nav__link--active`: stato attivo visuale.
 
-## Data hooks
+## Data hooks / modifier
 
-- `[data-topic-nav]`: hook opzionale per wire-up consumer/app.
+- `[data-topic-nav]`: hook opzionale per wire-up consumer (nessun behavior JS di libreria).
+- `.topic-nav__link--active` o `aria-current="true"`: topic attivo.
 
-## Modifier / stati
+## Ownership
 
-- `.topic-nav__link--active` oppure `aria-current="true"`: topic attivo.
-- Hover e focus-visible sono gestiti dalla libreria.
-
-## Backend owns
-
-Lista topic, label, URL, active topic iniziale e semantica `aria-current`.
-
-## Library owns
-
-Layout pill, wrapping responsive, stile active/hover/focus e touch target.
-
-## Demo-only
-
-Il consumer aggiorna lo stato attivo al click per mostrare il comportamento.
+- Backend: lista topic, label, URL, topic attivo iniziale, semantica `aria-current`.
+- Libreria: layout pill, wrapping responsive, stile active/hover/focus, touch target.
 
 ## Out of scope
 

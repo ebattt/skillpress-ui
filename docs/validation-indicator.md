@@ -9,39 +9,31 @@ package_path: primitives/validation-indicator.css
 
 # ValidationIndicator
 
-Primitiva CSS-only per messaggi di validazione compatti. Nasce dal pattern
-`Validation Indicator` del catalogo interno e dall'output reale
-multicopertina in `product-page-integration`.
-
-Il contratto e' volutamente minimo: quando l'azione dell'utente e' accettata
-non si renderizza nessun indicatore. L'indicatore appare solo quando c'e' un
-problema da correggere.
+Primitiva CSS-only per messaggi di validazione compatti. Il contratto e' minimo:
+quando l'azione e' accettata non si renderizza nessun indicatore; l'indicatore
+appare solo quando c'e' un problema da correggere.
 
 ## Anatomy
 
 ```text
-ValidationIndicator
-└── .sp-validation-indicator
-    ├── ::before   (icona errore CSS)
-    └── testo
+.sp-validation-indicator
+├── ::before   (icona errore CSS)
+└── testo
 
-ValidationTotal
-└── .sp-validation-total
-    ├── .sp-validation-total__count
-    └── .sp-validation-indicator   (solo se invalido)
+.sp-validation-total
+├── .sp-validation-total__count
+└── .sp-validation-indicator   (solo se invalido)
 ```
 
-## Markup Contract
+## Markup contract
 
 Indicatore errore:
 
 ```html
-<span class="sp-validation-indicator">
-    Mancano 20
-</span>
+<span class="sp-validation-indicator">Mancano 20</span>
 ```
 
-Contesto con totale valido: nessun indicatore.
+Totale valido (nessun indicatore):
 
 ```html
 <div class="sp-validation-total">
@@ -49,7 +41,7 @@ Contesto con totale valido: nessun indicatore.
 </div>
 ```
 
-Contesto con totale invalido:
+Totale invalido:
 
 ```html
 <div class="sp-validation-total">
@@ -58,56 +50,30 @@ Contesto con totale invalido:
 </div>
 ```
 
-## API Reference
+## Classi pubbliche
 
-| Classe | Ruolo | Required | Modifiers |
-|---|---|---|---|
-| `.sp-validation-indicator` | indicatore inline errore con icona CSS + testo | yes | — |
-| `.sp-validation-total` | riga flex totale + indicatore | no | — |
-| `.sp-validation-total__count` | testo conteggio/contesto | no | — |
+| Classe | Ruolo | Required |
+|---|---|---|
+| `.sp-validation-indicator` | indicatore inline errore con icona CSS + testo | yes |
+| `.sp-validation-total` | riga flex totale + indicatore | no |
+| `.sp-validation-total__count` | testo conteggio/contesto | no |
 
-## Cosa Decide Backend/CMS
+## Data hooks
 
-- testo visibile (`Mancano 20`, `Eccedono 50`);
-- valore del conteggio;
-- presenza o assenza della riga totale;
-- presenza o assenza dell'indicatore. Se lo stato e' valido, non renderizzare
+Nessun `data-*` pubblico e nessun JS richiesto: CSS-only.
+
+## Ownership
+
+- Backend/CMS: testo visibile, valore del conteggio, presenza/assenza della riga
+  totale e dell'indicatore. Se lo stato e' valido, non renderizzare
   `.sp-validation-indicator`.
+- Libreria: dimensione/peso testo, layout inline-flex, gap icona/testo, colore
+  errore, icona errore via `::before`, layout della riga totale.
 
-## Cosa Decide La Libreria
+## Out of scope
 
-- dimensione testo 12px;
-- font-weight 500;
-- layout inline-flex;
-- gap icona/testo;
-- colore errore;
-- icona errore via CSS `::before`;
-- layout della riga totale.
-
-## Import
-
-Via file diretto:
-
-```html
-<link rel="stylesheet"
-      href="../node_modules/@ebattt/skillpress-ui/primitives/validation-indicator.css" />
-```
-
-Oppure via bundle:
-
-```html
-<link rel="stylesheet"
-      href="../node_modules/@ebattt/skillpress-ui/bundles/demo-minimal.css" />
-```
-
-Nessun JS richiesto.
-
-## Out Of Scope
-
-- validazione applicativa;
-- calcolo dei totali;
+- validazione applicativa e calcolo dei totali;
 - icone Material Symbols globali;
-- SVG scelti dal CMS per questo pattern;
 - stato positivo con tick;
-- varianti warning/info non presenti nella fonte utile al backend;
+- varianti warning/info;
 - toast, banner o badge di stato.

@@ -1,21 +1,15 @@
+---
+title: CheckoutMobileSummary
+description: Riepilogo ordine fixed bottom per checkout mobile/tablet con pannello espandibile.
+layer: components
+strategy: css-js
+package_path: components/checkout-mobile-summary.css
+js_path: js/checkout-mobile-summary.js
+---
+
 # CheckoutMobileSummary
 
-`CheckoutMobileSummary` renderizza il riepilogo ordine fixed bottom per checkout mobile/tablet (`<=1023px`): totale, CTA e pannello espandibile con dettagli ordine.
-
-## Import
-
-```html
-<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/checkout-mobile-summary.css">
-<script src="/node_modules/@ebattt/skillpress-ui/js/checkout-mobile-summary.js" defer></script>
-```
-
-Il bundle `bundles/checkout.css` include gia' il CSS.
-
-## Responsabilita
-
-La libreria gestisce layout fixed, safe area, stato espanso, focus/disabled, overlay e toggle accessibile.
-
-Il backend/CMS gestisce item, importi formattati, testi, `href`/stato CTA e sincronizzazione con gli step checkout.
+Riepilogo ordine fixed bottom per checkout mobile/tablet (`<=1023px`): totale, CTA e pannello espandibile con dettagli ordine. La libreria gestisce layout fixed, safe area, stato espanso, overlay e toggle accessibile; il backend possiede item, importi formattati, testi e `href`/stato CTA.
 
 ## Markup contract
 
@@ -39,10 +33,6 @@ Il backend/CMS gestisce item, importi formattati, testi, `href`/stato CTA e sinc
                     <span class="checkout-mobile-summary__detail-label">Spedizione</span>
                     <span class="checkout-mobile-summary__detail-value">Gratuita</span>
                 </div>
-                <div class="checkout-mobile-summary__detail-row">
-                    <span class="checkout-mobile-summary__detail-label">Subtotale</span>
-                    <span class="checkout-mobile-summary__detail-value">2.219,98 &euro;</span>
-                </div>
             </div>
             <div class="checkout-mobile-summary__items">
                 <div class="checkout-mobile-summary__item">
@@ -60,44 +50,20 @@ Il backend/CMS gestisce item, importi formattati, testi, `href`/stato CTA e sinc
 
 ## Classi pubbliche
 
-- `.checkout-mobile-summary`
-- `.checkout-mobile-summary--expanded`
-- `.checkout-mobile-summary__overlay`
-- `.checkout-mobile-summary__container`
-- `.checkout-mobile-summary__handle`
-- `.checkout-mobile-summary__handle-icon`
-- `.checkout-mobile-summary__compact`
-- `.checkout-mobile-summary__total-line`
-- `.checkout-mobile-summary__label`
-- `.checkout-mobile-summary__price`
-- `.checkout-mobile-summary__cta`
-- `.checkout-mobile-summary__expanded`
-- `.checkout-mobile-summary__details`
-- `.checkout-mobile-summary__detail-row`
-- `.checkout-mobile-summary__detail-row--success`
-- `.checkout-mobile-summary__detail-label`
-- `.checkout-mobile-summary__detail-value`
-- `.checkout-mobile-summary__items`
-- `.checkout-mobile-summary__item`
-- `.checkout-mobile-summary__item-info`
-- `.checkout-mobile-summary__item-name`
-- `.checkout-mobile-summary__item-qty`
-- `.checkout-mobile-summary__item-price`
+- `.checkout-mobile-summary`, `--expanded`
+- `.checkout-mobile-summary__overlay`, `__container`, `__handle`, `__handle-icon`
+- `.checkout-mobile-summary__compact`, `__total-line`, `__label`, `__price`, `__cta`
+- `.checkout-mobile-summary__expanded`, `__details`, `__detail-row`, `__detail-row--success`, `__detail-label`, `__detail-value`
+- `.checkout-mobile-summary__items`, `__item`, `__item-info`, `__item-name`, `__item-qty`, `__item-price`
 
 ## Data hooks
 
-- `[data-checkout-mobile-summary]`
-- `[data-checkout-mobile-summary-toggle]`
-- `[data-checkout-mobile-summary-overlay]`
+- `[data-checkout-mobile-summary]`, `[data-checkout-mobile-summary-toggle]`, `[data-checkout-mobile-summary-overlay]`
 
-## Eventi
+## JS
 
-- `sp:checkout-mobile-summary:open`
-- `sp:checkout-mobile-summary:close`
+Eventi: `sp:checkout-mobile-summary:open`, `sp:checkout-mobile-summary:close`.
 
 ## Out of scope
 
-- calcolo totali;
-- validazione checkout;
-- navigazione step;
-- gestione carrello e coupon.
+calcolo totali, validazione checkout, navigazione step, gestione carrello e coupon.

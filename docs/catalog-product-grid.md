@@ -1,13 +1,23 @@
+---
+title: CatalogProductGrid
+description: Griglia catalogo prodotti per landing, con toggle "Mostra altri prodotti".
+layer: components
+strategy: css-js
+package_path: components/catalog-product-grid.css
+js_path: js/catalog-product-grid.js
+---
+
 # CatalogProductGrid
 
-Griglia catalogo prodotti per landing page: titolo sezione, card prodotto titolo+immagine e toggle opzionale "Mostra altri prodotti".
+Griglia catalogo prodotti per landing page: titolo sezione, card prodotto titolo+immagine e toggle opzionale show-more. Si compone con il primitive `catalog-grid` (`.sp-catalog-grid`, `.sp-catalog-grid__section-label`). La libreria possiede layout, grid responsive, slot immagine e runtime show-more; il backend possiede numero/ordine prodotti, asset, href e presenza del toggle.
 
 ## Markup contract
 
 ```html
 <section class="catalog-product-grid" data-catalog-product-grid aria-label="Prodotti">
     <h2 class="sp-catalog-grid__section-label sp-catalog-grid__section-label--orange">Prodotti</h2>
-    <div class="sp-catalog-grid sp-catalog-grid--products" id="prodotti-grid" data-catalog-product-grid-items data-catalog-product-grid-initial-rows="2">
+    <div class="sp-catalog-grid sp-catalog-grid--products" id="prodotti-grid"
+         data-catalog-product-grid-items data-catalog-product-grid-initial-rows="2">
         <a class="catalog-card catalog-card--product-equal" href="/prodotti/brossura-fresata" data-catalog-product-grid-card>
             <h3 class="catalog-card__title">Brossura fresata</h3>
             <div class="catalog-card__image-wrap">
@@ -25,65 +35,34 @@ Griglia catalogo prodotti per landing page: titolo sezione, card prodotto titolo
 
 ## Classi pubbliche
 
-- `.catalog-product-grid` root della sezione catalogo, con lo stesso container landing della demo originale (`max-width: 1200px` + padding orizzontale responsive).
-- `.catalog-product-grid--compact` variante senza spacing verticale aggiuntivo.
-- `.sp-catalog-grid__section-label`, `.sp-catalog-grid__section-label--orange|--teal|--dark` titolo sezione.
-- `.sp-catalog-grid`, `.sp-catalog-grid--products` grid responsive.
-- `.catalog-card`, `.catalog-card--product-equal`, `.catalog-card--product-hidden`.
-- `.catalog-card__title`, `.catalog-card__image-wrap`, `.catalog-card__image`, `.catalog-card__image--product`.
-- `.catalog-products-toggle`, `.catalog-products-toggle__button`.
+- `.catalog-product-grid`: root della sezione (container landing). `.catalog-product-grid--compact`: senza spacing verticale aggiuntivo.
+- `.sp-catalog-grid`, `.sp-catalog-grid--products`: grid responsive (primitive `catalog-grid`).
+- `.sp-catalog-grid__section-label` con `--orange`, `--teal`, `--dark`: titolo sezione.
+- `.catalog-card`, `--product-equal`, `--product-hidden`.
+- `.catalog-card__title`, `__image-wrap`, `__image`, `__image--product`.
+- `.catalog-products-toggle`, `__button`.
+
+Custom property: `--catalog-card-bg` (override sfondo card, fallback `--color-tile-bg`).
+
+Lo slot immagine è `1 / 1` con `object-fit: contain`; `.catalog-card__title` occupa sempre 2 righe.
 
 ## Data hooks
 
 - `[data-catalog-product-grid]`: root inizializzato dal runtime.
-- `[data-catalog-product-grid-items]`: grid contenente le card gia' renderizzate.
+- `[data-catalog-product-grid-items]`: grid con le card.
 - `[data-catalog-product-grid-card]`: card conteggiata dal runtime show-more.
 - `[data-catalog-product-grid-toggle]`: bottone show-more/collapse.
-- `data-catalog-product-grid-initial-rows`: numero righe visibili nello stato collapsed, default `2`.
-- `data-catalog-product-grid-expand-label` / `data-catalog-product-grid-collapse-label`: override testo toggle opzionale.
+- `data-catalog-product-grid-initial-rows`: righe visibili in stato collapsed (default `2`).
+- `data-catalog-product-grid-expand-label` / `data-catalog-product-grid-collapse-label`: override testo toggle.
 
-## Modifier / stati
+Il runtime applica `.catalog-card--product-hidden` alle card fuori conteggio, sincronizza `aria-expanded` e nasconde `.catalog-products-toggle` (`hidden`) quando non ci sono card extra.
 
-- `.catalog-card--product-hidden`: applicato dal runtime alle card fuori dal conteggio visibile.
-- `aria-expanded="true|false"` su `[data-catalog-product-grid-toggle]`.
-- `hidden` su `.catalog-products-toggle` quando non ci sono card extra.
+## JS
 
-## Custom properties
-
-- `--catalog-card-bg`: override opzionale dello sfondo delle card catalogo.
-  Fallback: `--color-tile-bg`.
-
-## Comportamento immagini e titolo
-
-- La card non richiede un aspect ratio complessivo fisso: l'altezza deriva da titolo a 2 righe, padding e slot immagine quadrato.
-- `.catalog-card__title` occupa sempre 2 righe; testo piu' lungo viene clampato con ellipsis dove supportato dal browser.
-- `.catalog-card__image-wrap` riserva uno slot `1 / 1`; l'immagine usa `object-fit: contain`, quindi il CMS puo' passare asset quadrati, verticali o orizzontali senza cambiare altezza card.
-
-## Backend owns
-
-- Numero e ordine prodotti.
-- `href`, titoli, immagini, `alt`, `loading`, `decoding`, `fetchpriority`.
-- Titolo sezione e modifier colore label.
-- Presenza del toggle e valore `data-catalog-product-grid-initial-rows`.
-- Routing, tracking, analytics e dati reali.
-
-## Library owns
-
-- Layout della sezione e max-width landing.
-- Grid responsive 5/4/3/2 colonne.
-- Slot immagine quadrato, titolo a 2 righe, background, radius e hover image scale delle card.
-- Stile del toggle catalogo.
-- Runtime idempotente `window.SkillpressUI.CatalogProductGrid.init(root)`.
-- Evento `sp:catalog-product-grid:toggle` con `expanded` e `visibleCount`.
-
-## Demo-only
-
-- Fixture JSON del consumer landing.
-- Rendering card da `window.SkillpressLandingProducts`.
-- Qualsiasi adapter CMS/API.
+`window.SkillpressUI.CatalogProductGrid.init(root)`, idempotente. Evento `sp:catalog-product-grid:toggle` con `expanded` e `visibleCount`.
 
 ## Out of scope
 
-- Stage hero, interstitial, blocco testo SEO, navbar, footer e widget Feedaty.
-- Prezzi, badge promo, CTA card esplicite.
-- Query prodotto, ordinamento business e tracking click.
+- Stage hero, interstitial, blocco testo SEO, navbar, footer, Feedaty;
+- prezzi, badge promo, CTA card esplicite;
+- query prodotto, ordinamento business e tracking click.

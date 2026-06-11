@@ -1,6 +1,15 @@
+---
+title: CatalogStage
+description: Stage fotografico della landing catalogo con slider, overlay e CTA.
+layer: components
+strategy: css-js
+package_path: components/catalog-stage.css
+js_path: js/catalog-stage.js
+---
+
 # CatalogStage
 
-Stage fotografico della landing catalogo: slider immagini editoriale, overlay titolo/testo, CTA assoluta e slot opzionale per recensioni app-owned.
+Stage fotografico della landing catalogo: slider immagini, overlay titolo/testo, CTA assoluta e slot opzionale per recensioni. La libreria possiede max-width, aspect ratio, fade slider, dot controls, pause su hover/focus e overlay; il backend possiede immagini, copy, CTA, intervallo e contenuto dello slot reviews.
 
 ## Markup contract
 
@@ -12,11 +21,11 @@ Stage fotografico della landing catalogo: slider immagini editoriale, overlay ti
                 <img src="/assets/landing/stampa-1.jpg" alt="Stampa Skillpress" fetchpriority="high" decoding="async">
             </div>
             <div class="catalog-stage__slide" data-catalog-stage-slide aria-hidden="true">
-                <img src="/assets/landing/stampa-2.jpg" alt="Dettaglio stampa Skillpress" loading="lazy" decoding="async">
+                <img src="/assets/landing/stampa-2.jpg" alt="Dettaglio stampa" loading="lazy" decoding="async">
             </div>
             <div class="catalog-stage__overlay">
                 <h1 class="catalog-stage__overlay-title">Stampa la tua idea, con qualità professionale</h1>
-                <p class="catalog-stage__overlay-text">Dal file alla consegna: carta certificata, colori fedeli e finiture curate in ogni dettaglio.</p>
+                <p class="catalog-stage__overlay-text">Dal file alla consegna: carta certificata e finiture curate.</p>
             </div>
             <a class="catalog-stage__image-button" href="#prodotti">Vedi prodotti</a>
             <div class="catalog-stage__dots" aria-label="Immagini intro">
@@ -25,7 +34,7 @@ Stage fotografico della landing catalogo: slider immagini editoriale, overlay ti
             </div>
         </div>
         <div class="catalog-stage__reviews-inline feedaty-widget feedaty-widget--inline" data-catalog-stage-reviews data-feedaty-widget>
-            <div class="feedaty_widget" data-ver="2021" data-id="69d773285807d" data-type="merchant" data-variant="Striscia-2" data-lang="all" data-gui="all"></div>
+            <!-- slot recensioni, tipicamente FeedatyWidget -->
         </div>
     </div>
 </section>
@@ -33,58 +42,32 @@ Stage fotografico della landing catalogo: slider immagini editoriale, overlay ti
 
 ## Classi pubbliche
 
-- `.catalog-intro`: fascia introduttiva bianca.
-- `.catalog-stage`: root max-width 1200px con padding orizzontale.
-- `.catalog-stage--image-only`: variante fotografica usata dalla landing reale.
-- `.catalog-stage__image-box`: media slider container con gradient overlay.
-- `.catalog-stage__slide`, `.catalog-stage__slide--active`: immagini slider.
-- `.catalog-stage__overlay`, `.catalog-stage__overlay-title`, `.catalog-stage__overlay-text`.
+- `.catalog-intro`: fascia introduttiva.
+- `.catalog-stage`, `--image-only`: root e variante fotografica.
+- `.catalog-stage__image-box`: slider container con gradient overlay.
+- `.catalog-stage__slide`, `--active`: immagini slider.
+- `.catalog-stage__overlay`, `__overlay-title`, `__overlay-text`.
 - `.catalog-stage__image-button`: CTA pill.
-- `.catalog-stage__dots`, `.catalog-stage__dot`, `.catalog-stage__dot--active`: controlli slider.
-- `.catalog-stage__reviews-inline`: slot per widget recensioni, tipicamente composto con `FeedatyWidget`.
+- `.catalog-stage__dots`, `__dot`, `__dot--active`: controlli slider.
+- `.catalog-stage__reviews-inline`: slot recensioni, composto con `FeedatyWidget`.
 
 ## Data hooks
 
 - `[data-catalog-stage]`: root inizializzato dal runtime slider.
 - `[data-catalog-stage-slide]`: slide immagine.
 - `[data-catalog-stage-dot]`: dot control.
-- `data-catalog-stage-interval`: intervallo autoplay in ms, default `4500`.
+- `data-catalog-stage-interval`: intervallo autoplay in ms (default `4500`).
 - `data-catalog-stage-autoplay="false"`: disabilita autoplay.
-- `[data-catalog-stage-reviews]` e' solo un marker semantico opzionale per lo slot recensioni.
+- `data-catalog-stage-reviews`: marker semantico opzionale dello slot reviews, non letto dal runtime.
 
-## Modifier / stati
+Stati: `aria-hidden` sulle slide, `aria-current` sui dot.
 
-- `.catalog-stage--image-only`: layout a immagine singola.
-- `.catalog-stage__slide--active`: slide corrente.
-- `.catalog-stage__dot--active`: dot corrente.
-- `aria-hidden="true|false"` sulle slide.
-- `aria-current="true|false"` sui dot.
-- Hover/focus su `.catalog-stage__image-button`.
-- Mobile: testo descrittivo nascosto, CTA e overlay riposizionati.
+## JS
 
-## Backend owns
-
-- Immagini `src`/`alt`, attributi `loading`/`decoding`/`fetchpriority` e numero slide.
-- Titolo, testo overlay, CTA `href` e label.
-- ID/anchor.
-- Presenza e contenuto dello slot reviews, inclusi attributi Feedaty.
-- Intervallo e scelta autoplay.
-
-## Library owns
-
-- Max-width, padding, aspect ratio e radius.
-- Gradient overlay, object-fit/object-position.
-- Fade slider, dot controls, pause su hover/focus.
-- Tipografia e posizionamento dell'overlay.
-- Look CTA e responsive.
-
-## Demo-only
-
-- URL asset demo.
-- Configurazione Feedaty demo.
+`window.SkillpressUI.CatalogStage.init(root)`. Gestisce fade slider, dot controls e pause su hover/focus.
 
 ## Out of scope
 
-- Policy consenso/privacy del caricamento Feedaty.
-- Tracking click, routing reale, dati remoti.
-- Catalog grid, interstitial, text block, navbar e footer.
+- policy consenso/privacy del caricamento Feedaty;
+- tracking click, routing reale, dati remoti;
+- catalog grid, interstitial, text block, navbar e footer.

@@ -1,20 +1,18 @@
+---
+title: QuoteRequestTable
+description: Tabella editabile "Crea richiesta di preventivo" della dashboard.
+layer: components
+strategy: css-only
+package_path: components/quote-request-table.css
+---
+
 # QuoteRequestTable
 
-Dashboard editable quote request table.
+Tabella della dashboard "Crea richiesta di preventivo": righe esistenti piu' una
+riga editabile in tabella compatta. CSS-only: la libreria possiede layout, input
+compatti e bottoni add/remove; righe, valori, behavior e submit sono backend/app.
 
-## When To Use
-
-Use `QuoteRequestTable` for the dashboard `Crea richiesta di preventivo` table
-where existing rows and one editable row are shown in a compact table.
-
-Do not use it for:
-- read-only quote lists;
-- orders lists;
-- invoice or billing registry tables;
-- supplier activity tables;
-- quote business logic, validation, totals or API submission.
-
-## Markup Contract
+## Markup contract
 
 ```html
 <section class="quote-request-section">
@@ -49,7 +47,7 @@ Do not use it for:
                     <td class="quote-col-hide orders-table__cell--text-right">-</td>
                     <td class="quote-col-hide orders-table__cell--text-right">-</td>
                     <td class="quote-td-action">
-                        <button class="quote-row-btn quote-row-btn--remove" type="button" data-orders-table-action="remove-quote-row" title="Rimuovi">
+                        <button class="quote-row-btn quote-row-btn--remove" type="button" title="Rimuovi">
                             <span class="quote-row-btn__icon quote-row-btn__icon--remove" aria-hidden="true"></span>
                         </button>
                     </td>
@@ -57,28 +55,37 @@ Do not use it for:
             </tbody>
         </table>
     </div>
-    <button class="quote-submit-btn" type="button" data-orders-table-action="submit-quote">Invia richiesta</button>
+    <button class="quote-submit-btn" type="button">Invia richiesta</button>
 </section>
 ```
 
-## Backend/App Owns
+## Classi pubbliche
 
-- Rows, values, ids and input names.
-- Add/remove behavior.
-- Totals and price calculations.
-- Validation and error messages.
-- Submit action, API calls and permissions.
+- `.quote-request-section`, `.quote-request-section__title`
+- `.quote-table`
+- `.quote-th-num`, `.quote-th-qty`, `.quote-th-action`
+- `.quote-td-num`, `.quote-td-qty`, `.quote-td-action`
+- `.quote-col-hide`
+- `.quote-product-name`, `.quote-product-meta`
+- `.quote-form-fields`, `.quote-footer-cell`
+- `.quote-input` + `--qty|textarea`
+- `.quote-row-btn` + `--add|remove`, `.quote-row-btn__icon` + `--add|remove`
+- `.quote-submit-btn`
 
-## Library Owns
+## Data hooks
 
-- Table layout, spacing and responsive hiding of `.quote-col-hide`.
-- Compact quote inputs and focus states.
-- Circular add/remove row buttons.
-- CSS-owned add/remove icons.
-- Full-width submit button look.
+Nessun `data-*` di libreria: CSS-only. Eventuali `data-orders-table-action`
+nel markup demo sono hook applicativi, non API del componente.
 
-## Accessibility
+## Ownership
 
-- Add `type="button"` to non-submit row actions.
-- Use `title` or `aria-label` on icon-only add/remove buttons.
-- Associate fields with labels when rendering production forms.
+- Backend/app: righe, valori, id, input name; add/remove behavior; totali e
+  calcoli; validazione ed errori; submit, API e permessi.
+- Libreria: layout tabella, responsive hiding di `.quote-col-hide`, input
+  compatti e focus, bottoni circolari add/remove, icone CSS, look del submit.
+
+## Accessibilita'
+
+- `type="button"` sulle azioni di riga non-submit.
+- `title` o `aria-label` sui bottoni icona-only add/remove.
+- Associare i campi alle label nei form di produzione.

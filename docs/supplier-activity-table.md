@@ -1,66 +1,35 @@
+---
+title: SupplierActivityTable
+description: Tabella attività fornitore della dashboard con righe espandibili.
+layer: components
+strategy: css-js
+status: public-contract
+package_path: components/supplier-activity-table.css
+js_path: js/expandable-table.js
+---
+
 # SupplierActivityTable
 
-> **0.5.0 — markup-based.** L'espansione riga e' ora gestita dal modulo unico
-> `ExpandableTable` (`js/expandable-table.js`), condiviso con OrdersTable.
-> Hook: `data-expandable-table`, `data-expandable-table-row` (con `aria-controls`
-> -> id detail-row), `data-expandable-table-toggle`. Evento:
-> `sp:expandable-table:row-toggle`. Il vecchio `SupplierActivityTable` /
-> `data-supplier-activity-table*` non esiste piu'.
-
-Dashboard supplier activity table with expandable product/detail rows.
-
-## When To Use
-
-Use `SupplierActivityTable` for the dashboard `Attività fornitore` table where
-each supplier activity row expands into a product summary and specification
-panel.
-
-Do not use it for:
-- normal orders lists;
-- quote lists;
-- invoice or billing registry tables;
-- quote request form rows;
-- supplier filtering, pagination or API state.
-
-## Source
-
-- Real markup: `Skillpress-frontend/reference-pages/static/dashboard/index.html` view `fornitore`
-- Real CSS: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_fornitore.css`
-- Real JS: `Skillpress-frontend/reference-pages/static/dashboard/js/order-tables.js`
-- Target page: `dashboard`
+Tabella "Attività fornitore" della dashboard: ogni riga si espande in un pannello
+con riepilogo, azienda, preview prodotto e specifiche. La libreria fornisce le
+classi CSS (`supplier-activity-table__*`); l'espansione riga e' gestita dal
+modulo condiviso `ExpandableTable` (`js/expandable-table.js`). Estende la shell di
+`OrdersTable` (`orders-table.css`). Righe, dati, filtri e workflow fornitore sono
+backend/app.
 
 ## Import
 
 ```html
 <link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/orders-table.css">
 <link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/supplier-activity-table.css">
-<script defer src="/node_modules/@ebattt/skillpress-ui/js/supplier-activity-table.js"></script>
+<script defer src="/node_modules/@ebattt/skillpress-ui/js/expandable-table.js"></script>
 ```
 
-Initialize after render:
-
-```html
-<script>
-window.SkillpressUI.SupplierActivityTable.init();
-</script>
-```
-
-## Reuse Audit
-
-`OrdersTable` is reused for the base dashboard table shell and compact title
-cells, but it is not enough: supplier rows have persistent detail rows with
-summary, company, product preview and specifications. `OrdersTable` only
-generates mobile details from hidden cells.
-
-`BillingTable`, `InvoiceTable` and `QuoteRequestTable` cover different table
-contracts. `SearchFilterBar` and `TablePagination` are composed around this
-table for filters and pagination.
-
-## Markup Contract
+## Markup contract
 
 ```html
 <div class="table-wrapper table-wrapper--scroll">
-    <table class="orders-table orders-table--compact supplier-activity-table" data-supplier-activity-table>
+    <table class="orders-table orders-table--compact supplier-activity-table" data-expandable-table>
         <thead>
             <tr>
                 <th class="th-id">#</th>
@@ -75,7 +44,7 @@ table for filters and pagination.
         <tbody>
             <tr class="supplier-activity-table__row"
                 tabindex="0"
-                data-supplier-activity-table-row
+                data-expandable-table-row
                 aria-controls="supplier-detail-47298"
                 aria-expanded="false">
                 <td class="orders-table__cell--id font-semibold text-dark-blue orders-table__cell--nowrap">47298</td>
@@ -100,14 +69,9 @@ table for filters and pagination.
                 <td class="orders-table__cell--nowrap orders-table__cell--mobile-hide"><strong>07/05/2021</strong></td>
                 <td class="orders-table__cell--status"><span class="sp-badge sp-badge--info">Aperto</span></td>
             </tr>
-            <tr class="supplier-activity-table__detail-row"
-                id="supplier-detail-47298"
-                data-supplier-activity-table-detail
-                hidden>
-                <td colspan="8">
-                    <div class="supplier-activity-table__detail">
-                        <!-- summary, product and specs slots -->
-                    </div>
+            <tr class="supplier-activity-table__detail-row" id="supplier-detail-47298" hidden>
+                <td colspan="7">
+                    <div class="supplier-activity-table__detail"><!-- summary, product e specs --></div>
                 </td>
             </tr>
         </tbody>
@@ -115,33 +79,41 @@ table for filters and pagination.
 </div>
 ```
 
-## Behavior
+## Classi pubbliche
 
-`SkillpressUI.SupplierActivityTable.init(root)`:
+- `.supplier-activity-table`, `.supplier-activity-table__row`, `.supplier-activity-table__detail-row`, `.supplier-activity-table__detail`
+- `.supplier-activity-table__activity-label`, `.supplier-activity-table__message`
+- `.supplier-activity-table__company`, `.supplier-activity-table__name`, `.supplier-activity-table__type`
+- `.supplier-activity-table__summary`, `.supplier-activity-table__summary-item`
+- `.supplier-activity-table__product`, `.supplier-activity-table__info`
+- `.supplier-activity-table__image`, `.supplier-activity-table__image-placeholder`
+- `.supplier-activity-table__specs`, `.supplier-activity-table__specs-col`
+- `.supplier-activity-table__chevron`, `.supplier-activity-table__chevron-button`, `.supplier-activity-table__chevron-cell`
 
-- injects the chevron header/cell when missing;
-- toggles one detail row open at a time;
-- syncs `aria-expanded`, `aria-label` and `hidden`;
-- supports click and keyboard Enter/Space on rows;
-- does not fetch data or run supplier workflow logic.
+Riusa anche le classi shell di `orders-table.css` (vedi `orders-table.md`).
 
-## Backend/App Owns
+## Data hooks
 
-- Rows, ids, status text and badge variant.
-- Detail summary/product/spec values.
-- Filters and pagination state.
-- Supplier workflow, permissions, notifications and API calls.
+L'espansione riga usa i hook di `ExpandableTable`:
 
-## Library Owns
+| Hook | Elemento | Ruolo |
+|---|---|---|
+| `data-expandable-table` | `<table>` | root da inizializzare |
+| `data-expandable-table-row` | `<tr>` riga | riga espandibile (`aria-controls` -> id detail-row, `aria-expanded`, `tabindex="0"`) |
+| `data-expandable-table-toggle` | `<button>` | chevron toggle dentro la riga |
 
-- Table/detail layout, spacing, borders and responsive detail panel.
-- Compact supplier filter row layout when rendered as
-  `.supplier-activity-section__filters` with `SearchFilterBar` controls.
-- CSS-owned chevron and image placeholder icons.
-- Disclosure behavior and accessibility state.
+Evento: `sp:expandable-table:row-toggle`. Una sola riga aperta alla volta; click
+e Enter/Space supportati; il modulo non recupera dati.
 
-## Accessibility
+## Ownership
 
-- Each row needs `aria-controls` pointing at its detail row `id`.
-- Rows should be focusable with `tabindex="0"` when the whole row is a toggle.
-- Use real text in the detail panel; icon placeholders are decorative.
+- Backend/app: righe, id, status e variante badge; valori del dettaglio; filtri
+  e paginazione; workflow, permessi, notifiche, API.
+- Libreria: layout tabella/dettaglio, spacing, bordi, pannello responsive, icone
+  CSS (chevron e placeholder immagine), disclosure e stato di accessibilita'.
+
+## Accessibilita'
+
+- Ogni riga ha `aria-controls` verso l'`id` della detail-row.
+- Righe focusabili con `tabindex="0"` quando l'intera riga e' un toggle.
+- Testo reale nel pannello dettaglio; i placeholder icona sono decorativi.

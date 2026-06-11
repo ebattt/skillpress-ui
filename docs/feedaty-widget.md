@@ -1,6 +1,18 @@
+---
+title: FeedatyWidget
+description: Wrapper e loader SDK per i widget Feedaty della landing (merchant strip inline e carousel recensioni).
+layer: components
+strategy: css-js
+package_path: components/feedaty-widget.css
+js_path: js/feedaty-widget.js
+---
+
 # FeedatyWidget
 
-Wrapper e loader per i due widget Feedaty reali della landing: merchant strip inline nello stage e carousel recensioni nella sezione dedicata.
+Wrapper e loader per i due widget Feedaty della landing: merchant strip inline
+nello stage e carousel recensioni. La libreria fornisce wrapper/sizing
+responsive e il loader SDK idempotente; il backend decide attributi Feedaty,
+titolo sezione, policy consenso/privacy e fallback.
 
 ## Markup contract
 
@@ -8,58 +20,48 @@ Inline merchant:
 
 ```html
 <div class="feedaty-widget feedaty-widget--inline" data-feedaty-widget>
-    <div class="feedaty_widget" data-ver="2021" data-id="69d773285807d" data-type="merchant" data-variant="Striscia-2" data-lang="all" data-gui="all"></div>
+    <div class="feedaty_widget" data-ver="2021" data-id="..." data-type="merchant"
+         data-variant="Striscia-2" data-lang="all" data-gui="all"></div>
 </div>
 ```
 
 Carousel:
 
 ```html
-<section class="feedaty-widget feedaty-widget--carousel" data-feedaty-widget aria-labelledby="feedaty-reviews-title">
+<section class="feedaty-widget feedaty-widget--carousel" data-feedaty-widget
+         aria-labelledby="feedaty-reviews-title">
     <h2 class="feedaty-widget__title" id="feedaty-reviews-title">Cosa dicono i nostri clienti</h2>
-    <div class="feedaty_widget" data-ver="2021" data-id="69d6498b45554" data-type="carousel" data-variant="carosello-2" data-lang="all" data-gui="all"></div>
+    <div class="feedaty_widget" data-ver="2021" data-id="..." data-type="carousel"
+         data-variant="carosello-2" data-lang="all" data-gui="all"></div>
 </section>
 ```
 
 ## Classi pubbliche
 
 - `.feedaty-widget`: wrapper responsive.
-- `.feedaty-widget--inline`: widget merchant inline sotto lo stage.
-- `.feedaty-widget--carousel`: sezione recensioni con max-width/padding landing.
+- `.feedaty-widget--inline`: widget merchant inline nello stage.
+- `.feedaty-widget--carousel`: sezione recensioni.
 - `.feedaty-widget__title`: titolo sezione carousel.
-- `.feedaty-widget__placeholder`: fallback demo/documentazione quando lo SDK e' disabilitato.
+- `.feedaty-widget__placeholder`: fallback quando lo SDK e' disabilitato.
 - `.feedaty_widget`: classe richiesta dallo SDK Feedaty.
 
 ## Data hooks
 
 - `[data-feedaty-widget]`: root inizializzato dal runtime.
-- `data-feedaty-widget-sdk="false"`: disabilita il caricamento SDK, utile in Storybook o ambienti senza consenso.
+- `data-feedaty-widget-sdk="false"`: disabilita il caricamento SDK.
 - `data-feedaty-widget-sdk-src`: override opzionale della URL SDK.
+- `data-feedaty-widget-init`: aggiunto dal runtime dopo init.
 
-## Modifier / stati
+## API JS / Eventi
 
-- `.feedaty-widget--inline`: normalizza larghezza e background trasparente del widget nello stage.
-- `.feedaty-widget--carousel`: replica la sezione compatta recensioni della landing.
-- `data-feedaty-widget-init="1"` viene aggiunto dal runtime dopo l'inizializzazione.
+```js
+window.SkillpressUI.FeedatyWidget.init(scope);
+```
 
-## Backend owns
+Loader SDK idempotente. Emette `sp:feedaty-widget:error` in caso di errore di
+caricamento.
 
-- `data-id`, `data-type`, `data-variant`, lingua e attributi Feedaty.
-- Titolo della sezione carousel.
-- Policy consenso/privacy e scelta se caricare lo SDK.
-- Fallback se Feedaty non risponde.
+## Fuori scope
 
-## Library owns
-
-- Wrapper, sizing, overflow e responsive dei due widget landing.
-- Loader SDK idempotente `window.SkillpressUI.FeedatyWidget.init(root)`.
-- Evento `sp:feedaty-widget:error` in caso di errore caricamento SDK.
-
-## Demo-only
-
-- Gli ID Feedaty della landing demo.
-
-## Out of scope
-
-- Contenuto renderizzato dentro iframe Feedaty.
-- Tracking, consenso cookie, retry applicativo e gestione privacy.
+Contenuto renderizzato dentro l'iframe Feedaty, tracking, consenso cookie, retry
+applicativo e gestione privacy.

@@ -1,38 +1,15 @@
+---
+title: CartProductCard
+description: Riga prodotto del carrello checkout con pannello dettagli espandibile.
+layer: components
+strategy: css-js
+package_path: components/cart-product-card.css
+js_path: js/cart-product-card.js
+---
+
 # CartProductCard
 
-`CartProductCard` renderizza una riga prodotto del carrello checkout con immagine, titolo, prezzo, azione rimuovi e pannello "Dettagli prodotto" espandibile.
-
-## Fonte
-
-- Markup: `Skillpress-frontend/reference-pages/static/checkout/js/sections/cart-section.js`
-- CSS: `Skillpress-frontend/reference-pages/static/checkout/css/components/_cart.css`
-- Pagina target: `checkout`
-
-## Import
-
-```html
-<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/cart-product-card.css">
-<script defer src="/node_modules/@ebattt/skillpress-ui/js/cart-product-card.js"></script>
-```
-
-## Responsabilita
-
-La libreria decide layout, responsive, colori, hover/focus, icone chrome del toggle e apertura/chiusura del pannello dettagli.
-
-Il backend/CMS decide lista prodotti, contenuti, prezzo gia' formattato, immagine, `alt`, contenuto dettagli, `id`/`aria-controls` e azione di rimozione articolo.
-
-## Behavior
-
-`window.SkillpressUI.CartProductCard.init(scope)` inizializza tutti gli elementi `[data-cart-product-card]` sotto `scope`. Il binding e' idempotente.
-
-Il toggle usa:
-
-- `[data-cart-product-card-toggle]`
-- `[data-cart-product-card-details]`
-- `aria-expanded`
-- `aria-hidden`
-
-Non gestisce rimozione articolo, calcoli prezzo, IVA o stato carrello.
+Riga prodotto del carrello checkout con immagine, titolo, prezzo, azione rimuovi e pannello "Dettagli prodotto" espandibile. La libreria decide layout, responsive, icone chrome del toggle e disclosure del pannello dettagli; il backend possiede lista prodotti, contenuti, prezzo già formattato, immagine, `id`/`aria-controls` e azione di rimozione.
 
 ## Markup contract
 
@@ -80,68 +57,26 @@ Non gestisce rimozione articolo, calcoli prezzo, IVA o stato carrello.
 
 ## Classi pubbliche
 
-- `.cart-list`
-- `.cart-product-card`
-- `.cart-product-card__row`
-- `.cart-product-card__image-wrap`
-- `.cart-product-card__image`
-- `.cart-product-card__body`
-- `.cart-product-card__header`
-- `.cart-product-card__info`
-- `.cart-product-card__title`
-- `.cart-product-card__specs`
-- `.cart-product-card__price-wrap`
-- `.cart-product-card__price`
-- `.cart-product-card__actions`
-- `.cart-product-card__remove-btn`
-- `.cart-product-card__details-section`
-- `.cart-product-card__details-toggle`
-- `.cart-product-card__details-toggle-label`
-- `.cart-product-card__details-chevron`
-- `.cart-product-card__details`
-- `.cart-product-card__details-inner`
-- `.cart-details-inline`
-- `.cart-details-inline__section`
-- `.cart-details-inline__heading`
-- `.cart-details-inline__label`
-- `.cart-details-inline__sep`
+- `.cart-list`, `.cart-product-card`, `.cart-product-card__row`
+- `.cart-product-card__image-wrap`, `__image`
+- `.cart-product-card__body`, `__header`, `__info`, `__title`, `__specs`
+- `.cart-product-card__price-wrap`, `__price`
+- `.cart-product-card__actions`, `__remove-btn`
+- `.cart-product-card__details-section`, `__details-toggle`, `__details-toggle-label`, `__details-chevron`, `__details`, `__details-inner`
+- `.cart-details-inline`, `__section`, `__heading`, `__label`, `__sep`
 
 ## Data hooks
 
-- `data-cart-product-card`: root pubblica inizializzata dal runtime.
+- `data-cart-product-card`: root, inizializzata dal runtime.
 - `data-cart-product-card-toggle`: trigger del pannello dettagli.
-- `data-cart-product-card-details`: pannello dettagli sincronizzato dal runtime.
-- `data-cart-product-card-remove`: hook opzionale consumer/demo per rimozione;
-  la libreria non lo legge.
+- `data-cart-product-card-details`: pannello dettagli (sync ARIA).
 
-## Modifier / stati
+## JS
 
-- `aria-expanded="true|false"` su `.cart-product-card__details-toggle`.
-- `aria-hidden="false|true"` su `.cart-product-card__details`.
-- Immagine mancante: `.cart-product-card__image-wrap` puo' restare vuoto; la
-  libreria mantiene dimensioni e sfondo placeholder.
-
-## Backend owns
-
-- Lista prodotti, titolo, specs, prezzo gia' formattato, immagine e `alt`.
-- `id`/`aria-controls` univoci per ogni card.
-- Contenuto del pannello dettagli e azione di rimozione prodotto.
-
-## Library owns
-
-- Layout card, responsive, icone CSS dettagli/chevron, hover/focus e disclosure
-  dettagli via `CartProductCard.init`.
-- Sync degli attributi ARIA documentati sopra.
-
-## Demo-only
-
-- Fixture prodotti checkout, immagini demo e contenuto dettagli inline.
-- Hook `data-cart-product-card-remove` quando usato per simulare la rimozione.
+`window.SkillpressUI.CartProductCard.init(scope)` inizializza tutti i `[data-cart-product-card]` sotto `scope`, idempotente. Il toggle sincronizza `aria-expanded` (sul toggle) e `aria-hidden` (sul pannello). Eventi: `sp:cart-product-card:open`, `sp:cart-product-card:close`. Non gestisce rimozione articolo, calcoli prezzo, IVA o stato carrello.
 
 ## Out of scope
 
-- pricing e formattazione valuta;
-- rimozione prodotto;
-- persistenza carrello;
-- validazioni checkout;
+- pricing e formattazione valuta, rimozione prodotto;
+- persistenza carrello, validazioni checkout;
 - shell accordion della pagina checkout.

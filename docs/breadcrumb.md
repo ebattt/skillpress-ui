@@ -3,13 +3,12 @@ title: Breadcrumb
 description: Navigazione gerarchica statica con markup Schema.org BreadcrumbList.
 layer: primitives
 strategy: css-only
-status: public-contract
 package_path: primitives/breadcrumb.css
 ---
 
 # Breadcrumb
 
-Navigazione gerarchica statica con separatore `/` generato via `::after`. La libreria controlla layout flex, wrapping, separatore, colori di link e voce corrente, hover e focus. Il backend genera l'albero di navigazione (testo, URL, ordine, voce corrente) e il markup Schema.org `BreadcrumbList` richiesto dal contratto.
+Navigazione gerarchica statica con separatore `/` generato via `::after`. CSS-only. La libreria controlla layout flex, wrapping, separatore, colori, hover e focus; il backend genera l'albero (testo, URL, ordine, voce corrente) e il markup Schema.org `BreadcrumbList` richiesto dal contratto.
 
 ## Anatomy
 
@@ -42,88 +41,20 @@ Breadcrumb
 </nav>
 ```
 
-## API Reference
-
-| Class | Role | Required | Modifiers |
-|---|---|---|---|
-| `.sp-breadcrumb` | wrapper `<nav>` con `aria-label` | yes | — |
-| `.sp-breadcrumb__list` | `<ol>` flex wrap, container Schema.org | yes | — |
-| `.sp-breadcrumb__item` | `<li>` voce, separatore `/` via `::after` (tranne ultima) | yes | `--current` |
-| `.sp-breadcrumb__link` | `<a>` link delle voci non correnti | no | — |
-
-Attributi:
-
-| Attribute | Element | Required | Note |
-|---|---|---|---|
-| `aria-label="Breadcrumb"` | `<nav>` | yes | Etichetta accessibile della navigazione. |
-| `itemscope` + `itemtype="https://schema.org/BreadcrumbList"` | `.sp-breadcrumb__list` | yes | Schema.org root. |
-| `itemprop="itemListElement"` + `itemscope` + `itemtype="https://schema.org/ListItem"` | `.sp-breadcrumb__item` | yes | Schema.org item. |
-| `itemprop="item"` | `.sp-breadcrumb__link` | yes | Schema.org link target. |
-| `itemprop="name"` | `<span>` interno | yes | Testo della voce. |
-| `itemprop="position"` + `content="N"` | `<meta>` | yes | Posizione numerica (1-based). |
-
-## Installation
-
-```html
-<link rel="stylesheet"
-      href="../node_modules/@ebattt/skillpress-ui/primitives/breadcrumb.css" />
-```
-
-Oppure via bundle (gia' include `breadcrumb.css`):
-
-```html
-<link rel="stylesheet"
-      href="../node_modules/@ebattt/skillpress-ui/bundles/demo-minimal.css" />
-```
-
-Nessun script JS richiesto.
-
-## Examples
-
-- `Default` → `primitives-breadcrumb--default`
-- `TwoLevels` → `primitives-breadcrumb--two-levels`
-- `ContractReference` → `primitives-breadcrumb--contract-reference`
-
-## Token usati
-
-`--spacing-xs`, `--font-size-sm`, `--font-weight-medium`, `--line-height-normal`, `--color-text`, `--color-text-secondary`, `--color-text-muted`, `--color-primary`, `--color-border-focus`, `--radius-sm`, `--transition-fast`.
-
-## Note CMS
-
-- testo di ogni voce.
-- URL dei link (su voci non correnti).
-- numero di livelli e ordine delle voci.
-- quale voce e' corrente (classe `--current` + omissione `<a>`).
-- markup Schema.org richiesto dal contratto (`itemscope`, `itemtype`, `itemprop`, `<meta itemprop="position">`).
-
 ## Classi pubbliche
 
-`.sp-breadcrumb`, `.sp-breadcrumb__list`, `.sp-breadcrumb__item`, `.sp-breadcrumb__item--current`, `.sp-breadcrumb__link`.
+- `.sp-breadcrumb`: wrapper `<nav>` con `aria-label="Breadcrumb"`.
+- `.sp-breadcrumb__list`: `<ol>` flex wrap, root Schema.org.
+- `.sp-breadcrumb__item`, `--current`: `<li>` voce; separatore `/` via `::after` (tranne l'ultima). La voce `--current` omette il `<a>`.
+- `.sp-breadcrumb__link`: `<a>` delle voci non correnti.
 
-## Data hooks
+ARIA/Schema.org richiesto: `itemscope` + `itemtype` su list e item, `itemprop="item"` sul link, `itemprop="name"` sullo span interno, `<meta itemprop="position" content="N">` (1-based).
 
-Nessun hook `data-*` pubblico. `Breadcrumb` e' CSS-only.
-
-## Modifier / stati
-
-Voce corrente tramite `.sp-breadcrumb__item--current` e omissione del link. Non ci sono stati runtime.
-
-## Backend owns
-
-Albero navigazione, URL, ordine, voce corrente, traduzioni e markup Schema.org.
-
-## Library owns
-
-Layout flex/wrap, separatore `/`, colori, hover/focus link e spaziatura.
-
-## Demo-only
-
-Gerarchie e URL di esempio nelle lab page.
+Nessun hook `data-*`, nessuno stato runtime.
 
 ## Out of scope
 
-- icone home o chevron al posto di `/` (variante non presente in `elements-ui`).
-- troncamento o ellipsis automatico delle voci troppo lunghe.
-- versione "compressed" mobile a soli due livelli con menu intermedio.
-- JS di gestione overflow (il list usa `flex-wrap: wrap`).
-- generazione link, categorie o traduzioni (responsabilita' del backend/CMS).
+- icone home/chevron al posto di `/`;
+- troncamento/ellipsis automatico delle voci;
+- versione compressed mobile con menu intermedio;
+- generazione link/categorie/traduzioni.

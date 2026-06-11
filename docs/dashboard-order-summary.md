@@ -3,22 +3,12 @@ title: DashboardOrderSummary
 description: Riepilogo ordine post-acquisto nella sidebar dashboard.
 layer: components
 strategy: css-only
-status: public-contract
 package_path: components/dashboard-order-summary.css
 ---
 
 # DashboardOrderSummary
 
-`DashboardOrderSummary` renderizza il riepilogo ordine nella sidebar del
-dettaglio ordine dashboard. E' un componente post-acquisto: mostra item,
-subtotale, imposta, totale e una CTA di download.
-
-## Reuse Audit
-
-`CheckoutSummary` non viene riusato perche' rappresenta il riepilogo checkout
-pre-acquisto, con root `.checkout-summary`, CTA di avanzamento, note e help.
-`SidebarTotals` e' specifico del configuratore prodotto. `Card` non copre il
-contratto item/totali/CTA della fonte reale.
+Riepilogo ordine post-acquisto nella sidebar del dettaglio ordine dashboard: item, subtotale, imposta, totale e una CTA di download. CSS-only. La libreria possiede layout, sticky desktop, spacing, superficie e icona download; il backend possiede righe item, label, importi formattati e comportamento del download.
 
 ## Markup contract
 
@@ -40,10 +30,6 @@ contratto item/totali/CTA della fonte reale.
             <span class="order-summary__label">Subtotale</span>
             <span class="order-summary__value">262,70 &euro;</span>
         </div>
-        <div class="order-summary__row">
-            <span class="order-summary__label">Imposta</span>
-            <span class="order-summary__value">57,80 &euro;</span>
-        </div>
     </div>
     <div class="order-summary__total">
         <span class="order-summary__total-label">Totale</span>
@@ -60,60 +46,17 @@ contratto item/totali/CTA della fonte reale.
 
 ## Classi pubbliche
 
-- `.order-summary`
-- `.order-detail-grid__summary`
-- `.order-summary__title`
-- `.order-summary__items`
-- `.order-summary__item`
-- `.order-summary__item-name`
-- `.order-summary__item-qty`
-- `.order-summary__item-price`
+- `.order-summary`, `.order-detail-grid__summary`, `__title`
+- `.order-summary__items`, `__item`, `__item-name`, `__item-qty`, `__item-price`
 - `.order-summary__divider`
-- `.order-summary__totals`
-- `.order-summary__row`
-- `.order-summary__label`
-- `.order-summary__value`
-- `.order-summary__total`
-- `.order-summary__total-label`
-- `.order-summary__total-value`
-- `.order-summary__actions`
-- `.order-summary__download-btn`
-- `.order-summary__download-icon`
+- `.order-summary__totals`, `__row`, `__label`, `__value`
+- `.order-summary__total`, `__total-label`, `__total-value`
+- `.order-summary__actions`, `__download-btn`, `__download-icon`
 
 ## Data hooks
 
-Nessun data-* pubblico richiesto. Il componente e CSS-only.
-
-`data-dashboard-order-summary` puo' essere usato come locator demo/app, ma non e'
-richiesto dalla libreria.
-
-## Modifier / stati
-
-Nessun modifier visuale pubblico dedicato. Gli stati derivano da contenuti e CTA
-renderizzati dal backend/app.
-
-## Backend owns
-
-Il backend/app decide righe item, label, importi formattati, presenza della CTA
-e comportamento del download.
-
-## Library owns
-
-La libreria decide layout, sticky desktop, spacing, typography, superficie e
-icona download.
-
-## Demo-only
-
-`data-dashboard-order-summary` se usato come locator. Eventuali `data-section`,
-toolbar scenari, renderer didattici e fixture appartengono alla demo/app.
-
-## Differenze dalla demo
-
-- Material Symbols `download` viene sostituita da icona CSS library-owned.
-- `.dashboard-btn--outline` della demo viene ricondotto a
-  `.order-summary__download-btn`, elemento BEM del componente.
+Nessun `data-*` pubblico richiesto (CSS-only). `data-dashboard-order-summary` è un locator demo/app opzionale. Nessun modifier visuale dedicato.
 
 ## Out of scope
 
-Calcoli fiscali, formattazione valuta, download reale, routing, payment/shipping
-dropdown e header dettaglio ordine.
+Calcoli fiscali, formattazione valuta, download reale, routing, payment/shipping dropdown e header dettaglio ordine.

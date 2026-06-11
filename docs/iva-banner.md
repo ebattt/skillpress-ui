@@ -1,6 +1,6 @@
 ---
 title: IvaBanner
-description: Callout warning informativo per la dichiarazione IVA 4% (editori con ISBN). Pattern usato nello Step 6 del configuratore quando l'utente seleziona aliquota agevolata.
+description: Callout warning informativo per la dichiarazione IVA 4% (editori con ISBN).
 layer: primitives
 strategy: css-only
 package_path: primitives/iva-banner.css
@@ -8,21 +8,9 @@ package_path: primitives/iva-banner.css
 
 # IvaBanner
 
-Callout informativo arancione/warning che appare in Step 6 del configuratore
-quando viene selezionata l'aliquota IVA 4% (editori con ISBN). Avvisa
-l'utente che e' richiesta la compilazione di una dichiarazione sostitutiva.
-
-CSS-only. La condizione di visibilita' (mostrare/nascondere il
-banner) e' business logic del consumer.
-
-## Classi pubbliche
-
-| Classe | Note |
-|---|---|
-| `.sp-iva-banner` | container warning bg/border/radius/padding |
-| `.sp-iva-banner__content` | flex inline icon + text, align-items flex-start |
-| `.sp-iva-banner__icon` | icona info disegnata via CSS, color primary |
-| `.sp-iva-banner__text` | testo xs, color text-strong, line-height 1.5 |
+Callout warning arancione che avvisa l'utente della necessita' di compilare una
+dichiarazione sostitutiva quando viene selezionata l'aliquota IVA 4% (editori
+con ISBN). CSS-only: la condizione di visibilita' e' business logic del consumer.
 
 ## Markup contract
 
@@ -32,49 +20,33 @@ banner) e' business logic del consumer.
         <span class="sp-iva-banner__icon" aria-hidden="true"></span>
         <div class="sp-iva-banner__text">
             <p>Per usufruire dell'aliquota ridotta al 4% per editori con ISBN
-               e necessario compilare e firmare la dichiarazione sostitutiva.</p>
-            <button type="button" style="...">Scarica la dichiarazione</button>
+               e' necessario compilare e firmare la dichiarazione sostitutiva.</p>
+            <button type="button">Scarica la dichiarazione</button>
         </div>
     </div>
 </div>
 ```
 
+## Classi pubbliche
+
+| Classe | Note |
+|---|---|
+| `.sp-iva-banner` | container warning (bg/border/radius/padding) |
+| `.sp-iva-banner__content` | flex inline icon + text, align-items flex-start |
+| `.sp-iva-banner__icon` | icona info via CSS, color primary |
+| `.sp-iva-banner__text` | testo xs, color text-strong, line-height 1.5 |
+
 ## Cosa decide il CMS / backend
 
-- presenza/assenza del banner (rendering condizionale Step 6);
-- testo HTML (puo' contenere link, bottoni download dichiarazione);
-- handler dei bottoni interni.
+Presenza/assenza del banner, testo HTML (link/bottoni download) e handler dei
+bottoni interni.
 
 ## Cosa decide la libreria
 
-- `--color-warning-bg` (#FFF7ED) come background;
-- `--color-warning-border` (#FED7AA) come border;
-- radius `--radius-lg`, padding 0.75rem;
-- icona info dentro `.sp-iva-banner__icon` via CSS, color `--color-primary`;
-- font-size testo xs (`var(--font-size-xs)` = 12px), line-height 1.5;
-- spacing tra paragrafi consecutivi (`> * + *` margin-top xs).
-
-## Composizione
-
-Renderizzato sotto la riga `.sp-qty-iva-row qty-iva-row--double` quando
-`state.selections.ivaMode === '4'`. Il contesto applicativo e' Step 6
-del configuratore.
-
-## Mappatura nomi (demo product-page -> libreria)
-
-| Demo / catalog (old) | Libreria (current) |
-|----------------------|--------------------|
-| `.iva-banner-content` | `.sp-iva-banner__content` |
-| `.iva-banner-icon` | `.sp-iva-banner__icon` |
-| `.iva-banner-text` | `.sp-iva-banner__text` |
-
-`.sp-iva-banner` (block, italiano-derived) e' invariato.
+Background `--color-warning-bg`, border `--color-warning-border`, radius/padding,
+icona info via CSS, font-size testo xs e spacing tra paragrafi.
 
 ## Fuori scope
 
-- modal "Scarica dichiarazione" (overlay separato): pattern modal dedicato
-  futuro, non incluso nel banner.
-- variante callout informativo generica (`.callout--warning`/`--info`): se
-  emergeranno altri banner simili, valutare promozione a primitiva generica.
-- variante banner di errore / successo: niente coverage finche' non emerge
-  un consumer reale.
+Modal "Scarica dichiarazione", variante callout generica (`--warning`/`--info`),
+varianti error/success.

@@ -1,37 +1,19 @@
+---
+title: FormLayout
+description: Helper di layout per form checkout (righe a 2/3 colonne, divider azioni, area azioni).
+layer: primitives
+strategy: css-only
+package_path: primitives/form-layout.css
+---
+
 # FormLayout
 
-`FormLayout` fornisce helper di layout per form checkout: righe a 2/3 colonne,
-divider per azioni "copia dati" e area azioni.
+Helper di layout per i form checkout: righe a 2/3 colonne, riga azione "copia
+dati" e area azioni. La libreria decide spacing, griglie responsive e
+allineamento. I campi restano `FormPrimitives`, i bottoni `Button`; il
+backend/app decide validazione, copy, submit e campi condizionali. CSS-only.
 
-## Fonte
-
-- Markup: `Skillpress-frontend/reference-pages/static/checkout/js/sections/payment-section.js`
-- CSS: `Skillpress-frontend/reference-pages/static/checkout/css/components/_payment.css`
-- Fonte correlata: `checkout/js/sections/shipping-section.js`
-- Pagina target: `checkout`
-
-## Import
-
-```html
-<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/primitives/form-layout.css">
-```
-
-## Responsabilita
-
-La libreria decide spacing, griglie responsive e allineamento. I campi restano
-`FormPrimitives`; i bottoni restano `Button`; il backend/applicativo decide
-validazione, copy, submit, salvataggio e campi condizionali.
-
-## Reuse Audit
-
-`FormPrimitives` copre field, label, input e select, ma non la griglia checkout
-2/3 colonne del nuovo profilo.
-
-`Button` copre le CTA, ma non il layout del form.
-
-Non viene creato `BillingForm`: il pattern e' un helper generico di layout form.
-
-## Markup
+## Markup contract
 
 ```html
 <div class="sp-form-layout sp-form-layout--compact" data-form-layout>
@@ -40,7 +22,6 @@ Non viene creato `BillingForm`: il pattern e' un helper generico di layout form.
             Copia dati dalla spedizione
         </button>
     </div>
-
     <div class="sp-form-layout__row sp-form-layout__row--2">
         <div class="sp-form-field">
             <label class="sp-label-text" for="billing-type">Tipologia</label>
@@ -56,26 +37,16 @@ Non viene creato `BillingForm`: il pattern e' un helper generico di layout form.
 </div>
 ```
 
-## Classi
+## Classi pubbliche
 
 - `.sp-form-layout`
-- `.sp-form-layout--compact`
-- `.sp-form-layout__row`
-- `.sp-form-layout__row--2`
-- `.sp-form-layout__row--3`
-- `.sp-form-layout__copy-row` per azione opzionale sopra i campi, senza divisore
-  interno.
-- `.sp-form-layout__actions`
-- `.sp-form-layout__actions--end`
+- `.sp-form-layout--compact` (label interne a 14px per form densi; non cambia
+  `FormPrimitives` globalmente)
+- `.sp-form-layout__row`, `__row--2`, `__row--3`
+- `.sp-form-layout__copy-row` (azione opzionale sopra i campi)
+- `.sp-form-layout__actions`, `__actions--end`
 
-`form-layout--compact` riduce le label interne a 14px/1.25rem per i form
-checkout densi. Non cambia `FormPrimitives` globalmente, quindi la product page
-mantiene la scala 15px delle label configuratore.
+## Fuori scope
 
-## Fuori Scope
-
-- validazione;
-- show/hide campi societa;
-- copy shipping to billing;
-- submit/API;
-- componenti form field.
+Validazione, show/hide campi societa, copy shipping-to-billing, submit/API,
+componenti form field.

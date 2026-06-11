@@ -1,6 +1,14 @@
+---
+title: ArticleHero
+description: Header editoriale con categoria, titolo, meta e immagine hero opzionale.
+layer: components
+strategy: css-only
+package_path: components/article-hero.css
+---
+
 # ArticleHero
 
-Header editoriale con categoria, titolo, meta e immagine hero opzionale.
+Header editoriale articolo. CSS-only. La libreria possiede larghezza articolo, spacing, tipografia, media frame e responsive; il backend possiede categoria, titolo, meta, immagine e alt text.
 
 ## Markup contract
 
@@ -22,29 +30,11 @@ Header editoriale con categoria, titolo, meta e immagine hero opzionale.
 - `.article-hero`: root con larghezza articolo.
 - `.article-hero__header`: stack testuale.
 - `.article-hero__category`: categoria pill.
-- `.article-hero__title`: titolo articolo.
+- `.article-hero__title`: titolo.
 - `.article-hero__meta`: data, autore o tempo lettura.
-- `.article-hero__media`: slot figura hero.
+- `.article-hero__media`: slot figura hero (omissibile se l'articolo non ha immagine).
 
-## Data hooks
-
-Nessun hook JS. Il componente e CSS-only.
-
-## Modifier / stati
-
-Nessun modifier. Il media puo essere omesso se l'articolo non ha immagine.
-
-## Backend owns
-
-Categoria, titolo, meta, immagine, alt text e heading hierarchy.
-
-## Library owns
-
-Larghezza articolo, spacing, tipografia, media frame e responsive.
-
-## Demo-only
-
-Contenuto statico dell'articolo demo.
+Nessun hook JS, nessun modifier.
 
 ## Out of scope
 

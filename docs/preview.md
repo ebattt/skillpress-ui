@@ -5,21 +5,25 @@ layer: components
 strategy: css-js
 status: public-contract
 package_path: components/preview.css
+js_path: js/preview.js
 ---
 
 # Preview
 
-`Preview` copre il pattern generico del configuratore: una select o un gruppo di
-bottoni/card, bottone Anteprima e pannello inline con immagine e testo.
+Pattern generico del configuratore: una select o un gruppo di bottoni/card, un
+bottone Anteprima e un pannello inline con immagine e testo. La libreria gestisce
+layout, stati visuali, ARIA e sincronizzazione del pannello con la selezione
+corrente; opzioni, immagini e testi sono CMS/consumer.
 
-## Markup ufficiale
+## Markup contract
 
 ```html
 <div class="preview" data-preview>
     <div class="preview__row">
         <div class="preview__select">
             <select class="sp-form-select">
-                <option data-preview-title="Patinata Opaca"
+                <option data-preview-option
+                        data-preview-title="Patinata Opaca"
                         data-preview-description="Descrizione carta dal CMS."
                         data-preview-image="paper.jpg">
                     Patinata Opaca
@@ -75,39 +79,32 @@ bottoni/card, bottone Anteprima e pannello inline con immagine e testo.
 | `.preview__close` | chiusura |
 | `.preview__description` | descrizione |
 
-## Hook JS
+## Data hooks
 
 | Hook | Ruolo |
 |---|---|
-| `[data-preview]` | root init |
-| `[data-preview-trigger]` | toggle open/close |
-| `[data-preview-panel]` | pannello controllato |
-| `[data-preview-close]` | chiusura |
-| `data-preview-title` | titolo da sincronizzare da option/card |
-| `data-preview-description` | descrizione da sincronizzare da option/card |
-| `data-preview-image` | immagine da sincronizzare da option/card |
+| `data-preview` | root init |
+| `data-preview-trigger` | toggle open/close |
+| `data-preview-panel` | pannello controllato |
+| `data-preview-close` | chiusura |
+| `data-preview-option` | sorgente (option/card) da cui leggere i dati |
+| `data-preview-title` | titolo da sincronizzare |
+| `data-preview-description` | descrizione da sincronizzare |
+| `data-preview-image` | immagine da sincronizzare |
 | `data-preview-alt` | alt immagine opzionale |
 
-Eventi: `sp:preview:open`, `sp:preview:close`,
-`sp:preview:sync`.
+Eventi: `sp:preview:open`, `sp:preview:close`, `sp:preview:sync`.
 
-## Integrazione CMS
+La sorgente puo' essere una `<option>` della select o un bottone/card dentro la
+root (es. `.media-choice-card`). Espone i dati tramite `data-preview-*`.
 
-Il CMS decide label, opzioni, immagine, alt, descrizione e stato iniziale.
-Eventuali metadati come FSC o certificazioni vanno inseriti nel testo
-descrittivo.
-La libreria decide layout, stati visuali, ARIA base, comportamento open/close,
-sincronizzazione del pannello con la selezione corrente e icona chrome del
-bottone trigger/close. Il consumer non deve inserire SVG o immagini dentro
-`.preview__trigger` e `.preview__close`.
+## Ownership
 
-La sorgente puo' essere:
+- CMS/consumer: label, opzioni, immagine, alt, descrizione, stato iniziale.
+- Libreria: layout, stati visuali, ARIA base, open/close, sincronizzazione del
+  pannello, icona chrome di trigger/close (non inserire SVG/immagini in
+  `.preview__trigger` e `.preview__close`).
 
-- una `<option>` della select;
-- un bottone/card dentro la root, per esempio `.media-choice-card`.
+## Out of scope
 
-La sorgente espone i dati tramite `data-preview-*`. Se una `.media-choice-card`
-non espone `data-preview-image` ma contiene `.media-choice-card__preview`, la
-libreria genera un placeholder SVG coerente con il colore della preview.
-
-Fuori scope: cataloghi prodotto, calcolo prezzi/spessori, mapping variante/prezzo, API.
+Cataloghi prodotto, calcolo prezzi/spessori, mapping variante/prezzo, API.

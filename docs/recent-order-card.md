@@ -1,44 +1,34 @@
+---
+title: RecentOrderCard
+description: Card ordine della dashboard overview.
+layer: components
+strategy: css-only
+package_path: components/dashboard-order-card.css
+---
+
 # RecentOrderCard
 
-`RecentOrderCard` mostra una card ordine nella dashboard overview.
+Card ordine della dashboard overview. CSS-only: la libreria possiede griglia
+responsive, superficie card, spacing, tipografia, status dot, action alert e
+footer. Il backend decide i dati ordine e l'eventuale routing al dettaglio.
 
-## Fonte
-
-- Markup reale: `Skillpress-frontend/reference-pages/static/dashboard/index.html`
-- CSS reale: `Skillpress-frontend/reference-pages/static/dashboard/css/components/_cards.css`
-- Fonte catalogo storico: `Skillpress-frontend/elements-ui/js/dashboard/recent-order-card.js`
-- Pagina target: `dashboard`
+La classe card e' in `components/dashboard-order-card.css`; la griglia contenitore
+`.dashboard-recent-orders-grid` e' in `components/dashboard-recent-orders-grid.css`.
 
 ## Import
 
 ```html
-<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/recent-order-card.css">
+<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/dashboard-recent-orders-grid.css">
+<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/components/dashboard-order-card.css">
 ```
 
 Nessun JS richiesto.
 
-## Responsabilita
-
-La libreria decide griglia responsive, superficie card, spacing, tipografia,
-status dot interno, action alert interno, footer e hover. Il backend decide i
-dati ordine e l'eventuale routing al dettaglio.
-
-## Reuse Audit
-
-`Card` non viene usato perche' la card reale richiede header centrato, status
-inline, title clamp, action alert e footer totale con min-height specifici.
-
-`Badge` non viene usato come componente standalone: lo status e l'action alert
-sono elementi interni della card. Questa iterazione non introduce
-`DashboardStatusBadge` o `DashboardActionBadge`.
-
-`Button` non viene usato perche' la card non contiene CTA.
-
-## Markup Minimo
+## Markup minimo
 
 ```html
-<div class="dashboard-recent-orders-grid" data-recent-order-card-list>
-    <article class="dashboard-order-card" data-recent-order-card data-recent-order-card-order-id="ORD-001">
+<div class="dashboard-recent-orders-grid">
+    <article class="dashboard-order-card">
         <div class="dashboard-order-card__header-row">
             <span class="dashboard-order-card__number">#110456</span>
             <span class="dashboard-order-card__status dashboard-order-card__status--info">Aperto</span>
@@ -62,14 +52,8 @@ sono elementi interni della card. Questa iterazione non introduce
 - `.dashboard-order-card`
 - `.dashboard-order-card__header-row`
 - `.dashboard-order-card__number`
-- `.dashboard-order-card__status`
-- `.dashboard-order-card__status--success`
-- `.dashboard-order-card__status--warning`
-- `.dashboard-order-card__status--error`
-- `.dashboard-order-card__status--info`
-- `.dashboard-order-card__status--cancelled`
-- `.dashboard-order-card__title`
-- `.dashboard-order-card__title--clamp`
+- `.dashboard-order-card__status` + `--success|warning|error|info|cancelled`
+- `.dashboard-order-card__title` + `--clamp`
 - `.dashboard-order-card__info`
 - `.dashboard-order-card__actions-wrap`
 - `.dashboard-order-card__action-alert`
@@ -77,27 +61,9 @@ sono elementi interni della card. Questa iterazione non introduce
 - `.dashboard-order-card__date`
 - `.dashboard-order-card__total`
 
-## Attributi
+## Fuori scope
 
-- `[data-recent-order-card-list]`: hook semantico opzionale per il container.
-- `[data-recent-order-card]`: hook semantico opzionale per ogni card.
-- `data-recent-order-card-order-id`: dato applicativo opzionale.
-
-## Modifier
-
-- `.dashboard-order-card__status--success`
-- `.dashboard-order-card__status--warning`
-- `.dashboard-order-card__status--error`
-- `.dashboard-order-card__status--info`
-- `.dashboard-order-card__status--cancelled`
-- `.dashboard-order-card__title--clamp`
-
-## Fuori Scope
-
-- routing al dettaglio ordine;
-- click handler;
+- routing al dettaglio ordine e click handler;
 - tabelle ordini;
-- `DashboardStatusBadge` standalone;
-- `DashboardActionBadge` standalone;
 - upload o pagamenti;
 - fetch/API.
