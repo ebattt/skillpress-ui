@@ -31,8 +31,7 @@ const { execSync } = require('child_process');
 
 // Link stabile del CDN pubblico: un solo path SENZA versione. Il versionamento
 // vive SOLO nel campo `version` / CHANGELOG / nome cartella archivio, mai negli
-// URL. Il backend puo' usare questo path direttamente oppure sostituirlo con un
-// ASSET_BASE locale/proxy mantenendo invariati i path relativi.
+// URL. Il backend usa questo path direttamente dal CDN.
 const BASE_PATH = '/skillpress-ui';
 
 // hash sha384 per la VERIFICA INTERNA post-deploy (NON per SRI nei tag).

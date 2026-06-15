@@ -13,8 +13,7 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
 - Infra/CDN: artefatto pubblico allineato al link stabile
   `https://skillpress-ui.pages.dev/skillpress-ui`, superficie pubblica
   `css/*.css`, `js/*.js`, `fonts/**`, `manifest.json` e `public-api.json`.
-  Il backend puo' usare il CDN direttamente oppure sostituire il prefisso con
-  un `ASSET_BASE` locale/proxy.
+  Il backend carica gli asset direttamente dal CDN con il link stabile.
 - Infra/CDN: `dist/demo-minimal.css` viene generato e pubblicato come
   `css/demo-minimal.css` per le `demo-pages` e `lab`; non è un bundle backend
   production.
@@ -40,7 +39,7 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
 - Hardening: `ImageGallery` espone il modifier CSS `.image-gallery--single`
   per nascondere i controlli quando il CMS/consumer ha 0 o 1 immagine.
 - Contract change: `ImageGallery` usa `object-fit: contain` e supporta ratio
-  configurabile via `--image-gallery-aspect-ratio`; il consumer puo' passare
+  configurabile via `--image-gallery-aspect-ratio`; il consumer può passare
   `width`/`height` per slide mantenendo fallback 1:1.
 - Contract change: gli attributi immagine backend-owned includono
   `decoding` e `fetchpriority` accanto a `loading` nei componenti immagine.

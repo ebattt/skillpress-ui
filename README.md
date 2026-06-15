@@ -2,7 +2,7 @@
 
 Libreria UI Skillpress per pagine renderizzate dal backend/CMS. Il backend
 genera markup HTML con classi pubbliche e hook `data-*` documentati, poi carica
-CSS e JS dal CDN pubblico Skillpress o da un `ASSET_BASE` locale equivalente.
+CSS e JS dal CDN pubblico Skillpress.
 
 ## Cosa contiene
 
@@ -16,7 +16,7 @@ CSS e JS dal CDN pubblico Skillpress o da un `ASSET_BASE` locale equivalente.
 
 ## Superficie CDN
 
-Il comando canonico per generare l'artefatto CDN e':
+Il comando canonico per generare l'artefatto CDN è:
 
 ```bash
 npm run build:cdn
@@ -34,28 +34,21 @@ L'artefatto pubblicabile contiene solo:
 come campo interno, hash `sha384` per verifica operativa e policy
 `Cache-Control: no-cache`.
 
-Il backend non usa npm e non carica asset da `node_modules`. In produzione il
-browser puo' usare direttamente il CDN:
+Il CDN è la sorgente di distribuzione, non una dipendenza runtime del browser:
+il backend scarica gli asset dal CDN e li serve dal proprio path locale. Nelle
+pagine finali i tag puntano al path locale, non al CDN. Come servirli — copia
+locale in Tomcat o proxy/cache — lo decide il backend.
 
 ```html
-<link rel="stylesheet" href="https://skillpress-ui.pages.dev/skillpress-ui/css/dashboard.css">
-<script src="https://skillpress-ui.pages.dev/skillpress-ui/js/_helpers.js"></script>
-<script src="https://skillpress-ui.pages.dev/skillpress-ui/js/expandable-table.js"></script>
-<script src="https://skillpress-ui.pages.dev/skillpress-ui/js/index.js"></script>
+<link rel="stylesheet" href="/static/skillpress-ui/css/dashboard.css">
+<script src="/static/skillpress-ui/js/_helpers.js"></script>
+<script src="/static/skillpress-ui/js/expandable-table.js"></script>
+<script src="/static/skillpress-ui/js/index.js"></script>
 ```
 
-Oppure un `ASSET_BASE` locale/proxy equivalente:
-
-```html
-<link rel="stylesheet" href="${ASSET_BASE}/css/dashboard.css">
-<script src="${ASSET_BASE}/js/_helpers.js"></script>
-<script src="${ASSET_BASE}/js/expandable-table.js"></script>
-<script src="${ASSET_BASE}/js/index.js"></script>
-```
-
-Non aggiungere `integrity` nei template con link stabile mutabile. Il modello
-production completo, incluse alternative WAR/Tomcat e proxy/cache, e' documentato in
-`../Skillpress-frontend/consumer-libreria/CDN-HANDOFF.md`.
+`/static/skillpress-ui` è un esempio: il path locale lo sceglie il backend. SRI
+non è necessario nei tag se gli asset sono serviti localmente; gli hash in
+`manifest.json` possono servire a validare il pacchetto scaricato dal CDN.
 
 ## CSS da caricare
 
@@ -70,13 +63,13 @@ production backend. `css/demo-minimal.css` serve solo ai materiali di demo/lab.
 
 ## Shell del sito
 
-`shell.css` e' il telaio condiviso del sito: top-bar, main navbar, barra
+`shell.css` è il telaio condiviso del sito: top-bar, main navbar, barra
 categorie, mega/mobile menu, carrello, popup utente e footer. Sorgente in
-`shell/` e `footer.css`.
+`shell/` (incluso `shell/footer.css`).
 
 La libreria possiede il CSS della shell e i font self-hostati. Il backend/CMS
 possiede markup, dati e JavaScript applicativo della navbar/footer. Il markup di
-riferimento e' la contract page
+riferimento è la contract page
 `../Skillpress-frontend/consumer-libreria/static-pages/shell/index.html`.
 
 Font: self-hostati in `fonts/manrope/` e `fonts/material-symbols/`; nessuna
@@ -105,8 +98,8 @@ Gli `init()` sono idempotenti.
 `sp:{component}:{action}` e moduli `window.SkillpressUI`. Solo questi nomi sono
 API: classi interne e markup demo/lab non lo sono.
 
-Il mapping pagina -> CSS/JS/dati per il backend e' generato in
-`../Skillpress-frontend/consumer-libreria/BACKEND-CONTRACT-MATRIX.md`.
+Il mapping pagina -> CSS/JS/dati per il backend è generato dalle static page
+del consumer in `../Skillpress-frontend/consumer-libreria/`.
 
 ## Release
 
@@ -119,5 +112,5 @@ npm run verify:cdn
 ```
 
 Ogni release aggiorna `CHANGELOG.md` includendo il campo obbligatorio
-`Contract HTML cambiato: sì/no`. Se il campo e' `no`, il backend non deve
+`Contract HTML cambiato: sì/no`. Se il campo è `no`, il backend non deve
 modificare i template HTML.
