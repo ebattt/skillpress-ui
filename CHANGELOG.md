@@ -2,8 +2,24 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente
+## Corrente (0.5.0)
 
+- **Versione: 0.5.0**
+- **Contract HTML cambiato: sì** (la shell del sito — navbar + footer — è
+  diventata bundle di libreria con markup canonico, e sono stati aggiunti
+  componenti come `LandingInfoTabs` e `ConfirmDialog`; vedi i `Contract change`
+  qui sotto).
+
+- Infra/CDN: artefatto pubblico allineato al link stabile
+  `https://skillpress-ui.pages.dev/skillpress-ui`, superficie pubblica
+  `css/*.css`, `js/*.js`, `fonts/**`, `manifest.json` e `public-api.json`.
+  Il backend puo' usare il CDN direttamente oppure sostituire il prefisso con
+  un `ASSET_BASE` locale/proxy.
+- Infra/CDN: `dist/demo-minimal.css` viene generato e pubblicato come
+  `css/demo-minimal.css` per le `demo-pages` e `lab`; non è un bundle backend
+  production.
+- Hardening: aggiunto `npm run verify:cdn` per verificare manifest, asset
+  principali, header CDN e hash `sha384` dopo il deploy.
 - Contract change: la **shell del sito** (navbar + footer: top-bar, main navbar,
   categorie, mega/mobile menu, cart, footer) è ora un bundle di libreria
   (`bundles/shell.css` → `dist/shell.css`), **fonte canonica** del CSS del telaio:
@@ -47,7 +63,14 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
 
 ## Regola
 
-Usare:
+Ogni release DEVE aprire con due righe obbligatorie:
+
+- `**Versione: <x.y.z>**`
+- `**Contract HTML cambiato: sì/no**` — `sì` se cambia markup/classi/hook
+  `data-*`/eventi che il backend deve aggiornare; `no` se è solo
+  estetica/hardening/infra.
+
+Per i singoli punti usare:
 
 - `Contract change` per modifiche a classi, markup minimo, hook `data-*`,
   eventi o moduli JS pubblici.

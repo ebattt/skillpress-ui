@@ -25,7 +25,9 @@
     "check:shell-isolation": "node scripts/check-shell-isolation.cjs",
     "build:dist": "node scripts/build-dist-bundles.cjs",
     "build:public-api": "node scripts/build-public-api.cjs",
+    "build:cdn": "node scripts/build-public.cjs",
     "build:public": "node scripts/build-public.cjs",
+    "verify:cdn": "node scripts/verify-cdn.cjs",
     "check:contract": "node scripts/check-contract.cjs",
     "check": "npm run check:naming && npm run check:legacy && npm run check:data-attrs && npm run check:init-contract && npm run check:hardcoded-colors && npm run check:css-vars && npm run check:breakpoints && npm run check:shell-isolation && npm run build:dist && npm run build:public-api && npm run check:contract && npm run pack:check"
   },

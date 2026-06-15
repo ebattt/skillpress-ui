@@ -9,6 +9,7 @@
  *   bundles/dashboard.css      -> dist/dashboard.css
  *   bundles/landing.css        -> dist/landing.css
  *   bundles/product-page.css   -> dist/product-page.css
+ *   bundles/demo-minimal.css   -> dist/demo-minimal.css
  *
  * Strategia:
  *   - implementiamo un flattener `@import 'path.css';` ricorsivo, robusto
@@ -42,6 +43,7 @@ const BUNDLE_NAMES = [
     'product-page.css',
     'shell.css',
     'auth.css',
+    'demo-minimal.css',
 ];
 
 const VERBOSE = process.env.BUILD_DIST_VERBOSE === '1';

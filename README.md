@@ -1,106 +1,123 @@
 # @ebattt/skillpress-ui
 
 Libreria UI Skillpress per pagine renderizzate dal backend/CMS. Il backend
-genera markup HTML con classi pubbliche e hook `data-*` documentati, poi
-carica CSS e JS dal package.
+genera markup HTML con classi pubbliche e hook `data-*` documentati, poi carica
+CSS e JS dal CDN pubblico Skillpress o da un `ASSET_BASE` locale equivalente.
 
-## Cosa Contiene
+## Cosa contiene
 
 - `tokens/`, `base/`, `utilities/`: fondazioni CSS.
 - `primitives/`, `components/`: primitive `sp-*` e componenti di pagina.
+- `shell/`: CSS canonico di navbar/footer.
 - `js/`: behavior progressivo dei componenti interattivi.
-- `bundles/`: entrypoint CSS per area (`landing`, `checkout`, `dashboard`, ...).
-- `dist/`: CSS flatten + `public-api.json` (contract pubblico).
+- `bundles/`: entrypoint CSS sorgente per area.
+- `dist/`: CSS flatten e `public-api.json`.
+- `public/`: artefatto CDN generato da `npm run build:cdn`.
 
-## Install
+## Superficie CDN
+
+Il comando canonico per generare l'artefatto CDN e':
 
 ```bash
-npm install --save-exact @ebattt/skillpress-ui@0.5.0
+npm run build:cdn
 ```
 
-Il package è pubblico sul registry npm e non richiede credenziali per
-l'installazione.
+L'artefatto pubblicabile contiene solo:
 
-## CSS Da Caricare
+- `css/*.css`;
+- `js/*.js`;
+- `fonts/**`;
+- `manifest.json`;
+- `public-api.json`.
 
-Un bundle per area di pagina:
+`manifest.json` espone `basePath: /skillpress-ui`, URL senza versione, versione
+come campo interno, hash `sha384` per verifica operativa e policy
+`Cache-Control: no-cache`.
+
+Il backend non usa npm e non carica asset da `node_modules`. In produzione il
+browser puo' usare direttamente il CDN:
 
 ```html
-<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/bundles/landing.css">
-<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/bundles/checkout.css">
-<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/bundles/dashboard.css">
-<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/bundles/product-page.css">
-<link rel="stylesheet" href="/node_modules/@ebattt/skillpress-ui/bundles/blog.css">
+<link rel="stylesheet" href="https://skillpress-ui.pages.dev/skillpress-ui/css/dashboard.css">
+<script src="https://skillpress-ui.pages.dev/skillpress-ui/js/_helpers.js"></script>
+<script src="https://skillpress-ui.pages.dev/skillpress-ui/js/expandable-table.js"></script>
+<script src="https://skillpress-ui.pages.dev/skillpress-ui/js/index.js"></script>
 ```
 
-In alternativa `dist/<area>.css` (flatten senza `@import`). Non mischiare le
-due varianti nella stessa pagina.
-
-## Shell Del Sito (navbar + footer)
-
-`bundles/shell.css` (flatten: `dist/shell.css`) è il **telaio condiviso del
-sito**: top-bar, main navbar, barra categorie, mega/mobile menu, carrello,
-popup utente e footer. Sorgente in `shell/` + `footer.css`.
-
-**Fonte canonica.** Il CSS della shell è stato importato in origine *verbatim*
-dal componente navbar/footer del CMS; **da `0.5` la sola sorgente di verità è
-questa libreria**. Il backend **consuma `shell.css` dal package** e **non
-mantiene più una copia locale** (`navbar/css`): ogni modifica al look di
-navbar/footer si fa in `shell/`, non nel backend.
-
-**Confine di ownership:**
-
-| | Possiede | Cosa |
-|---|---|---|
-| **Libreria** | il **CSS** | `shell.css` + font self-hostati |
-| **Backend/CMS** | **markup + JS** | template HTML + `navbar.js` / `cart.js` (comportamento app-owned, NON in libreria) |
-
-Il markup di riferimento della shell (slot `nav.*`/`footer.*` + ITEM ripetibili)
-è la contract page `static-pages/shell/index.html` del consumer.
-
-**Caricamento:** un `<link>` a `shell.css`, in aggiunta (al massimo) al bundle
-d'area della pagina. Nella dashboard la navbar sta SOPRA la sidebar.
-
-**Font:** self-hostati nel package (`fonts/manrope/`, `fonts/material-symbols/`
-= subset delle icone usate dalla shell) — **nessun Google Fonts, nessuna
-richiesta esterna**.
-
-**De-conflitto:** `shell.css` è isolato (token condivisi da `tokens/`, reset
-unico da `base/`, namespace `--shell-*`); caricato insieme a un bundle d'area
-le duplicazioni sono byte-identiche → sovrascritture innocue. Verifica lato
-consumer: `check-shell-leakage` + test di coesistenza.
-
-## JS Da Caricare
+Oppure un `ASSET_BASE` locale/proxy equivalente:
 
 ```html
-<script src="/node_modules/@ebattt/skillpress-ui/js/_helpers.js"></script>
-<script src="/node_modules/@ebattt/skillpress-ui/js/accordion.js"></script>
-<script src="/node_modules/@ebattt/skillpress-ui/js/index.js"></script>
-<script>window.SkillpressUI?.init(document);</script>
+<link rel="stylesheet" href="${ASSET_BASE}/css/dashboard.css">
+<script src="${ASSET_BASE}/js/_helpers.js"></script>
+<script src="${ASSET_BASE}/js/expandable-table.js"></script>
+<script src="${ASSET_BASE}/js/index.js"></script>
 ```
 
-Caricare solo i moduli usati. Re-init dopo render parziali / Ajax:
+Non aggiungere `integrity` nei template con link stabile mutabile. Il modello
+production completo, incluse alternative WAR/Tomcat e proxy/cache, e' documentato in
+`../Skillpress-frontend/consumer-libreria/CDN-HANDOFF.md`.
+
+## CSS da caricare
+
+Una pagina backend carica al massimo:
+
+- `css/shell.css` se include navbar/footer Skillpress;
+- un solo CSS d'area (`css/landing.css`, `css/checkout.css`,
+  `css/dashboard.css`, `css/product-page.css`, `css/blog.css`, ...).
+
+`bundles/*.css` e `dist/*.css` sono output/sorgenti di libreria, non URL
+production backend. `css/demo-minimal.css` serve solo ai materiali di demo/lab.
+
+## Shell del sito
+
+`shell.css` e' il telaio condiviso del sito: top-bar, main navbar, barra
+categorie, mega/mobile menu, carrello, popup utente e footer. Sorgente in
+`shell/` e `footer.css`.
+
+La libreria possiede il CSS della shell e i font self-hostati. Il backend/CMS
+possiede markup, dati e JavaScript applicativo della navbar/footer. Il markup di
+riferimento e' la contract page
+`../Skillpress-frontend/consumer-libreria/static-pages/shell/index.html`.
+
+Font: self-hostati in `fonts/manrope/` e `fonts/material-symbols/`; nessuna
+richiesta a Google Fonts nel runtime production.
+
+## JS da caricare
+
+Ordine runtime:
+
+1. `js/_helpers.js`;
+2. moduli pagina richiesti dal contract;
+3. `js/index.js`;
+4. `window.SkillpressUI.init(document);`.
+
+Caricare solo i moduli usati. Re-init dopo render parziali o Ajax:
 
 ```js
-window.SkillpressUI?.init(container);
+window.SkillpressUI.init(container);
 ```
 
 Gli `init()` sono idempotenti.
 
-## Contract Pubblico
+## Contract pubblico
 
-`dist/public-api.json` elenca classi CSS pubbliche, attributi `data-*`,
-eventi `sp:{component}:{action}` e moduli `window.SkillpressUI`. Solo questi
-nomi sono API: classi interne, Storybook e markup demo non lo sono.
+`public-api.json` elenca classi CSS pubbliche, attributi `data-*`, eventi
+`sp:{component}:{action}` e moduli `window.SkillpressUI`. Solo questi nomi sono
+API: classi interne, Storybook e markup demo non lo sono.
+
+Il mapping pagina -> CSS/JS/dati per il backend e' generato in
+`../Skillpress-frontend/consumer-libreria/BACKEND-CONTRACT-MATRIX.md`.
 
 ## Release
 
-La versione in `package.json` deve essere nuova e seguire semantic versioning.
+Prima della pubblicazione:
 
 ```bash
 npm run check
-npm publish
+npm run build:cdn
+npm run verify:cdn
 ```
 
-`prepublishOnly` ripete i controlli prima della pubblicazione. `publishConfig`
-forza registry npm pubblico e accesso pubblico.
+Ogni release aggiorna `CHANGELOG.md` includendo il campo obbligatorio
+`Contract HTML cambiato: sì/no`. Se il campo e' `no`, il backend non deve
+modificare i template HTML.
