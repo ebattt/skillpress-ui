@@ -1,15 +1,12 @@
 # .npmignore -- difesa-in-profondita complementare al field `files` in package.json.
 # Anche se `files` whitelista esplicitamente cosa pubblicare, .npmignore evita
-# che artefatti dev (storybook, demo, tooling) finiscano in tarball futuri se
+# che artefatti dev (demo, tooling) finiscano in tarball futuri se
 # qualcuno modifica `files`.
 .DS_Store
 *.log
 
 # Dev tooling
-storybook-static/
-stories/
 demo-pages/
-docs/
 scripts/
 .github/
 .claude/

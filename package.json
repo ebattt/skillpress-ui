@@ -11,8 +11,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "storybook": "STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006",
-    "build-storybook": "STORYBOOK_DISABLE_TELEMETRY=1 storybook build",
     "pack:check": "npm pack --dry-run --cache /tmp/skillpress-npm-cache",
     "prepublishOnly": "npm run check",
     "check:naming": "node scripts/check-naming.cjs",
@@ -39,7 +37,6 @@
     "primitives/",
     "page/",
     "components/",
-
     "shell/",
     "js/",
     "bundles/",
@@ -49,10 +46,5 @@
   "engines": {
     "node": ">=18"
   },
-  "sideEffects": true,
-  "devDependencies": {
-    "@storybook/html-vite": "^10.3.5",
-    "storybook": "^10.3.5",
-    "vite": "^8.0.10"
-  }
+  "sideEffects": true
 }

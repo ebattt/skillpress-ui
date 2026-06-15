@@ -103,7 +103,7 @@ Gli `init()` sono idempotenti.
 
 `public-api.json` elenca classi CSS pubbliche, attributi `data-*`, eventi
 `sp:{component}:{action}` e moduli `window.SkillpressUI`. Solo questi nomi sono
-API: classi interne, Storybook e markup demo non lo sono.
+API: classi interne e markup demo/lab non lo sono.
 
 Il mapping pagina -> CSS/JS/dati per il backend e' generato in
 `../Skillpress-frontend/consumer-libreria/BACKEND-CONTRACT-MATRIX.md`.
