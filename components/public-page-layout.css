@@ -30,6 +30,64 @@
     line-height: 1.15;
 }
 
+.public-page-editorial {
+    box-sizing: border-box;
+    max-width: var(--public-page-content-max-width);
+    margin: 0 auto var(--spacing-xl, 2rem);
+    padding-inline: var(--public-page-section-padding-x);
+}
+
+.public-page-editorial__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 30rem);
+    gap: var(--spacing-lg, 1.5rem);
+    align-items: center;
+    min-height: 11.5rem;
+    padding: var(--spacing-md, 1rem) var(--spacing-xl, 2rem) var(--spacing-md, 1rem) var(--spacing-2xl, 2.5rem);
+    overflow: hidden;
+    background: var(--color-bg-gray-75);
+    border-radius: 1rem;
+}
+
+.public-page-editorial__body {
+    min-width: 0;
+}
+
+.public-page-editorial__title {
+    margin: 0;
+    color: var(--color-text);
+    font-size: var(--font-size-3xl, 2rem);
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.public-page-editorial__text {
+    max-width: 42rem;
+    margin: var(--spacing-sm, 0.75rem) 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base, 1rem);
+    line-height: 1.6;
+}
+
+.public-page-editorial__media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    min-width: 0;
+}
+
+.public-page-editorial__image {
+    display: block;
+    width: min(118%, 28rem);
+    max-width: none;
+    max-height: 15.5rem;
+    margin-left: auto;
+    object-fit: contain;
+    object-position: center;
+    transform: translateX(0.35rem);
+}
+
 .public-page-layout .text-block,
 .public-page-layout .catalog-product-grid {
     padding-inline: var(--public-page-section-padding-x);
@@ -54,5 +112,30 @@
 
     .public-page-layout__title {
         font-size: var(--font-size-2xl, 1.5rem);
+    }
+
+    .public-page-editorial {
+        margin-bottom: var(--spacing-lg, 1.5rem);
+    }
+
+    .public-page-editorial__inner {
+        grid-template-columns: minmax(0, 1fr) minmax(5.5rem, 7.5rem);
+        gap: var(--spacing-md, 1rem);
+        padding: var(--spacing-lg, 1.5rem);
+        min-height: 0;
+    }
+
+    .public-page-editorial__media {
+        justify-content: flex-end;
+    }
+
+    .public-page-editorial__title {
+        font-size: var(--font-size-2xl, 1.5rem);
+    }
+
+    .public-page-editorial__image {
+        width: min(118%, 8.5rem);
+        max-height: 9rem;
+        transform: none;
     }
 }

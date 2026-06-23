@@ -17,11 +17,11 @@
 
     /* === COLORI TESTO === */
     /* Scala di grigi per gerarchia testuale */
-    --color-text: #111418;                  /* Testo principale (quasi nero) */
-    --color-text-strong: #374151;           /* gray-700 -- testo forte/enfatizzato */
-    --color-text-secondary: #4B5563;        /* gray-600 -- testo secondario */
-    --color-text-light: #6B7280;            /* gray-500 -- testo terziario */
-    --color-text-muted: #9CA3AF;            /* gray-400 -- placeholder, disabilitato */
+    --color-text: #111418;                  /* Testo principale, allineato al blog live */
+    --color-text-strong: #111418;           /* Titoli e testi enfatizzati */
+    --color-text-secondary: #111418;        /* Testi descrittivi principali */
+    --color-text-light: #374151;            /* Testo lungo/terziario, come corpo articolo live */
+    --color-text-muted: #6B7280;            /* Placeholder, metadati e stati disabilitati */
 
     /* === COLORI SFONDO === */
     /* Grigi neutri per sfondi, bordi e separatori */

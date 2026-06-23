@@ -133,7 +133,7 @@
 
 .cart-dropdown__total-label {
     font-size: 0.95rem;
-    color: #4b5563;
+    color: var(--color-text-light);
 }
 
 .cart-dropdown__total-value {

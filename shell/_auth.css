@@ -99,7 +99,7 @@
 .auth-page__footer-text {
     font-size: var(--font-size-sm);
     line-height: 1.25rem;
-    color: #4b5563;
+    color: var(--color-text-light);
     margin: 0;
 }
 .auth-page__footer-link {
@@ -285,7 +285,7 @@
     align-items: center;
     transition: color var(--transition-slow);
 }
-.auth-form__toggle-btn:hover { color: #4b5563; }
+.auth-form__toggle-btn:hover { color: var(--color-text-light); }
 .auth-form__toggle-btn .material-symbols-outlined { font-size: var(--font-size-base); }
 
 /* Select (registrati.html) */
@@ -362,7 +362,7 @@
 .auth-form__checkbox-text {
     font-size: var(--font-size-xs);
     line-height: 1rem;
-    color: #4b5563;
+    color: var(--color-text-light);
 }
 .auth-form__checkbox-text--relaxed { line-height: 1.625; }
 

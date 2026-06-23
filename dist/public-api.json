@@ -1,5 +1,5 @@
 {
-  "version": "0.5.1",
+  "version": "0.5.2",
   "css": {
     "primitives": [
       ".sp-accordion",
@@ -1148,6 +1148,13 @@
       "public-page-layout": [
         "catalog-product-grid",
         "css",
+        "public-page-editorial",
+        "public-page-editorial__body",
+        "public-page-editorial__image",
+        "public-page-editorial__inner",
+        "public-page-editorial__media",
+        "public-page-editorial__text",
+        "public-page-editorial__title",
         "public-page-layout",
         "public-page-layout__header",
         "public-page-layout__title",

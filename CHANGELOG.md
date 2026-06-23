@@ -2,7 +2,25 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.5.1)
+## Corrente (0.5.2)
+
+- **Versione: 0.5.2**
+- **Contract HTML cambiato: sì** (categoria prodotti e pagina tema usano il
+  blocco editoriale opzionale `public-page-editorial`, che contiene l'unico
+  `<h1>` della pagina quando renderizzato).
+
+- Contract change: aggiunto il componente `public-page-editorial` al
+  `public-page-layout` per gestire un box CMS grigio opzionale con titolo,
+  testo e immagine nelle pagine categoria prodotti e pagina tema.
+- Visual change: la scala dei token testo e il testo shell sono allineati al
+  nero editoriale del blog live (`#111418`) mantenendo `#374151` per corpo
+  lungo e testo terziario.
+- Visual change: il box editoriale pubblico e' piu' compatto, senza bordo, con
+  immagine a destra piu' ampia e contenuto responsivo.
+- Hardening: `public-api.json` espone le nuove classi
+  `public-page-editorial*` per il contract backend.
+
+## 0.5.1
 
 - **Versione: 0.5.1**
 - **Contract HTML cambiato: sì** (categoria prodotti e pagina tema espongono

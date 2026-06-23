@@ -12,8 +12,8 @@
 :root {
     /* Token shell con valore proprio (omonimo a un token di libreria ma diverso). */
 
-    /* Testo principale shell: gray-700. (token di libreria: #111418) */
-    --shell-color-text: #374151;
+    /* Testo principale shell, allineato al nero editoriale della libreria. */
+    --shell-color-text: #111418;
 
     /* Scala raggi shell: piu' generosa del token di libreria. */
     --shell-radius-sm: 0.375rem;       /* 6px  (token: 0.25rem) */

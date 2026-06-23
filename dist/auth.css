@@ -50,10 +50,10 @@
     --color-dark: #003E51;
 
     --color-text: #111418;
-    --color-text-strong: #374151;
-    --color-text-secondary: #4B5563;
-    --color-text-light: #6B7280;
-    --color-text-muted: #9CA3AF;
+    --color-text-strong: #111418;
+    --color-text-secondary: #111418;
+    --color-text-light: #374151;
+    --color-text-muted: #6B7280;
 
     --color-bg-white: #FFFFFF;
     --color-bg-gray-50: #F9FAFB;
@@ -508,7 +508,7 @@ body {
 
 :root {
 
-    --shell-color-text: #374151;
+    --shell-color-text: #111418;
 
     --shell-radius-sm: 0.375rem;
     --shell-radius-md: 0.5rem;
@@ -626,7 +626,7 @@ body {
 .auth-page__footer-text {
     font-size: var(--font-size-sm);
     line-height: 1.25rem;
-    color: #4b5563;
+    color: var(--color-text-light);
     margin: 0;
 }
 .auth-page__footer-link {
@@ -793,7 +793,7 @@ body {
     align-items: center;
     transition: color var(--transition-slow);
 }
-.auth-form__toggle-btn:hover { color: #4b5563; }
+.auth-form__toggle-btn:hover { color: var(--color-text-light); }
 .auth-form__toggle-btn .material-symbols-outlined { font-size: var(--font-size-base); }
 
 .auth-form__select,
@@ -865,7 +865,7 @@ body {
 .auth-form__checkbox-text {
     font-size: var(--font-size-xs);
     line-height: 1rem;
-    color: #4b5563;
+    color: var(--color-text-light);
 }
 .auth-form__checkbox-text--relaxed { line-height: 1.625; }
 

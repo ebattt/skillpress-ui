@@ -50,10 +50,10 @@
     --color-dark: #003E51;
 
     --color-text: #111418;
-    --color-text-strong: #374151;
-    --color-text-secondary: #4B5563;
-    --color-text-light: #6B7280;
-    --color-text-muted: #9CA3AF;
+    --color-text-strong: #111418;
+    --color-text-secondary: #111418;
+    --color-text-light: #374151;
+    --color-text-muted: #6B7280;
 
     --color-bg-white: #FFFFFF;
     --color-bg-gray-50: #F9FAFB;
@@ -508,7 +508,7 @@ body {
 
 :root {
 
-    --shell-color-text: #374151;
+    --shell-color-text: #111418;
 
     --shell-radius-sm: 0.375rem;
     --shell-radius-md: 0.5rem;
@@ -1939,7 +1939,7 @@ body {
 
 .cart-dropdown__total-label {
     font-size: 0.95rem;
-    color: #4b5563;
+    color: var(--color-text-light);
 }
 
 .cart-dropdown__total-value {
