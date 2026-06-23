@@ -23,9 +23,9 @@
  *     Logo e menu ai lati con flex.
  *
  * STICKY BEHAVIOR:
- *   Il .navbar-container e' sticky (top:0, z-index:60). Su desktop ha
- *   margin-top:26px per compensare la top bar fixed. Su mobile il
- *   margin-top e' 0 perche' la top bar e' nascosta.
+ *   Nel contract completo lo sticky e' gestito da .sp-page__header, con top
+ *   negativo pari alla top bar desktop: la top bar scorre via e questo wrapper
+ *   resta visibile con barra arancione + barra grigia a top:0.
  *
  * Elementi HTML: .navbar-container, .main-navbar, .desktop-logo,
  *   .search-desktop, .search-mobile, .desktop-menu, .mobile-navbar-*,
@@ -33,27 +33,22 @@
  * ==========================================================================
  */
 
-/* === NAVBAR CONTAINER (sticky wrapper) === */
-/* Sticky top:0 fa si' che la navbar resti in cima allo scroll.
-   margin-top:26px compensa l'altezza della top bar fixed, cosi'
-   al caricamento la navbar parte subito sotto la barra verde.
-   z-index:sticky (60) > z-index:dropdown (50) della top bar,
-   quindi la navbar copre la top bar durante lo scroll. */
+/* === NAVBAR CONTAINER === */
+/* Fallback sticky se la navbar viene usata senza wrapper sp-page__header.
+   Nel contract ufficiale il wrapper header gestisce lo sticky. */
 .navbar-container {
     position: sticky;
     top: 0;
     z-index: var(--shell-z-sticky);
     background-color: var(--color-primary);
-    margin-top: 26px;
+    margin-top: 0;
     border-bottom: 1px solid var(--shell-color-bg-gray-dark);
     box-shadow: var(--shadow-sm);
 }
 
-/* Su mobile la top bar e' nascosta, quindi margin-top:0 */
-@media (max-width: 767px) {
-    .navbar-container {
-        margin-top: 0;
-    }
+.sp-page__header .navbar-container {
+    position: relative;
+    top: auto;
 }
 
 /* === BARRA ARANCIONE === */

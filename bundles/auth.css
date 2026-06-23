@@ -1,7 +1,11 @@
 /* Bundle pagine auth (login, registrazione, password dimenticata).
  *
- * Shell globale + stili form di autenticazione. Il markup di riferimento e'
- * nelle pagine accedi/registrati del materiale navbar. */
-@import '../page/page-shell.css';
-@import './shell.css';
+ * Bundle autonomo: include solo font, icone, token/reset e variabili minime
+ * richieste dagli stili auth. Non importa shell.css per evitare di portare
+ * navbar/footer sulle pagine di autenticazione. */
+@import '../base/fonts.css';
+@import '../shell/_material-symbols.css';
+@import '../tokens/tokens.css';
+@import '../base/reset.css';
+@import '../shell/_variables.css';
 @import '../shell/_auth.css';

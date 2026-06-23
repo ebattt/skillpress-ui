@@ -48,7 +48,7 @@
     padding: 6px 8px;
     border-radius: var(--shell-radius-md);
     font-size: var(--font-size-sm);
-    font-weight: 500;
+    font-weight: 600;
     color: var(--shell-color-text);
     white-space: nowrap;
     transition: color var(--transition-fast),

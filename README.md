@@ -16,13 +16,37 @@ CSS e JS dal CDN pubblico Skillpress.
 
 ## Superficie CDN
 
-Il comando canonico per generare l'artefatto CDN è:
+Il CDN espone sempre un path stabile senza versione:
+
+```text
+https://skillpress-ui.pages.dev/skillpress-ui/...
+```
+
+Non esiste una cartella `/latest` e non si pubblicano URL come
+`/skillpress-ui-0.5.1/...`. La "latest" è semplicemente il contenuto corrente
+di `/skillpress-ui`. Il versionamento resta interno a `package.json`,
+`CHANGELOG.md`, `manifest.json` e agli artefatti generati.
+
+Il comando canonico è:
 
 ```bash
 npm run build:cdn
 ```
 
-L'artefatto pubblicabile contiene solo:
+Produce tre output:
+
+- `public/skillpress-ui-<version>/`: artefatto versionato interno;
+- `public/skillpress-ui-<version>.zip`: archivio della stessa release;
+- `public/cdn-deploy/skillpress-ui/`: copia stabile da pubblicare su
+  Cloudflare Pages.
+
+La directory da deployare è quindi:
+
+```text
+public/cdn-deploy
+```
+
+Il contenuto pubblico contiene solo:
 
 - `css/*.css`;
 - `js/*.js`;
@@ -34,21 +58,21 @@ L'artefatto pubblicabile contiene solo:
 come campo interno, hash `sha384` per verifica operativa e policy
 `Cache-Control: no-cache`.
 
-Il CDN è la sorgente di distribuzione, non una dipendenza runtime del browser:
-il backend scarica gli asset dal CDN e li serve dal proprio path locale. Nelle
-pagine finali i tag puntano al path locale, non al CDN. Come servirli — copia
-locale in Tomcat o proxy/cache — lo decide il backend.
+Il backend può consumare gli asset direttamente dal CDN stabile o mirrorarli su
+un proprio path locale. La cosa importante è che la struttura interna resti la
+stessa: `css/`, `js/`, `fonts/`, `manifest.json`, `public-api.json`.
 
 ```html
-<link rel="stylesheet" href="/static/skillpress-ui/css/dashboard.css">
-<script src="/static/skillpress-ui/js/_helpers.js"></script>
-<script src="/static/skillpress-ui/js/expandable-table.js"></script>
-<script src="/static/skillpress-ui/js/index.js"></script>
+<link rel="stylesheet" href="https://skillpress-ui.pages.dev/skillpress-ui/css/shell.css">
+<link rel="stylesheet" href="https://skillpress-ui.pages.dev/skillpress-ui/css/public.css">
 ```
 
-`/static/skillpress-ui` è un esempio: il path locale lo sceglie il backend. SRI
-non è necessario nei tag se gli asset sono serviti localmente; gli hash in
-`manifest.json` possono servire a validare il pacchetto scaricato dal CDN.
+Se il backend decide di servire una copia locale, il path può diventare ad
+esempio `/static/skillpress-ui/css/public.css`; gli hash in `manifest.json`
+servono a validare che la copia locale corrisponda alla release pubblicata.
+
+Per il flusso completo di release e rollback vedi
+[`docs/cdn-release.md`](docs/cdn-release.md).
 
 ## CSS da caricare
 
@@ -57,6 +81,10 @@ Una pagina backend carica al massimo:
 - `css/shell.css` se include navbar/footer Skillpress;
 - un solo CSS d'area (`css/landing.css`, `css/checkout.css`,
   `css/dashboard.css`, `css/product-page.css`, `css/blog.css`, ...).
+
+Eccezione: le pagine auth (`login`, `registrazione`, `password dimenticata`)
+caricano solo `css/auth.css`. Il bundle auth e' autonomo e non importa
+navbar/footer.
 
 `bundles/*.css` e `dist/*.css` sono output/sorgenti di libreria, non URL
 production backend. `css/demo-minimal.css` serve solo ai materiali di demo/lab.
@@ -108,9 +136,14 @@ Prima della pubblicazione:
 ```bash
 npm run check
 npm run build:cdn
+deploy public/cdn-deploy su Cloudflare Pages
 npm run verify:cdn
 ```
 
-Ogni release aggiorna `CHANGELOG.md` includendo il campo obbligatorio
-`Contract HTML cambiato: sì/no`. Se il campo è `no`, il backend non deve
-modificare i template HTML.
+`npm run build:cdn` aggiorna sia l'artefatto versionato interno sia
+`public/cdn-deploy/skillpress-ui`, quindi non serve una copia manuale prima del
+deploy.
+
+Ogni release aggiorna `package.json` e `CHANGELOG.md` includendo il campo
+obbligatorio `Contract HTML cambiato: sì/no`. Se il campo è `no`, il backend
+non deve modificare i template HTML.

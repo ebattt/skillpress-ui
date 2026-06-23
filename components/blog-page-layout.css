@@ -1,0 +1,11 @@
+.blog-page-layout {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+@media (max-width: 639px) {
+    .blog-page-layout {
+        padding-top: 0.75rem;
+        padding-bottom: 2rem;
+    }
+}

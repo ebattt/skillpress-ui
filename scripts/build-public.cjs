@@ -11,15 +11,17 @@
  *       manifest.json   <- generato qui (inventario file + hash sha384 per
  *                          verifica interna; url SENZA versione, no SRI)
  *   - public/skillpress-ui-<version>.zip      (zip della cartella sopra)
+ *   - public/cdn-deploy/skillpress-ui/        (latest pubblica da deployare)
  *
  * La versione e' letta da package.json.
  *
- * Prerequisito: dist/*.css + dist/public-api.json devono esistere e essere
- * aggiornati (rigenerati dall'Agent Layout via build:dist + build:public-api).
- * Se mancano, lo script li rigenera eseguendo i build relativi.
+ * Prima di creare l'artefatto rigenera sempre dist/*.css + dist/public-api.json,
+ * cosi' anche un deploy lanciato con il solo `npm run build:cdn` non puo'
+ * pubblicare asset vecchi.
  *
- * Idempotente: pulisce e ricrea solo PKG_DIR + PKG_ZIP della versione corrente
- * a ogni esecuzione. Non cancella versioni precedenti sotto public/.
+ * Idempotente: pulisce e ricrea PKG_DIR, PKG_ZIP e la cartella CDN stabile
+ * della versione corrente a ogni esecuzione. Non cancella versioni precedenti
+ * sotto public/.
  * Nessuna dipendenza runtime/dev nuova: solo Node core + `zip` di sistema.
  */
 'use strict';
@@ -65,6 +67,8 @@ const PUBLIC_DIR = path.join(ROOT, 'public');
 const PKG_NAME = `skillpress-ui-${VERSION}`;
 const PKG_DIR = path.join(PUBLIC_DIR, PKG_NAME);
 const PKG_ZIP = path.join(PUBLIC_DIR, `${PKG_NAME}.zip`);
+const CDN_DEPLOY_ROOT = path.join(PUBLIC_DIR, 'cdn-deploy');
+const CDN_DEPLOY_DIR = path.join(CDN_DEPLOY_ROOT, 'skillpress-ui');
 
 function log(msg) {
   process.stdout.write(`[build:public] ${msg}\n`);
@@ -87,18 +91,11 @@ function copyDir(src, dest) {
   }
 }
 
-// 1. Assicura che dist/*.css + dist/public-api.json siano aggiornati.
-const distCss = fs.existsSync(DIST_DIR)
-  ? fs.readdirSync(DIST_DIR).filter((f) => f.endsWith('.css'))
-  : [];
-if (distCss.length === 0) {
-  log('dist/*.css mancante -> eseguo build:dist');
-  execSync('npm run build:dist', { cwd: ROOT, stdio: 'inherit' });
-}
-if (!fs.existsSync(path.join(DIST_DIR, 'public-api.json'))) {
-  log('dist/public-api.json mancante -> eseguo build:public-api');
-  execSync('npm run build:public-api', { cwd: ROOT, stdio: 'inherit' });
-}
+// 1. Rigenera sempre dist/*.css + dist/public-api.json.
+log('rigenero dist/*.css');
+execSync('npm run build:dist', { cwd: ROOT, stdio: 'inherit' });
+log('rigenero dist/public-api.json');
+execSync('npm run build:public-api', { cwd: ROOT, stdio: 'inherit' });
 
 // 2. Pulisci e ricrea PKG_DIR + PKG_ZIP (idempotente).
 log(`versione: ${VERSION}`);
@@ -183,3 +180,10 @@ execSync(`zip -r -q "${PKG_NAME}.zip" "${PKG_NAME}"`, {
 const zipSize = fs.statSync(PKG_ZIP).size;
 log(`fatto. PKG_DIR=${PKG_DIR}`);
 log(`fatto. PKG_ZIP=${PKG_ZIP} (${(zipSize / 1024).toFixed(1)} KiB)`);
+
+// 8. Deploy root stabile: stessa superficie degli URL pubblici.
+//    Cloudflare Pages deve pubblicare public/cdn-deploy; il backend continua a
+//    usare /skillpress-ui/... senza conoscere la versione interna.
+rmrf(CDN_DEPLOY_DIR);
+copyDir(PKG_DIR, CDN_DEPLOY_DIR);
+log(`cdn-deploy: aggiornato ${CDN_DEPLOY_DIR}`);

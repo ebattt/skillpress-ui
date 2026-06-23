@@ -50,6 +50,13 @@
     box-sizing: border-box;
 }
 
+/* Limita il rubber-band/scroll chaining del viewport: su Chrome/Firefox evita
+   il bianco oltre inizio/fine pagina quando si trascina con trackpad o touch.
+   Safari mobile puo' comunque mantenere parte del comportamento nativo. */
+html {
+    overscroll-behavior-y: none;
+}
+
 /* Body shell: reset + colonna sticky-footer. Selettore body.sp-page per non
    collidere con `.sp-page` (contenitore <main> a larghezza massima). */
 body.sp-page {
@@ -63,6 +70,7 @@ body.sp-page {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overscroll-behavior-y: none;
     color: var(--color-text, #111418);
     background: var(--color-bg-white, #ffffff);
 }
@@ -78,9 +86,21 @@ body.sp-page--checkout .sp-page__main {
     }
 }
 
-/* Header dello shell (navbar): a tutta larghezza, non scrollabile via. */
+/* Header dello shell: sticky a tutta larghezza.
+   Desktop: top negativo pari alla top bar, cosi' la barra verde/blu scorre
+   fuori dal viewport e la navbar arancione + categorie grigie restano a top:0.
+   Mobile: la top bar e' nascosta, quindi top:0. */
 .sp-page__header {
     flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: var(--shell-z-sticky, 60);
+}
+
+@media (min-width: 768px) {
+    .sp-page__header {
+        top: calc(-1 * var(--shell-topbar-flow-height, 26px));
+    }
 }
 
 /* Main: occupa lo spazio residuo (sticky-footer). */

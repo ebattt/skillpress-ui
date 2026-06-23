@@ -1,13 +1,12 @@
-
-
-.article-nav {
+.blog-linear-nav {
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 clamp(1rem, 3vw, 1.5rem) 0.5rem;
+    margin: 2rem auto 0;
+    padding: 0 clamp(1rem, 3vw, 1.5rem);
+    font-family: var(--font-family, 'Manrope', sans-serif);
 }
 
-.article-nav__list {
+.blog-linear-nav__list {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -17,7 +16,7 @@
     list-style: none;
 }
 
-.article-nav__link {
+.blog-linear-nav__link {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
@@ -33,38 +32,38 @@
     transition: background var(--transition-normal, 200ms ease);
 }
 
-.article-nav__link:hover,
-.article-nav__link:focus-visible {
+.blog-linear-nav__link:hover,
+.blog-linear-nav__link:focus-visible {
     background: var(--color-primary-dark);
 }
 
-.article-nav__link:focus-visible {
+.blog-linear-nav__link:focus-visible {
     outline: 2px solid var(--color-border-focus, var(--color-info));
     outline-offset: 2px;
 }
 
-.article-nav__link--prev::before {
+.blog-linear-nav__link--prev::before {
     content: "<";
 }
 
-.article-nav__link--next::after {
+.blog-linear-nav__link--next::after {
     content: ">";
 }
 
-.article-nav__item:only-child.article-nav__item--next,
-.article-nav__item--next:first-child {
+.blog-linear-nav__item:only-child.blog-linear-nav__item--next,
+.blog-linear-nav__item--next:first-child {
     margin-left: auto;
 }
 
-/* breakpoint-exception: 374px targets very small phones where prev/next labels
+/* breakpoint-exception: 374px targets very small phones where the two labels
    cannot fit side by side without wrapping into an awkward two-column row. */
 @media (max-width: 374px) {
-    .article-nav__list {
+    .blog-linear-nav__list {
         align-items: stretch;
         flex-direction: column;
     }
 
-    .article-nav__link {
+    .blog-linear-nav__link {
         width: 100%;
         justify-content: center;
     }

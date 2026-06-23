@@ -13,36 +13,38 @@
  *
  * COMPORTAMENTO RESPONSIVE:
  *   - Mobile (< 768px): completamente nascosta (display:none)
- *   - Desktop (>= 768px): fissa in alto (position:fixed via #topBlueBar)
+ *   - Desktop (>= 768px): nel flusso normale dell'header
  *
  * INTERAZIONE CON LA NAVBAR:
- *   La top bar e' fixed e la navbar-container ha margin-top:26px per
- *   compensare. Quando l'utente scrolla, la navbar sticky (z-index:60)
- *   copre la top bar (z-index:50). Il dropdown assistenza ha z-index:90
- *   per apparire sopra la navbar sticky.
+ *   La top bar precede la navbar nel flusso dell'header: quando l'utente
+ *   scrolla, la top bar esce dal viewport e la navbar-container sticky resta
+ *   agganciata in alto con barra arancione + barra categorie grigia.
  *
  * Elementi HTML: #topBlueBar, .top-bar, .top-bar__container,
  *   .assistenza-dropdown, .assistenza-dropdown__item.
  * ==========================================================================
  */
 
-/* === CONTENITORE FIXED DELLA TOP BAR === */
-/* L'ID #topBlueBar wrappa la .top-bar ed e' fixed in cima al viewport.
+/* === CONTENITORE DELLA TOP BAR === */
+/* L'ID #topBlueBar wrappa la .top-bar e resta nel flusso dell'header.
    Altezza 26px: calcolata per contenere una riga di testo xs + padding.
    overflow:visible e' necessario per far uscire il dropdown assistenza. */
 #topBlueBar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    display: none;
+    position: relative;
     width: 100%;
-    height: 26px;
-    z-index: var(--z-dropdown);
+    height: var(--shell-topbar-flow-height);
+    z-index: var(--shell-z-modal);
     overflow: visible;
 }
 
-/* Il dropdown assistenza ha z-index:modal (90) perche' deve apparire
-   sopra la navbar sticky (z-index:60) quando l'utente ha scrollato */
+@media (min-width: 768px) {
+    #topBlueBar {
+        display: block;
+    }
+}
+
+/* Il dropdown assistenza resta sopra la navbar sticky quando e' aperto. */
 #topBlueBar #assistenzaDropdown {
     z-index: var(--shell-z-modal);
 }

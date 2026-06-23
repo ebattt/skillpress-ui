@@ -1,0 +1,96 @@
+.error-state {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 0.42fr);
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 4vw, 2.75rem);
+    color: var(--color-text);
+    font-family: var(--font-family, 'Manrope', sans-serif);
+}
+
+.error-state__body {
+    min-width: 0;
+}
+
+.error-state__code {
+    margin: 0 0 0.4rem;
+    color: var(--color-primary);
+    font-size: 0.86rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.error-state__title {
+    max-width: 16ch;
+    margin: 0;
+    color: var(--color-text);
+    font-family: 'Manrope', var(--font-family, sans-serif);
+    font-size: clamp(1.65rem, 3vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: 0;
+}
+
+.error-state__message {
+    max-width: 48ch;
+    margin: 0.9rem 0 0;
+    color: var(--color-text-light);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: clamp(0.92rem, 1vw, 1rem);
+    line-height: 1.65;
+}
+
+.error-state__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.2rem;
+}
+
+.error-state__media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+}
+
+.error-state__image {
+    display: block;
+    width: min(100%, 260px);
+    height: auto;
+}
+
+@media (max-width: 639px) {
+    .error-state {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        padding: 1.25rem 0.25rem 2rem;
+        text-align: left;
+    }
+
+    .error-state__title {
+        max-width: none;
+    }
+
+    .error-state__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .error-state__actions .sp-button {
+        justify-content: center;
+    }
+
+    .error-state__media {
+        justify-content: flex-start;
+    }
+
+    .error-state__image {
+        width: min(100%, 220px);
+    }
+}

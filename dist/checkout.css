@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html {
+    overscroll-behavior-y: none;
+}
+
 body.sp-page {
     margin: 0;
     padding: 0;
@@ -11,6 +15,7 @@ body.sp-page {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overscroll-behavior-y: none;
     color: var(--color-text, #111418);
     background: var(--color-bg-white, #ffffff);
 }
@@ -27,6 +32,15 @@ body.sp-page--checkout .sp-page__main {
 
 .sp-page__header {
     flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: var(--shell-z-sticky, 60);
+}
+
+@media (min-width: 768px) {
+    .sp-page__header {
+        top: calc(-1 * var(--shell-topbar-flow-height, 26px));
+    }
 }
 
 .sp-page__main {

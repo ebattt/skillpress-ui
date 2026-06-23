@@ -74,7 +74,7 @@ function discoverBlocks() {
     var EXTRA = [
         'accordion', 'allocation-rows', 'allocation-summary-box',
         'address-preview', 'article-card', 'article-grid',
-        'article-hero', 'article-nav', 'article-body', 'badge', 'breadcrumb',
+        'article-hero', 'article-body', 'badge', 'breadcrumb',
         'billing-form-card', 'billing-table', 'button', 'card',
         'cart-list', 'cart-product-card', 'catalog-grid', 'catalog-card',
         'catalog-interstitial', 'catalog-product-grid', 'catalog-stage',

@@ -2,7 +2,26 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.5.0)
+## Corrente (0.5.1)
+
+- **Versione: 0.5.1**
+- **Contract HTML cambiato: sì** (categoria prodotti e pagina tema espongono
+  ora un `<h1>` esplicito dopo le breadcrumb; le dashboard mantengono un solo
+  `<main>` top-level).
+
+- Contract change: aggiunte le classi `public-page-layout__header` e
+  `public-page-layout__title` al componente `public-page-layout`, usate per un
+  titolo pagina semplice nelle pagine CMS pubbliche senza reintrodurre box o
+  hero introduttivi.
+- Contract change: il contenitore interno `dashboard-shell__main` deve essere
+  un `div`/layout container, non un secondo `<main>`. Il landmark `main` resta
+  solo `sp-page__main`.
+- Hardening: i check del consumer falliscono se una static page ha piu' di un
+  `<main>`, se manca l'unico `<h1>` richiesto o se contiene ID HTML duplicati.
+- Docs: il markup contract backend documenta esplicitamente la regola "un solo
+  main + un solo H1" per le pagine production.
+
+## 0.5.0
 
 - **Versione: 0.5.0**
 - **Contract HTML cambiato: sì** (la shell del sito — navbar + footer — è
@@ -14,11 +33,63 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
   `https://skillpress-ui.pages.dev/skillpress-ui`, superficie pubblica
   `css/*.css`, `js/*.js`, `fonts/**`, `manifest.json` e `public-api.json`.
   Il backend carica gli asset direttamente dal CDN con il link stabile.
+- Infra/CDN: `npm run build:cdn` aggiorna anche
+  `public/cdn-deploy/skillpress-ui`, la cartella stabile da deployare su
+  Cloudflare Pages. Il versionamento resta interno (`package.json`,
+  `CHANGELOG.md`, `manifest.json`, artefatto `public/skillpress-ui-<version>/`);
+  gli URL CDN restano senza versione.
+- Infra/CDN: documentato il flusso release in `docs/cdn-release.md`: niente
+  cartella `/latest`, niente versione nel path CDN, deploy sempre di
+  `public/cdn-deploy`.
+- Contract change: aggiunto il bundle `css/public.css` per le pagine pubbliche
+  CMS miste. Il caricamento atteso diventa `css/shell.css` + `css/public.css`
+  per categoria prodotti, pagina tema, pagina testo/FAQ/contatti ed errore
+  404.
+- Contract change: aggiunto il componente unico `blog-linear-nav` al bundle
+  `css/blog.css` e al bundle `css/public.css`, sostituendo i riferimenti
+  separati `article-nav` e `blog-pagination`. Le pagine blog pubbliche caricano
+  `css/shell.css` + `css/blog.css`; la navigazione e' server-rendered con link
+  lineari "Post piu recenti" / "Post piu vecchi" nelle categorie e "Articolo
+  precedente" / "Articolo successivo" negli articoli. Il blocco va omesso
+  quando non ci sono link precedenti o successivi.
+- Contract change: aggiunto `blog-feed-header` al bundle `css/blog.css` per
+  allineare titolo e intro di home/categoria blog alla stessa griglia del feed.
+- Contract change: aggiunto `blog-page-layout` al bundle `css/blog.css` per
+  dare alle pagine blog un respiro finale coerente prima del footer, senza
+  dipendere da wrapper consumer ad hoc.
+- Visual change: `blog-page-layout`, `blog-feed-header` e la card featured del
+  blog riallineano distanza da navbar, posizione H1 e ritmo verticale al
+  riferimento attuale montato da Katia.
+- Contract change: la navigazione articolo precedente/successivo viene
+  renderizzata sotto al corpo articolo, come nel frontend storico.
+- Contract change: il riferimento articolo blog include anche una sezione
+  correlati larga sotto al corpo articolo, cosi' top navigation e corpo articolo
+  mantengono larghezze prevedibili anche quando ci sono contenuti correlati.
+- Contract change: `css/auth.css` e' ora un bundle auth autonomo: include font,
+  Material Symbols, token/reset e stili auth, ma non importa piu' `shell.css`.
+  Login, registrazione e password dimenticata devono caricare solo `css/auth.css`.
+- Visual change: i trigger delle categorie nella barra grigia usano
+  `font-weight: 600` per maggiore leggibilita', senza aumentare la dimensione
+  del testo.
+- Contract change: aggiunto il componente pubblico `error-state` al bundle
+  `css/public.css`, usato per la pagina errore 404 con immagine sostituibile da
+  CMS/backend.
+- Contract change: aggiunto `public-page-layout` per uniformare l'allineamento
+  e la distanza tra breadcrumb e contenuto nelle pagine pubbliche CMS miste.
+- Visual change: le pagine testo pubbliche CMS usano lo stesso container base
+  di categoria/tema; `text-block` non aggiunge piu' padding sopra al titolo
+  dentro `public-page-layout`, cosi' breadcrumb e H1 risultano allineati.
+- Visual change: categoria prodotti e pagina tema non renderizzano piu' un box
+  intro/hero tra breadcrumb e titolo della sezione; resta solo uno slot editor
+  opzionale non visibile nel markup di riferimento.
 - Infra/CDN: `dist/demo-minimal.css` viene generato e pubblicato come
   `css/demo-minimal.css` per le `demo-pages` e `lab`; non è un bundle backend
   production.
 - Hardening: aggiunto `npm run verify:cdn` per verificare manifest, asset
   principali, header CDN e hash `sha384` dopo il deploy.
+- Hardening: `npm run verify:cdn` verifica anche `css/shell.css`,
+  `css/public.css` e `css/auth.css`, cioè i bundle minimi che Katia deve poter
+  caricare dal CDN stabile.
 - Contract change: la **shell del sito** (navbar + footer: top-bar, main navbar,
   categorie, mega/mobile menu, cart, footer) è ora un bundle di libreria
   (`bundles/shell.css` → `dist/shell.css`), **fonte canonica** del CSS del telaio:

@@ -1,5 +1,5 @@
 {
-  "version": "0.5.0",
+  "version": "0.5.1",
   "css": {
     "primitives": [
       ".sp-accordion",
@@ -179,10 +179,12 @@
       "article-body",
       "article-card",
       "article-hero",
-      "article-nav",
       "billing-form",
       "billing-form-card",
       "billing-table",
+      "blog-feed-header",
+      "blog-linear-nav",
+      "blog-page-layout",
       "cart-product-card",
       "catalog-interstitial",
       "catalog-product-grid",
@@ -199,6 +201,7 @@
       "dashboard-settings-form",
       "dashboard-shell",
       "dashboard-welcome-box",
+      "error-state",
       "feature-box",
       "feedaty-widget",
       "file-modal",
@@ -219,6 +222,7 @@
       "price-table",
       "product-hero",
       "product-page-layout",
+      "public-page-layout",
       "quote-request-table",
       "related-products",
       "search-filter-bar",
@@ -277,6 +281,7 @@
         "article-card__title",
         "article-card__title-link",
         "article-grid",
+        "article-grid--related",
         "article-grid__list",
         "sp-button"
       ],
@@ -287,15 +292,6 @@
         "article-hero__media",
         "article-hero__meta",
         "article-hero__title"
-      ],
-      "article-nav": [
-        "article-nav",
-        "article-nav__item",
-        "article-nav__item--next",
-        "article-nav__link",
-        "article-nav__link--next",
-        "article-nav__link--prev",
-        "article-nav__list"
       ],
       "billing-form-card": [
         "billing-form-card",
@@ -346,6 +342,23 @@
         "th-mobile-chevron",
         "th-mobile-hide",
         "w3"
+      ],
+      "blog-feed-header": [
+        "blog-feed-header",
+        "blog-feed-header__text",
+        "blog-feed-header__title"
+      ],
+      "blog-linear-nav": [
+        "blog-linear-nav",
+        "blog-linear-nav__item",
+        "blog-linear-nav__item--next",
+        "blog-linear-nav__link",
+        "blog-linear-nav__link--next",
+        "blog-linear-nav__link--prev",
+        "blog-linear-nav__list"
+      ],
+      "blog-page-layout": [
+        "blog-page-layout"
       ],
       "cart-product-card": [
         "cart-details-inline",
@@ -648,6 +661,17 @@
         "dashboard-greeting-banner__subtitle",
         "dashboard-greeting-banner__title",
         "user-name"
+      ],
+      "error-state": [
+        "error-state",
+        "error-state__actions",
+        "error-state__body",
+        "error-state__code",
+        "error-state__image",
+        "error-state__media",
+        "error-state__message",
+        "error-state__title",
+        "sp-button"
       ],
       "feature-box": [
         "feature-box",
@@ -1117,7 +1141,19 @@
       ],
       "product-page-layout": [
         "download-buttons-mobile",
-        "product-config-column"
+        "product-config-column",
+        "product-hero",
+        "product-page-breadcrumb"
+      ],
+      "public-page-layout": [
+        "catalog-product-grid",
+        "css",
+        "public-page-layout",
+        "public-page-layout__header",
+        "public-page-layout__title",
+        "sp-accordion",
+        "sp-breadcrumb",
+        "text-block"
       ],
       "quote-request-table": [
         "org",
@@ -1284,16 +1320,16 @@
   "bundles": {
     "auth.css": {
       "components": [],
-      "primitives": [
-        "sp-page"
-      ]
+      "primitives": []
     },
     "blog.css": {
       "components": [
         "article-body",
         "article-card",
         "article-hero",
-        "article-nav",
+        "blog-feed-header",
+        "blog-linear-nav",
+        "blog-page-layout",
         "feedaty-widget",
         "topic-nav"
       ],
@@ -1529,6 +1565,30 @@
         "sp-success-inline",
         "sp-validation-indicator",
         "sp-validation-total"
+      ]
+    },
+    "public.css": {
+      "components": [
+        "article-body",
+        "article-card",
+        "article-hero",
+        "blog-linear-nav",
+        "catalog-interstitial",
+        "catalog-product-grid",
+        "catalog-stage",
+        "error-state",
+        "feedaty-widget",
+        "landing-info-tabs",
+        "public-page-layout",
+        "text-block",
+        "topic-nav"
+      ],
+      "primitives": [
+        "sp-accordion",
+        "sp-breadcrumb",
+        "sp-button",
+        "sp-catalog-grid",
+        "sp-page"
       ]
     },
     "shell.css": {

@@ -7,6 +7,9 @@ const CDN_BASE = (process.env.CDN_BASE || 'https://skillpress-ui.pages.dev/skill
 const REQUIRED = [
   'manifest.json',
   'public-api.json',
+  'css/shell.css',
+  'css/public.css',
+  'css/auth.css',
   'css/dashboard.css',
   'css/demo-minimal.css',
   'js/index.js',

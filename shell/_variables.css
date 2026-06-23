@@ -45,7 +45,8 @@
     --shell-gradient-orange: linear-gradient(135deg, #F08A00 0%, #FFB149 100%);
     --shell-gradient-teal: linear-gradient(135deg, #1C7264 0%, #298979 100%);
 
-    /* --- Dimensioni navbar (totale 144px = 36+64+44, offset contenuto pagina) --- */
+    /* --- Dimensioni navbar (top bar + barra principale + categorie) --- */
+    --shell-topbar-flow-height: 26px;
     --shell-navbar-height-top: 36px;
     --shell-navbar-height-main: 64px;
     --shell-navbar-height-categories: 44px;
