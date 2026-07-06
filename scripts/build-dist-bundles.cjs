@@ -21,6 +21,13 @@
  *     devDependencies, esegue minification post-flatten. Altrimenti il
  *     bundle e' "flattened only" (pretty), comunque adatto al consumer.
  *
+ * Genera inoltre `dist/skillpress-ui.js`: bundle JS unico con tutti i
+ * componenti, per il consumer che carica un solo script su tutte le pagine.
+ * Ordine di concatenazione (contratto documentato in js/index.js):
+ *   js/_helpers.js -> js/<componente>.js (alfabetico) -> js/index.js
+ * Ogni modulo e' un IIFE autonomo con auto-init via data-attribute, quindi
+ * la concatenazione non cambia il comportamento rispetto ai file singoli.
+ *
  * NON modifica i sorgenti. Idempotente.
  *
  * Uso:
@@ -147,6 +154,33 @@ async function buildOne(bundleName) {
     };
 }
 
+const JS_DIR = path.join(REPO_ROOT, 'js');
+const JS_BUNDLE_NAME = 'skillpress-ui.js';
+
+function buildJsBundle() {
+    const all = fs.readdirSync(JS_DIR).filter(function (f) { return f.endsWith('.js'); });
+    const components = all
+        .filter(function (f) { return f !== '_helpers.js' && f !== 'index.js'; })
+        .sort();
+    const ordered = ['_helpers.js'].concat(components, ['index.js']);
+    for (const f of ordered) {
+        if (!all.includes(f)) throw new Error('js bundle: file atteso mancante: js/' + f);
+    }
+    const version = JSON.parse(
+        fs.readFileSync(path.join(REPO_ROOT, 'package.json'), 'utf8')
+    ).version;
+    const banner = '/*! @ebattt/skillpress-ui ' + version + ' -- bundle JS unico (' +
+        ordered.length + ' moduli). Auto-init via data-attribute; per markup ' +
+        'iniettato dopo il load usare window.SkillpressUI.init(scope). */\n';
+    const body = ordered.map(function (f) {
+        return '\n/* === js/' + f + ' === */\n' +
+            fs.readFileSync(path.join(JS_DIR, f), 'utf8').trim() + '\n;\n';
+    }).join('');
+    const out = path.join(DIST_DIR, JS_BUNDLE_NAME);
+    fs.writeFileSync(out, banner + body, 'utf8');
+    return { bundle: JS_BUNDLE_NAME, bytes: Buffer.byteLength(banner + body, 'utf8'), modules: ordered.length };
+}
+
 (async function main() {
     ensureDir(DIST_DIR);
     const results = [];
@@ -159,6 +193,13 @@ async function buildOne(bundleName) {
         }
     }
     let failed = 0;
+    try {
+        const js = buildJsBundle();
+        process.stdout.write(`dist/${js.bundle}: ${js.bytes} bytes (${js.modules} moduli)\n`);
+    } catch (err) {
+        failed++;
+        process.stderr.write(`dist/${JS_BUNDLE_NAME}: ERROR ${String(err)}\n`);
+    }
     for (const r of results) {
         if (r.status === 'ok') {
             process.stdout.write(

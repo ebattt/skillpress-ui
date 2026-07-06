@@ -168,3 +168,13 @@
         width: auto;
     }
 }
+
+/* iOS Safari zooma la pagina al focus dei campi con font sotto 16px: sui
+   dispositivi touch i campi passano a 1rem. Solo touch (hover:none +
+   pointer:coarse): la resa desktop resta invariata. */
+@media (hover: none) and (pointer: coarse) {
+    .orders-filter-input,
+    .orders-filter-select {
+        font-size: 1rem;
+    }
+}

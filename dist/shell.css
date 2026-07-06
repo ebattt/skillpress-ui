@@ -1069,6 +1069,13 @@ body {
     z-index: var(--shell-z-modal);
 }
 
+@media (hover: none) and (pointer: coarse) {
+    .search-mobile__input,
+    .search-desktop__input {
+        font-size: 1rem;
+    }
+}
+
 .categories-bar {
     display: none;
     position: relative;
@@ -1603,10 +1610,16 @@ body {
 .mobile-menu {
     position: fixed;
     inset: 0;
-    top: var(--shell-navbar-height-main);
+    padding-top: var(--shell-navbar-height-main);
     background: var(--color-bg-white);
-    z-index: var(--z-dropdown);
+    z-index: calc(var(--shell-z-sticky) - 1);
     overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+}
+
+.mobile-menu::-webkit-scrollbar {
+    display: none;
 }
 
 @media (min-width: 768px) {
@@ -1619,7 +1632,35 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+
+    min-height: calc(100% + 1px);
     padding: 0.5rem 1rem 1rem;
+}
+
+body:has(.mobile-menu:not(.hidden)),
+body:has(.category-products-overlay:not(.hidden)) {
+    overflow: hidden;
+    touch-action: none;
+}
+
+html:has(.mobile-menu:not(.hidden)),
+html:has(.category-products-overlay:not(.hidden)) {
+    overscroll-behavior: none;
+}
+
+body:has(.mobile-menu:not(.hidden)) .sp-page__header,
+body:has(.category-products-overlay:not(.hidden)) .sp-page__header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: var(--shell-z-sticky);
+}
+
+body:has(.mobile-menu:not(.hidden)) .mobile-menu,
+body:has(.category-products-overlay:not(.hidden)) .category-products-overlay,
+body:has(.category-products-overlay:not(.hidden)) .category-products__scroll {
+    touch-action: pan-y;
 }
 
 .mobile-menu__header-section {
@@ -1803,18 +1844,28 @@ body {
 .category-products-overlay {
     position: fixed;
     inset: 0;
-    top: 56px;
+    padding-top: var(--shell-navbar-height-main);
     background: var(--color-bg-white);
-    z-index: var(--z-dropdown);
+    z-index: calc(var(--shell-z-sticky) - 1);
+    box-sizing: border-box;
 }
 
 .category-products__scroll {
     overflow-y: auto;
     height: 100%;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+}
+
+.category-products__scroll::-webkit-scrollbar {
+    display: none;
 }
 
 .category-products__list {
+
+    min-height: calc(100% + 1px);
     padding: 1rem;
+
     padding-bottom: 10rem;
 }
 

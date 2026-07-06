@@ -551,6 +551,50 @@ body {
     --shell-z-toast: 110;
 }
 
+.sp-validation-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.125rem;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    color: var(--color-error-light);
+}
+
+.sp-validation-indicator::before {
+    content: "!";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--font-size-sm);
+    height: var(--font-size-sm);
+    flex-shrink: 0;
+    border: 1.5px solid currentColor;
+    border-radius: var(--radius-full);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+}
+
+.sp-validation-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.sp-validation-total__count {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+}
+
+.sp-validation-total__count strong {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
 .auth-page {
     margin: 0;
     padding: 0;
@@ -979,5 +1023,16 @@ body {
     .auth-page--login .auth-page__footer-text {
         font-size: var(--font-size-sm);
         line-height: 1.25rem;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .auth-form__input,
+    .custom-input,
+    .auth-form__input--with-icon,
+    .auth-page--login .auth-form__input,
+    .auth-form__select,
+    .custom-select {
+        font-size: 1rem;
     }
 }

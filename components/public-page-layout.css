@@ -49,6 +49,17 @@
     border-radius: 1rem;
 }
 
+/* Variante solo testo (es. box CMS dopo la griglia prodotti): senza
+   __media la colonna immagine collassa e il testo usa tutta la larghezza. */
+.public-page-editorial__inner:not(:has(> .public-page-editorial__media)) {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+}
+
+.public-page-editorial__inner:not(:has(> .public-page-editorial__media)) .public-page-editorial__text {
+    max-width: none;
+}
+
 .public-page-editorial__body {
     min-width: 0;
 }
@@ -61,12 +72,28 @@
     line-height: 1.15;
 }
 
+/* __text puo' essere un <p> con testo semplice oppure un <div> con HTML
+   ricco dal CMS (paragrafi, liste): un <p> non puo' contenere altri <p>. */
 .public-page-editorial__text {
     max-width: 42rem;
     margin: var(--spacing-sm, 0.75rem) 0 0;
     color: var(--color-text-secondary);
     font-size: var(--font-size-base, 1rem);
     line-height: 1.6;
+}
+
+.public-page-editorial__text p,
+.public-page-editorial__text ul,
+.public-page-editorial__text ol {
+    margin: 0 0 var(--spacing-sm, 0.75rem);
+}
+
+.public-page-editorial__text li > p {
+    margin-bottom: var(--spacing-xs, 0.5rem);
+}
+
+.public-page-editorial__text > :last-child {
+    margin-bottom: 0;
 }
 
 .public-page-editorial__media {
@@ -95,6 +122,19 @@
 
 .public-page-layout .text-block {
     padding-top: 0;
+}
+
+/* Le tab testuali mantengono il respiro sopra la strip: senza questa regola
+   il reset padding-top: 0 qui sopra vince per ordine nel bundle e le tab
+   risultano attaccate alla griglia prodotti. */
+.public-page-layout .text-block.landing-info-tabs {
+    padding-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* Box editoriale usato DOPO la griglia prodotti (es. pagina tema con testo
+   sotto i prodotti): serve margine sopra, il box ha solo margin-bottom. */
+.public-page-layout .catalog-product-grid + .public-page-editorial {
+    margin-top: var(--spacing-xl, 2rem);
 }
 
 .public-page-layout > .sp-accordion {

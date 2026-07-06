@@ -8,4 +8,5 @@
 @import '../tokens/tokens.css';
 @import '../base/reset.css';
 @import '../shell/_variables.css';
+@import '../primitives/validation-indicator.css';
 @import '../shell/_auth.css';

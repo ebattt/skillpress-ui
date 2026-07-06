@@ -2251,6 +2251,14 @@ textarea.sp-form-input {
     color: var(--color-text);
 }
 
+@media (hover: none) and (pointer: coarse) {
+    .sp-form-input,
+    .sp-form-select,
+    .sp-nome-lavoro-input {
+        font-size: 1rem;
+    }
+}
+
 .sp-radio-group {
     display: flex;
     flex-direction: column;
@@ -3903,6 +3911,12 @@ label.sp-radio-option--disabled input[type="radio"] {
     width: 1.125rem;
     height: 1.125rem;
     flex-shrink: 0;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .promo-input {
+        font-size: 1rem;
+    }
 }
 
 .related-products {

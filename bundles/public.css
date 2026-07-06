@@ -8,6 +8,7 @@
 @import '../primitives/button.css';
 @import '../primitives/breadcrumb.css';
 @import '../primitives/accordion.css';
+@import '../primitives/validation-indicator.css';
 @import '../primitives/catalog-grid.css';
 
 @import '../components/catalog-stage.css';

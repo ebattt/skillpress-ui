@@ -2,7 +2,83 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.5.2)
+## Corrente (0.5.3)
+
+- **Versione: 0.5.3**
+- **Contract HTML cambiato: sì, solo dashboard** (nuovi modifier opzionali
+  `dashboard-shell--nav-hub` / `dashboard-shell--nav-page` + link
+  `dashboard-shell__mobile-back`; il resto del contract e' invariato e il
+  popup utente era gia' presente nei template production).
+
+- Nuovo: varianti multipagina server-side per la dashboard. La dashboard
+  production naviga con pagine reali, quindi senza il routing JS il menu
+  mobile restava impilato sopra il contenuto. Ora: l'indice usa
+  `dashboard-shell--nav-hub` (sotto i 1024px mostra solo il menu, come la
+  demo), le pagine vista usano `dashboard-shell--nav-page` (mostrano solo il
+  contenuto) con `<a class="dashboard-shell__mobile-back" href="...">Menu</a>`
+  per tornare all'indice; le pagine ordine-dettaglio mantengono il loro back
+  verso Ordini senza doppioni. Desktop invariato (sidebar sempre visibile).
+
+- Visual change: le tab testuali (`landing-info-tabs`) non scrollano MAI:
+  le voci vanno a capo (flex-wrap). Su desktop restano tab con indicatore,
+  leggermente piu' piccole (-10%); sotto i 640px diventano pillole su piu'
+  righe con la voce attiva evidenziata (fondo `--color-primary-alpha-12` +
+  testo primary). Risolto anche l'hover che scuriva la voce attiva.
+- Fix: menu mobile shell, la pagina sotto non scrolla piu' mentre il menu e'
+  aperto: `overscroll-behavior: contain` su `.mobile-menu` e
+  `.category-products__scroll`, piu' lock via `:has` su `body` E su `html`
+  quando `#mobileMenu` o l'overlay prodotti (livello 2) sono visibili. Il
+  lock a livello `html` e' necessario per iOS Safari, che ignora
+  `overflow: hidden` impostato sul solo body per lo scroll touch.
+- Fix: il menu mobile e l'overlay prodotti sono full-viewport ("come una
+  nuova pagina"): coprono sempre l'intera pagina anche se questa era stata
+  scrollata, con il contenuto che parte sotto la navbar via padding-top e
+  z-index sotto lo sticky dell'header. A menu aperto l'header e' forzato
+  `position: fixed`, cosi' logo e bottone X restano sempre visibili.
+  Rimosso il lock `overflow: hidden` su `html` (rompeva lo sticky
+  dell'header): su html resta solo `overscroll-behavior: none`.
+- Fix: lo scroll dentro il menu mobile (e overlay prodotti) resta SEMPRE nel
+  menu, anche con poche voci: il contenuto ha `min-height: calc(100% + 1px)`
+  cosi' il gesto si aggancia al menu (non al documento) e
+  `overscroll-behavior: contain` ferma il chaining; scrollbar nascosta
+  (`scrollbar-width: none` + `::-webkit-scrollbar`).
+- Contract page shell: aggiunto il markup del popup accesso utente
+  (`#userLoginPopup`, gia' presente in produzione backend: nessuna modifica
+  richiesta ai template) — mancava dal riferimento, quindi il bottone utente
+  mobile nelle static pages non aveva nulla da aprire.
+- Fix: niente piu' zoom automatico di iOS Safari al focus dei campi: tutti i
+  campi testo/select della libreria sotto i 16px (auth, ricerca navbar,
+  billing, settings dashboard, filtri ordini, preventivi, promo, primitives
+  `sp-form-*`) passano a `1rem` sui soli dispositivi touch
+  (`hover: none` + `pointer: coarse`); la resa desktop resta invariata.
+- Fix: dentro `.public-page-layout` le tab testuali riacquistano il
+  padding-top previsto (il reset `padding-top: 0` dei text-block vinceva per
+  ordine nel bundle) e il box `public-page-editorial` usato dopo la griglia
+  prodotti ha ora margine sopra (pagina tema con testo sotto i prodotti).
+- Hardening: `public-page-editorial` supporta la variante solo testo: senza
+  `__media` la colonna immagine collassa e `__text` usa tutta la larghezza;
+  `__text` puo' essere un `div` con HTML ricco dal CMS (paragrafi e liste
+  ricevono i margini corretti). La static page pagina-tema mostra il blocco
+  editoriale opzionale dopo la griglia (slot `topic.outro`).
+- Nuovo: bundle JS unico `js/skillpress-ui.js` (generato da `build:dist`:
+  `_helpers.js` + tutti i componenti + `index.js`). Regola operativa per il
+  backend: un solo `<script defer>` nel template condiviso di tutte le pagine
+  con shell; ogni componente si auto-inizializza dai suoi `data-*` e non fa
+  nulla se il markup non c'e' (~20 KiB gzip). I singoli `js/<componente>.js`
+  restano pubblicati; non vanno mischiati col bundle sulla stessa pagina.
+  Le static-pages e la matrice pagina->CSS/JS sono allineate al bundle unico.
+- Nuovo (richiesta backend): la primitive `sp-validation-indicator` (e
+  `sp-validation-total`), prima solo in product-page.css, e' ora inclusa
+  anche in `auth.css`, `checkout.css`, `dashboard.css` e `public.css` per
+  gestire gli errori dei form su tutte le pagine. Nessun cambio di markup:
+  stessa classe, `<span class="sp-validation-indicator">testo</span>`.
+- Docs: nuova guida eventi `docs/backend/06-js-events.md` nel consumer (34
+  eventi `sp:*` con condizioni, target e payload, mappa per pagina),
+  verificata contro i sorgenti e blindata da `check-events-doc.cjs`
+  (confronto automatico con `public-api.json` e con i `data-*` delle static
+  pages).
+
+## 0.5.2
 
 - **Versione: 0.5.2**
 - **Contract HTML cambiato: sì** (categoria prodotti e pagina tema usano il

@@ -1,5 +1,5 @@
 {
-  "version": "0.5.2",
+  "version": "0.5.3",
   "css": {
     "primitives": [
       ".sp-accordion",
@@ -629,6 +629,8 @@
       ],
       "dashboard-shell": [
         "dashboard-shell",
+        "dashboard-shell--nav-hub",
+        "dashboard-shell--nav-page",
         "dashboard-shell__error",
         "dashboard-shell__error-text",
         "dashboard-shell__error-title",
@@ -1148,6 +1150,7 @@
       "public-page-layout": [
         "catalog-product-grid",
         "css",
+        "landing-info-tabs",
         "public-page-editorial",
         "public-page-editorial__body",
         "public-page-editorial__image",
@@ -1327,7 +1330,10 @@
   "bundles": {
     "auth.css": {
       "components": [],
-      "primitives": []
+      "primitives": [
+        "sp-validation-indicator",
+        "sp-validation-total"
+      ]
     },
     "blog.css": {
       "components": [
@@ -1384,7 +1390,9 @@
         "sp-spessore-value",
         "sp-success-inline",
         "sp-toggle-switch",
-        "sp-toggle-switch-field"
+        "sp-toggle-switch-field",
+        "sp-validation-indicator",
+        "sp-validation-total"
       ]
     },
     "dashboard.css": {
@@ -1442,7 +1450,9 @@
         "sp-spessore-display",
         "sp-spessore-label",
         "sp-spessore-value",
-        "sp-success-inline"
+        "sp-success-inline",
+        "sp-validation-indicator",
+        "sp-validation-total"
       ]
     },
     "demo-minimal.css": {
@@ -1595,7 +1605,9 @@
         "sp-breadcrumb",
         "sp-button",
         "sp-catalog-grid",
-        "sp-page"
+        "sp-page",
+        "sp-validation-indicator",
+        "sp-validation-total"
       ]
     },
     "shell.css": {

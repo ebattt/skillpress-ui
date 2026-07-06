@@ -24,6 +24,9 @@
  *     l'overlay prodotti (Livello 2), attivato dal click su .category-nav-btn.
  *   - document.body.style.overflow = 'hidden' viene impostato dal JS
  *     per bloccare lo scroll della pagina quando il menu e aperto.
+ *     Il lock vero pero' e' garantito dal CSS (sezione "Lock della pagina"
+ *     qui sotto, via :has sulla classe .hidden): funziona anche dove
+ *     l'overflow inline non basta (iOS) e con qualsiasi JS applicativo.
  *
  * DIPENDENZE:
  *   - _variables.css (colori, spacing, radius, z-index, transizioni)
@@ -37,17 +40,29 @@
 
 /* === LIVELLO 1: MENU PRINCIPALE === */
 
-/* Fullscreen fisso sotto la navbar (top calcolato da top-bar + main-navbar).
-   inset: 0 riempie tutto lo schermo; il top lo sposta sotto la navbar
-   cosi il menu non copre il logo e il bottone X.
-   Visibilita gestita dal JS tramite la classe .hidden. */
+/* Il menu aperto e' "una nuova pagina":
+   - copre l'intera viewport (inset: 0, sfondo pieno); il contenuto parte
+     sotto la navbar via padding-top;
+   - sta un livello sotto l'header (z-index), cosi' navbar, logo e bottone X
+     restano visibili e cliccabili sopra di lui;
+   - lo scroll vive SOLO al suo interno: il contenuto e' sempre scrollabile
+     (vedi min-height su __content), quindi il gesto si aggancia al menu e
+     overscroll-behavior: contain non lascia passare nulla alla pagina;
+   - nessuna scrollbar visibile.
+   Visibilita' gestita dal JS tramite la classe .hidden. */
 .mobile-menu {
     position: fixed;
     inset: 0;
-    top: var(--shell-navbar-height-main);
+    padding-top: var(--shell-navbar-height-main);
     background: var(--color-bg-white);
-    z-index: var(--z-dropdown);
+    z-index: calc(var(--shell-z-sticky) - 1);
     overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+}
+
+.mobile-menu::-webkit-scrollbar {
+    display: none;
 }
 
 /* Sicurezza: anche se il JS non lo chiude, su desktop il menu e sempre nascosto.
@@ -62,7 +77,46 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    /* +1px: scroller sempre attivo anche con poche voci, cosi' e' il menu
+       (non il documento) a catturare il gesto di scroll. */
+    min-height: calc(100% + 1px);
     padding: 0.5rem 1rem 1rem;
+}
+
+/* --- Lock della pagina a menu/overlay aperto ---------------------------
+   Guidato solo dall'assenza di .hidden, quindi indipendente dal JS
+   applicativo (che gia' imposta body.style.overflow: qui e' la garanzia
+   CSS, necessaria su iOS dove il solo overflow sul body non basta).
+   Vincoli da rispettare se si modifica:
+   - niente overflow: hidden su html (romperebbe lo sticky dell'header);
+   - l'header va forzato fixed, perche' con i lock attivi lo sticky non e'
+     garantito su tutti i motori e X/logo devono restare raggiungibili. */
+body:has(.mobile-menu:not(.hidden)),
+body:has(.category-products-overlay:not(.hidden)) {
+    overflow: hidden;
+    touch-action: none;
+}
+
+html:has(.mobile-menu:not(.hidden)),
+html:has(.category-products-overlay:not(.hidden)) {
+    overscroll-behavior: none;
+}
+
+body:has(.mobile-menu:not(.hidden)) .sp-page__header,
+body:has(.category-products-overlay:not(.hidden)) .sp-page__header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: var(--shell-z-sticky);
+}
+
+/* Dentro menu e overlay il pan verticale resta permesso (deroga al
+   touch-action: none del body). */
+body:has(.mobile-menu:not(.hidden)) .mobile-menu,
+body:has(.category-products-overlay:not(.hidden)) .category-products-overlay,
+body:has(.category-products-overlay:not(.hidden)) .category-products__scroll {
+    touch-action: pan-y;
 }
 
 
@@ -275,25 +329,36 @@
    e un bottone "back" per tornare al Livello 1.
    ========================================================================= */
 
-/* top: 56px allinea l'overlay sotto la navbar mobile (senza top-bar).
-   Visibilita gestita dalla classe .hidden togglata dal JS. */
+/* Fullscreen come il livello 1: copre tutta la viewport, contenuto sotto
+   la navbar via padding-top. Visibilita gestita dalla classe .hidden. */
 .category-products-overlay {
     position: fixed;
     inset: 0;
-    top: 56px;
+    padding-top: var(--shell-navbar-height-main);
     background: var(--color-bg-white);
-    z-index: var(--z-dropdown);
+    z-index: calc(var(--shell-z-sticky) - 1);
+    box-sizing: border-box;
 }
 
+/* Scroller interno dell'overlay: stesso modello del menu (scroll solo qui
+   dentro, niente scrollbar visibile). */
 .category-products__scroll {
     overflow-y: auto;
     height: 100%;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
 }
 
-/* padding-bottom generoso (10rem) per evitare che l'ultimo prodotto
-   sia coperto da elementi fissi in basso (es. footer mobile del carrello). */
+.category-products__scroll::-webkit-scrollbar {
+    display: none;
+}
+
 .category-products__list {
+    /* +1px: scroller sempre attivo, come .mobile-menu__content. */
+    min-height: calc(100% + 1px);
     padding: 1rem;
+    /* padding-bottom generoso per evitare che l'ultimo prodotto sia coperto
+       da elementi fissi in basso (es. footer mobile del carrello). */
     padding-bottom: 10rem;
 }
 

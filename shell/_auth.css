@@ -499,3 +499,17 @@
         line-height: 1.25rem;
     }
 }
+
+/* iOS Safari zooma la pagina al focus dei campi con font sotto 16px: sui
+   dispositivi touch i campi passano a 1rem. Solo touch (hover:none +
+   pointer:coarse): la resa desktop resta invariata. */
+@media (hover: none) and (pointer: coarse) {
+    .auth-form__input,
+    .custom-input,
+    .auth-form__input--with-icon,
+    .auth-page--login .auth-form__input,
+    .auth-form__select,
+    .custom-select {
+        font-size: 1rem;
+    }
+}

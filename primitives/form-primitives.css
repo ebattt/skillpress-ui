@@ -309,3 +309,14 @@ textarea.sp-form-input {
     font-weight: var(--font-weight-bold);
     color: var(--color-text);
 }
+
+/* iOS Safari zooma la pagina al focus dei campi con font sotto 16px: sui
+   dispositivi touch i campi passano a 1rem. Solo touch (hover:none +
+   pointer:coarse): la resa desktop resta invariata. */
+@media (hover: none) and (pointer: coarse) {
+    .sp-form-input,
+    .sp-form-select,
+    .sp-nome-lavoro-input {
+        font-size: 1rem;
+    }
+}

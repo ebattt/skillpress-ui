@@ -105,14 +105,27 @@ richiesta a Google Fonts nel runtime production.
 
 ## JS da caricare
 
-Ordine runtime:
+Via consigliata: **bundle unico** `js/skillpress-ui.js` (generato da
+`build:dist` concatenando `_helpers.js` + tutti i componenti + `index.js`),
+un solo `<script defer>` nel template condiviso di tutte le pagine con shell:
+
+```html
+<script defer src="/static/skillpress-ui/js/skillpress-ui.js"></script>
+```
+
+Ogni componente si auto-inizializza se trova i suoi `data-*` nel markup e non
+fa nulla altrimenti; caricare il bundle ovunque e' innocuo (~20 KiB gzip).
+Le pagine auth non lo caricano.
+
+In alternativa, caricamento fine per pagina. Ordine runtime:
 
 1. `js/_helpers.js`;
 2. moduli pagina richiesti dal contract;
 3. `js/index.js`;
 4. `window.SkillpressUI.init(document);`.
 
-Caricare solo i moduli usati. Re-init dopo render parziali o Ajax:
+Caricare solo i moduli usati e non mischiare moduli singoli col bundle sulla
+stessa pagina. Re-init dopo render parziali o Ajax (vale anche col bundle):
 
 ```js
 window.SkillpressUI.init(container);

@@ -112,14 +112,20 @@ for (const f of cssFiles) {
 }
 log(`css/: ${cssFiles.length} bundle (${cssFiles.join(', ')})`);
 
-// 4. js/ <- js/*.js
+// 4. js/ <- js/*.js + dist/skillpress-ui.js (bundle unico, generato da
+//    build-dist-bundles.cjs: caricamento a singolo script per il backend)
 const jsDest = path.join(PKG_DIR, 'js');
 fs.mkdirSync(jsDest, { recursive: true });
 const jsFiles = fs.readdirSync(JS_DIR).filter((f) => f.endsWith('.js'));
 for (const f of jsFiles) {
   fs.copyFileSync(path.join(JS_DIR, f), path.join(jsDest, f));
 }
-log(`js/: ${jsFiles.length} file`);
+const jsBundleSrc = path.join(DIST_DIR, 'skillpress-ui.js');
+if (!fs.existsSync(jsBundleSrc)) {
+  throw new Error('manca dist/skillpress-ui.js: eseguire prima build-dist-bundles.cjs');
+}
+fs.copyFileSync(jsBundleSrc, path.join(jsDest, 'skillpress-ui.js'));
+log(`js/: ${jsFiles.length} file + skillpress-ui.js (bundle unico)`);
 
 // 5. fonts/ <- fonts/
 const fontsDest = path.join(PKG_DIR, 'fonts');

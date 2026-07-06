@@ -12,6 +12,7 @@
 @import '../primitives/form-layout.css';
 @import '../primitives/accordion.css';
 @import '../primitives/toggle-switch.css';
+@import '../primitives/validation-indicator.css';
 @import '../components/cart-product-card.css';
 @import '../components/checkout-summary.css';
 @import '../components/checkout-mobile-summary.css';

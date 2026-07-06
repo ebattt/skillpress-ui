@@ -135,6 +135,34 @@
     display: none;
 }
 
+/* ================================================================
+   VARIANTI MULTIPAGINA SERVER-SIDE (nessun routing JS)
+   La dashboard production naviga con pagine reali: l'indice e' l'hub,
+   le altre pagine sono le viste. Su desktop non cambia nulla (sidebar
+   sempre visibile); sotto i 1024px l'hub mostra solo il menu e le
+   pagine vista mostrano solo il contenuto, con il link
+   .dashboard-shell__mobile-back per tornare all'indice.
+   ================================================================ */
+/** @public */
+.dashboard-shell--nav-hub {
+    --dashboard-shell-nav-mode: hub;
+}
+
+/** @public */
+.dashboard-shell--nav-page {
+    --dashboard-shell-nav-mode: page;
+}
+
+@media (max-width: 1023px) {
+    .dashboard-shell--nav-hub .dashboard-shell__views {
+        display: none;
+    }
+
+    .dashboard-shell--nav-page .dashboard-shell__mobile-menu {
+        display: none;
+    }
+}
+
 .dashboard-shell__section {
     display: grid;
     gap: var(--spacing-lg, 1.5rem);
@@ -254,6 +282,7 @@
         padding: 0;
         border: 0;
         gap: 0.5rem;
+        text-decoration: none; /* usabile anche come <a> nel flusso multipagina */
         color: var(--color-text-meta, var(--color-text-blue-gray-725));
         background: transparent;
         font-family: inherit;

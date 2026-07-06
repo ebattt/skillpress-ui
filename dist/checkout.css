@@ -1720,6 +1720,14 @@ textarea.sp-form-input {
     color: var(--color-text);
 }
 
+@media (hover: none) and (pointer: coarse) {
+    .sp-form-input,
+    .sp-form-select,
+    .sp-nome-lavoro-input {
+        font-size: 1rem;
+    }
+}
+
 .sp-radio-group {
     display: flex;
     flex-direction: column;
@@ -2156,6 +2164,50 @@ label.sp-radio-option--disabled input[type="radio"] {
 .sp-toggle-switch-field:has(.sp-toggle-switch[aria-disabled="true"]) .sp-toggle-switch__label {
     cursor: not-allowed;
     opacity: 0.7;
+}
+
+.sp-validation-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.125rem;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    color: var(--color-error-light);
+}
+
+.sp-validation-indicator::before {
+    content: "!";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--font-size-sm);
+    height: var(--font-size-sm);
+    flex-shrink: 0;
+    border: 1.5px solid currentColor;
+    border-radius: var(--radius-full);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+}
+
+.sp-validation-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.sp-validation-total__count {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+}
+
+.sp-validation-total__count strong {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
 }
 
 .cart-list > * + * {

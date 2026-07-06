@@ -3132,6 +3132,12 @@ body {
     flex-shrink: 0;
 }
 
+@media (hover: none) and (pointer: coarse) {
+    .promo-input {
+        font-size: 1rem;
+    }
+}
+
 .related-products {
     font-family: var(--font-family);
     background-color: var(--color-bg-white);
@@ -3789,6 +3795,14 @@ textarea.sp-form-input {
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-bold);
     color: var(--color-text);
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .sp-form-input,
+    .sp-form-select,
+    .sp-nome-lavoro-input {
+        font-size: 1rem;
+    }
 }
 
 .sp-radio-group {

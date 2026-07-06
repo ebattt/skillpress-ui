@@ -162,3 +162,12 @@
         align-items: stretch;
     }
 }
+
+/* iOS Safari zooma la pagina al focus dei campi con font sotto 16px: sui
+   dispositivi touch i campi passano a 1rem. Solo touch (hover:none +
+   pointer:coarse): la resa desktop resta invariata. */
+@media (hover: none) and (pointer: coarse) {
+    .billing-form__input {
+        font-size: 1rem;
+    }
+}

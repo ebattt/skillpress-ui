@@ -2,30 +2,30 @@
     padding-top: clamp(1.5rem, 3vw, 2.5rem);
 }
 
+/* Le voci sono SEMPRE tutte visibili: niente scroll laterale, se non ci
+   stanno vanno a capo (flex-wrap). */
 .landing-info-tabs__nav-wrap {
     margin-bottom: clamp(1.5rem, 2.4vw, 2rem);
     border-bottom: 1px solid var(--color-bg-gray-200);
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
 }
 
 .landing-info-tabs__nav {
     display: flex;
-    min-width: max-content;
+    flex-wrap: wrap;
     gap: clamp(0.35rem, 1.1vw, 0.9rem);
 }
 
 .landing-info-tabs__tab {
     position: relative;
     flex: none;
-    min-height: 2.85rem;
+    min-height: 2.6rem;
     padding: 0.4rem 0.35rem 0.8rem;
     border: 0;
     border-radius: 0;
     background: transparent;
     color: var(--color-text);
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: clamp(1rem, 1.12vw, 1.12rem);
+    font-size: clamp(0.9rem, 1vw, 1rem);
     font-weight: 800;
     line-height: 1.35;
     letter-spacing: 0;
@@ -39,7 +39,7 @@
     content: "";
     position: absolute;
     right: 0.25rem;
-    bottom: -1px;
+    bottom: 0;
     left: 0.25rem;
     height: 4px;
     border-radius: var(--radius-full) var(--radius-full) 0 0;
@@ -55,12 +55,43 @@
     outline-offset: -2px;
 }
 
-.landing-info-tabs__tab--active {
+.landing-info-tabs__tab--active,
+.landing-info-tabs__tab--active:hover {
     color: var(--color-primary);
 }
 
 .landing-info-tabs__tab--active::after {
     background: var(--color-primary);
+}
+
+/* Su mobile le voci diventano pillole che vanno a capo: si vede tutto
+   senza scrollare e quella selezionata e' evidenziata dal fondo. */
+@media (max-width: 639px) {
+    .landing-info-tabs__nav-wrap {
+        border-bottom: 0;
+    }
+
+    .landing-info-tabs__nav {
+        gap: 0.5rem;
+    }
+
+    .landing-info-tabs__tab {
+        min-height: 0;
+        padding: 0.45rem 0.85rem;
+        background: var(--color-bg-gray-75);
+        border-radius: var(--radius-full);
+        font-size: 0.8rem;
+        line-height: 1.2;
+    }
+
+    .landing-info-tabs__tab::after {
+        content: none;
+    }
+
+    .landing-info-tabs__tab--active {
+        color: var(--color-primary);
+        background: var(--color-primary-alpha-12);
+    }
 }
 
 .landing-info-tabs__panel[hidden] {
@@ -72,11 +103,6 @@
 }
 
 @media (min-width: 640px) {
-    .landing-info-tabs__nav {
-        justify-content: flex-start;
-        min-width: 0;
-    }
-
     .landing-info-tabs__tab {
         padding-right: clamp(0.75rem, 1.25vw, 1.25rem);
         padding-left: clamp(0.75rem, 1.25vw, 1.25rem);
