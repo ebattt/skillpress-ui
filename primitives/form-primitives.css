@@ -67,14 +67,45 @@
     border-color: var(--color-border-focus);
 }
 
+/* Forma storica (0,1,0): superata in cascata dagli shorthand `border:` dei
+   componenti importati dopo nelle bundle. Resta per compatibilità: le regole
+   operative sono le qualificate qui sotto. */
 .sp-form-input--error {
     border-color: var(--color-error-light);
 }
 
+/* Qualificati con l'elemento (0,1,1): vincono sugli shorthand `border:`
+   dei componenti (0,1,0) a prescindere dall'ordine nel bundle. La variante
+   :focus (0,2,1) mantiene il rosso anche sul campo attivo, sopra le regole
+   :focus (0,2,0) delle famiglie. */
+input.sp-form-input--error,
+textarea.sp-form-input--error,
+select.sp-form-input--error {
+    border-color: var(--color-error-light);
+}
+
+input.sp-form-input--error:focus,
+textarea.sp-form-input--error:focus,
+select.sp-form-input--error:focus {
+    border-color: var(--color-error-light);
+}
+
+/* Validazione nativa: bordo rosso automatico sui campi required non validi
+   dopo interazione/submit. Regola separata dalle classi (i browser senza
+   :user-invalid scartano l'intera selector list). Ogni famiglia di campi
+   replica la propria, sempre DOPO il suo :focus. */
+.sp-form-input:user-invalid {
+    border-color: var(--color-error-light);
+}
+
+/* Stato disabled canonico dei campi: stesse quattro dichiarazioni replicate
+   in ogni famiglia di campi (quote, billing, filtri, promo, settings, auth).
+   `opacity: 1` annulla lo sbiadimento UA di Safari/iOS. */
 .sp-form-input:disabled {
     background-color: var(--color-bg-gray-100);
     color: var(--color-text-muted);
     cursor: not-allowed;
+    opacity: 1;
 }
 
 textarea.sp-form-input {
@@ -104,6 +135,21 @@ textarea.sp-form-input {
 }
 
 .sp-nome-lavoro-input--error {
+    border-color: var(--color-error-light);
+}
+
+/* Stesso trattamento di sp-form-input--error: qualificata (0,1,1) contro
+   gli shorthand dei componenti, e variante :focus (0,2,1) sopra il
+   :focus (0,2,0) qui sopra, che altrimenti rimetterebbe il bordo teal. */
+input.sp-nome-lavoro-input--error {
+    border-color: var(--color-error-light);
+}
+
+input.sp-nome-lavoro-input--error:focus {
+    border-color: var(--color-error-light);
+}
+
+.sp-nome-lavoro-input:user-invalid {
     border-color: var(--color-error-light);
 }
 
@@ -140,9 +186,16 @@ textarea.sp-form-input {
 }
 
 .sp-form-select:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
     background-color: var(--color-bg-gray-100);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+/* Dopo il :focus del select, come da invariante (pari specificità: vince
+   l'ordine, il rosso deve restare anche sul campo attivo). */
+.sp-form-select:user-invalid {
+    border-color: var(--color-error-light);
 }
 
 /* ================================================================

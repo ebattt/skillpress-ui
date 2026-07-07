@@ -779,6 +779,10 @@ body {
     text-align: center;
 }
 
+.th-text-center {
+    text-align: center;
+}
+
 .text-left {
     text-align: left;
 }
@@ -1381,6 +1385,15 @@ body {
     background: var(--selection-highlight-bg);
     border-color: var(--selection-highlight-border);
     box-shadow: 0 0 0 1px var(--selection-highlight-border);
+}
+
+.sp-card--interactive.sp-card--selected:hover {
+    border-color: var(--selection-highlight-border);
+    box-shadow: 0 0 0 1px var(--selection-highlight-border);
+}
+
+.sp-card.text-gray-500 {
+    color: var(--color-text-light);
 }
 
 .sp-card--control-row .sp-card__title {
@@ -2037,10 +2050,27 @@ body {
     border-color: var(--color-error-light);
 }
 
+input.sp-form-input--error,
+textarea.sp-form-input--error,
+select.sp-form-input--error {
+    border-color: var(--color-error-light);
+}
+
+input.sp-form-input--error:focus,
+textarea.sp-form-input--error:focus,
+select.sp-form-input--error:focus {
+    border-color: var(--color-error-light);
+}
+
+.sp-form-input:user-invalid {
+    border-color: var(--color-error-light);
+}
+
 .sp-form-input:disabled {
     background-color: var(--color-bg-gray-100);
     color: var(--color-text-muted);
     cursor: not-allowed;
+    opacity: 1;
 }
 
 textarea.sp-form-input {
@@ -2069,6 +2099,18 @@ textarea.sp-form-input {
 }
 
 .sp-nome-lavoro-input--error {
+    border-color: var(--color-error-light);
+}
+
+input.sp-nome-lavoro-input--error {
+    border-color: var(--color-error-light);
+}
+
+input.sp-nome-lavoro-input--error:focus {
+    border-color: var(--color-error-light);
+}
+
+.sp-nome-lavoro-input:user-invalid {
     border-color: var(--color-error-light);
 }
 
@@ -2101,9 +2143,14 @@ textarea.sp-form-input {
 }
 
 .sp-form-select:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
     background-color: var(--color-bg-gray-100);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.sp-form-select:user-invalid {
+    border-color: var(--color-error-light);
 }
 
 .sp-error-msg {
@@ -2664,6 +2711,20 @@ label.sp-radio-option--disabled input[type="radio"] {
     .sp-confirm-dialog__actions .sp-button {
         width: 100%;
     }
+}
+
+body:has(.sp-confirm-dialog:not([hidden])) {
+    overflow: hidden;
+    touch-action: none;
+}
+
+html:has(.sp-confirm-dialog:not([hidden])) {
+    overscroll-behavior: none;
+}
+
+body:has(.sp-confirm-dialog:not([hidden])) .sp-confirm-dialog__panel {
+    touch-action: pan-y;
+    overscroll-behavior: contain;
 }
 
 .sp-option-buttons {
@@ -3771,6 +3832,17 @@ label.sp-radio-option--disabled input[type="radio"] {
     outline: none;
     box-shadow: 0 0 0 2px var(--color-primary);
     border-color: transparent;
+}
+
+.promo-input:disabled {
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.promo-input:user-invalid {
+    border-color: var(--color-error-light);
 }
 
 .sidebar-totals__section {

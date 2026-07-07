@@ -176,6 +176,17 @@
     border-color: transparent;
 }
 
+.promo-input:disabled {
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.promo-input:user-invalid {
+    border-color: var(--color-error-light);
+}
+
 /* ================================================================
    RIEPILOGO TOGGLE + CONTENT
    ================================================================ */

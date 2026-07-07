@@ -62,7 +62,7 @@
             })),
             autoplay: root.getAttribute('data-catalog-stage-autoplay') !== 'false',
             dots: dots,
-            interval: parseInt(root.getAttribute('data-catalog-stage-interval') || '4500', 10),
+            interval: parseInt(root.getAttribute('data-catalog-stage-interval'), 10) || 4500,
             root: root,
             slides: slides,
             timer: null

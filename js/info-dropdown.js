@@ -68,7 +68,9 @@
         if (dropdown) return dropdown;
         var root = trigger.getRootNode && trigger.getRootNode();
         if (root && root.querySelector) {
-            return root.querySelector('#' + id);
+            // Selettore ad attributo: '#' + id lancerebbe SyntaxError con id
+            // che iniziano per cifra (plausibili se generati dal CMS).
+            return root.querySelector('[id="' + id.replace(/"/g, '\\"') + '"]');
         }
         return null;
     }

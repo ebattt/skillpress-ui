@@ -10,7 +10,6 @@
 
     var ns = window.SkillpressUI = window.SkillpressUI || {};
     var helpers = ns.helpers || {};
-    var initializedOpeners = false;
     var BODY_LOCK_COUNT = 0;
 
     function dispatch(target, name, detail) {
@@ -126,8 +125,10 @@
         roots = roots.concat(Array.prototype.slice.call(context.querySelectorAll('[data-confirm-dialog]')));
         roots.forEach(initRoot);
 
-        if (!initializedOpeners) {
-            initializedOpeners = true;
+        // Flag sul namespace, non nella IIFE: se il bundle viene incluso due
+        // volte (include duplicato nei template), il listener resta unico.
+        if (!ns.__confirmDialogOpenersInitialized) {
+            ns.__confirmDialogOpenersInitialized = true;
             document.addEventListener('click', function (event) {
                 var opener = event.target.closest('[data-confirm-dialog-open]');
                 if (!opener) return;

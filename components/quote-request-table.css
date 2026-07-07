@@ -177,6 +177,17 @@
     box-shadow: 0 0 0 3px var(--color-primary-alpha-12);
 }
 
+.quote-input:disabled {
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.quote-input:user-invalid {
+    border-color: var(--color-error-light);
+}
+
 .quote-input--textarea {
     min-height: 2.5rem;
     resize: vertical;

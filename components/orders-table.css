@@ -33,6 +33,11 @@
     white-space: nowrap;
 }
 
+/* La utility deve vincere sul text-align: left di .orders-table th. */
+.orders-table th.th-text-center {
+    text-align: center;
+}
+
 .orders-table td {
     padding: 0.5625rem 0.6875rem;
     border-bottom: 1px solid var(--color-bg-gray-100);
@@ -371,6 +376,17 @@
     color: var(--color-dark);
 }
 
+/* Come .text-dark-blue: dentro la tabella le utility colore vanno scopate,
+   altrimenti .orders-table td (0,1,1) le batte. Caso reale: data di
+   scadenza preventivo evidenziata in rosso. */
+.orders-table .text-red-600 {
+    color: var(--color-error);
+}
+
+/* Nascoste SEMPRE, a ogni larghezza: nel layout compatto + riga espandibile
+   questi dati non vivono come colonne ma nel pannello di dettaglio della riga
+   (.tr-mobile-details, aperto da expandable-table). Il nome "mobile-hide" è
+   un retaggio: rename/alias (th-detail-only) pianificato per la 0.6. */
 .orders-table__cell--mobile-hide,
 .th-mobile-hide {
     display: none !important;

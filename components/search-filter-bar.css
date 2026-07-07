@@ -75,6 +75,21 @@
     box-shadow: 0 0 0 3px var(--color-primary-alpha-12);
 }
 
+/* background-color (non shorthand): il select ha la freccia SVG in
+   background-image. */
+.orders-filter-input:disabled,
+.orders-filter-select:disabled {
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.orders-filter-input:user-invalid,
+.orders-filter-select:user-invalid {
+    border-color: var(--color-error-light);
+}
+
 .orders-filter-btn {
     display: inline-flex;
     align-items: center;

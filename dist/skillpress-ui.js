@@ -1,4 +1,4 @@
-/*! @ebattt/skillpress-ui 0.5.3 -- bundle JS unico (23 moduli). Auto-init via data-attribute; per markup iniettato dopo il load usare window.SkillpressUI.init(scope). */
+/*! @ebattt/skillpress-ui 0.5.4 -- bundle JS unico (23 moduli). Auto-init via data-attribute; per markup iniettato dopo il load usare window.SkillpressUI.init(scope). */
 
 /* === js/_helpers.js === */
 /**
@@ -820,7 +820,7 @@
             })),
             autoplay: root.getAttribute('data-catalog-stage-autoplay') !== 'false',
             dots: dots,
-            interval: parseInt(root.getAttribute('data-catalog-stage-interval') || '4500', 10),
+            interval: parseInt(root.getAttribute('data-catalog-stage-interval'), 10) || 4500,
             root: root,
             slides: slides,
             timer: null
@@ -1020,7 +1020,6 @@
 
     var ns = window.SkillpressUI = window.SkillpressUI || {};
     var helpers = ns.helpers || {};
-    var initializedOpeners = false;
     var BODY_LOCK_COUNT = 0;
 
     function dispatch(target, name, detail) {
@@ -1136,8 +1135,10 @@
         roots = roots.concat(Array.prototype.slice.call(context.querySelectorAll('[data-confirm-dialog]')));
         roots.forEach(initRoot);
 
-        if (!initializedOpeners) {
-            initializedOpeners = true;
+        // Flag sul namespace, non nella IIFE: se il bundle viene incluso due
+        // volte (include duplicato nei template), il listener resta unico.
+        if (!ns.__confirmDialogOpenersInitialized) {
+            ns.__confirmDialogOpenersInitialized = true;
             document.addEventListener('click', function (event) {
                 var opener = event.target.closest('[data-confirm-dialog-open]');
                 if (!opener) return;
@@ -1756,6 +1757,7 @@
     /** @public */
     function init(root) {
         var scope = root || document;
+        if (scope.matches && scope.matches('[data-expandable-table]')) initTable(scope);
         scope.querySelectorAll('[data-expandable-table]').forEach(initTable);
     }
 
@@ -1893,7 +1895,6 @@
 
     var namespace = window.SkillpressUI = window.SkillpressUI || {};
     var helpers = namespace.helpers || {};
-    var initializedOpeners = false;
 
     function escapeHtml(value) {
         if (typeof helpers.escapeHtml === 'function') return helpers.escapeHtml(value);
@@ -2105,8 +2106,10 @@
         roots = roots.concat(Array.prototype.slice.call(context.querySelectorAll('[data-file-upload-box]')));
         roots.forEach(initRoot);
 
-        if (!initializedOpeners) {
-            initializedOpeners = true;
+        // Flag sul namespace, non nella IIFE: se il bundle viene incluso due
+        // volte (include duplicato nei template), il listener resta unico.
+        if (!namespace.__fileUploadBoxOpenersInitialized) {
+            namespace.__fileUploadBoxOpenersInitialized = true;
             document.addEventListener('click', function (event) {
                 var opener = event.target.closest('[data-file-upload-box-open]');
                 if (!opener) return;
@@ -2209,7 +2212,9 @@
         if (dropdown) return dropdown;
         var root = trigger.getRootNode && trigger.getRootNode();
         if (root && root.querySelector) {
-            return root.querySelector('#' + id);
+            // Selettore ad attributo: '#' + id lancerebbe SyntaxError con id
+            // che iniziano per cifra (plausibili se generati dal CMS).
+            return root.querySelector('[id="' + id.replace(/"/g, '\\"') + '"]');
         }
         return null;
     }
@@ -3292,9 +3297,10 @@
      */
     ns.init = global.SkillpressUI.init = function (scope) {
         var root = scope || document;
-        if (root.__skillpressInitialized) return;
-        root.__skillpressInitialized = true;
-
+        // Nessun flag sull'aggregator: l'idempotenza e' garantita dai flag
+        // per-elemento dei singoli componenti. Un flag qui renderebbe no-op
+        // le chiamate ripetute sullo stesso scope (es. init(wrapper) dopo
+        // ogni sostituzione di innerHTML), che sono il caso d'uso documentato.
         for (var i = 0; i < COMPONENTS.length; i++) {
             var name = COMPONENTS[i];
             var comp = ns[name];

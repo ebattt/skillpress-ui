@@ -240,6 +240,12 @@
     text-align: center;
 }
 
+/* Variante per <th>: usata dalle tabelle contract (preventivi, fatturazione)
+   per centrare l'intestazione di colonna. */
+.th-text-center {
+    text-align: center;
+}
+
 .text-left {
     text-align: left;
 }

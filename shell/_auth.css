@@ -249,6 +249,36 @@
     border-color: var(--color-primary);
     box-shadow: 0 0 0 3px rgba(240, 138, 0, 0.1);
 }
+.auth-form__input:disabled,
+.custom-input:disabled {
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 1;
+}
+/* Stato errore cross-component: il bundle auth non importa form-primitives,
+   quindi la resa (bordo rosso, anche col focus) va replicata qui. Il glow
+   al focus segue il linguaggio auth esistente, virato in rosso. */
+.auth-form__input.sp-form-input--error,
+.custom-input.sp-form-input--error {
+    border-color: var(--color-error-light);
+}
+.auth-form__input.sp-form-input--error:focus,
+.custom-input.sp-form-input--error:focus {
+    border-color: var(--color-error-light);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+/* Validazione nativa (required non compilato dopo interazione/submit):
+   stessa resa dello stato errore manuale. Regole separate dalle classi. */
+.auth-form__input:user-invalid,
+.custom-input:user-invalid {
+    border-color: var(--color-error-light);
+}
+.auth-form__input:user-invalid:focus,
+.custom-input:user-invalid:focus {
+    border-color: var(--color-error-light);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
 
 /* Input con icona a sinistra (accedi.html) */
 .auth-form__input--with-icon {

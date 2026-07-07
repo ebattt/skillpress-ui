@@ -168,3 +168,22 @@
         width: 100%;
     }
 }
+
+/* --- Lock della pagina a dialogo aperto --------------------------------
+   Il JS imposta overflow:hidden sul body, ma su iOS Safari questo non
+   blocca lo scroll touch: qui la garanzia CSS, stesso pattern del menu
+   mobile della shell. Mai overflow:hidden su html (romperebbe gli sticky). */
+body:has(.sp-confirm-dialog:not([hidden])) {
+    overflow: hidden;
+    touch-action: none;
+}
+
+html:has(.sp-confirm-dialog:not([hidden])) {
+    overscroll-behavior: none;
+}
+
+/* Dentro il pannello il pan verticale resta permesso (contenuti lunghi). */
+body:has(.sp-confirm-dialog:not([hidden])) .sp-confirm-dialog__panel {
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+}

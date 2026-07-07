@@ -11,6 +11,7 @@
 @import '../primitives/form-controls.css';
 @import '../primitives/form-layout.css';
 @import '../primitives/validation-indicator.css';
+@import '../primitives/sp-confirm-dialog.css';
 @import '../primitives/accordion.css';
 @import '../primitives/dashboard-nav-icons.css';
 @import '../components/dashboard-shell.css';

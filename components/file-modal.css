@@ -395,3 +395,22 @@
         font-size: 0.6875rem;
     }
 }
+
+/* --- Lock della pagina a modale upload aperto --------------------------
+   Il modale non bloccava affatto lo scroll della pagina sotto (su nessun
+   browser). Stesso pattern del menu mobile della shell e del confirm
+   dialog: mai overflow:hidden su html (romperebbe gli sticky). */
+body:has(.file-modal__overlay:not([hidden])) {
+    overflow: hidden;
+    touch-action: none;
+}
+
+html:has(.file-modal__overlay:not([hidden])) {
+    overscroll-behavior: none;
+}
+
+/* Dentro il contenuto del modale il pan verticale resta permesso. */
+body:has(.file-modal__overlay:not([hidden])) .file-modal__content {
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+}

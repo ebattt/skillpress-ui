@@ -1,5 +1,5 @@
 {
-  "version": "0.5.3",
+  "version": "0.5.4",
   "css": {
     "primitives": [
       ".sp-accordion",
@@ -341,6 +341,7 @@
         "table-wrapper--scroll",
         "th-mobile-chevron",
         "th-mobile-hide",
+        "th-text-center",
         "w3"
       ],
       "blog-feed-header": [
@@ -1067,12 +1068,14 @@
         "table-wrapper",
         "table-wrapper--scroll",
         "text-dark-blue",
+        "text-red-600",
         "th-id",
         "th-mobile-chevron",
         "th-mobile-hide",
         "th-payment",
         "th-simplified-show",
         "th-status",
+        "th-text-center",
         "th-text-right",
         "th-title",
         "th-total",
@@ -1427,6 +1430,7 @@
         "sp-badge",
         "sp-button",
         "sp-card",
+        "sp-confirm-dialog",
         "sp-custom-dims",
         "sp-dashboard-nav-icon",
         "sp-error-inline",

@@ -111,6 +111,20 @@
     box-shadow: 0 0 0 1px var(--selection-highlight-border);
 }
 
+/* La card selezionata mantiene bordo e anello anche al hover: senza
+   questa regola .sp-card--interactive:hover (0,2,0) li riscriverebbe. */
+.sp-card--interactive.sp-card--selected:hover {
+    border-color: var(--selection-highlight-border);
+    box-shadow: 0 0 0 1px var(--selection-highlight-border);
+}
+
+/* Le utility colore applicate sulla card stessa devono vincere sul
+   color: dichiarato da .sp-card (pari specificità, ordine successivo nel
+   bundle). Caso reale: etichette dei box bonifico in ordine-dettaglio. */
+.sp-card.text-gray-500 {
+    color: var(--color-text-light);
+}
+
 .sp-card--control-row .sp-card__title {
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);

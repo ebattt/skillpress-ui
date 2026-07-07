@@ -2,7 +2,87 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.5.3)
+## Corrente (0.5.4)
+
+- **Versione: 0.5.4**
+- **Contract HTML cambiato: no** (solo CSS; il markup resta invariato,
+  nessuna azione richiesta lato backend oltre a ricaricare i bundle).
+
+- Fix: `sp-form-input--error` ora vince sempre sui bordi dei componenti.
+  La regola storica (0,1,0) veniva superata dagli shorthand `border:` delle
+  famiglie campo importate dopo nei bundle (`.quote-input`,
+  `.billing-form__input`, ...). Aggiunte in `form-primitives.css` le regole
+  qualificate `input/textarea/select.sp-form-input--error` (0,1,1) e la
+  variante `:focus` (0,2,1): il bordo rosso resta anche sul campo attivo,
+  sopra i `:focus` (0,2,0) dei componenti. Nessun glow/fondo aggiunto: il
+  contract del modifier resta "colora il bordo". Il bundle auth non importa
+  form-primitives, quindi la stessa resa e' replicata in `shell/_auth.css`
+  scoped ai campi auth (li' il focus mantiene il glow, virato in rosso,
+  coerente col linguaggio focus di quelle pagine).
+- Nuovo: bordo rosso automatico sui campi required non validi dopo
+  interazione/submit, via `:user-invalid` su tutte le famiglie di campi
+  (stessa resa dello stato errore manuale, zero JS, validazione nativa del
+  browser). Regole sempre separate dalle classi errore (i browser senza
+  supporto scartano l'intera selector list) e posizionate dopo i `:focus`
+  di famiglia. `sp-form-input--error` resta per gli errori applicativi /
+  server-side. Form con `novalidate` esclusi per natura.
+- Fix/visual change: stato `:disabled` canonico su tutte le famiglie di
+  campi: `background-color: --color-bg-gray-100`, `color: --color-text-muted`,
+  `cursor: not-allowed`, `opacity: 1` (annulla lo sbiadimento UA di
+  Safari/iOS). Aggiunto dove mancava (`quote-input`, `billing-form__input`
+  e select, `orders-filter-input/-select`, `promo-input`,
+  `auth-form__input`/`custom-input`) e allineate le due rese divergenti:
+  `dashboard-settings-form__input` (era gray-50 con testo pieno) e
+  `sp-form-select` (era opacity 0.5). Sui select si usa `background-color`,
+  la freccia SVG in `background-image` resta visibile. `readonly` escluso
+  di proposito.
+- Nuovo (bundle): `dashboard.css` ora include `sp-confirm-dialog.css`. Il
+  dialogo di conferma generico (gia' incluso nel bundle JS unico:
+  `data-confirm-dialog`, eventi `sp:confirm-dialog:confirm/cancel`) e' cosi'
+  utilizzabile su tutte le pagine private: conferme distruttive e notifiche
+  di azione conclusa (markup con solo bottone `confirm`). Variante
+  "alert OK-only" dedicata pianificata per la 0.6.
+- Docs: commento chiarificatore su `.th-mobile-hide` in `orders-table.css`:
+  colonne nascoste by design a ogni larghezza, i dati vivono nel pannello
+  della riga espandibile; alias `th-detail-only` pianificato per la 0.6.
+
+Fix da audit pre-produzione (stessa release):
+
+- Fix JS: `SkillpressUI.init()` non e' piu' no-op alla seconda chiamata
+  sullo stesso scope — rimosso il flag sull'aggregator (index.js);
+  l'idempotenza resta garantita dai flag per-elemento dei componenti. Era
+  il caso d'uso documentato "chiama init dopo ogni iniezione di markup".
+- Fix: lock scroll a overlay aperto anche su iOS per `sp-confirm-dialog`
+  (il solo overflow sul body via JS non blocca il touch scroll) e per
+  `file-modal` (non lockava affatto, su nessun browser): garanzia CSS con
+  `body:has(...)` + `touch-action`, pattern del menu mobile shell.
+- Fix JS: `ExpandableTable.init(nodo)` ora inizializza anche il nodo
+  stesso se e' la tabella (prima solo i discendenti); i listener
+  document-level di confirm-dialog e file-upload-box restano unici anche
+  con bundle incluso due volte (flag sul namespace); `info-dropdown` non
+  lancia piu' SyntaxError con `aria-controls` che iniziano per cifra;
+  `catalog-stage` con `data-catalog-stage-interval` non numerico usa il
+  default 4500ms invece di impazzire (setInterval NaN).
+- Fix contract: badge "File non conforme" nelle pagine ordine-dettaglio
+  usava il modifier legacy `dash-action-badge--error` (inesistente nel
+  CSS): corretto in `dashboard-action-badge--error` nelle static pages e
+  nei renderer demo.
+- Nuovo (utility): `.th-text-center` (usata dalle tabelle contract di
+  preventivi e fatturazione, finora senza definizione CSS: intestazioni
+  non centrate).
+- Fix cascata (stessa famiglia del bug sp-form-input--error): 
+  `sp-nome-lavoro-input--error` ora ha la forma qualificata + variante
+  `:focus` (prima il focus rimetteva il bordo teal) e `:user-invalid`;
+  `.sp-form-select:user-invalid` spostata dopo il suo `:focus` (pari
+  specificità, vinceva il teal sul campo attivo); `.sp-card.text-gray-500`
+  (le etichette dei box bonifico in ordine-dettaglio rendevano scure:
+  .sp-card riscriveva il color della utility); `.orders-table
+  .text-red-600` scopata come gia' .text-dark-blue (la scadenza preventivo
+  in rosso non rendeva dentro le tabelle); la card selezionata
+  (`--selected`) non perde piu' bordo e anello al hover quando e' anche
+  `--interactive`.
+
+## 0.5.3
 
 - **Versione: 0.5.3**
 - **Contract HTML cambiato: sì, solo dashboard** (nuovi modifier opzionali

@@ -49,9 +49,10 @@
      */
     ns.init = global.SkillpressUI.init = function (scope) {
         var root = scope || document;
-        if (root.__skillpressInitialized) return;
-        root.__skillpressInitialized = true;
-
+        // Nessun flag sull'aggregator: l'idempotenza e' garantita dai flag
+        // per-elemento dei singoli componenti. Un flag qui renderebbe no-op
+        // le chiamate ripetute sullo stesso scope (es. init(wrapper) dopo
+        // ogni sostituzione di innerHTML), che sono il caso d'uso documentato.
         for (var i = 0; i < COMPONENTS.length; i++) {
             var name = COMPONENTS[i];
             var comp = ns[name];

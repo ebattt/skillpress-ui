@@ -56,6 +56,19 @@
     font-weight: var(--font-weight-normal);
 }
 
+/* background-color (non shorthand): i select condividono la classe e hanno
+   la freccia SVG in background-image. */
+.billing-form__input:disabled {
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.billing-form__input:user-invalid {
+    border-color: var(--color-error-light);
+}
+
 .billing-form__input--flex {
     flex: 1 1 auto;
     min-width: 0;

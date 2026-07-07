@@ -117,6 +117,7 @@
     /** @public */
     function init(root) {
         var scope = root || document;
+        if (scope.matches && scope.matches('[data-expandable-table]')) initTable(scope);
         scope.querySelectorAll('[data-expandable-table]').forEach(initTable);
     }
 

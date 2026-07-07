@@ -14,7 +14,6 @@
 
     var namespace = window.SkillpressUI = window.SkillpressUI || {};
     var helpers = namespace.helpers || {};
-    var initializedOpeners = false;
 
     function escapeHtml(value) {
         if (typeof helpers.escapeHtml === 'function') return helpers.escapeHtml(value);
@@ -226,8 +225,10 @@
         roots = roots.concat(Array.prototype.slice.call(context.querySelectorAll('[data-file-upload-box]')));
         roots.forEach(initRoot);
 
-        if (!initializedOpeners) {
-            initializedOpeners = true;
+        // Flag sul namespace, non nella IIFE: se il bundle viene incluso due
+        // volte (include duplicato nei template), il listener resta unico.
+        if (!namespace.__fileUploadBoxOpenersInitialized) {
+            namespace.__fileUploadBoxOpenersInitialized = true;
             document.addEventListener('click', function (event) {
                 var opener = event.target.closest('[data-file-upload-box-open]');
                 if (!opener) return;
