@@ -67,3 +67,32 @@
         padding: 0.5rem 0.875rem;
     }
 }
+
+/* ============================================================
+   Contratto nativo (consigliato): <input type="radio" class="sr-only">
+   subito prima di <label class="sp-option-buttons__btn">. La selezione la
+   fa il browser, lo stato si colora via :checked. Nessun JS. I valori
+   partono col POST del form. Convive con i modificatori --default/--selected
+   (markup a bottoni) qui sopra.
+   ============================================================ */
+.sp-option-buttons input:not(:checked) + .sp-option-buttons__btn {
+    background-color: var(--color-bg-white);
+    color: var(--color-text);
+    border-color: transparent;
+}
+
+.sp-option-buttons input:checked + .sp-option-buttons__btn {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+    border-color: transparent;
+}
+
+.sp-option-buttons input:focus-visible + .sp-option-buttons__btn {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.sp-option-buttons input:disabled + .sp-option-buttons__btn {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

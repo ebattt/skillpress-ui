@@ -2,7 +2,34 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.5.4)
+## Corrente (0.5.5)
+
+- **Versione: 0.5.5**
+- **Contract HTML: aggiunte, retrocompatibili** (nuovo contratto nativo per i
+  controlli del configuratore; il markup a bottoni+modificatori esistente
+  continua a funzionare).
+
+- Nuovo componente: **image-gallery** (`js/image-gallery.js`, nel bundle
+  unico). Auto-init su `.image-gallery__container[data-image-gallery-images]`:
+  frecce prev/next che ciclano l'immagine principale, aggiornano l'aspect
+  ratio dalla slide, nascondono i controlli con ≤1 immagine. Emette
+  `sp:image-gallery:change` `{ index, image }`. Colma il buco per cui la
+  galleria del configuratore non aveva JS nel bundle.
+- Nuovo: **controlli di scelta su input nativi**. option-buttons,
+  orientation-toggle, mode-switcher (primitives), format-card,
+  media-choice-card (components) ora hanno il contratto
+  `<input type="radio" class="sr-only"> + <label class="…__btn/…-card">`:
+  lo stato si colora via `input:checked + label` (più `:focus-visible` e
+  `:disabled`), **senza JS di libreria**. La selezione la fa il browser, i
+  valori partono col POST. Aggiunte additive: i modificatori legacy
+  `--selected`/`--active` restano validi. Utility `.sr-only` aggiunta.
+- Rimosso: `js/option-buttons.js` (i controlli di scelta non hanno più JS di
+  libreria; era un modulo mai entrato in produzione).
+- Doc: nuova `docs/backend/07-configuratore.md` (cosa fa la libreria vs il
+  backend sul configuratore); corretta la nota fuorviante nella static
+  reference ("moduli product-page" non esistono: un solo bundle).
+
+## 0.5.4
 
 - **Versione: 0.5.4**
 - **Contract HTML cambiato: no** (solo CSS; il markup resta invariato,

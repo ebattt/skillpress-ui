@@ -40,3 +40,23 @@
 .sp-orientation-toggle__btn svg {
     stroke: currentColor;
 }
+
+/* Contratto nativo (consigliato): <input type="radio" class="sr-only"> subito
+   prima di <label class="sp-orientation-toggle__btn">. Stato via :checked,
+   nessun JS. Convive col modificatore --active (markup a bottoni) qui sopra. */
+.sp-orientation-toggle input:checked + .sp-orientation-toggle__btn {
+    background-color: var(--color-bg-white);
+    box-shadow: var(--shadow-sm);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+}
+
+.sp-orientation-toggle input:focus-visible + .sp-orientation-toggle__btn {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.sp-orientation-toggle input:disabled + .sp-orientation-toggle__btn {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

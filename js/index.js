@@ -33,6 +33,7 @@
         'ExpandableTable',
         'FeedatyWidget',
         'FileUploadBox',
+        'ImageGallery',
         'InfoDropdown',
         'LandingInfoTabs',
         'OrderProductDropdown',

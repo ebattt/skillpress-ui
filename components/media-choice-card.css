@@ -121,3 +121,35 @@
         grid-template-columns: repeat(6, minmax(0, 1fr));
     }
 }
+
+/* Contratto nativo (consigliato): <input type="radio" class="sr-only"> subito
+   prima di <label class="media-choice-card">. Stato via :checked, nessun JS.
+   Convive coi modificatori --selected/--disabled (markup a bottoni) qui sopra. */
+.media-choice-cards input:checked + .media-choice-card {
+    border-color: var(--color-primary);
+    background: var(--selection-highlight-bg);
+}
+
+.media-choice-cards input:checked + .media-choice-card .media-choice-card__image-wrap,
+.media-choice-cards input:checked + .media-choice-card .media-choice-card__preview {
+    border-color: var(--color-primary);
+}
+
+.media-choice-cards input:checked + .media-choice-card .media-choice-card__preview {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+}
+
+.media-choice-cards input:checked + .media-choice-card .media-choice-card__label {
+    color: var(--color-text);
+}
+
+.media-choice-cards input:focus-visible + .media-choice-card {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.media-choice-cards input:disabled + .media-choice-card {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

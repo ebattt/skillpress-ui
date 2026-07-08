@@ -165,3 +165,38 @@
     color: var(--color-text-light);
     margin-top: 0.125rem;
 }
+
+/* Contratto nativo (consigliato): <input type="radio" class="sr-only"> subito
+   prima di <label class="format-card">. Stato via :checked, nessun JS.
+   Convive col modificatore --selected (markup a bottoni) qui sopra. */
+.format-cards input:checked + .format-card {
+    background-color: var(--selection-highlight-bg);
+    border-color: var(--color-primary);
+}
+
+.format-cards input:checked + .format-card .format-card__preview-box {
+    background-color: var(--color-primary);
+}
+
+.format-cards input:checked + .format-card .format-card__preview-inner {
+    background-color: var(--color-primary);
+}
+
+.format-cards input:checked + .format-card .format-card__preview-custom {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-alpha-20);
+}
+
+.format-cards input:checked + .format-card .format-card__name {
+    color: var(--color-primary);
+}
+
+.format-cards input:focus-visible + .format-card {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.format-cards input:disabled + .format-card {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

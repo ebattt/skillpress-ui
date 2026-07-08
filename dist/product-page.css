@@ -1070,6 +1070,18 @@ body {
     }
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .sp-button {
     display: inline-flex;
     align-items: center;
@@ -2547,6 +2559,26 @@ label.sp-radio-option--disabled input[type="radio"] {
     flex-shrink: 0;
 }
 
+.sp-mode-switcher input:not(:checked) + .sp-mode-switcher__btn {
+    background-color: var(--color-bg-gray-75);
+    color: var(--color-text-strong);
+}
+
+.sp-mode-switcher input:checked + .sp-mode-switcher__btn {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+}
+
+.sp-mode-switcher input:focus-visible + .sp-mode-switcher__btn {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.sp-mode-switcher input:disabled + .sp-mode-switcher__btn {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .sp-confirm-dialog {
     position: fixed;
     inset: 0;
@@ -2794,6 +2826,28 @@ body:has(.sp-confirm-dialog:not([hidden])) .sp-confirm-dialog__panel {
     }
 }
 
+.sp-option-buttons input:not(:checked) + .sp-option-buttons__btn {
+    background-color: var(--color-bg-white);
+    color: var(--color-text);
+    border-color: transparent;
+}
+
+.sp-option-buttons input:checked + .sp-option-buttons__btn {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+    border-color: transparent;
+}
+
+.sp-option-buttons input:focus-visible + .sp-option-buttons__btn {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.sp-option-buttons input:disabled + .sp-option-buttons__btn {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .sp-orientation-toggle {
     display: flex;
     align-items: center;
@@ -2833,6 +2887,23 @@ body:has(.sp-confirm-dialog:not([hidden])) .sp-confirm-dialog__panel {
 
 .sp-orientation-toggle__btn svg {
     stroke: currentColor;
+}
+
+.sp-orientation-toggle input:checked + .sp-orientation-toggle__btn {
+    background-color: var(--color-bg-white);
+    box-shadow: var(--shadow-sm);
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+}
+
+.sp-orientation-toggle input:focus-visible + .sp-orientation-toggle__btn {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.sp-orientation-toggle input:disabled + .sp-orientation-toggle__btn {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .feature-grid {
@@ -3353,6 +3424,38 @@ body:has(.sp-confirm-dialog:not([hidden])) .sp-confirm-dialog__panel {
     font-size: var(--font-size-xs);
     color: var(--color-text-light);
     margin-top: 0.125rem;
+}
+
+.format-cards input:checked + .format-card {
+    background-color: var(--selection-highlight-bg);
+    border-color: var(--color-primary);
+}
+
+.format-cards input:checked + .format-card .format-card__preview-box {
+    background-color: var(--color-primary);
+}
+
+.format-cards input:checked + .format-card .format-card__preview-inner {
+    background-color: var(--color-primary);
+}
+
+.format-cards input:checked + .format-card .format-card__preview-custom {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-alpha-20);
+}
+
+.format-cards input:checked + .format-card .format-card__name {
+    color: var(--color-primary);
+}
+
+.format-cards input:focus-visible + .format-card {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.format-cards input:disabled + .format-card {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .price-table__wrapper {
@@ -4703,6 +4806,35 @@ body:has(.sp-confirm-dialog:not([hidden])) .sp-confirm-dialog__panel {
     .media-choice-cards--grid {
         grid-template-columns: repeat(6, minmax(0, 1fr));
     }
+}
+
+.media-choice-cards input:checked + .media-choice-card {
+    border-color: var(--color-primary);
+    background: var(--selection-highlight-bg);
+}
+
+.media-choice-cards input:checked + .media-choice-card .media-choice-card__image-wrap,
+.media-choice-cards input:checked + .media-choice-card .media-choice-card__preview {
+    border-color: var(--color-primary);
+}
+
+.media-choice-cards input:checked + .media-choice-card .media-choice-card__preview {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+}
+
+.media-choice-cards input:checked + .media-choice-card .media-choice-card__label {
+    color: var(--color-text);
+}
+
+.media-choice-cards input:focus-visible + .media-choice-card {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.media-choice-cards input:disabled + .media-choice-card {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .product-config-column {

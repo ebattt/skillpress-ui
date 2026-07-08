@@ -1,5 +1,5 @@
 {
-  "version": "0.5.4",
+  "version": "0.5.5",
   "css": {
     "primitives": [
       ".sp-accordion",
@@ -1860,6 +1860,18 @@
         "sp:file-upload-box:submit"
       ]
     },
+    "image-gallery.js": {
+      "module": "ImageGallery",
+      "components": [
+        "image-gallery"
+      ],
+      "data": [
+        "data-image-gallery"
+      ],
+      "events": [
+        "sp:image-gallery:change"
+      ]
+    },
     "info-dropdown.js": {
       "module": "InfoDropdown",
       "components": [
@@ -2037,6 +2049,7 @@
     "data-file-upload-box",
     "data-file-upload-box-open",
     "data-file-upload-box-role",
+    "data-image-gallery",
     "data-info-dropdown",
     "data-info-dropdown-info-trigger",
     "data-landing-info-tabs",
@@ -2085,6 +2098,7 @@
     "sp:file-upload-box:close",
     "sp:file-upload-box:open",
     "sp:file-upload-box:submit",
+    "sp:image-gallery:change",
     "sp:info-dropdown:close",
     "sp:info-dropdown:open",
     "sp:order-product-dropdown:close",
@@ -2111,6 +2125,7 @@
     "ExpandableTable",
     "FeedatyWidget",
     "FileUploadBox",
+    "ImageGallery",
     "InfoDropdown",
     "LandingInfoTabs",
     "OrderProductDropdown",

@@ -39,3 +39,28 @@
     height: 1rem;
     flex-shrink: 0;
 }
+
+/* Contratto nativo (consigliato): <input type="radio" class="sr-only"> subito
+   prima di <label class="sp-mode-switcher__btn">. Stato via :checked, nessun
+   JS. La conferma "prima di cambiare modalita'" e' logica applicativa: la
+   gestisce il consumer (intercetta il change e annulla), non la libreria.
+   Convive coi modificatori --active/--inactive (markup a bottoni) qui sopra. */
+.sp-mode-switcher input:not(:checked) + .sp-mode-switcher__btn {
+    background-color: var(--color-bg-gray-75);
+    color: var(--color-text-strong);
+}
+
+.sp-mode-switcher input:checked + .sp-mode-switcher__btn {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+}
+
+.sp-mode-switcher input:focus-visible + .sp-mode-switcher__btn {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.sp-mode-switcher input:disabled + .sp-mode-switcher__btn {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

@@ -546,3 +546,19 @@
         scroll-behavior: auto !important;
     }
 }
+
+/* Nasconde un elemento visivamente mantenendolo accessibile a tastiera e
+   screen reader. Usato per i controlli nativi (radio/checkbox) vestiti da
+   card/pulsante: l'input sta sotto .sr-only, il <label> sibling e' la pelle
+   grafica, lo stato si colora via input:checked + label. */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
