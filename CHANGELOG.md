@@ -2,7 +2,26 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.5.5)
+## Corrente (0.5.6)
+
+- **Versione: 0.5.6**
+- **Contract HTML: aggiunta retrocompatibile** (checkout: i method-choice-card
+  passano a input nativi; i modificatori legacy restano validi).
+
+- `method-choice-card` (scelta spedizione/pagamento nel checkout) allineato al
+  modello nativo degli altri controlli di scelta: contratto
+  `<input type="radio" class="sr-only"> + <label class="method-choice-card">`,
+  stato via `input:checked + label` (più `:focus-visible` e `:disabled`),
+  **nessun JS**, valore nel POST. Regole aggiunte in modo additivo accanto ai
+  modificatori `--selected` / `[aria-pressed="true"]` (che restano validi). Il
+  markup del checkout di riferimento è convertito a radio+label (14 controlli,
+  4 gruppi). Chiude l'ultimo "controllo morto" (stato solo via aria-pressed,
+  nessuno lo commutava).
+- Doc: `08-uso-e-hook-applicativi.md` aggiornato (method-choice-card ora tra i
+  controlli "nativo + CSS"; restano "guidati da te" solo price-table e
+  mobile-bar, intrecciati con logica applicativa).
+
+## 0.5.5
 
 - **Versione: 0.5.5**
 - **Contract HTML: aggiunte, retrocompatibili** (nuovo contratto nativo per i

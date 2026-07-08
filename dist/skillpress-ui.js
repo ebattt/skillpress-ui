@@ -1,4 +1,4 @@
-/*! @ebattt/skillpress-ui 0.5.5 -- bundle JS unico (24 moduli). Auto-init via data-attribute; per markup iniettato dopo il load usare window.SkillpressUI.init(scope). */
+/*! @ebattt/skillpress-ui 0.5.6 -- bundle JS unico (24 moduli). Auto-init via data-attribute; per markup iniettato dopo il load usare window.SkillpressUI.init(scope). */
 
 /* === js/_helpers.js === */
 /**

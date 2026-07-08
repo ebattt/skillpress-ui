@@ -3252,6 +3252,36 @@ label.sp-radio-option--disabled input[type="radio"] {
     }
 }
 
+.method-choice__grid input:checked + .method-choice-card {
+    background: var(--selection-highlight-bg);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.method-choice__grid input:checked + .method-choice-card .method-choice-card__icon {
+    color: var(--color-primary);
+}
+
+.method-choice__grid input:checked + .method-choice-card .method-choice-card__name {
+    color: var(--color-primary);
+}
+
+.method-choice__grid input:focus-visible + .method-choice-card {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.method-choice__grid input:disabled + .method-choice-card {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.method-choice__grid input:disabled + .method-choice-card:hover {
+    background: var(--color-bg-white);
+    border-color: var(--color-bg-gray-200);
+    box-shadow: none;
+}
+
 .allocation-summary-box {
     background: var(--color-bg-gray-50);
     border-radius: var(--radius-xl);
