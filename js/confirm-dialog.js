@@ -10,7 +10,8 @@
 
     var ns = window.SkillpressUI = window.SkillpressUI || {};
     var helpers = ns.helpers || {};
-    var BODY_LOCK_COUNT = 0;
+
+    var FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
     function dispatch(target, name, detail) {
         if (typeof helpers.dispatch === 'function') {
@@ -23,21 +24,26 @@
         return root.querySelector('[data-confirm-dialog-role="' + role + '"]');
     }
 
+    // Contatore lock su document, non nella IIFE: se il bundle viene incluso
+    // due volte, flag per-root e overflow salvato sono gia' condivisi sul DOM
+    // e il conteggio deve restarlo, altrimenti diverge e il body resta bloccato.
     function lockBody(root) {
         if (!root || root.__confirmDialogBodyLocked) return;
         root.__confirmDialogBodyLocked = true;
-        if (BODY_LOCK_COUNT === 0) {
+        var count = document.__skillpressConfirmDialogLockCount || 0;
+        if (count === 0) {
             document.body.__skillpressConfirmDialogOverflow = document.body.style.overflow;
             document.body.style.overflow = 'hidden';
         }
-        BODY_LOCK_COUNT += 1;
+        document.__skillpressConfirmDialogLockCount = count + 1;
     }
 
     function unlockBody(root) {
         if (!root || !root.__confirmDialogBodyLocked) return;
         root.__confirmDialogBodyLocked = false;
-        BODY_LOCK_COUNT = Math.max(0, BODY_LOCK_COUNT - 1);
-        if (BODY_LOCK_COUNT === 0) {
+        var count = Math.max(0, (document.__skillpressConfirmDialogLockCount || 0) - 1);
+        document.__skillpressConfirmDialogLockCount = count;
+        if (count === 0) {
             document.body.style.overflow = document.body.__skillpressConfirmDialogOverflow || '';
             document.body.__skillpressConfirmDialogOverflow = null;
         }
@@ -45,6 +51,11 @@
 
     function open(root, triggerEl, detail) {
         if (!root) return;
+        // Se gia' aperto, non riaprire: una seconda open() sovrascriverebbe
+        // __lastTrigger con il panel e romperebbe il focus restore al close.
+        if (!root.hidden) return;
+        // API diretta: garantisce i listener anche senza passare da init().
+        initRoot(root);
         if (triggerEl && typeof triggerEl.focus === 'function') {
             root.__lastTrigger = triggerEl;
         } else {
@@ -114,6 +125,29 @@
             if ((event.key === 'Escape' || event.key === 'Esc') && !root.hidden) {
                 event.stopPropagation();
                 cancel(root, { reason: 'escape' });
+                return;
+            }
+            // Focus trap minimale: Tab/Shift+Tab ciclano i focusabili del panel.
+            if (event.key === 'Tab' && !root.hidden) {
+                var panel = root.querySelector('.sp-confirm-dialog__panel');
+                if (!panel) return;
+                var focusables = Array.prototype.filter.call(
+                    panel.querySelectorAll(FOCUSABLE_SELECTOR),
+                    function (el) { return el.getClientRects().length > 0; }
+                );
+                event.preventDefault();
+                if (!focusables.length) {
+                    if (typeof panel.focus === 'function') panel.focus();
+                    return;
+                }
+                var index = focusables.indexOf(document.activeElement);
+                var nextIndex;
+                if (event.shiftKey) {
+                    nextIndex = index <= 0 ? focusables.length - 1 : index - 1;
+                } else {
+                    nextIndex = index === -1 || index === focusables.length - 1 ? 0 : index + 1;
+                }
+                focusables[nextIndex].focus();
             }
         });
     }
@@ -132,9 +166,22 @@
             document.addEventListener('click', function (event) {
                 var opener = event.target.closest('[data-confirm-dialog-open]');
                 if (!opener) return;
-                var selector = opener.getAttribute('data-confirm-dialog-open');
-                var target = selector ? document.querySelector(selector) : document.querySelector('[data-confirm-dialog]');
-                if (!target) return;
+                var selector = opener.getAttribute('data-confirm-dialog-open') || '[data-confirm-dialog]';
+                var target;
+                try {
+                    target = document.querySelector(selector);
+                } catch (err) {
+                    if (window.console && console.error) {
+                        console.error('[confirm-dialog] data-confirm-dialog-open: selettore CSS non valido "' + selector + '"', err);
+                    }
+                    return;
+                }
+                if (!target) {
+                    if (window.console && console.error) {
+                        console.error('[confirm-dialog] data-confirm-dialog-open: nessun elemento corrisponde al selettore "' + selector + '"');
+                    }
+                    return;
+                }
                 event.preventDefault();
                 initRoot(target);
                 open(target, opener, { trigger: opener });

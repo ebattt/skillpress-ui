@@ -7,9 +7,11 @@
     gap: var(--spacing-sm);
 }
 
-/* breakpoint-exception: 479px collassa la grid 4-col -> 2-col su phones stretti
-   prima di raggiungere il default mobile (4-col stava overflow su iPhone SE). */
-@media (max-width: 479px) {
+/* breakpoint-exception: 480px collassa la grid 4-col -> 2-col su phones stretti
+   prima di raggiungere il default mobile (4-col stava overflow su iPhone SE).
+   Soglia 480 come price-table/billing-table/feature-box: niente banda di 1px
+   con stati misti tra componenti. */
+@media (max-width: 480px) {
     .format-cards {
         grid-template-columns: repeat(2, 1fr);
     }

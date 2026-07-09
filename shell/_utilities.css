@@ -19,31 +19,37 @@
    TOGGLE VISIBILITY (usate dal JS per aprire/chiudere dropdown)
    ========================================================================= */
 
+/* .hidden resta !important: contract di navbar.js/cart.js, deve vincere
+   anche su eventuali display inline. Le altre toggle sono senza !important
+   per coesistere con i CSS/JS legacy del cliente (uno style inline
+   display:none deve poterle battere): vincono comunque sulle regole base
+   dei componenti shell perche' _utilities.css e' importato dopo di loro
+   nel bundle, a parita' di specificita'. */
 .hidden {
     display: none !important;
 }
 
 /* Usato dal JS per mostrare il user-popup come flex container */
 .flex {
-    display: flex !important;
+    display: flex;
 }
 
 .invisible {
-    visibility: hidden !important;
+    visibility: hidden;
 }
 
 .visible {
-    visibility: visible !important;
+    visibility: visible;
 }
 
 /* Toggle opacita: il JS alterna .opacity-0 e .opacity-100 sui dropdown */
 .opacity-0 {
-    opacity: 0 !important;
+    opacity: 0;
 }
 
 .opacity-100 {
-    opacity: 1 !important;
-    visibility: visible !important;
+    opacity: 1;
+    visibility: visible;
 }
 
 .flex-center {

@@ -2,7 +2,59 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.5.6)
+## Corrente (0.5.7)
+
+- **Versione: 0.5.7**
+- **Contract HTML cambiato: no** (fix di robustezza JS/CSS; il markup resta
+  invariato, nessuna azione richiesta lato backend oltre a ricaricare i
+  bundle).
+
+- **file-upload-box**: dopo `sp:file-upload-box:submit` lo stato interno viene
+  azzerato (file pendente, input, lista): riaprendo il modale non è più
+  possibile re-inviare per sbaglio lo stesso file con un click.
+- **confirm-dialog**: `SkillpressUI.ConfirmDialog.open(el)` ora inizializza da
+  solo il dialogo (prima, aprendo via API un dialogo iniettato senza passare
+  da `init()`, Annulla/X/Escape restavano morti a scroll bloccato); `open()`
+  su dialogo già aperto è un no-op (non perde più il trigger per il focus
+  restore); il focus resta intrappolato nel pannello (Tab/Shift+Tab ciclano
+  tra i suoi focusabili, Escape funziona sempre); il conteggio del lock dello
+  scroll è condiviso a livello di documento (robusto al bundle incluso due
+  volte).
+- **Opener protetti** (`data-confirm-dialog-open`,
+  `data-file-upload-box-open`): un selettore CSS invalido o senza match ora
+  produce un `console.error` diagnostico invece di un'eccezione a ogni click
+  (o di un no-op silenzioso).
+- **image-gallery**: gli item di `data-image-gallery` senza `src` vengono
+  scartati al parse (con `console.error` degli indici scartati): indice ed
+  evento `sp:image-gallery:change` non possono più disallinearsi
+  dall'immagine mostrata; JSON valido ma non-array ora è loggato; con più
+  immagini e frecce assenti dal DOM l'init resta ritentabile (un re-init dopo
+  l'iniezione delle frecce le aggancia).
+- **catalog-product-grid**: un solo listener `resize` condiviso con registro
+  dei root e potatura di quelli staccati dal DOM (prima ogni init aggiungeva
+  un listener permanente: leak su pagine long-lived con sezioni sostituite
+  via fetch).
+- **file-modal**: overlay portato a `--z-modal` (1100), come sp-confirm-dialog
+  (prima stava a `--z-overlay` 80, sotto popup shell, menu mobile e toast).
+- **shell**: lo scroll-lock del menu mobile è ancorato a
+  `#mobileMenuContainer .mobile-menu` (prima un qualunque residuo legacy con
+  `class="mobile-menu"` visibile poteva bloccare per sempre lo scroll della
+  pagina). Il contract già consegnato (menu dentro `#mobileMenuContainer`)
+  non cambia.
+- **shell utilities**: rimosso `!important` da `.flex`, `.invisible`,
+  `.visible`, `.opacity-0`, `.opacity-100` (lo `style="display:none"` inline
+  del JS applicativo torna a vincere su elementi con quelle classi; `.hidden`
+  resta com'è, è contract). Bonus: su desktop il guard che nasconde il popup
+  utente mobile ora vince davvero.
+- **format-card**: breakpoint mobile allineato al gemello dei componenti
+  affini (480px, era 479): sparisce la banda di 1px a stati misti.
+- Doc backend: payload reale di `sp:confirm-dialog:close` (eredita
+  `{trigger}`/`{reason}` da confirm/cancel), limiti del file-upload-box
+  (validazione a carico dell'integratore, drop che bypassa `accept`), id
+  unici per i pannelli di expandable-table, sezione "coesistenza con i CSS
+  legacy" in 01-asset-loading, versione corrente dichiarata in 00-overview.
+
+## 0.5.6
 
 - **Versione: 0.5.6**
 - **Contract HTML: aggiunta retrocompatibile** (checkout: i method-choice-card
@@ -29,7 +81,7 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
   continua a funzionare).
 
 - Nuovo componente: **image-gallery** (`js/image-gallery.js`, nel bundle
-  unico). Auto-init su `.image-gallery__container[data-image-gallery-images]`:
+  unico). Auto-init su `.image-gallery__container[data-image-gallery]`:
   frecce prev/next che ciclano l'immagine principale, aggiornano l'aspect
   ratio dalla slide, nascondono i controlli con ≤1 immagine. Emette
   `sp:image-gallery:change` `{ index, image }`. Colma il buco per cui la

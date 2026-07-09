@@ -1637,19 +1637,19 @@ body {
     padding: 0.5rem 1rem 1rem;
 }
 
-body:has(.mobile-menu:not(.hidden)),
-body:has(.category-products-overlay:not(.hidden)) {
+body:has(#mobileMenuContainer .mobile-menu:not(.hidden)),
+body:has(#mobileMenuContainer .category-products-overlay:not(.hidden)) {
     overflow: hidden;
     touch-action: none;
 }
 
-html:has(.mobile-menu:not(.hidden)),
-html:has(.category-products-overlay:not(.hidden)) {
+html:has(#mobileMenuContainer .mobile-menu:not(.hidden)),
+html:has(#mobileMenuContainer .category-products-overlay:not(.hidden)) {
     overscroll-behavior: none;
 }
 
-body:has(.mobile-menu:not(.hidden)) .sp-page__header,
-body:has(.category-products-overlay:not(.hidden)) .sp-page__header {
+body:has(#mobileMenuContainer .mobile-menu:not(.hidden)) .sp-page__header,
+body:has(#mobileMenuContainer .category-products-overlay:not(.hidden)) .sp-page__header {
     position: fixed;
     top: 0;
     right: 0;
@@ -1657,9 +1657,9 @@ body:has(.category-products-overlay:not(.hidden)) .sp-page__header {
     z-index: var(--shell-z-sticky);
 }
 
-body:has(.mobile-menu:not(.hidden)) .mobile-menu,
-body:has(.category-products-overlay:not(.hidden)) .category-products-overlay,
-body:has(.category-products-overlay:not(.hidden)) .category-products__scroll {
+#mobileMenuContainer .mobile-menu:not(.hidden),
+#mobileMenuContainer .category-products-overlay:not(.hidden),
+#mobileMenuContainer .category-products-overlay:not(.hidden) .category-products__scroll {
     touch-action: pan-y;
 }
 
@@ -2509,24 +2509,24 @@ body:has(.category-products-overlay:not(.hidden)) .category-products__scroll {
 }
 
 .flex {
-    display: flex !important;
+    display: flex;
 }
 
 .invisible {
-    visibility: hidden !important;
+    visibility: hidden;
 }
 
 .visible {
-    visibility: visible !important;
+    visibility: visible;
 }
 
 .opacity-0 {
-    opacity: 0 !important;
+    opacity: 0;
 }
 
 .opacity-100 {
-    opacity: 1 !important;
-    visibility: visible !important;
+    opacity: 1;
+    visibility: visible;
 }
 
 .flex-center {

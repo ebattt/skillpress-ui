@@ -1,7 +1,7 @@
 /**
  * IMAGE GALLERY -- Navigazione prev/next della galleria foto prodotto.
  *
- * Legge `data-image-gallery-images` (array JSON) sul container e cicla
+ * Legge `data-image-gallery` (array JSON) sul container e cicla
  * l'immagine principale (`#mainProductImage` o il primo <img>) al click
  * delle frecce. Ogni immagine puo' dichiarare `width`/`height`: il ratio
  * del container viene aggiornato sulla slide attiva (fallback: nessun
@@ -13,7 +13,7 @@
  *
  * API:
  *   window.SkillpressUI.ImageGallery.init(rootOrSelector?)
- *   Selector di default: '.image-gallery__container[data-image-gallery-images]'
+ *   Selector di default: '.image-gallery__container[data-image-gallery]'
  *
  * @public-component image-gallery
  * @public-data data-image-gallery
@@ -78,22 +78,38 @@
             images = JSON.parse(container.getAttribute('data-image-gallery') || '[]');
         } catch (err) {
             if (window.console && console.error) {
-                console.error('[image-gallery] data-image-gallery-images JSON non valido', err);
+                console.error('[image-gallery] data-image-gallery JSON non valido', err);
             }
             return container; // niente flag: una init() successiva ritenta
         }
-        if (!Array.isArray(images)) return container;
+        if (!Array.isArray(images)) {
+            if (window.console && console.error) {
+                console.error('[image-gallery] data-image-gallery deve essere un array JSON, ricevuto:', images);
+            }
+            return container;
+        }
+
+        // Item senza src non possono cambiare immagine: scartali subito, cosi'
+        // show() non avanza indice+evento a vuoto.
+        var discardedIndexes = [];
+        images = images.filter(function (image, index) {
+            if (image && image.src) return true;
+            discardedIndexes.push(index);
+            return false;
+        });
+        if (discardedIndexes.length && window.console && console.error) {
+            console.error('[image-gallery] data-image-gallery: scartati item senza src agli indici ' + discardedIndexes.join(', '));
+        }
 
         var gallery = container.closest('.image-gallery');
         var mainImg = container.querySelector('#mainProductImage') || container.querySelector('img');
         if (!mainImg) return container; // <img> non ancora nel DOM: ritenta al prossimo init
 
-        // Da qui il markup e' valido: marca come inizializzato (idempotente).
-        container[INIT_FLAG] = true;
-
         if (images.length > 0) applyImage(container, mainImg, images[0]);
 
         if (images.length <= 1) {
+            // Da qui il markup e' valido: marca come inizializzato (idempotente).
+            container[INIT_FLAG] = true;
             if (gallery) gallery.classList.add('image-gallery--single');
             return container;
         }
@@ -102,14 +118,24 @@
         var prev = container.querySelector('.image-gallery__nav-btn--prev');
         var next = container.querySelector('.image-gallery__nav-btn--next');
 
+        if (!prev || !next) {
+            if (window.console && console.error) {
+                console.error('[image-gallery] frecce prev/next assenti dal DOM con ' + images.length + ' immagini: init rimandata, ritenta dopo l\'iniezione dei bottoni');
+            }
+            return container; // niente flag: una init() successiva aggancia le frecce
+        }
+
+        // Da qui il markup e' valido: marca come inizializzato (idempotente).
+        container[INIT_FLAG] = true;
+
         function show(i) {
             idx = (i + images.length) % images.length;
             applyImage(container, mainImg, images[idx]);
             dispatch(container, 'sp:image-gallery:change', { index: idx, image: images[idx] });
         }
 
-        if (prev) prev.addEventListener('click', function () { show(idx - 1); });
-        if (next) next.addEventListener('click', function () { show(idx + 1); });
+        prev.addEventListener('click', function () { show(idx - 1); });
+        next.addEventListener('click', function () { show(idx + 1); });
         return container;
     }
 

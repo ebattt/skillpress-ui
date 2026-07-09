@@ -1,7 +1,9 @@
 .file-modal__overlay {
     position: fixed;
     inset: 0;
-    z-index: var(--z-overlay);
+    /* --z-modal (1100), non --z-overlay (80): deve coprire popup shell,
+       mobile-menu, toast e mobile-bar, come sp-confirm-dialog. */
+    z-index: var(--z-modal);
     display: flex;
     align-items: center;
     justify-content: center;

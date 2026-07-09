@@ -1,4 +1,4 @@
-/*! @ebattt/skillpress-ui 0.5.6 -- bundle JS unico (24 moduli). Auto-init via data-attribute; per markup iniettato dopo il load usare window.SkillpressUI.init(scope). */
+/*! @ebattt/skillpress-ui 0.5.7 -- bundle JS unico (24 moduli). Auto-init via data-attribute; per markup iniettato dopo il load usare window.SkillpressUI.init(scope). */
 
 /* === js/_helpers.js === */
 /**
@@ -687,12 +687,31 @@
         sync(state);
     }
 
+    function ensureResizeListener() {
+        // Flag sul namespace, non nella IIFE: se il bundle viene incluso due
+        // volte (include duplicato nei template), il listener resta unico.
+        if (ns.__catalogProductGridResizeInitialized) return;
+        ns.__catalogProductGridResizeInitialized = true;
+
+        var resizeTimer = null;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(function () {
+                var registry = ns.__catalogProductGridResizeRoots || [];
+                // Scarta i root non piu' connessi (fetch+re-init): niente leak.
+                for (var i = registry.length - 1; i >= 0; i -= 1) {
+                    if (!registry[i].root.isConnected) registry.splice(i, 1);
+                }
+                registry.forEach(function (entry) { entry.onResize(); });
+            }, 120);
+        });
+    }
+
     function initRoot(root) {
         if (!root || root.__skillpressCatalogProductGridInitialized) return;
 
         var grid = root.querySelector('[data-catalog-product-grid-items]');
         var button = root.querySelector('[data-catalog-product-grid-toggle]');
-        var resizeTimer = null;
         var state;
 
         if (!grid || !button) return;
@@ -722,13 +741,17 @@
             });
         });
 
-        window.addEventListener('resize', function () {
-            clearTimeout(resizeTimer);
-            resizeTimer = window.setTimeout(function () {
+        // Registry condiviso sul namespace + listener resize unico: ogni root
+        // registra il proprio refresh, il listener itera i root ancora connessi.
+        ns.__catalogProductGridResizeRoots = ns.__catalogProductGridResizeRoots || [];
+        ns.__catalogProductGridResizeRoots.push({
+            root: root,
+            onResize: function () {
                 state.cards = toArray(grid.querySelectorAll('[data-catalog-product-grid-card]'));
                 refresh(state);
-            }, 120);
+            }
         });
+        ensureResizeListener();
     }
 
     /** @public */
@@ -1020,7 +1043,8 @@
 
     var ns = window.SkillpressUI = window.SkillpressUI || {};
     var helpers = ns.helpers || {};
-    var BODY_LOCK_COUNT = 0;
+
+    var FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
     function dispatch(target, name, detail) {
         if (typeof helpers.dispatch === 'function') {
@@ -1033,21 +1057,26 @@
         return root.querySelector('[data-confirm-dialog-role="' + role + '"]');
     }
 
+    // Contatore lock su document, non nella IIFE: se il bundle viene incluso
+    // due volte, flag per-root e overflow salvato sono gia' condivisi sul DOM
+    // e il conteggio deve restarlo, altrimenti diverge e il body resta bloccato.
     function lockBody(root) {
         if (!root || root.__confirmDialogBodyLocked) return;
         root.__confirmDialogBodyLocked = true;
-        if (BODY_LOCK_COUNT === 0) {
+        var count = document.__skillpressConfirmDialogLockCount || 0;
+        if (count === 0) {
             document.body.__skillpressConfirmDialogOverflow = document.body.style.overflow;
             document.body.style.overflow = 'hidden';
         }
-        BODY_LOCK_COUNT += 1;
+        document.__skillpressConfirmDialogLockCount = count + 1;
     }
 
     function unlockBody(root) {
         if (!root || !root.__confirmDialogBodyLocked) return;
         root.__confirmDialogBodyLocked = false;
-        BODY_LOCK_COUNT = Math.max(0, BODY_LOCK_COUNT - 1);
-        if (BODY_LOCK_COUNT === 0) {
+        var count = Math.max(0, (document.__skillpressConfirmDialogLockCount || 0) - 1);
+        document.__skillpressConfirmDialogLockCount = count;
+        if (count === 0) {
             document.body.style.overflow = document.body.__skillpressConfirmDialogOverflow || '';
             document.body.__skillpressConfirmDialogOverflow = null;
         }
@@ -1055,6 +1084,11 @@
 
     function open(root, triggerEl, detail) {
         if (!root) return;
+        // Se gia' aperto, non riaprire: una seconda open() sovrascriverebbe
+        // __lastTrigger con il panel e romperebbe il focus restore al close.
+        if (!root.hidden) return;
+        // API diretta: garantisce i listener anche senza passare da init().
+        initRoot(root);
         if (triggerEl && typeof triggerEl.focus === 'function') {
             root.__lastTrigger = triggerEl;
         } else {
@@ -1124,6 +1158,29 @@
             if ((event.key === 'Escape' || event.key === 'Esc') && !root.hidden) {
                 event.stopPropagation();
                 cancel(root, { reason: 'escape' });
+                return;
+            }
+            // Focus trap minimale: Tab/Shift+Tab ciclano i focusabili del panel.
+            if (event.key === 'Tab' && !root.hidden) {
+                var panel = root.querySelector('.sp-confirm-dialog__panel');
+                if (!panel) return;
+                var focusables = Array.prototype.filter.call(
+                    panel.querySelectorAll(FOCUSABLE_SELECTOR),
+                    function (el) { return el.getClientRects().length > 0; }
+                );
+                event.preventDefault();
+                if (!focusables.length) {
+                    if (typeof panel.focus === 'function') panel.focus();
+                    return;
+                }
+                var index = focusables.indexOf(document.activeElement);
+                var nextIndex;
+                if (event.shiftKey) {
+                    nextIndex = index <= 0 ? focusables.length - 1 : index - 1;
+                } else {
+                    nextIndex = index === -1 || index === focusables.length - 1 ? 0 : index + 1;
+                }
+                focusables[nextIndex].focus();
             }
         });
     }
@@ -1142,9 +1199,22 @@
             document.addEventListener('click', function (event) {
                 var opener = event.target.closest('[data-confirm-dialog-open]');
                 if (!opener) return;
-                var selector = opener.getAttribute('data-confirm-dialog-open');
-                var target = selector ? document.querySelector(selector) : document.querySelector('[data-confirm-dialog]');
-                if (!target) return;
+                var selector = opener.getAttribute('data-confirm-dialog-open') || '[data-confirm-dialog]';
+                var target;
+                try {
+                    target = document.querySelector(selector);
+                } catch (err) {
+                    if (window.console && console.error) {
+                        console.error('[confirm-dialog] data-confirm-dialog-open: selettore CSS non valido "' + selector + '"', err);
+                    }
+                    return;
+                }
+                if (!target) {
+                    if (window.console && console.error) {
+                        console.error('[confirm-dialog] data-confirm-dialog-open: nessun elemento corrisponde al selettore "' + selector + '"');
+                    }
+                    return;
+                }
                 event.preventDefault();
                 initRoot(target);
                 open(target, opener, { trigger: opener });
@@ -2026,6 +2096,10 @@
             fileName: root.__fileUploadBoxPendingFile.name
         };
         dispatch(root, 'sp:file-upload-box:submit', detail);
+        // Reset dopo il dispatch sincrono (i listener leggono detail.file):
+        // alla riapertura il box parte vuoto e un secondo click non puo'
+        // rigenerare un submit con lo stesso File.
+        removeFile(root);
         close(root);
     }
 
@@ -2113,9 +2187,22 @@
             document.addEventListener('click', function (event) {
                 var opener = event.target.closest('[data-file-upload-box-open]');
                 if (!opener) return;
-                var selector = opener.getAttribute('data-file-upload-box-open');
-                var target = selector ? document.querySelector(selector) : document.querySelector('[data-file-upload-box]');
-                if (!target) return;
+                var selector = opener.getAttribute('data-file-upload-box-open') || '[data-file-upload-box]';
+                var target;
+                try {
+                    target = document.querySelector(selector);
+                } catch (err) {
+                    if (window.console && console.error) {
+                        console.error('[file-upload-box] data-file-upload-box-open: selettore CSS non valido "' + selector + '"', err);
+                    }
+                    return;
+                }
+                if (!target) {
+                    if (window.console && console.error) {
+                        console.error('[file-upload-box] data-file-upload-box-open: nessun elemento corrisponde al selettore "' + selector + '"');
+                    }
+                    return;
+                }
                 event.preventDefault();
                 initRoot(target);
                 // F015: passa il trigger per consentire focus restore al close.
@@ -2145,7 +2232,7 @@
 /**
  * IMAGE GALLERY -- Navigazione prev/next della galleria foto prodotto.
  *
- * Legge `data-image-gallery-images` (array JSON) sul container e cicla
+ * Legge `data-image-gallery` (array JSON) sul container e cicla
  * l'immagine principale (`#mainProductImage` o il primo <img>) al click
  * delle frecce. Ogni immagine puo' dichiarare `width`/`height`: il ratio
  * del container viene aggiornato sulla slide attiva (fallback: nessun
@@ -2157,7 +2244,7 @@
  *
  * API:
  *   window.SkillpressUI.ImageGallery.init(rootOrSelector?)
- *   Selector di default: '.image-gallery__container[data-image-gallery-images]'
+ *   Selector di default: '.image-gallery__container[data-image-gallery]'
  *
  * @public-component image-gallery
  * @public-data data-image-gallery
@@ -2222,22 +2309,38 @@
             images = JSON.parse(container.getAttribute('data-image-gallery') || '[]');
         } catch (err) {
             if (window.console && console.error) {
-                console.error('[image-gallery] data-image-gallery-images JSON non valido', err);
+                console.error('[image-gallery] data-image-gallery JSON non valido', err);
             }
             return container; // niente flag: una init() successiva ritenta
         }
-        if (!Array.isArray(images)) return container;
+        if (!Array.isArray(images)) {
+            if (window.console && console.error) {
+                console.error('[image-gallery] data-image-gallery deve essere un array JSON, ricevuto:', images);
+            }
+            return container;
+        }
+
+        // Item senza src non possono cambiare immagine: scartali subito, cosi'
+        // show() non avanza indice+evento a vuoto.
+        var discardedIndexes = [];
+        images = images.filter(function (image, index) {
+            if (image && image.src) return true;
+            discardedIndexes.push(index);
+            return false;
+        });
+        if (discardedIndexes.length && window.console && console.error) {
+            console.error('[image-gallery] data-image-gallery: scartati item senza src agli indici ' + discardedIndexes.join(', '));
+        }
 
         var gallery = container.closest('.image-gallery');
         var mainImg = container.querySelector('#mainProductImage') || container.querySelector('img');
         if (!mainImg) return container; // <img> non ancora nel DOM: ritenta al prossimo init
 
-        // Da qui il markup e' valido: marca come inizializzato (idempotente).
-        container[INIT_FLAG] = true;
-
         if (images.length > 0) applyImage(container, mainImg, images[0]);
 
         if (images.length <= 1) {
+            // Da qui il markup e' valido: marca come inizializzato (idempotente).
+            container[INIT_FLAG] = true;
             if (gallery) gallery.classList.add('image-gallery--single');
             return container;
         }
@@ -2246,14 +2349,24 @@
         var prev = container.querySelector('.image-gallery__nav-btn--prev');
         var next = container.querySelector('.image-gallery__nav-btn--next');
 
+        if (!prev || !next) {
+            if (window.console && console.error) {
+                console.error('[image-gallery] frecce prev/next assenti dal DOM con ' + images.length + ' immagini: init rimandata, ritenta dopo l\'iniezione dei bottoni');
+            }
+            return container; // niente flag: una init() successiva aggancia le frecce
+        }
+
+        // Da qui il markup e' valido: marca come inizializzato (idempotente).
+        container[INIT_FLAG] = true;
+
         function show(i) {
             idx = (i + images.length) % images.length;
             applyImage(container, mainImg, images[idx]);
             dispatch(container, 'sp:image-gallery:change', { index: idx, image: images[idx] });
         }
 
-        if (prev) prev.addEventListener('click', function () { show(idx - 1); });
-        if (next) next.addEventListener('click', function () { show(idx + 1); });
+        prev.addEventListener('click', function () { show(idx - 1); });
+        next.addEventListener('click', function () { show(idx + 1); });
         return container;
     }
 

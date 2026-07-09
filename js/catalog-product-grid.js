@@ -73,12 +73,31 @@
         sync(state);
     }
 
+    function ensureResizeListener() {
+        // Flag sul namespace, non nella IIFE: se il bundle viene incluso due
+        // volte (include duplicato nei template), il listener resta unico.
+        if (ns.__catalogProductGridResizeInitialized) return;
+        ns.__catalogProductGridResizeInitialized = true;
+
+        var resizeTimer = null;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(function () {
+                var registry = ns.__catalogProductGridResizeRoots || [];
+                // Scarta i root non piu' connessi (fetch+re-init): niente leak.
+                for (var i = registry.length - 1; i >= 0; i -= 1) {
+                    if (!registry[i].root.isConnected) registry.splice(i, 1);
+                }
+                registry.forEach(function (entry) { entry.onResize(); });
+            }, 120);
+        });
+    }
+
     function initRoot(root) {
         if (!root || root.__skillpressCatalogProductGridInitialized) return;
 
         var grid = root.querySelector('[data-catalog-product-grid-items]');
         var button = root.querySelector('[data-catalog-product-grid-toggle]');
-        var resizeTimer = null;
         var state;
 
         if (!grid || !button) return;
@@ -108,13 +127,17 @@
             });
         });
 
-        window.addEventListener('resize', function () {
-            clearTimeout(resizeTimer);
-            resizeTimer = window.setTimeout(function () {
+        // Registry condiviso sul namespace + listener resize unico: ogni root
+        // registra il proprio refresh, il listener itera i root ancora connessi.
+        ns.__catalogProductGridResizeRoots = ns.__catalogProductGridResizeRoots || [];
+        ns.__catalogProductGridResizeRoots.push({
+            root: root,
+            onResize: function () {
                 state.cards = toArray(grid.querySelectorAll('[data-catalog-product-grid-card]'));
                 refresh(state);
-            }, 120);
+            }
         });
+        ensureResizeListener();
     }
 
     /** @public */

@@ -90,20 +90,24 @@
    Vincoli da rispettare se si modifica:
    - niente overflow: hidden su html (romperebbe lo sticky dell'header);
    - l'header va forzato fixed, perche' con i lock attivi lo sticky non e'
-     garantito su tutti i motori e X/logo devono restare raggiungibili. */
-body:has(.mobile-menu:not(.hidden)),
-body:has(.category-products-overlay:not(.hidden)) {
+     garantito su tutti i motori e X/logo devono restare raggiungibili;
+   - i :has() sono ancorati a #mobileMenuContainer (contract: wrappa
+     #mobileMenu e l'overlay prodotti): un eventuale markup legacy del
+     cliente con class="mobile-menu" nascosto in altro modo (senza .hidden)
+     non deve poter bloccare la pagina. */
+body:has(#mobileMenuContainer .mobile-menu:not(.hidden)),
+body:has(#mobileMenuContainer .category-products-overlay:not(.hidden)) {
     overflow: hidden;
     touch-action: none;
 }
 
-html:has(.mobile-menu:not(.hidden)),
-html:has(.category-products-overlay:not(.hidden)) {
+html:has(#mobileMenuContainer .mobile-menu:not(.hidden)),
+html:has(#mobileMenuContainer .category-products-overlay:not(.hidden)) {
     overscroll-behavior: none;
 }
 
-body:has(.mobile-menu:not(.hidden)) .sp-page__header,
-body:has(.category-products-overlay:not(.hidden)) .sp-page__header {
+body:has(#mobileMenuContainer .mobile-menu:not(.hidden)) .sp-page__header,
+body:has(#mobileMenuContainer .category-products-overlay:not(.hidden)) .sp-page__header {
     position: fixed;
     top: 0;
     right: 0;
@@ -113,9 +117,9 @@ body:has(.category-products-overlay:not(.hidden)) .sp-page__header {
 
 /* Dentro menu e overlay il pan verticale resta permesso (deroga al
    touch-action: none del body). */
-body:has(.mobile-menu:not(.hidden)) .mobile-menu,
-body:has(.category-products-overlay:not(.hidden)) .category-products-overlay,
-body:has(.category-products-overlay:not(.hidden)) .category-products__scroll {
+#mobileMenuContainer .mobile-menu:not(.hidden),
+#mobileMenuContainer .category-products-overlay:not(.hidden),
+#mobileMenuContainer .category-products-overlay:not(.hidden) .category-products__scroll {
     touch-action: pan-y;
 }
 

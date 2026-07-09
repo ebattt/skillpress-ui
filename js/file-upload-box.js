@@ -145,6 +145,10 @@
             fileName: root.__fileUploadBoxPendingFile.name
         };
         dispatch(root, 'sp:file-upload-box:submit', detail);
+        // Reset dopo il dispatch sincrono (i listener leggono detail.file):
+        // alla riapertura il box parte vuoto e un secondo click non puo'
+        // rigenerare un submit con lo stesso File.
+        removeFile(root);
         close(root);
     }
 
@@ -232,9 +236,22 @@
             document.addEventListener('click', function (event) {
                 var opener = event.target.closest('[data-file-upload-box-open]');
                 if (!opener) return;
-                var selector = opener.getAttribute('data-file-upload-box-open');
-                var target = selector ? document.querySelector(selector) : document.querySelector('[data-file-upload-box]');
-                if (!target) return;
+                var selector = opener.getAttribute('data-file-upload-box-open') || '[data-file-upload-box]';
+                var target;
+                try {
+                    target = document.querySelector(selector);
+                } catch (err) {
+                    if (window.console && console.error) {
+                        console.error('[file-upload-box] data-file-upload-box-open: selettore CSS non valido "' + selector + '"', err);
+                    }
+                    return;
+                }
+                if (!target) {
+                    if (window.console && console.error) {
+                        console.error('[file-upload-box] data-file-upload-box-open: nessun elemento corrisponde al selettore "' + selector + '"');
+                    }
+                    return;
+                }
                 event.preventDefault();
                 initRoot(target);
                 // F015: passa il trigger per consentire focus restore al close.
