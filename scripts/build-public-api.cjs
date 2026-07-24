@@ -11,7 +11,9 @@
  *                             Annotazioni `/** @internal *\/` su classi
  *                             specifiche le escludono dal contratto.
  *   - components/*.css     -> ogni componente domain-scoped e' identificato
- *                             dal nome file (no prefisso sp-).
+ *                             dal nome file (no prefisso sp-); eventuali
+ *                             famiglie `.sp-*` annotate `@public` sono
+ *                             incluse anche nell'elenco classi pubblico.
  *   - js/<comp>.js         -> blocchi `/** @public-data ... *\/` e
  *                             `/** @public-event ... *\/` nell'header del file.
  *                             Il modulo JS pubblico e' rilevato dal nome
@@ -188,6 +190,7 @@ function main() {
     const componentClasses = {};
     for (const file of componentFiles) {
         const content = fs.readFileSync(path.join(COMPONENTS_DIR, file), 'utf8');
+        for (const cls of extractPublicCssClasses(content)) primitives.push(cls);
         const classes = new Set();
         const classRe = /\.([a-zA-Z][a-zA-Z0-9_-]*)/g;
         let match;

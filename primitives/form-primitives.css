@@ -277,6 +277,20 @@ input.sp-nome-lavoro-input--error:focus {
     color: var(--color-text);
 }
 
+/* I valori di un formato preimpostato devono essere leggibili e inviati col
+   form, ma non modificabili. `readonly` (non `disabled`) conserva il valore nel
+   POST; la resa grigia comunica lo stato bloccato senza nascondere il dato. */
+.sp-custom-dims .sp-form-input[readonly] {
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text-muted);
+    border-color: var(--color-bg-gray-200);
+    cursor: default;
+}
+
+.sp-custom-dims .sp-form-input[readonly]:focus {
+    border-color: var(--color-border);
+}
+
 @media (max-width: 639px) {
     .sp-custom-dims__grid {
         grid-template-columns: 1fr;

@@ -1,0 +1,254 @@
+/* Choice Card e' l'unico renderer visuale a card. Il contenuto e' opzionale:
+   il backend puo' renderizzare media, titolo e meta senza cambiare componente. */
+/** @public */
+.sp-choice-cards,
+.media-choice-cards,
+.format-cards {
+    --sp-choice-card-width: 6.5rem;
+    --sp-choice-card-min-height: 7.75rem;
+    --sp-choice-card-media-width: 5rem;
+    --sp-choice-card-media-ratio: 1 / 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0.75rem;
+}
+
+.sp-choice-cards[hidden],
+.media-choice-cards[hidden],
+.format-cards[hidden] {
+    display: none;
+}
+
+/* La taglia appartiene al gruppo, non al singolo valore. */
+.sp-choice-cards--small,
+.media-choice-cards--small,
+.media-choice-cards--compact {
+    --sp-choice-card-width: 5rem;
+    --sp-choice-card-min-height: 6.25rem;
+    --sp-choice-card-media-width: 3.5rem;
+}
+
+.sp-choice-cards--large,
+.media-choice-cards--large {
+    --sp-choice-card-width: 8.5rem;
+    --sp-choice-card-min-height: 9.75rem;
+    --sp-choice-card-media-width: 7rem;
+}
+
+/* Preset del rapporto immagine. `custom` riceve soltanto una custom property
+   validata dal backend, ad esempio: --sp-choice-card-aspect-ratio: 7 / 5. */
+.sp-choice-cards--media-square {
+    --sp-choice-card-media-ratio: 1 / 1;
+}
+
+.sp-choice-cards--media-portrait {
+    --sp-choice-card-media-ratio: 3 / 4;
+}
+
+.sp-choice-cards--media-landscape {
+    --sp-choice-card-media-ratio: 4 / 3;
+}
+
+.sp-choice-cards--media-wide,
+.media-choice-cards--wide {
+    --sp-choice-card-media-ratio: 3 / 2;
+}
+
+.sp-choice-cards--media-custom {
+    --sp-choice-card-media-ratio: var(--sp-choice-card-aspect-ratio, 1 / 1);
+}
+
+.sp-choice-cards--grid,
+.media-choice-cards--grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/** @public */
+.sp-choice-card,
+.media-choice-card,
+.format-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    box-sizing: border-box;
+    width: var(--sp-choice-card-width);
+    min-width: 0;
+    min-height: var(--sp-choice-card-min-height);
+    padding: 0.375rem;
+    border: 2px solid var(--color-bg-gray-200);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-white);
+    color: var(--color-text);
+    cursor: pointer;
+    font-family: inherit;
+    text-align: center;
+    transition:
+        border-color var(--transition-fast),
+        background-color var(--transition-fast);
+}
+
+.sp-choice-card:hover,
+.media-choice-card:hover,
+.format-card:hover {
+    border-color: var(--color-primary-light);
+    background: var(--selection-highlight-bg);
+}
+
+.sp-choice-card__media,
+.media-choice-card__image-wrap,
+.media-choice-card__preview,
+.format-card__preview {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--sp-choice-card-media-width);
+    aspect-ratio: var(--sp-choice-card-media-ratio);
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--color-bg-gray-200);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-gray-100);
+}
+
+.sp-choice-card__image,
+.media-choice-card__image,
+.format-card__preview-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.sp-choice-cards--cover .sp-choice-card__image,
+.media-choice-cards--cover .media-choice-card__image {
+    object-fit: cover;
+}
+
+.sp-choice-card__body,
+.format-card__text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+}
+
+.sp-choice-card__title,
+.media-choice-card__label,
+.format-card__name {
+    display: -webkit-box;
+    width: 100%;
+    overflow: hidden;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.sp-choice-card__meta,
+.media-choice-card__meta,
+.format-card__dims {
+    display: -webkit-box;
+    width: 100%;
+    margin-top: 0.125rem;
+    overflow: hidden;
+    color: var(--color-text-muted);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-normal);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+/* Compatibilita' visuale con il vecchio disegno sintetico dei formati.
+   E' markup legacy: la nuova integrazione usa una normale immagine CMS. */
+.format-card__preview-box,
+.format-card__preview-inner,
+.format-card__preview-custom {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.125rem;
+    background: var(--color-text);
+}
+
+.format-card__preview-box span,
+.format-card__preview-inner span {
+    color: var(--color-bg-white);
+    font-size: 11px;
+    font-weight: var(--font-weight-bold);
+}
+
+.format-card__preview-dashed {
+    position: absolute;
+    inset: 0;
+    border: 1px dashed var(--color-border);
+    border-radius: 0.125rem;
+}
+
+.format-card__preview-label {
+    position: absolute;
+    z-index: 1;
+    top: 0.125rem;
+    left: var(--spacing-xs);
+    color: var(--color-text-muted);
+    font-size: 7px;
+    font-weight: var(--font-weight-bold);
+}
+
+.format-card__preview-label--faded {
+    color: var(--color-border);
+}
+
+/* Stato nativo: input radio subito prima del label. */
+.sp-choice-cards input:checked + .sp-choice-card,
+.media-choice-cards input:checked + .media-choice-card,
+.format-cards input:checked + .format-card,
+.sp-choice-card--selected,
+.media-choice-card--selected,
+.format-card--selected {
+    border-color: var(--color-primary);
+    background: var(--selection-highlight-bg);
+}
+
+.sp-choice-cards input:checked + .sp-choice-card .sp-choice-card__title,
+.media-choice-cards input:checked + .media-choice-card .media-choice-card__label,
+.format-cards input:checked + .format-card .format-card__name {
+    color: var(--color-text);
+}
+
+.sp-choice-cards input:focus-visible + .sp-choice-card,
+.media-choice-cards input:focus-visible + .media-choice-card,
+.format-cards input:focus-visible + .format-card {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.sp-choice-cards input:disabled + .sp-choice-card,
+.media-choice-cards input:disabled + .media-choice-card,
+.format-cards input:disabled + .format-card,
+.sp-choice-card--disabled,
+.media-choice-card--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+@media (min-width: 640px) {
+    .sp-choice-cards--grid,
+    .media-choice-cards--grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+}

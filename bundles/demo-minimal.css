@@ -19,7 +19,7 @@
 @import '../primitives/option-buttons.css';
 @import '../primitives/orientation-toggle.css';
 @import '../components/step-indicator.css';
-@import '../components/format-card.css';
+@import '../components/choice-card.css';
 @import '../components/price-table.css';
 @import '../components/sidebar-totals.css';
 @import '../components/related-products.css';
@@ -30,4 +30,4 @@
 @import '../primitives/iva-banner.css';
 @import '../primitives/info-dropdown.css';
 @import '../components/preview.css';
-@import '../components/media-choice-card.css';
+@import '../shell/_material-symbols.css';

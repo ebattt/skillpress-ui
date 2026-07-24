@@ -32,9 +32,12 @@ const UTILITIES_FILE = path.join(REPO_ROOT, 'utilities', 'utilities.css');
 // I components possono ESPORRE selettori .sp-* SOLO se la classe e' una
 // primitiva consumata e gia' definita in primitives/. La whitelist riflette
 // "sp-catalog-grid" (catalog-grid e' una primitiva, ma molti components la
-// referenziano nei selettori discendenti).
+// referenziano nei selettori discendenti) e il renderer pubblico
+// "sp-choice-card", che mantiene nello stesso file gli alias legacy.
 const ALLOWED_SP_PREFIXES_IN_COMPONENTS = [
     'sp-catalog-grid',
+    'sp-choice-card',
+    'sp-choice-cards',
 ];
 
 // Baseline utility classes (top-level) snapshot generato manualmente da

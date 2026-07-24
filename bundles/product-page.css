@@ -1,6 +1,7 @@
 /* Product page runtime bundle for backend/CMS integrations. */
 @import '../page/page-shell.css';
 @import '../base/fonts.css';
+@import '../shell/_material-symbols.css';
 @import '../tokens/tokens.css';
 @import '../base/reset.css';
 @import '../utilities/utilities.css';
@@ -25,12 +26,11 @@
 @import '../components/image-gallery.css';
 @import '../components/product-hero.css';
 @import '../components/step-indicator.css';
-@import '../components/format-card.css';
+@import '../components/choice-card.css';
 @import '../components/price-table.css';
 @import '../components/sidebar-totals.css';
 @import '../components/related-products.css';
 @import '../components/mobile-bar.css';
 @import '../components/preview.css';
-@import '../components/media-choice-card.css';
 @import '../components/product-page-layout.css';
 @import '../primitives/page.css';
