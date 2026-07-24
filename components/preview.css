@@ -15,36 +15,54 @@
     min-width: 0;
 }
 
+/* Quando il contenuto non e' una <select> ma un gruppo di card (che non si
+   allunga da solo per riempire la riga), il wrapper non deve comunque
+   allungarsi: altrimenti l'occhio finisce ancorato al bordo destro della riga
+   invece che subito dopo l'ultima card. */
+.preview__select:has(.sp-choice-cards),
+.preview__select:has(.media-choice-cards),
+.preview__select:has(.format-cards),
+.preview__select:has(.sp-option-buttons) {
+    flex: none;
+    min-width: 0;
+}
+
 .preview__trigger {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
+    justify-content: center;
     color: var(--color-secondary);
     background: transparent;
     border: none;
     cursor: pointer;
     flex-shrink: 0;
-    white-space: nowrap;
-    transition: color var(--transition-fast);
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-full);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
     font-family: inherit;
-    font-size: 0.9375rem;
-    font-weight: var(--font-weight-medium);
     padding: 0;
 }
 
-.preview__trigger:hover {
+.preview__trigger:hover:not(:disabled) {
     color: var(--color-secondary-dark);
+    background-color: var(--color-bg-gray-100);
 }
 
-.preview__trigger::before {
-    content: "";
-    display: block;
-    width: 1rem;
-    height: 1rem;
-    flex-shrink: 0;
-    background: currentColor;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E") center / contain no-repeat;
-    mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E") center / contain no-repeat;
+.preview__trigger:disabled {
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.preview__trigger .material-symbols-outlined {
+    font-size: 1.375rem;
+    line-height: 1;
+}
+
+.preview__trigger:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
 }
 
 .preview__panel {

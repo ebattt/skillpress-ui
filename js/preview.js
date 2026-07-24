@@ -16,7 +16,7 @@
     var PANEL_SELECTOR = '[data-preview-panel]';
     var CLOSE_SELECTOR = '[data-preview-close]';
     var SELECT_SELECTOR = 'select';
-    var OPTION_SELECTOR = '[data-preview-option], .media-choice-card';
+    var OPTION_SELECTOR = '[data-preview-option], .sp-choice-card, .media-choice-card, .format-card';
     var INIT_FLAG = '__skillpressPreviewInitialized';
 
     var ns = window.SkillpressUI = window.SkillpressUI || {};
@@ -29,22 +29,9 @@
         target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
     }
 
-    function escapeXml(value) {
-        return String(value).replace(/[&<>"']/g, function(char) {
-            return {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&apos;'
-            }[char];
-        });
-    }
-
     function safeImageUrl(value) {
-        // safeUrl con whitelist estesa per data:image/* (preview puo' essere
-        // generata client-side via SVG inline). Vieta sempre javascript:,
-        // vbscript:, data:text/html.
+        // safeUrl con whitelist per risorse immagine. Vieta sempre
+        // javascript:, vbscript: e payload data: che non siano image/*.
         if (typeof helpers.safeUrl === 'function') {
             var allowed = ['http:', 'https:', 'data:', 'blob:'];
             var safe = helpers.safeUrl(value, { protocols: allowed });
@@ -87,27 +74,21 @@
         return select.options[select.selectedIndex] || null;
     }
 
-    function sourceFromRoot(root) {
-        return root.querySelector('.media-choice-card--selected') ||
-            root.querySelector('.media-choice-card[aria-pressed="true"]') ||
-            sourceFromSelect(root.querySelector(SELECT_SELECTOR));
+    function sourceFromInput(input) {
+        if (!input || input.type !== 'radio') return null;
+
+        if (input.nextElementSibling && input.nextElementSibling.matches(OPTION_SELECTOR)) {
+            return input.nextElementSibling;
+        }
+
+        return null;
     }
 
-    function svgFromVisualOption(option, title) {
-        var preview = option && option.querySelector && option.querySelector('.media-choice-card__preview');
-        if (!preview) return '';
-
-        var styles = window.getComputedStyle(preview);
-        var bg = styles.backgroundColor || '#f3f4f6';
-        var fg = styles.color || '#111418';
-        var label = (title || preview.textContent || '').trim();
-
-        return 'data:image/svg+xml,' + encodeURIComponent(
-            '<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320">' +
-            '<rect width="320" height="320" fill="' + bg + '"/>' +
-            '<text x="160" y="174" text-anchor="middle" fill="' + fg + '" font-size="44" font-weight="700" font-family="Arial, sans-serif">' + escapeXml(label) + '</text>' +
-            '</svg>'
-        );
+    function sourceFromRoot(root) {
+        return sourceFromInput(root.querySelector('input[type="radio"]:checked')) ||
+            root.querySelector('.sp-choice-card--selected, .media-choice-card--selected, .format-card--selected') ||
+            root.querySelector('.sp-choice-card[aria-pressed="true"], .media-choice-card[aria-pressed="true"], .format-card[aria-pressed="true"]') ||
+            sourceFromSelect(root.querySelector(SELECT_SELECTOR));
     }
 
     function getPanel(root, trigger) {
@@ -118,30 +99,47 @@
         return root.querySelector(PANEL_SELECTOR);
     }
 
+    function clearImage(image, imageWrap) {
+        if (!image) return;
+        image.removeAttribute('src');
+        image.alt = '';
+        if (imageWrap) imageWrap.hidden = true;
+    }
+
     function sync(root, source) {
         if (!root) return root;
 
         var currentSource = source || sourceFromRoot(root);
-        if (!currentSource) return root;
-
+        var trigger = root.querySelector(TRIGGER_SELECTOR);
         var data = getSourceData(currentSource);
+        var safeImage = safeImageUrl(data.image);
+        var available = Boolean(currentSource && safeImage);
         var title = root.querySelector('.preview__title');
         var description = root.querySelector('.preview__description');
         var image = root.querySelector('.preview__image-media');
-        var fallbackImage = data.image || svgFromVisualOption(currentSource, data.title);
+        var imageWrap = image && image.closest('.preview__image-wrap');
 
-        if (title && data.title) title.textContent = data.title;
-        if (description && data.description) description.textContent = data.description;
-        if (image && fallbackImage) {
-            // F014: passa per safeUrl prima di assegnare img.src.
-            var safe = safeImageUrl(fallbackImage);
-            if (safe) {
-                image.src = safe;
-                image.alt = data.alt || data.title || image.alt;
+        if (trigger) {
+            trigger.disabled = !available;
+            if (available) {
+                trigger.removeAttribute('aria-disabled');
+            } else {
+                trigger.setAttribute('aria-disabled', 'true');
+                if (isOpenState(root)) setOpen(root, false);
             }
         }
 
-        dispatch(root, 'sp:preview:sync', { source: currentSource });
+        if (title) title.textContent = data.title;
+        if (description) description.textContent = data.description;
+        if (image && safeImage) {
+            image.src = safeImage;
+            image.alt = data.alt || data.title || '';
+            if (imageWrap) imageWrap.hidden = false;
+        } else if (image) {
+            clearImage(image, imageWrap);
+        }
+
+        dispatch(root, 'sp:preview:sync', { source: currentSource, available: available });
 
         return root;
     }
@@ -156,7 +154,10 @@
         var wasOpen = isOpenState(root);
 
         root.classList.toggle('preview--open', open);
-        if (trigger) trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (trigger) {
+            trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            trigger.setAttribute('aria-label', open ? 'Chiudi anteprima' : 'Apri anteprima');
+        }
         if (panel) panel.setAttribute('aria-hidden', open ? 'false' : 'true');
 
         // F015: focus management (save trigger on open, restore on close)
@@ -218,6 +219,7 @@
         }
 
         if (trigger && root.contains(trigger)) {
+            if (trigger.disabled) return;
             setOpen(root, !root.classList.contains('preview--open'));
             return;
         }
@@ -227,12 +229,38 @@
         }
     }
 
+    function onImageError(event) {
+        // L'evento "error" dell'<img> non fa bubbling: la root lo intercetta
+        // solo registrandosi in capture phase (vedi initRoot).
+        var root = event.currentTarget;
+        var image = event.target;
+        if (!image || !image.matches || !image.matches('.preview__image-media')) return;
+        if (!root.contains(image)) return;
+
+        clearImage(image, image.closest('.preview__image-wrap'));
+
+        var trigger = root.querySelector(TRIGGER_SELECTOR);
+        if (trigger) {
+            trigger.disabled = true;
+            trigger.setAttribute('aria-disabled', 'true');
+        }
+        if (isOpenState(root)) setOpen(root, false);
+        dispatch(root, 'sp:preview:sync', {
+            source: sourceFromRoot(root),
+            available: false,
+            error: true
+        });
+    }
+
     function onChange(event) {
         var root = event.currentTarget;
         var select = event.target.closest(SELECT_SELECTOR);
+        var radio = event.target.closest('input[type="radio"]');
 
         if (select && root.contains(select)) {
             sync(root, sourceFromSelect(select));
+        } else if (radio && root.contains(radio)) {
+            sync(root, sourceFromInput(radio));
         }
     }
 
@@ -243,6 +271,9 @@
         // F015: keyboard (Escape) + click-outside backdrop
         root.addEventListener('keydown', onKeydown);
         root.addEventListener('click', onBackdropClick);
+        // "error" non fa bubbling: serve la capture phase per intercettarlo
+        // dalla root quando l'immagine di anteprima risponde 404.
+        root.addEventListener('error', onImageError, true);
         sync(root);
         setOpen(root, root.classList.contains('preview--open'));
         root[INIT_FLAG] = true;
