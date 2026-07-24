@@ -47,11 +47,34 @@
     align-self: flex-start;
 }
 
+/* Il padding-top vive sul contenitore ESTERNO, non sticky: sposta solo la
+   posizione di partenza (allineata alla riga del primo accordion), senza
+   restare come vuoto sopra il contenuto quando il box e' agganciato in alto
+   durante lo scroll. .configurator-sidebar__inner e' l'elemento davvero
+   sticky: il suo `top` non viene mai spostato dal padding del genitore.
+   align-self:stretch (invece di flex-start) e' necessario perche' lo sticky
+   interno resti "libero" di scorrere per tutta l'altezza della riga della
+   grid: senza, il contenitore esterno si adatta al solo contenuto e lo
+   sticky si stacca quasi subito. */
 @media (min-width: 1024px) {
     .configurator-sidebar {
+        height: auto;
+        align-self: stretch;
+        padding-top: 84px;
+    }
+}
+
+.configurator-sidebar__inner > * + * {
+    margin-top: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+    .configurator-sidebar__inner {
         position: sticky;
-        top: 250px;
-        margin-top: 100px;
+        /* La navbar sticky (main + categorie, la top-bar scorre via) resta
+           ancorata a top:0: senza questo margine il box si aggancia sotto e
+           finisce nascosto dietro l'header invece che appena sotto. */
+        top: calc(var(--shell-navbar-height-main, 64px) + var(--shell-navbar-height-categories, 44px) + 1rem);
     }
 }
 

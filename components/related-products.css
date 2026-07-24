@@ -6,7 +6,7 @@
 .related-products {
     font-family: var(--font-family);
     background-color: var(--color-bg-white);
-    padding: 0 20px 5px;
+    padding: 0 20px 3rem;
     overflow: visible;
 }
 

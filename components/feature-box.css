@@ -65,6 +65,10 @@
    phones stretti per evitare che parole lunghe (es. "Personalizzabile") rompano
    il grid 2-col su display 360-479px. */
 @media (max-width: 480px) {
+    .feature-grid--single-mobile {
+        grid-template-columns: 1fr;
+    }
+
     .feature-box {
         padding: 0.625rem;
     }
