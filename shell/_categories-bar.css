@@ -4,9 +4,10 @@
  * ==========================================================================
  *
  * Barra orizzontale sotto la navbar arancione. Contiene il mega menu
- * "Tutti i Prodotti", i dropdown delle singole categorie e il bottone
- * "Risparmia con Skillpoints". Include frecce di scroll e gradienti
- * fade ai lati quando il contenuto eccede la larghezza visibile.
+ * "Tutti i Prodotti" (fuori dalla riga che scorre, vedi
+ * .categories-bar__inner sotto), i dropdown delle singole categorie e il
+ * bottone "Risparmia con Skillpoints". Include frecce di scroll e
+ * gradienti fade ai lati quando il contenuto eccede la larghezza visibile.
  *
  * Elementi HTML: .categories-bar, .categories-bar__container,
  *   .categories-bar__scroll-wrapper, .categories-bar__fade,
@@ -37,10 +38,15 @@
     align-items: center;
 }
 
+/* margin-left: la freccia sinistra e il fade sono ancorati a left:-1rem
+   rispetto a questo contenitore (vedi sotto): senza questo margine restano
+   troppo vicini a "Tutti i Prodotti", che ora e' sempre il fratello
+   precedente di questo contenitore. */
 .categories-bar__scroll-wrapper {
     position: relative;
     flex: 1;
     min-width: 0;
+    margin-left: 2.5rem;
     overflow: visible;
 }
 
@@ -124,6 +130,11 @@
     overflow: visible;
 }
 
+/* Riceve una transform orizzontale via JS quando l'utente scorre le
+   categorie (frecce/trascinamento): tutto cio' che sta QUI DENTRO si sposta
+   con lo scroll. Per questo "Tutti i Prodotti" (.mega-menu) non e' un figlio
+   di questo contenitore: sta come fratello di .categories-bar__scroll-wrapper,
+   fuori dalla zona che si trasforma, cosi' resta sempre fermo. */
 .categories-bar__inner {
     display: flex;
     align-items: center;

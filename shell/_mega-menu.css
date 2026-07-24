@@ -3,9 +3,12 @@
  * MEGA MENU -- Pannello "Tutti i Prodotti"
  * ==========================================================================
  *
- * Pannello grande che appare al hover sul bottone "Tutti i Prodotti"
- * nella barra categorie. Composto da sidebar sinistra (lista categorie)
- * e pannello destro (griglia prodotti). La categoria attiva viene
+ * Pannello grande che appare al hover sul bottone "Tutti i Prodotti",
+ * dentro .main-navbar__left (navbar arancione sticky, accanto al logo) —
+ * non nella barra categorie: cosi' resta visibile per tutto lo scroll
+ * verticale della pagina, indipendente dallo scroll orizzontale delle
+ * altre categorie. Composto da sidebar sinistra (lista categorie) e
+ * pannello destro (griglia prodotti). La categoria attiva viene
  * evidenziata tramite JS (classe --active aggiunta da navbar.js).
  *
  * LAYOUT:
@@ -32,7 +35,14 @@
 /* === CONTAINER E TRIGGER === */
 
 /* Container relativo: ancora di posizionamento per il dropdown assoluto.
-   flex-shrink: 0 impedisce che il bottone si comprima nella barra categorie. */
+   flex-shrink: 0 impedisce che il bottone si comprima. Sta come fratello di
+   .categories-bar__scroll-wrapper (non piu' figlio di #categoryInnerContainer):
+   quel contenitore e' quello che riceve la transform orizzontale quando si
+   scorrono le categorie, quindi essere fuori da li' e' l'unico modo perche'
+   il bottone non si sposti insieme ai nomi delle categorie (position:sticky
+   da solo non basterebbe: una transform sul genitore muove comunque i figli
+   sticky, la sticky positioning compensa solo lo scroll nativo). Stessa
+   posizione visiva di sempre, nella barra grigia, a sinistra dei nomi. */
 .mega-menu {
     position: relative;
     flex-shrink: 0;

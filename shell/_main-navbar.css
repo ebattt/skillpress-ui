@@ -13,9 +13,25 @@
  *   - _utilities.css (classi .hide-desktop-flex per toggle mobile/desktop)
  *
  * LAYOUT RESPONSIVE (breakpoint 768px):
- *   Mobile (< 768px):
- *     [hamburger] [logo piccolo] [search piccola] [user] [carrello]
+ *   Mobile (< 768px), riga principale (3.5rem):
+ *     [hamburger] [logo esteso, vincolato tra hamburger e icone] [lente] [user] [carrello]
  *     Elementi posizionati con position:absolute dentro il flex container.
+ *     Il logo esteso richiede il modifier .mobile-navbar__logo--extended
+ *     (mai sulla classe base, per non rompere il vecchio markup con
+ *     .mobile-logo-small + .search-mobile centrato: vedi @deprecated sotto).
+ *     Con quel modifier il logo NON e' centrato nel viewport (a 320-360px si
+ *     sovrapporrebbe alle icone: verificato via calcolo geometrico, l'SVG
+ *     esteso ha rapporto ~8,35:1 => ~167px a 20px di altezza). E' invece
+ *     vincolato in un box (right:136px) che lascia sempre lo spazio libero
+ *     per hamburger e cluster icone; l'immagine si rimpicciolisce
+ *     gracefully sotto ~375px (object-fit:contain, mai overflow).
+ *
+ *   Mobile, seconda riga opzionale (.mobile-search-bar):
+ *     Espande sotto la riga principale al click sulla lente (JS app-owned,
+ *     vedi navbar/js/navbar.js -> initMobileSearch). Animata con
+ *     max-height/opacity (classe --open), non un semplice toggle .hidden
+ *     istantaneo; .hidden resta il guard strutturale (assente = niente
+ *     spazio occupato, e forza display:none anche >=768px).
  *
  *   Desktop (>= 768px):
  *     [SKILLPRESS logo]  [____search bar____]  [Wiki] [Blog] [Accedi] [Carrello]
@@ -28,7 +44,8 @@
  *   resta visibile con barra arancione + barra grigia a top:0.
  *
  * Elementi HTML: .navbar-container, .main-navbar, .desktop-logo,
- *   .search-desktop, .search-mobile, .desktop-menu, .mobile-navbar-*,
+ *   .search-desktop, .search-mobile (@deprecated, vedi sotto),
+ *   .mobile-search-bar, .desktop-menu, .mobile-navbar-*,
  *   .navbar-icon-btn, .cart-badge.
  * ==========================================================================
  */
@@ -100,7 +117,8 @@
    display:contents rende il wrapper trasparente al layout flex del padre.
    ========================================================================= */
 
-/* Stato normale: hamburger a sinistra, logo piccolo accanto */
+/* Stato normale: hamburger a sinistra, logo esteso subito dopo (ancorato a
+   sinistra dentro il suo box, non centrato), lente/user/cart a destra */
 .mobile-navbar-normal {
     display: contents;
 }
@@ -116,14 +134,60 @@
     left: 0.5rem;
 }
 
+/* Posizione base: invariata rispetto a prima di 0.6.0 (chi ha ancora il
+   vecchio markup con .mobile-logo-small + .search-mobile centrato non deve
+   rompersi: la nuova geometria vive SOLO nel modifier --extended qui sotto,
+   mai su .mobile-navbar__logo da sola). */
 .mobile-navbar__logo {
     position: absolute;
     left: 52px;
 }
 
+/* Modifier per il nuovo markup (logo esteso): box vincolato (non centrato
+   nel viewport) che lascia sempre 52px a sinistra (hamburger) e 136px a
+   destra (lente 40px + user 40px + cart 40px + gap 4px ciascuno, stessa
+   progressione di .mobile-navbar__user/__cart sotto).
+   NON usare width/height:auto + max-width/max-height sull'img qui dentro:
+   come flex item (via .flex-center sull'<a>) quella combinazione collassa
+   a 0x0 in Chromium durante il sizing del flex item. object-fit su un box
+   di altezza fissa (100%/100% a catena) evita il problema: mai overflow
+   (quindi niente overflow:hidden, che taglierebbe il focus ring), si
+   rimpicciolisce sotto ~375px invece di sovrapporsi alle icone. */
+.mobile-navbar__logo--extended {
+    right: 136px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1.25rem;
+}
+
+.mobile-navbar__logo--extended a {
+    display: block;
+    height: 100%;
+}
+
+.mobile-navbar__logo--extended img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* A sinistra, non centrato: il logo resta ancorato subito dopo
+       l'hamburger anche quando lo spazio a destra (icone) lascia margine
+       residuo nel box, invece di fluttuare a meta' dello spazio libero. */
+    object-position: left center;
+}
+
 .mobile-logo-small {
     height: 1.75rem;
     width: 1.75rem;
+}
+
+/* Bottone lente mobile: sostituisce il campo di ricerca sempre visibile
+   (vedi .search-mobile @deprecated). Stessa progressione right di
+   .mobile-navbar__user/__cart: cart a 8px, user a 52px, lente a 96px
+   (ciascuno 40px + 4px di gap). */
+.mobile-navbar__search-btn {
+    position: absolute;
+    right: 96px;
 }
 
 /* Stato menu aperto: quando il mobile menu e' attivo, il JS mostra
@@ -309,7 +373,12 @@
 
 
 /* =========================================================================
-   SEARCH MOBILE (< 768px, centrata)
+   SEARCH MOBILE (@deprecated) — campo sempre visibile, centrato.
+   Superato da .mobile-navbar__search-btn + .mobile-search-bar (bottone
+   lente che espande una riga di ricerca sotto la navbar). Le regole
+   restano per compatibilita': il CSS libreria e' su CDN non versionato,
+   rimuoverle subito romperebbe la resa per chi non ha ancora migrato il
+   markup. Nessuna pagina di questo repo genera piu' questo markup.
    ========================================================================= */
 
 .search-mobile {
@@ -347,6 +416,92 @@
 
 .search-mobile__input::placeholder {
     color: var(--color-text-muted);
+}
+
+
+/* =========================================================================
+   MOBILE SEARCH BAR — riga espandibile sotto la navbar (< 768px)
+   Aperta/chiusa da navbar/js/navbar.js (initMobileSearch). .hidden resta il
+   guard strutturale (assente = zero spazio, vince anche >=768px); la
+   classe --open aggiunge la transizione max-height/opacity per l'apertura
+   "a fisarmata". prefers-reduced-motion e' gia' coperto dalla regola
+   globale in _utilities.css (transition-duration azzerata per *).
+   ========================================================================= */
+
+.mobile-search-bar {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    background-color: var(--color-primary);
+    /* --transition-fast include gia' l'easing (150ms ease): niente "ease"
+       dopo, altrimenti la dichiarazione diventa invalida ("150ms ease ease")
+       e il browser la scarta silenziosamente, senza animazione ne' errori. */
+    transition: max-height var(--transition-fast), opacity var(--transition-fast);
+}
+
+.mobile-search-bar--open {
+    max-height: 4.5rem;
+    opacity: 1;
+}
+
+@media (min-width: 768px) {
+    .mobile-search-bar {
+        display: none !important;
+    }
+}
+
+.mobile-search-bar__container {
+    max-width: 1500px;
+    margin: 0 auto;
+    /* padding-top: spazio per il focus ring dell'input (2px outline +
+       offset, vedi .mobile-search-bar__input:focus-visible sotto), che
+       altrimenti verrebbe tagliato dall'overflow:hidden di .mobile-search-bar
+       essendo il campo attaccato al bordo superiore.
+       padding laterale piu' largo (1rem, non 0.5rem): il campo resta piu'
+       corto lasciando visibile il bordo arancione ai lati, invece di
+       occupare quasi tutta la larghezza. */
+    padding: 0.375rem 1rem 0.75rem;
+}
+
+.mobile-search-bar__form {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.mobile-search-bar__icon {
+    position: absolute;
+    left: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    pointer-events: none;
+}
+
+.mobile-search-bar__input {
+    width: 100%;
+    padding: 0.5rem 1rem 0.5rem 2.75rem;
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    color: var(--shell-color-text);
+    background: white;
+    box-shadow: var(--shell-shadow-lg);
+    outline: none;
+    transition: box-shadow var(--transition-fast);
+}
+
+.mobile-search-bar__input::placeholder {
+    color: var(--color-text-muted);
+}
+
+/* Ring piu' stretto solo qui (offset ridotto): il campo e' vicino al bordo
+   superiore di .mobile-search-bar, l'offset standard di .main-navbar
+   :focus-visible (2px) lascia meno margine di sicurezza col padding-top
+   sopra. Non tocca il ring standard degli altri controlli della navbar. */
+.mobile-search-bar__input:focus-visible {
+    outline-offset: 1px;
 }
 
 
@@ -414,7 +569,8 @@
    pointer:coarse): la resa desktop resta invariata. */
 @media (hover: none) and (pointer: coarse) {
     .search-mobile__input,
-    .search-desktop__input {
+    .search-desktop__input,
+    .mobile-search-bar__input {
         font-size: 1rem;
     }
 }
