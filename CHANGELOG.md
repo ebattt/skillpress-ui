@@ -24,7 +24,7 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
   `FormatDimensions`, `IdealFor`, `pairKey`, `leafOnly`, `path` e qualunque
   calcolo o filtro commerciale nella libreria.
 
-## Corrente (0.6.0)
+## 0.6.0
 
 - **Versione: 0.6.0**
 - **Contract HTML cambiato: sì, richiede migrazione coordinata (il CSS da
