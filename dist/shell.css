@@ -819,9 +819,35 @@ body {
     left: 52px;
 }
 
+.mobile-navbar__logo--extended {
+    right: 136px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1.25rem;
+}
+
+.mobile-navbar__logo--extended a {
+    display: block;
+    height: 100%;
+}
+
+.mobile-navbar__logo--extended img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    object-position: left center;
+}
+
 .mobile-logo-small {
     height: 1.75rem;
     width: 1.75rem;
+}
+
+.mobile-navbar__search-btn {
+    position: absolute;
+    right: 96px;
 }
 
 .mobile-navbar-open {
@@ -1015,6 +1041,70 @@ body {
     color: var(--color-text-muted);
 }
 
+.mobile-search-bar {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    background-color: var(--color-primary);
+
+    transition: max-height var(--transition-fast), opacity var(--transition-fast);
+}
+
+.mobile-search-bar--open {
+    max-height: 4.5rem;
+    opacity: 1;
+}
+
+@media (min-width: 768px) {
+    .mobile-search-bar {
+        display: none !important;
+    }
+}
+
+.mobile-search-bar__container {
+    max-width: 1500px;
+    margin: 0 auto;
+
+    padding: 0.375rem 1rem 0.75rem;
+}
+
+.mobile-search-bar__form {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.mobile-search-bar__icon {
+    position: absolute;
+    left: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    pointer-events: none;
+}
+
+.mobile-search-bar__input {
+    width: 100%;
+    padding: 0.5rem 1rem 0.5rem 2.75rem;
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    color: var(--shell-color-text);
+    background: white;
+    box-shadow: var(--shell-shadow-lg);
+    outline: none;
+    transition: box-shadow var(--transition-fast);
+}
+
+.mobile-search-bar__input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.mobile-search-bar__input:focus-visible {
+    outline-offset: 1px;
+}
+
 .desktop-menu {
     display: none;
     align-items: center;
@@ -1071,7 +1161,8 @@ body {
 
 @media (hover: none) and (pointer: coarse) {
     .search-mobile__input,
-    .search-desktop__input {
+    .search-desktop__input,
+    .mobile-search-bar__input {
         font-size: 1rem;
     }
 }
@@ -1102,6 +1193,7 @@ body {
     position: relative;
     flex: 1;
     min-width: 0;
+    margin-left: 2.5rem;
     overflow: visible;
 }
 

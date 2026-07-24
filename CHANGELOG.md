@@ -2,6 +2,59 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
+## Corrente (0.6.0)
+
+- **Versione: 0.6.0**
+- **Contract HTML cambiato: sì, richiede migrazione coordinata (il CSS da
+  solo è retrocompatibile, il nuovo comportamento no).** Nuovo markup
+  consigliato per la navbar mobile (logo esteso al posto del logo
+  circolare — usa il nuovo modifier `.mobile-navbar__logo--extended`, mai
+  la classe base da sola — bottone lente `#mobileSearchBtn` al posto del
+  campo di ricerca sempre visibile, nuova riga `#mobileSearchBar`
+  espandibile con `id="search-form-mobile"`/`id="input-searchText-mobile"`
+  invariati). Le vecchie regole `.search-mobile*` **restano nel CSS**
+  (marcate `@deprecated` in `shell/_main-navbar.css`, scoperte in coppia
+  col vecchio markup) per non rompere chi non ha ancora migrato: il CDN è
+  su URL non versionato, quindi il CSS da solo non rompe nessuno. Ma il
+  toggle richiede JS applicativo nuovo (`navbar.js`, app-owned, non
+  fornito da questa libreria): backend e markup vanno aggiornati insieme,
+  non solo il CSS — senza quel JS la lente resta un controllo statico e la
+  ricerca mobile non è più raggiungibile in nessun modo.
+- **shell/mobile navbar**: il logo mobile non è più centrato nel viewport
+  ma vincolato nello spazio libero tra hamburger e cluster icone (si
+  rimpicciolisce sotto ~375px invece di sovrapporsi alle icone).
+- **preview configuratore**: il trigger si disabilita automaticamente quando
+  il valore selezionato non contiene un `data-preview-image` ammesso e si
+  riabilita al cambio successivo; titolo e descrizione da soli non lo
+  abilitano. Il pannello aperto viene chiuso per evitare contenuti appartenenti
+  al valore precedente. Anche il cambio dei radio nativi da tastiera
+  sincronizza ora il pannello. Aggiunto lo stato CSS `:disabled`.
+- **preview**: corretti due casi in cui restava a schermo l'immagine del
+  valore precedente: URL di anteprima non ammessa (nessun cambio di
+  `img.src`) e immagine che risponde 404 dopo il caricamento. In entrambi i
+  casi l'immagine viene rimossa, il pannello aperto si chiude e il trigger
+  torna allo stato `:disabled`.
+- **contratto configuratore semplificato**: i renderer pubblici sono ora
+  soltanto Select, Radio e Choice Card. Formato, “Ideale per” e padre–figlio
+  sono composizioni applicative gestite dal backend, non componenti JS.
+- **choice-card**: nuovo renderer universale `.sp-choice-card` con immagine,
+  titolo e meta opzionali. Supporta taglie `small`/`medium`/`large`, rapporti
+  `square`/`portrait`/`landscape`/`wide`/`custom` e fit `contain`/`cover`,
+  sempre configurati a livello di gruppo.
+- **compatibilità card**: `.media-choice-card` e `.format-card` restano alias
+  CSS; il markup già prodotto continua a essere stilato. La documentazione
+  consiglia soltanto `.sp-choice-card`.
+- **rimossi dal runtime 0.6**: `FormatDimensions`, `IdealFor`, i relativi
+  `data-*` ed eventi. La libreria non sincronizza dimensioni e non applica
+  preset; il backend renderizza direttamente lo stato finale.
+- **option-buttons**: aggiunti i nomi canonici di taglia
+  `--small`/default/`--large` e la variante visuale `--chips`.
+- **preview**: il trigger usa ora soltanto il glifo ufficiale `visibility` del
+  subset self-hosted Material Symbols, senza SVG CSS né testo visibile. Il nome
+  accessibile cambia fra “Apri anteprima” e “Chiudi anteprima”.
+- **feature-grid**: aggiunto il modifier opzionale `--single-mobile` per
+  contenuti descrittivi che richiedono una colonna sui telefoni stretti.
+
 ## Corrente (0.5.7)
 
 - **Versione: 0.5.7**
