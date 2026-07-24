@@ -2,6 +2,28 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
+## Corrente (0.7.0)
+
+- **Versione: 0.7.0**
+- **Contract HTML cambiato: sì, in modo compatibile e solo per adottare la
+  presentazione formato approvata.** I tre renderer restano Select, Radio e
+  Choice Card; non viene aggiunta logica applicativa.
+- **Choice Card**: ripristinata la geometria visuale pre-reset per card con
+  immagine, titolo e meta opzionali. Il bordo esterno è trasparente a riposo e
+  usa highlight/bordo primario quando il radio è selezionato.
+- **Formato**: aggiunto il modificatore pubblico
+  `.sp-choice-cards--format`, che rende la Choice Card come griglia a tutta
+  larghezza con immagine e solo nome sotto. Dimensioni, unità, orientamento,
+  vincoli e valori restano campi renderizzati e validati dal backend.
+- **Radio a chip / “Ideale per”**: ripristinati fondo e bordo delle opzioni non
+  selezionate, selezione primaria e focus nativo; la testata prodotto usa una
+  semplice composizione CSS, senza runtime `IdealFor` o eventi speciali.
+- **Stato `hidden`**: `.sp-custom-dims[hidden]` non viene più riaperto
+  accidentalmente dalla regola flex del componente.
+- **Nessuna reintroduzione di complessità**: restano esclusi
+  `FormatDimensions`, `IdealFor`, `pairKey`, `leafOnly`, `path` e qualunque
+  calcolo o filtro commerciale nella libreria.
+
 ## Corrente (0.6.0)
 
 - **Versione: 0.6.0**

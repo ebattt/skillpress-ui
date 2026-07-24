@@ -70,3 +70,19 @@
     font-size: var(--font-size-sm);
     line-height: 1.625;
 }
+
+/* Composizione presentazionale del normale Radio a chip. Non applica preset,
+   non intercetta change e non richiede inizializzazione JavaScript. */
+.product-hero__ideal-for {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin-bottom: 1rem;
+}
+
+.product-hero__ideal-for > .sp-label-text {
+    color: var(--color-text);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+}

@@ -1,5 +1,5 @@
 {
-  "version": "0.6.0",
+  "version": "0.7.0",
   "css": {
     "primitives": [
       ".dashboard-shell--nav-hub",
@@ -74,6 +74,7 @@
       ".sp-choice-card__title",
       ".sp-choice-cards",
       ".sp-choice-cards--cover",
+      ".sp-choice-cards--format",
       ".sp-choice-cards--grid",
       ".sp-choice-cards--large",
       ".sp-choice-cards--media-custom",
@@ -577,6 +578,7 @@
         "sp-choice-card__title",
         "sp-choice-cards",
         "sp-choice-cards--cover",
+        "sp-choice-cards--format",
         "sp-choice-cards--grid",
         "sp-choice-cards--large",
         "sp-choice-cards--media-custom",
@@ -1196,11 +1198,13 @@
         "product-hero",
         "product-hero__description",
         "product-hero__grid",
+        "product-hero__ideal-for",
         "product-hero__info",
         "product-hero__rating",
         "product-hero__rating-value",
         "product-hero__review-count",
-        "product-hero__title"
+        "product-hero__title",
+        "sp-label-text"
       ],
       "product-page-layout": [
         "download-buttons-mobile",

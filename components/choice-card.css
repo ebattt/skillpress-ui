@@ -1,5 +1,5 @@
-/* Choice Card e' l'unico renderer visuale a card. Il contenuto e' opzionale:
-   il backend puo' renderizzare media, titolo e meta senza cambiare componente. */
+/* Choice Card e' l'unico renderer visuale a card. Immagine, titolo e meta sono
+   contenuti opzionali del backend; le varianti di gruppo cambiano solo la resa. */
 /** @public */
 .sp-choice-cards,
 .media-choice-cards,
@@ -78,7 +78,7 @@
     min-width: 0;
     min-height: var(--sp-choice-card-min-height);
     padding: 0.375rem;
-    border: 2px solid var(--color-bg-gray-200);
+    border: 2px solid transparent;
     border-radius: var(--radius-lg);
     background: var(--color-bg-white);
     color: var(--color-text);
@@ -112,6 +112,7 @@
     border: 2px solid var(--color-bg-gray-200);
     border-radius: var(--radius-lg);
     background: var(--color-bg-gray-100);
+    transition: border-color var(--transition-fast);
 }
 
 .sp-choice-card__image,
@@ -144,6 +145,7 @@
 .format-card__name {
     display: -webkit-box;
     width: 100%;
+    height: 2.4em;
     overflow: hidden;
     color: var(--color-text-secondary);
     font-size: var(--font-size-xs);
@@ -159,7 +161,7 @@
 .format-card__dims {
     display: -webkit-box;
     width: 100%;
-    margin-top: 0.125rem;
+    height: 2.4em;
     overflow: hidden;
     color: var(--color-text-muted);
     font-size: 0.6875rem;
@@ -170,8 +172,64 @@
     -webkit-line-clamp: 2;
 }
 
+/* Presentazione "formato": e' sempre Choice Card, ma recupera la griglia
+   proporzionale approvata. Le dimensioni restano nei campi del form, non qui. */
+.sp-choice-cards--format,
+.format-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
+    gap: var(--spacing-sm);
+}
+
+.sp-choice-cards--format .sp-choice-card,
+.format-cards .format-card {
+    width: 100%;
+    min-height: 0;
+    gap: 0;
+    padding: 0.625rem;
+    border-width: 1px;
+    border-color: var(--color-bg-gray-200);
+}
+
+.sp-choice-cards--format .sp-choice-card:hover,
+.format-cards .format-card:hover {
+    border-color: var(--color-border);
+}
+
+.sp-choice-cards--format .sp-choice-card__media,
+.format-cards .format-card__preview {
+    width: 3.5rem;
+    height: 4.9375rem;
+    margin: 0 auto var(--spacing-sm);
+    aspect-ratio: auto;
+    border: 0;
+    border-radius: 0.125rem;
+    background: transparent;
+}
+
+.sp-choice-cards--format .sp-choice-card__image,
+.format-cards .format-card__preview-image {
+    border-radius: 0.125rem;
+}
+
+.sp-choice-cards--format .sp-choice-card__body,
+.format-cards .format-card__text {
+    flex: none;
+}
+
+.sp-choice-cards--format .sp-choice-card__title,
+.format-cards .format-card__name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.6em;
+    height: auto;
+    color: var(--color-text);
+    line-height: 1.3;
+}
+
 /* Compatibilita' visuale con il vecchio disegno sintetico dei formati.
-   E' markup legacy: la nuova integrazione usa una normale immagine CMS. */
+   Il nuovo markup usa invece una normale immagine CMS. */
 .format-card__preview-box,
 .format-card__preview-inner,
 .format-card__preview-custom {
@@ -227,6 +285,11 @@
 .media-choice-cards input:checked + .media-choice-card .media-choice-card__label,
 .format-cards input:checked + .format-card .format-card__name {
     color: var(--color-text);
+}
+
+.sp-choice-cards--format input:checked + .sp-choice-card .sp-choice-card__title,
+.format-cards input:checked + .format-card .format-card__name {
+    color: var(--color-primary);
 }
 
 .sp-choice-cards input:focus-visible + .sp-choice-card,

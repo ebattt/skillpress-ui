@@ -259,6 +259,10 @@ input.sp-nome-lavoro-input--error:focus {
     gap: var(--spacing-sm);
 }
 
+.sp-custom-dims[hidden] {
+    display: none;
+}
+
 .sp-custom-dims__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
