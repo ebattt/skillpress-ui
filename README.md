@@ -103,6 +103,17 @@ riferimento è la contract page
 Font: self-hostati in `fonts/manrope/` e `fonts/material-symbols/`; nessuna
 richiesta a Google Fonts nel runtime production.
 
+Il subset Material Symbols è riproducibile dalla sorgente 2.950 vendorizzata:
+
+```bash
+python -m pip install -r tools/requirements-fonts.txt
+npm run build:material-symbols
+```
+
+L'elenco delle ligature incluse è
+`fonts/material-symbols/GLYPHS.txt`; versione, provenienza e hash della sorgente
+sono registrati in `fonts/material-symbols/LICENSE.txt`.
+
 ## JS da caricare
 
 Via consigliata: **bundle unico** `js/skillpress-ui.js` (generato da

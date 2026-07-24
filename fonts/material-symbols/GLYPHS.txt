@@ -22,6 +22,7 @@ dashboard
 description
 eco
 edit_note
+email
 event
 expand_more
 favorite
@@ -32,6 +33,7 @@ how_to_vote
 inventory_2
 label
 layers
+lock
 login
 logout
 lunch_dining
@@ -48,3 +50,4 @@ search
 shopping_cart
 style
 support_agent
+visibility

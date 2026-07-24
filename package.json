@@ -13,6 +13,7 @@
   "scripts": {
     "pack:check": "npm pack --dry-run --cache /tmp/skillpress-npm-cache",
     "prepublishOnly": "npm run check",
+    "build:material-symbols": "python scripts/build-material-symbols.py",
     "check:naming": "node scripts/check-naming.cjs",
     "check:legacy": "node scripts/check-legacy.cjs",
     "check:data-attrs": "node scripts/check-data-attrs.cjs",
@@ -27,7 +28,7 @@
     "build:public": "node scripts/build-public.cjs",
     "verify:cdn": "node scripts/verify-cdn.cjs",
     "check:contract": "node scripts/check-contract.cjs",
-    "check": "npm run check:naming && npm run check:legacy && npm run check:data-attrs && npm run check:init-contract && npm run check:hardcoded-colors && npm run check:css-vars && npm run check:breakpoints && npm run check:shell-isolation && npm run build:dist && npm run build:public-api && npm run check:contract && npm run pack:check"
+    "check": "npm run build:material-symbols && npm run check:naming && npm run check:legacy && npm run check:data-attrs && npm run check:init-contract && npm run check:hardcoded-colors && npm run check:css-vars && npm run check:breakpoints && npm run check:shell-isolation && npm run build:dist && npm run build:public-api && npm run check:contract && npm run pack:check"
   },
   "files": [
     "fonts/",

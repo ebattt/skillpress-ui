@@ -13,10 +13,17 @@ jobs:
         with:
           node-version: 20
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
       - name: install
         run: npm ci
+      - name: install font build tools
+        run: pip install -r tools/requirements-fonts.txt
       - name: aggregate check
         run: npm run check
+      - name: generated artifacts are committed
+        run: git diff --exit-code
       - name: build storybook (smoke)
         run: npm run build-storybook --if-present
       - name: upload dist

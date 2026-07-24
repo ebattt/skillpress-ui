@@ -6,11 +6,18 @@ https://www.apache.org/licenses/LICENSE-2.0
 Source: https://fonts.google.com/icons (family "Material Symbols Outlined")
 
 material-symbols-outlined.woff2 in questa cartella e' un SOTTOINSIEME self-hosted:
-- variabile originale instanziata a opsz=24, wght=400, FILL=0, GRAD=0 (static);
-- subsettato (pyftsubset) alle sole ~50 icone usate dalla shell del sito
-  (navbar / mega menu / mobile menu / cart / user-popup / footer);
+- sorgente statica Material Symbols Outlined Regular, versione 2.950;
+- sorgente vendorizzata in
+  tools/font-sources/material-symbols-outlined-2.950.woff2;
+- SHA-256 sorgente:
+  9e16d5cdd40f973bd1a60a0a43a936af6fbe5c3138cfeda1e8409d34734333de;
+- subsettato alle sole icone elencate in GLYPHS.txt;
 - ligature dei nomi-icona preservate (es. "menu" -> glifo menu).
 Elenco glifi: vedi GLYPHS.txt.
+Generazione riproducibile:
+
+  python -m pip install -r tools/requirements-fonts.txt
+  npm run build:material-symbols
 
 Scopo: rendere le icone della shell SENZA richieste a fonts.googleapis.com
 (nessun Google Fonts a runtime; nessun asset esterno). Self-host consentito
