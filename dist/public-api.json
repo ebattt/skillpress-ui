@@ -1,5 +1,5 @@
 {
-  "version": "0.7.0",
+  "version": "0.7.1",
   "css": {
     "primitives": [
       ".dashboard-shell--nav-hub",
@@ -544,13 +544,7 @@
         "format-card__dims",
         "format-card__name",
         "format-card__preview",
-        "format-card__preview-box",
-        "format-card__preview-custom",
-        "format-card__preview-dashed",
         "format-card__preview-image",
-        "format-card__preview-inner",
-        "format-card__preview-label",
-        "format-card__preview-label--faded",
         "format-card__text",
         "format-cards",
         "media-choice-card",

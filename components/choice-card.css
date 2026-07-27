@@ -228,48 +228,6 @@
     line-height: 1.3;
 }
 
-/* Compatibilita' visuale con il vecchio disegno sintetico dei formati.
-   Il nuovo markup usa invece una normale immagine CMS. */
-.format-card__preview-box,
-.format-card__preview-inner,
-.format-card__preview-custom {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.125rem;
-    background: var(--color-text);
-}
-
-.format-card__preview-box span,
-.format-card__preview-inner span {
-    color: var(--color-bg-white);
-    font-size: 11px;
-    font-weight: var(--font-weight-bold);
-}
-
-.format-card__preview-dashed {
-    position: absolute;
-    inset: 0;
-    border: 1px dashed var(--color-border);
-    border-radius: 0.125rem;
-}
-
-.format-card__preview-label {
-    position: absolute;
-    z-index: 1;
-    top: 0.125rem;
-    left: var(--spacing-xs);
-    color: var(--color-text-muted);
-    font-size: 7px;
-    font-weight: var(--font-weight-bold);
-}
-
-.format-card__preview-label--faded {
-    color: var(--color-border);
-}
-
 /* Stato nativo: input radio subito prima del label. */
 .sp-choice-cards input:checked + .sp-choice-card,
 .media-choice-cards input:checked + .media-choice-card,

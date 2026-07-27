@@ -2,7 +2,19 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.7.0)
+## Corrente (0.7.1)
+
+- **Versione: 0.7.1**
+- **Contract HTML cambiato: no.** Solo fix e pulizia CSS, nessun cambio di
+  markup pubblico.
+- **"Ideale per"**: rimosso `text-transform: uppercase` non previsto su
+  `.product-hero__ideal-for > .sp-label-text`, introdotto per errore nella
+  0.7.0.
+- **Formato**: rimosso il CSS legacy del vecchio box disegnato via CSS
+  (`.format-card__preview-box/-inner/-custom/-dashed/-label`), non più
+  referenziato da alcun markup ora che il formato è sempre a immagine.
+
+## 0.7.0
 
 - **Versione: 0.7.0**
 - **Contract HTML cambiato: sì, in modo compatibile e solo per adottare la
