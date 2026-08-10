@@ -3442,14 +3442,10 @@
             };
 
             // Chromium/Linux non porta il focus dentro un elemento nello
-            // stesso frame in cui passa da visibility:hidden a visibile.
-            // Il frame successivo mantiene il comportamento coerente tra
-            // browser e non sposta il focus se il pannello è già stato chiuso.
-            if (typeof window.requestAnimationFrame === 'function') {
-                window.requestAnimationFrame(moveFocusInside);
-            } else {
-                moveFocusInside();
-            }
+            // stesso task in cui passa da visibility:hidden a visibile.
+            // Un task asincrono funziona anche in tab/headless dove
+            // requestAnimationFrame può essere sospeso o ritardato.
+            window.setTimeout(moveFocusInside, 0);
         } else if (!open && wasOpen) {
             var lastTrigger = root.__lastTrigger;
             if (lastTrigger && typeof lastTrigger.focus === 'function') {

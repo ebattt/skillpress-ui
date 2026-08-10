@@ -66,8 +66,8 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
   sposta automaticamente l'header del markup esistente nella posizione
   corretta, aggiunge il nome accessibile e rende `inert` il pannello chiuso:
   nessun nuovo markup o handler e' richiesto al backend. Il focus sulla X viene
-  applicato al frame successivo all'apertura, così funziona anche in Chromium
-  Linux mentre il pannello passa da nascosto a visibile.
+  applicato in modo asincrono subito dopo l'apertura, così funziona anche in
+  Chromium Linux mentre il pannello passa da nascosto a visibile.
 - **Editor HTML comune per Info e Preview.** Il body di Info continua a
   ricevere HTML sanificato server-side. Per Preview e' disponibile il nuovo
   riferimento `data-preview-content` a un `<template>` server-rendered per
