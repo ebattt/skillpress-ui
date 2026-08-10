@@ -4813,7 +4813,10 @@ label.sp-radio-option--disabled input[type="radio"] {
     max-height: 0;
     opacity: 0;
     visibility: hidden;
-    transition: max-height var(--transition-slow), opacity var(--transition-normal), visibility var(--transition-normal);
+    transition:
+        max-height var(--transition-slow),
+        opacity var(--transition-normal),
+        visibility 0s linear var(--transition-normal);
 }
 
 .preview--open .preview__panel,
@@ -4821,6 +4824,7 @@ label.sp-radio-option--disabled input[type="radio"] {
     max-height: 500px;
     opacity: 1;
     visibility: visible;
+    transition-delay: 0s;
 }
 
 .preview__content {

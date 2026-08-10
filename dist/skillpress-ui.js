@@ -3441,10 +3441,9 @@
                 }
             };
 
-            // Chromium/Linux non porta il focus dentro un elemento nello
-            // stesso task in cui passa da visibility:hidden a visibile.
-            // Un task asincrono funziona anche in tab/headless dove
-            // requestAnimationFrame può essere sospeso o ritardato.
+            // Il CSS rende visibility immediatamente visibile in apertura;
+            // il task successivo sposta quindi il focus senza interrompere
+            // la normale gestione del click sul trigger.
             window.setTimeout(moveFocusInside, 0);
         } else if (!open && wasOpen) {
             var lastTrigger = root.__lastTrigger;
