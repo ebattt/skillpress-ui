@@ -2,11 +2,11 @@
  * Preview -- popover preview panel anchored to a configurator option.
  *
  * @public-component preview
- * @public-data data-preview, data-preview-trigger, data-preview-panel, data-preview-close, data-preview-option
+ * @public-data data-preview, data-preview-trigger, data-preview-panel, data-preview-close, data-preview-option, data-preview-content
  * @public-event sp:preview:open, sp:preview:close, sp:preview:sync
  *
- * Il JS genera/posiziona solo il guscio del popover di anteprima al click;
- * trigger, opzioni e contenuto della preview sono server-rendered.
+ * Il JS sincronizza disponibilita', contenuti e stato accessibile del popover;
+ * trigger, opzioni e pannello restano server-rendered.
  */
 (function() {
     'use strict';
@@ -64,6 +64,7 @@
         return {
             title: label.trim(),
             description: source.dataset.previewDescription || '',
+            content: source.dataset.previewContent || '',
             image: source.dataset.previewImage || '',
             alt: source.dataset.previewAlt || label.trim()
         };
@@ -99,6 +100,78 @@
         return root.querySelector(PANEL_SELECTOR);
     }
 
+    function ensurePanelChrome(root, panel) {
+        if (!panel) return;
+
+        var header = panel.querySelector('.preview__header');
+        var content = panel.querySelector('.preview__content');
+        var title = panel.querySelector('.preview__title');
+
+        // Mantiene header e chiusura fuori dall'area scorrevole.
+        if (header && header.parentElement !== panel) {
+            panel.insertBefore(header, content || panel.firstChild);
+        }
+
+        if (panel.id && title) {
+            if (!title.id) title.id = panel.id + '-title';
+            if (!panel.hasAttribute('aria-labelledby')) {
+                panel.setAttribute('aria-labelledby', title.id);
+            }
+        }
+    }
+
+    function getContentTemplate(root, id) {
+        if (!root || typeof id !== 'string' || !id.trim()) return null;
+
+        var templateId = id.trim();
+        var ownerDocument = root.ownerDocument || document;
+        var template = ownerDocument.getElementById(templateId);
+
+        if (!template) {
+            var treeRoot = root.getRootNode && root.getRootNode();
+            if (treeRoot && treeRoot.querySelector) {
+                template = Array.prototype.find.call(
+                    treeRoot.querySelectorAll('template[id]'),
+                    function(candidate) { return candidate.id === templateId; }
+                );
+            }
+        }
+
+        return template && template.tagName === 'TEMPLATE' ? template : null;
+    }
+
+    function ensureRichDescriptionTarget(description) {
+        if (!description || description.tagName !== 'P') return description;
+
+        // Il contratto testo-solo storico usa <p>. Per contenuto editoriale
+        // serve un contenitore neutro, altrimenti paragrafi/liste produrrebbero
+        // HTML non valido. L'upgrade avviene solo quando e' presente un
+        // template; il vecchio markup resta quindi compatibile.
+        var replacement = description.ownerDocument.createElement('div');
+        Array.prototype.forEach.call(description.attributes, function(attribute) {
+            replacement.setAttribute(attribute.name, attribute.value);
+        });
+        description.parentNode.replaceChild(replacement, description);
+        return replacement;
+    }
+
+    function syncDescription(root, data) {
+        var description = root.querySelector('.preview__description');
+        if (!description) return null;
+
+        var template = getContentTemplate(root, data.content);
+        if (template) {
+            description = ensureRichDescriptionTarget(description);
+            description.replaceChildren(template.content.cloneNode(true));
+            return description;
+        }
+
+        // Fallback compatibile e deliberatamente testuale: eventuali tag in
+        // data-preview-description non vengono interpretati come HTML.
+        description.textContent = data.description;
+        return description;
+    }
+
     function clearImage(image, imageWrap) {
         if (!image) return;
         image.removeAttribute('src');
@@ -106,16 +179,23 @@
         if (imageWrap) imageWrap.hidden = true;
     }
 
+    /**
+     * Riallinea una Preview gia' inizializzata. Il runtime applicativo deve
+     * richiamarla dopo modifiche programmatiche a selected/checked che non
+     * emettono il normale evento change.
+     * @public
+     */
     function sync(root, source) {
         if (!root) return root;
 
         var currentSource = source || sourceFromRoot(root);
         var trigger = root.querySelector(TRIGGER_SELECTOR);
+        var panel = trigger ? getPanel(root, trigger) : root.querySelector(PANEL_SELECTOR);
+        ensurePanelChrome(root, panel);
         var data = getSourceData(currentSource);
         var safeImage = safeImageUrl(data.image);
         var available = Boolean(currentSource && safeImage);
         var title = root.querySelector('.preview__title');
-        var description = root.querySelector('.preview__description');
         var image = root.querySelector('.preview__image-media');
         var imageWrap = image && image.closest('.preview__image-wrap');
 
@@ -130,7 +210,7 @@
         }
 
         if (title) title.textContent = data.title;
-        if (description) description.textContent = data.description;
+        syncDescription(root, data);
         if (image && safeImage) {
             image.src = safeImage;
             image.alt = data.alt || data.title || '';
@@ -159,6 +239,7 @@
             trigger.setAttribute('aria-label', open ? 'Chiudi anteprima' : 'Apri anteprima');
         }
         if (panel) panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+        if (panel) panel.toggleAttribute('inert', !open);
 
         // F015: focus management (save trigger on open, restore on close)
         if (open && !wasOpen) {

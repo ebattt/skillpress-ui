@@ -44,8 +44,22 @@
    sticky, la sticky positioning compensa solo lo scroll nativo). Stessa
    posizione visiva di sempre, nella barra grigia, a sinistra dei nomi. */
 .mega-menu {
+    --mega-menu-gap: var(--spacing-sm);
     position: relative;
     flex-shrink: 0;
+}
+
+/* Mantiene gli 8px visivi sotto il trigger, ma li rende parte dell'area
+   hover del wrapper. In questo modo il pannello resta raggiungibile anche
+   muovendo lentamente il mouse, senza timer o JavaScript aggiuntivo. */
+.mega-menu::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: var(--mega-menu-gap);
+    z-index: var(--z-dropdown);
 }
 
 /* Bottone "Tutti i Prodotti" — sfondo teal (--color-secondary) per distinguerlo
@@ -90,7 +104,7 @@
     position: absolute;
     left: 0;
     top: 100%;
-    margin-top: var(--spacing-sm);
+    margin-top: var(--mega-menu-gap);
     width: var(--shell-mega-menu-width);
     max-height: var(--shell-mega-menu-height);
     background: var(--color-bg-white);
@@ -109,9 +123,12 @@
                 transform var(--transition-slow);
 }
 
-/* Stato visibile: attivato dal :hover CSS oppure dalla classe JS
-   --visible (usata come fallback per controllo programmatico). */
+/* Stato visibile: attivato dal :hover CSS, da :focus-within (tastiera: Tab
+   sul bottone o dentro il pannello tiene il menu aperto, altrimenti resta
+   raggiungibile solo col mouse) oppure dalla classe JS --visible (usata
+   come fallback per controllo programmatico). */
 .mega-menu:hover .mega-menu__dropdown,
+.mega-menu:focus-within .mega-menu__dropdown,
 .mega-menu__dropdown--visible {
     opacity: 1;
     visibility: visible;

@@ -60,3 +60,22 @@
 .sp-iva-banner__text > * + * {
     margin-top: var(--spacing-xs);
 }
+
+.sp-iva-banner__link {
+    display: inline-flex;
+    color: var(--color-secondary);
+    font: inherit;
+    font-weight: var(--font-weight-medium);
+    text-decoration: underline;
+    text-underline-offset: 0.125em;
+}
+
+.sp-iva-banner__link:hover {
+    color: var(--color-secondary-dark);
+}
+
+.sp-iva-banner__link:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 0.1875rem;
+    border-radius: var(--radius-sm);
+}

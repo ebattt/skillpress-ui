@@ -146,6 +146,32 @@
         return container;
     }
 
+    /** Imposta lo stato applicativo senza modificare le altre sezioni. */
+    function setExpanded(section, expanded) {
+        if (!section || !section.matches || !section.matches(SECTION_SELECTOR)) {
+            return;
+        }
+
+        var container = section.closest(ACCORDION_SELECTOR);
+        if (container) {
+            initContainer(container);
+        }
+
+        var wasExpanded = section.classList.contains('sp-accordion__section--expanded');
+        syncSection(section, Boolean(expanded), true);
+        if (wasExpanded !== Boolean(expanded)) {
+            emit(section, Boolean(expanded));
+        }
+    }
+
+    function open(section) {
+        setExpanded(section, true);
+    }
+
+    function close(section) {
+        setExpanded(section, false);
+    }
+
     /** @public */
     function init(scope) {
         var root = scope || document;
@@ -156,7 +182,9 @@
     }
 
     ns.Accordion = {
-        init: init
+        init: init,
+        open: open,
+        close: close
     };
 
     if (typeof helpers.autoInit === 'function') {

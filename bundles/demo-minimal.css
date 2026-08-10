@@ -28,6 +28,7 @@
 @import '../primitives/form-controls.css';
 @import '../primitives/validation-indicator.css';
 @import '../primitives/iva-banner.css';
+@import '../primitives/loading-overlay.css';
 @import '../primitives/info-dropdown.css';
 @import '../components/preview.css';
 @import '../shell/_material-symbols.css';

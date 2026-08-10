@@ -2,7 +2,119 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.7.1)
+## Corrente (0.8.0)
+
+- **Versione: 0.8.0** (minor, non patch: aggiunge un componente pubblico nuovo)
+- **Contract HTML cambiato: sì, ma solo in aggiunta e solo per chi la
+  adotta.** Nessuna modifica richiesta sul markup già in produzione: il
+  contratto testo-solo del box "i" resta identico e continua a funzionare
+  senza toccare nulla. I nuovi pezzi di contratto sono compatibili e opt-in:
+  immagine nel box "i", hook espliciti di `sidebar-totals`, loading overlay e
+  link del banner IVA. L'accordion aggiunge API pubbliche senza cambiare il
+  markup esistente.
+- **sidebar-totals (nuovo componente)**: il toggle "Vuoi visualizzare il
+  riepilogo?" nel box Totale del configuratore ora funziona da solo, stesso
+  trattamento di `info-dropdown`/`preview` — prima non aveva nessun JS
+  associato (né libreria né contratto backend), il bottone non apriva mai il
+  pannello. Riconosce sia il markup già live (`class="sidebar-totals__btn"` +
+  `aria-controls`) sia il nuovo contratto consigliato
+  (`data-sidebar-totals-toggle` / `data-sidebar-totals`). Aggiunta
+  anche l'animazione di apertura del pannello (prima era `display:none` fisso,
+  nessuno stato aperto) e la rotazione dell'icona a freccia. Eventi
+  `sp:sidebar-totals:open`/`close`. Al caricamento iniziale il fix si applica
+  da solo; dopo un re-render che sostituisce trigger/sidebar il runtime
+  applicativo richiama il normale `SkillpressUI.init(scope)`. L'init resta
+  idempotente, risincronizza lo stato ARIA server-rendered e non duplica i
+  listener. Con piu' trigger per lo stesso pannello, Escape restituisce il
+  focus a quello che ha realmente aperto il riepilogo.
+- **Nota**: la barra totale sticky mobile (`mobile-bar`, "Vedi
+  configurazione") resta un componente diverso e resta a stato guidato dal
+  backend, come già documentato — non toccata da questo rilascio.
+- **accordion: apertura applicativa delle sezioni con errore.** Esposte le API
+  `SkillpressUI.Accordion.open(section)` e `close(section)`: sincronizzano
+  classe, altezza, overflow, ARIA ed eventi senza chiudere le altre sezioni.
+  Il click dell'utente resta single-open. Serve a mostrare insieme tutte le
+  sezioni che contengono errori senza simulare click o modificare solo classi.
+- **errori configuratore.** Il messaggio generico resta sotto il pulsante
+  carrello visibile e viene sincronizzato nei contenitori desktop e mobile; i
+  messaggi specifici restano vicino ai campi.
+- **loading overlay configuratore.** La primitive opt-in
+  `.sp-loading-overlay` usa una card compatta, spinner arancione, titolo,
+  messaggio e `prefers-reduced-motion`. Il backend controlla lo stato con
+  `hidden` e `aria-busy` sul form.
+- **IvaBanner.** Aggiunta `.sp-iva-banner__link` per il link reale "Scarica la
+  dichiarazione", al posto del bottone demo senza azione.
+- **Material Symbols mobile.** Aggiunta la ligature `arrow_back` al subset
+  self-hosted: il menu mobile non mostra più il testo `ARROW_BACK` al posto
+  dell'icona Indietro.
+- **Radio dentro Preview: wrapping responsive.** Il wrapper di
+  `.sp-option-buttons` ora puo' restringersi e mandare a capo tutte le label:
+  anche il caso reale "Plastificazione cop." con 14 Radio resta contenuto
+  nell'Accordion e interamente visibile. Nessun limite CMS richiesto, nessuna
+  conversione automatica Radio/Select e nessun nuovo JavaScript.
+- **Preview senza immagine: occhio nascosto.** Il trigger `disabled`, gia'
+  sincronizzato dal componente in base a `data-preview-image`, non viene piu'
+  mostrato in grigio. Compare soltanto quando il valore selezionato ha
+  un'immagine valida e torna a nascondersi per URL assente, non ammesso o 404.
+  Katia continua a fornire i dati Preview e lo stato iniziale; non serve un
+  nuovo handler di click. Dopo modifiche AJAX programmatiche a `selected` o
+  `checked`, il runtime riallinea i componenti con `Preview.sync(root)`.
+- **Preview lunga: stesso comportamento del box "i".** Titolo e X restano
+  fissi in testa al pannello; immagine e descrizione scorrono insieme entro
+  500px. Da 640px l'immagine resta a sinistra e il testo continua sotto a
+  tutta larghezza, mentre su mobile i contenuti sono impilati. Il runtime
+  sposta automaticamente l'header del markup esistente nella posizione
+  corretta, aggiunge il nome accessibile e rende `inert` il pannello chiuso:
+  nessun nuovo markup o handler e' richiesto al backend.
+- **Editor HTML comune per Info e Preview.** Il body di Info continua a
+  ricevere HTML sanificato server-side. Per Preview e' disponibile il nuovo
+  riferimento `data-preview-content` a un `<template>` server-rendered per
+  ciascun valore: il runtime ne clona il contenuto senza leggere HTML dagli
+  attributi. `data-preview-description` resta il fallback testuale, anche se
+  contiene caratteri simili a tag. Paragrafi, grassetto/corsivo, liste e link
+  condividono la stessa resa; immagini e CSS restano fuori dall'editor.
+- **info-dropdown (box "i"): contenuto CMS lungo non sfora più.** Prima, un
+  pannello più alto di 500px (testo lungo, immagini) restava visibile per
+  intero sforando sotto il box invece di essere contenuto — poteva
+  sovrapporsi al campo successivo della pagina. Ora l'header (titolo +
+  chiudi) resta sempre visibile, solo il corpo scrolla se serve. Aggiunta
+  anche una regola per tabelle e immagini con dimensioni fisse scritte
+  inline dal CMS, che restano dentro i bordi qualunque valore scrivano.
+  Nessuna azione richiesta.
+- **info-dropdown (box "i"): immagine opzionale, stessa struttura di
+  `preview`.** Nuovo contratto opt-in: `.sp-info-dropdown__content` >
+  `.sp-info-dropdown__image-wrap` (opzionale) + `.sp-info-dropdown__body`.
+  Se c'è l'immagine, da 640px in su si affianca al testo (come
+  `.preview__content`); sotto quella soglia, o senza immagine a qualunque
+  larghezza, il testo prende tutta la larghezza da solo — lo decide il CSS
+  via `:has()`, nessuna classe modificatore da scegliere lato backend. Il
+  testo resta HTML editoriale sanificato (paragrafi, elenchi, grassetto): solo l'immagine
+  ha uno slot dedicato, non tutto il contenuto. Il vecchio contratto
+  solo-testo non cambia, resta valido così com'è. Esempio aggiornato:
+  "Copertina con alette" in `product-page-integration` e nel lab
+  `info-dropdown`.
+- **info-dropdown: immagine con testo a flusso.** Aggiunto il modificatore
+  `.sp-info-dropdown__content--flow` per i contenuti editoriali lunghi: da
+  640px l'immagine resta a sinistra, il testo parte a destra e prosegue a
+  tutta larghezza sotto l'immagine; su mobile resta impilato.
+- **Accessibilità e immagini Info.** Il pannello chiuso usa `inert` insieme ad
+  `aria-hidden`, il titolo è collegato tramite `aria-labelledby` e le immagini
+  informative usano `object-fit: contain` per non tagliare schemi tecnici.
+- **shell: barra categorie con scroll nativo.** Sostituiti frecce, fade,
+  paginazione e `translateX()` con una singola riga `overflow-x: auto`, senza
+  nascondere categorie. Questo elimina alla radice l'overlay invisibile che
+  bloccava l'hover sulla prima voce (es. "Rilegature") e rende il movimento
+  continuo con trackpad, touch, tastiera o Shift+rotellina. "Tutti i Prodotti"
+  resta fuori dallo scroller e quindi fermo. Poiche' un overflow orizzontale
+  taglia anche i pannelli verticali, il runtime applicativo di riferimento li
+  sposta in un layer esterno e gestisce hover, focus, Tab/ArrowDown ed Escape.
+- **shell: rimosso Skillpoints dalla navbar.** Il bottone "Risparmia con
+  Skillpoints" non fa parte della nuova barra categorie; rimossa anche la
+  classe CSS `.skillpoints-btn`. Il backend non deve più renderizzarne il
+  markup e non deve lasciare uno spazio vuoto al suo posto.
+- **shell: spaziatura barra categorie.** Ridotta di 24px la distanza tra
+  "Tutti i Prodotti" e la prima categoria. La distanza resta invariata nella
+  soluzione finale con scroll nativo.
 
 - **Versione: 0.7.1**
 - **Contract HTML cambiato: no.** Solo fix e pulizia CSS, nessun cambio di

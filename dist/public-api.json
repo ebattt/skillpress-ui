@@ -1,5 +1,5 @@
 {
-  "version": "0.7.1",
+  "version": "0.8.0",
   "css": {
     "primitives": [
       ".dashboard-shell--nav-hub",
@@ -129,7 +129,11 @@
       ".sp-info-dropdown--hidden",
       ".sp-info-dropdown__body",
       ".sp-info-dropdown__close",
+      ".sp-info-dropdown__content",
+      ".sp-info-dropdown__content--flow",
       ".sp-info-dropdown__header",
+      ".sp-info-dropdown__image",
+      ".sp-info-dropdown__image-wrap",
       ".sp-info-dropdown__title",
       ".sp-info-note",
       ".sp-info-note__muted",
@@ -137,12 +141,19 @@
       ".sp-iva-banner",
       ".sp-iva-banner__content",
       ".sp-iva-banner__icon",
+      ".sp-iva-banner__link",
       ".sp-iva-banner__text",
       ".sp-label-hint",
       ".sp-label-row",
       ".sp-label-text",
       ".sp-label-text__optional",
       ".sp-label-text__required",
+      ".sp-loading-overlay",
+      ".sp-loading-overlay__copy",
+      ".sp-loading-overlay__hint",
+      ".sp-loading-overlay__spinner",
+      ".sp-loading-overlay__status",
+      ".sp-loading-overlay__title",
       ".sp-mode-switcher",
       ".sp-mode-switcher__btn",
       ".sp-mode-switcher__btn--active",
@@ -1552,6 +1563,7 @@
         "sp-label-hint",
         "sp-label-row",
         "sp-label-text",
+        "sp-loading-overlay",
         "sp-mode-switcher",
         "sp-nome-lavoro-input",
         "sp-nome-ref-row",
@@ -1624,6 +1636,7 @@
         "sp-label-hint",
         "sp-label-row",
         "sp-label-text",
+        "sp-loading-overlay",
         "sp-mode-switcher",
         "sp-nome-lavoro-input",
         "sp-nome-ref-row",
@@ -2006,6 +2019,7 @@
       "data": [
         "data-preview",
         "data-preview-close",
+        "data-preview-content",
         "data-preview-option",
         "data-preview-panel",
         "data-preview-trigger"
@@ -2014,6 +2028,20 @@
         "sp:preview:close",
         "sp:preview:open",
         "sp:preview:sync"
+      ]
+    },
+    "sidebar-totals.js": {
+      "module": "SidebarTotals",
+      "components": [
+        "sidebar-totals"
+      ],
+      "data": [
+        "data-sidebar-totals",
+        "data-sidebar-totals-toggle"
+      ],
+      "events": [
+        "sp:sidebar-totals:close",
+        "sp:sidebar-totals:open"
       ]
     },
     "toggle-switch.js": {
@@ -2123,9 +2151,12 @@
     "data-order-step-detail-panel",
     "data-preview",
     "data-preview-close",
+    "data-preview-content",
     "data-preview-option",
     "data-preview-panel",
     "data-preview-trigger",
+    "data-sidebar-totals",
+    "data-sidebar-totals-toggle",
     "data-toggle-switch"
   ],
   "events": [
@@ -2163,6 +2194,8 @@
     "sp:preview:close",
     "sp:preview:open",
     "sp:preview:sync",
+    "sp:sidebar-totals:close",
+    "sp:sidebar-totals:open",
     "sp:toggle-switch:change"
   ],
   "js": [
@@ -2187,6 +2220,7 @@
     "OrderStatusSteps",
     "OrderStepDetail",
     "Preview",
+    "SidebarTotals",
     "ToggleSwitch"
   ]
 }

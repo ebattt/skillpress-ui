@@ -100,6 +100,10 @@ possiede markup, dati e JavaScript applicativo della navbar/footer. Il markup di
 riferimento è la contract page
 `../Skillpress-frontend/consumer-libreria/static-pages/shell/index.html`.
 
+La barra categorie desktop usa scroll orizzontale nativo senza frecce o fade.
+Il CSS è nella libreria; il runtime dropdown resta applicativo e il riferimento
+per il backend è `static-pages/assets/shell-runtime/navbar.js` nel consumer.
+
 Font: self-hostati in `fonts/manrope/` e `fonts/material-symbols/`; nessuna
 richiesta a Google Fonts nel runtime production.
 

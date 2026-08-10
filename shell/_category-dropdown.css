@@ -12,13 +12,14 @@
  *   2. --multi:  multi-colonna con griglia CSS (2 o 3 colonne)
  *      Per categorie con sottocategorie raggruppate (es. Rilegature → Brossura, PUR).
  *
- * APERTURA: trigger :hover CSS puro — nessun JS necessario.
+ * APERTURA: il runtime applicativo sposta i pannelli nel layer esterno allo
+ * scroller e gestisce hover, focus ed Escape. Questo evita che overflow-x:auto
+ * tagli verticalmente i pannelli.
  *
- * INTERAZIONE CSS-JS (navbar.js → updateDropdownAlignments):
- *   - Le classi .left-0 / .right-0 vengono aggiunte dinamicamente al
- *     .dropdown-panel dal JS per allineare il pannello a sinistra o destra
- *     in base alla posizione del bottone nella viewport.
- *   - Il ricalcolo avviene su resize e scroll orizzontale della barra.
+ * INTERAZIONE CSS-JS (navbar.js):
+ *   - collega trigger e pannello tramite aria-controls;
+ *   - apre un solo pannello alla volta;
+ *   - riallinea il pannello durante scroll e resize.
  *
  * DIPENDENZE:
  *   - _variables.css (colori, ombre, spacing, dimensioni dropdown)
@@ -35,8 +36,22 @@
 /* Container relativo: ancora per il pannello assoluto.
    flex-shrink: 0 evita che il bottone si comprima nello scroll della barra. */
 .category-dropdown {
+    --category-dropdown-gap: 4px;
     position: relative;
     flex-shrink: 0;
+}
+
+/* Ponte trasparente fra trigger e pannello. Il gap resta visivamente identico,
+   ma appartiene all'area hover del wrapper: anche attraversandolo lentamente
+   non si perde :hover e il pannello non si chiude. */
+.category-dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: var(--category-dropdown-gap);
+    z-index: var(--z-dropdown);
 }
 
 /* Bottone trigger — white-space: nowrap impedisce che il nome della
@@ -77,7 +92,7 @@
 .category-dropdown__panel {
     position: absolute;
     top: 100%;
-    margin-top: 4px;
+    margin-top: var(--category-dropdown-gap);
     background: var(--color-bg-white);
     border-radius: var(--shell-radius-md);
     border: 1px solid var(--shell-color-bg-gray-dark);
@@ -124,13 +139,34 @@
     color: var(--color-text-light);
 }
 
-/* Apertura via CSS :hover puro — nessun JS necessario.
-   --visible disponibile come fallback per apertura programmatica. */
+/* Apertura via CSS: hover per il mouse e focus-within per la tastiera.
+   --visible resta disponibile come fallback per apertura programmatica. */
 .category-dropdown:hover .category-dropdown__panel,
+.category-dropdown:focus-within .category-dropdown__panel,
 .category-dropdown__panel--visible {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+}
+
+/* Layer creato dal runtime come figlio di .categories-bar. I pannelli vengono
+   spostati qui per uscire dal clipping del contenitore orizzontale. */
+.categories-bar__dropdown-layer {
+    --category-dropdown-gap: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    pointer-events: none;
+    z-index: var(--z-dropdown);
+}
+
+.categories-bar__dropdown-layer .category-dropdown__panel {
+    top: 0;
+    right: auto;
+    margin-top: 0;
+    pointer-events: auto;
 }
 
 /* === ALLINEAMENTO DINAMICO (gestito da navbar.js) === */

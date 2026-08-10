@@ -1,4 +1,4 @@
-/*! @ebattt/skillpress-ui 0.7.1 -- bundle JS unico (24 moduli). Auto-init via data-attribute; per markup iniettato dopo il load usare window.SkillpressUI.init(scope). */
+/*! @ebattt/skillpress-ui 0.8.0 -- bundle JS unico (25 moduli). Auto-init via data-attribute; per markup iniettato dopo il load usare window.SkillpressUI.init(scope). */
 
 /* === js/_helpers.js === */
 /**
@@ -281,6 +281,32 @@
         return container;
     }
 
+    /** Imposta lo stato applicativo senza modificare le altre sezioni. */
+    function setExpanded(section, expanded) {
+        if (!section || !section.matches || !section.matches(SECTION_SELECTOR)) {
+            return;
+        }
+
+        var container = section.closest(ACCORDION_SELECTOR);
+        if (container) {
+            initContainer(container);
+        }
+
+        var wasExpanded = section.classList.contains('sp-accordion__section--expanded');
+        syncSection(section, Boolean(expanded), true);
+        if (wasExpanded !== Boolean(expanded)) {
+            emit(section, Boolean(expanded));
+        }
+    }
+
+    function open(section) {
+        setExpanded(section, true);
+    }
+
+    function close(section) {
+        setExpanded(section, false);
+    }
+
     /** @public */
     function init(scope) {
         var root = scope || document;
@@ -291,7 +317,9 @@
     }
 
     ns.Accordion = {
-        init: init
+        init: init,
+        open: open,
+        close: close
     };
 
     if (typeof helpers.autoInit === 'function') {
@@ -2420,7 +2448,7 @@
  * (aria-expanded <-> hidden); trigger, pannello e contenuto sono
  * server-rendered.
  *
- * Contratto markup atteso:
+ * Contratto markup atteso (solo testo, il caso piu' semplice):
  *   <div class="sp-label-row">
  *     <label class="sp-label-text">Formato (mm)</label>
  *     <button class="sp-info-btn" type="button" data-info-dropdown-info-trigger
@@ -2432,14 +2460,33 @@
  *     <p>...body content...</p>
  *   </div>
  *
+ * Contratto con immagine opzionale (stessa struttura di .preview: se manca
+ * .sp-info-dropdown__image-wrap il testo prende tutta la larghezza, nessuna
+ * classe modificatore da scegliere lato backend, decide da solo il CSS):
+ *   <div id="info-laminazione" class="sp-info-dropdown sp-info-dropdown--hidden"
+ *        data-info-dropdown role="region" aria-hidden="true">
+ *     <div class="sp-info-dropdown__content">
+ *       <div class="sp-info-dropdown__image-wrap">
+ *         <img class="sp-info-dropdown__image" src="..." alt="...">
+ *       </div>
+ *       <div class="sp-info-dropdown__body">
+ *         <p>...testo libero, formattabile (grassetto, elenchi, paragrafi)...</p>
+ *       </div>
+ *     </div>
+ *   </div>
+ * Senza immagine per quel valore, si omette tutto il blocco
+ * .sp-info-dropdown__image-wrap (non un'immagine vuota/placeholder).
+ *
  * Init (idempotente):
  *   1. Per ogni [data-info-dropdown-info-trigger][aria-controls=ID]:
  *      a. Trova #ID ([data-info-dropdown]).
  *      b. Se #ID non ha .sp-info-dropdown__header come primo figlio, lo auto-inietta:
  *         - title = textContent della .sp-label-text adiacente (stessa .sp-label-row).
  *         - close button vuoto; icona X disegnata da CSS.
- *      c. Se i figli rimanenti non sono gia' wrappati in .sp-info-dropdown__body,
- *         vengono wrappati.
+ *      c. Se i figli rimanenti non sono gia' wrappati in .sp-info-dropdown__body
+ *         o .sp-info-dropdown__content, vengono wrappati in .sp-info-dropdown__body
+ *         (solo per il contratto solo-testo: chi usa il contratto con immagine
+ *         deve gia' scrivere .sp-info-dropdown__content esplicitamente).
  *   2. Wire click trigger -> toggle .sp-info-dropdown--hidden + sync aria-expanded + aria-hidden.
  *   3. Wire click .sp-info-dropdown__close -> chiudi.
  *   4. ESC su document -> chiudi tutti gli aperti.
@@ -2493,7 +2540,17 @@
         if (dropdown[DROPDOWN_INIT_FLAG]) return;
 
         var existingHeader = dropdown.querySelector(':scope > .sp-info-dropdown__header, :scope > .info-dropdown__header');
-        var existingBody = dropdown.querySelector(':scope > .sp-info-dropdown__body, :scope > .info-dropdown__body');
+        // .sp-info-dropdown__content conta come "gia' strutturato" tanto
+        // quanto .sp-info-dropdown__body: e' il wrapper che, nel contratto
+        // con immagine opzionale, contiene body (ed eventualmente
+        // .sp-info-dropdown__image-wrap) un livello piu' in profondita'.
+        // Senza questo controllo, il body verrebbe cercato come figlio
+        // diretto del dropdown (dove non e' piu', in quel contratto),
+        // risultando sempre "mancante" e finendo ri-wrappato dentro un
+        // secondo body spurio.
+        var existingBody = dropdown.querySelector(
+            ':scope > .sp-info-dropdown__body, :scope > .info-dropdown__body, :scope > .sp-info-dropdown__content'
+        );
 
         // Step 1: snapshot dei figli che dovranno finire dentro il body wrapper.
         // Tutto cio' che non e' gia' header/body finisce wrappato.
@@ -2516,6 +2573,14 @@
             title.className = 'sp-info-dropdown__title';
             title.textContent = titleText;
             header.appendChild(title);
+
+            // role="region" richiede un nome accessibile: senza
+            // aria-labelledby verso il titolo, la region resta anonima per
+            // chi usa uno screen reader.
+            if (dropdown.id) {
+                title.id = dropdown.id + '-title';
+                dropdown.setAttribute('aria-labelledby', title.id);
+            }
 
             var close = document.createElement('button');
             close.type = 'button';
@@ -2552,6 +2617,12 @@
         var wasOpen = !dropdown.classList.contains('sp-info-dropdown--hidden');
         dropdown.classList.toggle('sp-info-dropdown--hidden', !open);
         dropdown.setAttribute('aria-hidden', open ? 'false' : 'true');
+        // aria-hidden da solo non toglie il bottone chiudi (o eventuali link
+        // nel testo libero) dal tab order: senza inert, il focus da tastiera
+        // puo' finire su un controllo invisibile.
+        if ('inert' in dropdown) {
+            dropdown.toggleAttribute('inert', !open);
+        }
         if (trigger) {
             trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
         }
@@ -2648,8 +2719,12 @@
         if (!dropdown) return;
 
         // Sync aria-expanded iniziale con stato del dropdown
-        trigger.setAttribute('aria-expanded', isOpen(dropdown) ? 'true' : 'false');
-        dropdown.setAttribute('aria-hidden', isOpen(dropdown) ? 'false' : 'true');
+        var startsOpen = isOpen(dropdown);
+        trigger.setAttribute('aria-expanded', startsOpen ? 'true' : 'false');
+        dropdown.setAttribute('aria-hidden', startsOpen ? 'false' : 'true');
+        if ('inert' in dropdown) {
+            dropdown.toggleAttribute('inert', !startsOpen);
+        }
 
         ensureChrome(dropdown, trigger);
 
@@ -3108,11 +3183,11 @@
  * Preview -- popover preview panel anchored to a configurator option.
  *
  * @public-component preview
- * @public-data data-preview, data-preview-trigger, data-preview-panel, data-preview-close, data-preview-option
+ * @public-data data-preview, data-preview-trigger, data-preview-panel, data-preview-close, data-preview-option, data-preview-content
  * @public-event sp:preview:open, sp:preview:close, sp:preview:sync
  *
- * Il JS genera/posiziona solo il guscio del popover di anteprima al click;
- * trigger, opzioni e contenuto della preview sono server-rendered.
+ * Il JS sincronizza disponibilita', contenuti e stato accessibile del popover;
+ * trigger, opzioni e pannello restano server-rendered.
  */
 (function() {
     'use strict';
@@ -3170,6 +3245,7 @@
         return {
             title: label.trim(),
             description: source.dataset.previewDescription || '',
+            content: source.dataset.previewContent || '',
             image: source.dataset.previewImage || '',
             alt: source.dataset.previewAlt || label.trim()
         };
@@ -3205,6 +3281,78 @@
         return root.querySelector(PANEL_SELECTOR);
     }
 
+    function ensurePanelChrome(root, panel) {
+        if (!panel) return;
+
+        var header = panel.querySelector('.preview__header');
+        var content = panel.querySelector('.preview__content');
+        var title = panel.querySelector('.preview__title');
+
+        // Mantiene header e chiusura fuori dall'area scorrevole.
+        if (header && header.parentElement !== panel) {
+            panel.insertBefore(header, content || panel.firstChild);
+        }
+
+        if (panel.id && title) {
+            if (!title.id) title.id = panel.id + '-title';
+            if (!panel.hasAttribute('aria-labelledby')) {
+                panel.setAttribute('aria-labelledby', title.id);
+            }
+        }
+    }
+
+    function getContentTemplate(root, id) {
+        if (!root || typeof id !== 'string' || !id.trim()) return null;
+
+        var templateId = id.trim();
+        var ownerDocument = root.ownerDocument || document;
+        var template = ownerDocument.getElementById(templateId);
+
+        if (!template) {
+            var treeRoot = root.getRootNode && root.getRootNode();
+            if (treeRoot && treeRoot.querySelector) {
+                template = Array.prototype.find.call(
+                    treeRoot.querySelectorAll('template[id]'),
+                    function(candidate) { return candidate.id === templateId; }
+                );
+            }
+        }
+
+        return template && template.tagName === 'TEMPLATE' ? template : null;
+    }
+
+    function ensureRichDescriptionTarget(description) {
+        if (!description || description.tagName !== 'P') return description;
+
+        // Il contratto testo-solo storico usa <p>. Per contenuto editoriale
+        // serve un contenitore neutro, altrimenti paragrafi/liste produrrebbero
+        // HTML non valido. L'upgrade avviene solo quando e' presente un
+        // template; il vecchio markup resta quindi compatibile.
+        var replacement = description.ownerDocument.createElement('div');
+        Array.prototype.forEach.call(description.attributes, function(attribute) {
+            replacement.setAttribute(attribute.name, attribute.value);
+        });
+        description.parentNode.replaceChild(replacement, description);
+        return replacement;
+    }
+
+    function syncDescription(root, data) {
+        var description = root.querySelector('.preview__description');
+        if (!description) return null;
+
+        var template = getContentTemplate(root, data.content);
+        if (template) {
+            description = ensureRichDescriptionTarget(description);
+            description.replaceChildren(template.content.cloneNode(true));
+            return description;
+        }
+
+        // Fallback compatibile e deliberatamente testuale: eventuali tag in
+        // data-preview-description non vengono interpretati come HTML.
+        description.textContent = data.description;
+        return description;
+    }
+
     function clearImage(image, imageWrap) {
         if (!image) return;
         image.removeAttribute('src');
@@ -3212,16 +3360,23 @@
         if (imageWrap) imageWrap.hidden = true;
     }
 
+    /**
+     * Riallinea una Preview gia' inizializzata. Il runtime applicativo deve
+     * richiamarla dopo modifiche programmatiche a selected/checked che non
+     * emettono il normale evento change.
+     * @public
+     */
     function sync(root, source) {
         if (!root) return root;
 
         var currentSource = source || sourceFromRoot(root);
         var trigger = root.querySelector(TRIGGER_SELECTOR);
+        var panel = trigger ? getPanel(root, trigger) : root.querySelector(PANEL_SELECTOR);
+        ensurePanelChrome(root, panel);
         var data = getSourceData(currentSource);
         var safeImage = safeImageUrl(data.image);
         var available = Boolean(currentSource && safeImage);
         var title = root.querySelector('.preview__title');
-        var description = root.querySelector('.preview__description');
         var image = root.querySelector('.preview__image-media');
         var imageWrap = image && image.closest('.preview__image-wrap');
 
@@ -3236,7 +3391,7 @@
         }
 
         if (title) title.textContent = data.title;
-        if (description) description.textContent = data.description;
+        syncDescription(root, data);
         if (image && safeImage) {
             image.src = safeImage;
             image.alt = data.alt || data.title || '';
@@ -3265,6 +3420,7 @@
             trigger.setAttribute('aria-label', open ? 'Chiudi anteprima' : 'Apri anteprima');
         }
         if (panel) panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+        if (panel) panel.toggleAttribute('inert', !open);
 
         // F015: focus management (save trigger on open, restore on close)
         if (open && !wasOpen) {
@@ -3396,6 +3552,214 @@
     }
 
     ns.Preview = { init: init, sync: sync };
+
+    if (typeof helpers.autoInit === 'function') {
+        helpers.autoInit(init);
+    } else if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () { init(document); });
+    } else {
+        init(document);
+    }
+})();
+;
+
+/* === js/sidebar-totals.js === */
+/**
+ * SIDEBAR TOTALS -- toggle del pannello "riepilogo" nel box Totale del configuratore
+ * Gestisce apertura, chiusura e attributi ARIA del pannello riepilogo.
+ *
+ * API:
+ *   window.SkillpressUI.SidebarTotals.init(rootOrSelector?)
+ *   Default: scansione di tutto il document.
+ *
+ * @public-component sidebar-totals
+ * @public-data data-sidebar-totals-toggle, data-sidebar-totals
+ * @public-event sp:sidebar-totals:open, sp:sidebar-totals:close
+ *
+ * Il JS gestisce il toggle e sincronizza aria-expanded/aria-hidden.
+ * Trigger, pannello e contenuto sono server-rendered.
+ *
+ * Contratto markup:
+ *   <button type="button" class="sidebar-totals__btn" data-sidebar-totals-toggle
+ *           aria-controls="riepilogoContent" aria-expanded="false">
+ *     Mostra riepilogo
+ *     <svg aria-hidden="true">...chevron...</svg>
+ *   </button>
+ *   <div id="riepilogoContent" class="sidebar-totals__content"
+ *        data-sidebar-totals aria-hidden="true">
+ *     ...contenuto...
+ *   </div>
+ *
+ * Sono accettate anche le classi `.sidebar-totals__btn` e
+ * `.sidebar-totals__content`. L'init e' idempotente. Escape chiude i pannelli
+ * aperti e ripristina il focus sul trigger.
+ */
+(function() {
+    'use strict';
+
+    var TRIGGER_SELECTOR =
+        '[data-sidebar-totals-toggle][aria-controls], .sidebar-totals__btn[aria-controls]';
+    var PANEL_SELECTOR = '[data-sidebar-totals], .sidebar-totals__content';
+    // Concatenare '[aria-hidden="false"]' a PANEL_SELECTOR come stringa
+    // applicherebbe il suffisso solo all'ultimo dei due selettori (dopo la
+    // virgola): serve un selettore composto scritto per intero.
+    var OPEN_PANEL_SELECTOR =
+        '[data-sidebar-totals][aria-hidden="false"], .sidebar-totals__content[aria-hidden="false"]';
+    var TRIGGER_INIT_FLAG = '__skillpressSidebarTotalsTriggerInitialized';
+    var DOC_INIT_FLAG = '__skillpressSidebarTotalsDocInitialized';
+
+    var ns = window.SkillpressUI = window.SkillpressUI || {};
+    var helpers = ns.helpers || {};
+
+    function dispatch(target, name, detail) {
+        if (typeof helpers.dispatch === 'function') {
+            try { helpers.dispatch(target, name, detail); return; } catch (e) { /* fallthrough */ }
+        }
+        target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
+    }
+
+    // Escape per valori inseriti in un selettore CSS [id="..."].
+    function escapeAttrValue(value) {
+        return value.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+    }
+
+    function matchesPanel(el) {
+        return !!(el && el.matches && el.matches(PANEL_SELECTOR));
+    }
+
+    function findPanelById(id, root) {
+        var panel = document.getElementById(id);
+        // document.getElementById puo' risolvere un ID che vive fuori dal
+        // root del trigger (es. shadow root con lo stesso ID nel documento
+        // principale): se il root locale trova un candidato diverso, quello
+        // ha la precedenza.
+        if (root && root !== document && root.querySelector) {
+            var local = root.querySelector('[id="' + escapeAttrValue(id) + '"]');
+            if (local) panel = local;
+        }
+        if (!panel) return null;
+        // Il target deve essere davvero un pannello sidebar-totals: un
+        // aria-controls che punta a un ID estraneo (typo, riuso ID) non deve
+        // poter nascondere/mostrare un elemento a caso.
+        return matchesPanel(panel) ? panel : null;
+    }
+
+    function getPanel(trigger) {
+        var id = trigger.getAttribute('aria-controls');
+        if (!id) return null;
+        var root = trigger.getRootNode && trigger.getRootNode();
+        return findPanelById(id, root);
+    }
+
+    function isOpen(panel) {
+        return panel.getAttribute('aria-hidden') === 'false';
+    }
+
+    // Tutti i trigger (nel documento) che puntano a questo pannello, non solo
+    // il primo: se piu' trigger condividono lo stesso aria-controls restano
+    // sincronizzati tra loro.
+    function findTriggersFor(panel) {
+        if (!panel.id) return [];
+        var esc = escapeAttrValue(panel.id);
+        return Array.prototype.slice.call(document.querySelectorAll(
+            '[data-sidebar-totals-toggle][aria-controls="' + esc + '"], ' +
+            '.sidebar-totals__btn[aria-controls="' + esc + '"]'
+        ));
+    }
+
+    function setOpen(panel, triggers, open, sourceTrigger) {
+        var wasOpen = isOpen(panel);
+        panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+        triggers.forEach(function(trigger) {
+            trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+
+        // F015-style focus management, come info-dropdown: salva il trigger
+        // che ha aperto, e su chiusura restituisce il focus solo se era
+        // rimasto dentro al pannello (mai rubarlo se l'utente ha gia'
+        // spostato l'attenzione altrove).
+        if (open && !wasOpen) {
+            panel.__lastTrigger = sourceTrigger || triggers[0] || null;
+        } else if (!open && wasOpen) {
+            var lastTrigger = panel.__lastTrigger;
+            if (lastTrigger && typeof lastTrigger.focus === 'function') {
+                var active = document.activeElement;
+                if (active === document.body || active === document.documentElement || panel.contains(active)) {
+                    try { lastTrigger.focus(); } catch (e) { /* noop */ }
+                }
+            }
+            panel.__lastTrigger = null;
+        }
+
+        dispatch(panel, open ? 'sp:sidebar-totals:open' : 'sp:sidebar-totals:close');
+    }
+
+    function closeAll() {
+        Array.prototype.forEach.call(
+            document.querySelectorAll(OPEN_PANEL_SELECTOR),
+            function(panel) {
+                setOpen(panel, findTriggersFor(panel), false);
+            }
+        );
+    }
+
+    function onTriggerClick(event) {
+        var trigger = event.currentTarget;
+        var panel = getPanel(trigger);
+        if (!panel) return;
+        setOpen(panel, findTriggersFor(panel), !isOpen(panel), trigger);
+    }
+
+    function onKeydown(event) {
+        if (event.key === 'Escape' || event.key === 'Esc') {
+            closeAll();
+        }
+    }
+
+    function bindTrigger(trigger) {
+        var panel = getPanel(trigger);
+        if (!panel) return;
+
+        // Sync iniziale: se il markup non specifica aria-hidden, il pannello
+        // e' chiuso di default (coerente col CSS: stato base = collassato).
+        if (!panel.hasAttribute('aria-hidden')) {
+            panel.setAttribute('aria-hidden', 'true');
+        }
+        trigger.setAttribute('aria-expanded', isOpen(panel) ? 'true' : 'false');
+
+        if (trigger[TRIGGER_INIT_FLAG]) return;
+        trigger.addEventListener('click', onTriggerClick);
+        trigger[TRIGGER_INIT_FLAG] = true;
+    }
+
+    /** @public */
+    function init(rootOrSelector) {
+        var root;
+        if (!rootOrSelector) {
+            root = document;
+        } else if (typeof rootOrSelector === 'string') {
+            root = document.querySelector(rootOrSelector) || document;
+        } else {
+            root = rootOrSelector;
+        }
+
+        if (root.matches && root.matches(TRIGGER_SELECTOR)) {
+            bindTrigger(root);
+        }
+        Array.prototype.forEach.call(
+            root.querySelectorAll(TRIGGER_SELECTOR),
+            bindTrigger
+        );
+
+        if (!document[DOC_INIT_FLAG]) {
+            document.addEventListener('keydown', onKeydown);
+            document[DOC_INIT_FLAG] = true;
+        }
+    }
+
+    ns.SidebarTotals = {
+        init: init
+    };
 
     if (typeof helpers.autoInit === 'function') {
         helpers.autoInit(init);
@@ -3581,6 +3945,7 @@
         'OrderStatusSteps',
         'OrderStepDetail',
         'Preview',
+        'SidebarTotals',
         'ToggleSwitch'
     ];
 

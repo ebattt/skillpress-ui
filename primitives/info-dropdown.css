@@ -48,8 +48,15 @@
    ================================================================ */
 /** @public */
 .sp-info-dropdown {
+    /* flex column: l'header (titolo + chiudi) non si restringe mai, il body
+       prende lo spazio restante e scrolla se il contenuto CMS (testo lungo,
+       immagini) supera i 500px disponibili. overflow:hidden invece di
+       visible: senza, un pannello piu' alto di 500px sforerebbe sotto il
+       box invece di restare contenuto/scrollabile. */
+    display: flex;
+    flex-direction: column;
     max-height: 500px;
-    overflow: visible;
+    overflow: hidden;
     opacity: 1;
     background: var(--color-bg-white);
     border: 1px solid var(--section-border);
@@ -84,6 +91,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    flex-shrink: 0;
     padding: 0.75rem;
     background-color: var(--color-secondary-alpha-10); /* teal 10% */
     border-top-left-radius: var(--radius-lg);
@@ -143,26 +151,168 @@
 }
 
 /* ================================================================
-   INFO DROPDOWN BODY -- corpo (auto-wrappato)
+   INFO DROPDOWN CONTENT -- riga immagine+testo (auto-wrappata)
+   ================================================================
+   Stessa struttura di .preview__content: colonna singola di default,
+   riga (immagine a sinistra, testo a destra) da 640px in su MA SOLO se
+   e' presente un .sp-info-dropdown__image-wrap. Senza immagine il body
+   resta l'unico figlio e prende tutta la larghezza, a qualunque
+   larghezza schermo: :has() decide da solo, non serve una classe
+   modificatore separata da scegliere lato backend. */
+.sp-info-dropdown__content {
+    /* flex:1 sul genitore flex column (.sp-info-dropdown): prende lo
+       spazio restante sotto l'header, non un valore fisso calcolato a
+       mano. min-height:0 e' necessario perche' un figlio flex per
+       default non si restringe sotto la propria altezza intrinseca,
+       altrimenti overflow-y:auto non scatterebbe mai. Immagine e testo
+       scrollano insieme come un'unica unita' quando il contenuto e'
+       piu' alto dello spazio disponibile. */
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+@media (min-width: 640px) {
+    /* Selettore su figlio diretto: un .sp-info-dropdown__image-wrap
+       incollato per errore dentro il testo libero del body non deve
+       attivare la riga, solo quello nello slot dedicato. */
+    .sp-info-dropdown__content:has(> .sp-info-dropdown__image-wrap) {
+        flex-direction: row;
+    }
+}
+
+/* Variante editoriale per contenuti lunghi: immagine a sinistra, testo che
+   parte a destra e continua a tutta larghezza sotto l'immagine. Su mobile
+   resta il normale stack immagine sopra + testo sotto. */
+.sp-info-dropdown__content--flow {
+    padding: 1rem;
+}
+
+.sp-info-dropdown__content--flow > .sp-info-dropdown__image-wrap {
+    margin-bottom: 0.75rem;
+}
+
+.sp-info-dropdown__content--flow > .sp-info-dropdown__body {
+    padding: 0;
+}
+
+@media (min-width: 640px) {
+    .sp-info-dropdown__content--flow:has(> .sp-info-dropdown__image-wrap) {
+        display: block;
+    }
+
+    .sp-info-dropdown__content--flow > .sp-info-dropdown__image-wrap {
+        float: left;
+        margin: 0 1rem 0.75rem 0;
+    }
+
+    .sp-info-dropdown__content--flow::after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+}
+
+/* Contratto solo-testo (nessun .sp-info-dropdown__content, corpo
+   auto-wrappato da js/info-dropdown.js direttamente dentro
+   .sp-info-dropdown): stesso scroll di .sp-info-dropdown__content sopra,
+   selettore a figlio diretto per non doppiare lo scroll quando il body
+   e' invece annidato dentro .sp-info-dropdown__content. */
+.sp-info-dropdown > .sp-info-dropdown__body {
+    min-height: 0;
+    overflow-y: auto;
+}
+
+/* ================================================================
+   INFO DROPDOWN IMAGE -- opzionale, stessa resa di .preview__image
+   ================================================================ */
+.sp-info-dropdown__image-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.sp-info-dropdown__image {
+    width: 100%;
+    height: 12rem;
+    background-color: var(--color-bg-gray-100);
+    /* contain, non cover come .preview__image: qui l'immagine e' spesso
+       uno schema/diagramma tecnico (misure, aree, istruzioni), ritagliarla
+       rischia di tagliare via l'informazione. Per .preview (foto prodotto
+       decorativa) ritagliare va bene, qui no. */
+    object-fit: contain;
+    display: block;
+}
+
+@media (min-width: 640px) {
+    .sp-info-dropdown__image-wrap { width: 12rem; }
+    .sp-info-dropdown__image { width: 12rem; height: 12rem; }
+}
+
+/* breakpoint-exception: stessa soglia e dimensione dell'immagine Preview. */
+@media (min-width: 768px) {
+    .sp-info-dropdown__image-wrap { width: 16rem; }
+    .sp-info-dropdown__image { width: 16rem; height: 16rem; }
+}
+
+/* ================================================================
+   INFO DROPDOWN BODY -- testo, libero quanto serve (auto-wrappato)
    ================================================================ */
 .sp-info-dropdown__body {
+    flex: 1 1 auto;
+    min-width: 0;
     padding: 1rem;
     font-size: var(--font-size-xs);
     color: var(--color-text-strong);
     line-height: 1.625;
+    overflow-wrap: anywhere;
+}
+
+.sp-info-dropdown__body > * {
+    margin: 0;
 }
 
 .sp-info-dropdown__body > * + * {
     margin-top: var(--spacing-sm);
 }
 
+.sp-info-dropdown__body ul,
+.sp-info-dropdown__body ol {
+    padding-left: 1.125rem;
+}
+
 .sp-info-dropdown__body ul {
-    margin-left: 1rem;
     list-style-type: disc;
 }
 
-.sp-info-dropdown__body ul > li + li {
+.sp-info-dropdown__body ol {
+    list-style-type: decimal;
+}
+
+.sp-info-dropdown__body li + li {
     margin-top: 0.375rem;
+}
+
+.sp-info-dropdown__body a {
+    color: var(--color-secondary);
+    text-decoration: underline;
+}
+
+/* Rete di sicurezza: il testo resta HTML editoriale sanificato (grassetto,
+   elenchi, paragrafi), ma se qualcuno incolla comunque una tabella o
+   un'immagine dentro il corpo invece di usare lo slot dedicato, non deve
+   sfondare il box. table-layout:fixed evita che la larghezza specificata su
+   un'immagine dentro una cella determini la larghezza della tabella in
+   auto-layout. */
+.sp-info-dropdown__body table {
+    table-layout: fixed;
+    max-width: 100%;
+}
+
+.sp-info-dropdown__body img {
+    max-width: 100% !important;
+    height: auto !important;
 }
 
 /* ================================================================

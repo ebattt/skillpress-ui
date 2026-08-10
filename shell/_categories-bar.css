@@ -5,14 +5,13 @@
  *
  * Barra orizzontale sotto la navbar arancione. Contiene il mega menu
  * "Tutti i Prodotti" (fuori dalla riga che scorre, vedi
- * .categories-bar__inner sotto), i dropdown delle singole categorie e il
- * bottone "Risparmia con Skillpoints". Include frecce di scroll e
- * gradienti fade ai lati quando il contenuto eccede la larghezza visibile.
+ * .categories-bar__inner sotto) e i dropdown delle singole categorie.
+ * Le categorie usano lo scroll orizzontale nativo del browser quando il
+ * contenuto eccede la larghezza visibile. Non ci sono frecce, fade o pagine.
  *
  * Elementi HTML: .categories-bar, .categories-bar__container,
- *   .categories-bar__scroll-wrapper, .categories-bar__fade,
- *   .categories-bar__arrow, .categories-bar__inner,
- *   .skillpoints-btn, #categoryScrollContainer.
+ *   .categories-bar__scroll-wrapper, .categories-bar__inner,
+ *   .categories-bar__scroll-container.
  * ==========================================================================
  */
 
@@ -38,134 +37,36 @@
     align-items: center;
 }
 
-/* margin-left: la freccia sinistra e il fade sono ancorati a left:-1rem
-   rispetto a questo contenitore (vedi sotto): senza questo margine restano
-   troppo vicini a "Tutti i Prodotti", che ora e' sempre il fratello
-   precedente di questo contenitore. */
+/* Separa visivamente la prima categoria dal trigger fisso "Tutti i Prodotti". */
 .categories-bar__scroll-wrapper {
     position: relative;
     flex: 1;
     min-width: 0;
-    margin-left: 2.5rem;
+    margin-left: 1rem;
     overflow: visible;
 }
 
-@media (min-width: 1280px) {
-    .categories-bar__scroll-wrapper {
-        margin-right: 2rem;
-    }
-}
-
-/* --- Gradienti fade laterali ---
-   pointer-events: auto blocca hover su elementi parzialmente nascosti,
-   evitando che dropdown appaiano tagliati. */
-.categories-bar__fade {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 7rem;
-    opacity: 0;
-    transition: opacity var(--transition-normal);
-    pointer-events: auto;
-    z-index: var(--shell-z-popover);
-}
-
-.categories-bar__fade--left {
-    left: -1rem;
-    background: linear-gradient(to right, var(--shell-color-bg-gray) 50%, transparent 100%);
-}
-
-.categories-bar__fade--right {
-    right: 0;
-    width: 4rem;
-    background: linear-gradient(to left, var(--shell-color-bg-gray) 30%, transparent 100%);
-}
-
-/* --- Frecce scroll --- */
-.categories-bar__arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1.5rem;
-    height: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-full);
-    background: var(--shell-color-bg-gray);
-    transition: opacity var(--transition-normal),
-                background-color var(--transition-normal);
-    opacity: 0;
-    pointer-events: none;
-    z-index: var(--z-overlay);
-}
-
-.categories-bar__arrow:hover {
-    background: var(--shell-color-bg-gray-dark);
-}
-
-.categories-bar__arrow--left {
-    left: -1rem;
-}
-
-.categories-bar__arrow--right {
-    right: -1rem;
-}
-
-.categories-bar__arrow-icon {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
-}
-
-/* --- Scroll container ---
-   clip-path: lascia spazio sotto per i dropdown che escono verso il basso */
+/* Scroll nativo come HelloPrint: trackpad, touch, tastiera o Shift+rotellina.
+   La scrollbar resta utilizzabile dal browser ma non e' mostrata nel layout. */
 .categories-bar__scroll-container {
     padding: 0.5rem 0;
-    overflow: visible;
-    clip-path: inset(-10px -10px -600px -10px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    scroll-padding-inline: 0.5rem;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Assicura che dropdown appaiano sopra il contenuto */
-#categoryScrollContainer {
-    overflow: visible;
+.categories-bar__scroll-container::-webkit-scrollbar {
+    display: none;
 }
 
-/* Riceve una transform orizzontale via JS quando l'utente scorre le
-   categorie (frecce/trascinamento): tutto cio' che sta QUI DENTRO si sposta
-   con lo scroll. Per questo "Tutti i Prodotti" (.mega-menu) non e' un figlio
-   di questo contenitore: sta come fratello di .categories-bar__scroll-wrapper,
-   fuori dalla zona che si trasforma, cosi' resta sempre fermo. */
+/* Tutti i trigger restano su una sola riga alla loro larghezza naturale. */
 .categories-bar__inner {
     display: flex;
     align-items: center;
     gap: 0.25rem;
+    width: max-content;
+    min-width: 100%;
     flex-wrap: nowrap;
-    transition: transform var(--transition-slow);
-    will-change: transform;
-}
-
-/* --- Bottone Skillpoints (visibile solo >= 1280px) --- */
-.skillpoints-btn {
-    display: none;
-    align-items: center;
-    margin-left: 1rem;
-    padding: 0.25rem 0.75rem;
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    color: white;
-    border-radius: var(--radius-full);
-    white-space: nowrap;
-    flex-shrink: 0;
-    background-color: var(--color-dark);
-    transition: opacity var(--transition-fast);
-}
-
-.skillpoints-btn:hover {
-    opacity: 0.9;
-}
-
-@media (min-width: 1280px) {
-    .skillpoints-btn {
-        display: inline-flex;
-    }
 }

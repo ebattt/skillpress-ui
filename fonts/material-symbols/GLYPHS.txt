@@ -1,5 +1,6 @@
 account_circle
 apps
+arrow_back
 article
 auto_stories
 badge

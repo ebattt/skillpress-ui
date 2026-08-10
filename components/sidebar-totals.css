@@ -255,16 +255,43 @@
     flex-shrink: 0;
 }
 
+/* Ruota soltanto il chevron, cioe' l'ultima SVG del trigger. */
+.sidebar-totals__btn svg:last-of-type {
+    transition: transform var(--transition-fast);
+}
+
+.sidebar-totals__btn[aria-expanded="true"] svg:last-of-type {
+    transform: rotate(180deg);
+}
+
+/* Stato chiuso animabile, sincronizzato dal JS tramite aria-hidden. */
 .sidebar-totals__content {
-    margin-top: 0.5rem;
-    max-height: 300px;
-    overflow-y: auto;
+    margin-top: 0;
+    max-height: 0;
+    overflow-y: hidden;
+    opacity: 0;
+    visibility: hidden;
     font-size: var(--font-size-xs);
     color: var(--color-text-strong);
     background-color: var(--color-bg-gray-75);
     border-radius: var(--radius-lg);
+    padding: 0 0.75rem;
+    /* Margine e altezza condividono la durata dell'apertura. */
+    transition:
+        margin-top var(--transition-slow),
+        max-height var(--transition-slow),
+        opacity var(--transition-normal),
+        visibility var(--transition-normal),
+        padding var(--transition-normal);
+}
+
+.sidebar-totals__content[aria-hidden="false"] {
+    margin-top: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    opacity: 1;
+    visibility: visible;
     padding: 0.75rem;
-    display: none;
 }
 
 .sidebar-totals__content > * + * {
@@ -316,11 +343,9 @@
     padding: 1rem;
 }
 
-/* Alias legacy mantenuti per consumer che gia' usano i nomi vecchi.
+/* Alias di compatibilita'.
    - `.sidebar-totals__indent` -> `.sidebar-totals__row--indent`
-   - `.sidebar-totals__section-header` -> `.sidebar-totals__header`
-   I generatori canonici (`generateRiepilogo` 3.0.0+) usano le forme
-   nuove con doppio dash / nome senza suffisso. */
+   - `.sidebar-totals__section-header` -> `.sidebar-totals__header` */
 .sidebar-totals__indent {
     padding-left: 1.5rem;
     color: var(--color-text-secondary);

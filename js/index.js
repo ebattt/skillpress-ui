@@ -40,6 +40,7 @@
         'OrderStatusSteps',
         'OrderStepDetail',
         'Preview',
+        'SidebarTotals',
         'ToggleSwitch'
     ];
 

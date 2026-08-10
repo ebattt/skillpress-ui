@@ -14,7 +14,7 @@
  * (aria-expanded <-> hidden); trigger, pannello e contenuto sono
  * server-rendered.
  *
- * Contratto markup atteso:
+ * Contratto markup atteso (solo testo, il caso piu' semplice):
  *   <div class="sp-label-row">
  *     <label class="sp-label-text">Formato (mm)</label>
  *     <button class="sp-info-btn" type="button" data-info-dropdown-info-trigger
@@ -26,14 +26,33 @@
  *     <p>...body content...</p>
  *   </div>
  *
+ * Contratto con immagine opzionale (stessa struttura di .preview: se manca
+ * .sp-info-dropdown__image-wrap il testo prende tutta la larghezza, nessuna
+ * classe modificatore da scegliere lato backend, decide da solo il CSS):
+ *   <div id="info-laminazione" class="sp-info-dropdown sp-info-dropdown--hidden"
+ *        data-info-dropdown role="region" aria-hidden="true">
+ *     <div class="sp-info-dropdown__content">
+ *       <div class="sp-info-dropdown__image-wrap">
+ *         <img class="sp-info-dropdown__image" src="..." alt="...">
+ *       </div>
+ *       <div class="sp-info-dropdown__body">
+ *         <p>...testo libero, formattabile (grassetto, elenchi, paragrafi)...</p>
+ *       </div>
+ *     </div>
+ *   </div>
+ * Senza immagine per quel valore, si omette tutto il blocco
+ * .sp-info-dropdown__image-wrap (non un'immagine vuota/placeholder).
+ *
  * Init (idempotente):
  *   1. Per ogni [data-info-dropdown-info-trigger][aria-controls=ID]:
  *      a. Trova #ID ([data-info-dropdown]).
  *      b. Se #ID non ha .sp-info-dropdown__header come primo figlio, lo auto-inietta:
  *         - title = textContent della .sp-label-text adiacente (stessa .sp-label-row).
  *         - close button vuoto; icona X disegnata da CSS.
- *      c. Se i figli rimanenti non sono gia' wrappati in .sp-info-dropdown__body,
- *         vengono wrappati.
+ *      c. Se i figli rimanenti non sono gia' wrappati in .sp-info-dropdown__body
+ *         o .sp-info-dropdown__content, vengono wrappati in .sp-info-dropdown__body
+ *         (solo per il contratto solo-testo: chi usa il contratto con immagine
+ *         deve gia' scrivere .sp-info-dropdown__content esplicitamente).
  *   2. Wire click trigger -> toggle .sp-info-dropdown--hidden + sync aria-expanded + aria-hidden.
  *   3. Wire click .sp-info-dropdown__close -> chiudi.
  *   4. ESC su document -> chiudi tutti gli aperti.
@@ -87,7 +106,17 @@
         if (dropdown[DROPDOWN_INIT_FLAG]) return;
 
         var existingHeader = dropdown.querySelector(':scope > .sp-info-dropdown__header, :scope > .info-dropdown__header');
-        var existingBody = dropdown.querySelector(':scope > .sp-info-dropdown__body, :scope > .info-dropdown__body');
+        // .sp-info-dropdown__content conta come "gia' strutturato" tanto
+        // quanto .sp-info-dropdown__body: e' il wrapper che, nel contratto
+        // con immagine opzionale, contiene body (ed eventualmente
+        // .sp-info-dropdown__image-wrap) un livello piu' in profondita'.
+        // Senza questo controllo, il body verrebbe cercato come figlio
+        // diretto del dropdown (dove non e' piu', in quel contratto),
+        // risultando sempre "mancante" e finendo ri-wrappato dentro un
+        // secondo body spurio.
+        var existingBody = dropdown.querySelector(
+            ':scope > .sp-info-dropdown__body, :scope > .info-dropdown__body, :scope > .sp-info-dropdown__content'
+        );
 
         // Step 1: snapshot dei figli che dovranno finire dentro il body wrapper.
         // Tutto cio' che non e' gia' header/body finisce wrappato.
@@ -110,6 +139,14 @@
             title.className = 'sp-info-dropdown__title';
             title.textContent = titleText;
             header.appendChild(title);
+
+            // role="region" richiede un nome accessibile: senza
+            // aria-labelledby verso il titolo, la region resta anonima per
+            // chi usa uno screen reader.
+            if (dropdown.id) {
+                title.id = dropdown.id + '-title';
+                dropdown.setAttribute('aria-labelledby', title.id);
+            }
 
             var close = document.createElement('button');
             close.type = 'button';
@@ -146,6 +183,12 @@
         var wasOpen = !dropdown.classList.contains('sp-info-dropdown--hidden');
         dropdown.classList.toggle('sp-info-dropdown--hidden', !open);
         dropdown.setAttribute('aria-hidden', open ? 'false' : 'true');
+        // aria-hidden da solo non toglie il bottone chiudi (o eventuali link
+        // nel testo libero) dal tab order: senza inert, il focus da tastiera
+        // puo' finire su un controllo invisibile.
+        if ('inert' in dropdown) {
+            dropdown.toggleAttribute('inert', !open);
+        }
         if (trigger) {
             trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
         }
@@ -242,8 +285,12 @@
         if (!dropdown) return;
 
         // Sync aria-expanded iniziale con stato del dropdown
-        trigger.setAttribute('aria-expanded', isOpen(dropdown) ? 'true' : 'false');
-        dropdown.setAttribute('aria-hidden', isOpen(dropdown) ? 'false' : 'true');
+        var startsOpen = isOpen(dropdown);
+        trigger.setAttribute('aria-expanded', startsOpen ? 'true' : 'false');
+        dropdown.setAttribute('aria-hidden', startsOpen ? 'false' : 'true');
+        if ('inert' in dropdown) {
+            dropdown.toggleAttribute('inert', !startsOpen);
+        }
 
         ensureChrome(dropdown, trigger);
 

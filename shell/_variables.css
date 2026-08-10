@@ -35,7 +35,7 @@
     /* Token solo-shell (dimensioni navbar, mega menu, dropdown, gradienti, z). */
 
     /* --- Colori specifici shell --- */
-    --shell-color-dark-light: #0A5A72;       /* sfumatura top bar / skillpoints */
+    --shell-color-dark-light: #0A5A72;       /* sfumatura top bar */
     --shell-color-bg-gray: #F5F5F5;          /* sfondo barra categorie */
     --shell-color-bg-gray-light: #F9FAFB;    /* hover voci dropdown */
     --shell-color-bg-gray-dark: #E5E7EB;     /* bordi e separatori shell */

@@ -1,0 +1,86 @@
+/** @public */
+.sp-loading-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    background: var(--color-white-alpha-88);
+}
+
+.sp-loading-overlay[hidden] {
+    display: none;
+}
+
+.sp-loading-overlay__status {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.875rem;
+    width: min(100%, 22rem);
+    padding: 1rem 1.125rem;
+    color: var(--color-text-strong);
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-primary-alpha-20);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    font-size: var(--font-size-sm);
+}
+
+.sp-loading-overlay__spinner {
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    border-radius: var(--radius-full);
+    background: conic-gradient(
+        from 45deg,
+        var(--color-primary-alpha-20),
+        var(--color-primary-light),
+        var(--color-primary) 70%,
+        transparent 85%
+    );
+    -webkit-mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 0.25rem),
+        var(--color-text) 0
+    );
+    mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 0.25rem),
+        var(--color-text) 0
+    );
+    animation: sp-loading-spin 0.8s linear infinite;
+}
+
+.sp-loading-overlay__copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.sp-loading-overlay__title {
+    color: var(--color-text-strong);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.35;
+}
+
+.sp-loading-overlay__hint {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.45;
+}
+
+@keyframes sp-loading-spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sp-loading-overlay__spinner {
+        animation: none;
+    }
+}
