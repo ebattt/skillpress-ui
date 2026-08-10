@@ -249,12 +249,25 @@
             } else if (trigger) {
                 root.__lastTrigger = trigger;
             }
-            var closeBtn = root.querySelector(CLOSE_SELECTOR);
-            if (closeBtn && typeof closeBtn.focus === 'function') {
-                try { closeBtn.focus(); } catch (e) { /* noop */ }
-            } else if (panel && typeof panel.focus === 'function') {
-                if (!panel.hasAttribute('tabindex')) panel.setAttribute('tabindex', '-1');
-                try { panel.focus(); } catch (e) { /* noop */ }
+            var moveFocusInside = function() {
+                if (!isOpenState(root)) return;
+                var closeBtn = root.querySelector(CLOSE_SELECTOR);
+                if (closeBtn && typeof closeBtn.focus === 'function') {
+                    try { closeBtn.focus(); } catch (e) { /* noop */ }
+                } else if (panel && typeof panel.focus === 'function') {
+                    if (!panel.hasAttribute('tabindex')) panel.setAttribute('tabindex', '-1');
+                    try { panel.focus(); } catch (e) { /* noop */ }
+                }
+            };
+
+            // Chromium/Linux non porta il focus dentro un elemento nello
+            // stesso frame in cui passa da visibility:hidden a visibile.
+            // Il frame successivo mantiene il comportamento coerente tra
+            // browser e non sposta il focus se il pannello è già stato chiuso.
+            if (typeof window.requestAnimationFrame === 'function') {
+                window.requestAnimationFrame(moveFocusInside);
+            } else {
+                moveFocusInside();
             }
         } else if (!open && wasOpen) {
             var lastTrigger = root.__lastTrigger;
