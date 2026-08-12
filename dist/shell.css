@@ -538,7 +538,7 @@ body {
     --shell-navbar-height-categories: 44px;
     --shell-navbar-height-total: 144px;
 
-    --shell-mega-menu-width: min(1000px, 95vw);
+    --shell-mega-menu-width: min(1200px, 95vw);
     --shell-mega-menu-height: 420px;
     --shell-mega-menu-sidebar-width: 260px;
     --shell-dropdown-width-sm: 176px;
@@ -1290,7 +1290,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.375rem;
-    padding: 0.25rem 1rem;
+    padding: 0.25rem 0.625rem;
     border-radius: var(--shell-radius-md);
     font-weight: 600;
     color: white;
