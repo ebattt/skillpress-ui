@@ -1319,6 +1319,7 @@ body {
     top: 100%;
     margin-top: var(--mega-menu-gap);
     width: var(--shell-mega-menu-width);
+    height: var(--shell-mega-menu-height);
     max-height: var(--shell-mega-menu-height);
     background: var(--color-bg-white);
     border-radius: var(--shell-radius-xl);
