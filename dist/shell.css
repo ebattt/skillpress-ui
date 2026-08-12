@@ -1262,7 +1262,7 @@ body {
 .categories-bar__scroll-wrapper[data-overflow="false"] .categories-bar__inner {
     width: 100%;
     gap: 0;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .category-dropdown--scroll-hidden {
@@ -1290,7 +1290,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.375rem;
-    padding: 0.25rem 0.625rem;
+    padding: 0.25rem 1rem;
     border-radius: var(--shell-radius-md);
     font-weight: 600;
     color: white;

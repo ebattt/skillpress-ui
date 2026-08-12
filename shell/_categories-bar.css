@@ -118,12 +118,13 @@
 }
 
 /* Se le 8 voci entrano, mantengono la larghezza naturale e distribuiscono in
-   modo uniforme lo spazio libero fra una categoria e la successiva. Con
-   overflow questa regola non si applica e torna il gap compatto da 0.25rem. */
+   modo uniforme lo spazio libero anche ai bordi. Rispetto a space-between le
+   categorie restano leggermente piu' vicine e non vengono spinte alle due
+   estremita'. Con overflow torna il gap compatto da 0.25rem. */
 .categories-bar__scroll-wrapper[data-overflow="false"] .categories-bar__inner {
     width: 100%;
     gap: 0;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 /* Una voce oltre il bordo conserva la propria posizione nello scroller, ma
