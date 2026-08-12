@@ -538,7 +538,7 @@ body {
     --shell-navbar-height-categories: 44px;
     --shell-navbar-height-total: 144px;
 
-    --shell-mega-menu-width: min(1000px, 95vw);
+    --shell-mega-menu-width: min(1200px, 95vw);
     --shell-mega-menu-height: 420px;
     --shell-mega-menu-sidebar-width: 260px;
     --shell-dropdown-width-sm: 176px;
