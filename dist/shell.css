@@ -1193,11 +1193,51 @@ body {
     position: relative;
     flex: 1;
     min-width: 0;
-    margin-left: 1rem;
+    margin-left: 0;
     overflow: visible;
+    display: flex;
+    align-items: center;
+}
+
+.categories-bar__arrow {
+    display: flex;
+    width: 1.5rem;
+    height: 2.5rem;
+    flex: 0 0 1.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    color: var(--color-text);
+    background: transparent;
+    cursor: pointer;
+}
+
+.categories-bar__arrow:disabled {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.categories-bar__scroll-wrapper[data-overflow="false"] .categories-bar__arrow {
+    width: 0;
+    flex-basis: 0;
+    overflow: hidden;
+}
+
+.categories-bar__arrow:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+}
+
+.categories-bar__arrow-icon {
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 .categories-bar__scroll-container {
+    flex: 1;
+    min-width: 0;
     padding: 0.5rem 0;
     overflow-x: auto;
     overflow-y: hidden;
@@ -1217,6 +1257,17 @@ body {
     width: max-content;
     min-width: 100%;
     flex-wrap: nowrap;
+}
+
+.categories-bar__scroll-wrapper[data-overflow="false"] .categories-bar__inner {
+    width: 100%;
+    gap: 0;
+    justify-content: space-between;
+}
+
+.category-dropdown--scroll-hidden {
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .mega-menu {

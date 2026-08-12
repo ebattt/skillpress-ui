@@ -4716,10 +4716,24 @@ body:has(.sp-confirm-dialog:not([hidden])) .sp-confirm-dialog__panel {
 .mobile-total-bar__handle {
     order: 0;
     display: flex;
+    width: 100%;
+    min-height: 2rem;
     justify-content: center;
     padding: 0.125rem 0 var(--spacing-xs);
+    color: inherit;
+    background: transparent;
+    border: 0;
     cursor: pointer;
+    font: inherit;
+    touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-total-bar__handle:focus-visible,
+.mobile-config-toggle:focus-visible,
+.mobile-total-bar__cart-btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 .mobile-total-bar__handle-arrow {
@@ -4798,12 +4812,19 @@ body:has(.sp-confirm-dialog:not([hidden])) .sp-confirm-dialog__panel {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height var(--transition-section), opacity var(--transition-slow);
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        max-height var(--transition-section),
+        opacity var(--transition-slow),
+        visibility var(--transition-slow);
 }
 
 .mobile-total-bar--expanded .mobile-total-bar__expanded-section {
     max-height: 60vh;
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     overflow-y: auto;
     padding-bottom: var(--spacing-xl);
 }
@@ -4862,11 +4883,11 @@ body:has(.sp-confirm-dialog:not([hidden])) .sp-confirm-dialog__panel {
     height: 1rem;
 }
 
-#mobile-config-icon {
+.mobile-config-toggle svg:last-of-type {
     transition: transform var(--transition-normal);
 }
 
-.mobile-config-toggle--active #mobile-config-icon {
+.mobile-config-toggle--active svg:last-of-type {
     transform: rotate(180deg);
 }
 
@@ -4874,13 +4895,20 @@ body:has(.sp-confirm-dialog:not([hidden])) .sp-confirm-dialog__panel {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height var(--transition-slow), opacity var(--transition-normal);
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        max-height var(--transition-slow),
+        opacity var(--transition-normal),
+        visibility var(--transition-normal);
     margin-top: 0;
 }
 
 .mobile-config-content--visible {
     max-height: 400px;
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     overflow-y: auto;
     margin-top: 0.5rem;
     padding: 1rem;
@@ -4944,6 +4972,15 @@ body:has(.sp-confirm-dialog:not([hidden])) .sp-confirm-dialog__panel {
         max-width: 480px;
         margin-left: auto;
         margin-right: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mobile-total-bar__handle-arrow,
+    .mobile-total-bar__expanded-section,
+    .mobile-config-toggle svg:last-of-type,
+    .mobile-config-content {
+        transition-duration: 0.01ms;
     }
 }
 

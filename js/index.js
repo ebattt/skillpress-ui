@@ -36,6 +36,7 @@
         'ImageGallery',
         'InfoDropdown',
         'LandingInfoTabs',
+        'MobileTotalBar',
         'OrderProductDropdown',
         'OrderStatusSteps',
         'OrderStepDetail',

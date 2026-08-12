@@ -1,5 +1,5 @@
 {
-  "version": "0.8.0",
+  "version": "0.9.0",
   "css": {
     "primitives": [
       ".dashboard-shell--nav-hub",
@@ -872,9 +872,6 @@
       ],
       "mobile-bar": [
         "css",
-        "font-bold",
-        "font-semibold",
-        "js",
         "mobile-config-content",
         "mobile-config-content--visible",
         "mobile-config-toggle",
@@ -895,16 +892,7 @@
         "mobile-total-bar__label",
         "mobile-total-bar__overlay",
         "mobile-total-bar__price",
-        "mobile-total-bar__price-section",
-        "sidebar-totals__container",
-        "sidebar-totals__empty",
-        "sidebar-totals__error",
-        "sidebar-totals__header",
-        "sidebar-totals__muted",
-        "sidebar-totals__placeholder",
-        "sidebar-totals__row",
-        "sidebar-totals__row--indent",
-        "sidebar-totals__section"
+        "mobile-total-bar__price-section"
       ],
       "order-detail-header": [
         "dashboard-action-badge__icon",
@@ -1967,6 +1955,20 @@
       ],
       "events": []
     },
+    "mobile-total-bar.js": {
+      "module": "MobileTotalBar",
+      "components": [
+        "mobile-bar"
+      ],
+      "data": [
+        "data-mobile-total-bar",
+        "data-mobile-total-bar-config-panel",
+        "data-mobile-total-bar-config-toggle",
+        "data-mobile-total-bar-panel",
+        "data-mobile-total-bar-toggle"
+      ],
+      "events": []
+    },
     "order-product-dropdown.js": {
       "module": "OrderProductDropdown",
       "components": [
@@ -2139,6 +2141,11 @@
     "data-landing-info-tabs-init",
     "data-landing-info-tabs-panel",
     "data-landing-info-tabs-tab",
+    "data-mobile-total-bar",
+    "data-mobile-total-bar-config-panel",
+    "data-mobile-total-bar-config-toggle",
+    "data-mobile-total-bar-panel",
+    "data-mobile-total-bar-toggle",
     "data-order-product-dropdown",
     "data-order-product-dropdown-content",
     "data-order-product-dropdown-details",
@@ -2216,6 +2223,7 @@
     "ImageGallery",
     "InfoDropdown",
     "LandingInfoTabs",
+    "MobileTotalBar",
     "OrderProductDropdown",
     "OrderStatusSteps",
     "OrderStepDetail",

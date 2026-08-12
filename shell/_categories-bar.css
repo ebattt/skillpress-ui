@@ -6,12 +6,13 @@
  * Barra orizzontale sotto la navbar arancione. Contiene il mega menu
  * "Tutti i Prodotti" (fuori dalla riga che scorre, vedi
  * .categories-bar__inner sotto) e i dropdown delle singole categorie.
- * Le categorie usano lo scroll orizzontale nativo del browser quando il
- * contenuto eccede la larghezza visibile. Non ci sono frecce, fade o pagine.
+ * Le categorie usano lo scroll orizzontale nativo del browser. Due chevron
+ * minimali compaiono soltanto quando il contenuto eccede lo spazio disponibile;
+ * non vengono usati fade, transform o paginazione manuale.
  *
  * Elementi HTML: .categories-bar, .categories-bar__container,
- *   .categories-bar__scroll-wrapper, .categories-bar__inner,
- *   .categories-bar__scroll-container.
+ *   .categories-bar__scroll-wrapper, .categories-bar__scroll-container,
+ *   .categories-bar__arrow, .categories-bar__inner.
  * ==========================================================================
  */
 
@@ -37,18 +38,63 @@
     align-items: center;
 }
 
-/* Separa visivamente la prima categoria dal trigger fisso "Tutti i Prodotti". */
+/* Le due colonne da 24px restano stabili durante lo scorrimento. Quando tutte
+   le categorie entrano, il runtime le azzera e lascia l'intera riga alle voci. */
 .categories-bar__scroll-wrapper {
     position: relative;
     flex: 1;
     min-width: 0;
-    margin-left: 1rem;
+    margin-left: 0;
     overflow: visible;
+    display: flex;
+    align-items: center;
+}
+
+.categories-bar__arrow {
+    display: flex;
+    width: 1.5rem;
+    height: 2.5rem;
+    flex: 0 0 1.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    color: var(--color-text);
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Il controllo conserva il proprio spazio ma non e' visibile o raggiungibile:
+   in questo modo la riga non scatta quando cambia la direzione disponibile. */
+.categories-bar__arrow:disabled {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Senza overflow i controlli non riservano spazio: le categorie possono usare
+   tutta la larghezza residua dopo il bottone "Tutti i Prodotti". */
+.categories-bar__scroll-wrapper[data-overflow="false"] .categories-bar__arrow {
+    width: 0;
+    flex-basis: 0;
+    overflow: hidden;
+}
+
+.categories-bar__arrow:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+}
+
+.categories-bar__arrow-icon {
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 /* Scroll nativo come HelloPrint: trackpad, touch, tastiera o Shift+rotellina.
    La scrollbar resta utilizzabile dal browser ma non e' mostrata nel layout. */
 .categories-bar__scroll-container {
+    flex: 1;
+    min-width: 0;
     padding: 0.5rem 0;
     overflow-x: auto;
     overflow-y: hidden;
@@ -69,4 +115,21 @@
     width: max-content;
     min-width: 100%;
     flex-wrap: nowrap;
+}
+
+/* Se le 8 voci entrano, mantengono la larghezza naturale e distribuiscono in
+   modo uniforme lo spazio libero fra una categoria e la successiva. Con
+   overflow questa regola non si applica e torna il gap compatto da 0.25rem. */
+.categories-bar__scroll-wrapper[data-overflow="false"] .categories-bar__inner {
+    width: 100%;
+    gap: 0;
+    justify-content: space-between;
+}
+
+/* Una voce oltre il bordo conserva la propria posizione nello scroller, ma
+   non viene mostrata a meta'. Il runtime la rende visibile appena la freccia
+   l'ha portata interamente nel viewport. */
+.category-dropdown--scroll-hidden {
+    visibility: hidden;
+    pointer-events: none;
 }

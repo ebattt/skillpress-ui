@@ -2,16 +2,20 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.8.0)
+## Corrente (0.9.0)
 
-- **Versione: 0.8.0** (minor, non patch: aggiunge un componente pubblico nuovo)
-- **Contract HTML cambiato: sì, ma solo in aggiunta e solo per chi la
-  adotta.** Nessuna modifica richiesta sul markup già in produzione: il
-  contratto testo-solo del box "i" resta identico e continua a funzionare
-  senza toccare nulla. I nuovi pezzi di contratto sono compatibili e opt-in:
-  immagine nel box "i", hook espliciti di `sidebar-totals`, loading overlay e
-  link del banner IVA. L'accordion aggiunge API pubbliche senza cambiare il
-  markup esistente.
+- **Versione: 0.9.0** (minor, non patch: aggiunge un componente pubblico nuovo)
+- **Contract HTML cambiato: sì.** Il contratto testo-solo del box "i" resta
+  compatibile. I nuovi pezzi opt-in sono immagine nel box "i", hook di
+  `sidebar-totals`, loading overlay e link IVA. La shell aggiunge invece i due
+  controlli della barra categorie: per adottarli vanno aggiornati insieme
+  partial, `shell.css` e runtime applicativo di riferimento.
+- **Barra categorie desktop.** Il CMS espone al massimo 8 voci ordinate nella
+  barra grigia. Quando entrano, usano tutta la riga con spazi uniformi; sotto
+  la soglia minima di leggibilità lo scroll resta nativo e due chevron
+  trasparenti portano in vista l'elemento successivo senza mostrare etichette
+  parziali e senza fade, offset o `translateX()`. "Tutti i Prodotti" resta
+  fisso.
 - **sidebar-totals (nuovo componente)**: il toggle "Vuoi visualizzare il
   riepilogo?" nel box Totale del configuratore ora funziona da solo, stesso
   trattamento di `info-dropdown`/`preview` — prima non aveva nessun JS
@@ -27,9 +31,12 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
   idempotente, risincronizza lo stato ARIA server-rendered e non duplica i
   listener. Con piu' trigger per lo stesso pannello, Escape restituisce il
   focus a quello che ha realmente aperto il riepilogo.
-- **Nota**: la barra totale sticky mobile (`mobile-bar`, "Vedi
-  configurazione") resta un componente diverso e resta a stato guidato dal
-  backend, come già documentato — non toccata da questo rilascio.
+- **mobile-total-bar**: la barra Totale del configuratore mobile resta distinta
+  da `sidebar-totals`, ma ora il bundle gestisce apertura, riepilogo interno,
+  ARIA, `inert`, Escape e focus. Il markup class-based gia' usato sul sito
+  resta compatibile; il contratto nuovo usa `data-mobile-total-bar*`. Dopo la
+  sostituzione dell'intera barra basta `SkillpressUI.init(scope)`; gli
+  aggiornamenti dei soli valori o del contenuto non richiedono init.
 - **accordion: apertura applicativa delle sezioni con errore.** Esposte le API
   `SkillpressUI.Accordion.open(section)` e `close(section)`: sincronizzano
   classe, altezza, overflow, ARIA ed eventi senza chiudere le altre sezioni.

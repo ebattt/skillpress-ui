@@ -40,10 +40,24 @@
 .mobile-total-bar__handle {
     order: 0;
     display: flex;
+    width: 100%;
+    min-height: 2rem;
     justify-content: center;
     padding: 0.125rem 0 var(--spacing-xs);
+    color: inherit;
+    background: transparent;
+    border: 0;
     cursor: pointer;
+    font: inherit;
+    touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-total-bar__handle:focus-visible,
+.mobile-config-toggle:focus-visible,
+.mobile-total-bar__cart-btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 .mobile-total-bar__handle-arrow {
@@ -125,12 +139,19 @@
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height var(--transition-section), opacity var(--transition-slow);
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        max-height var(--transition-section),
+        opacity var(--transition-slow),
+        visibility var(--transition-slow);
 }
 
 .mobile-total-bar--expanded .mobile-total-bar__expanded-section {
     max-height: 60vh;
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     overflow-y: auto;
     padding-bottom: var(--spacing-xl);
 }
@@ -191,11 +212,11 @@
     height: 1rem;
 }
 
-#mobile-config-icon {
+.mobile-config-toggle svg:last-of-type {
     transition: transform var(--transition-normal);
 }
 
-.mobile-config-toggle--active #mobile-config-icon {
+.mobile-config-toggle--active svg:last-of-type {
     transform: rotate(180deg);
 }
 
@@ -204,13 +225,20 @@
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height var(--transition-slow), opacity var(--transition-normal);
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        max-height var(--transition-slow),
+        opacity var(--transition-normal),
+        visibility var(--transition-normal);
     margin-top: 0;
 }
 
 .mobile-config-content--visible {
     max-height: 400px;
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     overflow-y: auto;
     margin-top: 0.5rem;
     padding: 1rem;
@@ -227,17 +255,7 @@
     padding: 0.25rem 0;
 }
 
-/* NOTE: il generatore reale del riepilogo (`generateRiepilogo`, vedi
-   `js/riepilogo.js` v3.0.0) inietta classi `.sidebar-totals__container`,
-   `.sidebar-totals__section`, `.sidebar-totals__header`, `.sidebar-totals__row`,
-   `.sidebar-totals__row--indent`, `.sidebar-totals__error`, `.sidebar-totals__empty`,
-   `.sidebar-totals__muted`, `.sidebar-totals__placeholder`. Queste utility sono
-   definite in `components/sidebar-totals.css` e si applicano anche
-   dentro `.mobile-config-content--visible` quando il consumer importa
-   entrambi i CSS (cosa che il bundle `demo-minimal.css` fa di default).
-   Le regole legacy `.mobile-config-content--visible .font-bold` /
-   `.font-semibold` del catalogo sono state rimosse: non corrispondono
-   piu' all'output del generatore. */
+/* Il backend genera il contenuto usando le classi di sidebar-totals. */
 
 /* --- Responsive: small phones (<=374px) ---
    breakpoint-exception: 374px matches the smallest supported phone width and
@@ -290,5 +308,14 @@
         max-width: 480px;
         margin-left: auto;
         margin-right: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mobile-total-bar__handle-arrow,
+    .mobile-total-bar__expanded-section,
+    .mobile-config-toggle svg:last-of-type,
+    .mobile-config-content {
+        transition-duration: 0.01ms;
     }
 }
