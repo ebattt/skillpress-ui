@@ -172,6 +172,21 @@
         return description;
     }
 
+    function hasTemplateContent(root, id) {
+        var template = getContentTemplate(root, id);
+        if (!template || !template.content) return false;
+
+        return Array.prototype.some.call(template.content.childNodes, function(node) {
+            return node.nodeType === 1 ||
+                (node.nodeType === 3 && Boolean(node.textContent.trim()));
+        });
+    }
+
+    function hasBodyContent(root, data) {
+        if (data.description && data.description.trim()) return true;
+        return hasTemplateContent(root, data.content);
+    }
+
     function clearImage(image, imageWrap) {
         if (!image) return;
         image.removeAttribute('src');
@@ -194,7 +209,8 @@
         ensurePanelChrome(root, panel);
         var data = getSourceData(currentSource);
         var safeImage = safeImageUrl(data.image);
-        var available = Boolean(currentSource && safeImage);
+        var hasContent = hasBodyContent(root, data);
+        var available = Boolean(currentSource && (safeImage || hasContent));
         var title = root.querySelector('.preview__title');
         var image = root.querySelector('.preview__image-media');
         var imageWrap = image && image.closest('.preview__image-wrap');
@@ -219,7 +235,12 @@
             clearImage(image, imageWrap);
         }
 
-        dispatch(root, 'sp:preview:sync', { source: currentSource, available: available });
+        dispatch(root, 'sp:preview:sync', {
+            source: currentSource,
+            available: available,
+            hasImage: Boolean(safeImage),
+            hasContent: hasContent
+        });
 
         return root;
     }
@@ -328,15 +349,25 @@
 
         clearImage(image, image.closest('.preview__image-wrap'));
 
+        var source = sourceFromRoot(root);
+        var data = getSourceData(source);
+        var hasContent = Boolean(source && hasBodyContent(root, data));
+        var available = hasContent;
         var trigger = root.querySelector(TRIGGER_SELECTOR);
         if (trigger) {
-            trigger.disabled = true;
-            trigger.setAttribute('aria-disabled', 'true');
+            trigger.disabled = !available;
+            if (available) {
+                trigger.removeAttribute('aria-disabled');
+            } else {
+                trigger.setAttribute('aria-disabled', 'true');
+            }
         }
-        if (isOpenState(root)) setOpen(root, false);
+        if (!available && isOpenState(root)) setOpen(root, false);
         dispatch(root, 'sp:preview:sync', {
-            source: sourceFromRoot(root),
-            available: false,
+            source: source,
+            available: available,
+            hasImage: false,
+            hasContent: hasContent,
             error: true
         });
     }

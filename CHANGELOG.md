@@ -2,7 +2,21 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.9.0)
+## Corrente (0.9.1)
+
+- **Versione: 0.9.1.**
+- **Contract HTML cambiato: no.** Il markup esistente resta compatibile; il
+  backend puo' ora fornire anche Preview testuali senza immagine.
+- **Preview con immagine o testo facoltativi.** Il trigger resta disponibile
+  quando il valore selezionato possiede un'immagine valida, una descrizione
+  testuale oppure un `<template>` editoriale non vuoto. Il template puo'
+  contenere qualsiasi nodo HTML fornito dal CMS, anche senza testo. Senza immagine il
+  relativo wrapper viene nascosto e il testo occupa il pannello; l'occhio si
+  nasconde soltanto quando il valore non possiede alcun contenuto Preview. Un
+  errore di caricamento dell'immagine non chiude piu' una Preview che conserva
+  un contenuto testuale valido.
+
+## Precedente (0.9.0)
 
 - **Versione: 0.9.0** (minor, non patch: aggiunge un componente pubblico nuovo)
 - **Contract HTML cambiato: sì.** Il contratto testo-solo del box "i" resta
