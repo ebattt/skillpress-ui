@@ -2,7 +2,17 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.9.1)
+## Corrente (0.9.2)
+
+- **Versione: 0.9.2.**
+- **Contract HTML cambiato: no.** Il pulsante Elimina dell'anteprima carrello
+  mantiene il markup Material Symbols gia' previsto.
+- **Icona Elimina nel carrello.** Aggiunta la ligature `delete` al subset
+  Material Symbols self-hosted. Il pulsante `.cart-item__remove` del dropdown
+  desktop e dell'overlay mobile mostra ora l'icona invece di dipendere dal
+  font completo esterno.
+
+## Precedente (0.9.1)
 
 - **Versione: 0.9.1.**
 - **Contract HTML cambiato: no.** Il markup esistente resta compatibile; il

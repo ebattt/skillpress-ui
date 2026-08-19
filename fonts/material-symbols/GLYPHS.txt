@@ -20,6 +20,7 @@ content_copy
 content_cut
 crop_landscape
 dashboard
+delete
 description
 eco
 edit_note
