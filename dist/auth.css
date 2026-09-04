@@ -545,6 +545,9 @@ body {
     --shell-dropdown-width-md: 208px;
     --shell-dropdown-width-lg: 320px;
     --shell-dropdown-width-xl: 384px;
+    --shell-dropdown-width-2xl: 608px;
+    --shell-dropdown-width-3xl: 800px;
+    --shell-dropdown-width-4xl: 992px;
 
     --shell-z-popover: 70;
     --shell-z-mobile-menu: 100;

@@ -2,7 +2,56 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.9.2)
+## Corrente (0.10.2)
+
+- **Versione: 0.10.2.**
+- **Contract HTML cambiato: no.** Il renderer continua a usare
+  `--2xl` + `--flow` da cinque gruppi in su; il numero di colonne non si
+  dichiara nel markup.
+- **Colonne scalari nei dropdown a colonne bilanciate.** Le colonne di
+  `category-dropdown__grid--flow` (e di una `--3col` promossa) crescono con il
+  contenuto: 3 colonne a 608px, 4 colonne a 800px da 7 celle con collegamenti
+  (nuovo token `--shell-dropdown-width-3xl`), 5 colonne a 992px da 10 (nuovo
+  token `--shell-dropdown-width-4xl`), sempre entro `calc(100vw - 24px)`.
+  Le celle senza collegamenti non contano. Cosi' un pannello molto ricco non
+  torna allo scroll interno finche' c'e' spazio orizzontale.
+
+## Precedente (0.10.1)
+
+- **Versione: 0.10.1.**
+- **Contract HTML cambiato: no.** Hardening della resa, nessuna classe nuova.
+- **Promozione automatica del dropdown con molti gruppi.** Una griglia
+  `category-dropdown__grid--3col` con cinque o piu' celle e' fuori contratto
+  (`--3col` copre 3-4 gruppi): invece di righe allineate al gruppo piu' alto —
+  grandi vuoti verticali e scroll interno — il pannello viene ora reso come
+  `--2xl` + `--flow`: larghezza piena e colonne bilanciate. Il markup esplicito
+  `--2xl`/`--flow` resta quello consigliato.
+
+## Precedente (0.10.0)
+
+- **Versione: 0.10.0** (minor, non patch: aggiunge varianti pubbliche nuove).
+- **Contract HTML cambiato: sì**, in modo additivo. Il markup esistente resta
+  valido; per le categorie con molte sottocategorie sono disponibili due nuove
+  varianti opt-in del dropdown della barra grigia.
+- **Dropdown con molte sottocategorie.** Nuove
+  `category-dropdown__panel--2xl` (608px) e `category-dropdown__grid--flow`:
+  da cinque gruppi in su i gruppi scorrono in tre colonne bilanciate invece di
+  righe di griglia. La griglia a righe allineava ogni riga al gruppo piu' alto
+  e, con sottocategorie di lunghezza molto diversa, lasciava vuoti verticali
+  molto ampi.
+- **La larghezza appartiene al pannello.** `category-dropdown__grid--3col` non
+  imposta piu' `width`: con un pannello `--lg` la griglia risultava piu' larga
+  del pannello e la terza colonna veniva tagliata. La larghezza corretta viene
+  ora derivata dalla griglia presente, cosi' un abbinamento errato di classi
+  non produce piu' contenuto tagliato.
+- **Resa tollerante ai casi limite del renderer.** Un link
+  `category-dropdown__item` dentro una `__sublist` non eredita piu' il padding
+  del pannello a colonna singola; una `__sublist` vuota e una cella di griglia
+  senza collegamenti non occupano piu' una colonna.
+- **Griglia allineata in alto.** `align-items: start` evita che le celle si
+  stirino all'altezza della riga.
+
+## Precedente (0.9.2)
 
 - **Versione: 0.9.2.**
 - **Contract HTML cambiato: no.** Il pulsante Elimina dell'anteprima carrello
