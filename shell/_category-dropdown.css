@@ -9,8 +9,15 @@
  * DUE VARIANTI DI LAYOUT:
  *   1. --single: colonna singola (larghezza --dropdown-width-md, 208px)
  *      Per categorie con pochi prodotti, lista verticale semplice.
- *   2. --multi:  multi-colonna con griglia CSS (2 o 3 colonne)
- *      Per categorie con sottocategorie raggruppate (es. Rilegature → Brossura, PUR).
+ *   2. --multi:  multi-colonna per categorie con sottocategorie raggruppate
+ *      (es. Rilegature → Brossura, PUR). Tre impaginazioni:
+ *        - --lg  + --grid--2col   due gruppi o elenco piatto oltre 8 prodotti;
+ *        - --xl  + --grid--3col   tre o quattro gruppi;
+ *        - --2xl + --grid--flow   da cinque gruppi in su, colonne bilanciate;
+ *          le colonne scalano col contenuto: 3 (608px), 4 con 7+ celle
+ *          (800px), 5 con 10+ celle (992px), entro i limiti della viewport.
+ *      La larghezza appartiene sempre al pannello, mai alla griglia.
+ *      Una --3col con 5+ celle viene promossa automaticamente a --2xl/--flow.
  *
  * APERTURA: il runtime applicativo sposta i pannelli nel layer esterno allo
  * scroller e gestisce hover, focus ed Escape. Questo evita che overflow-x:auto
@@ -226,8 +233,11 @@
     padding: var(--spacing-md);
 }
 
-/* Dimensioni varianti: --lg (320px) e --xl (384px) adattano la larghezza
-   al numero di colonne e contenuto della categoria. */
+/* Dimensioni varianti: --lg (320px), --xl (384px) e --2xl (608px) adattano la
+   larghezza al numero di colonne e al contenuto della categoria.
+   La larghezza appartiene SEMPRE al pannello: i modificatori di griglia non
+   devono impostarla, altrimenti la griglia puo' risultare piu' larga del
+   pannello che la contiene e sbordare. */
 .category-dropdown__panel--lg {
     width: var(--shell-dropdown-width-lg);
 }
@@ -236,11 +246,17 @@
     width: var(--shell-dropdown-width-xl);
 }
 
+.category-dropdown__panel--2xl {
+    width: var(--shell-dropdown-width-2xl);
+}
+
 /* Grid base per le colonne. I modificatori --2col e --3col
-   definiscono il numero di colonne tramite grid-template-columns. */
+   definiscono il numero di colonne tramite grid-template-columns.
+   align-items: start evita che le celle si stirino all'altezza della riga. */
 .category-dropdown__grid {
     display: grid;
     gap: var(--spacing-md);
+    align-items: start;
 }
 
 .category-dropdown__grid--2col {
@@ -249,7 +265,84 @@
 
 .category-dropdown__grid--3col {
     grid-template-columns: repeat(3, 1fr);
+}
+
+/* Molte sottocategorie con contenuti di lunghezza molto diversa (per esempio
+   sei gruppi con da uno a undici prodotti). Le colonne della griglia
+   allineerebbero le righe all'elemento piu' alto lasciando grandi vuoti
+   verticali: qui i gruppi scorrono invece in colonne bilanciate, senza righe.
+   Va usata con --2xl. */
+.category-dropdown__grid--flow {
+    display: block;
+    column-count: var(--category-dropdown-flow-columns, 3);
+    column-gap: var(--spacing-md);
+}
+
+.category-dropdown__grid--flow > * {
+    break-inside: avoid;
+    margin-bottom: var(--spacing-md);
+}
+
+.category-dropdown__grid--flow > *:last-child {
+    margin-bottom: 0;
+}
+
+/* Rete di sicurezza: se il renderer abbina la griglia a un pannello troppo
+   stretto, la larghezza corretta viene derivata dal contenuto invece di
+   lasciare che la griglia sbordi. Il markup consigliato resta esplicito
+   (--xl con --3col, --2xl con --flow). */
+.category-dropdown__panel--multi:has(.category-dropdown__grid--3col) {
     width: var(--shell-dropdown-width-xl);
+}
+
+.category-dropdown__panel--multi:has(.category-dropdown__grid--flow) {
+    width: var(--shell-dropdown-width-2xl);
+}
+
+/* Promozione automatica: una griglia --3col con cinque o piu' celle e' fuori
+   contratto (--3col copre 3-4 gruppi). Invece di righe allineate al gruppo
+   piu' alto — grandi vuoti verticali e scroll interno — il pannello viene reso
+   come --2xl + --flow: colonne bilanciate e larghezza piena. Deve venire dopo
+   le regole di larghezza qui sopra per prevalere a parita' di specificita'. */
+.category-dropdown__grid--3col:has(> :nth-child(5)) {
+    display: block;
+    column-count: var(--category-dropdown-flow-columns, 3);
+    column-gap: var(--spacing-md);
+}
+
+.category-dropdown__grid--3col:has(> :nth-child(5)) > * {
+    break-inside: avoid;
+    margin-bottom: var(--spacing-md);
+}
+
+.category-dropdown__grid--3col:has(> :nth-child(5)) > *:last-child {
+    margin-bottom: 0;
+}
+
+.category-dropdown__panel--multi:has(.category-dropdown__grid--3col > :nth-child(5)) {
+    width: var(--shell-dropdown-width-2xl);
+}
+
+/* Le colonne bilanciate scalano con il contenuto: quando i gruppi aumentano,
+   tre colonne tornano a non bastare in altezza e il pannello aggiunge colonne
+   finche' c'e' spazio orizzontale (il limite e' la viewport; il runtime
+   riallinea il pannello in base alla larghezza effettiva).
+   Soglie: fino a 6 celle 3 colonne (608px), 7-9 celle 4 colonne (800px),
+   10+ celle 5 colonne (992px). Contano solo le celle con collegamenti: il
+   marcatore e' un <a> dentro l'ennesima cella (":nth-child(7) a", non un
+   :has annidato, che sarebbe invalido), cosi' le eventuali celle vuote in
+   coda non gonfiano il conteggio. Vale sia per --flow esplicita sia per una
+   --3col promossa. */
+.category-dropdown__panel--multi:has(.category-dropdown__grid--flow > :nth-child(7) a),
+.category-dropdown__panel--multi:has(.category-dropdown__grid--3col > :nth-child(7) a) {
+    --category-dropdown-flow-columns: 4;
+    width: min(var(--shell-dropdown-width-3xl), calc(100vw - 24px));
+}
+
+.category-dropdown__panel--multi:has(.category-dropdown__grid--flow > :nth-child(10) a),
+.category-dropdown__panel--multi:has(.category-dropdown__grid--3col > :nth-child(10) a) {
+    --category-dropdown-flow-columns: 5;
+    width: min(var(--shell-dropdown-width-4xl), calc(100vw - 24px));
 }
 
 /* Titolo della sottocategoria (es. "BROSSURA", "SPIRALE") — uppercase
@@ -278,6 +371,25 @@
 
 .category-dropdown__subitem:hover {
     color: var(--color-primary);
+}
+
+/* Tolleranza di resa: dentro una sublist il link corretto e' __subitem, ma se
+   il renderer usa __item la voce non deve ereditare il padding orizzontale del
+   pannello a colonna singola, che restringerebbe la colonna. */
+.category-dropdown__sublist .category-dropdown__item {
+    padding: 0;
+    font-size: 0.9375rem;
+}
+
+/* Gruppi senza voci: una sublist vuota o una cella senza alcun collegamento non
+   deve occupare una colonna. Il renderer non dovrebbe generarli (vedi
+   05-shell-integration), ma il pannello resta leggibile anche se accade. */
+.category-dropdown__sublist:empty {
+    display: none;
+}
+
+.category-dropdown__grid > *:not(:has(a)) {
+    display: none;
 }
 
 /* Rimuove la linea arancione di focus-visible sui link del dropdown */

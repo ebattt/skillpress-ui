@@ -60,6 +60,9 @@
     --shell-dropdown-width-md: 208px;
     --shell-dropdown-width-lg: 320px;
     --shell-dropdown-width-xl: 384px;
+    --shell-dropdown-width-2xl: 608px;
+    --shell-dropdown-width-3xl: 800px;
+    --shell-dropdown-width-4xl: 992px;
 
     /* --- Z-index custom shell (sopra/oltre la scala condivisa) --- */
     --shell-z-popover: 70;             /* gradienti fade barra categorie */
