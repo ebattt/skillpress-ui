@@ -68,7 +68,8 @@
 /* Sicurezza: anche se il JS non lo chiude, su desktop il menu e sempre nascosto.
    !important necessario per sovrascrivere eventuali display inline dal JS. */
 @media (min-width: 768px) {
-    .mobile-menu {
+    .mobile-menu,
+    .category-products-overlay {
         display: none !important;
     }
 }
@@ -95,32 +96,60 @@
      #mobileMenu e l'overlay prodotti): un eventuale markup legacy del
      cliente con class="mobile-menu" nascosto in altro modo (senza .hidden)
      non deve poter bloccare la pagina. */
-body:has(#mobileMenuContainer .mobile-menu:not(.hidden)),
-body:has(#mobileMenuContainer .category-products-overlay:not(.hidden)) {
-    overflow: hidden;
-    touch-action: none;
-}
+@media (max-width: 767px) {
+    body:has(#mobileMenuContainer .mobile-menu:not(.hidden)),
+    body:has(#mobileMenuContainer .category-products-overlay:not(.hidden)) {
+        overflow: hidden;
+        touch-action: none;
+    }
 
-html:has(#mobileMenuContainer .mobile-menu:not(.hidden)),
-html:has(#mobileMenuContainer .category-products-overlay:not(.hidden)) {
-    overscroll-behavior: none;
-}
+    html:has(#mobileMenuContainer .mobile-menu:not(.hidden)),
+    html:has(#mobileMenuContainer .category-products-overlay:not(.hidden)) {
+        overscroll-behavior: none;
+    }
 
-body:has(#mobileMenuContainer .mobile-menu:not(.hidden)) .sp-page__header,
-body:has(#mobileMenuContainer .category-products-overlay:not(.hidden)) .sp-page__header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: var(--shell-z-sticky);
-}
+    body:has(#mobileMenuContainer .mobile-menu:not(.hidden)) .sp-page__header,
+    body:has(#mobileMenuContainer .category-products-overlay:not(.hidden)) .sp-page__header {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: var(--shell-z-sticky);
+    }
 
-/* Dentro menu e overlay il pan verticale resta permesso (deroga al
-   touch-action: none del body). */
-#mobileMenuContainer .mobile-menu:not(.hidden),
-#mobileMenuContainer .category-products-overlay:not(.hidden),
-#mobileMenuContainer .category-products-overlay:not(.hidden) .category-products__scroll {
-    touch-action: pan-y;
+    /* Dentro menu e overlay il pan verticale resta permesso (deroga al
+       touch-action: none del body). */
+    #mobileMenuContainer .mobile-menu:not(.hidden),
+    #mobileMenuContainer .category-products-overlay:not(.hidden),
+    #mobileMenuContainer .category-products-overlay:not(.hidden) .category-products__scroll {
+        touch-action: pan-y;
+    }
+
+    /* A summary backdrop must not block the hamburger before the menu opens. */
+    body:has(.mobile-total-bar--expanded, .checkout-mobile-summary--expanded) .sp-page__header {
+        z-index: calc(var(--z-mobile-bar) + 1);
+    }
+
+    /* Keep the orange navigation anchored even inside a scrolled page header. */
+    body:has(#mobileMenuContainer :is(.mobile-menu, .category-products-overlay):not(.hidden)) .navbar-container {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: var(--shell-z-sticky);
+    }
+
+    /* One rule for every page and late AJAX insertion. Never change the
+       application's hidden/expanded state just to suppress a bar temporarily. */
+    body:has(#mobileMenuContainer :is(.mobile-menu, .category-products-overlay):not(.hidden)) :is(
+        .categories-bar,
+        .mobile-total-bar,
+        [data-mobile-total-bar],
+        .checkout-mobile-summary,
+        [data-checkout-mobile-summary]
+    ) {
+        display: none !important;
+    }
 }
 
 

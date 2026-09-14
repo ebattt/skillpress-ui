@@ -220,3 +220,10 @@
         font-size: 1rem;
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .sp-accordion__content,
+    .sp-accordion__section--expanded > .sp-accordion__content {
+        transition: none;
+    }
+}

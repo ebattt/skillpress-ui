@@ -2,7 +2,39 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.10.2)
+## Corrente (0.10.3)
+
+- **Versione: 0.10.3.**
+- Menu mobile: barra arancione fissata durante la navigazione, riepiloghi
+  prodotto/checkout soppressi via CSS anche se aggiunti dopo l'apertura;
+  header raggiungibile sopra il backdrop di un riepilogo espanso.
+- Il Totale nascosto non intercetta Escape. Il runtime shell consumer chiude
+  anche il livello categorie e conserva lo stato applicativo dei riepiloghi.
+- Accordion: `open`/`close` ripetuti non riavviano le animazioni; inversioni
+  rapide partono dall'altezza visibile, con cleanup e supporto reduced motion.
+- Attesa: velo sfocato leggero sul contenuto esistente, senza spinner o riquadro testuale visibile; annuncio mantenuto per screen reader.
+  Il markup precedente resta compatibile. Lo scope del velo e la gestione
+  delle richieste concorrenti restano responsabilita del consumer.
+- Label Nome del lavoro/Referente allineate dal CSS senza dipendere dagli inline del consumer.
+- Checkout Google Places: font, bordi e altezza del widget allineati ai campi tramite host e parte pubblica input.
+- Campi generici: spaziatura comune per label dirette e con Info, min-width sul wrapper per contenere le colonne.
+- **Contract HTML cambiato: no.** Restano `data-image-gallery` e gli stessi
+  controlli; `width`/`height` sono metadati facoltativi per riservare spazio.
+- **Galleria con proporzioni naturali.** Dopo il caricamento il rapporto
+  segue `naturalWidth`/`naturalHeight` del file effettivamente ricevuto,
+  correggendo metadati mancanti o errati. I parametri `width`/`height`
+  nell'URL di resize non vengono piu' interpretati come dimensioni reali.
+- Durante il fetch della slide successiva si conserva la geometria precedente,
+  senza un reset intermedio al quadrato. Eventuali `srcset`/`sizes` SSR vengono
+  rimossi quando l'array prende il controllo dello `src`.
+- **Immagini intere entro 400px per lato.** Il contenitore segue la slide
+  attiva anche con sequenze quadrate, orizzontali e verticali. Le verticali
+  si restringono per rispettare il limite in altezza; niente crop o stretch.
+- Il backend deve comunque renderizzare la prima immagine dell'array anche
+  nell'`img` SSR e fornire dimensioni corrette quando disponibili, evitando
+  salti iniziali. Il runtime non elimina margini gia' contenuti nel file.
+
+## Precedente (0.10.2)
 
 - **Versione: 0.10.2.**
 - **Contract HTML cambiato: no.** Il renderer continua a usare

@@ -63,3 +63,31 @@
         gap: var(--spacing-lg, 1.5rem);
     }
 }
+
+/* Google Places widget: keep the same type and height as checkout inputs.
+   The input part is public; do not reach into the widget's shadow tree. */
+.checkout-main gmp-place-autocomplete {
+    color-scheme: light;
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    height: calc(1.5em + 0.75rem + 2px);
+    box-sizing: border-box;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-white);
+}
+
+.checkout-main gmp-place-autocomplete::part(input) {
+    height: calc(1.5em + 0.75rem);
+    min-height: 0;
+    padding-block: 0;
+    font: inherit;
+}
+
+@media (max-width: 639px) {
+    .checkout-main gmp-place-autocomplete {
+        font-size: var(--font-size-base);
+    }
+}

@@ -1506,6 +1506,13 @@ body {
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .sp-accordion__content,
+    .sp-accordion__section--expanded > .sp-accordion__content {
+        transition: none;
+    }
+}
+
 .sp-validation-indicator {
     display: inline-flex;
     align-items: center;

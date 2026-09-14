@@ -2,7 +2,8 @@
 
 Libreria UI Skillpress per pagine renderizzate dal backend/CMS. Il backend
 genera markup HTML con classi pubbliche e hook `data-*` documentati, poi carica
-CSS e JS dal CDN pubblico Skillpress.
+gli asset distribuiti dal CDN pubblico Skillpress. Per il progetto Skillpress
+la guida di integrazione del consumer prevede una copia servita dal backend.
 
 ## Cosa contiene
 
@@ -62,6 +63,13 @@ Il backend può consumare gli asset direttamente dal CDN stabile o mirrorarli su
 un proprio path locale. La cosa importante è che la struttura interna resti la
 stessa: `css/`, `js/`, `fonts/`, `manifest.json`, `public-api.json`.
 
+Queste sono le modalita' supportate dalla libreria. Per l'integrazione del
+sito Skillpress seguire
+[`01-asset-loading.md`](../Skillpress-frontend/consumer-libreria/docs/backend/01-asset-loading.md):
+asset copiati al deploy e serviti localmente, con header di cache coerenti
+con la strategia di aggiornamento. Gli URL CDN stabili restano `no-cache`
+(memorizzazione con rivalidazione), non `immutable`.
+
 ```html
 <link rel="stylesheet" href="https://skillpress-ui.pages.dev/skillpress-ui/css/shell.css">
 <link rel="stylesheet" href="https://skillpress-ui.pages.dev/skillpress-ui/css/public.css">
@@ -103,6 +111,13 @@ riferimento è la contract page
 La barra categorie desktop usa scroll orizzontale nativo senza frecce o fade.
 Il CSS è nella libreria; il runtime dropdown resta applicativo e il riferimento
 per il backend è `static-pages/assets/shell-runtime/navbar.js` nel consumer.
+
+La pagina shell del consumer carica direttamente quella copia di `navbar.js`.
+Il backend puo' copiarla nel proprio `/static/js/`, insieme agli altri runtime
+applicativi del consumer. Questi file non fanno parte di `js/skillpress-ui.js`
+e non vengono aggiornati da un deploy del CDN; `cart.js` e lo stato del
+carrello rimangono applicativi. Il runtime navbar si inizializza a DOM pronto,
+senza timer di startup; non implementa una navigazione con shell persistente.
 
 Font: self-hostati in `fonts/manrope/` e `fonts/material-symbols/`; nessuna
 richiesta a Google Fonts nel runtime production.

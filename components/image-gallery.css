@@ -18,6 +18,9 @@
     position: relative;
     width: 100%;
     max-width: 400px;
+    /* Anche una foto verticale resta entro 400px di altezza: si restringe
+       il contenitore insieme all'immagine, senza letterbox o ritagli. */
+    max-width: min(400px, calc(400px * (var(--image-gallery-aspect-ratio))));
     aspect-ratio: var(--image-gallery-aspect-ratio);
     margin: 0 auto;
     overflow: hidden;

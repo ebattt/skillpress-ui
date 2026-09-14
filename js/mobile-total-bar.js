@@ -169,7 +169,11 @@
         var active;
         var root;
         if (event.key !== 'Escape' && event.key !== 'Esc') return;
-        roots = Array.prototype.slice.call(document.querySelectorAll(ROOT_SELECTOR));
+        roots = Array.prototype.slice.call(document.querySelectorAll(ROOT_SELECTOR)).filter(function (candidate) {
+            // A suppressed summary must not consume Escape or steal focus
+            // while navigation (or another containing surface) is active.
+            return candidate.getClientRects().length > 0;
+        });
         active = document.activeElement;
         root = roots.find(function (candidate) {
             return candidate.contains(active) && candidate.classList.contains(EXPANDED_CLASS);

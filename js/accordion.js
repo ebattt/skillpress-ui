@@ -40,49 +40,54 @@
         return null;
     }
 
-    function setContentHeight(section, isExpanded, animate) {
+    function setContentHeight(section, isExpanded, animate, startHeight) {
         var content = getContent(section);
+        if (!content) return;
+        if (content.__accordionCleanup) content.__accordionCleanup();
 
-        if (!content) {
-            return;
-        }
-
-        if (!animate) {
+        function settle() {
+            if (content.__accordionCleanup) content.__accordionCleanup();
             content.style.maxHeight = isExpanded ? 'none' : '0px';
             content.style.overflow = isExpanded ? 'visible' : 'hidden';
+        }
+
+        if (!animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            settle();
             return;
         }
 
         content.style.overflow = 'hidden';
-
-        if (isExpanded) {
-            content.style.maxHeight = '0px';
-            content.offsetHeight;
-            content.style.maxHeight = content.scrollHeight + 'px';
-
-            content.addEventListener('transitionend', function onOpenEnd(event) {
-                if (event.target !== content || event.propertyName !== 'max-height') {
-                    return;
-                }
-                content.removeEventListener('transitionend', onOpenEnd);
-                if (section.classList.contains('sp-accordion__section--expanded')) {
-                    content.style.maxHeight = 'none';
-                    content.style.overflow = 'visible';
-                }
-            });
-            return;
-        }
-
-        content.style.maxHeight = content.scrollHeight + 'px';
+        content.style.maxHeight = startHeight + 'px';
         content.offsetHeight;
-        content.style.maxHeight = '0px';
+        content.style.maxHeight = isExpanded ? content.scrollHeight + 'px' : '0px';
+
+        function onEnd(event) {
+            if (event.target === content && event.propertyName === 'max-height') settle();
+        }
+        // Also release the height when no transition event occurs (empty/hidden content).
+        var style = window.getComputedStyle(content);
+        function milliseconds(value) {
+            return parseFloat(value) * (value.trim().slice(-2) === 'ms' ? 1 : 1000) || 0;
+        }
+        var durations = style.transitionDuration.split(',').map(milliseconds);
+        var delays = style.transitionDelay.split(',').map(milliseconds);
+        var duration = Math.max.apply(null, durations) + Math.max.apply(null, delays);
+        var timer = window.setTimeout(settle, duration + 50);
+        content.addEventListener('transitionend', onEnd);
+        content.__accordionCleanup = function() {
+            window.clearTimeout(timer);
+            content.removeEventListener('transitionend', onEnd);
+            content.__accordionCleanup = null;
+        };
     }
 
     function syncSection(section, isExpanded, animate) {
         var trigger = getTrigger(section);
 
+        var content = getContent(section);
+        var startHeight = content ? content.getBoundingClientRect().height : 0;
         section.classList.toggle('sp-accordion__section--expanded', isExpanded);
-        setContentHeight(section, isExpanded, animate !== false);
+        setContentHeight(section, isExpanded, animate !== false, startHeight);
 
         if (trigger) {
             trigger.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
@@ -158,6 +163,7 @@
         }
 
         var wasExpanded = section.classList.contains('sp-accordion__section--expanded');
+        if (wasExpanded === Boolean(expanded)) return;
         syncSection(section, Boolean(expanded), true);
         if (wasExpanded !== Boolean(expanded)) {
             emit(section, Boolean(expanded));
