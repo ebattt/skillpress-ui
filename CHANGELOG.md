@@ -2,7 +2,27 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.10.3)
+## Corrente (0.10.4)
+
+- **Versione: 0.10.4.** Release con ripristino del layout dei campi e logica accordion semplificata.
+- **Contract HTML cambiato: no.** Stesse classi, API open/close/init ed eventi.
+- Campi: ripristinate le regole generali delle label precedenti alla 0.10.3;
+  rimosse altezza minima e spaziatura globali che alteravano il configuratore.
+  Conservate le correzioni dedicate a Nome del lavoro/Referente e Google Places.
+- Accordion: click e API passano da un unico aggiornamento sincrono; eliminata
+  la chiusura delle altre sezioni rinviata al frame successivo. I listener
+  leggono lo stato completo, anche nel checkout.
+- Il click mantiene l'apertura esclusiva; la validazione via API puo aprire
+  piu sezioni e non viene annullata da un precedente click ancora pendente.
+- I contenuti chiusi sono inert: esclusi da focus e interazione senza
+  disabilitare i valori del form. Chiudere un campo in uso riporta il focus
+  al titolo; la validazione HTML nativa apre immediatamente le sezioni non valide.
+- Init ripetuta conserva le animazioni in corso e inizializza nuove sezioni
+  o contenuti sostituiti, anche passando il frammento interno.
+- Il controllo backend degli errori vuoti resta applicativo: aggiornare il
+  main.js come nella guida consumer, anche con la nuova libreria.
+
+## Precedente (0.10.3)
 
 - **Versione: 0.10.3.**
 - Menu mobile: barra arancione fissata durante la navigazione, riepiloghi

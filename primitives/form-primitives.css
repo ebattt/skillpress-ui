@@ -6,19 +6,6 @@
 /** @public */
 .sp-form-field {
     position: relative;
-    min-width: 0;
-}
-
-/* Direct field labels share spacing with labels that include an info button.
-   Do not apply to nested checkbox/radio labels or truncate multiline labels. */
-.sp-form-field > .sp-label-text {
-    display: block;
-}
-
-.sp-form-field > .sp-label-text,
-.sp-form-field > .sp-label-row {
-    min-height: 1.5rem;
-    margin-bottom: 0.375rem;
 }
 
 /* ================================================================
