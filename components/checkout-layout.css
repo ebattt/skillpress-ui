@@ -91,3 +91,29 @@
         font-size: var(--font-size-base);
     }
 }
+
+/* Consenso contrattuale separato dalle card pagamento. */
+.checkout-terms {
+    margin-top: var(--spacing-lg);
+}
+
+.checkout-terms .sp-radio-option {
+    align-items: flex-start;
+}
+
+.checkout-terms input[type="checkbox"] {
+    flex-shrink: 0;
+}
+
+.checkout-terms input[aria-invalid="true"] {
+    outline: 2px solid var(--color-error-light);
+    outline-offset: 2px;
+}
+
+.checkout-terms input[aria-invalid="true"] + .sp-radio-option-label {
+    color: var(--color-error);
+}
+
+.checkout-terms .sp-error-msg[hidden] {
+    display: none;
+}

@@ -3309,6 +3309,19 @@ label.sp-radio-option--disabled input[type="radio"] {
     box-shadow: none;
 }
 
+.method-choice__grid input[type="radio"][aria-invalid="true"] + .method-choice-card {
+    border-color: var(--color-error-light);
+    box-shadow: 0 0 0 1px var(--color-error-light);
+}
+
+.method-choice__grid input[type="radio"][aria-invalid="true"] + .method-choice-card .method-choice-card__name {
+    color: var(--color-error);
+}
+
+.method-choice .sp-error-msg[hidden] {
+    display: none;
+}
+
 .allocation-summary-box {
     background: var(--color-bg-gray-50);
     border-radius: var(--radius-xl);
@@ -3532,6 +3545,31 @@ label.sp-radio-option--disabled input[type="radio"] {
     .checkout-main gmp-place-autocomplete {
         font-size: var(--font-size-base);
     }
+}
+
+.checkout-terms {
+    margin-top: var(--spacing-lg);
+}
+
+.checkout-terms .sp-radio-option {
+    align-items: flex-start;
+}
+
+.checkout-terms input[type="checkbox"] {
+    flex-shrink: 0;
+}
+
+.checkout-terms input[aria-invalid="true"] {
+    outline: 2px solid var(--color-error-light);
+    outline-offset: 2px;
+}
+
+.checkout-terms input[aria-invalid="true"] + .sp-radio-option-label {
+    color: var(--color-error);
+}
+
+.checkout-terms .sp-error-msg[hidden] {
+    display: none;
 }
 
 .sp-page {

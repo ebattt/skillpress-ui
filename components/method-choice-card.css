@@ -198,3 +198,19 @@
     border-color: var(--color-bg-gray-200);
     box-shadow: none;
 }
+
+/* Errore applicativo sul radio: la cornice visibile e' la label adiacente.
+   aria-invalid va impostato solo dopo la validazione, su tutto il gruppo
+   mancante, e rimosso alla selezione valida. */
+.method-choice__grid input[type="radio"][aria-invalid="true"] + .method-choice-card {
+    border-color: var(--color-error-light);
+    box-shadow: 0 0 0 1px var(--color-error-light);
+}
+
+.method-choice__grid input[type="radio"][aria-invalid="true"] + .method-choice-card .method-choice-card__name {
+    color: var(--color-error);
+}
+
+.method-choice .sp-error-msg[hidden] {
+    display: none;
+}

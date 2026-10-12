@@ -489,7 +489,11 @@
         "checkout-header__subtitle",
         "checkout-header__title",
         "checkout-main",
-        "checkout-sidebar"
+        "checkout-sidebar",
+        "checkout-terms",
+        "sp-error-msg",
+        "sp-radio-option",
+        "sp-radio-option-label"
       ],
       "checkout-mobile-summary": [
         "checkout-mobile-summary",
@@ -868,6 +872,7 @@
         "method-choice__grid",
         "method-choice__title",
         "org",
+        "sp-error-msg",
         "w3"
       ],
       "mobile-bar": [

@@ -190,3 +190,6 @@ deploy.
 Ogni release aggiorna `package.json` e `CHANGELOG.md` includendo il campo
 obbligatorio `Contract HTML cambiato: sì/no`. Se il campo è `no`, il backend
 non deve modificare i template HTML.
+
+Per card di spedizione/pagamento, consenso e stati di errore vedere
+[Stati frontend del checkout](docs/checkout-states.md).
