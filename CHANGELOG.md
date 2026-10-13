@@ -2,14 +2,19 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Non pubblicato — 7 ottobre 2026
+## Corrente (0.10.5)
 
+- **Versione: 0.10.5.** Release con gli stati di errore del checkout (card di
+  spedizione e consenso) preparati il 7 ottobre e pubblicati sul CDN il 13 ottobre.
+- **Contract HTML cambiato: sì.** Aggiunte additive: wrapper `.checkout-terms`
+  attorno alla label del consenso e stato `aria-invalid="true"` su radio e
+  checkbox con messaggio `.sp-error-msg` associato. Il markup precedente resta valido.
 - Checkout: stato errore delle card native tramite `aria-invalid` sui radio,
   mantenendo selezione, focus e nomi indipendenti per indirizzo.
 - Consenso: wrapper `checkout-terms` con spazio sopra e indicazione di errore
   su checkbox e testo. Nessuna nuova logica di validazione nel runtime UI.
 
-## Corrente (0.10.4)
+## Precedente (0.10.4)
 
 - **Versione: 0.10.4.** Release con ripristino del layout dei campi e logica accordion semplificata.
 - **Contract HTML cambiato: no.** Stesse classi, API open/close/init ed eventi.
