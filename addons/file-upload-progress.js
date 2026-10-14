@@ -13,10 +13,16 @@
  *       extraData: function (formData, box, opener) {   // facoltativo: id ordine, id file...
  *           formData.append('idFile', box ? box.getAttribute('data-order-detail-file-id') : 'contabile');
  *       },
+ *       isSuccess: function (responseText, xhr, box, opener) {      // facoltativo: il server risponde 200 anche in errore?
+ *           return JSON.parse(responseText).some(function (r) { return r.success; });
+ *       },
  *       onSuccess: function (box, responseText, xhr, opener) { ... },   // ridisegna box (o pagina) con lo stato del server
  *       onError: function (box, xhr, opener) { ... }                    // facoltativo: il box e' gia' ripristinato
  *   });
  *
+ * Esito: HTTP 200-399 e' un successo, salvo che isSuccess restituisca false (o
+ * lanci un'eccezione): in quel caso vale la via dell'errore, come per un 500 o
+ * un errore di rete (box ripristinato, avviso sotto, onError).
  * Senza onSuccess: un box passa a "Da verificare" con il nome del file inviato;
  * un opener senza box viene solo riabilitato (l'applicazione decide cosa mostrare).
  */
@@ -177,22 +183,36 @@
             if (box) renderUploading(box, fileName);
             else if (opener) opener.setAttribute('aria-busy', 'true');
 
+            function failed(xhr) {
+                setBusy(false);
+                if (opener) opener.removeAttribute('aria-busy');
+                if (box) restore(box);
+                if (anchor) addNotice(anchor);
+                if (options.onError) options.onError(box, xhr, opener);
+            }
+
+            function accepted(responseText, xhr) {
+                if (!options.isSuccess) return true;
+                try {
+                    return options.isSuccess(responseText, xhr, box, opener) !== false;
+                } catch (error) {
+                    if (window.console && console.warn) console.warn('[file-upload-progress] isSuccess ha lanciato un errore: risposta trattata come fallita', error);
+                    return false;
+                }
+            }
+
             transport(formData, {
                 progress: function (percent) { setProgress(box, percent); },
                 done: function (responseText, xhr) {
+                    // Risposta arrivata: l'applicazione puo' ancora dire che e' un errore (es. 200 con success=false).
+                    if (!accepted(responseText, xhr)) { failed(xhr); return; }
                     setBusy(false);
                     if (opener) opener.removeAttribute('aria-busy');
                     if (box) box.removeAttribute('style');
                     if (options.onSuccess) options.onSuccess(box, responseText, xhr, opener);
                     else if (box) renderReady(box, fileName);
                 },
-                fail: function (xhr) {
-                    setBusy(false);
-                    if (opener) opener.removeAttribute('aria-busy');
-                    if (box) restore(box);
-                    if (anchor) addNotice(anchor);
-                    if (options.onError) options.onError(box, xhr, opener);
-                }
+                fail: failed
             }, box, opener);
         });
 

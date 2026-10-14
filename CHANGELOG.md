@@ -2,7 +2,22 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.10.6)
+## Corrente (0.10.7)
+
+- **Versione: 0.10.7.** Solo l'addon `file-upload-progress.js` e il testo del
+  changelog; CSS e bundle identici alla 0.10.6.
+- **Contract HTML cambiato: no.**
+- Addon `file-upload-progress.js`: nuova opzione `isSuccess(responseText, xhr,
+  box, opener)`. Finora ogni risposta HTTP 200-399 era un successo; se il server
+  risponde 200 con un esito negativo nel corpo (es. `[{"success": false}]`),
+  l'applicazione lo dichiara restituendo `false` (o lanciando) e il box segue la
+  via dell'errore: ripristinato com'era, avviso `.product-file-box__notice--error`
+  sotto, `onError`. Senza `isSuccess` il comportamento resta quello della 0.10.6.
+- Nota alla 0.10.6: `tabular-nums` è sui valori del box Totale e della barra
+  mobile, non sulla tabella prezzi; l'anello accanto a «Totale» riserva il suo
+  spazio anche a riposo (`::after` con opacità 0), così la riga non si sposta.
+
+## Precedente (0.10.6)
 
 - **Versione: 0.10.6.** Correzioni all'area ordini emerse dall'integrazione
   della pagina ordine (mail del 14 ottobre) e nuovo modo di mostrare l'attesa.
@@ -28,7 +43,7 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
   l'avanzamento, ripristina il box a errore; l'applicazione passa `url`,
   `extraData` e `onSuccess`.
 - Runtime file-upload-box: un opener con `aria-disabled="true"` non apre più il
-  modale (anche da tastiera). Valori del box Totale, barra mobile e tabella con
+  modale (anche da tastiera). Valori del box Totale e della barra mobile con
   `font-variant-numeric: tabular-nums`, per non far tremare le cifre al cambio.
 - Modale upload: il nome del file non viene più accorciato dal runtime; la cella
   termina con ellissi e ha `title` con il nome intero; sotto 640px le colonne
