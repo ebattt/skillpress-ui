@@ -127,6 +127,19 @@ if (!fs.existsSync(jsBundleSrc)) {
 fs.copyFileSync(jsBundleSrc, path.join(jsDest, 'skillpress-ui.js'));
 log(`js/: ${jsFiles.length} file + skillpress-ui.js (bundle unico)`);
 
+// 4b. addons/ <- addons/*.js (esempi applicativi serviti dal CDN, FUORI dal
+//     bundle: li include solo chi li usa, es. file-upload-progress.js)
+const ADDONS_DIR = path.join(ROOT, 'addons');
+const addonFiles = fs.existsSync(ADDONS_DIR) ? fs.readdirSync(ADDONS_DIR).filter((f) => f.endsWith('.js')) : [];
+if (addonFiles.length) {
+  const addonsDest = path.join(PKG_DIR, 'addons');
+  fs.mkdirSync(addonsDest, { recursive: true });
+  for (const f of addonFiles) {
+    fs.copyFileSync(path.join(ADDONS_DIR, f), path.join(addonsDest, f));
+  }
+}
+log(`addons/: ${addonFiles.length} file (${addonFiles.join(', ')})`);
+
 // 5. fonts/ <- fonts/
 const fontsDest = path.join(PKG_DIR, 'fonts');
 copyDir(FONTS_DIR, fontsDest);
@@ -164,6 +177,7 @@ const manifest = {
   layout: {
     css: 'css/*.css',
     js: 'js/*.js',
+    addons: 'addons/*.js',
     fonts: 'fonts/**',
     publicApi: 'public-api.json',
   },

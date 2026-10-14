@@ -21,6 +21,7 @@ https://skillpress-ui.pages.dev/skillpress-ui/css/shell.css
 https://skillpress-ui.pages.dev/skillpress-ui/css/public.css
 https://skillpress-ui.pages.dev/skillpress-ui/css/auth.css
 https://skillpress-ui.pages.dev/skillpress-ui/js/_helpers.js
+https://skillpress-ui.pages.dev/skillpress-ui/addons/file-upload-progress.js
 https://skillpress-ui.pages.dev/skillpress-ui/public-api.json
 https://skillpress-ui.pages.dev/skillpress-ui/manifest.json
 ```

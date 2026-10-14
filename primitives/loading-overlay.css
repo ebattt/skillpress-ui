@@ -1,3 +1,7 @@
+/* Superato dalla 0.10.6: l'attesa non usa piu' un velo. I valori che cambiano
+   si attenuano da soli con aria-busy sul loro contenitore (sidebar-totals,
+   mobile-bar, price-table, product-file-box). Il blocco resta solo per il
+   markup backend ancora in uso e verra' rimosso in una release successiva. */
 /** @public */
 .sp-loading-overlay {
     position: fixed;

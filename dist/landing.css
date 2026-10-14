@@ -1082,6 +1082,10 @@ body {
     border: 0;
 }
 
+@keyframes sp-spin {
+    to { transform: rotate(360deg); }
+}
+
 .sp-catalog-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));

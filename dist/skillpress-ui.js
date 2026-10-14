@@ -1,4 +1,4 @@
-/*! @ebattt/skillpress-ui 0.10.5 -- bundle JS unico (26 moduli). Auto-init via data-attribute; per markup iniettato dopo il load usare window.SkillpressUI.init(scope). */
+/*! @ebattt/skillpress-ui 0.10.6 -- bundle JS unico (26 moduli). Auto-init via data-attribute; per markup iniettato dopo il load usare window.SkillpressUI.init(scope). */
 
 /* === js/_helpers.js === */
 /**
@@ -2033,12 +2033,6 @@
         target.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: detail }));
     }
 
-    function truncateFileName(name) {
-        var value = String(name || '');
-        if (value.length <= 34) return value;
-        return value.slice(0, 20) + '...' + value.slice(-11);
-    }
-
     function formatSize(bytes) {
         if (!bytes && bytes !== 0) return '-';
         return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
@@ -2076,7 +2070,7 @@
         // safe: file.name/size + date sono escapati prima di entrare nel template.
         tableBody.innerHTML = '<tr>' +
             '<td class="file-modal-table__cell">1</td>' +
-            '<td class="file-modal-table__cell file-modal-table__cell--name">' + escapeHtml(truncateFileName(file.name)) + '</td>' +
+            '<td class="file-modal-table__cell file-modal-table__cell--name" title="' + escapeHtml(file.name) + '">' + escapeHtml(file.name) + '</td>' +
             '<td class="file-modal-table__cell file-modal-table__cell--meta">' + escapeHtml(date) + '</td>' +
             '<td class="file-modal-table__cell file-modal-table__cell--meta">' + escapeHtml(formatSize(file.size)) + '</td>' +
             '<td class="file-modal-table__cell file-modal-table__cell--meta">' +
@@ -2237,6 +2231,11 @@
             document.addEventListener('click', function (event) {
                 var opener = event.target.closest('[data-file-upload-box-open]');
                 if (!opener) return;
+                // Opener disattivato dall'applicazione (es. upload in corso): nessuna apertura.
+                if (opener.getAttribute('aria-disabled') === 'true') {
+                    event.preventDefault();
+                    return;
+                }
                 var selector = opener.getAttribute('data-file-upload-box-open') || '[data-file-upload-box]';
                 var target;
                 try {

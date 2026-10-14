@@ -257,9 +257,9 @@
 }
 
 .file-modal-table__cell--name {
-    display: flex;
     min-width: 0;
     overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 
@@ -396,6 +396,27 @@
     .file-modal__error {
         font-size: 0.6875rem;
     }
+
+    /* Colonne secondarie piu' strette: il nome del file tiene lo spazio. */
+    .file-modal__table th,
+    .file-modal__table td {
+        padding: 0.5rem 0.5rem;
+    }
+
+    .file-modal__table th:nth-child(3),
+    .file-modal__table td:nth-child(3) {
+        width: 5.5rem;
+    }
+
+    .file-modal__table th:nth-child(4),
+    .file-modal__table td:nth-child(4) {
+        width: 6rem;
+    }
+
+    .file-modal__table th:nth-child(5),
+    .file-modal__table td:nth-child(5) {
+        width: 6rem;
+    }
 }
 
 /* --- Lock della pagina a modale upload aperto --------------------------
@@ -415,4 +436,11 @@ html:has(.file-modal__overlay:not([hidden])) {
 body:has(.file-modal__overlay:not([hidden])) .file-modal__content {
     touch-action: pan-y;
     overscroll-behavior: contain;
+}
+
+/* Opener del modale disattivato dall'applicazione (un upload per volta):
+   resta nel DOM e raggiungibile, il runtime ignora il click. */
+[data-file-upload-box-open][aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: progress;
 }

@@ -249,11 +249,17 @@
     color: inherit;
     font-family: inherit;
     text-align: left;
-    cursor: pointer;
     background: var(--color-bg-white);
     border: 1.5px solid var(--color-border-blue-gray-125);
     border-radius: var(--radius-md);
     box-shadow: none;
+}
+
+/* Il box non e' interattivo: ad aprire il modale e' solo il bottone
+   .product-file-box__action-label (Carica/Ricarica); Report e nome file
+   restano link normali. */
+button.product-file-box {
+    cursor: pointer;
 }
 
 .product-file-box:hover {
@@ -457,7 +463,7 @@
 }
 
 .product-file-box__meta {
-    display: flex;
+    display: block;
     max-width: 100%;
     min-width: 0;
     margin-top: 0.125rem;
@@ -465,6 +471,7 @@
     color: var(--color-text-light);
     font-size: 0.7rem;
     line-height: 1.3;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 
@@ -519,6 +526,30 @@
 .product-file-box__action-label--error {
     background: var(--color-error);
     border-color: var(--color-error);
+}
+
+button.product-file-box__action-label {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+button.product-file-box__action-label:not([aria-disabled="true"]):hover {
+    filter: brightness(0.94);
+}
+
+button.product-file-box__action-label:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+}
+
+.product-file-box__file-link {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.product-file-box__file-link:hover {
+    color: var(--color-primary-dark);
 }
 
 .product-file-box__state {
@@ -738,4 +769,93 @@
         padding: 0.25rem 0.5rem;
         font-size: 0.66rem;
     }
+}
+
+/* ----------------------------------------------------------------
+   Box file in caricamento: il modale si chiude all'invio e il box
+   mostra l'attesa al posto suo. Nessun velo sulla pagina.
+   ---------------------------------------------------------------- */
+.product-file-box--uploading {
+    background: var(--color-warning-bg);
+    border-color: var(--color-warning-border);
+}
+
+.product-file-box__icon--uploading {
+    background: transparent;
+}
+
+.product-file-box__icon--uploading::before {
+    content: "";
+    width: 1.125rem;
+    height: 1.125rem;
+    margin: auto;
+    mask-image: none;
+    background: transparent;
+    border: 2px solid var(--color-bg-gray-200);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: sp-spin 0.9s linear infinite;
+}
+
+.product-file-box__state--uploading {
+    color: var(--color-primary-dark);
+    background: var(--color-warning-badge-bg);
+    border: 1px solid var(--color-warning-border);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Avanzamento opzionale: style="--progress: 42%" sul box, aggiornato
+   dall'applicazione con l'evento progress di XMLHttpRequest upload. Senza
+   --progress la barra e' indeterminata. */
+.product-file-box__progress {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    overflow: hidden;
+    background: var(--color-bg-gray-150);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.product-file-box--uploading {
+    position: relative;
+}
+
+.product-file-box__progress::before {
+    content: "";
+    display: block;
+    width: var(--progress, 30%);
+    height: 100%;
+    background: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.product-file-box--uploading:not([style*="--progress"]) .product-file-box__progress::before {
+    animation: product-file-box-progress-indeterminate 1.4s ease-in-out infinite;
+}
+
+@keyframes product-file-box-progress-indeterminate {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(400%); }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .product-file-box__icon--uploading::before,
+    .product-file-box--uploading:not([style*="--progress"]) .product-file-box__progress::before {
+        animation: none;
+    }
+}
+
+/* Avviso inline sotto il box (es. upload non riuscito), inserito dall'applicazione. */
+.product-file-box__notice {
+    margin: 0.25rem 0 0;
+    font-size: var(--font-size-xs);
+    line-height: 1.4;
+    color: var(--color-text-secondary);
+}
+
+.product-file-box__notice--error {
+    color: var(--color-error);
 }

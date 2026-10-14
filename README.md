@@ -11,6 +11,7 @@ la guida di integrazione del consumer prevede una copia servita dal backend.
 - `primitives/`, `components/`: primitive `sp-*` e componenti di pagina.
 - `shell/`: CSS canonico di navbar/footer.
 - `js/`: behavior progressivo dei componenti interattivi.
+- `addons/`: esempi applicativi serviti dal CDN fuori dal bundle (es. attesa upload), da includere solo dove servono.
 - `bundles/`: entrypoint CSS sorgente per area.
 - `dist/`: CSS flatten e `public-api.json`.
 - `public/`: artefatto CDN generato da `npm run build:cdn`.
@@ -51,6 +52,7 @@ Il contenuto pubblico contiene solo:
 
 - `css/*.css`;
 - `js/*.js`;
+- `addons/*.js`;
 - `fonts/**`;
 - `manifest.json`;
 - `public-api.json`.
@@ -61,7 +63,7 @@ come campo interno, hash `sha384` per verifica operativa e policy
 
 Il backend può consumare gli asset direttamente dal CDN stabile o mirrorarli su
 un proprio path locale. La cosa importante è che la struttura interna resti la
-stessa: `css/`, `js/`, `fonts/`, `manifest.json`, `public-api.json`.
+stessa: `css/`, `js/`, `addons/`, `fonts/`, `manifest.json`, `public-api.json`.
 
 Queste sono le modalita' supportate dalla libreria. Per l'integrazione del
 sito Skillpress seguire
@@ -116,7 +118,9 @@ La pagina shell del consumer carica direttamente quella copia di `navbar.js`.
 Il backend puo' copiarla nel proprio `/static/js/`, insieme agli altri runtime
 applicativi del consumer. Questi file non fanno parte di `js/skillpress-ui.js`
 e non vengono aggiornati da un deploy del CDN; `cart.js` e lo stato del
-carrello rimangono applicativi. Il runtime navbar si inizializza a DOM pronto,
+carrello rimangono applicativi. Gli esempi applicativi che vogliamo tenere
+aggiornati noi stanno invece in `addons/` e si includono dal CDN
+(`/skillpress-ui/addons/<nome>.js`), senza copia locale. Il runtime navbar si inizializza a DOM pronto,
 senza timer di startup; non implementa una navigazione con shell persistente.
 
 Font: self-hostati in `fonts/manrope/` e `fonts/material-symbols/`; nessuna

@@ -319,3 +319,51 @@
         transition-duration: 0.01ms;
     }
 }
+
+/* Attesa durante il ricalcolo (aria-busy="true" su .mobile-total-bar):
+   stessa regola del box desktop, solo i valori si attenuano. */
+.mobile-total-bar__price,
+.mobile-total-bar__detail-row > span:last-child {
+    font-variant-numeric: tabular-nums;
+    transition: opacity 0.12s ease, filter 0.12s ease;
+}
+
+.mobile-total-bar[aria-busy="true"] .mobile-total-bar__price,
+.mobile-total-bar[aria-busy="true"] .mobile-total-bar__detail-row > span:last-child {
+    opacity: 0.45;
+    filter: blur(1.5px);
+    transition: opacity 0.15s ease 0.2s, filter 0.15s ease 0.2s;
+    user-select: none;
+}
+
+.mobile-total-bar__label::after {
+    content: "";
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-left: 0.375rem;
+    vertical-align: -0.0625rem;
+    border: 2px solid var(--color-bg-gray-200);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.12s ease;
+}
+
+.mobile-total-bar[aria-busy="true"] .mobile-total-bar__label::after {
+    opacity: 1;
+    transition: opacity 0.15s ease 0.2s;
+    animation: sp-spin 0.9s linear infinite;
+}
+
+.mobile-total-bar__cart-btn[aria-disabled="true"] {
+    opacity: 0.6;
+    cursor: progress;
+    transition: opacity 0.15s ease 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mobile-total-bar[aria-busy="true"] .mobile-total-bar__label::after {
+        animation: none;
+    }
+}

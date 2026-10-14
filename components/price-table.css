@@ -345,3 +345,18 @@
         font-size: 0.625rem;
     }
 }
+
+/* Attesa durante il ricalcolo (aria-busy="true" su .price-table): il server
+   sostituisce le righe intere, quindi si attenuano prezzi e quantita'. */
+.price-table__cell-btn,
+.price-table__qty-btn {
+    transition: all var(--transition-fast), opacity 0.12s ease, filter 0.12s ease;
+}
+
+.price-table[aria-busy="true"] .price-table__cell-btn,
+.price-table[aria-busy="true"] .price-table__qty-btn {
+    opacity: 0.45;
+    filter: blur(1.5px);
+    transition: all var(--transition-fast), opacity 0.15s ease 0.2s, filter 0.15s ease 0.2s;
+    pointer-events: none;
+}

@@ -397,3 +397,58 @@
         font-size: 1rem;
     }
 }
+
+/* ================================================================
+   Attesa durante il ricalcolo (aria-busy="true" su .sidebar-total-box)
+   Si attenuano solo i valori che stanno cambiando; etichette, promo,
+   riepilogo e pulsanti restano nitidi. L'effetto entra dopo 200ms
+   (nessun timer JS) ed esce subito: le risposte rapide non si vedono.
+   ================================================================ */
+.sidebar-row__value,
+.sidebar-total-value {
+    font-variant-numeric: tabular-nums;
+    transition: opacity 0.12s ease, filter 0.12s ease;
+}
+
+.sidebar-total-box[aria-busy="true"] .sidebar-row__value,
+.sidebar-total-box[aria-busy="true"] .sidebar-total-value {
+    opacity: 0.45;
+    filter: blur(1.5px);
+    transition: opacity 0.15s ease 0.2s, filter 0.15s ease 0.2s;
+    user-select: none;
+}
+
+/* Un solo indicatore, accanto alla label Totale: visibile a chi non
+   percepisce l'attenuazione e nelle attese lunghe. */
+.sidebar-total-label::after {
+    content: "";
+    display: inline-block;
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-left: 0.5rem;
+    vertical-align: -0.125rem;
+    border: 2px solid var(--color-bg-gray-200);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.12s ease;
+}
+
+.sidebar-total-box[aria-busy="true"] .sidebar-total-label::after {
+    opacity: 1;
+    transition: opacity 0.15s ease 0.2s;
+    animation: sp-spin 0.9s linear infinite;
+}
+
+/* Il pulsante resta nel DOM e raggiungibile: niente disabled. */
+.add-to-cart-btn[aria-disabled="true"] {
+    opacity: 0.6;
+    cursor: progress;
+    transition: opacity 0.15s ease 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sidebar-total-box[aria-busy="true"] .sidebar-total-label::after {
+        animation: none;
+    }
+}

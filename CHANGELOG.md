@@ -2,7 +2,42 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.10.5)
+## Corrente (0.10.6)
+
+- **Versione: 0.10.6.** Correzioni all'area ordini emerse dall'integrazione
+  della pagina ordine (mail del 14 ottobre) e nuovo modo di mostrare l'attesa.
+- **Contract HTML cambiato: sì, additivo.** Il box file (`.product-file-box`)
+  non è più un `<button>`: il bottone che apre il modale è la sola etichetta
+  `.product-file-box__action-label` (Carica/Ricarica), così Report e nome del
+  file restano link funzionanti. Nuova classe `.product-file-box__file-link`
+  per il nome del file cliccabile. Nuovo stato `.product-file-box--uploading`
+  (icona `--uploading`, badge `__state--uploading`, barra `__progress` con
+  `--progress`) per il file in caricamento dopo la chiusura del modale, e
+  `.product-file-box__notice` per l'avviso inline sotto il box.
+- **Attesa durante il ricalcolo: niente più velo.** Con `aria-busy="true"` su
+  `.sidebar-total-box`, `.mobile-total-bar` e `.price-table` si attenuano solo
+  i valori che cambiano (opacità + blur leggero, ingresso dopo 200ms via CSS,
+  uscita immediata) e compare un anello accanto alla label Totale.
+  `.add-to-cart-btn[aria-disabled="true"]` e il bottone carrello mobile si
+  attenuano senza `disabled`. `.sp-loading-overlay` resta per compatibilità ma
+  è superato e non va più usato.
+- Nuova cartella `addons/` pubblicata sul CDN fuori dal bundle (`/addons/*.js`,
+  elencata nel manifest): esempi applicativi da includere solo dove servono.
+  Primo file `file-upload-progress.js`: dopo l'invio dal modale porta il box del
+  file in stato di caricamento, invia con XMLHttpRequest misurando
+  l'avanzamento, ripristina il box a errore; l'applicazione passa `url`,
+  `extraData` e `onSuccess`.
+- Runtime file-upload-box: un opener con `aria-disabled="true"` non apre più il
+  modale (anche da tastiera). Valori del box Totale, barra mobile e tabella con
+  `font-variant-numeric: tabular-nums`, per non far tremare le cifre al cambio.
+- Modale upload: il nome del file non viene più accorciato dal runtime; la cella
+  termina con ellissi e ha `title` con il nome intero; sotto 640px le colonne
+  data/dimensione/stato sono più strette. Anche il nome file nel box
+  (`.product-file-box__meta`) termina con ellissi.
+- Le reference ordine-dettaglio avvolgono le coordinate bancarie in
+  `.sp-card__body` (il padding della card sta lì); la libreria non cambia.
+
+## Precedente (0.10.5)
 
 - **Versione: 0.10.5.** Release con gli stati di errore del checkout (card di
   spedizione e consenso) preparati il 7 ottobre e pubblicati sul CDN il 13 ottobre.
