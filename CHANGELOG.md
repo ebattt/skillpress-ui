@@ -2,7 +2,27 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.10.7)
+## Corrente (0.10.8)
+
+- **Versione: 0.10.8.** Addon `file-upload-progress.js` e CSS dell'area ordini
+  (`dashboard.css`); bundle JS identico alla 0.10.7 salvo la riga di versione.
+- **Contract HTML cambiato: sì, additivo.** Nuovo modificatore
+  `.product-files-section__header--with-actions` sull'intestazione «File di
+  stampa»: i link Istruzioni e Template della riga d'ordine stanno lì, a destra
+  del titolo, con lo stesso markup dei gruppi (`.product-file-group__actions` +
+  `.product-file-group__link`, come `<a target="_blank">`). Il dato è per riga
+  d'ordine, non per gruppo file; le reference ordine-dettaglio usano la nuova
+  posizione. Il markup con i link dentro `.product-file-group__header` resta
+  valido e ha lo stesso CSS di prima.
+- Addon `file-upload-progress.js`: `url` e `fieldName` possono essere funzioni
+  `(box, opener)`, valutate a ogni invio. Serve quando lo stesso modale è aperto
+  dai box file e da «Carica contabile» e i due casi chiamano servizi diversi
+  (URL e nome del campo diversi): una sola chiamata, `box` è `null` per la
+  contabile. Con stringhe il comportamento resta quello della 0.10.7. Un errore
+  prima dell'invio (`url` vuoto, `url`/`fieldName`/`extraData` che lanciano)
+  segue la via dell'errore con `xhr = null`, senza lasciare la pagina in attesa.
+
+## Precedente (0.10.7)
 
 - **Versione: 0.10.7.** Solo l'addon `file-upload-progress.js` e il testo del
   changelog; CSS e bundle identici alla 0.10.6.

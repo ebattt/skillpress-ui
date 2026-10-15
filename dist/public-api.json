@@ -1,5 +1,5 @@
 {
-  "version": "0.10.7",
+  "version": "0.10.8",
   "css": {
     "primitives": [
       ".dashboard-shell--nav-hub",
@@ -1076,6 +1076,7 @@
         "product-file-status-badge--tochange",
         "product-files-section",
         "product-files-section__header",
+        "product-files-section__header--with-actions",
         "product-step-detail",
         "step-status-banner",
         "step-status-banner--error",

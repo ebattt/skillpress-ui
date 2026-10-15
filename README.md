@@ -119,8 +119,9 @@ Il backend puo' copiarla nel proprio `/static/js/`, insieme agli altri runtime
 applicativi del consumer. Questi file non fanno parte di `js/skillpress-ui.js`
 e non vengono aggiornati da un deploy del CDN; `cart.js` e lo stato del
 carrello rimangono applicativi. Gli esempi applicativi che vogliamo tenere
-aggiornati noi stanno invece in `addons/` e si includono dal CDN
-(`/skillpress-ui/addons/<nome>.js`), senza copia locale. Il runtime navbar si inizializza a DOM pronto,
+aggiornati noi stanno invece in `addons/`: sono nel manifest e seguono le
+stesse regole degli altri file (dal CDN `/skillpress-ui/addons/<nome>.js`,
+oppure copiati in locale con il pacchetto). Il runtime navbar si inizializza a DOM pronto,
 senza timer di startup; non implementa una navigazione con shell persistente.
 
 Font: self-hostati in `fonts/manrope/` e `fonts/material-symbols/`; nessuna

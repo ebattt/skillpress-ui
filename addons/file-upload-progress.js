@@ -10,6 +10,10 @@
  *   createFileUploadProgress({
  *       modal: '#dashboard-file-upload-modal',   // root data-file-upload-box
  *       url: '/ordini/upload',                   // POST multipart, campo "file"
+ *       // url e fieldName possono essere funzioni (box, opener), valutate a ogni invio:
+ *       // lo stesso modale serve i box file e "Carica contabile", che chiamano servizi diversi.
+ *       //   url: function (box) { return box ? '/servlets/upload' : '/servlets/uploadContabile'; },
+ *       //   fieldName: function (box) { return box ? 'file' : 'fileContabile'; },
  *       extraData: function (formData, box, opener) {   // facoltativo: id ordine, id file...
  *           formData.append('idFile', box ? box.getAttribute('data-order-detail-file-id') : 'contabile');
  *       },
@@ -22,7 +26,9 @@
  *
  * Esito: HTTP 200-399 e' un successo, salvo che isSuccess restituisca false (o
  * lanci un'eccezione): in quel caso vale la via dell'errore, come per un 500 o
- * un errore di rete (box ripristinato, avviso sotto, onError).
+ * un errore di rete (box ripristinato, avviso sotto, onError con xhr). Anche un
+ * errore prima dell'invio (url vuoto, url/fieldName/extraData che lanciano)
+ * segue la via dell'errore, con xhr null e un console.error.
  * Senza onSuccess: un box passa a "Da verificare" con il nome del file inviato;
  * un opener senza box viene solo riabilitato (l'applicazione decide cosa mostrare).
  */
@@ -31,6 +37,11 @@
         return String(value == null ? '' : value).replace(/[&<>"']/g, function (ch) {
             return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
         });
+    }
+
+    function resolve(option, fallback, box, opener) {
+        var value = typeof option === 'function' ? option(box, opener) : option;
+        return value == null || value === '' ? fallback : value;
     }
 
     function xhrTransport(url) {
@@ -58,8 +69,14 @@
         if (modal.fileUploadProgress) return modal.fileUploadProgress;
         if (!options.url && !options.transport) throw new Error('createFileUploadProgress: serve url o transport');
 
-        var transport = options.transport || xhrTransport(options.url);
-        var fieldName = options.fieldName || 'file';
+        // url e fieldName si risolvono a ogni invio: possono dipendere da chi ha aperto il modale.
+        // Con un transport proprio, url non viene usato.
+        function transportFor(box, opener) {
+            if (options.transport) return options.transport;
+            var url = resolve(options.url, null, box, opener);
+            if (!url) throw new Error('createFileUploadProgress: url vuoto per questo invio');
+            return xhrTransport(url);
+        }
         var errorMessage = options.errorMessage || 'Caricamento non riuscito. Riprova.';
         var busy = false;
         var currentOpener = null;
@@ -175,14 +192,6 @@
             }
             if (anchor) removeNotice(anchor);
 
-            var formData = new FormData();
-            formData.append(fieldName, event.detail.file, fileName);
-            if (options.extraData) options.extraData(formData, box, opener);
-
-            setBusy(true);
-            if (box) renderUploading(box, fileName);
-            else if (opener) opener.setAttribute('aria-busy', 'true');
-
             function failed(xhr) {
                 setBusy(false);
                 if (opener) opener.removeAttribute('aria-busy');
@@ -190,6 +199,24 @@
                 if (anchor) addNotice(anchor);
                 if (options.onError) options.onError(box, xhr, opener);
             }
+
+            // Tutto cio' che dipende dall'applicazione (url, fieldName, extraData) si risolve
+            // prima di mostrare l'attesa: un errore qui e' un invio fallito, non una pagina bloccata.
+            var transport, formData;
+            try {
+                transport = transportFor(box, opener);
+                formData = new FormData();
+                formData.append(resolve(options.fieldName, 'file', box, opener), event.detail.file, fileName);
+                if (options.extraData) options.extraData(formData, box, opener);
+            } catch (error) {
+                if (window.console && console.error) console.error('[file-upload-progress] invio non partito:', error);
+                failed(null);
+                return;
+            }
+
+            setBusy(true);
+            if (box) renderUploading(box, fileName);
+            else if (opener) opener.setAttribute('aria-busy', 'true');
 
             function accepted(responseText, xhr) {
                 if (!options.isSuccess) return true;
@@ -201,19 +228,24 @@
                 }
             }
 
-            transport(formData, {
-                progress: function (percent) { setProgress(box, percent); },
-                done: function (responseText, xhr) {
-                    // Risposta arrivata: l'applicazione puo' ancora dire che e' un errore (es. 200 con success=false).
-                    if (!accepted(responseText, xhr)) { failed(xhr); return; }
-                    setBusy(false);
-                    if (opener) opener.removeAttribute('aria-busy');
-                    if (box) box.removeAttribute('style');
-                    if (options.onSuccess) options.onSuccess(box, responseText, xhr, opener);
-                    else if (box) renderReady(box, fileName);
-                },
-                fail: failed
-            }, box, opener);
+            try {
+                transport(formData, {
+                    progress: function (percent) { setProgress(box, percent); },
+                    done: function (responseText, xhr) {
+                        // Risposta arrivata: l'applicazione puo' ancora dire che e' un errore (es. 200 con success=false).
+                        if (!accepted(responseText, xhr)) { failed(xhr); return; }
+                        setBusy(false);
+                        if (opener) opener.removeAttribute('aria-busy');
+                        if (box) box.removeAttribute('style');
+                        if (options.onSuccess) options.onSuccess(box, responseText, xhr, opener);
+                        else if (box) renderReady(box, fileName);
+                    },
+                    fail: failed
+                }, box, opener);
+            } catch (error) {
+                if (window.console && console.error) console.error('[file-upload-progress] invio non partito:', error);
+                failed(null);
+            }
         });
 
         modal.fileUploadProgress = {

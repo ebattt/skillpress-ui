@@ -6410,6 +6410,21 @@ body:has(.sp-confirm-dialog:not([hidden])) .sp-confirm-dialog__panel {
     text-transform: uppercase;
 }
 
+.product-files-section__header--with-actions {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+}
+
+.product-files-section__header--with-actions .product-file-group__actions {
+    margin-left: auto;
+}
+
+.product-files-section__header--with-actions .product-file-group__link {
+    letter-spacing: normal;
+    text-transform: none;
+}
+
 .product-file-groups-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(16rem, 1fr));
