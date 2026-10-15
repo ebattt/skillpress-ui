@@ -21,6 +21,11 @@ Questo file registra solo cambiamenti utili al contract o al runtime.
   contabile. Con stringhe il comportamento resta quello della 0.10.7. Un errore
   prima dell'invio (`url` vuoto, `url`/`fieldName`/`extraData` che lanciano)
   segue la via dell'errore con `xhr = null`, senza lasciare la pagina in attesa.
+- Reference del modale upload: tolta la riga nascosta `file-modal__error`
+  (ruolo `upload-error`, «File non conforme / Scarica report»), residuo del
+  sito precedente: il runtime non la mostrava mai e il Report sta nel box in
+  pagina. Compatibile: il markup che la contiene resta valido, classi e CSS
+  restano.
 
 ## Precedente (0.10.7)
 
