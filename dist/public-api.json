@@ -1,5 +1,5 @@
 {
-  "version": "0.10.8",
+  "version": "0.10.9",
   "css": {
     "primitives": [
       ".dashboard-shell--nav-hub",
@@ -627,6 +627,23 @@
         "order-payment-method__icon--card",
         "order-payment-method__icon--paypal",
         "order-payment-method__label",
+        "order-shipping-destination",
+        "order-shipping-destination__children",
+        "order-shipping-destination__courier",
+        "order-shipping-destination__head",
+        "order-shipping-destination__item",
+        "order-shipping-destination__item--child",
+        "order-shipping-destination__item-name",
+        "order-shipping-destination__item-qty",
+        "order-shipping-destination__items",
+        "order-shipping-destination__line",
+        "order-shipping-destination__line--muted",
+        "order-shipping-destination__name",
+        "order-shipping-destination__number",
+        "order-shipping-destination__number-label",
+        "order-shipping-destination__recipient",
+        "order-shipping-destination__shipping",
+        "order-shipping-destinations",
         "org",
         "w3"
       ],

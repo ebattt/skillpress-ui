@@ -2,7 +2,27 @@
 
 Questo file registra solo cambiamenti utili al contract o al runtime.
 
-## Corrente (0.10.8)
+## Corrente (0.10.9)
+
+- **Versione: 0.10.9.** Solo CSS dell'area ordini (`dashboard.css`); bundle JS e
+  addon identici alla 0.10.8 salvo la riga di versione.
+- **Contract HTML cambiato: sì, additivo.** Box Spedizione del dettaglio
+  ordine: il contenuto è `.order-shipping-destinations` con una card
+  `.order-shipping-destination` per destinazione, una sola o più
+  (multispedizione), sempre con lo stesso markup. La card ha tre zone separate
+  da un filetto: `__head` (pallino `__number` con il numero e `__recipient` con
+  `__name` e righe `__line`), `__items` (una riga `__item` per prodotto con
+  `__item-name` e `__item-qty` a destra; varianti in `__children` con
+  `__item--child`) e `__shipping` (`__courier` con l'icona camioncino, riga
+  «Consegna», poi il link tracking `step-status-banner__report-link--tracking`
+  o la riga `__line--muted` «Tracking non ancora disponibile»). Stessi stili
+  del box Pagamento (nome come l'etichetta del metodo, il resto come le righe
+  IBAN), nessuna classe di utilità. Reference: tutte le `ordine-dettaglio*.html`
+  (una card) e `ordine-dettaglio-multispedizione.html` (tre). Il markup
+  precedente del box a una destinazione (paragrafi con classi di utilità)
+  resta valido e ha lo stesso CSS di prima.
+
+## Precedente (0.10.8)
 
 - **Versione: 0.10.8.** Addon `file-upload-progress.js` e CSS dell'area ordini
   (`dashboard.css`); bundle JS identico alla 0.10.7 salvo la riga di versione.
